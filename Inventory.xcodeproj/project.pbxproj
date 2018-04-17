@@ -15,6 +15,17 @@
 		2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */; };
 		2C56E8C52086350B00FD5136 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8C42086350B00FD5136 /* InventoryTests.swift */; };
 		2C56E8D02086350B00FD5136 /* InventoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */; };
+		2C56E8DF20866EAF00FD5136 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */; };
+		2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */; };
+		2C56E8FF208674AD00FD5136 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */; };
+		2C56E900208674AD00FD5136 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */; };
+		2C56E901208674AD00FD5136 /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */; };
+		2C56E902208674AD00FD5136 /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */; };
+		2C56E903208674AD00FD5136 /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */; };
+		2C56E904208674AD00FD5136 /* Brand+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */; };
+		2C56E905208674AD00FD5136 /* Brand+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */; };
+		2C56E906208674AD00FD5136 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */; };
+		2C56E907208674AD00FD5136 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		2C56E8CB2086350B00FD5136 /* InventoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryUITests.swift; sourceTree = "<group>"; };
 		2C56E8D12086350B00FD5136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "Inventory/Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "Inventory/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Inventory+CoreDataClass.swift"; path = "Inventory/Inventory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Inventory+CoreDataProperties.swift"; path = "Inventory/Inventory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Owner+CoreDataClass.swift"; path = "Inventory/Owner+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Owner+CoreDataProperties.swift"; path = "Inventory/Owner+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Brand+CoreDataClass.swift"; path = "Inventory/Brand+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Brand+CoreDataProperties.swift"; path = "Inventory/Brand+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Room+CoreDataClass.swift"; path = "Inventory/Room+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Room+CoreDataProperties.swift"; path = "Inventory/Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +101,16 @@
 		2C56E8A12086350A00FD5136 = {
 			isa = PBXGroup;
 			children = (
+				2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */,
+				2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */,
+				2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */,
+				2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */,
+				2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */,
+				2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */,
+				2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */,
+				2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */,
+				2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */,
+				2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */,
 				2C56E8AC2086350A00FD5136 /* Inventory */,
 				2C56E8C32086350B00FD5136 /* InventoryTests */,
 				2C56E8CE2086350B00FD5136 /* InventoryUITests */,
@@ -106,6 +138,7 @@
 				2C56E8B62086350B00FD5136 /* Assets.xcassets */,
 				2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */,
 				2C56E8BB2086350B00FD5136 /* Info.plist */,
+				2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -259,9 +292,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C56E907208674AD00FD5136 /* Room+CoreDataProperties.swift in Sources */,
 				2C56E8B22086350A00FD5136 /* SecondViewController.swift in Sources */,
+				2C56E900208674AD00FD5136 /* Inventory+CoreDataClass.swift in Sources */,
+				2C56E8FF208674AD00FD5136 /* Category+CoreDataProperties.swift in Sources */,
+				2C56E906208674AD00FD5136 /* Room+CoreDataClass.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
+				2C56E902208674AD00FD5136 /* Owner+CoreDataClass.swift in Sources */,
+				2C56E903208674AD00FD5136 /* Owner+CoreDataProperties.swift in Sources */,
 				2C56E8B02086350A00FD5136 /* FirstViewController.swift in Sources */,
+				2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */,
+				2C56E901208674AD00FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
+				2C56E8DF20866EAF00FD5136 /* Model.xcdatamodeld in Sources */,
+				2C56E904208674AD00FD5136 /* Brand+CoreDataClass.swift in Sources */,
+				2C56E905208674AD00FD5136 /* Brand+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,6 +628,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */,
+			);
+			currentVersion = 2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2C56E8A22086350A00FD5136 /* Project object */;
 }

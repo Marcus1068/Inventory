@@ -16,18 +16,18 @@
 		2C56E8C52086350B00FD5136 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8C42086350B00FD5136 /* InventoryTests.swift */; };
 		2C56E8D02086350B00FD5136 /* InventoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */; };
 		2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
-		2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */; };
-		2C56E8FF208674AD00FD5136 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */; };
-		2C56E900208674AD00FD5136 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */; };
-		2C56E901208674AD00FD5136 /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */; };
-		2C56E902208674AD00FD5136 /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */; };
-		2C56E903208674AD00FD5136 /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */; };
-		2C56E904208674AD00FD5136 /* Brand+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */; };
-		2C56E905208674AD00FD5136 /* Brand+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */; };
-		2C56E906208674AD00FD5136 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */; };
-		2C56E907208674AD00FD5136 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */; };
 		2C56E90C208683D100FD5136 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E90B208683D100FD5136 /* Helper.swift */; };
 		2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E90D2086844A00FD5136 /* DeviceInfo.swift */; };
+		2C56E92320869EC200FD5136 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91920869EC200FD5136 /* Inventory+CoreDataClass.swift */; };
+		2C56E92420869EC200FD5136 /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91A20869EC200FD5136 /* Inventory+CoreDataProperties.swift */; };
+		2C56E92520869EC200FD5136 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91B20869EC200FD5136 /* Category+CoreDataClass.swift */; };
+		2C56E92620869EC200FD5136 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91C20869EC200FD5136 /* Category+CoreDataProperties.swift */; };
+		2C56E92720869EC200FD5136 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91D20869EC200FD5136 /* Room+CoreDataClass.swift */; };
+		2C56E92820869EC200FD5136 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91E20869EC200FD5136 /* Room+CoreDataProperties.swift */; };
+		2C56E92920869EC200FD5136 /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E91F20869EC200FD5136 /* Owner+CoreDataClass.swift */; };
+		2C56E92A20869EC200FD5136 /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E92020869EC200FD5136 /* Owner+CoreDataProperties.swift */; };
+		2C56E92B20869EC200FD5136 /* Brand+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E92120869EC200FD5136 /* Brand+CoreDataClass.swift */; };
+		2C56E92C20869EC200FD5136 /* Brand+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E92220869EC200FD5136 /* Brand+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,18 +63,18 @@
 		2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryUITests.swift; sourceTree = "<group>"; };
 		2C56E8D12086350B00FD5136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C56E90B208683D100FD5136 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2C56E90D2086844A00FD5136 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		2C56E91920869EC200FD5136 /* Inventory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E91A20869EC200FD5136 /* Inventory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inventory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E91B20869EC200FD5136 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E91C20869EC200FD5136 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E91D20869EC200FD5136 /* Room+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E91E20869EC200FD5136 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E91F20869EC200FD5136 /* Owner+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E92020869EC200FD5136 /* Owner+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C56E92120869EC200FD5136 /* Brand+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2C56E92220869EC200FD5136 /* Brand+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,17 +158,17 @@
 		2C56E9082086834300FD5136 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2C56E91920869EC200FD5136 /* Inventory+CoreDataClass.swift */,
+				2C56E91A20869EC200FD5136 /* Inventory+CoreDataProperties.swift */,
+				2C56E91B20869EC200FD5136 /* Category+CoreDataClass.swift */,
+				2C56E91C20869EC200FD5136 /* Category+CoreDataProperties.swift */,
+				2C56E91D20869EC200FD5136 /* Room+CoreDataClass.swift */,
+				2C56E91E20869EC200FD5136 /* Room+CoreDataProperties.swift */,
+				2C56E91F20869EC200FD5136 /* Owner+CoreDataClass.swift */,
+				2C56E92020869EC200FD5136 /* Owner+CoreDataProperties.swift */,
+				2C56E92120869EC200FD5136 /* Brand+CoreDataClass.swift */,
+				2C56E92220869EC200FD5136 /* Brand+CoreDataProperties.swift */,
 				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
-				2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */,
-				2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */,
-				2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */,
-				2C56E8F7208674AD00FD5136 /* Inventory+CoreDataProperties.swift */,
-				2C56E8F8208674AD00FD5136 /* Owner+CoreDataClass.swift */,
-				2C56E8F9208674AD00FD5136 /* Owner+CoreDataProperties.swift */,
-				2C56E8FA208674AD00FD5136 /* Brand+CoreDataClass.swift */,
-				2C56E8FB208674AD00FD5136 /* Brand+CoreDataProperties.swift */,
-				2C56E8FC208674AD00FD5136 /* Room+CoreDataClass.swift */,
-				2C56E8FD208674AD00FD5136 /* Room+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,22 +322,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C56E907208674AD00FD5136 /* Room+CoreDataProperties.swift in Sources */,
+				2C56E92720869EC200FD5136 /* Room+CoreDataClass.swift in Sources */,
+				2C56E92B20869EC200FD5136 /* Brand+CoreDataClass.swift in Sources */,
+				2C56E92A20869EC200FD5136 /* Owner+CoreDataProperties.swift in Sources */,
 				2C56E8B22086350A00FD5136 /* SecondViewController.swift in Sources */,
+				2C56E92320869EC200FD5136 /* Inventory+CoreDataClass.swift in Sources */,
 				2C56E90C208683D100FD5136 /* Helper.swift in Sources */,
-				2C56E900208674AD00FD5136 /* Inventory+CoreDataClass.swift in Sources */,
-				2C56E8FF208674AD00FD5136 /* Category+CoreDataProperties.swift in Sources */,
-				2C56E906208674AD00FD5136 /* Room+CoreDataClass.swift in Sources */,
+				2C56E92820869EC200FD5136 /* Room+CoreDataProperties.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */,
-				2C56E902208674AD00FD5136 /* Owner+CoreDataClass.swift in Sources */,
-				2C56E903208674AD00FD5136 /* Owner+CoreDataProperties.swift in Sources */,
 				2C56E8B02086350A00FD5136 /* FirstViewController.swift in Sources */,
-				2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */,
-				2C56E901208674AD00FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
+				2C56E92420869EC200FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
+				2C56E92C20869EC200FD5136 /* Brand+CoreDataProperties.swift in Sources */,
+				2C56E92920869EC200FD5136 /* Owner+CoreDataClass.swift in Sources */,
+				2C56E92620869EC200FD5136 /* Category+CoreDataProperties.swift in Sources */,
+				2C56E92520869EC200FD5136 /* Category+CoreDataClass.swift in Sources */,
 				2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */,
-				2C56E904208674AD00FD5136 /* Brand+CoreDataClass.swift in Sources */,
-				2C56E905208674AD00FD5136 /* Brand+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

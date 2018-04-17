@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Brand" representedClassName="Brand" syncable="YES">
-        <attribute name="brandName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="brandInventory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
+        <attribute name="brandName" attributeType="String" syncable="YES"/>
+        <relationship name="brandInventory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
-        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="categoryInventory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryCategory" inverseEntity="Inventory" syncable="YES"/>
+        <attribute name="categoryName" attributeType="String" syncable="YES"/>
+        <relationship name="categoryInventory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryCategory" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Inventory" representedClassName="Inventory" syncable="YES">
         <attribute name="dateOfPurchase" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="inventoryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inventoryName" attributeType="String" syncable="YES"/>
         <attribute name="invoice" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timeStamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="warranty" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="inventoryBrand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Brand" inverseName="brandInventory" inverseEntity="Brand" syncable="YES"/>
-        <relationship name="inventoryCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryInventory" inverseEntity="Category" syncable="YES"/>
-        <relationship name="inventoryOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Owner" inverseName="ownerInventory" inverseEntity="Owner" syncable="YES"/>
-        <relationship name="inventoryRoom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="roomInventory" inverseEntity="Room" syncable="YES"/>
+        <relationship name="inventoryBrand" maxCount="1" deletionRule="Cascade" destinationEntity="Brand" inverseName="brandInventory" inverseEntity="Brand" syncable="YES"/>
+        <relationship name="inventoryCategory" maxCount="1" deletionRule="Cascade" destinationEntity="Category" inverseName="categoryInventory" inverseEntity="Category" syncable="YES"/>
+        <relationship name="inventoryOwner" maxCount="1" deletionRule="Cascade" destinationEntity="Owner" inverseName="ownerInventory" inverseEntity="Owner" syncable="YES"/>
+        <relationship name="inventoryRoom" maxCount="1" deletionRule="Cascade" destinationEntity="Room" inverseName="roomInventory" inverseEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Owner" representedClassName="Owner" syncable="YES">
-        <attribute name="ownerName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ownerInventory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryOwner" inverseEntity="Inventory" syncable="YES"/>
+        <attribute name="ownerName" attributeType="String" syncable="YES"/>
+        <relationship name="ownerInventory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryOwner" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
-        <attribute name="roomName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="roomInventory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryRoom" inverseEntity="Inventory" syncable="YES"/>
+        <attribute name="roomName" attributeType="String" syncable="YES"/>
+        <relationship name="roomInventory" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryRoom" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <elements>
         <element name="Brand" positionX="333" positionY="75" width="128" height="73"/>

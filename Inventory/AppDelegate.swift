@@ -26,16 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //request.sortDescriptors = [NSSortDescriptor(key: "deutsch", ascending: true)]
         
         //vokabeln = try! AppDelegate.viewContext.fetch(request)
-        generateSampleData()
         
-        let inventory = fetchInventory()
+    /*    let inventory = fetchInventory()
         if (inventory.count == 0)
         {
             generateSampleData()
         }
-        
+      */
         // for debug only
-        showSampleData()
+        //showSampleData()
         
         return true
     }
@@ -142,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let kategorie0 = saveCategory(categoryName: "keine Kategorie")
         let kategorie1 = saveCategory(categoryName: "Technik")
-        let kategorie2 = saveCategory(categoryName: "Möbel")
+        let kategorie2 = saveCategory(categoryName: "Moebel")
         let kategorie3 = saveCategory(categoryName: "Computer")
         let kategorie4 = saveCategory(categoryName: "Schmuck")
         let kategorie5 = saveCategory(categoryName: "Spielzeug")
@@ -172,30 +171,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // default rooms
         let raum0 = saveRoom(roomName: "nicht definiert")
         let raum1 = saveRoom(roomName: "Wohnzimmer")
-        let raum2 = saveRoom(roomName: "Büro")
+        let raum2 = saveRoom(roomName: "Buero")
         let raum3 = saveRoom(roomName: "Kinderzimmer 1")
         let raum4 = saveRoom(roomName: "Kinderzimmer 2")
-        let raum5 = saveRoom(roomName: "Küche")
+        let raum5 = saveRoom(roomName: "Kueche")
         let raum6 = saveRoom(roomName: "Arbeitskeller")
         let raum7 = saveRoom(roomName: "Schlafzimmer")
         let raum8 = saveRoom(roomName: "Hobbykeller")
         
         let date = Date() as NSDate // today
-        let image = NSData();   // FIXME stupid sample data
-        let invoice = NSData();
+        let arr : [UInt32] = [32,4,123,4,5,2]
+        let myimage = NSData(bytes: arr, length: arr.count * 32)   // FIXME stupid sample data
+        let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
-        saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles Gerät", serialNumber: "12345", warranty: 36, image: image, invoice: invoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
-        saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand5, category: kategorie6, owner: person2, room: raum3)
-        saveInventory(inventoryName: "Sonos Playbar", dateOfPurchase: date, price: 799, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand3, category: kategorie1, owner: person2, room: raum3)
-        saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
-        saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand6, category: kategorie7, owner: person1, room: raum1)
-        saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
-        saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
-        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
-        saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
-        saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
-        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person5, room: raum7)
-        saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person4, room: raum8)
+        //let invoice = NSData();
+        
+        saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles", serialNumber: "12345", warranty: 36, image: myimage, invoice: myinvoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
+        saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand5, category: kategorie6, owner: person2, room: raum3)
+  /*      saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand1, category: kategorie6, owner: person2, room: raum3)
+        saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
+        saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand6, category: kategorie7, owner: person1, room: raum1)
+        saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
+        saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
+        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
+        saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
+        saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
+        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person5, room: raum7)
+        saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum8) */
         
     }
     
@@ -321,6 +323,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         inventory.inventoryCategory = category
         inventory.inventoryOwner = owner
         inventory.inventoryRoom = room
+        // timeStamp generated automatically
         inventory.timeStamp = Date() as NSDate?
     
         // save data

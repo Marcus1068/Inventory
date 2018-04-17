@@ -10,9 +10,18 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    var myInventory : [Inventory] = (UIApplication.shared.delegate as! AppDelegate).fetchInventory()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if (myInventory.count == 0){
+            (UIApplication.shared.delegate as! AppDelegate).generateSampleData()
+        }
+        //let x = (UIApplication.shared.delegate as! AppDelegate)
+        
+        (UIApplication.shared.delegate as! AppDelegate).showSampleData()
     }
 
     override func didReceiveMemoryWarning() {

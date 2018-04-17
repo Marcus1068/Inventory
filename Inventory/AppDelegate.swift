@@ -26,10 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //request.sortDescriptors = [NSSortDescriptor(key: "deutsch", ascending: true)]
         
         //vokabeln = try! AppDelegate.viewContext.fetch(request)
-        let inventory = fetchInventories()
+        let inventory = fetchInventory()
         if (inventory.count == 0)
         {
-            saveSampleData()
+            generateSampleData()
         }
         
         return true
@@ -129,94 +129,125 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // generate sample data for initial work
-    func saveSampleData()
+    func generateSampleData()
     {
-        os_log("saveSampleData in AppDelegate", log: OSLog.default, type: .debug)
-        /*
-        // sample words
-        saveVokabel(deutsch: "Haus", englisch: "house", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Auto", englisch: "car", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Ich bin", englisch: "I am", latein: "latein_bla", grossklein: true)
-        saveVokabel(deutsch: "Wir sind", englisch: "we are", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Dach", englisch: "roof", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Gurke", englisch: "cucumber", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Pfeffer", englisch: "pepper", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Salz", englisch: "salt", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Suppe", englisch: "soup", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Maus", englisch: "mouse", latein: "latein_bla", grossklein: false)
-        saveVokabel(deutsch: "Küche", englisch: "kitchen", latein: "latein_bla", grossklein: false)
+        os_log("generateSampleData", log: OSLog.default, type: .debug)
         
+        // default categories
         
-        let date = Date() // today
-        let yesterday = Date(timeIntervalSinceNow: -24*60*60)
-        let yesterday2 = Date(timeIntervalSinceNow: -48*60*60)
-        //let calendar = NSCalendar.current
-        //let hour = calendar.component(.hour, from: date as Date)
-        //let minutes = calendar.component(.minute, from: date as Date)
-        // sample excercises
-        //let date = now()
+        let kategorie0 = saveCategory(categoryName: "keine Kategorie")
+        let kategorie1 = saveCategory(categoryName: "Technik")
+        let kategorie2 = saveCategory(categoryName: "Möbel")
+        let kategorie3 = saveCategory(categoryName: "Computer")
+        let kategorie4 = saveCategory(categoryName: "Schmuck")
+        let kategorie5 = saveCategory(categoryName: "Spielzeug")
+        let kategorie6 = saveCategory(categoryName: "Fernseher")
+        let kategorie7 = saveCategory(categoryName: "Smartphone")
+        let kategorie8 = saveCategory(categoryName: "Tablet")
         
-        saveLerneinheit(richtig: 10, falsch: 1, dauer: 20, datum: date)
-        saveLerneinheit(richtig: 12, falsch: 0, dauer: 24, datum: yesterday)
-        saveLerneinheit(richtig: 8, falsch: 2, dauer: 18, datum: yesterday2)
-        */
+        // default owners
+        
+        let person0 = saveOwner(ownerName: "kein Besitzer")
+        let person1 = saveOwner(ownerName: "Marcus")
+        let person2 = saveOwner(ownerName: "Sandra")
+        let person3 = saveOwner(ownerName: "Emily")
+        let person4 = saveOwner(ownerName: "Vincent")
+        let person5 = saveOwner(ownerName: "Opa Bremen")
+        
+        // default brands
+        
+        let brand0 = saveBrand(brandName: "sonstige")
+        let brand1 = saveBrand(brandName: "IKEA")
+        let brand2 = saveBrand(brandName: "Apple")
+        let brand3 = saveBrand(brandName: "Sonos")
+        let brand4 = saveBrand(brandName: "Thermomix")
+        let brand5 = saveBrand(brandName: "Sony")
+        let brand6 = saveBrand(brandName: "Google")
+        
+        // default rooms
+        let raum0 = saveRoom(roomName: "nicht definiert")
+        let raum1 = saveRoom(roomName: "Wohnzimmer")
+        let raum2 = saveRoom(roomName: "Büro")
+        let raum3 = saveRoom(roomName: "Kinderzimmer 1")
+        let raum4 = saveRoom(roomName: "Kinderzimmer 2")
+        let raum5 = saveRoom(roomName: "Küche")
+        let raum6 = saveRoom(roomName: "Arbeitskeller")
+        let raum7 = saveRoom(roomName: "Schlafzimmer")
+        let raum8 = saveRoom(roomName: "Hobbykeller")
+        
+        let date = Date() as NSDate // today
+        let image = NSData();
+        let invoice = NSData();
+        
+        saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles Gerät", serialNumber: "12345", warranty: 36, image: image, invoice: invoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
+        saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand5, category: kategorie6, owner: person2, room: raum3)
+        saveInventory(inventoryName: "Sonos Playbar", dateOfPurchase: date, price: 799, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand3, category: kategorie1, owner: person2, room: raum3)
+        saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
+        saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand6, category: kategorie7, owner: person1, room: raum1)
+        saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
+        
         
     }
     
     // Save a room
-    func saveRoom(name: String)
+    func saveRoom(roomName: String) -> Room
     {
         os_log("saveRoom in AppDelegate", log: OSLog.default, type: .debug)
         
         let context = AppDelegate.viewContext
         let room = Room(context: context)
         
-        room.roomName = name
+        room.roomName = roomName
         
         saveContext()
+        
+        return room
         
     }
     
     // Save a category
-    func saveCategory(name: String)
+    func saveCategory(categoryName: String) -> Category
     {
         os_log("saveCategory in AppDelegate", log: OSLog.default, type: .debug)
         
         let context = AppDelegate.viewContext
         let category = Category(context: context)
         
-        category.categoryName = name
+        category.categoryName = categoryName
         
         saveContext()
         
+        return category
     }
     
     // Save an owner
-    func saveOwner(name: String)
+    func saveOwner(ownerName: String) -> Owner
     {
         os_log("saveOwner in AppDelegate", log: OSLog.default, type: .debug)
         
         let context = AppDelegate.viewContext
         let owner = Owner(context: context)
         
-        owner.ownerName = name
+        owner.ownerName = ownerName
         
         saveContext()
         
+        return owner
     }
     
     // Save a Brand
-    func saveBrand(name: String)
+    func saveBrand(brandName: String) -> Brand
     {
         os_log("saveBrand in AppDelegate", log: OSLog.default, type: .debug)
         
         let context = AppDelegate.viewContext
         let brand = Brand(context: context)
         
-        brand.brandName = name
+        brand.brandName = brandName
         
         saveContext()
         
+        return brand
     }
     
     // add a single row to Vokabel table
@@ -368,9 +399,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // fetch array, if no array, return nil
-    func fetchInventories() -> [Inventory]
+    func fetchInventory() -> [Inventory]
     {
-        os_log("fetchInventories in AppDelegate", log: OSLog.default, type: .debug)
+        os_log("fetchInventory in AppDelegate", log: OSLog.default, type: .debug)
         
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
@@ -392,7 +423,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return inventory
             
         } catch {
-            print("Error with fetch request in Vokabel \(error)")
+            print("Error with fetch request in fetchInventory \(error)")
         }
         
         //print(vokabeln?.count)

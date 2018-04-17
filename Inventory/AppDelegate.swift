@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             generateSampleData()
         }
         
+        // for debug only
+        showSampleData()
+        
         return true
     }
 
@@ -188,6 +191,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
+    
+    // just for testing and debugging, will not be used in final app
+    func showSampleData()
+    {
+        let inventory = fetchInventory()
+        
+        let rooms = fetchAllRooms()
+        let categories = fetchAllCategories()
+        let owners = fetchAllOwners()
+        let brands = fetchAllBrands()
+        
+        for i in inventory{
+            print("Inventory = \(i.inventoryName!) in Raum: \(String(describing: i.inventoryRoom?.roomName!)), Kategorie: \(String(describing: i.inventoryCategory?.categoryName!))")
+        }
+        
+        for j in rooms{
+            print("Room = \(j.roomName!)")
+        }
+        
+        for k in categories{
+            print("Category = \(k.categoryName!)")
+        }
+        
+        for l in brands{
+            print("Brand = \(l.brandName!)")
+        }
+        
+        for m in owners{
+            print("Owner = \(m.ownerName!)")
+        }
+        
+        let invWohn = fetchInventoryByRoom(roomName: "Wohnzimmer")  // FIXME hardcoded string
+        print ("Anzahl Produkte im Wohnzimmer: \(invWohn.count)")
+    }
+    
     
     // Save a room
     func saveRoom(roomName: String) -> Room
@@ -432,6 +470,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    // fetch all inventory from a certain room array, otherwise return [] empty array
+    func fetchInventoryByRoom(roomName: String) -> [Inventory]
+    {
+        os_log("fetchInventoryByRoom", log: OSLog.default, type: .debug)
+        
+        let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        
+        //let yesterday = Date(timeIntervalSinceNow: -24*60*60) as NSDate
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName)    // FIXME, migth crash
+        
+        // sort criteria
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        
+        let context = AppDelegate.viewContext
+        
+        do {
+            let inventory = try context.fetch(request)
+            
+            return inventory
+            
+        } catch {
+            print("Error with fetch request in fetchInventoryByRoom \(error)")
+        }
+        
+        return []
+    }
+
     
     // sending a local notification
     

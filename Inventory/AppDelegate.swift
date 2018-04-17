@@ -197,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
         saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
         saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person5, room: raum7)
-        saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum8)
+        saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: myimage, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
         
     }
     

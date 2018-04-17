@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //request.sortDescriptors = [NSSortDescriptor(key: "deutsch", ascending: true)]
         
         //vokabeln = try! AppDelegate.viewContext.fetch(request)
+        generateSampleData()
+        
         let inventory = fetchInventory()
         if (inventory.count == 0)
         {
@@ -71,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              application to it. This property is optional since there are legitimate
              error conditions that could cause the creation of the store to fail.
              */
-            let container = NSPersistentContainer(name: "InventoryContainer")
+            let container = NSPersistentContainer(name: "Inventory")
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
                 if let error = error as NSError? {
                     // Replace this implementation with code to handle the error appropriately.
@@ -179,7 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let raum8 = saveRoom(roomName: "Hobbykeller")
         
         let date = Date() as NSDate // today
-        let image = NSData();
+        let image = NSData();   // FIXME stupid sample data
         let invoice = NSData();
         
         saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles Gerät", serialNumber: "12345", warranty: 36, image: image, invoice: invoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
@@ -188,7 +190,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
         saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand6, category: kategorie7, owner: person1, room: raum1)
         saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
-        
+        saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
+        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
+        saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
+        saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
+        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person5, room: raum7)
+        saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "Gerät", serialNumber: "442312345", warranty: 24, image: image, invoice: invoice, brand: brand0, category: kategorie8, owner: person4, room: raum8)
         
     }
     
@@ -198,12 +205,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let inventory = fetchInventory()
         
         let rooms = fetchAllRooms()
+        print ("Anzahl rooms:\(rooms.count)")
         let categories = fetchAllCategories()
+        print ("Anzahl categories:\(categories.count)")
         let owners = fetchAllOwners()
+        print ("Anzahl owners:\(owners.count)")
         let brands = fetchAllBrands()
+        print ("Anzahl brands:\(brands.count)")
         
         for i in inventory{
-            print("Inventory = \(i.inventoryName!) in Raum: \(String(describing: i.inventoryRoom?.roomName!)), Kategorie: \(String(describing: i.inventoryCategory?.categoryName!))")
+            print("Inventory = \(i.inventoryName!), Raum: \(i.inventoryRoom?.roomName!)), Kategorie: \(i.inventoryCategory?.categoryName!)) , Besitzer: \(i.inventoryOwner?.ownerName), Marke: \(i.inventoryBrand?.brandName) ")
         }
         
         for j in rooms{
@@ -483,7 +494,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         request.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName)    // FIXME, migth crash
         
         // sort criteria
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
         
         let context = AppDelegate.viewContext
         

@@ -15,7 +15,7 @@
 		2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */; };
 		2C56E8C52086350B00FD5136 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8C42086350B00FD5136 /* InventoryTests.swift */; };
 		2C56E8D02086350B00FD5136 /* InventoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */; };
-		2C56E8DF20866EAF00FD5136 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */; };
+		2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
 		2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */; };
 		2C56E8FF208674AD00FD5136 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */; };
 		2C56E900208674AD00FD5136 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */; };
@@ -158,7 +158,7 @@
 		2C56E9082086834300FD5136 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */,
+				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
 				2C56E8F4208674AD00FD5136 /* Category+CoreDataClass.swift */,
 				2C56E8F5208674AD00FD5136 /* Category+CoreDataProperties.swift */,
 				2C56E8F6208674AD00FD5136 /* Inventory+CoreDataClass.swift */,
@@ -335,7 +335,7 @@
 				2C56E8B02086350A00FD5136 /* FirstViewController.swift in Sources */,
 				2C56E8FE208674AD00FD5136 /* Category+CoreDataClass.swift in Sources */,
 				2C56E901208674AD00FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
-				2C56E8DF20866EAF00FD5136 /* Model.xcdatamodeld in Sources */,
+				2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */,
 				2C56E904208674AD00FD5136 /* Brand+CoreDataClass.swift in Sources */,
 				2C56E905208674AD00FD5136 /* Brand+CoreDataProperties.swift in Sources */,
 			);
@@ -662,13 +662,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		2C56E8DD20866EAF00FD5136 /* Model.xcdatamodeld */ = {
+		2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */,
 			);
 			currentVersion = 2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = Inventory.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

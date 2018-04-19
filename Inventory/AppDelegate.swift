@@ -20,21 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // insert some sample data in case the Core Data has not been filled with contents
-        //let request : NSFetchRequest<Vokabel> = Vokabel.fetchRequest()
-        // sort criteria
-        //request.sortDescriptors = [NSSortDescriptor(key: "deutsch", ascending: true)]
+        // Do any additional setup after loading the view.
+        let myInventory = (UIApplication.shared.delegate as! AppDelegate).fetchInventory()
         
-        //vokabeln = try! AppDelegate.viewContext.fetch(request)
-        
-    /*    let inventory = fetchInventory()
-        if (inventory.count == 0)
-        {
-            generateSampleData()
+        // generate sample data if none available
+        if (myInventory.count == 0){
+            (UIApplication.shared.delegate as! AppDelegate).generateSampleData()
         }
-      */
-        // for debug only
-        //showSampleData()
         
         return true
     }

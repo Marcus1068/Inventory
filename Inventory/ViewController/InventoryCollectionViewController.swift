@@ -15,12 +15,13 @@ class InventoryCollectionViewController: UICollectionViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate)
     var myInventory : [Inventory] = []
+    var selectedItem : Int = 0
     
     @IBOutlet var collection: UICollectionView!
     
-    
-    
     override func viewDidLoad() {
+        os_log("viewDidLoad in InventoryCollectionViewController", log: OSLog.default, type: .debug)
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -31,15 +32,25 @@ class InventoryCollectionViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         myInventory = context.fetchInventory()
+//
+//        // generate sample data if none available
+//        if (myInventory.count == 0){
+//            context.generateSampleData()
+//        }
+//
+        collection.reloadData()
         
-        // generate sample data if none available
-        if (myInventory.count == 0){
-            context.generateSampleData()
-        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        os_log("viewDidAppear in InventoryCollectionViewController", log: OSLog.default, type: .debug)
         
-        context.showSampleData() // FIXME comment in release
+        super.viewDidAppear(animated)
+        
+        //context.showSampleData() // FIXME comment in release
         
         collection.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,8 +96,21 @@ class InventoryCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
+ /*   override func collectionView(_ collectionView: UICollectionView,
+                                 shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        os_log("shouldSelectItemAt", log: OSLog.default, type: .debug)
+        
+        //largePhotoIndexPath = largePhotoIndexPath == indexPath ? nil : indexPath
+        
+        return false
+    }
+   */
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        os_log("didSelectItemAt", log: OSLog.default, type: .debug)
+        
         print(indexPath.item)
+        //print(myInventory[indexPath.item].inventoryName)
+        selectedItem = indexPath.item
         performSegue(withIdentifier: "editSegue", sender: self)
         
     }
@@ -102,21 +126,20 @@ class InventoryCollectionViewController: UICollectionViewController {
             os_log("addSegue selected", log: OSLog.default, type: .debug)
             
             destination.currentInventory = nil
-            
         }
         
         if segue.identifier == "editSegue"  {
             os_log("editSegue selected", log: OSLog.default, type: .debug)
-            
-            destination.currentInventory = nil
-            //destination.currentInventory = selectedInventory
-            
+   
+            let selectedInventory = myInventory[selectedItem]
+            destination.currentInventory = selectedInventory
             
         }
-   
     }
     
     @IBAction func addButton(_ sender: Any) {
+        os_log("addButton", log: OSLog.default, type: .debug)
+        
         performSegue(withIdentifier: "addSegue", sender: self)
     }
     

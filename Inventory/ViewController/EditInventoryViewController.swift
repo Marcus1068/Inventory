@@ -9,7 +9,8 @@
 import UIKit
 import os.log
 
-class EditInventoryViewController: UIViewController, UITextFieldDelegate {
+class EditInventoryViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
 
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
@@ -21,31 +22,42 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textfieldPrice: UITextField!
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageView: UIImageView!
     
     // contains the selected object from viewcontroller before
     weak var currentInventory : Inventory?
+    let picker = UIImagePickerController()
     
     override func viewDidLoad() {
         os_log("viewDidLoad in EditInventoryViewController", log: OSLog.default, type: .debug)
         
         super.viewDidLoad()
 
+        picker.delegate = self
+        
+        let recognizer = UITapGestureRecognizer(target: self, action:#selector(imageTap(recognizer:)))
+        recognizer.delegate = self
+        view.addGestureRecognizer(recognizer)
+        imageView.isUserInteractionEnabled = true
+        
         // Do any additional setup after loading the view.
         
         // edit data or add data
         if (currentInventory != nil)
         {
             self.title = NSLocalizedString("Edit Inventory", comment: "Edit Inventory")
-            
             textfieldInventoryName.text = currentInventory?.inventoryName
+            //imageView.image =
             
+            let imageData = currentInventory!.image! as Data
+            let image = UIImage(data: imageData, scale:1.0)
+            imageView.image = image
         }
         else
         {
             self.title = NSLocalizedString("Add Inventory", comment: "Add Inventory")
             
             textfieldInventoryName.text = ""
-            
         }
         
         // focus on first text field
@@ -60,8 +72,20 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func didReceiveMemoryWarning() {
+        os_log("didReceiveMemoryWarning in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // click on image opens camera
+    @objc func imageTap(recognizer: UITapGestureRecognizer) {
+        os_log("imageTap in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
+        picker.allowsEditing = true
+        picker.sourceType = .camera
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -74,9 +98,15 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveButton(_ sender: Any) {
         os_log("saveButton in EditInventoryViewController", log: OSLog.default, type: .debug)
         
+        let imageData = UIImagePNGRepresentation(imageView.image!)
+        currentInventory?.image = imageData! as NSData
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     // when user presses return on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -122,6 +152,8 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
         scrollView.scrollIndicatorInsets = contentInsets
     }
     
+    
+    
     /*
     // MARK: - Navigation
 
@@ -131,5 +163,25 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    //MARK: - Delegates
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        os_log("imagePickerController in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = chosenImage
+        
+        dismiss(animated:true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        os_log("imagePickerControllerDidCancel in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
+        dismiss(animated:true, completion: nil)
+    }
+    
 }

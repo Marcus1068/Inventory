@@ -242,11 +242,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLx-Fg-GgM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLx-Fg-GgM">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fHo-XN-emt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="344"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fHo-XN-emt">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="4392"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfP-6m-dUf">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
@@ -356,6 +356,17 @@
                                                     <constraint firstItem="lfr-nv-EOh" firstAttribute="leading" secondItem="rRt-QC-j8o" secondAttribute="leading" constant="8" id="uCl-01-9U8"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO6-wY-o0g">
+                                                <rect key="frame" x="0.0" y="344" width="375" height="4048"/>
+                                                <subviews>
+                                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGN-jm-8to">
+                                                        <rect key="frame" x="8" y="8" width="165" height="141"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <gestureRecognizers/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -394,6 +405,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButtonLabel" destination="JUB-B6-CrH" id="CQe-5m-XrC"/>
+                        <outlet property="imageView" destination="tGN-jm-8to" id="nnH-5X-8aI"/>
                         <outlet property="labelInventoryName" destination="nFM-9G-yM1" id="UMt-TG-bK3"/>
                         <outlet property="labelPrice" destination="2XI-4Z-pVU" id="i9E-ER-kIL"/>
                         <outlet property="saveButtonLabel" destination="aPo-dV-3va" id="zsR-rU-KlJ"/>

@@ -99,26 +99,19 @@ class InventoryCollectionViewController: UICollectionViewController {
         let destination =  segue.destination as! EditInventoryViewController
         
         if segue.identifier == "addSegue" {
-            let a = ""
-            // Pass the selected object to the new view controller.
-     //       if let indexPath = collection.item {
-      //          let _ = myInventory[indexPath.row]
-                //destination.currentInventory = nil
-    //        }
             os_log("addSegue selected", log: OSLog.default, type: .debug)
-    
+            
+            destination.currentInventory = nil
             
         }
         
         if segue.identifier == "editSegue"  {
-    
-    
-            // Pass the selected object to the new view controller.
-      //      if let indexPath = self.collectionView.indexPathForSelectedRow { // FIXME
-       //         let selectedInventory = myInventory[indexPath.row]
-                //destination.currentInventory = selectedVokabel
-        //    }
             os_log("editSegue selected", log: OSLog.default, type: .debug)
+            
+            destination.currentInventory = nil
+            //destination.currentInventory = selectedInventory
+            
+            
         }
    
     }

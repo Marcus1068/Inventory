@@ -7,17 +7,57 @@
 //
 
 import UIKit
+import os.log
 
-class EditInventoryViewController: UIViewController {
+class EditInventoryViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
     
+    @IBOutlet weak var labelInventoryName: UILabel!
+    @IBOutlet weak var textfieldInventoryName: UITextField!
+    
+    @IBOutlet weak var labelPrice: UILabel!
+    
+    @IBOutlet weak var textfieldPrice: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // contains the selected object from viewcontroller before
+    weak var currentInventory : Inventory?
     
     override func viewDidLoad() {
+        os_log("viewDidLoad in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // edit data or add data
+        if (currentInventory != nil)
+        {
+            self.title = NSLocalizedString("Edit Inventory", comment: "Edit Inventory")
+            
+            textfieldInventoryName.text = currentInventory?.inventoryName
+            
+        }
+        else
+        {
+            self.title = NSLocalizedString("Add Inventory", comment: "Add Inventory")
+            
+            textfieldInventoryName.text = ""
+            
+        }
+        
+        // focus on first text field
+        textfieldInventoryName.becomeFirstResponder()
+        
+        // needed for reaction on text fields, e.g. return key
+        textfieldInventoryName.delegate = self
+        textfieldPrice.delegate = self
+        
+        // auto scroll to top so that all text fields can be entered
+        registerForKeyboardNotifications()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,13 +66,61 @@ class EditInventoryViewController: UIViewController {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
+        os_log("cancelButton in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButton(_ sender: Any) {
+        os_log("saveButton in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // when user presses return on keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        os_log("textFieldShouldReturn in EditInventoryViewController", log: OSLog.default, type: .debug)
+        
+        if (textField == textfieldInventoryName)
+        {
+            textfieldPrice.becomeFirstResponder()
+        }
+        
+ 
+        if (textField == textfieldPrice)
+        {
+            self.view.endEditing(true)
+        }
+    
+        return false
+    }
+    
+    // takes care of scrolling content top for the size of the current displayed keyboard
+    // uses scrollView
+    // will be called from viewDidLoad()
+    func registerForKeyboardNotifications(){
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWasShown(_:)), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWasShown(_ notification: NSNotification){
+        guard let info = notification.userInfo,
+            let keyBoardFrameValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else {return}
+        
+        let keyboardFrame = keyBoardFrameValue.cgRectValue
+        let keyboardSize = keyboardFrame.size
+        
+        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func keyboardWillBeHidden(_ notification: NSNotification){
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
     }
     
     /*

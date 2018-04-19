@@ -18,7 +18,6 @@ class EditInventoryViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textfieldInventoryName: UITextField!
     
     @IBOutlet weak var labelPrice: UILabel!
-    
     @IBOutlet weak var textfieldPrice: UITextField!
     
     @IBOutlet weak var scrollView: UIScrollView!

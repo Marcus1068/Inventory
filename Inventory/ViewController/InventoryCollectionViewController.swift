@@ -76,6 +76,16 @@ class InventoryCollectionViewController: UICollectionViewController {
     }
 */
 
+    // does not work with iOS, only TVOS
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let prev = context.previouslyFocusedItem as? CollectionViewCell{
+            prev.markSelected(state: false)
+        }
+        
+        if let next = context.nextFocusedItem as? CollectionViewCell{
+            next.markSelected(state: true)
+        }
+    }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return myInventory.count
@@ -87,6 +97,8 @@ class InventoryCollectionViewController: UICollectionViewController {
         // Configure the cell
         
         cell.myLabel.text = myInventory[indexPath.item].inventoryName
+        cell.ownerLabel.text = myInventory[indexPath.item].inventoryOwner?.ownerName
+        cell.priceLabel.text = String(myInventory[indexPath.item].price) + "€"
         let imageData = myInventory[indexPath.row].image! as Data
         let image = UIImage(data: imageData, scale:1.0)
         cell.myImage.image = image!

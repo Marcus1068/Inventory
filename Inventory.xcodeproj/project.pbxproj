@@ -35,6 +35,7 @@
 		2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */; };
 		2C770C6620887445004F2C12 /* IMG_0931.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C770C6520887445004F2C12 /* IMG_0931.jpg */; };
 		2C770C6820887FA8004F2C12 /* EditInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */; };
+		2C770C6A2088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C770C692088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png */; };
 		2C885FB02087D78D0043D221 /* image004.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C885FAF2087D78D0043D221 /* image004.png */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		2C770C6520887445004F2C12 /* IMG_0931.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0931.jpg; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInventoryViewController.swift; sourceTree = "<group>"; };
+		2C770C692088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Inventory_iPadApp_76@2x.png"; sourceTree = "<group>"; };
 		2C885FAF2087D78D0043D221 /* image004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image004.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				2C56E8AD2086350A00FD5136 /* AppDelegate.swift */,
 				2C56E8B32086350A00FD5136 /* Main.storyboard */,
 				2C56E8B62086350B00FD5136 /* Assets.xcassets */,
+				2C770C692088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png */,
 				2C770C6520887445004F2C12 /* IMG_0931.jpg */,
 				2C885FAF2087D78D0043D221 /* image004.png */,
 				2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */,
@@ -323,6 +326,7 @@
 				2C770C6620887445004F2C12 /* IMG_0931.jpg in Resources */,
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C885FB02087D78D0043D221 /* image004.png in Resources */,
+				2C770C6A2088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

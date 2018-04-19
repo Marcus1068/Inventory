@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Hn8-8W-UwS">
-                                <rect key="frame" x="16" y="129" width="142" height="264"/>
+                                <rect key="frame" x="16" y="129" width="141" height="208"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxr-MD-wJk">
-                                        <rect key="frame" x="0.0" y="0.0" width="142" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="141" height="40"/>
                                         <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -39,28 +39,22 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xij-Iv-Pvj">
-                                        <rect key="frame" x="0.0" y="55" width="142" height="41"/>
+                                        <rect key="frame" x="0.0" y="55" width="141" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Edit Category"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gS9-zV-2Dm">
-                                        <rect key="frame" x="0.0" y="111" width="142" height="41"/>
+                                        <rect key="frame" x="0.0" y="111" width="141" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Edit Brands"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejf-31-nLJ">
-                                        <rect key="frame" x="0.0" y="167" width="142" height="41"/>
+                                        <rect key="frame" x="0.0" y="167" width="141" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Edit Owners"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujX-1d-ZHJ">
-                                        <rect key="frame" x="0.0" y="223" width="142" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <color key="tintColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Edit Inventory"/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -85,7 +79,7 @@
         <!--Inventory Collection-->
         <scene sceneID="pyQ-tk-g04">
             <objects>
-                <collectionViewController title="Inventory Collection" id="rQj-lp-tZp" customClass="CollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Inventory Collection" id="rQj-lp-tZp" customClass="InventoryCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pkO-Ff-Y7e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +91,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collection" id="jbE-29-5gT">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="jbE-29-5gT" customClass="CollectionViewCell" customModule="Inventory" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="181" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -117,24 +111,36 @@
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="myImage" destination="WzI-5C-RBk" id="lwN-Xc-Wwb"/>
+                                    <outlet property="myLabel" destination="xkF-mx-VPx" id="esr-Ln-msB"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="rQj-lp-tZp" id="u07-s7-vpB"/>
-                            <outlet property="delegate" destination="rQj-lp-tZp" id="HyU-cL-ryf"/>
+                            <outlet property="dataSource" destination="rQj-lp-tZp" id="Jgr-zl-kkl"/>
+                            <outlet property="delegate" destination="rQj-lp-tZp" id="TU9-l7-eqH"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Inventory" image="createNew" id="tlZ-u3-m0f"/>
+                    <navigationItem key="navigationItem" id="oiT-kr-v6M">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jWb-Gj-P8x">
+                            <connections>
+                                <action selector="addButton:" destination="rQj-lp-tZp" id="xL3-tX-zfg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collection" destination="pkO-Ff-Y7e" id="KA4-D2-pUM"/>
+                        <segue destination="Rqb-1w-ui0" kind="show" identifier="editSegue" id="8jk-WZ-SES"/>
+                        <segue destination="Rqb-1w-ui0" kind="show" identifier="addSegue" id="fGu-tq-bQ9"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odd-zx-Gdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221.5999999999999" y="-45.073891625615765"/>
+            <point key="canvasLocation" x="1903" y="-610"/>
         </scene>
-        <!--Edit Room-->
+        <!--My Rooms-->
         <scene sceneID="lmX-nw-yqW">
             <objects>
                 <tableViewController id="9hb-hU-Cxa" customClass="RoomTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,6 +156,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -157,19 +164,139 @@
                             <outlet property="delegate" destination="9hb-hU-Cxa" id="HeB-HL-RPS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Room" id="92t-F3-xz3">
+                    <navigationItem key="navigationItem" title="My Rooms" id="92t-F3-xz3">
                         <barButtonItem key="backBarButtonItem" title="Back" id="TBF-WX-sYi"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3rj-Qh-8pZ">
                             <connections>
                                 <action selector="cancel:" destination="9hb-hU-Cxa" id="EY6-1f-oIg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nnc-wx-tkb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nnc-wx-tkb">
+                            <connections>
+                                <segue destination="AAM-yv-3qO" kind="show" id="dwv-aX-AgM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glQ-3n-nXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1959.2" y="769.56521739130437"/>
+        </scene>
+        <!--Edit Room-->
+        <scene sceneID="Gv0-hu-52d">
+            <objects>
+                <viewController title="Edit Room" id="AAM-yv-3qO" customClass="RoomEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ce2-tj-tH9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-kv-Yx5">
+                                <rect key="frame" x="16" y="112" width="143" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
+                                <rect key="frame" x="16" y="159" width="194" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c3-uz-Xgp">
+                                <rect key="frame" x="164" y="320" width="47" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bru-zw-FIZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2669.5999999999999" y="771.42857142857144"/>
+        </scene>
+        <!--Edit Inventory-->
+        <scene sceneID="MZa-x9-Asz">
+            <objects>
+                <viewController title="Edit Inventory" id="Rqb-1w-ui0" customClass="EditInventoryViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kby-cu-D52">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFM-9G-yM1">
+                                <rect key="frame" x="16" y="170" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t97-Vx-JxL">
+                                <rect key="frame" x="231" y="156" width="115" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Changes"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-H6-2d6">
+                                <rect key="frame" x="16" y="199" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XI-4Z-pVU">
+                                <rect key="frame" x="16" y="237" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-8a-adw">
+                                <rect key="frame" x="16" y="266" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHN-t6-TRj">
+                                <rect key="frame" x="16" y="304" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-zd-KHZ">
+                                <rect key="frame" x="16" y="333" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8S6-5m-wBn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eqs-Z0-u9G">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="JUB-B6-CrH">
+                            <connections>
+                                <action selector="cancelButton:" destination="Rqb-1w-ui0" id="Sh8-JX-aJt"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aPo-dV-3va">
+                            <connections>
+                                <action selector="saveButton:" destination="Rqb-1w-ui0" id="z40-aW-9vG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButtonLabel" destination="JUB-B6-CrH" id="CQe-5m-XrC"/>
+                        <outlet property="saveButtonLabel" destination="aPo-dV-3va" id="zsR-rU-KlJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mAc-ji-4Lp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2996" y="-720"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -193,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqL-BL-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2880.8000000000002" y="642.72863568215894"/>
+            <point key="canvasLocation" x="3604" y="-33.251231527093594"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -202,10 +329,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="rQj-lp-tZp" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
+                        <segue destination="kLY-4E-sxY" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
                         <segue destination="xz9-lL-8O0" kind="relationship" relationship="viewControllers" id="hcw-sq-ffL"/>
                         <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                     </connections>
@@ -232,10 +359,32 @@
             </objects>
             <point key="canvasLocation" x="1020" y="769.56521739130437"/>
         </scene>
+        <!--Inventory-->
+        <scene sceneID="7Jp-SO-iJv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kLY-4E-sxY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Inventory" image="createNew" id="tlZ-u3-m0f"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="geX-ls-1np">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rQj-lp-tZp" kind="relationship" relationship="rootViewController" id="H8c-Xb-lqJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doL-eI-xyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896.79999999999995" y="-126.35467980295567"/>
+        </scene>
     </scenes>
     <resources>
         <image name="about" width="30" height="30"/>
         <image name="createNew" width="30" height="30"/>
         <image name="list" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fGu-tq-bQ9"/>
+    </inferredMetricsTieBreakers>
 </document>

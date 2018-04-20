@@ -175,11 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let arr : [UInt32] = [32,4,123,4,5,2]
         let myImage = #imageLiteral(resourceName: "image004.png")
         let myImage2 = #imageLiteral(resourceName: "IMG_0931.jpg")
-        let imageData = UIImagePNGRepresentation(myImage)
-        let imageData2 = UIImagePNGRepresentation(myImage2)
+        let imageData = UIImageJPEGRepresentation(myImage, 0.1)
+        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.1)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
-        //let imageData: NSData = UIImagePNGRepresentation(#imageLiteral(resourceName: "image004.png"))
         
         //let invoice = NSData();
         

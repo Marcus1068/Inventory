@@ -98,7 +98,7 @@ UINavigationControllerDelegate {
     @IBAction func saveButton(_ sender: Any) {
         os_log("saveButton in EditInventoryViewController", log: OSLog.default, type: .debug)
         
-        let imageData = UIImagePNGRepresentation(imageView.image!)
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
         currentInventory?.image = imageData! as NSData
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()

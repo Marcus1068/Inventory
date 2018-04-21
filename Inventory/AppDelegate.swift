@@ -143,12 +143,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // default owners
         
-        let person0 = saveOwner(ownerName: "kein Besitzer")
+        let person0 = saveOwner(ownerName: "keiner")
         let person1 = saveOwner(ownerName: "Marcus")
         let person2 = saveOwner(ownerName: "Sandra")
         let person3 = saveOwner(ownerName: "Emily")
         let person4 = saveOwner(ownerName: "Vincent")
-        let person5 = saveOwner(ownerName: "Opa Bremen")
+    
         
         // default brands
         
@@ -192,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
         saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
         saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
-        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person5, room: raum7)
+        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person2, room: raum7)
         saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
         
     }

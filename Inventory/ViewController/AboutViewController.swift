@@ -58,7 +58,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         mailComposerVC.setToRecipients(["mdeuss@gmail.com"])
-        mailComposerVC.setSubject("Vokabeltrainer Support \(Helper.versionString)")
+        mailComposerVC.setSubject("Inventory Support \(Helper.versionString)")
         let msg = NSLocalizedString("I have some improvement ideas: ", comment: "I have some improvement ideas: ")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

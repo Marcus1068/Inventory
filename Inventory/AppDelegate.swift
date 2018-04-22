@@ -175,8 +175,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let arr : [UInt32] = [32,4,123,4,5,2]
         let myImage = #imageLiteral(resourceName: "image004.png")
         let myImage2 = #imageLiteral(resourceName: "IMG_0931.jpg")
-        let imageData = UIImageJPEGRepresentation(myImage, 0.1)
-        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.1)
+        let imageData = UIImageJPEGRepresentation(myImage, 0.05)
+        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.05)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
         
@@ -194,7 +194,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
         saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person2, room: raum7)
         saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
-        
+        saveInventory(inventoryName: "Amazon Echo Spot Emily", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum3)
+        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person2, room: raum2)
+        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person1, room: raum4)
+        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum5)
+        saveInventory(inventoryName: "Sony TV 55 Zoll", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
+        saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum8)
     }
     
     // just for testing and debugging, will not be used in final app

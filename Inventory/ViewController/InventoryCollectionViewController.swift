@@ -12,8 +12,10 @@ import os.log
 private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
 
+
 class InventoryCollectionViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
+    var size = CGRect()
     var inventory : [Inventory] = []
     var owner : [Owner] = []
     var filteredInventory:[Inventory] = []   // in case of search filter by inventory name
@@ -44,7 +46,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         //navigationItem.searchController = searchController
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
-        //searchController.dimsBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = true
         
         searchController.searchBar.becomeFirstResponder()
         
@@ -74,10 +76,11 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         
         searchController.searchBar.scopeButtonTitles = list
-        searchController.searchBar.sizeToFit()
+        
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = true
         
+        searchController.searchBar.sizeToFit()
         
         //SearchFooter.init(frame: <#T##CGRect#>)
         
@@ -88,6 +91,11 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         //            context.generateSampleData()
         //        }
         //
+        
+        let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
+        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5)
+        collectionViewLayout?.invalidateLayout()
+        
         collection.reloadData()
         
     }
@@ -113,15 +121,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         print(searchBar.scopeButtonTitles![selectedScope])
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
-    /*
-     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-     filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
-     return inv.inventoryName!.lowercased().contains(searchText.lowercased())
-     })
-     
-     collection.reloadData()
-     }
-     */
     
     // called by system when entered search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -129,6 +128,13 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         //collectionView.reloadData()
     }
     
+    // called by system when entered search bar
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //searchController.searchBar.showsScopeBar = true
+        collection.reloadData()
+    }
+    
+    // self implemented method
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         
         filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
@@ -141,6 +147,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             }
         })
         
+        print(inventory.count)
+        print(filteredInventory.count)
         collection.reloadData()
     }
     
@@ -150,23 +158,28 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
+    // is filter mode enabled?
     func isFiltering() -> Bool {
+        // is the selected scope button clicked? true or falase
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        
+        if searchBarScopeIsFiltering{
+            return true
+        }
+        
+        // true if search controller is active AND (search bar is not empty OR scope filter active)
         return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
     }
-    /*
-     // determine if filtering is needed
-     func isFiltering() -> Bool {
-     return searchController.isActive && !searchBarIsEmpty()
-     }
-     */
+    
     // called by system
     func updateSearchResults(for searchController: UISearchController)
     {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        if(!searchBarIsEmpty()){
+            let searchBar = searchController.searchBar
+            let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
-        filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+            filterContentForSearchText(searchController.searchBar.text!, scope: scope)
+        }
     }
     
     /*
@@ -187,6 +200,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
      }
      */
     
+    // used for footer usage displaying a label with number of elements
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
             
@@ -195,8 +209,14 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                                                                          withReuseIdentifier: "footer",
                                                                          for: indexPath) as! SearchFooter
             
-            //footerView.backgroundColor = UIColor.green
-            //footerView.searchResultLabel.text = "blablö"
+            if isFiltering(){
+                footerView.searchResultLabel.textColor = UIColor.blue
+                footerView.searchResultLabel.text = String(filteredInventory.count) + " Inventory objects found"
+            }
+            else{
+                footerView.searchResultLabel.textColor = UIColor.black
+                footerView.searchResultLabel.text = String(inventory.count) + " Inventory objects found"
+            }
             
             return footerView
             
@@ -205,15 +225,13 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
     }
     
+    // number of collection items, depends on filtering on or off (searchbar used or not)
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if isFiltering() {
-            
-            //searchFooter.setIsFilteringToShow(filteredItemCount: filteredInventory.count, of: inventory.count)
             return filteredInventory.count
         }
         
-        //searchFooter.setNotFiltering()
         return inventory.count    //return number of rows
         
     }

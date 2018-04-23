@@ -12,6 +12,8 @@ import os.log
 class EditInventoryViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate)
+    
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
     
@@ -26,6 +28,7 @@ UINavigationControllerDelegate {
     
     // contains the selected object from viewcontroller before
     weak var currentInventory : Inventory?
+    
     let picker = UIImagePickerController()
     
     override func viewDidLoad() {
@@ -101,7 +104,7 @@ UINavigationControllerDelegate {
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
         currentInventory?.image = imageData! as NSData
         
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        context.saveContext()
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)

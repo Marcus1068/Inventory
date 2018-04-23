@@ -251,6 +251,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         cell.myLabel.text = currentInventory.inventoryName
         cell.ownerLabel.text = currentInventory.inventoryOwner?.ownerName
+        cell.roomNameLabel.text = currentInventory.inventoryRoom?.roomName
         cell.priceLabel.text = String(currentInventory.price) + "€"
         let imageData = currentInventory.image! as Data
         let image = UIImage(data: imageData, scale:1.0)

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import os.log
 
 class RoomTableViewController: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate)
-    var myRooms : [Room] = []
+    var rooms : [Room] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,14 @@ class RoomTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // this will avoid displaying empty rows in the table
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        // necessary for accessing table cells
+        //tableView.dataSource = self
+        //tableView.delegate = self
         
     }
 
@@ -28,13 +37,13 @@ class RoomTableViewController: UITableViewController {
         super.viewWillAppear(animated);
         
         // get the data from Core Data
-        myRooms = context.fetchAllRooms()
+        rooms = context.fetchAllRooms()
         
         // reload the table
         tableView.reloadData()
         
         //select first row of table
-        if(myRooms.count > 0)
+        if(rooms.count > 0)
         {
             let idx = IndexPath(row: 0, section: 0)
             tableView.selectRow(at: idx, animated: true, scrollPosition: .top)
@@ -56,7 +65,7 @@ class RoomTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return myRooms.count
+        return rooms.count
     }
 
     
@@ -65,14 +74,63 @@ class RoomTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        let room = myRooms[indexPath.row]
+        let room = rooms[indexPath.row]
         cell.textLabel?.text = room.roomName
         // cell.detailTextLabel?.text = 
 
         return cell
     }
     
-
+    // little blue info button as "detail" view (must be set in xcode at cell level
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
+    {
+        os_log("accessoryButtonTappedForRowWith", log: OSLog.default, type: .debug)
+        //print(indexPath.row)
+        let idx = IndexPath(row: indexPath.row, section: 0)
+        tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
+        performSegue(withIdentifier: "editSegueRoom", sender: self)
+    }
+    
+    // prepare to transfer data to another view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        os_log("prepare for segue", log: OSLog.default, type: .debug)
+        
+        let destination =  segue.destination as! RoomEditViewController
+        
+        if segue.identifier == "editSegueRoom"  {
+            // Pass the selected object to the new view controller.
+            if let indexPath = self.tableView.indexPathForSelectedRow { // FIXME
+                let selectedRoom = rooms[indexPath.row]
+                destination.currentRoom = selectedRoom
+            }
+        }
+        
+        if segue.identifier == "addSegueRoom"  {
+            destination.currentRoom = nil
+        }
+        
+    }
+    
+    // delete rows via UI with swipe gesture
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        if editingStyle == .delete{
+            let room = rooms[indexPath.row]
+            //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //room.removeFromRoomInventory(Inventory)
+            context.delete(room)
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            rooms = (UIApplication.shared.delegate as! AppDelegate).fetchAllRooms()
+            
+            tableView.reloadData()
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

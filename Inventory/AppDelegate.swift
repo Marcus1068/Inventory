@@ -185,10 +185,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //let invoice = NSData();
         
+        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
+        
+        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person2, room: raum2)
+        
+        
+        
         saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles", serialNumber: "12345", warranty: 36, image: imageData! as NSData, invoice: myinvoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
         
         saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand5, category: kategorie6, owner: person2, room: raum3)
-        //raum3.roomInventory = inv
+/*
         
         saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand1, category: kategorie6, owner: person2, room: raum3)
         //raum3.roomInventory = inv
@@ -205,8 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
         //raum0.roomInventory = inv
         
-        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
-        //raum2.roomInventory = inv
+        
         
         saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
         //raum5.roomInventory = inv
@@ -223,8 +228,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "Amazon Echo Spot Emily", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum3)
         //raum3.roomInventory = inv
         
-        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person2, room: raum2)
-        //raum2.roomInventory = inv
+        
         
         saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person1, room: raum4)
         //raum4.roomInventory = inv
@@ -236,7 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //raum8.roomInventory = inv
         
         saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum8)
-        
+  */
         showSampleData()
     }
     

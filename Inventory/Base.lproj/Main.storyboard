@@ -223,7 +223,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="My Rooms" id="92t-F3-xz3">
                         <barButtonItem key="backBarButtonItem" title="Back" id="TBF-WX-sYi"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3rj-Qh-8pZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="3rj-Qh-8pZ">
                             <connections>
                                 <action selector="cancel:" destination="9hb-hU-Cxa" id="EY6-1f-oIg"/>
                             </connections>
@@ -302,16 +302,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="636"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfP-6m-dUf">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="86.333333333333329"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFM-9G-yM1">
-                                                        <rect key="frame" x="8" y="8" width="359" height="20"/>
+                                                        <rect key="frame" x="8" y="7.9999999999999982" width="359" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-H6-2d6">
-                                                        <rect key="frame" x="8" y="36" width="359" height="30"/>
+                                                        <rect key="frame" x="8" y="36.333333333333329" width="359" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -329,7 +329,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-70-Nl2">
-                                                <rect key="frame" x="0.0" y="86" width="375" height="87"/>
+                                                <rect key="frame" x="0.0" y="86.333333333333343" width="375" height="86.666666666666657"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XI-4Z-pVU">
                                                         <rect key="frame" x="8" y="7.9999999999999982" width="359" height="20.333333333333329"/>
@@ -338,7 +338,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-8a-adw">
-                                                        <rect key="frame" x="8" y="36.333333333333343" width="359" height="30.666666666666671"/>
+                                                        <rect key="frame" x="8" y="36.333333333333314" width="359" height="30.333333333333329"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -662,6 +662,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fGu-tq-bQ9"/>
-        <segue reference="g8y-7f-5Mv"/>
+        <segue reference="hE0-Ui-Mnp"/>
     </inferredMetricsTieBreakers>
 </document>

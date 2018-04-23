@@ -12,8 +12,9 @@ import os.log
 class RoomTableViewController: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate)
+    let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var rooms : [Room] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,19 +116,13 @@ class RoomTableViewController: UITableViewController {
     // delete rows via UI with swipe gesture
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
+    
         if editingStyle == .delete{
+            
             let room = rooms[indexPath.row]
-            //self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            //room.removeFromRoomInventory(Inventory)
-            context.delete(room)
             
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            confirmDelete(room: room)
             
-            rooms = (UIApplication.shared.delegate as! AppDelegate).fetchAllRooms()
-            
-            tableView.reloadData()
         }
     }
     
@@ -175,7 +170,62 @@ class RoomTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    // return true if ok is clicked, false otherwise
+    func showAlertDialog() -> Bool{
+        
+        var result : Bool = false
+        // Declare Alert
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete? All inventory objects depending will be deleted as well...", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+            print("Ok button click...")
+            result = true
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            result = false
+            print("Cancel button click...")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+        
+        return result
+    }
+    
+    // UIAlert for asking user if delete is really ok
+    // UIAlert view is not modal so we need to do it this way
+    func confirmDelete(room: Room) {
+        let alert = UIAlertController(title: "Delete room", message: "Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!", preferredStyle: .actionSheet)
+        
+        // use closure to delete database entry
+        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
+            // delete must be used with persistentContainer.viewContext not context
+            self.viewcontext.delete(room)
+            self.context.saveContext()
+            
+            self.rooms = self.context.fetchAllRooms()
+            
+            self.tableView.reloadData()
+        }
+        
+        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) // will do nothing
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }

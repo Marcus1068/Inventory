@@ -33,8 +33,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         super.viewDidLoad()
         
-        //selectedItem = Inventory(context: context)
-        
+        // set collection view delegates
         collection.delegate = self
         collection.dataSource = self
         
@@ -60,7 +59,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
-        inventory = context.fetchInventory()
+        
         owner = context.fetchAllOwners()
         
         // Setup the Scope Bar
@@ -76,27 +75,17 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         
         searchController.searchBar.scopeButtonTitles = list
-        
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = true
         
         searchController.searchBar.sizeToFit()
         
-        //SearchFooter.init(frame: <#T##CGRect#>)
-        
-        //searchController.searchBar.
-        
-        //        // generate sample data if none available
-        //        if (myInventory.count == 0){
-        //            context.generateSampleData()
-        //        }
-        //
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5)
         collectionViewLayout?.invalidateLayout()
         
-        collection.reloadData()
+        // collection.reloadData()
         
     }
     
@@ -104,6 +93,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         os_log("viewDidAppear in InventoryCollectionViewController", log: OSLog.default, type: .debug)
         
         super.viewDidAppear(animated)
+        
+        inventory = context.fetchInventory()
         
         collection.reloadData()
         
@@ -239,6 +230,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
+        // FIXME will be called twice, delays performance massivlely with large data sets
+        
         // Configure the cell
         
         let currentInventory : Inventory
@@ -252,6 +245,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         cell.myLabel.text = currentInventory.inventoryName
         cell.ownerLabel.text = currentInventory.inventoryOwner?.ownerName
         cell.roomNameLabel.text = currentInventory.inventoryRoom?.roomName
+        
         cell.priceLabel.text = String(currentInventory.price) + "€"
         let imageData = currentInventory.image! as Data
         let image = UIImage(data: imageData, scale:1.0)

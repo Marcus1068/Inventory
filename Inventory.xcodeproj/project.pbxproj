@@ -33,6 +33,7 @@
 		2C56E95E208756D500FD5136 /* RoomNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */; };
 		2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */; };
 		2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */; };
+		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C770C6620887445004F2C12 /* IMG_0931.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C770C6520887445004F2C12 /* IMG_0931.jpg */; };
 		2C770C6820887FA8004F2C12 /* EditInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */; };
 		2C770C6A2088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C770C692088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png */; };
@@ -90,6 +91,7 @@
 		2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomNavigationViewController.swift; sourceTree = "<group>"; };
 		2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
+		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C770C6520887445004F2C12 /* IMG_0931.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0931.jpg; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInventoryViewController.swift; sourceTree = "<group>"; };
 		2C770C692088DFEC004F2C12 /* Inventory_iPadApp_76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Inventory_iPadApp_76@2x.png"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */,
 				2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */,
 				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
+				2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */,
+				2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */,
 				2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */,
 				2C56E9532086A41700FD5136 /* Room+CoreDataClass.swift in Sources */,
 				2C56E9522086A41700FD5136 /* Owner+CoreDataProperties.swift in Sources */,

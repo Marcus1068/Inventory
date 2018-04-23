@@ -14,6 +14,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     weak var currentRoom : Room?
     
     let context = (UIApplication.shared.delegate as! AppDelegate)
+    let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var textfieldRoomName: UITextField!
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!

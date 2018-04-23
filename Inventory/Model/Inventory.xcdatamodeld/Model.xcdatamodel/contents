@@ -2,11 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Brand" representedClassName="Brand" syncable="YES">
         <attribute name="brandName" attributeType="String" syncable="YES"/>
-        <relationship name="brandInventory" toMany="YES" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
+        <relationship name="brandInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="categoryName" attributeType="String" syncable="YES"/>
-        <relationship name="categoryInventory" toMany="YES" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryCategory" inverseEntity="Inventory" syncable="YES"/>
+        <relationship name="categoryInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryCategory" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Inventory" representedClassName="Inventory" syncable="YES">
         <attribute name="dateOfPurchase" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -25,11 +25,11 @@
     </entity>
     <entity name="Owner" representedClassName="Owner" syncable="YES">
         <attribute name="ownerName" attributeType="String" syncable="YES"/>
-        <relationship name="ownerInventory" toMany="YES" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryOwner" inverseEntity="Inventory" syncable="YES"/>
+        <relationship name="ownerInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryOwner" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
         <attribute name="roomName" attributeType="String" syncable="YES"/>
-        <relationship name="roomInventory" toMany="YES" deletionRule="Nullify" destinationEntity="Inventory" inverseName="inventoryRoom" inverseEntity="Inventory" syncable="YES"/>
+        <relationship name="roomInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryRoom" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <elements>
         <element name="Brand" positionX="333" positionY="75" width="128" height="73"/>

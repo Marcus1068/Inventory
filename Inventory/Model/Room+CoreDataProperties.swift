@@ -18,7 +18,7 @@ extension Room {
     }
 
     @NSManaged public var roomName: String?
-    @NSManaged public var roomInventory: NSSet
+    @NSManaged public var roomInventory: NSSet?
 
 }
 

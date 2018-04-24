@@ -6,16 +6,25 @@
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
 //
 
+// will be used to call room edit, add views etc.
+
 import UIKit
 
-class ManageViewController: UIViewController {
+class ManageViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //self.tableView.layer.cornerRadius = 8.0
+        //self.tableView.layer.masksToBounds = true
+        
+        //self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
+        
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,4 +41,18 @@ class ManageViewController: UIViewController {
     }
     */
 
+    
+    // define table view header size
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 61.0
+    }
+    
+    // define table view header layout
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Futura", size: 38)!
+        header.textLabel?.textColor = UIColor.lightGray
+    }
+    
 }

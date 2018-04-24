@@ -27,7 +27,7 @@
 		2C56E9532086A41700FD5136 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */; };
 		2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */; };
 		2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95520872E1F00FD5136 /* AboutViewController.swift */; };
-		2C56E95820872E6200FD5136 /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95720872E6200FD5136 /* ManageViewController.swift */; };
+		2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95720872E6200FD5136 /* ManageTableViewController.swift */; };
 		2C56E95A20873E5700FD5136 /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */; };
 		2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */; };
 		2C56E95E208756D500FD5136 /* RoomNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */; };
@@ -85,7 +85,7 @@
 		2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2C56E95520872E1F00FD5136 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		2C56E95720872E6200FD5136 /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
+		2C56E95720872E6200FD5136 /* ManageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTableViewController.swift; sourceTree = "<group>"; };
 		2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
 		2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomNavigationViewController.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				2C56E95520872E1F00FD5136 /* AboutViewController.swift */,
-				2C56E95720872E6200FD5136 /* ManageViewController.swift */,
+				2C56E95720872E6200FD5136 /* ManageTableViewController.swift */,
 				2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */,
 				2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */,
 				2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */,
@@ -365,7 +365,7 @@
 				2C56E9522086A41700FD5136 /* Owner+CoreDataProperties.swift in Sources */,
 				2C770C6820887FA8004F2C12 /* EditInventoryViewController.swift in Sources */,
 				2C56E90C208683D100FD5136 /* Helper.swift in Sources */,
-				2C56E95820872E6200FD5136 /* ManageViewController.swift in Sources */,
+				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,

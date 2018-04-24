@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ManageViewController: UITableViewController {
+class ManageTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,9 @@ class ManageViewController: UITableViewController {
         //self.tableView.layer.masksToBounds = true
         
         //self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
+        
+        // this will avoid displaying empty rows in the table
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
     }
 

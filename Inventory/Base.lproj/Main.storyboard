@@ -176,8 +176,15 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="oiT-kr-v6M">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jWb-Gj-P8x">
-                            <inset key="imageInsets" minX="0.0" minY="-20" maxX="0.0" maxY="0.0"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="2W7-K5-LjG">
+                            <inset key="imageInsets" minX="0.0" minY="-15" maxX="0.0" maxY="0.0"/>
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <action selector="organizeButton:" destination="rQj-lp-tZp" id="sop-Eu-9Qm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="jWb-Gj-P8x">
+                            <inset key="imageInsets" minX="0.0" minY="-15" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <action selector="addButton:" destination="rQj-lp-tZp" id="xL3-tX-zfg"/>
                             </connections>
@@ -295,10 +302,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLx-Fg-GgM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLx-Fg-GgM">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fHo-XN-emt">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fHo-XN-emt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="636"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfP-6m-dUf">
@@ -456,7 +463,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yO6-wY-o0g">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yO6-wY-o0g">
                                                 <rect key="frame" x="0.0" y="539" width="375" height="97"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tGN-jm-8to">
@@ -469,6 +476,7 @@
                                             </view>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="636" id="lrg-Xn-DvN"/>
                                             <constraint firstItem="yO6-wY-o0g" firstAttribute="top" secondItem="fHo-XN-emt" secondAttribute="top" constant="539" id="nXu-Rz-WNp"/>
                                         </constraints>
                                     </stackView>
@@ -549,9 +557,6 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-0j-NDU">
                                         <rect key="frame" x="144.66666666666666" y="513.66666666666663" width="86" height="171.33333333333337"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="ywT-eE-i5s"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Feedback"/>
                                         <connections>

@@ -82,7 +82,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
-        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(0, 5, 0, 5)
+        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
         
         // collection.reloadData()
@@ -251,6 +251,10 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         let image = UIImage(data: imageData, scale:1.0)
         cell.myImage.image = image!
         
+        // rounded corners for each cell
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        
         return cell
     }
     
@@ -291,6 +295,11 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         performSegue(withIdentifier: "addSegue", sender: self)
     }
     
+    @IBAction func organizeButton(_ sender: Any) {
+        // Enable editing.
+        //self.editor.setEditing(true, animated: true)
+    }
+    
     /*
      // Uncomment this method to specify if the specified item should be highlighted during tracking
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -305,19 +314,34 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
      }
      */
     
-    /*
+    @nonobjc private let capital = #selector(CollectionViewCell.capital)
+    @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
+    
      // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
      override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-     return false
+        os_log("shouldShowMenuForItemAt", log: OSLog.default, type: .debug)
+        
+        let mi = UIMenuItem(title:"Capital", action:capital)
+        UIMenuController.shared.menuItems = [mi]
+        
+        return true
      }
      
      override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-     return false
+        os_log("canPerformAction", log: OSLog.default, type: .debug)
+        return (action == copy) || (action == capital)
      }
      
      override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+        os_log("performAction", log: OSLog.default, type: .debug)
      
+        if action == copy {
+            print ("copy")
+        }
+        else if action == capital {
+            print ("capital")
+        }
      }
-     */
+    
     
 }

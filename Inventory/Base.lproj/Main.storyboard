@@ -471,7 +471,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
                                 <rect key="frame" x="16" y="170" width="143" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="143" id="HaN-aP-z9P"/>
@@ -481,8 +481,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-kv-Yx5">
-                                <rect key="frame" x="16" y="132" width="143" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-kv-Yx5">
+                                <rect key="frame" x="15.999999999999993" y="132" width="98.333333333333314" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -772,8 +772,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7wU-ce-7hb">
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-dG-1Do">
-                                        <rect key="frame" x="37" y="0.0" width="301" height="114.33333333333333"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-dG-1Do">
+                                        <rect key="frame" x="95.000000000000014" y="0.0" width="185.33333333333337" height="114.33333333333333"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

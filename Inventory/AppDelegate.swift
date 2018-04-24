@@ -176,39 +176,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let date = Date() as NSDate // today
         let arr : [UInt32] = [32,4,123,4,5,2]
-        let myImage = #imageLiteral(resourceName: "image004.png")
-        let myImage2 = #imageLiteral(resourceName: "IMG_0931.jpg")
-        let imageData = UIImageJPEGRepresentation(myImage, 0.05)
-        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.05)
+        let myImage = #imageLiteral(resourceName: "Owner Icon")
+        let myImage2 = #imageLiteral(resourceName: "Category Icon")
+        let myImage3 = #imageLiteral(resourceName: "Camera Icon")
+        let myImage4 = #imageLiteral(resourceName: "Computer Icon")
+        let myImage5 = #imageLiteral(resourceName: "Phone Icon")
+        let myImage6 = #imageLiteral(resourceName: "Room Icon")
+        let imageData1 = UIImageJPEGRepresentation(myImage, 0.1)
+        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.1)
+        let imageData3 = UIImageJPEGRepresentation(myImage3, 0.1)
+        let imageData4 = UIImageJPEGRepresentation(myImage4, 0.1)
+        let imageData5 = UIImageJPEGRepresentation(myImage5, 0.1)
+        let imageData6 = UIImageJPEGRepresentation(myImage6, 0.1)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
         
         //let invoice = NSData();
         
-        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
+        saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, brand: brand0, category: kategorie5, owner: person1, room: raum2)
         
         saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person2, room: raum2)
         
         
         
-        saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles", serialNumber: "12345", warranty: 36, image: imageData! as NSData, invoice: myinvoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
+        saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles", serialNumber: "12345", warranty: 36, image: imageData5! as NSData, invoice: myinvoice, brand: brand1, category: kategorie3, owner: person1, room: raum1)
         
         saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand5, category: kategorie6, owner: person2, room: raum3)
 
         
-        saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand1, category: kategorie6, owner: person2, room: raum3)
+        saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, brand: brand1, category: kategorie6, owner: person2, room: raum3)
         //raum3.roomInventory = inv
         
-        saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
+        saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, brand: brand0, category: kategorie2, owner: person3, room: raum1)
         //raum1.roomInventory = inv
         
         saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand6, category: kategorie7, owner: person1, room: raum1)
         //raum1.roomInventory = inv
         
-        saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
+        saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData4! as NSData, invoice: myinvoice, brand: brand2, category: kategorie7, owner: person1, room: raum4)
         //raum4.roomInventory = inv
         
-        saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
+        saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData4! as NSData, invoice: myinvoice, brand: brand4, category: kategorie4, owner: person1, room: raum0)
         //raum0.roomInventory = inv
         
         
@@ -216,30 +224,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person4, room: raum5)
         //raum5.roomInventory = inv
         
-        saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
+        saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData5! as NSData, invoice: myinvoice, brand: brand0, category: kategorie0, owner: person0, room: raum6)
         //raum6.roomInventory = inv
         
-        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person2, room: raum7)
+        saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData5! as NSData, invoice: myinvoice, brand: brand0, category: kategorie8, owner: person2, room: raum7)
         //raum7.roomInventory = inv
         
         saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
         //raum8.roomInventory = inv
         
-        saveInventory(inventoryName: "Amazon Echo Spot Emily", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum3)
+        saveInventory(inventoryName: "Amazon Echo Spot Emily", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData6! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum3)
         //raum3.roomInventory = inv
         
         
         
-        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person1, room: raum4)
+        saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData5! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person1, room: raum4)
         //raum4.roomInventory = inv
         
         saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum5)
         //raum5.roomInventory = inv
         
-        saveInventory(inventoryName: "Sony TV 55 Zoll", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
+        saveInventory(inventoryName: "Sony TV 55 Zoll", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData4! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person4, room: raum8)
         //raum8.roomInventory = inv
         
-        saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum8)
+        saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, brand: brand3, category: kategorie1, owner: person3, room: raum8)
 
         //showSampleData()
     }

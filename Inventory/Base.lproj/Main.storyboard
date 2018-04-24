@@ -46,7 +46,7 @@
                                                 <constraint firstItem="O1b-ZL-NnA" firstAttribute="top" secondItem="Jtb-C9-z3Z" secondAttribute="top" constant="8" id="jxQ-Pb-12I"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="9hb-hU-Cxa" kind="show" id="I7b-Rp-fDa"/>
                                         </connections>
@@ -773,28 +773,44 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory Version 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-dG-1Do">
-                                        <rect key="frame" x="37" y="0.0" width="301" height="171.33333333333334"/>
+                                        <rect key="frame" x="37" y="0.0" width="301" height="114.33333333333333"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image004.png" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
-                                        <rect key="frame" x="105" y="171.33333333333331" width="165" height="171.33333333333331"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory.png" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
+                                        <rect key="frame" x="0.0" y="114.33333333333334" width="375" height="114"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(c) 2018 by Marcus Deuß" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fd-qf-JfD">
-                                        <rect key="frame" x="91.000000000000014" y="342.66666666666669" width="193.33333333333337" height="171.00000000000006"/>
+                                        <rect key="frame" x="91.000000000000014" y="228.33333333333334" width="193.33333333333337" height="114.33333333333334"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-0j-NDU">
-                                        <rect key="frame" x="144.66666666666666" y="513.66666666666663" width="86" height="171.33333333333337"/>
+                                        <rect key="frame" x="144.66666666666666" y="342.66666666666669" width="86" height="114"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Feedback"/>
                                         <connections>
                                             <action selector="feedbackButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="CHc-o1-kcX"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-0P-Kka">
+                                        <rect key="frame" x="133" y="456.66666666666669" width="109" height="114.33333333333331"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Information"/>
+                                        <connections>
+                                            <action selector="informationButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="NEJ-4G-u61"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app is free of charge. The source code is available on the Information link where you can get further infos..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-Er-gZy">
+                                        <rect key="frame" x="7" y="571" width="361" height="114"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -877,15 +893,15 @@
     <resources>
         <image name="Brand Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
+        <image name="Inventory.png" width="512" height="512"/>
         <image name="Owner Icon" width="30" height="30"/>
         <image name="Room Icon" width="30" height="30"/>
         <image name="about" width="30" height="30"/>
         <image name="createNew" width="30" height="30"/>
-        <image name="image004.png" width="165" height="141"/>
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fGu-tq-bQ9"/>
-        <segue reference="wRn-lR-pVR"/>
+        <segue reference="5se-75-Ta6"/>
     </inferredMetricsTieBreakers>
 </document>

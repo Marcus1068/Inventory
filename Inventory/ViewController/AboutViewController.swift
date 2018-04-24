@@ -41,6 +41,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    @IBAction func informationButton(_ sender: Any) {
+        // open safari browser for more information, source code etc.
+        if let url = URL(string: "http://www.marcus-deuss.de") {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

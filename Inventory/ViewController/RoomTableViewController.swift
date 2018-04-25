@@ -10,9 +10,6 @@ import UIKit
 import os.log
 
 class RoomTableViewController: UITableViewController {
-
-    //let context = (UIApplication.shared.delegate as! AppDelegate)
-    //let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var rooms : [Room] = []
     

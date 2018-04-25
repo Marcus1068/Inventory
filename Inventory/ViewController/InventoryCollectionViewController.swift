@@ -78,7 +78,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = true
         
-        searchController.searchBar.sizeToFit()
+        //searchController.searchBar.sizeToFit()
         
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
@@ -274,7 +274,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let destination =  segue.destination as! EditInventoryViewController
+        let destination =  segue.destination as! InventoryEditViewController
         
         if segue.identifier == "addSegue" {
             //os_log("addSegue selected", log: OSLog.default, type: .debug)

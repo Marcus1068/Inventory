@@ -35,7 +35,7 @@
 		2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */; };
 		2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
-		2C770C6820887FA8004F2C12 /* EditInventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */; };
+		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6B208B674C004F2C12 /* SearchFooter.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +91,7 @@
 		2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
-		2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInventoryViewController.swift; sourceTree = "<group>"; };
+		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C770C6B208B674C004F2C12 /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +208,7 @@
 				2C56E95720872E6200FD5136 /* ManageTableViewController.swift */,
 				2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */,
 				2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */,
-				2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */,
+				2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */,
 				2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */,
 				2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */,
 				2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */,
@@ -363,7 +363,7 @@
 				2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */,
 				2C56E9532086A41700FD5136 /* Room+CoreDataClass.swift in Sources */,
 				2C56E9522086A41700FD5136 /* Owner+CoreDataProperties.swift in Sources */,
-				2C770C6820887FA8004F2C12 /* EditInventoryViewController.swift in Sources */,
+				2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */,
 				2C56E90C208683D100FD5136 /* Helper.swift in Sources */,
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,

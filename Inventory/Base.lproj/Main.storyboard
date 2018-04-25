@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8T-Ec-edq">
-                                                    <rect key="frame" x="16" y="12" width="66.333333333333329" height="27"/>
+                                                    <rect key="frame" x="16" y="12" width="66.666666666666671" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -43,10 +43,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="O1b-ZL-NnA" secondAttribute="trailing" constant="8" id="5rR-EV-a4A"/>
                                                 <constraint firstItem="n8T-Ec-edq" firstAttribute="top" secondItem="Jtb-C9-z3Z" secondAttribute="top" constant="12" id="I0s-2N-kLd"/>
                                                 <constraint firstItem="n8T-Ec-edq" firstAttribute="leading" secondItem="Jtb-C9-z3Z" secondAttribute="leading" constant="16" id="NGh-eP-JN6"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="n8T-Ec-edq" secondAttribute="trailing" constant="20" symbolic="YES" id="bAS-N4-n0h"/>
                                                 <constraint firstItem="O1b-ZL-NnA" firstAttribute="top" secondItem="Jtb-C9-z3Z" secondAttribute="top" constant="8" id="jxQ-Pb-12I"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="9hb-hU-Cxa" kind="show" id="I7b-Rp-fDa"/>
                                         </connections>
@@ -70,6 +70,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Z6f-U8-Udu" firstAttribute="top" secondItem="RE7-Ht-FqX" secondAttribute="top" constant="8" id="DMI-RM-FEy"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gji-Ng-xNH" secondAttribute="trailing" constant="20" symbolic="YES" id="VIQ-Zh-gTF"/>
                                                 <constraint firstAttribute="trailing" secondItem="Z6f-U8-Udu" secondAttribute="trailing" constant="8" id="YVE-Fe-JJl"/>
                                                 <constraint firstItem="Gji-Ng-xNH" firstAttribute="leading" secondItem="RE7-Ht-FqX" secondAttribute="leading" constant="16" id="qDb-8M-lxJ"/>
                                                 <constraint firstItem="Gji-Ng-xNH" firstAttribute="top" secondItem="RE7-Ht-FqX" secondAttribute="top" constant="12" id="spo-Bp-IZi"/>
@@ -98,6 +99,7 @@
                                                 <constraint firstItem="Qrm-X6-8aa" firstAttribute="leading" secondItem="XD0-tR-1zr" secondAttribute="leading" constant="16" id="TIo-HL-O4z"/>
                                                 <constraint firstItem="E0t-qX-yF0" firstAttribute="top" secondItem="XD0-tR-1zr" secondAttribute="top" constant="8" id="cdH-SU-Huz"/>
                                                 <constraint firstAttribute="trailing" secondItem="E0t-qX-yF0" secondAttribute="trailing" constant="8" id="kog-0w-s04"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qrm-X6-8aa" secondAttribute="trailing" constant="20" symbolic="YES" id="tPm-b0-nhq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -119,6 +121,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4CK-9n-Mwm" secondAttribute="trailing" constant="20" symbolic="YES" id="Msk-9S-UGT"/>
                                                 <constraint firstAttribute="trailing" secondItem="DzZ-C1-Jc0" secondAttribute="trailing" constant="8" id="NF4-vG-2EE"/>
                                                 <constraint firstItem="DzZ-C1-Jc0" firstAttribute="top" secondItem="Q4v-35-1B2" secondAttribute="top" constant="8" id="ONd-ce-uAR"/>
                                                 <constraint firstItem="4CK-9n-Mwm" firstAttribute="top" secondItem="Q4v-35-1B2" secondAttribute="top" constant="12" id="gag-kL-qaN"/>
@@ -138,7 +141,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8f4-H8-n7a">
-                                                    <rect key="frame" x="16" y="12" width="66.333333333333329" height="27"/>
+                                                    <rect key="frame" x="16" y="12" width="66.666666666666671" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -150,6 +153,7 @@
                                             <constraints>
                                                 <constraint firstItem="xdw-eQ-fJ5" firstAttribute="top" secondItem="fjo-mj-qaI" secondAttribute="top" constant="8" id="01k-HZ-TbE"/>
                                                 <constraint firstAttribute="trailing" secondItem="xdw-eQ-fJ5" secondAttribute="trailing" constant="8" id="M0x-2G-joT"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8f4-H8-n7a" secondAttribute="trailing" constant="20" symbolic="YES" id="WrG-LV-fB0"/>
                                                 <constraint firstItem="8f4-H8-n7a" firstAttribute="top" secondItem="fjo-mj-qaI" secondAttribute="top" constant="12" id="s6C-iO-EQe"/>
                                                 <constraint firstItem="8f4-H8-n7a" firstAttribute="leading" secondItem="fjo-mj-qaI" secondAttribute="leading" constant="16" id="x88-fT-YdH"/>
                                             </constraints>
@@ -176,6 +180,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SHR-4B-47W" secondAttribute="trailing" constant="20" symbolic="YES" id="30v-c8-rcE"/>
                                                 <constraint firstItem="SHR-4B-47W" firstAttribute="leading" secondItem="NlK-4M-EmZ" secondAttribute="leading" constant="16" id="Eqj-zi-Iqh"/>
                                                 <constraint firstItem="SHR-4B-47W" firstAttribute="top" secondItem="NlK-4M-EmZ" secondAttribute="top" constant="12" id="JuP-Y2-gTU"/>
                                                 <constraint firstAttribute="trailing" secondItem="YTr-px-FHx" secondAttribute="trailing" constant="8" id="lIb-KW-OU1"/>
@@ -201,6 +206,7 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="O5q-KA-tw5" secondAttribute="trailing" constant="20" symbolic="YES" id="3oE-S3-RhB"/>
                                                 <constraint firstItem="O5q-KA-tw5" firstAttribute="top" secondItem="qhS-J4-txo" secondAttribute="top" constant="12" id="E4T-aq-7jc"/>
                                                 <constraint firstAttribute="trailing" secondItem="5qk-T5-xmx" secondAttribute="trailing" constant="8" id="H3s-TD-ra4"/>
                                                 <constraint firstItem="O5q-KA-tw5" firstAttribute="leading" secondItem="qhS-J4-txo" secondAttribute="leading" constant="16" id="i1Z-Ap-Rh2"/>
@@ -229,6 +235,7 @@
                                                 <constraint firstItem="JkD-E5-yqi" firstAttribute="top" secondItem="BYX-Jr-2LC" secondAttribute="top" constant="8" id="1H3-00-OWY"/>
                                                 <constraint firstItem="qCh-w3-5pb" firstAttribute="top" secondItem="BYX-Jr-2LC" secondAttribute="top" constant="12" id="428-vB-YcH"/>
                                                 <constraint firstAttribute="trailing" secondItem="JkD-E5-yqi" secondAttribute="trailing" constant="8" id="GBW-wB-O8G"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qCh-w3-5pb" secondAttribute="trailing" constant="20" symbolic="YES" id="NEH-Lk-3a3"/>
                                                 <constraint firstItem="qCh-w3-5pb" firstAttribute="leading" secondItem="BYX-Jr-2LC" secondAttribute="leading" constant="16" id="ccc-g1-6ZQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -474,7 +481,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
                                 <rect key="frame" x="16" y="170" width="143" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="143" id="HaN-aP-z9P"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="143" id="HaN-aP-z9P"/>
                                     <constraint firstAttribute="height" constant="30" id="zEY-P3-51y"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -482,7 +489,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-kv-Yx5">
-                                <rect key="frame" x="15.999999999999993" y="132" width="98.333333333333314" height="20"/>
+                                <rect key="frame" x="16.000000000000007" y="132" width="98.666666666666686" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -501,6 +508,7 @@
                             <constraint firstItem="7eY-0W-SIY" firstAttribute="top" secondItem="KWu-LK-Nv9" secondAttribute="bottom" constant="8" id="a8V-7n-mV3"/>
                             <constraint firstItem="dGS-kv-Yx5" firstAttribute="top" secondItem="YKC-2j-9Q5" secondAttribute="bottom" id="cMZ-UC-H5f"/>
                             <constraint firstItem="7eY-0W-SIY" firstAttribute="leading" secondItem="bru-zw-FIZ" secondAttribute="leading" constant="16" id="nYw-j7-qLI"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KWu-LK-Nv9" secondAttribute="trailing" constant="20" symbolic="YES" id="rUu-M7-RP2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bru-zw-FIZ"/>
                     </view>
@@ -529,7 +537,7 @@
         <!--Edit Inventory-->
         <scene sceneID="MZa-x9-Asz">
             <objects>
-                <viewController title="Edit Inventory" id="Rqb-1w-ui0" customClass="EditInventoryViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit Inventory" id="Rqb-1w-ui0" customClass="InventoryEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kby-cu-D52">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -541,7 +549,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="636"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfP-6m-dUf">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="86.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="86.666666666666671"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFM-9G-yM1">
                                                         <rect key="frame" x="8" y="7.9999999999999982" width="359" height="20.333333333333329"/>
@@ -549,8 +557,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-H6-2d6">
-                                                        <rect key="frame" x="8" y="36.333333333333329" width="359" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inventory name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-H6-2d6">
+                                                        <rect key="frame" x="8" y="36.333333333333329" width="359" height="30.333333333333329"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -568,7 +576,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zs-70-Nl2">
-                                                <rect key="frame" x="0.0" y="86.333333333333343" width="375" height="86.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="86.666666666666657" width="375" height="86.333333333333343"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XI-4Z-pVU">
                                                         <rect key="frame" x="8" y="7.9999999999999982" width="359" height="20.333333333333329"/>
@@ -576,11 +584,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-8a-adw">
-                                                        <rect key="frame" x="8" y="36.333333333333314" width="359" height="30.333333333333329"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uk-8a-adw">
+                                                        <rect key="frame" x="8" y="36.333333333333343" width="359" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -887,13 +895,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsE-KL-yNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45.600000000000001" y="802.46305418719214"/>
+            <point key="canvasLocation" x="-353" y="945"/>
         </scene>
     </scenes>
     <resources>
         <image name="Brand Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
-        <image name="Inventory.png" width="512" height="512"/>
+        <image name="Inventory.png" width="1024" height="1024"/>
         <image name="Owner Icon" width="30" height="30"/>
         <image name="Room Icon" width="30" height="30"/>
         <image name="about" width="30" height="30"/>

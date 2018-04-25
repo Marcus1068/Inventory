@@ -13,9 +13,6 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     // contains the selected object from viewcontroller before
     weak var currentRoom : Room?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate)
-    let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     @IBOutlet weak var textfieldRoomName: UITextField!
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
@@ -100,7 +97,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // new room
         if (currentRoom == nil)
         {
-            let context = AppDelegate.viewContext
+            let context = CoreDataHandler.getContext()
             
             let room = Room(context: context)
             
@@ -108,16 +105,16 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             room.roomName = textfieldRoomName.text!
             
             currentRoom = room
+            
+            // FIXME update will save another record instead of updating
+            _ = CoreDataHandler.saveRoom(roomName: currentRoom!.roomName!)
         }
         else{
             // update room name
             currentRoom?.roomName = textfieldRoomName.text
             
-            
+            _ = CoreDataHandler.updateRoom(room: currentRoom!)
         }
-        
-        context.saveContext()
-        
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)

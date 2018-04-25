@@ -206,12 +206,12 @@
 			children = (
 				2C56E95520872E1F00FD5136 /* AboutViewController.swift */,
 				2C56E95720872E6200FD5136 /* ManageTableViewController.swift */,
-				2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */,
-				2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */,
-				2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */,
 				2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */,
-				2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */,
+				2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */,
 				2C770C6720887FA8004F2C12 /* EditInventoryViewController.swift */,
+				2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */,
+				2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */,
+				2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */,
 				2C770C6B208B674C004F2C12 /* SearchFooter.swift */,
 			);
 			path = ViewController;

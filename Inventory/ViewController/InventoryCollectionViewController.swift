@@ -22,7 +22,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    let context = (UIApplication.shared.delegate as! AppDelegate)
+    // let context = (UIApplication.shared.delegate as! AppDelegate)
     
     @IBOutlet var collection: UICollectionView!
     
@@ -60,7 +60,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         // Do any additional setup after loading the view.
         
-        owner = context.fetchAllOwners()
+        owner = CoreDataHandler.fetchAllOwners()
         
         // Setup the Scope Bar
         var list :[String] = []
@@ -94,7 +94,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         super.viewDidAppear(animated)
         
-        inventory = context.fetchInventory()
+        inventory = CoreDataHandler.fetchInventory()
         
         collection.reloadData()
         

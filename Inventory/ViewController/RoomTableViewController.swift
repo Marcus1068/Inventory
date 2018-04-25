@@ -11,8 +11,8 @@ import os.log
 
 class RoomTableViewController: UITableViewController {
 
-    let context = (UIApplication.shared.delegate as! AppDelegate)
-    let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //let context = (UIApplication.shared.delegate as! AppDelegate)
+    //let viewcontext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var rooms : [Room] = []
     
@@ -22,9 +22,6 @@ class RoomTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -38,7 +35,7 @@ class RoomTableViewController: UITableViewController {
         super.viewWillAppear(animated);
         
         // get the data from Core Data
-        rooms = context.fetchAllRooms()
+        rooms = CoreDataHandler.fetchAllRooms()
         
         // reload the table
         tableView.reloadData()
@@ -218,10 +215,10 @@ class RoomTableViewController: UITableViewController {
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
             // delete must be used with persistentContainer.viewContext not context
-            self.viewcontext.delete(room)
-            self.context.saveContext()
+            _ = CoreDataHandler.deleteRoom(room: room)
+            //self.context.saveContext()
             
-            self.rooms = self.context.fetchAllRooms()
+            self.rooms = CoreDataHandler.fetchAllRooms()
             
             self.tableView.reloadData()
         }

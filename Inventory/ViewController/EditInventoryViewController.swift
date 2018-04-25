@@ -12,7 +12,7 @@ import os.log
 class EditInventoryViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate {
 
-    let context = (UIApplication.shared.delegate as! AppDelegate)
+    //let context = (UIApplication.shared.delegate as! AppDelegate)
     
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
@@ -49,9 +49,14 @@ UINavigationControllerDelegate {
         if (currentInventory != nil)
         {
             self.title = NSLocalizedString("Edit Inventory", comment: "Edit Inventory")
-            textfieldInventoryName.text = currentInventory?.inventoryName
-            //imageView.image =
             
+            // inventory name
+            textfieldInventoryName.text = currentInventory?.inventoryName
+            
+            // inventory price
+            textfieldPrice.text = String(currentInventory!.price)
+            
+            // inventory image
             let imageData = currentInventory!.image! as Data
             let image = UIImage(data: imageData, scale:1.0)
             imageView.image = image
@@ -61,6 +66,10 @@ UINavigationControllerDelegate {
             self.title = NSLocalizedString("Add Inventory", comment: "Add Inventory")
             
             textfieldInventoryName.text = ""
+            textfieldPrice.text = ""
+            
+            // placeholder graphic
+            imageView.image = UIImage(named: "Inventory.png");
         }
         
         // focus on first text field
@@ -92,19 +101,37 @@ UINavigationControllerDelegate {
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        os_log("cancelButton in EditInventoryViewController", log: OSLog.default, type: .debug)
-        
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
+    // save data back to core data
     @IBAction func saveButton(_ sender: Any) {
         os_log("saveButton in EditInventoryViewController", log: OSLog.default, type: .debug)
         
-        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
-        currentInventory?.image = imageData! as NSData
         
-        context.saveContext()
+        // add data
+        if (currentInventory == nil)
+        {
+            let context = CoreDataHandler.getContext()
+            
+            let inventory = Inventory(context: context)
+            
+            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+            inventory.image = imageData! as NSData
+            
+   //         _ = CoreDataHandler.saveInventory(inventoryName: <#T##String#>, dateOfPurchase: <#T##NSDate#>, price: <#T##Int32#>, remark: <#T##String#>, serialNumber: <#T##String#>, warranty: <#T##Int32#>, image: <#T##NSData#>, invoice: <#T##NSData#>, brand: <#T##Brand#>, category: <#T##Category#>, owner: <#T##Owner#>, room: <#T##Room#>)
+            
+            
+        }
+        else{ // edit data
+            currentInventory?.inventoryName = textfieldInventoryName.text
+            currentInventory?.price = Int32(textfieldPrice.text!)!
+            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+            currentInventory?.image = imageData! as NSData
+            
+            _ = CoreDataHandler.updateInventory(inventory: currentInventory!)
+        }
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)

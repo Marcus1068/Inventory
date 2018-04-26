@@ -15,6 +15,10 @@ private var selectedInventoryItem = Inventory()
 
 class InventoryCollectionViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
+    @IBOutlet weak var organizeButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    
     var size = CGRect()
     var inventory : [Inventory] = []
     var owner : [Owner] = []
@@ -38,8 +42,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             // Earlier version of iOS
         }
         
-        
-        
         // set collection view delegates
         collection.delegate = self
         collection.dataSource = self
@@ -50,13 +52,15 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         //searchController.searchBar.delegate = self
         searchController.delegate = self
         //navigationItem.searchController = searchController
-        definesPresentationContext = true
+        
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
         
-        searchController.searchBar.becomeFirstResponder()
+        //searchController.searchBar.becomeFirstResponder()
         
         self.navigationItem.titleView = searchController.searchBar
+        searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -85,15 +89,12 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = true
         
-        //searchController.searchBar.sizeToFit()
+        searchController.searchBar.sizeToFit()
         
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
-        
-        // collection.reloadData()
-        
         
     }
     
@@ -115,7 +116,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     //MARK: Search Bar
     
-    // filter for scope of owner (uses segment controll to display owners
+    // filter for scope of owner (uses segment control to display owners)
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         print(searchBar.scopeButtonTitles![selectedScope])
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
@@ -125,6 +126,18 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         //searchController.searchBar.showsScopeBar = true
         //collectionView.reloadData()
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBarIsEmpty()){
+            collection.reloadData()
+            
+        } else {
+                //currentInventory = inventory[indexPath.row]
+            }
+        
+        //print("Taste")
     }
     
     // called by system when entered search bar

@@ -21,7 +21,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .always
+            navigationController?.navigationBar.prefersLargeTitles = true
         }
         
         self.title = "Edit Room"

@@ -363,6 +363,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="jWb-Gj-P8x">
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <action selector="addButton:" destination="rQj-lp-tZp" id="xL3-tX-zfg"/>
                             </connections>
@@ -371,7 +372,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
+                        <outlet property="addButton" destination="jWb-Gj-P8x" id="EPE-BS-7pG"/>
                         <outlet property="collection" destination="pkO-Ff-Y7e" id="KA4-D2-pUM"/>
+                        <outlet property="organizeButton" destination="2W7-K5-LjG" id="veB-WI-Azx"/>
                         <segue destination="Rqb-1w-ui0" kind="show" identifier="editSegue" id="8jk-WZ-SES"/>
                         <segue destination="Rqb-1w-ui0" kind="show" identifier="addSegue" id="fGu-tq-bQ9"/>
                     </connections>
@@ -446,7 +449,6 @@
         <!--Reports-->
         <scene sceneID="Kv0-9X-085">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pm7-eE-Zah" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="cvw-X7-YXT" customClass="ReportsCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vep-um-8pg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
@@ -558,6 +560,7 @@
                             <constraint firstItem="S6H-uU-i8e" firstAttribute="leading" secondItem="vep-um-8pg" secondAttribute="leading" id="T2K-Tg-aBl"/>
                             <constraint firstItem="S6H-uU-i8e" firstAttribute="top" secondItem="vep-um-8pg" secondAttribute="top" constant="173" id="TsZ-Wm-akD"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="l5T-a7-N8M"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reports" id="x4S-E8-XUR">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Wzx-6Z-Phb"/>
@@ -570,6 +573,7 @@
                         <outlet property="searchBar" destination="CG2-h4-ckP" id="o2a-Yy-8FM"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pm7-eE-Zah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-444" y="-318.4729064039409"/>
         </scene>
@@ -1062,6 +1066,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fGu-tq-bQ9"/>
-        <segue reference="hE0-Ui-Mnp"/>
+        <segue reference="5se-75-Ta6"/>
     </inferredMetricsTieBreakers>
 </document>

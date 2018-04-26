@@ -26,13 +26,29 @@ class ManageTableViewController: UITableViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .always
+            navigationController?.navigationBar.prefersLargeTitles = true
         }
         
         self.title = "Manage items"
         
+        
+        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        
+        //tableView.isScrollEnabled = false
+        
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+  /*      if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }*/
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

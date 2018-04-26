@@ -27,10 +27,12 @@ class RoomTableViewController: UITableViewController {
         //tableView.delegate = self
         
         if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .always
+            navigationController?.navigationBar.prefersLargeTitles = true
         }
         
         self.title = "My Rooms"
+        
+        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
         
     }
 
@@ -50,6 +52,7 @@ class RoomTableViewController: UITableViewController {
             tableView.selectRow(at: idx, animated: true, scrollPosition: .top)
         }
         
+        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

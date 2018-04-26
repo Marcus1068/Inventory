@@ -22,8 +22,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    // let context = (UIApplication.shared.delegate as! AppDelegate)
-    
     @IBOutlet var collection: UICollectionView!
     
     //var searchFooter = SearchFooter()
@@ -32,6 +30,15 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         os_log("viewDidLoad in InventoryCollectionViewController", log: OSLog.default, type: .debug)
         
         super.viewDidLoad()
+        
+        // new in ios11: large navbar titles
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Earlier version of iOS
+        }
+        
+        
         
         // set collection view delegates
         collection.delegate = self
@@ -86,6 +93,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         collectionViewLayout?.invalidateLayout()
         
         // collection.reloadData()
+        
         
     }
     
@@ -210,6 +218,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             }
             
             return footerView
+        
             
         default:
             assert(false, "Unexpected element kind")

@@ -25,6 +25,12 @@ class ManageTableViewController: UITableViewController {
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .always
+        }
+        
+        self.title = "Manage items"
+        
     }
 
     

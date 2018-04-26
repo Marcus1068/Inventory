@@ -20,6 +20,12 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .always
+        }
+        
+        self.title = "Edit Room"
+        
         if currentRoom != nil{
             //
             textfieldRoomName.text = currentRoom!.roomName

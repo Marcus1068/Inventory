@@ -26,6 +26,12 @@ class RoomTableViewController: UITableViewController {
         //tableView.dataSource = self
         //tableView.delegate = self
         
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .always
+        }
+        
+        self.title = "My Rooms"
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {

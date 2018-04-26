@@ -41,6 +41,10 @@ UINavigationControllerDelegate {
         os_log("viewDidLoad in InventoryEditViewController", log: OSLog.default, type: .debug)
         
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .always
+        }
 
         picker.delegate = self
         

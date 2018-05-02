@@ -1,21 +1,23 @@
 //
-//  RoomEditViewController.swift
+//  CategoryEditViewController.swift
 //  Inventory
 //
-//  Created by Marcus Deuß on 18.04.18.
+//  Created by Marcus Deuß on 01.05.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
 //
 
 import UIKit
-import os.log
 
-class RoomEditViewController: UIViewController, UITextFieldDelegate{
-    // contains the selected object from viewcontroller before
-    weak var currentRoom : Room?
-    
-    @IBOutlet weak var textfieldRoomName: UITextField!
+class CategoryEditViewController: UIViewController, UITextFieldDelegate {
+
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
+    
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
+    
+    @IBOutlet weak var textfieldCategory: UITextField!
+    
+    // contains the selected object from viewcontroller before
+    weak var currentCategory : Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +27,34 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         }
         
         // edit or add room
-        if currentRoom != nil{
+        if currentCategory != nil{
             //
-            self.title = "Edit Room"
-            textfieldRoomName.text = currentRoom!.roomName
+            self.title = "Edit Category"
+            textfieldCategory.text = currentCategory!.categoryName
         }
         else{
-            self.title = "Add Room"
-            textfieldRoomName.text = ""
+            self.title = "Add Category"
+            textfieldCategory.text = ""
             saveButtonOutlet.isEnabled = false
         }
-
+        
         // focus on first text field
-        textfieldRoomName.becomeFirstResponder()
-        textfieldRoomName.delegate = self
-        textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldCategory.becomeFirstResponder()
+        textfieldCategory.delegate = self
+        textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
+        textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     // when user presses return on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //os_log("textFieldShouldReturn", log: OSLog.default, type: .debug)
         
-        if (textField == textfieldRoomName)
+        if (textField == textfieldCategory)
         {
             // close keyboard
             self.view.endEditing(true)
@@ -63,7 +70,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
         
-        if textfieldRoomName.text?.count == 0{
+        if textfieldCategory.text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -71,13 +78,17 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         }
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
-    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
     @IBAction func cancelButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
@@ -87,30 +98,30 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // close keyboard
         self.view.endEditing(true)
         
-        // new room
-        if (currentRoom == nil)
+        // new category
+        if (currentCategory == nil)
         {
             let context = CoreDataHandler.getContext()
             
-            let room = Room(context: context)
+            let category = Category(context: context)
             
             // set object with UI values
-            room.roomName = textfieldRoomName.text!
+            category.categoryName = textfieldCategory.text!
             
-            currentRoom = room
+            currentCategory = category
             
             // FIXME update will save another record instead of updating
-            _ = CoreDataHandler.saveRoom(room: currentRoom!)
+            _ = CoreDataHandler.saveCategory(category: currentCategory!)
         }
         else{
-            // update room name
-            currentRoom?.roomName = textfieldRoomName.text
+            // update category name
+            currentCategory?.categoryName = textfieldCategory.text
             
-            _ = CoreDataHandler.updateRoom(room: currentRoom!)
+            _ = CoreDataHandler.updateCategory(category: currentCategory!)
         }
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
-
+    
 }

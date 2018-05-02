@@ -10,6 +10,8 @@
 		2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */; };
 		2C4926DD20921AFE00508874 /* Inventory.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4926DC20921AFE00508874 /* Inventory.png */; };
+		2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B722098D03100D99949 /* CategoryTableViewController.swift */; };
+		2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B742098E80500D99949 /* CategoryEditViewController.swift */; };
 		2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8AD2086350A00FD5136 /* AppDelegate.swift */; };
 		2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B32086350A00FD5136 /* Main.storyboard */; };
 		2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4926DC20921AFE00508874 /* Inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory.png; sourceTree = "<group>"; };
+		2C501B722098D03100D99949 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		2C501B742098E80500D99949 /* CategoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
 		2C56E8AA2086350A00FD5136 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8AD2086350A00FD5136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C56E8B42086350A00FD5136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				2C770C6B208B674C004F2C12 /* SearchFooter.swift */,
 				2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */,
 				2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */,
+				2C501B722098D03100D99949 /* CategoryTableViewController.swift */,
+				2C501B742098E80500D99949 /* CategoryEditViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */,
 				2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */,
 				2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */,
 				2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */,
@@ -378,6 +385,7 @@
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,
 				2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */,
 				2C56E94B2086A41700FD5136 /* Brand+CoreDataClass.swift in Sources */,
+				2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */,
 				2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */,
 				2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */,
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,

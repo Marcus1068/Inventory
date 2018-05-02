@@ -1,17 +1,20 @@
 //
-//  RoomTableViewController.swift
+//  CategoryTableViewController.swift
 //  Inventory
 //
-//  Created by Marcus Deuß on 18.04.18.
+//  Created by Marcus Deuß on 01.05.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
 //
 
 import UIKit
 import os.log
 
-class RoomTableViewController: UITableViewController {
+class CategoryTableViewController: UITableViewController {
+
+    var categories : [Category] = []
     
-    var rooms : [Room] = []
+    @IBOutlet weak var doneButtonLabel: UIBarButtonItem!
+    @IBOutlet weak var addButtonLabel: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +22,9 @@ class RoomTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -30,23 +36,22 @@ class RoomTableViewController: UITableViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        self.title = "My Rooms"
+        self.title = "My Categories"
         
         self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
         // get the data from Core Data
-        rooms = CoreDataHandler.fetchAllRooms()
+        categories = CoreDataHandler.fetchAllCategories()
         
         // reload the table
         tableView.reloadData()
         
         //select first row of table
-        if(rooms.count > 0)
+        if(categories.count > 0)
         {
             let idx = IndexPath(row: 0, section: 0)
             tableView.selectRow(at: idx, animated: true, scrollPosition: .top)
@@ -68,23 +73,24 @@ class RoomTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return rooms.count
+        // #warning Incomplete implementation, return the number of rows
+        return categories.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
+        
         // Configure the cell...
         
-        let room = rooms[indexPath.row]
-        cell.textLabel?.text = room.roomName
-        // cell.detailTextLabel?.text = 
-
+        let category = categories[indexPath.row]
+        cell.textLabel?.text = category.categoryName
+        // cell.detailTextLabel?.text =
+        
         return cell
     }
     
+
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
@@ -92,7 +98,7 @@ class RoomTableViewController: UITableViewController {
         //print(indexPath.row)
         let idx = IndexPath(row: indexPath.row, section: 0)
         tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
-        performSegue(withIdentifier: "editSegueRoom", sender: self)
+        performSegue(withIdentifier: "editSegueCategory", sender: self)
     }
     
     // prepare to transfer data to another view controller
@@ -100,49 +106,32 @@ class RoomTableViewController: UITableViewController {
     {
         os_log("prepare for segue", log: OSLog.default, type: .debug)
         
-        let destination =  segue.destination as! RoomEditViewController
+        let destination =  segue.destination as! CategoryEditViewController
         
-        if segue.identifier == "editSegueRoom"  {
+        if segue.identifier == "editSegueCategory"  {
             // Pass the selected object to the new view controller.
             if let indexPath = self.tableView.indexPathForSelectedRow { // FIXME
-                let selectedRoom = rooms[indexPath.row]
-                destination.currentRoom = selectedRoom
+                let selectedCategory = categories[indexPath.row]
+                destination.currentCategory = selectedCategory
             }
         }
         
-        if segue.identifier == "addSegueRoom"  {
-            destination.currentRoom = nil
+        if segue.identifier == "addSegueCategory"  {
+            destination.currentCategory = nil
         }
         
     }
-    
+
     // delete rows via UI with swipe gesture
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
+        
         if editingStyle == .delete{
-            let room = rooms[indexPath.row]
-            confirmDelete(room: room)
+            let category = categories[indexPath.row]
+            confirmDelete(category: category)
         }
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @IBAction func doneButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
-        //dismiss(animated: true, completion: nil)
-    }
-    
-    
     // return true if ok is clicked, false otherwise
     func showAlertDialog() -> Bool{
         
@@ -174,16 +163,16 @@ class RoomTableViewController: UITableViewController {
     
     // UIAlert for asking user if delete is really ok
     // UIAlert view is not modal so we need to do it this way
-    func confirmDelete(room: Room) {
-        let alert = UIAlertController(title: "Delete room", message: "Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!", preferredStyle: .actionSheet)
+    func confirmDelete(category: Category) {
+        let alert = UIAlertController(title: "Delete category", message: "Are you sure you want to permanently delete \(category.categoryName!)? Any related inventory with this category will be deleted as well!", preferredStyle: .actionSheet)
         
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
             // delete must be used with persistentContainer.viewContext not context
-            _ = CoreDataHandler.deleteRoom(room: room)
+            _ = CoreDataHandler.deleteCategory(category: category)
             //self.context.saveContext()
             
-            self.rooms = CoreDataHandler.fetchAllRooms()
+            self.categories = CoreDataHandler.fetchAllCategories()
             
             self.tableView.reloadData()
         }
@@ -195,4 +184,24 @@ class RoomTableViewController: UITableViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+    
+    @IBAction func doneButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addButton(_ sender: Any) {
+    }
+    
+    
 }

@@ -36,33 +36,25 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    class func updateRoom(room: Room) -> Bool{
+    // check if room already exists
+    class func fetchRoom(roomName: String) -> Bool{
         let context = getContext()
-        let request : NSFetchRequest<Room> = Room.fetchRequest()
-        var found = false
         
+        let request : NSFetchRequest<Room> = Room.fetchRequest()
         // search predicate
-        request.predicate = NSPredicate(format: "roomName = %@", room.roomName!)
+        request.predicate = NSPredicate(format: "roomName = %@", roomName)
         
         do {
-            _ = try context.fetch(request)
-            found = true
-        } catch {
-            print("Error with fetch request in updateRoom \(error)")
-        }
-        
-        if(found){
-            do {
-                try context.save()
+            let result = try context.fetch(request)
+            if result.count > 0{
                 return true
-            } catch  {
-                let nserror = error as NSError
-                
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } catch {
+            print("Error with fetch request in fetchRoom \(error)")
         }
         
         return false
+        
     }
     
     // delete room object
@@ -108,30 +100,21 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    class func updateCategory(category: Category) -> Bool{
+    // check if category already exists
+    class func fetchCategory(categoryName: String) -> Bool{
         let context = getContext()
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        var found = false
         
+        let request : NSFetchRequest<Category> = Category.fetchRequest()
         // search predicate
-        request.predicate = NSPredicate(format: "categoryName = %@", category.categoryName!)
+        request.predicate = NSPredicate(format: "categoryName = %@", categoryName)
         
         do {
-            _ = try context.fetch(request)
-            found = true
-        } catch {
-            print("Error with fetch request in updateCategory \(error)")
-        }
-        
-        if(found){
-            do {
-                try context.save()
+            let result = try context.fetch(request)
+            if result.count > 0{
                 return true
-            } catch  {
-                let nserror = error as NSError
-                
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } catch {
+            print("Error with fetch request in fetchCategory \(error)")
         }
         
         return false
@@ -180,30 +163,21 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    class func updateOwner(owner: Owner) -> Bool{
+    // check if owner already exists
+    class func fetchOwner(ownerName: String) -> Bool{
         let context = getContext()
-        let request : NSFetchRequest<Owner> = Owner.fetchRequest()
-        var found = false
         
+        let request : NSFetchRequest<Owner> = Owner.fetchRequest()
         // search predicate
-        request.predicate = NSPredicate(format: "ownerName = %@", owner.ownerName!)
+        request.predicate = NSPredicate(format: "ownerName = %@", ownerName)
         
         do {
-            _ = try context.fetch(request)
-            found = true
-        } catch {
-            print("Error with fetch request in updateOwner \(error)")
-        }
-        
-        if(found){
-            do {
-                try context.save()
+            let result = try context.fetch(request)
+            if result.count > 0{
                 return true
-            } catch  {
-                let nserror = error as NSError
-                
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } catch {
+            print("Error with fetch request in fetchOwner \(error)")
         }
         
         return false
@@ -252,30 +226,21 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    class func updateBrand(brand: Brand) -> Bool{
+    // check if brand already exists
+    class func fetchBrand(brandName: String) -> Bool{
         let context = getContext()
-        let request : NSFetchRequest<Brand> = Brand.fetchRequest()
-        var found = false
         
+        let request : NSFetchRequest<Brand> = Brand.fetchRequest()
         // search predicate
-        request.predicate = NSPredicate(format: "brandName = %@", brand.brandName!)
+        request.predicate = NSPredicate(format: "brandName = %@", brandName)
         
         do {
-            _ = try context.fetch(request)
-            found = true
-        } catch {
-            print("Error with fetch request in updateBrand \(error)")
-        }
-        
-        if(found){
-            do {
-                try context.save()
+            let result = try context.fetch(request)
+            if result.count > 0{
                 return true
-            } catch  {
-                let nserror = error as NSError
-                
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        } catch {
+            print("Error with fetch request in fetchBrand \(error)")
         }
         
         return false
@@ -450,8 +415,6 @@ class CoreDataHandler: NSObject {
     // fetch all room array, otherwise return [] empty array
     class func fetchAllRooms() -> [Room]
     {
-        os_log("fetchAllRooms", log: OSLog.default, type: .debug)
-        
         let request : NSFetchRequest<Room> = Room.fetchRequest()
         
         // sort criteria

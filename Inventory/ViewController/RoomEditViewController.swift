@@ -90,27 +90,62 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // new room
         if (currentRoom == nil)
         {
-            let context = CoreDataHandler.getContext()
+            if CoreDataHandler.fetchRoom(roomName: textfieldRoomName.text!)
+            {
+                showAlertDialog()
+                self.view.endEditing(false)
+                textfieldRoomName.becomeFirstResponder()
+            }
+            else{
+                let context = CoreDataHandler.getContext()
+                
+                let room = Room(context: context)
+                
+                // set object with UI values
+                room.roomName = textfieldRoomName.text!
+                
+                currentRoom = room
+                
+                // FIXME update will save another record instead of updating
+                _ = CoreDataHandler.saveRoom(room: currentRoom!)
+                
+                navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
             
-            let room = Room(context: context)
-            
-            // set object with UI values
-            room.roomName = textfieldRoomName.text!
-            
-            currentRoom = room
-            
-            // FIXME update will save another record instead of updating
-            _ = CoreDataHandler.saveRoom(room: currentRoom!)
         }
-        else{
-            // update room name
-            currentRoom?.roomName = textfieldRoomName.text
-            
-            _ = CoreDataHandler.updateRoom(room: currentRoom!)
+        else{ // update room name
+            if CoreDataHandler.fetchRoom(roomName: textfieldRoomName.text!)
+            {
+                showAlertDialog()
+                self.view.endEditing(false)
+                textfieldRoomName.becomeFirstResponder()
+            }
+            else{
+                currentRoom?.roomName = textfieldRoomName.text
+                
+                _ = CoreDataHandler.saveRoom(room: currentRoom!)
+                
+                navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
         }
-        
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
     }
 
+    func showAlertDialog(){
+        // Declare Alert
+        let dialogMessage = UIAlertController(title: "Room already exists", message: "Please choose a different room name", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+            //result = true
+        })
+        
+        //Add OK button to dialog message
+        dialogMessage.addAction(ok)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+        
+    }
 }

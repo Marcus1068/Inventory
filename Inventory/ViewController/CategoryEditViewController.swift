@@ -94,6 +94,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // save or update
     @IBAction func saveButton(_ sender: Any) {
         // close keyboard
         self.view.endEditing(true)
@@ -101,27 +102,61 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         // new category
         if (currentCategory == nil)
         {
-            let context = CoreDataHandler.getContext()
+            if CoreDataHandler.fetchCategory(categoryName: textfieldCategory.text!)
+            {
+                showAlertDialog()
+                self.view.endEditing(false)
+                textfieldCategory.becomeFirstResponder()
+            }
+            else{
+                let context = CoreDataHandler.getContext()
+                
+                let category = Category(context: context)
+                
+                // set object with UI values
+                category.categoryName = textfieldCategory.text!
+                
+                currentCategory = category
+                
+                _ = CoreDataHandler.saveCategory(category: currentCategory!)
+                
+                navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
             
-            let category = Category(context: context)
-            
-            // set object with UI values
-            category.categoryName = textfieldCategory.text!
-            
-            currentCategory = category
-            
-            // FIXME update will save another record instead of updating
-            _ = CoreDataHandler.saveCategory(category: currentCategory!)
         }
-        else{
-            // update category name
-            currentCategory?.categoryName = textfieldCategory.text
-            
-            _ = CoreDataHandler.updateCategory(category: currentCategory!)
+        else{ // update category name
+            if CoreDataHandler.fetchCategory(categoryName: textfieldCategory.text!)
+            {
+                showAlertDialog()
+                self.view.endEditing(false)
+                textfieldCategory.becomeFirstResponder()
+            }
+            else{
+                currentCategory?.categoryName = textfieldCategory.text
+                
+                _ = CoreDataHandler.saveCategory(category: currentCategory!)
+                
+                navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+            }
         }
-        
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
     }
     
+    func showAlertDialog(){
+        // Declare Alert
+        let dialogMessage = UIAlertController(title: "Category already exists", message: "Please choose a different category name", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+            //result = true
+        })
+        
+        //Add OK button to dialog message
+        dialogMessage.addAction(ok)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+        
+    }
 }

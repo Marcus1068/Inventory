@@ -8,15 +8,50 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class Helper: NSObject {
     
     // used in about view controller and for sending support emails
-    static let versionString = "0.1"
+    static let versionString = "0.2"
     
     // name of the app in about view
     static let appNameString = "Inventory"
+    static let emailAdr = "mdeuss@gmail.com"
+    static let website = "www.marcus-deuss.de"
     
     
+    // general functions
+    
+    
+    // sending a local notification
+    
+    /// send a local notification (does not require server)
+    ///
+    /// - Parameters:
+    ///   - title: notification title
+    ///   - subtitle: notification subtitle
+    ///   - body: notification body text
+    ///   - badge: when using badge show number of messages in icon
+    func sendLocalNotification(title: String, subtitle: String, body: String, badge: NSNumber) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.subtitle = subtitle
+        content.body = body
+        content.badge = badge
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
+                                                        repeats: false)
+        
+        let requestIdentifier = "demoNotification"
+        let request = UNNotificationRequest(identifier: requestIdentifier,
+                                            content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request,
+                                               withCompletionHandler: { (error) in
+                                                // Handle error
+        })
+    }
+
 }
 

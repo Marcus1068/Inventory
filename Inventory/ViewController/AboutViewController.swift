@@ -8,15 +8,21 @@
 
 import UIKit
 import MessageUI
-import os.log
 
+/// show about view with support email function
+///
+/// version number of app
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate  {
     @IBOutlet weak var versionNumberLabel: UILabel!
+    @IBOutlet weak var copyrightLabel: UILabel!
+    @IBOutlet weak var iosversionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         versionNumberLabel.text = Helper.appNameString + " " + Helper.versionString
+        copyrightLabel.text = "(c) 2018 by Marcus Deuß"
+        iosversionLabel.text = "Running on iOS " + DeviceInfo.showOSVersion()
         
         // Do any additional setup after loading the view.
     }
@@ -27,7 +33,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func feedbackButton(_ sender: Any) {
-        os_log("feedbackButton in AboutViewController", log: OSLog.default, type: .debug)
         
         let mailComposeViewController = configuredMailComposeViewController()
         
@@ -43,39 +48,36 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     @IBAction func informationButton(_ sender: Any) {
         // open safari browser for more information, source code etc.
-        if let url = URL(string: "http://www.marcus-deuss.de") {
+        if let url = URL(string: Helper.website) {
             UIApplication.shared.open(url, options: [:])
         }
     }
     
     /*
-    // MARK: - Navigation
+    // MARK: - Email delegate
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+    
     */
     
+    /// Prepares mail sending controller
+    ///
+    /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    /// - Returns: mailComposerVC
     func configuredMailComposeViewController() -> MFMailComposeViewController
     {
-        os_log("configuredMailComposeViewController in AboutViewController", log: OSLog.default, type: .debug)
-        
         let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        mailComposerVC.setToRecipients(["mdeuss@gmail.com"])
-        mailComposerVC.setSubject("Inventory Support \(Helper.versionString)")
+        mailComposerVC.mailComposeDelegate = self
+        mailComposerVC.setToRecipients([Helper.emailAdr])
+        mailComposerVC.setSubject(Helper.appNameString + " " + (Helper.versionString) + " Support")
         let msg = NSLocalizedString("I have some improvement ideas: ", comment: "I have some improvement ideas: ")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         
         return mailComposerVC
     }
     
+    /// show error if mail sending does not work
     func showSendMailErrorAlert()
     {
-        os_log("showSendMailErrorAlert in AboutViewController", log: OSLog.default, type: .debug)
-        
         let msg = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
         let msg2 = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
         
@@ -94,8 +96,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
-        os_log("mailComposeController in AboutViewController", log: OSLog.default, type: .debug)
-        
         controller.dismiss(animated: true, completion: nil)
     }
 

@@ -10,12 +10,14 @@ import UIKit
 
 class DeviceInfo: NSObject {
     
+    // iOS version info
     static func showOSVersion() -> String
         
     {
         return UIDevice.current.systemVersion
     }
     
+    // returns the battery level as float
     static func showbatteryLevel() -> Float
     {
         return UIDevice.current.batteryLevel

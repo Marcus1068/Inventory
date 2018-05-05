@@ -118,7 +118,7 @@ UINavigationControllerDelegate {
         os_log("imageTap in InventoryEditViewController", log: OSLog.default, type: .debug)
         
         picker.allowsEditing = true
-        picker.sourceType = .camera
+        picker.sourceType = .camera // FIXME crashes with iOS simulator
         picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(picker, animated: true, completion: nil)
     }

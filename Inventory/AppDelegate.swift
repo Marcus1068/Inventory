@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import os.log
-import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -98,29 +97,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return persistentContainer.viewContext
     }
     
-    
-    
-    // sending a local notification
-    
-    func sendLocalNotification(title: String, subtitle: String, body: String, badge: NSNumber) {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.subtitle = subtitle
-        content.body = body
-        content.badge = badge
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5,
-                                                        repeats: false)
-        
-        let requestIdentifier = "demoNotification"
-        let request = UNNotificationRequest(identifier: requestIdentifier,
-                                            content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request,
-                                               withCompletionHandler: { (error) in
-                                                // Handle error
-        })
-    }
-
 }
 

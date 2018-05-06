@@ -7,28 +7,30 @@
 //
 
 import UIKit
+import PDFKit
 import os.log
 
 class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
-    
     @IBOutlet weak var textfieldPrice: UITextField!
-    
     @IBOutlet weak var textfieldSerialNumber: UITextField!
     @IBOutlet weak var textfieldRemark: UITextField!
+    @IBOutlet weak var textfieldWarranty: UITextField!
+    
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var pdfImageView: UIImageView!
     
-    @IBOutlet weak var timeStampLabel: UILabel!
-    
-    @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
+    @IBOutlet weak var pdfView: PDFView!
     
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
-    
+    @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var roomButtonLabel: UIButton!
     @IBOutlet weak var categoryButtonLabel: UIButton!
     @IBOutlet weak var brandButtonLabel: UIButton!
@@ -37,10 +39,8 @@ UINavigationControllerDelegate{
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
-    
-    @IBOutlet weak var textfieldWarranty: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var inMonthsLabel: UILabel!
+    
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
@@ -357,7 +357,6 @@ UINavigationControllerDelegate{
     
     // do nothing, close view controller
     @IBAction func cancelButton(_ sender: Any) {
-        
         // workaround for adding new element by mistake if Add will be chosen and cancel clicked
         if editmode == EditMode.add
         {
@@ -367,6 +366,7 @@ UINavigationControllerDelegate{
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     // save inventory, either new or update old object
@@ -399,7 +399,40 @@ UINavigationControllerDelegate{
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
+    
+    // display pdf file
+    func pdfDisplay(){
+        if let path = Bundle.main.path(forResource: "geographic", ofType: "pdf") {
+            let url = URL(fileURLWithPath: path)
+            if let pdfDocument = PDFDocument(url: url) {
+                pdfView.autoScales = true
+                pdfView.displayMode = .singlePageContinuous
+                pdfView.displayDirection = .vertical
+                pdfView.document = pdfDocument
+                
+                captureThumbnails(pdfDocument:pdfDocument)
+            }
+        }
+    }
+    
+    // generate PDF thumbnail as imageView image
+    func captureThumbnails(pdfDocument:PDFDocument) {
+        if let page1 = pdfDocument.page(at: 1) {
+            pdfImageView.image = page1.thumbnail(of: CGSize(
+                width: pdfImageView.frame.size.width,
+                height: pdfImageView.frame.size.height), for: .artBox)
+        }
+        /*
+        if let page2 = pdfDocument.page(at: 2) {
+            page2ImageView.image = page2.thumbnail(of: CGSize(
+                width: page2ImageView.frame.size.width,
+                height: page2ImageView.frame.size.height), for: .artBox)
+        } */
+    }
 }
+
+
+
 
 // to get string from a date
 // usage: yourString = yourDate.toString(withFormat: "yyyy")

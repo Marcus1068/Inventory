@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C006CF6209F838F00B6D3C5 /* geographic.pdf */; };
 		2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */; };
 		2C4926DD20921AFE00508874 /* Inventory.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4926DC20921AFE00508874 /* Inventory.png */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C006CF6209F838F00B6D3C5 /* geographic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = geographic.pdf; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4926DC20921AFE00508874 /* Inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory.png; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		2C56E8AC2086350A00FD5136 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				2C006CF6209F838F00B6D3C5 /* geographic.pdf */,
 				2C251264208F4C3400A6B5A3 /* Images */,
 				2C56E9092086837000FD5136 /* ViewController */,
 				2C56E90A208683A800FD5136 /* Helper */,
@@ -346,6 +349,7 @@
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C4926DD20921AFE00508874 /* Inventory.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
+				2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

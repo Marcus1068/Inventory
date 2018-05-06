@@ -18,7 +18,7 @@ class Helper: NSObject {
     // name of the app in about view
     static let appNameString = "Inventory"
     static let emailAdr = "mdeuss@gmail.com"
-    static let website = "www.marcus-deuss.de"
+    static let website = "http://www.marcus-deuss.de"
     
     
     // general functions

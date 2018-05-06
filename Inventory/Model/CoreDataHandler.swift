@@ -274,7 +274,21 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    // add a single row to Vokabel table
+    // add a single row to inventory table
+    class func saveInventory(inventory: Inventory) -> Inventory{
+        let context = getContext()
+        // save data
+        do {
+            try context.save()
+            return inventory
+        } catch  {
+            let nserror = error as NSError
+            
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
+    // add a single row to inventory table
     class func saveInventory(inventoryName: String, dateOfPurchase: NSDate, price: Int32, remark: String, serialNumber: String, warranty: Int32, image: NSData, invoice: NSData, brand: Brand, category: Category, owner: Owner, room: Room) -> Inventory
     {
         let context = getContext()

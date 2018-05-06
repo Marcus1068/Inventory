@@ -12,8 +12,6 @@ import os.log
 private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
 
-
-
 class InventoryCollectionViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var organizeButton: UIBarButtonItem!
@@ -86,29 +84,22 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             list.append((inv.ownerName)!)
         }
         
-        
         searchController.searchBar.scopeButtonTitles = list
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = true
         
         searchController.searchBar.sizeToFit()
         
-        
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        os_log("viewDidAppear in InventoryCollectionViewController", log: OSLog.default, type: .debug)
-        
         super.viewDidAppear(animated)
         
         inventory = CoreDataHandler.fetchInventory()
-        
         collection.reloadData()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,8 +152,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             }
         })
         
-        print(inventory.count)
-        print(filteredInventory.count)
+        //print(inventory.count)
+        //print(filteredInventory.count)
         collection.reloadData()
     }
     
@@ -216,13 +207,11 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     // used for footer usage displaying a label with number of elements
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-            
+        switch kind {            
         case UICollectionElementKindSectionFooter:
             let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "footer",
                                                                          for: indexPath) as! SearchFooter
-            
             if isFiltering(){
                 footerView.searchResultLabel.textColor = UIColor.blue
                 footerView.searchResultLabel.text = String(filteredInventory.count) + " Inventory objects found"
@@ -234,7 +223,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             
             return footerView
         
-            
         default:
             assert(false, "Unexpected element kind")
         }
@@ -248,7 +236,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
         
         return inventory.count    //return number of rows
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

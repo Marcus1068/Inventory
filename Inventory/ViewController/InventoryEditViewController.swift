@@ -42,6 +42,7 @@ UINavigationControllerDelegate{
     @IBOutlet weak var inMonthsLabel: UILabel!
     
     // contains the selected object from viewcontroller before
+    // either inventory for edit or nil, then add new inventory to database
     weak var currentInventory : Inventory?
     
     // get all detail infos
@@ -50,29 +51,45 @@ UINavigationControllerDelegate{
     var owners : [Owner] = []
     var categories : [Category] = []
     
-    let picker = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
+    
+    enum EditMode {
+        case edit
+        case add
+    }
+    
+    var editmode : EditMode = EditMode.edit
     
     override func viewDidLoad() {
-        os_log("viewDidLoad in InventoryEditViewController", log: OSLog.default, type: .debug)
-        
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
 
-        picker.delegate = self
+        imagePicker.delegate = self
+        
       /*
         let recognizer = UITapGestureRecognizer(target: self, action:#selector(imageTap(recognizer:)))
         recognizer.delegate = self
         view.addGestureRecognizer(recognizer) */
-        imageView.isUserInteractionEnabled = true
+        
+        //imageView.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view.
+        
+        // get the data from Core Data
+        rooms = CoreDataHandler.fetchAllRooms()
+        brands = CoreDataHandler.fetchAllBrands()
+        owners = CoreDataHandler.fetchAllOwners()
+        categories = CoreDataHandler.fetchAllCategories()
         
         // edit inventory
         if (currentInventory != nil)
         {
+            
+            editmode = EditMode.edit
+            
             self.title = NSLocalizedString("Edit Inventory", comment: "Edit Inventory")
             
             // inventory name
@@ -99,6 +116,11 @@ UINavigationControllerDelegate{
         }
         else    // add new inventory
         {
+            editmode = EditMode.add
+            
+            let context = CoreDataHandler.getContext()
+            currentInventory = Inventory(context: context) // setup new inventory object
+            
             saveButtonLabel.isEnabled = false
             
             self.title = NSLocalizedString("Add Inventory", comment: "Add Inventory")
@@ -107,8 +129,19 @@ UINavigationControllerDelegate{
             textfieldInventoryName.text = ""
             textfieldPrice.text = ""
             
-            // placeholder graphic
+            // default placeholder graphic
             imageView.image = UIImage(named: "Inventory.png");
+            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+            currentInventory?.image = imageData! as NSData
+            // set item button default texts (first item element for default)
+            roomButtonLabel.setTitle(rooms[0].roomName, for: UIControlState.normal)
+            currentInventory?.inventoryRoom = rooms[0]
+            categoryButtonLabel.setTitle(categories[0].categoryName, for: UIControlState.normal)
+            currentInventory?.inventoryCategory = categories[0]
+            brandButtonLabel.setTitle(brands[0].brandName, for: UIControlState.normal)
+            currentInventory?.inventoryBrand = brands[0]
+            ownerButtonLabel.setTitle(owners[0].ownerName, for: UIControlState.normal)
+            currentInventory?.inventoryOwner = owners[0]
         }
         
         // focus on first text field
@@ -123,9 +156,6 @@ UINavigationControllerDelegate{
         
         // auto scroll to top so that all text fields can be entered
         //registerForKeyboardNotifications()
-        
-        
-        
     }
 
     // refresh data when view will be redrawn, after choosing room table view etc.
@@ -146,8 +176,6 @@ UINavigationControllerDelegate{
     }
     
     override func didReceiveMemoryWarning() {
-        os_log("didReceiveMemoryWarning in InventoryEditViewController", log: OSLog.default, type: .debug)
-        
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -218,8 +246,6 @@ UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any])
     {
-        os_log("imagePickerController in InventoryEditViewController", log: OSLog.default, type: .debug)
-        
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
@@ -234,10 +260,10 @@ UINavigationControllerDelegate{
     
     // choose a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
-        picker.allowsEditing = true
-        picker.sourceType = .photoLibrary // FIXME crashes with iOS simulator
-        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(picker, animated: true, completion: nil)
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary // FIXME crashes with iOS simulator
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
     }
     
     // choose room with an action sheet filled with all room names
@@ -321,42 +347,48 @@ UINavigationControllerDelegate{
     }
     
     
+    // do nothing, close view controller
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    @IBAction func saveButton(_ sender: Any) {
-        // add data
-        if (currentInventory == nil)
+        
+        // workaround for adding new element by mistake if Add will be chosen and cancel clicked
+        if editmode == EditMode.add
         {
-            
-            //inventory.inventoryName = textfieldInventoryName.text
-            
-            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
-            //inventory.image = imageData! as NSData
-            
-            let today = Date() as NSDate // today
-            let arr : [UInt32] = [32,4,123,4,5,2]
-            let myinvoice = NSData(bytes: arr, length: arr.count * 32)
-            
-            // FIXME hard coded input
-            _ = CoreDataHandler.saveInventory(inventoryName: textfieldInventoryName.text!, dateOfPurchase: today, price: Int32(textfieldPrice.text!)!, remark: "", serialNumber: "", warranty: Int32(textfieldPrice.text!)!, image: imageData! as NSData, invoice: myinvoice, brand: brands[1], category: categories[1], owner: owners[1], room: rooms[1])
-            
-            
-        }
-        else{ // edit data
-            currentInventory?.inventoryName = textfieldInventoryName.text
-            currentInventory?.price = Int32(textfieldPrice.text!)!
-            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
-            currentInventory?.image = imageData! as NSData
-            
-            _ = CoreDataHandler.updateInventory(inventory: currentInventory!)
+            let context = CoreDataHandler.getContext()
+            context.delete(currentInventory!)
         }
         
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    // save inventory, either new or update old object
+    @IBAction func saveButton(_ sender: Any) {
+        
+        currentInventory?.inventoryName = textfieldInventoryName.text
+        let today = Date() as NSDate // today
+        currentInventory?.dateOfPurchase = today    // FIXME choose from date picker
+        currentInventory?.price = Int32(textfieldPrice.text!)!
+        currentInventory?.remark = textfieldRemark.text
+        currentInventory?.serialNumber = textfieldSerialNumber.text
+        currentInventory?.warranty = Int32(textfieldWarranty.text!)!
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+        currentInventory?.image = imageData! as NSData
+        let arr : [UInt32] = [32,4,123,4,5,2]
+        let myinvoice = NSData(bytes: arr, length: arr.count * 32)
+        currentInventory?.invoice = myinvoice
+        
+        // add data
+        if (editmode == EditMode.add)
+        {
+            // room, brand, owner, category will be set by buttons
+            
+            _ = CoreDataHandler.saveInventory(inventory: currentInventory!)
+        }
+        else{ // edit data
+            _ = CoreDataHandler.updateInventory(inventory: currentInventory!)
+        }
+        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+    }
 }

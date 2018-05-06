@@ -21,6 +21,7 @@ UINavigationControllerDelegate{
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     
@@ -110,6 +111,12 @@ UINavigationControllerDelegate{
             let imageData = currentInventory!.image! as Data
             let image = UIImage(data: imageData, scale:1.0)
             imageView.image = image
+            
+            // inventory date
+            datePicker.date = currentInventory!.dateOfPurchase! as Date
+            
+            // set timestamp label
+            timeStampLabel.text = "Created at: " + (currentInventory?.timeStamp?.toString(withFormat: "MM/dd/yy"))!   // FIXME needs to change with US/UK etc.
         }
         else    // add new inventory
         {
@@ -139,6 +146,10 @@ UINavigationControllerDelegate{
             currentInventory?.inventoryBrand = brands[0]
             ownerButtonLabel.setTitle(owners[0].ownerName, for: UIControlState.normal)
             currentInventory?.inventoryOwner = owners[0]
+            
+            // set timestamp label
+            let today = Date()
+            timeStampLabel.text = "Creating: " + today.toString(withFormat: "MM/dd/yy")
         }
         
         // focus on first text field
@@ -362,8 +373,7 @@ UINavigationControllerDelegate{
     @IBAction func saveButton(_ sender: Any) {
         
         currentInventory?.inventoryName = textfieldInventoryName.text   // can only save when inventory name is entered
-        let today = Date() as NSDate // today
-        currentInventory?.dateOfPurchase = today    // FIXME choose from date picker
+        currentInventory?.dateOfPurchase = datePicker.date as NSDate?
         currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
         currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
         currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
@@ -388,5 +398,35 @@ UINavigationControllerDelegate{
         }
         navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// to get string from a date
+// usage: yourString = yourDate.toString(withFormat: "yyyy")
+extension Date {
+    
+    func toString(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.dateStyle = DateFormatter.Style.medium
+        formatter.timeStyle = DateFormatter.Style.none
+        let myString = formatter.string(from: self)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = format
+        
+        return formatter.string(from: yourDate!)
+    }
+}
+
+extension NSDate {
+    
+    func toString(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        let myString = formatter.string(from: self as Date)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = format
+        
+        return formatter.string(from: yourDate!)
     }
 }

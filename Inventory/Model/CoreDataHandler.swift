@@ -512,7 +512,7 @@ class CoreDataHandler: NSObject {
         let context = getContext()
         
         // german room list default data
-        let roomList: [String] = ["nicht definiert", "Wohnzimmer", "Buero", "Kinderzimmer 1",
+        let roomList: [String] = ["<nicht definiert>", "Wohnzimmer", "Buero", "Kinderzimmer 1",
                                   "Kinderzimmer 2", "Kueche", "Waschkeller", "Schlafzimmer", "Hobbykeller" ]
         
         for name in roomList{
@@ -525,7 +525,7 @@ class CoreDataHandler: NSObject {
         
         
         // default categories
-        let categoryList: [String] = ["keine Kategorie", "Technik", "Moebel", "Computer",
+        let categoryList: [String] = ["<keine Kategorie>", "Technik", "Moebel", "Computer",
                                          "Schmuck", "Spielzeug", "Fernseher", "Smartphone", "Tablet"]
         
         for name in categoryList{
@@ -539,7 +539,7 @@ class CoreDataHandler: NSObject {
         
         // default owners
         
-        let ownerList: [String] = ["keiner", "Marcus", "Sandra", "Emily",
+        let ownerList: [String] = ["<keiner>", "Marcus", "Sandra", "Emily",
                                       "Vincent"]
         
         for name in ownerList{
@@ -552,7 +552,7 @@ class CoreDataHandler: NSObject {
         
         // default brands
         
-        let brandList: [String] = ["sonstige", "IKEA", "Apple", "Sonos",
+        let brandList: [String] = ["<sonstige>", "IKEA", "Apple", "Sonos",
                                    "Thermomix", "Sony", "Google", "Amazon"]
         
         for name in brandList{

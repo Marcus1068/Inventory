@@ -87,7 +87,6 @@ UINavigationControllerDelegate{
         // edit inventory
         if (currentInventory != nil)
         {
-            
             editmode = EditMode.edit
             
             self.title = NSLocalizedString("Edit Inventory", comment: "Edit Inventory")
@@ -111,8 +110,6 @@ UINavigationControllerDelegate{
             let imageData = currentInventory!.image! as Data
             let image = UIImage(data: imageData, scale:1.0)
             imageView.image = image
-            
-            
         }
         else    // add new inventory
         {
@@ -361,19 +358,22 @@ UINavigationControllerDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     // save inventory, either new or update old object
     @IBAction func saveButton(_ sender: Any) {
         
-        currentInventory?.inventoryName = textfieldInventoryName.text
+        currentInventory?.inventoryName = textfieldInventoryName.text   // can only save when inventory name is entered
         let today = Date() as NSDate // today
         currentInventory?.dateOfPurchase = today    // FIXME choose from date picker
-        currentInventory?.price = Int32(textfieldPrice.text!)!
-        currentInventory?.remark = textfieldRemark.text
-        currentInventory?.serialNumber = textfieldSerialNumber.text
-        currentInventory?.warranty = Int32(textfieldWarranty.text!)!
+        currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
+        currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
+        currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
+        currentInventory?.warranty = textfieldWarranty.text!.count > 0 ? Int32(textfieldWarranty.text!)! : Int32(0)
+        currentInventory?.timeStamp = Date() as NSDate?
+        // image binary data
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
         currentInventory?.image = imageData! as NSData
+        
+        // invoice PDF binary data
         let arr : [UInt32] = [32,4,123,4,5,2]
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         currentInventory?.invoice = myinvoice
@@ -381,8 +381,6 @@ UINavigationControllerDelegate{
         // add data
         if (editmode == EditMode.add)
         {
-            // room, brand, owner, category will be set by buttons
-            
             _ = CoreDataHandler.saveInventory(inventory: currentInventory!)
         }
         else{ // edit data

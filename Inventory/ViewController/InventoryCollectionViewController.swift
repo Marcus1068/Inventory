@@ -13,16 +13,18 @@ private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
 
 
+
 class InventoryCollectionViewController: UICollectionViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var organizeButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     
-    
+    var dest = InventoryEditViewController()    // destination view controller
     var size = CGRect()
     var inventory : [Inventory] = []
     var owner : [Owner] = []
     var filteredInventory:[Inventory] = []   // in case of search filter by inventory name
+    
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -289,8 +291,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             selectedInventoryItem = inventory[indexPath.row]
         }
         
-        performSegue(withIdentifier: "editSegue", sender: self)
-        
+        // point destination view controller to selected inventory
+        dest.currentInventory = selectedInventoryItem
     }
     
     // prepare to transfer data to another view controller
@@ -299,20 +301,16 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         let destination =  segue.destination as! InventoryEditViewController
         
         if segue.identifier == "addSegue" {
-            //os_log("addSegue selected", log: OSLog.default, type: .debug)
-            
             destination.currentInventory = nil
         }
         
         if segue.identifier == "editSegue"  {
-            //os_log("editSegue selected", log: OSLog.default, type: .debug)
-            
             destination.currentInventory = selectedInventoryItem
+            dest = destination
         }
     }
     
     @IBAction func addButton(_ sender: Any) {
-        os_log("addButton", log: OSLog.default, type: .debug)
         
         performSegue(withIdentifier: "addSegue", sender: self)
     }

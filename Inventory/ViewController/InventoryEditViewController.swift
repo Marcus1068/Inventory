@@ -17,7 +17,8 @@ UINavigationControllerDelegate{
     @IBOutlet weak var textfieldPrice: UITextField!
     @IBOutlet weak var textfieldSerialNumber: UITextField!
     @IBOutlet weak var textfieldRemark: UITextField!
-    @IBOutlet weak var textfieldWarranty: UITextField!
+    
+    @IBOutlet weak var warrantySegmentControl: UISegmentedControl!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -105,7 +106,25 @@ UINavigationControllerDelegate{
             textfieldRemark.text = currentInventory?.remark
             
             // inventory warranty
-            textfieldWarranty.text = String(currentInventory!.warranty)
+            switch currentInventory!.warranty{
+            case 0:
+                warrantySegmentControl.selectedSegmentIndex = 0
+                break
+            case 6:
+                warrantySegmentControl.selectedSegmentIndex = 1
+                break
+            case 12:
+                warrantySegmentControl.selectedSegmentIndex = 2
+                break
+            case 24:
+                warrantySegmentControl.selectedSegmentIndex = 3
+                break
+            case 36:
+                warrantySegmentControl.selectedSegmentIndex = 4
+                break
+            default:
+                warrantySegmentControl.selectedSegmentIndex = 0
+            }
             
             // inventory image
             let imageData = currentInventory!.image! as Data
@@ -137,6 +156,11 @@ UINavigationControllerDelegate{
             imageView.image = UIImage(named: "Inventory.png");
             let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
             currentInventory?.image = imageData! as NSData
+            
+            // default warranty
+            warrantySegmentControl.selectedSegmentIndex = 0
+            currentInventory?.warranty = Int32(12)
+            
             // set item button default texts (first item element for default)
             roomButtonLabel.setTitle(rooms[0].roomName, for: UIControlState.normal)
             currentInventory?.inventoryRoom = rooms[0]
@@ -354,6 +378,25 @@ UINavigationControllerDelegate{
         self.present(myActionSheet, animated: true, completion: nil)
     }
     
+    // called when segment index changes
+    @IBAction func warrantySegmentIndex(_ sender: Any) {
+        switch warrantySegmentControl.selectedSegmentIndex
+        {
+        case 0: // 0 months
+            currentInventory?.warranty = Int32(0)
+        case 1: // 6 months
+            currentInventory?.warranty = Int32(6)
+        case 2: // 12 months
+            currentInventory?.warranty = Int32(12)
+        case 3: // 24 months
+            currentInventory?.warranty = Int32(24)
+        case 4: // 36 months
+            currentInventory?.warranty = Int32(36)
+        default:
+            break
+        }
+        
+    }
     
     // do nothing, close view controller
     @IBAction func cancelButton(_ sender: Any) {
@@ -377,7 +420,8 @@ UINavigationControllerDelegate{
         currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
         currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
         currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
-        currentInventory?.warranty = textfieldWarranty.text!.count > 0 ? Int32(textfieldWarranty.text!)! : Int32(0)
+        // warranty will be set via segment control
+        
         currentInventory?.timeStamp = Date() as NSDate?
         // image binary data
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)

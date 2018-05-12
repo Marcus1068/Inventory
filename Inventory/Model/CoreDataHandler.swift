@@ -13,11 +13,32 @@ import os.log
 
 class CoreDataHandler: NSObject {
     
+    
+    
     // internal: get database context
     class func getContext() -> NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    class func persistentContainer() -> NSPersistentContainer
+    {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    }
+    
+    // save everything
+    class func saveContext(){
+        let context = getContext()
+        
+        do {
+            try context.save()
+            
+        } catch  {
+            let nserror = error as NSError
+            
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
     
     
@@ -404,8 +425,6 @@ class CoreDataHandler: NSObject {
     // fetch all owner array, otherwise return [] empty array
     class func fetchAllOwners() -> [Owner]
     {
-        os_log("fetchAllOwners", log: OSLog.default, type: .debug)
-        
         let request : NSFetchRequest<Owner> = Owner.fetchRequest()
         
         // sort criteria
@@ -423,7 +442,6 @@ class CoreDataHandler: NSObject {
         }
         
         return []
-        
     }
     
     // fetch all room array, otherwise return [] empty array
@@ -446,18 +464,16 @@ class CoreDataHandler: NSObject {
         }
         
         return []
-        
     }
     
     // fetch array, if no array, return nil
     class func fetchInventory() -> [Inventory]
     {
-        os_log("fetchInventory in AppDelegate", log: OSLog.default, type: .debug)
-        
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
         // sort criteria
         request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        request.fetchBatchSize = 20
         
         let context = getContext()
         
@@ -470,11 +486,41 @@ class CoreDataHandler: NSObject {
             print("Error with fetch request in fetchInventory \(error)")
         }
         
-        //print(vokabeln?.count)
-        
         return []
+    }
+    
+    class func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
+        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        fetchRequest.fetchBatchSize = 20
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        
+        
+        return fetchRequest
+    }
+    
+    // export to cvs via backgroud task
+    // fetch async array, if no array, return nil
+    class func exportInventoryCVS()
+    {
+        //var inventory: [Inventory] = []
+  
+        persistentContainer().performBackgroundTask{ context in
+            do {
+                var inventory: [Inventory] = []
+                
+                inventory = try context.fetch(inventoryFetchRequest())
+                
+                for inv in inventory{
+                    print("Test mit Async: \(String(describing: inv.inventoryName))")
+                }
+            } catch {
+                print("Error with fetch request in fetchInventory \(error)")
+            }
+        }
         
     }
+    
     
     // fetch all inventory from a certain room array, otherwise return [] empty array
     class func fetchInventoryByRoom(roomName: String) -> [Inventory]

@@ -489,38 +489,6 @@ class CoreDataHandler: NSObject {
         return []
     }
     
-    class func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
-        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
-        fetchRequest.fetchBatchSize = 20
-        
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
-        
-        
-        return fetchRequest
-    }
-    
-    // export to cvs via backgroud task
-    // fetch async array, if no array, return nil
-    class func exportInventoryCVS()
-    {
-        //var inventory: [Inventory] = []
-  
-        persistentContainer().performBackgroundTask{ context in
-            do {
-                var inventory: [Inventory] = []
-                
-                inventory = try context.fetch(inventoryFetchRequest())
-                
-                for inv in inventory{
-                    print("Test mit Async: \(String(describing: inv.inventoryName))")
-                }
-            } catch {
-                print("Error with fetch request in fetchInventory \(error)")
-            }
-        }
-        
-    }
-    
     
     // fetch all inventory from a certain room array, otherwise return [] empty array
     class func fetchInventoryByRoom(roomName: String) -> [Inventory]

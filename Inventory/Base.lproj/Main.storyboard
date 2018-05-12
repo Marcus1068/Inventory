@@ -258,7 +258,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYe-ZD-Pde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="802.46305418719214"/>
+            <point key="canvasLocation" x="2666" y="1334"/>
         </scene>
         <!--Inventory Collection-->
         <scene sceneID="pyQ-tk-g04">
@@ -387,7 +387,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odd-zx-Gdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4728.8000000000002" y="-610.34482758620697"/>
+            <point key="canvasLocation" x="3599" y="-171"/>
         </scene>
         <!--My Categories-->
         <scene sceneID="zcT-nP-Nf0">
@@ -447,7 +447,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lAd-fx-aXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318" y="1852"/>
+            <point key="canvasLocation" x="1540" y="2254"/>
         </scene>
         <!--My Rooms-->
         <scene sceneID="lmX-nw-yqW">
@@ -510,7 +510,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glQ-3n-nXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2572" y="1053"/>
+            <point key="canvasLocation" x="4022" y="638"/>
         </scene>
         <!--Category-->
         <scene sceneID="t1G-7K-FnA">
@@ -589,7 +589,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOx-Yc-sEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3436.875" y="1376.4084507042253"/>
+            <point key="canvasLocation" x="5201" y="1666"/>
         </scene>
         <!--Reports-->
         <scene sceneID="Kv0-9X-085">
@@ -720,7 +720,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pm7-eE-Zah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-444" y="-318.4729064039409"/>
+            <point key="canvasLocation" x="508" y="-106"/>
         </scene>
         <!--Edit Room-->
         <scene sceneID="Gv0-hu-52d">
@@ -812,7 +812,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3506" y="667"/>
+            <point key="canvasLocation" x="5286" y="638"/>
         </scene>
         <!--Title-->
         <scene sceneID="9Sf-GY-taT">
@@ -1168,7 +1168,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5700" y="-734.48275862068965"/>
+            <point key="canvasLocation" x="5286" y="-171"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -1248,7 +1248,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqL-BL-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6415.1999999999998" y="-181.0344827586207"/>
+            <point key="canvasLocation" x="-287" y="1542"/>
+        </scene>
+        <!--Export-->
+        <scene sceneID="mgI-Qm-glO">
+            <objects>
+                <viewController id="MUX-Pv-eqU" customClass="ExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VFe-N0-mPM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-xq-tCv">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Export CVS or PDF" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
+                                        <barButtonItem key="leftBarButtonItem" title="CSV" image="Export" id="APE-Oc-XX7">
+                                            <connections>
+                                                <action selector="exportCVSButton:" destination="MUX-Pv-eqU" id="hyY-KH-fNk"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="PDF" image="PDF Icon" id="1XM-1s-jLR">
+                                            <connections>
+                                                <action selector="exportPDFButton:" destination="MUX-Pv-eqU" id="uqG-lK-ZWm"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export your data to the file system either as csv file or PDF file" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
+                                <rect key="frame" x="8" y="120" width="359" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xun-DS-JbD" firstAttribute="bottom" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="548" id="9R6-fz-hdf"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" id="A5R-OG-Ksp"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="trailing" secondItem="xun-DS-JbD" secondAttribute="trailing" id="N9J-Mw-TIS"/>
+                            <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="Cad-xq-tCv" secondAttribute="bottom" constant="32" id="Rp1-Vf-4L9"/>
+                            <constraint firstItem="z5u-gb-85Y" firstAttribute="centerX" secondItem="Cad-xq-tCv" secondAttribute="centerX" id="Tpn-fR-7vY"/>
+                            <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" constant="8" id="phh-tI-BgU"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="top" secondItem="xun-DS-JbD" secondAttribute="top" id="tGr-dL-8sm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xun-DS-JbD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Export" image="Export" id="CGe-VZ-Z2L"/>
+                    <connections>
+                        <outlet property="exportCVSBarButton" destination="APE-Oc-XX7" id="n0w-Wq-acH"/>
+                        <outlet property="exportPDFBarButton" destination="1XM-1s-jLR" id="Um2-uD-ItQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653.60000000000002" y="1523.6453201970444"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="yl2-sM-qoP">
@@ -1263,11 +1317,12 @@
                         <segue destination="IbM-Ka-Gqt" kind="relationship" relationship="viewControllers" id="RHg-jD-7Uk"/>
                         <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                         <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
+                        <segue destination="MUX-Pv-eqU" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2826.4000000000001" y="0.0"/>
+            <point key="canvasLocation" x="-287" y="679"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="7Jp-SO-iJv">
@@ -1286,7 +1341,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doL-eI-xyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3708" y="-553.44827586206895"/>
+            <point key="canvasLocation" x="2513" y="-171"/>
         </scene>
         <!--Manage Items-->
         <scene sceneID="pfg-Ho-yVm">
@@ -1305,7 +1360,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsE-KL-yNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-353" y="945"/>
+            <point key="canvasLocation" x="1540" y="1334"/>
         </scene>
         <!--Reports-->
         <scene sceneID="my9-ac-fzL">
@@ -1324,15 +1379,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsO-fo-6hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1769" y="-44"/>
+            <point key="canvasLocation" x="-287" y="-105"/>
         </scene>
     </scenes>
     <resources>
         <image name="Box Icon" width="30" height="30"/>
         <image name="Brand Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
+        <image name="Export" width="30" height="30"/>
         <image name="Inventory.png" width="1024" height="1024"/>
         <image name="Owner Icon" width="30" height="30"/>
+        <image name="PDF Icon" width="30" height="30"/>
         <image name="Room Icon" width="30" height="30"/>
         <image name="about" width="30" height="30"/>
         <image name="createNew" width="30" height="30"/>

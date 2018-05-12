@@ -1259,9 +1259,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-xq-tCv">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Export CVS or PDF" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
+                                    <navigationItem title="Export" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
                                         <barButtonItem key="leftBarButtonItem" title="CSV" image="Export" id="APE-Oc-XX7">
                                             <connections>
                                                 <action selector="exportCVSButton:" destination="MUX-Pv-eqU" id="hyY-KH-fNk"/>
@@ -1275,8 +1275,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export your data to the file system either as csv file or PDF file" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
-                                <rect key="frame" x="8" y="120" width="359" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Export your data to the file system either as csv file or PDF file" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
+                                <rect key="frame" x="8" y="140" width="359" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="265-ji-6f6">
+                                <rect key="frame" x="8" y="256" width="359" height="300"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export file:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-sB-dHx">
+                                <rect key="frame" x="8" y="227" width="167" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1284,25 +1296,36 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xun-DS-JbD" firstAttribute="bottom" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="548" id="9R6-fz-hdf"/>
-                            <constraint firstItem="Cad-xq-tCv" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" id="A5R-OG-Ksp"/>
-                            <constraint firstItem="Cad-xq-tCv" firstAttribute="trailing" secondItem="xun-DS-JbD" secondAttribute="trailing" id="N9J-Mw-TIS"/>
-                            <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="Cad-xq-tCv" secondAttribute="bottom" constant="32" id="Rp1-Vf-4L9"/>
-                            <constraint firstItem="z5u-gb-85Y" firstAttribute="centerX" secondItem="Cad-xq-tCv" secondAttribute="centerX" id="Tpn-fR-7vY"/>
-                            <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" constant="8" id="phh-tI-BgU"/>
-                            <constraint firstItem="Cad-xq-tCv" firstAttribute="top" secondItem="xun-DS-JbD" secondAttribute="top" id="tGr-dL-8sm"/>
+                            <constraint firstItem="DYJ-sB-dHx" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" constant="8" id="1LN-Wj-JdP"/>
+                            <constraint firstItem="265-ji-6f6" firstAttribute="centerY" secondItem="VFe-N0-mPM" secondAttribute="centerY" id="CAG-ae-cE8"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" id="Giv-2V-xZa"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="top" secondItem="xun-DS-JbD" secondAttribute="top" constant="20" id="JS6-M5-ndR"/>
+                            <constraint firstItem="xun-DS-JbD" firstAttribute="trailing" secondItem="z5u-gb-85Y" secondAttribute="trailing" constant="8" id="KZZ-Ce-cy8"/>
+                            <constraint firstItem="265-ji-6f6" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" constant="8" id="LQd-l0-Vcg"/>
+                            <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="xun-DS-JbD" secondAttribute="leading" constant="8" id="TMv-KC-gj0"/>
+                            <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="Zr4-ry-h04"/>
+                            <constraint firstItem="265-ji-6f6" firstAttribute="top" secondItem="DYJ-sB-dHx" secondAttribute="bottom" constant="8.3300000000000001" id="c8G-Kh-Hha"/>
+                            <constraint firstItem="xun-DS-JbD" firstAttribute="trailing" secondItem="265-ji-6f6" secondAttribute="trailing" constant="8" id="fLd-Se-1J8"/>
+                            <constraint firstItem="Cad-xq-tCv" firstAttribute="centerX" secondItem="z5u-gb-85Y" secondAttribute="centerX" id="gXa-EU-4PZ"/>
+                            <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="Cad-xq-tCv" secondAttribute="bottom" constant="32" id="haq-VG-7TX"/>
+                            <constraint firstItem="xun-DS-JbD" firstAttribute="trailing" secondItem="DYJ-sB-dHx" secondAttribute="trailing" constant="200" id="r1u-6Z-KBV"/>
+                            <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="xdg-AG-QaZ"/>
+                            <constraint firstItem="265-ji-6f6" firstAttribute="centerX" secondItem="VFe-N0-mPM" secondAttribute="centerX" id="yp7-K6-4f2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xun-DS-JbD"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Export" image="Export" id="CGe-VZ-Z2L"/>
                     <connections>
                         <outlet property="exportCVSBarButton" destination="APE-Oc-XX7" id="n0w-Wq-acH"/>
+                        <outlet property="exportLabel" destination="DYJ-sB-dHx" id="JOB-mA-AsU"/>
                         <outlet property="exportPDFBarButton" destination="1XM-1s-jLR" id="Um2-uD-ItQ"/>
+                        <outlet property="exportTextView" destination="265-ji-6f6" id="a6t-lA-cvA"/>
+                        <outlet property="navbar" destination="Cad-xq-tCv" id="GnF-Mc-FYF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653.60000000000002" y="1523.6453201970444"/>
+            <point key="canvasLocation" x="645.60000000000002" y="1540.6403940886701"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="yl2-sM-qoP">
@@ -1315,9 +1338,9 @@
                     <connections>
                         <segue destination="kLY-4E-sxY" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
                         <segue destination="IbM-Ka-Gqt" kind="relationship" relationship="viewControllers" id="RHg-jD-7Uk"/>
-                        <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
-                        <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
                         <segue destination="MUX-Pv-eqU" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
+                        <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
+                        <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

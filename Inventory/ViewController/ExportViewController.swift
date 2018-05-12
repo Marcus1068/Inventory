@@ -15,6 +15,9 @@ import os.log
 
 class ExportViewController: UIViewController {
 
+    @IBOutlet weak var navbar: UINavigationBar!
+    @IBOutlet weak var exportTextView: UITextView!
+    @IBOutlet weak var exportLabel: UILabel!
     @IBOutlet weak var exportCVSBarButton: UIBarButtonItem!
     
     @IBOutlet weak var exportPDFBarButton: UIBarButtonItem!
@@ -23,8 +26,24 @@ class ExportViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
+        self.exportTextView.text = ""
+        self.exportLabel.text = "Export file destination:"
+        //self.title = "Export to CVS/PDF"
+
+        //self.navigationController?.title = "Export to CVS/PDF"
+        //self.navigationItem.title = "Export to CVS/PDF"
+        //self.navbar.bar
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.exportTextView.text = ""
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,45 +86,31 @@ class ExportViewController: UIViewController {
                 print("ERROR: \(error.localizedDescription)")
             }
             
-            let exportFilePath = NSTemporaryDirectory() + "inventoryexport.csv"
-            let exportFileURL = URL(fileURLWithPath: exportFilePath)
-            FileManager.default.createFile(atPath: exportFilePath, contents: Data(), attributes: nil)
+            let fileName = "inventoryexport.csv"
+            let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+            let exportFilePath = NSTemporaryDirectory() + fileName
             
-            let fileHandle: FileHandle?
+            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty\n"
+            
+            for inv in results{
+                csvText.append(contentsOf: inv.csv())
+            }
+            
             do {
-                fileHandle = try FileHandle(forWritingTo: exportFileURL)
-            } catch let error as NSError {
-                print("ERROR: \(error.localizedDescription)")
-                fileHandle = nil
-            }
-            
-            // write to disk
-            
-            if let fileHandle = fileHandle {
-                var csvHeader = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty\n"
-                
-                for item in results {
-                    fileHandle.seekToEndOfFile()
-                    guard let csvData = item
-                        .csv()
-                        .data(using: .utf8, allowLossyConversion: false) else {
-                            continue
-                    }
-                    fileHandle.write(csvData)
-                }
-                
-                fileHandle.closeFile()
-                
-                // print("Export Path: \(exportFilePath)")
+                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                print("Export Path: \(exportFilePath)")
                 DispatchQueue.main.async {
                     self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
-                    self.showExportFinishedAlertView(exportFilePath)
+                    self.exportTextView.text = exportFilePath
+                    //self.showExportFinishedAlertView(exportFilePath)
                 }
-            } else {
-                DispatchQueue.main.async {
-                    self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
-                }
+                
+            } catch {
+                
+                print("Failed to create inventory csv file")
+                print("\(error)")
             }
+
         }
     }
     

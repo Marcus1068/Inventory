@@ -87,9 +87,9 @@ class ExportViewController: UIViewController {
             }
             
             let fileName = "inventoryexport.csv"
-            let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-            let exportFilePath = NSTemporaryDirectory() + fileName
-            
+            let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let pathURL = docPath.appendingPathComponent(fileName)
+            let exportDocPath = pathURL.absoluteString
             var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty\n"
             
             for inv in results{
@@ -97,20 +97,18 @@ class ExportViewController: UIViewController {
             }
             
             do {
-                try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
-                print("Export Path: \(exportFilePath)")
+                try csvText.write(to: pathURL, atomically: true, encoding: String.Encoding.utf8)
+                //print("Export Path: \(exportDocPath)")
                 DispatchQueue.main.async {
                     self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
-                    self.exportTextView.text = exportFilePath
+                    self.exportTextView.text = exportDocPath
+                    // show alert box with path name
                     //self.showExportFinishedAlertView(exportFilePath)
                 }
-                
             } catch {
-                
                 print("Failed to create inventory csv file")
                 print("\(error)")
             }
-
         }
     }
     

@@ -29,19 +29,19 @@ UINavigationControllerDelegate{
     
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
-    
-    @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
-    @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
-    @IBOutlet weak var roomButtonLabel: UIButton!
-    @IBOutlet weak var categoryButtonLabel: UIButton!
-    @IBOutlet weak var brandButtonLabel: UIButton!
-    @IBOutlet weak var ownerButtonLabel: UIButton!
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var inMonthsLabel: UILabel!
     
+    @IBOutlet weak var roomButtonLabel: UIButton!
+    @IBOutlet weak var categoryButtonLabel: UIButton!
+    @IBOutlet weak var brandButtonLabel: UIButton!
+    @IBOutlet weak var ownerButtonLabel: UIButton!
+    
+    @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
+    @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
@@ -290,12 +290,25 @@ UINavigationControllerDelegate{
         dismiss(animated:true, completion: nil)
     }
     
-    // choose a new image/take a picture
+    // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
         imagePicker.allowsEditing = true
-        imagePicker.sourceType = .photoLibrary // FIXME crashes with iOS simulator
+        imagePicker.sourceType = .camera
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // choose from picture library
+    @IBAction func chooseImageButton(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // choose a PDF file
+    @IBAction func choosePDFButton(_ sender: Any) {
+        
     }
     
     // choose room with an action sheet filled with all room names
@@ -395,7 +408,6 @@ UINavigationControllerDelegate{
         default:
             break
         }
-        
     }
     
     // do nothing, close view controller
@@ -445,8 +457,8 @@ UINavigationControllerDelegate{
     }
     
     // display pdf file
-    func pdfDisplay(){
-        if let path = Bundle.main.path(forResource: "geographic", ofType: "pdf") {
+    func pdfDisplay(fileName: String){
+        if let path = Bundle.main.path(forResource: fileName, ofType: "pdf") {
             let url = URL(fileURLWithPath: path)
             if let pdfDocument = PDFDocument(url: url) {
                 pdfView.autoScales = true

@@ -215,7 +215,7 @@ UINavigationControllerDelegate{
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        //os_log("accessoryButtonTappedForRowWith", log: OSLog.default, type: .debug)
+        os_log("accessoryButtonTappedForRowWith", log: OSLog.default, type: .debug)
         //print(indexPath.row)
         //let idx = IndexPath(row: indexPath.row, section: 0)
         //tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)

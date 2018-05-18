@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C006CF6209F838F00B6D3C5 /* geographic.pdf */; };
+		2C22268320AF26A9009CE098 /* InvHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */; };
 		2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */; };
 		2C4926DD20921AFE00508874 /* Inventory.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4926DC20921AFE00508874 /* Inventory.png */; };
@@ -64,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		2C006CF6209F838F00B6D3C5 /* geographic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = geographic.pdf; sourceTree = "<group>"; };
+		2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4926DC20921AFE00508874 /* Inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory.png; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				2C501B722098D03100D99949 /* CategoryTableViewController.swift */,
 				2C501B742098E80500D99949 /* CategoryEditViewController.swift */,
 				2C99377120A70F8A00EEC002 /* ExportViewController.swift */,
+				2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */,
 				2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */,
+				2C22268320AF26A9009CE098 /* InvHeaderCollectionReusableView.swift in Sources */,
 				2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */,
 				2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */,
 				2C99377220A70F8A00EEC002 /* ExportViewController.swift in Sources */,

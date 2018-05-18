@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import os.log
 
 private let reuseIdentifier = "collectionCell"
@@ -16,7 +17,34 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     @IBOutlet weak var organizeButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
+
+    var searchText : String = ""
+    // define fetch results controller based on core data entity (Room)
+    // define sort descriptors
+    // define cache
+    // define sections (optional)
+    lazy var fetchedResultsController: NSFetchedResultsController<Inventory> = {
+        let fetchRequest: NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        let roomSort = NSSortDescriptor(key: #keyPath(Inventory.inventoryRoom.roomName), ascending: true)
+        let invnameSort = NSSortDescriptor(key: #keyPath(Inventory.inventoryName), ascending: true)
+        fetchRequest.sortDescriptors = [roomSort, invnameSort]  // first by section sort, then by item name sort
+        fetchRequest.predicate = nil
+  //          NSPredicate(format: "inventoryRoom.inventoryName = %@", searchText) : nil
+        
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: CoreDataHandler.getContext(),
+            sectionNameKeyPath: #keyPath(Inventory.inventoryRoom.roomName),     // section defined here
+            cacheName: nil)  // "inventoryCache"
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
+    var shouldReloadCollectionView = false
+    var blockOperations: [BlockOperation] = []
+
     var dest = InventoryEditViewController()    // destination view controller
     var size = CGRect()
     var inventory : [Inventory] = []
@@ -95,37 +123,43 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         collectionViewLayout?.invalidateLayout()
     }
     
+    // initialize the data for the view
+    // fetch database etc.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        inventory = CoreDataHandler.fetchInventory()
+        //inventory = CoreDataHandler.fetchInventory()
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
         collection.reloadData()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: Search Bar
     
     // filter for scope of owner (uses segment control to display owners)
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        print(searchBar.scopeButtonTitles![selectedScope])
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
     
     // called by system when entered search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        //searchController.searchBar.showsScopeBar = true
-        //collectionView.reloadData()
-        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchBarIsEmpty()){
+            fetchedResultsController.fetchRequest.predicate = nil
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
+            }
             collection.reloadData()
-            
         } else {
                 //currentInventory = inventory[indexPath.row]
             }
@@ -136,13 +170,21 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     // called by system when entered search bar
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         //searchController.searchBar.showsScopeBar = true
-        collection.reloadData()
+  /*      if (!searchBarIsEmpty()){
+            fetchedResultsController.fetchRequest.predicate = nil
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
+            }
+            collection.reloadData()
+        } */
     }
     
     // self implemented method
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         
-        filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
+ /*       filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
             let doesOwnerMatch = (scope == "All") || (inv.inventoryOwner?.ownerName == scope)
             
             if searchBarIsEmpty() {
@@ -151,9 +193,16 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                 return doesOwnerMatch && inv.inventoryName!.lowercased().contains(searchText.lowercased())
             }
         })
+   */
+        fetchedResultsController.fetchRequest.predicate = searchText.count > 0 ?
+            NSPredicate(format: "inventoryName contains[c] %@", searchText.lowercased()) : nil
         
-        //print(inventory.count)
-        //print(filteredInventory.count)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
         collection.reloadData()
     }
     
@@ -187,16 +236,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     // MARK: UICollectionViewDataSource
     
     /*    override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -207,12 +246,27 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     // used for footer usage displaying a label with number of elements
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {            
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "header",
+                                                                         for: indexPath) as! InvHeaderCollectionReusableView
+            let sectionInfo = fetchedResultsController.sections?[indexPath.section]
+            headerView.roomName.text = sectionInfo?.name
+            //headerView.roomIcon.image = ?? FIXME suchen des icons passend zum Raum
+            
+            return headerView
+            
         case UICollectionElementKindSectionFooter:
             let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "footer",
                                                                          for: indexPath) as! SearchFooter
-            if isFiltering(){
+            
+            let sectionInfo = fetchedResultsController.sections?[indexPath.section]
+            footerView.searchResultLabel.textColor = UIColor.blue
+            footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory objects"
+            
+  /*          if isFiltering(){
                 footerView.searchResultLabel.textColor = UIColor.blue
                 footerView.searchResultLabel.text = String(filteredInventory.count) + " Inventory objects found"
             }
@@ -220,7 +274,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                 footerView.searchResultLabel.textColor = UIColor.black
                 footerView.searchResultLabel.text = String(inventory.count) + " Inventory objects found"
             }
-            
+            */
             return footerView
         
         default:
@@ -228,23 +282,42 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
     }
     
+    // number of sections, section devider is room name
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        
+        return sections.count
+    }
+    
     // number of collection items, depends on filtering on or off (searchbar used or not)
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if isFiltering() {
+        guard let sectionInfo = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        
+        return sectionInfo.numberOfObjects
+        
+/*        if isFiltering() {
             return filteredInventory.count
         }
         
-        return inventory.count    //return number of rows
+        return inventory.count    //return number of rows */
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
         
+        // rounded corners for each cell
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        
         // FIXME will be called twice, delays performance massivlely with large data sets
         
         // Configure the cell
-        
+/*
         let currentInventory : Inventory
         
         if isFiltering() {
@@ -256,15 +329,19 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         cell.myLabel.text = currentInventory.inventoryName
         cell.ownerLabel.text = currentInventory.inventoryOwner?.ownerName
         cell.roomNameLabel.text = currentInventory.inventoryRoom?.roomName
-        
-        cell.priceLabel.text = String(currentInventory.price) + "€"
+        cell.priceLabel.text = String(currentInventory.price) + "€" // FIXME
         let imageData = currentInventory.image! as Data
         let image = UIImage(data: imageData, scale:1.0)
         cell.myImage.image = image!
-        
-        // rounded corners for each cell
-        cell.layer.cornerRadius = 10
-        cell.layer.masksToBounds = true
+*/
+        let inv = fetchedResultsController.object(at: indexPath)
+        cell.myLabel.text = inv.inventoryName
+        cell.ownerLabel.text = inv.inventoryOwner?.ownerName
+        cell.roomNameLabel.text = inv.inventoryRoom?.roomName
+        cell.priceLabel.text = String(inv.price) + "€" // FIXME
+        let imageData = inv.image! as Data
+        let image = UIImage(data: imageData, scale:1.0)
+        cell.myImage.image = image!
         
         return cell
     }
@@ -272,6 +349,12 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     // MARK: UICollectionViewDelegate
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let inv = fetchedResultsController.object(at: indexPath)
+        
+        dest.currentInventory = inv
+        selectedInventoryItem = inv
+        
+        /*
         if isFiltering() {
             selectedInventoryItem = filteredInventory[indexPath.row]
         } else {
@@ -279,7 +362,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
         
         // point destination view controller to selected inventory
-        dest.currentInventory = selectedInventoryItem
+        dest.currentInventory = selectedInventoryItem */
     }
     
     // prepare to transfer data to another view controller
@@ -320,7 +403,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
      return true
      }
      */
-    
+ /*
     @nonobjc private let capital = #selector(CollectionViewCell.capital)
     @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)
     
@@ -349,6 +432,154 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             print ("capital")
         }
      }
+   */
+    deinit {
+        for operation: BlockOperation in blockOperations {
+            operation.cancel()
+        }
+        blockOperations.removeAll(keepingCapacity: false)
+    }
+}
+
+// MARK: - NSFetchedResultsControllerDelegate
+extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //collection.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert:
+            print("Insert Object: \(String(describing: newIndexPath))")
+            
+            if (collectionView?.numberOfSections)! > 0 {
+                
+                if collectionView?.numberOfItems( inSection: newIndexPath!.section ) == 0 {
+                    self.shouldReloadCollectionView = true
+                } else {
+                    blockOperations.append(
+                        BlockOperation(block: { [weak self] in
+                            if let this = self {
+                                DispatchQueue.main.async {
+                                    this.collectionView!.insertItems(at: [newIndexPath!])
+                                }
+                            }
+                        })
+                    )
+                }
+                
+            } else {
+                self.shouldReloadCollectionView = true
+            }
+            break
+        case .delete:
+            print("Delete Object: \(String(describing: indexPath))")
+            if collectionView?.numberOfItems( inSection: indexPath!.section ) == 1 {
+                self.shouldReloadCollectionView = true
+            } else {
+                blockOperations.append(
+                    BlockOperation(block: { [weak self] in
+                        if let this = self {
+                            DispatchQueue.main.async {
+                                this.collectionView!.deleteItems(at: [indexPath!])
+                            }
+                        }
+                    })
+                )
+            }
+            break
+        case .update:
+            print("Update Object: \(String(describing: indexPath))")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            
+                            this.collectionView!.reloadItems(at: [indexPath!])
+                        }
+                    }
+                })
+            )
+            break
+        case .move:
+            print("Move Object: \(String(describing: indexPath))")
+            
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.moveItem(at: indexPath!, to: newIndexPath!)
+                        }
+                    }
+                })
+            )
+            break
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // Checks if we should reload the collection view to fix a bug @ http://openradar.appspot.com/12954582
+        if (self.shouldReloadCollectionView) {
+            DispatchQueue.main.async {
+                self.collection.reloadData();
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.collectionView!.performBatchUpdates({ () -> Void in
+                    for operation: BlockOperation in self.blockOperations {
+                        operation.start()
+                    }
+                }, completion: { (finished) -> Void in
+                    self.blockOperations.removeAll(keepingCapacity: false)
+                })
+            }
+        }
+    }
     
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        //let indexSet = IndexSet(integer: sectionIndex)
+        
+        switch type {
+        case .insert:
+            print("Insert Section: \(sectionIndex)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.insertSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                        }
+                    }
+                })
+            )
+            break
+        case .delete:
+            print("Delete Section: \(sectionIndex)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                        }
+                    }
+                })
+            )
+            break
+        case .update:
+            print("Update Section: \(sectionIndex)")
+            blockOperations.append(
+                BlockOperation(block: { [weak self] in
+                    if let this = self {
+                        DispatchQueue.main.async {
+                            this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                        }
+                    }
+                })
+            )
+            break
+        default: break
+        }
+    }
 }

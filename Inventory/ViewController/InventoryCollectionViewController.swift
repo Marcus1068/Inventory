@@ -18,7 +18,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     @IBOutlet weak var organizeButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
 
-    var searchText : String = ""
     // define fetch results controller based on core data entity (Room)
     // define sort descriptors
     // define cache
@@ -42,12 +41,12 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         return fetchedResultsController
     }()
     
-    var shouldReloadCollectionView = false
-    var blockOperations: [BlockOperation] = []
+//    var shouldReloadCollectionView = false
+//    var blockOperations: [BlockOperation] = []
 
     var dest = InventoryEditViewController()    // destination view controller
     var size = CGRect()
-    var inventory : [Inventory] = []
+//    var inventory : [Inventory] = []
     var owner : [Owner] = []
     var filteredInventory:[Inventory] = []   // in case of search filter by inventory name
     
@@ -142,6 +141,17 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     //MARK: Search Bar
     
+    // helper to get database refresh and reload collection as well
+    func fetchAndReloadCollection(){
+        fetchedResultsController.fetchRequest.predicate = nil
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        collection.reloadData()
+    }
+    
     // filter for scope of owner (uses segment control to display owners)
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
@@ -149,6 +159,17 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     
     // called by system when entered search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    }
+    
+    // called when search bar cancel button was clicked
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        fetchedResultsController.fetchRequest.predicate = nil
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        collection.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -170,15 +191,16 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     // called by system when entered search bar
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         //searchController.searchBar.showsScopeBar = true
-  /*      if (!searchBarIsEmpty()){
-            fetchedResultsController.fetchRequest.predicate = nil
+        if (!searchBarIsEmpty()){
+    /*        fetchedResultsController.fetchRequest.predicate = nil
             do {
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {
                 print("Fetching error: \(error), \(error.userInfo)")
             }
-            collection.reloadData()
-        } */
+            collection.reloadData() */
+            searchBar.text = "AAAA"
+        }
     }
     
     // self implemented method
@@ -264,7 +286,14 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             footerView.searchResultLabel.textColor = UIColor.blue
-            footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory objects"
+            //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+            
+            if(sectionInfo!.numberOfObjects > 1){
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory items"
+            }
+            else{
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+            }
             
   /*          if isFiltering(){
                 footerView.searchResultLabel.textColor = UIColor.blue
@@ -299,12 +328,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
         
         return sectionInfo.numberOfObjects
-        
-/*        if isFiltering() {
-            return filteredInventory.count
-        }
-        
-        return inventory.count    //return number of rows */
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -316,29 +339,13 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         // FIXME will be called twice, delays performance massivlely with large data sets
         
-        // Configure the cell
-/*
-        let currentInventory : Inventory
-        
-        if isFiltering() {
-            currentInventory = filteredInventory[indexPath.row]
-        } else {
-            currentInventory = inventory[indexPath.row]
-        }
-        
-        cell.myLabel.text = currentInventory.inventoryName
-        cell.ownerLabel.text = currentInventory.inventoryOwner?.ownerName
-        cell.roomNameLabel.text = currentInventory.inventoryRoom?.roomName
-        cell.priceLabel.text = String(currentInventory.price) + "€" // FIXME
-        let imageData = currentInventory.image! as Data
-        let image = UIImage(data: imageData, scale:1.0)
-        cell.myImage.image = image!
-*/
         let inv = fetchedResultsController.object(at: indexPath)
         cell.myLabel.text = inv.inventoryName
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName
-        cell.roomNameLabel.text = inv.inventoryRoom?.roomName
-        cell.priceLabel.text = String(inv.price) + "€" // FIXME
+        cell.categoryNameLabel.text = inv.inventoryCategory?.categoryName
+        cell.priceLabel.text = String(inv.price) + "€" // FIXME hardcoded
+        cell.warrantyMonthsLabel.text = String(inv.warranty)
+        cell.warrantyLabel.text = "Warranty:"
         let imageData = inv.image! as Data
         let image = UIImage(data: imageData, scale:1.0)
         cell.myImage.image = image!
@@ -353,16 +360,6 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         dest.currentInventory = inv
         selectedInventoryItem = inv
-        
-        /*
-        if isFiltering() {
-            selectedInventoryItem = filteredInventory[indexPath.row]
-        } else {
-            selectedInventoryItem = inventory[indexPath.row]
-        }
-        
-        // point destination view controller to selected inventory
-        dest.currentInventory = selectedInventoryItem */
     }
     
     // prepare to transfer data to another view controller
@@ -433,12 +430,12 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
      }
    */
-    deinit {
+/*    deinit {
         for operation: BlockOperation in blockOperations {
             operation.cancel()
         }
         blockOperations.removeAll(keepingCapacity: false)
-    }
+    } */
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
@@ -453,9 +450,10 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         case .insert:
             print("Insert Object: \(String(describing: newIndexPath))")
             
-            if (collectionView?.numberOfSections)! > 0 {
+            collection.reloadData()
+ /*           if (collection?.numberOfSections)! > 0 {
                 
-                if collectionView?.numberOfItems( inSection: newIndexPath!.section ) == 0 {
+                if collection?.numberOfItems( inSection: newIndexPath!.section ) == 0 {
                     self.shouldReloadCollectionView = true
                 } else {
                     blockOperations.append(
@@ -471,11 +469,13 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
                 
             } else {
                 self.shouldReloadCollectionView = true
-            }
+            } */
             break
         case .delete:
+            collection.reloadData()
+            /*
             print("Delete Object: \(String(describing: indexPath))")
-            if collectionView?.numberOfItems( inSection: indexPath!.section ) == 1 {
+            if collection?.numberOfItems( inSection: indexPath!.section ) == 1 {
                 self.shouldReloadCollectionView = true
             } else {
                 blockOperations.append(
@@ -487,46 +487,48 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
                         }
                     })
                 )
-            }
+            } */
             break
         case .update:
-            print("Update Object: \(String(describing: indexPath))")
+            collection.reloadData()
+        /*    print("Update Object: \(String(describing: indexPath))")
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
                         DispatchQueue.main.async {
                             
-                            this.collectionView!.reloadItems(at: [indexPath!])
+                            this.collection!.reloadItems(at: [indexPath!])
                         }
                     }
                 })
-            )
+            ) */
             break
         case .move:
             print("Move Object: \(String(describing: indexPath))")
-            
+            collection.reloadData()
+          /*
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
                         DispatchQueue.main.async {
-                            this.collectionView!.moveItem(at: indexPath!, to: newIndexPath!)
+                            this.collection!.moveItem(at: indexPath!, to: newIndexPath!)
                         }
                     }
                 })
-            )
+            ) */
             break
         }
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         // Checks if we should reload the collection view to fix a bug @ http://openradar.appspot.com/12954582
-        if (self.shouldReloadCollectionView) {
+  /*      if (self.shouldReloadCollectionView) {
             DispatchQueue.main.async {
                 self.collection.reloadData();
             }
         } else {
             DispatchQueue.main.async {
-                self.collectionView!.performBatchUpdates({ () -> Void in
+                self.collection!.performBatchUpdates({ () -> Void in
                     for operation: BlockOperation in self.blockOperations {
                         operation.start()
                     }
@@ -534,7 +536,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
                     self.blockOperations.removeAll(keepingCapacity: false)
                 })
             }
-        }
+        } */
     }
     
     
@@ -544,40 +546,45 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         
         switch type {
         case .insert:
+            collection.reloadData()
             print("Insert Section: \(sectionIndex)")
-            blockOperations.append(
+ /*           blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
                         DispatchQueue.main.async {
-                            this.collectionView!.insertSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                            this.collection!.insertSections(NSIndexSet(index: sectionIndex) as IndexSet)
                         }
                     }
                 })
-            )
+            ) */
             break
         case .delete:
             print("Delete Section: \(sectionIndex)")
+            collection.reloadData()
+            /*
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
                         DispatchQueue.main.async {
-                            this.collectionView!.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                            this.collection!.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet)
                         }
                     }
                 })
-            )
+            ) */
             break
         case .update:
             print("Update Section: \(sectionIndex)")
+            collection.reloadData()
+            /*
             blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
                         DispatchQueue.main.async {
-                            this.collectionView!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
+                            this.collection!.reloadSections(NSIndexSet(index: sectionIndex) as IndexSet)
                         }
                     }
                 })
-            )
+            ) */
             break
         default: break
         }

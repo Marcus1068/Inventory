@@ -15,8 +15,11 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var roomNameLabel: UILabel!
+    @IBOutlet weak var categoryNameLabel: UILabel!
     
+    @IBOutlet weak var warrantyMonthsLabel: UILabel!
+    
+    @IBOutlet weak var warrantyLabel: UILabel!
     // select background color, works only on TVOS
     func markSelected(state: Bool){
         if state == true{

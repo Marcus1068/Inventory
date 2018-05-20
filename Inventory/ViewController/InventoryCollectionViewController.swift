@@ -275,7 +275,10 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                                                                          for: indexPath) as! InvHeaderCollectionReusableView
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             headerView.roomName.text = sectionInfo?.name
-            //headerView.roomIcon.image = ?? FIXME suchen des icons passend zum Raum
+            let room = CoreDataHandler.fetchRoomIcon(roomName: (sectionInfo?.name)!)
+            let imageData = room!.roomImage! as Data
+            let image = UIImage(data: imageData, scale:1.0)
+            headerView.roomIcon.image = image
             
             return headerView
             

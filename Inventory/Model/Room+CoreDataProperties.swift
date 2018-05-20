@@ -2,7 +2,7 @@
 //  Room+CoreDataProperties.swift
 //  Inventory
 //
-//  Created by Marcus Deuß on 23.04.18.
+//  Created by Marcus Deuß on 20.05.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
 //
 //
@@ -18,6 +18,7 @@ extension Room {
     }
 
     @NSManaged public var roomName: String?
+    @NSManaged public var roomImage: NSData?
     @NSManaged public var roomInventory: NSSet?
 
 }

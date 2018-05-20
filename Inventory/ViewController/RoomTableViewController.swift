@@ -147,6 +147,12 @@ extension RoomTableViewController {
         
         let room = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = room.roomName
+        
+        let imageData = room.roomImage! as Data
+        let image = UIImage(data: imageData, scale:1.0)
+        cell.imageView?.image = image!
+        cell.backgroundColor = UIColor.clear
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

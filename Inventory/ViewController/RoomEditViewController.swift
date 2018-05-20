@@ -17,6 +17,32 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     
+    @IBOutlet weak var chosenImage: UIImageView!
+    
+    @IBOutlet weak var bedroomIcon: UIButton!
+    
+    @IBOutlet weak var diningIcon: UIButton!
+    
+    @IBOutlet weak var kidsIcon: UIButton!
+    
+    @IBOutlet weak var gardenIcon: UIButton!
+    
+    @IBOutlet weak var bathIcon: UIButton!
+    
+    @IBOutlet weak var cellarIcon: UIButton!
+    
+    @IBOutlet weak var kitchenIcon: UIButton!
+    
+    @IBOutlet weak var livingIcon: UIButton!
+    
+    @IBOutlet weak var garageIcon: UIButton!
+    
+    @IBOutlet weak var homeIcon: UIButton!
+    
+    @IBOutlet weak var defaultIcon: UIButton!
+    
+    @IBOutlet weak var living2Icon: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,11 +52,16 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         
         // edit or add room
         if currentRoom != nil{
-            //
+            // edit
             self.title = "Edit Room"
             textfieldRoomName.text = currentRoom!.roomName
+            
+            let imageData = currentRoom!.roomImage! as Data
+            let image = UIImage(data: imageData, scale:1.0)
+            chosenImage.image = image
         }
         else{
+            // add
             self.title = "Add Room"
             textfieldRoomName.text = ""
             saveButtonOutlet.isEnabled = false
@@ -103,6 +134,9 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 
                 // set object with UI values
                 room.roomName = textfieldRoomName.text!
+                // image binary data
+                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 0.1)
+                room.roomImage = imageData! as NSData
                 
                 currentRoom = room
                 
@@ -115,20 +149,24 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             
         }
         else{ // update room name
-            if CoreDataHandler.fetchRoom(roomName: textfieldRoomName.text!)
+/*            if CoreDataHandler.fetchRoom(roomName: textfieldRoomName.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldRoomName.becomeFirstResponder()
             }
-            else{
+            else{ */
                 currentRoom?.roomName = textfieldRoomName.text
+                
+                // image binary data
+                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 0.1)
+                currentRoom?.roomImage = imageData! as NSData
                 
                 _ = CoreDataHandler.saveRoom(room: currentRoom!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
-            }
+     //       }
         }
     }
 
@@ -148,4 +186,53 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         self.present(dialogMessage, animated: true, completion: nil)
         
     }
+    
+    // manage all icon buttons
+    @IBAction func iconButton(_ sender: UIButton) {
+        
+        switch sender {
+        case bedroomIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-bett-50")
+            break
+        case diningIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-geschirr-50")
+            break
+        case kidsIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-teddybär-50")
+            break
+        case gardenIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-haus-mit-garten-50")
+            break
+        case garageIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-garage-50")
+            break
+        case bathIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-durchfall-50")
+            break
+        case cellarIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-keller-filled-50")
+            break
+        case livingIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-wohnzimmer-50")
+            break
+        case kitchenIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-kochtopf-50")
+            break
+        case homeIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-wohnung-filled-50")
+            break
+        case defaultIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-hütte-filled-50")
+            break
+        case living2Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-retro-tv-filled-50")
+            break
+        default:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-hütte-filled-50")
+            break
+            
+        }
+
+    }
+    
 }

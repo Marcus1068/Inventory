@@ -78,6 +78,28 @@ class CoreDataHandler: NSObject {
         
     }
     
+    // fetch room icon
+    class func fetchRoomIcon(roomName: String) -> Room?{
+        let context = getContext()
+        
+        let request : NSFetchRequest<Room> = Room.fetchRequest()
+        // search predicate
+        request.predicate = NSPredicate(format: "roomName = %@", roomName)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                // FI)XME hack!!!
+                return result[0]
+            }
+        } catch {
+            print("Error with fetch request in fetchRoom \(error)")
+        }
+        
+        return nil
+        
+    }
+    
     // delete room object
     class func deleteRoom(room: Room) -> Bool{
         let context = getContext()
@@ -532,6 +554,9 @@ class CoreDataHandler: NSObject {
         for name in roomList{
             let room = Room(context: context)
             room.roomName = name
+            let myImage = #imageLiteral(resourceName: "icons8-hütte-filled-50")
+            let imageData = UIImageJPEGRepresentation(myImage, 0.1)
+            room.roomImage = imageData! as NSData
             _ = saveRoom(room: room)
         }
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Brand" representedClassName="Brand" syncable="YES">
         <attribute name="brandName" attributeType="String" syncable="YES"/>
         <relationship name="brandInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
@@ -28,6 +28,7 @@
         <relationship name="ownerInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryOwner" inverseEntity="Inventory" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES">
+        <attribute name="roomImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="roomName" attributeType="String" syncable="YES"/>
         <relationship name="roomInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryRoom" inverseEntity="Inventory" syncable="YES"/>
     </entity>
@@ -36,6 +37,6 @@
         <element name="Category" positionX="178" positionY="-99" width="128" height="73"/>
         <element name="Inventory" positionX="-263" positionY="45" width="128" height="238"/>
         <element name="Owner" positionX="-63" positionY="-333" width="128" height="73"/>
-        <element name="Room" positionX="-738" positionY="-270" width="128" height="73"/>
+        <element name="Room" positionX="-738" positionY="-270" width="128" height="90"/>
     </elements>
 </model>

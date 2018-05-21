@@ -126,20 +126,20 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
             
         }
         else{ // update category name
-            if CoreDataHandler.fetchCategory(categoryName: textfieldCategory.text!)
+ /*           if CoreDataHandler.fetchCategory(categoryName: textfieldCategory.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldCategory.becomeFirstResponder()
             }
-            else{
+            else{ */
                 currentCategory?.categoryName = textfieldCategory.text
                 
                 _ = CoreDataHandler.saveCategory(category: currentCategory!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
-            }
+  //          }
         }
     }
     

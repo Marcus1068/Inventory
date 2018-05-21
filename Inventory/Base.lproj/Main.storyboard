@@ -461,11 +461,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="57" id="Hur-5T-tqk">
-                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="57"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="60" id="Hur-5T-tqk">
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hur-5T-tqk" id="35Z-Ay-RGW">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="56.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="59.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -528,12 +528,13 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="roomCell" rowHeight="57" id="Ui5-KX-yq2">
-                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="57"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="roomCell" rowHeight="60" id="Ui5-KX-yq2">
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ui5-KX-yq2" id="Ah7-21-eWs">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="56.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="59.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -779,11 +780,11 @@
             <objects>
                 <viewController title="Edit Room" id="AAM-yv-3qO" customClass="RoomEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ce2-tj-tH9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-2j-9Q5">
-                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zTi-4a-HQI">
                                         <rect key="frame" x="169" y="4" width="36" height="36"/>
@@ -802,7 +803,7 @@
                                 <viewLayoutGuide key="safeArea" id="jnv-d0-40c"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the room name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-0W-SIY">
-                                <rect key="frame" x="16" y="208.33333333333334" width="343" height="66.000000000000028"/>
+                                <rect key="frame" x="16" y="120.33333333333334" width="343" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="S9a-8M-RnR"/>
                                 </constraints>
@@ -811,7 +812,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
-                                <rect key="frame" x="16" y="170.33333333333334" width="143" height="30"/>
+                                <rect key="frame" x="16" y="82.333333333333343" width="143" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="143" id="HaN-aP-z9P"/>
                                     <constraint firstAttribute="height" constant="30" id="zEY-P3-51y"/>
@@ -821,13 +822,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGS-kv-Yx5">
-                                <rect key="frame" x="15.999999999999993" y="132" width="98.333333333333314" height="20.333333333333343"/>
+                                <rect key="frame" x="15.999999999999993" y="44" width="98.333333333333314" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a symbol for your room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-ft-R03">
-                                <rect key="frame" x="15" y="282.33333333333331" width="244" height="21"/>
+                                <rect key="frame" x="15" y="194.33333333333331" width="244" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FIV-2O-fCk"/>
                                 </constraints>
@@ -836,7 +837,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-hütte-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-EO-nqg">
-                                <rect key="frame" x="276" y="160" width="50" height="50"/>
+                                <rect key="frame" x="276" y="72" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6PX-Kg-96g"/>
@@ -844,7 +845,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-lp-iWu">
-                                <rect key="frame" x="45" y="323" width="285" height="190"/>
+                                <rect key="frame" x="45" y="235" width="285" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-pW-DdT">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
@@ -970,7 +971,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bru-zw-FIZ" firstAttribute="trailing" secondItem="7eY-0W-SIY" secondAttribute="trailing" constant="16" id="39L-dL-naZ"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="trailing" secondItem="bru-zw-FIZ" secondAttribute="trailing" id="95T-Cp-IUC"/>
@@ -1021,6 +1022,9 @@
                         <outlet property="kitchenIcon" destination="erR-Jg-g01" id="DT3-uw-cii"/>
                         <outlet property="living2Icon" destination="70q-re-gZN" id="evJ-0o-Tah"/>
                         <outlet property="livingIcon" destination="Aqz-KQ-v6T" id="vdR-MF-M94"/>
+                        <outlet property="office2Icon" destination="ZWh-Nq-cGs" id="PqR-4w-hnX"/>
+                        <outlet property="office3Icon" destination="ThF-wr-n4g" id="v7V-72-3aU"/>
+                        <outlet property="officeIcon" destination="Wv8-VB-FSn" id="RsR-dm-1KV"/>
                         <outlet property="saveButtonOutlet" destination="KJq-iK-oJe" id="tT7-DQ-YqF"/>
                         <outlet property="textfieldRoomName" destination="KWu-LK-Nv9" id="H3f-rY-aOQ"/>
                     </connections>
@@ -1693,8 +1697,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JWi-qT-NtE"/>
-        <segue reference="5se-75-Ta6"/>
-        <segue reference="Jmz-UD-5Ui"/>
+        <segue reference="wRn-lR-pVR"/>
+        <segue reference="tlR-Jn-FPJ"/>
         <segue reference="CJG-Xc-sZ3"/>
     </inferredMetricsTieBreakers>
 </document>

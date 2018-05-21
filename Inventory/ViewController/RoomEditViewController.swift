@@ -43,6 +43,12 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var living2Icon: UIButton!
     
+    @IBOutlet weak var officeIcon: UIButton!
+    
+    @IBOutlet weak var office2Icon: UIButton!
+    
+    @IBOutlet weak var office3Icon: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -135,7 +141,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 // set object with UI values
                 room.roomName = textfieldRoomName.text!
                 // image binary data
-                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 0.1)
+                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 1.0)
                 room.roomImage = imageData! as NSData
                 
                 currentRoom = room
@@ -159,7 +165,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 currentRoom?.roomName = textfieldRoomName.text
                 
                 // image binary data
-                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 0.1)
+                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 1.0)
                 currentRoom?.roomImage = imageData! as NSData
                 
                 _ = CoreDataHandler.saveRoom(room: currentRoom!)
@@ -226,6 +232,15 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             break
         case living2Icon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-retro-tv-filled-50")
+            break
+        case officeIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-arbeitsplatz-50")
+            break
+        case office2Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-home-office-filled-50")
+            break
+        case office3Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-schreibtischlampe-filled-50")
             break
         default:
             chosenImage.image = #imageLiteral(resourceName: "icons8-hütte-filled-50")

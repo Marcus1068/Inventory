@@ -30,7 +30,7 @@ class RoomTableViewController: UITableViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: CoreDataHandler.getContext(),
             sectionNameKeyPath: nil,
-            cacheName: "roomCache")
+            cacheName: nil)
         
         fetchedResultsController.delegate = self
         

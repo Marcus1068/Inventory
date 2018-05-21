@@ -30,7 +30,7 @@ class CategoryTableViewController: UITableViewController {
             fetchRequest: fetchRequest,
             managedObjectContext: CoreDataHandler.getContext(),
             sectionNameKeyPath: nil,
-            cacheName: "categoryCache")
+            cacheName: nil)
         
         fetchedResultsController.delegate = self
         

@@ -554,8 +554,8 @@ class CoreDataHandler: NSObject {
         for name in roomList{
             let room = Room(context: context)
             room.roomName = name
-            let myImage = #imageLiteral(resourceName: "icons8-hütte-filled-50")
-            let imageData = UIImageJPEGRepresentation(myImage, 0.1)
+            let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
+            let imageData = UIImageJPEGRepresentation(myImage, 1.0)
             room.roomImage = imageData! as NSData
             _ = saveRoom(room: room)
         }
@@ -611,12 +611,12 @@ class CoreDataHandler: NSObject {
         let myImage4 = #imageLiteral(resourceName: "Computer Icon")
         let myImage5 = #imageLiteral(resourceName: "Phone Icon")
         let myImage6 = #imageLiteral(resourceName: "Room Icon")
-        let imageData1 = UIImageJPEGRepresentation(myImage, 0.1)
-        let imageData2 = UIImageJPEGRepresentation(myImage2, 0.1)
-        let imageData3 = UIImageJPEGRepresentation(myImage3, 0.1)
-        let imageData4 = UIImageJPEGRepresentation(myImage4, 0.1)
-        let imageData5 = UIImageJPEGRepresentation(myImage5, 0.1)
-        let imageData6 = UIImageJPEGRepresentation(myImage6, 0.1)
+        let imageData1 = UIImageJPEGRepresentation(myImage, 1.0)
+        let imageData2 = UIImageJPEGRepresentation(myImage2, 1.0)
+        let imageData3 = UIImageJPEGRepresentation(myImage3, 1.0)
+        let imageData4 = UIImageJPEGRepresentation(myImage4, 1.0)
+        let imageData5 = UIImageJPEGRepresentation(myImage5, 1.0)
+        let imageData6 = UIImageJPEGRepresentation(myImage6, 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
         

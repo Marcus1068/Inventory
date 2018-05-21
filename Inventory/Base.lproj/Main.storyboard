@@ -628,11 +628,16 @@
                                 <action selector="cancelButton:" destination="BNp-7u-MBg" id="2ys-04-s7I"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aby-N4-I1J">
-                            <connections>
-                                <action selector="saveButton:" destination="BNp-7u-MBg" id="fTF-1i-f5f"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="aby-N4-I1J">
+                                <connections>
+                                    <action selector="saveButton:" destination="BNp-7u-MBg" id="fTF-1i-f5f"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="Category Icon" id="sCi-xY-KWs">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButtonOutlet" destination="PvR-oz-nYu" id="RXc-Uk-DUs"/>
@@ -836,7 +841,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-hütte-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-EO-nqg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-home-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-EO-nqg">
                                 <rect key="frame" x="276" y="72" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -867,7 +872,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6P-fg-E5U">
                                                 <rect key="frame" x="118" y="0.0" width="49" height="50"/>
-                                                <state key="normal" image="icons8-teddybär-50"/>
+                                                <state key="normal" image="icons8-teddy-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="sv7-o3-Cni"/>
                                                 </connections>
@@ -933,7 +938,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvR-p5-Idh">
                                                 <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
-                                                <state key="normal" image="icons8-hütte-filled-50"/>
+                                                <state key="normal" image="icons8-home-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5qA-cB-LdD"/>
                                                 </connections>
@@ -1001,11 +1006,16 @@
                                 <action selector="cancelButton:" destination="AAM-yv-3qO" id="mEK-14-qz1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KJq-iK-oJe">
-                            <connections>
-                                <action selector="saveButton:" destination="AAM-yv-3qO" id="X1Q-od-O3I"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="KJq-iK-oJe">
+                                <connections>
+                                    <action selector="saveButton:" destination="AAM-yv-3qO" id="X1Q-od-O3I"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="Room Icon" id="DYa-85-aGe">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="bathIcon" destination="j0x-Az-0TF" id="xmJ-wa-hRh"/>
@@ -1684,13 +1694,13 @@
         <image name="icons8-garage-50" width="50" height="50"/>
         <image name="icons8-geschirr-50" width="50" height="50"/>
         <image name="icons8-haus-mit-garten-50" width="50" height="50"/>
+        <image name="icons8-home-filled-50" width="50" height="50"/>
         <image name="icons8-home-office-filled-50" width="50" height="50"/>
-        <image name="icons8-hütte-filled-50" width="50" height="50"/>
         <image name="icons8-keller-filled-50" width="50" height="50"/>
         <image name="icons8-kochtopf-50" width="50" height="50"/>
         <image name="icons8-retro-tv-filled-50" width="50" height="50"/>
         <image name="icons8-schreibtischlampe-filled-50" width="50" height="50"/>
-        <image name="icons8-teddybär-50" width="50" height="50"/>
+        <image name="icons8-teddy-50" width="50" height="50"/>
         <image name="icons8-wohnung-filled-50" width="50" height="50"/>
         <image name="icons8-wohnzimmer-50" width="50" height="50"/>
         <image name="list" width="30" height="30"/>

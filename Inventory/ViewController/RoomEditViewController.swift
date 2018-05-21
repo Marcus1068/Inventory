@@ -204,7 +204,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             chosenImage.image = #imageLiteral(resourceName: "icons8-geschirr-50")
             break
         case kidsIcon:
-            chosenImage.image = #imageLiteral(resourceName: "icons8-teddybär-50")
+            chosenImage.image = #imageLiteral(resourceName: "icons8-teddy-50")
             break
         case gardenIcon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-haus-mit-garten-50")
@@ -228,7 +228,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             chosenImage.image = #imageLiteral(resourceName: "icons8-wohnung-filled-50")
             break
         case defaultIcon:
-            chosenImage.image = #imageLiteral(resourceName: "icons8-hütte-filled-50")
+            chosenImage.image = #imageLiteral(resourceName: "icons8-home-filled-50")
             break
         case living2Icon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-retro-tv-filled-50")
@@ -243,7 +243,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             chosenImage.image = #imageLiteral(resourceName: "icons8-schreibtischlampe-filled-50")
             break
         default:
-            chosenImage.image = #imageLiteral(resourceName: "icons8-hütte-filled-50")
+            chosenImage.image = #imageLiteral(resourceName: "icons8-home-filled-50")
             break
             
         }

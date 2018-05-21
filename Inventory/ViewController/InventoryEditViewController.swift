@@ -22,9 +22,9 @@ UINavigationControllerDelegate{
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfImageView: UIImageView!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
     
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
@@ -71,12 +71,6 @@ UINavigationControllerDelegate{
 
         imagePicker.delegate = self
         
-      /*
-        let recognizer = UITapGestureRecognizer(target: self, action:#selector(imageTap(recognizer:)))
-        recognizer.delegate = self
-        view.addGestureRecognizer(recognizer) */
-        
-        //imageView.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view.
         
@@ -128,7 +122,7 @@ UINavigationControllerDelegate{
             
             // inventory image
             let imageData = currentInventory!.image! as Data
-            let image = UIImage(data: imageData, scale:1.0)
+            let image = UIImage(data: imageData, scale: 1.0)
             imageView.image = image
             
             // inventory date

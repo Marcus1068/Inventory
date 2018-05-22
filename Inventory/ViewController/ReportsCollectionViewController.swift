@@ -88,7 +88,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         
         searchController.searchBar.scopeButtonTitles = list
         searchController.searchBar.delegate = self
-        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.showsScopeBar = false
         
         definesPresentationContext = true
         navigationController?.isNavigationBarHidden = false

@@ -449,7 +449,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="TDg-hI-3iO">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TDg-hI-3iO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -514,7 +514,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="169.66666666666666" y="97" width="36" height="36"/>
+                                    <rect key="frame" x="169.66666666666666" y="-18" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="RVi-Bm-oX4"/>
                                         <constraint firstAttribute="width" constant="36" id="mmr-Jt-sfA"/>
@@ -660,8 +660,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CG2-h4-ckP">
+                                <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="cvw-X7-YXT" id="Gc4-Vk-ZNP"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-TT-vjk">
+                                <rect key="frame" x="16" y="20" width="334" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-uU-i8e" userLabel="Collection">
-                                <rect key="frame" x="0.0" y="173" width="375" height="468"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G9r-RA-tGF">
                                     <size key="itemSize" width="175" height="123"/>
@@ -745,26 +764,19 @@
                                     <outlet property="delegate" destination="cvw-X7-YXT" id="rGd-Pu-rOB"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" showsCancelButton="YES" showsScopeBar="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CG2-h4-ckP">
-                                <rect key="frame" x="93" y="43" width="170" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="cvw-X7-YXT" id="Gc4-Vk-ZNP"/>
-                                </connections>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="S6H-uU-i8e" secondAttribute="bottom" constant="83" id="4Fc-lI-Cwe"/>
-                            <constraint firstAttribute="trailing" secondItem="S6H-uU-i8e" secondAttribute="trailing" id="6OQ-2X-WNL"/>
-                            <constraint firstItem="S6H-uU-i8e" firstAttribute="leading" secondItem="vep-um-8pg" secondAttribute="leading" id="T2K-Tg-aBl"/>
-                            <constraint firstItem="S6H-uU-i8e" firstAttribute="top" secondItem="vep-um-8pg" secondAttribute="top" constant="173" id="TsZ-Wm-akD"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="CG2-h4-ckP" secondAttribute="trailing" constant="16" id="9OP-lZ-ZqZ"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="bottom" secondItem="S6H-uU-i8e" secondAttribute="bottom" constant="5" id="Cr5-BF-oNX"/>
+                            <constraint firstItem="S6H-uU-i8e" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" id="F28-NY-ieV"/>
+                            <constraint firstItem="CG2-h4-ckP" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="YMt-hT-C50"/>
+                            <constraint firstItem="S6H-uU-i8e" firstAttribute="top" secondItem="CG2-h4-ckP" secondAttribute="bottom" constant="21" id="YsN-MV-mc9"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="NeC-TT-vjk" secondAttribute="trailing" constant="25" id="ZBE-CA-4NR"/>
+                            <constraint firstItem="NeC-TT-vjk" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" constant="20" id="dMC-Gy-y64"/>
+                            <constraint firstItem="CG2-h4-ckP" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" id="ec3-vP-GxZ"/>
+                            <constraint firstItem="NeC-TT-vjk" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="unK-dk-3y4"/>
+                            <constraint firstItem="S6H-uU-i8e" firstAttribute="trailing" secondItem="l5T-a7-N8M" secondAttribute="trailing" id="wJ1-s8-1EP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l5T-a7-N8M"/>
                     </view>
@@ -781,7 +793,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pm7-eE-Zah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508" y="-106"/>
+            <point key="canvasLocation" x="508" y="-106.40394088669952"/>
         </scene>
         <!--Edit Room-->
         <scene sceneID="Gv0-hu-52d">
@@ -1048,7 +1060,7 @@
                             <tableViewSection headerTitle="Inventory" id="v9W-KQ-FRH">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="gPx-et-GBk">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gPx-et-GBk" id="M9w-8z-slD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>

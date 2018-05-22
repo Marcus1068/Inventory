@@ -660,27 +660,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CG2-h4-ckP">
-                                <rect key="frame" x="16" y="0.0" width="343" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="cvw-X7-YXT" id="Gc4-Vk-ZNP"/>
-                                </connections>
-                            </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-TT-vjk">
-                                <rect key="frame" x="16" y="20" width="334" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-uU-i8e" userLabel="Collection">
-                                <rect key="frame" x="0.0" y="77" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="160" width="375" height="476"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G9r-RA-tGF">
                                     <size key="itemSize" width="175" height="123"/>
@@ -764,19 +745,83 @@
                                     <outlet property="delegate" destination="cvw-X7-YXT" id="rGd-Pu-rOB"/>
                                 </connections>
                             </collectionView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CG2-h4-ckP">
+                                <rect key="frame" x="16" y="0.0" width="343" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="cvw-X7-YXT" id="Gc4-Vk-ZNP"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-TT-vjk">
+                                <rect key="frame" x="16" y="41" width="343" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ownersSelectionSegment:" destination="cvw-X7-YXT" eventType="valueChanged" id="9ly-Lf-lrx"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QaD-2h-ipL">
+                                <rect key="frame" x="16" y="109" width="343" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ownersSelectionSegment:" destination="cvw-X7-YXT" eventType="valueChanged" id="teN-TX-641"/>
+                                    <action selector="roomsSelectionSegment:" destination="cvw-X7-YXT" eventType="valueChanged" id="vJH-zk-WI7"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Owner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qF-vh-hOd">
+                                <rect key="frame" x="16" y="12" width="121" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j70-5p-zCM">
+                                <rect key="frame" x="260" y="7" width="99" height="30"/>
+                                <state key="normal" title="Filter on"/>
+                                <connections>
+                                    <action selector="filterButtonAction:" destination="cvw-X7-YXT" eventType="touchUpInside" id="CbB-9I-fNo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aen-J4-7Yv">
+                                <rect key="frame" x="16" y="80" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="j70-5p-zCM" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" constant="7" id="3Bf-sz-vhH"/>
+                            <constraint firstItem="QaD-2h-ipL" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="3bw-0X-UO2"/>
+                            <constraint firstItem="NeC-TT-vjk" firstAttribute="top" secondItem="j70-5p-zCM" secondAttribute="bottom" constant="4" id="6tC-Z3-e7n"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="j70-5p-zCM" secondAttribute="trailing" constant="16" id="7M1-3W-1mM"/>
                             <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="CG2-h4-ckP" secondAttribute="trailing" constant="16" id="9OP-lZ-ZqZ"/>
                             <constraint firstItem="l5T-a7-N8M" firstAttribute="bottom" secondItem="S6H-uU-i8e" secondAttribute="bottom" constant="5" id="Cr5-BF-oNX"/>
                             <constraint firstItem="S6H-uU-i8e" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" id="F28-NY-ieV"/>
+                            <constraint firstItem="NeC-TT-vjk" firstAttribute="top" secondItem="8qF-vh-hOd" secondAttribute="bottom" constant="8" id="GEt-yO-JUl"/>
+                            <constraint firstItem="QaD-2h-ipL" firstAttribute="top" secondItem="Aen-J4-7Yv" secondAttribute="bottom" constant="8" id="TmL-iv-8iG"/>
                             <constraint firstItem="CG2-h4-ckP" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="YMt-hT-C50"/>
-                            <constraint firstItem="S6H-uU-i8e" firstAttribute="top" secondItem="CG2-h4-ckP" secondAttribute="bottom" constant="21" id="YsN-MV-mc9"/>
-                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="NeC-TT-vjk" secondAttribute="trailing" constant="25" id="ZBE-CA-4NR"/>
-                            <constraint firstItem="NeC-TT-vjk" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" constant="20" id="dMC-Gy-y64"/>
+                            <constraint firstItem="S6H-uU-i8e" firstAttribute="top" secondItem="CG2-h4-ckP" secondAttribute="bottom" constant="104" id="YsN-MV-mc9"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="NeC-TT-vjk" secondAttribute="trailing" constant="16" id="ZBE-CA-4NR"/>
+                            <constraint firstItem="Aen-J4-7Yv" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="bVu-av-5uv"/>
+                            <constraint firstItem="NeC-TT-vjk" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" constant="41" id="dMC-Gy-y64"/>
+                            <constraint firstItem="Aen-J4-7Yv" firstAttribute="top" secondItem="NeC-TT-vjk" secondAttribute="bottom" constant="11" id="doa-RT-qs3"/>
+                            <constraint firstItem="QaD-2h-ipL" firstAttribute="top" secondItem="Aen-J4-7Yv" secondAttribute="bottom" constant="8" id="eLn-cV-tcI"/>
                             <constraint firstItem="CG2-h4-ckP" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" id="ec3-vP-GxZ"/>
                             <constraint firstItem="NeC-TT-vjk" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="unK-dk-3y4"/>
+                            <constraint firstItem="8qF-vh-hOd" firstAttribute="top" secondItem="l5T-a7-N8M" secondAttribute="top" constant="12" id="v1S-OF-dsY"/>
+                            <constraint firstItem="l5T-a7-N8M" firstAttribute="trailing" secondItem="QaD-2h-ipL" secondAttribute="trailing" constant="16" id="vF2-uN-bc1"/>
                             <constraint firstItem="S6H-uU-i8e" firstAttribute="trailing" secondItem="l5T-a7-N8M" secondAttribute="trailing" id="wJ1-s8-1EP"/>
+                            <constraint firstItem="8qF-vh-hOd" firstAttribute="leading" secondItem="l5T-a7-N8M" secondAttribute="leading" constant="16" id="z2M-Ai-Oku"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="l5T-a7-N8M"/>
                     </view>
@@ -788,6 +833,11 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collection" destination="S6H-uU-i8e" id="G9d-ZY-zwB"/>
+                        <outlet property="filterButton" destination="j70-5p-zCM" id="fMR-mv-Ris"/>
+                        <outlet property="filterByOwnerLabel" destination="8qF-vh-hOd" id="5r3-qu-2yH"/>
+                        <outlet property="filterByRoomLabel" destination="Aen-J4-7Yv" id="k9C-PN-g5j"/>
+                        <outlet property="ownersSegment" destination="NeC-TT-vjk" id="lm7-QN-uxe"/>
+                        <outlet property="roomsSegment" destination="QaD-2h-ipL" id="mGG-nu-4Pi"/>
                         <outlet property="searchBar" destination="CG2-h4-ckP" id="o2a-Yy-8FM"/>
                     </connections>
                 </viewController>

@@ -147,10 +147,10 @@ UINavigationControllerDelegate{
             textfieldPrice.text = ""
             
             // default placeholder graphic
-            imageView.image = UIImage(named: "Inventory.png");
+    //        imageView.image = UIImage(named: "Inventory.png");
             let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
             currentInventory?.image = imageData! as NSData
-            
+
             // default warranty
             warrantySegmentControl.selectedSegmentIndex = 0
             currentInventory?.warranty = Int32(12)
@@ -302,7 +302,7 @@ UINavigationControllerDelegate{
     
     // choose a PDF file
     @IBAction func choosePDFButton(_ sender: Any) {
-        
+        pdfDisplay(fileName: "geographic")
     }
     
     // choose room with an action sheet filled with all room names
@@ -460,6 +460,7 @@ UINavigationControllerDelegate{
                 pdfView.displayDirection = .vertical
                 pdfView.document = pdfDocument
                 
+                // show thumbnail as well
                 captureThumbnails(pdfDocument:pdfDocument)
             }
         }

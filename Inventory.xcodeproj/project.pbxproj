@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C006CF6209F838F00B6D3C5 /* geographic.pdf */; };
-		2C22268320AF26A9009CE098 /* InvHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */; };
+		2C1C7F6D20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */; };
+		2C1C7F6F20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */; };
+		2C22268320AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift */; };
 		2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */; };
 		2C4926DD20921AFE00508874 /* Inventory.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C4926DC20921AFE00508874 /* Inventory.png */; };
@@ -42,7 +44,7 @@
 		2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
-		2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6B208B674C004F2C12 /* SearchFooter.swift */; };
+		2C770C6C208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6B208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift */; };
 		2C99377220A70F8A00EEC002 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99377120A70F8A00EEC002 /* ExportViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +67,9 @@
 
 /* Begin PBXFileReference section */
 		2C006CF6209F838F00B6D3C5 /* geographic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = geographic.pdf; sourceTree = "<group>"; };
-		2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		2C22268220AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4926DC20921AFE00508874 /* Inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory.png; sourceTree = "<group>"; };
@@ -105,7 +109,7 @@
 		2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
-		2C770C6B208B674C004F2C12 /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
+		2C770C6B208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C99377120A70F8A00EEC002 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,16 +228,18 @@
 				2C56E95F20879B3400FD5136 /* CollectionViewCell.swift */,
 				2C56E95920873E5700FD5136 /* InventoryCollectionViewController.swift */,
 				2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */,
+				2C22268220AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift */,
+				2C770C6B208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift */,
 				2C56E95B20874B5A00FD5136 /* RoomTableViewController.swift */,
 				2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */,
 				2C56E95D208756D500FD5136 /* RoomNavigationViewController.swift */,
-				2C770C6B208B674C004F2C12 /* SearchFooter.swift */,
 				2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */,
 				2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */,
+				2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */,
+				2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */,
 				2C501B722098D03100D99949 /* CategoryTableViewController.swift */,
 				2C501B742098E80500D99949 /* CategoryEditViewController.swift */,
 				2C99377120A70F8A00EEC002 /* ExportViewController.swift */,
-				2C22268220AF26A9009CE098 /* InvHeaderCollectionReusableView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -382,9 +388,9 @@
 			files = (
 				2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */,
 				2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */,
-				2C22268320AF26A9009CE098 /* InvHeaderCollectionReusableView.swift in Sources */,
+				2C22268320AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift in Sources */,
 				2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */,
-				2C770C6C208B674C004F2C12 /* SearchFooter.swift in Sources */,
+				2C770C6C208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift in Sources */,
 				2C99377220A70F8A00EEC002 /* ExportViewController.swift in Sources */,
 				2C56E9532086A41700FD5136 /* Room+CoreDataClass.swift in Sources */,
 				2C56E9522086A41700FD5136 /* Owner+CoreDataProperties.swift in Sources */,
@@ -401,12 +407,14 @@
 				2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */,
 				2C4926D92090F85000508874 /* ReportsCollectionViewController.swift in Sources */,
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,
+				2C1C7F6D20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift in Sources */,
 				2C56E9502086A41700FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
 				2C56E95A20873E5700FD5136 /* InventoryCollectionViewController.swift in Sources */,
 				2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */,
 				2C56E95E208756D500FD5136 /* RoomNavigationViewController.swift in Sources */,
 				2C56E94E2086A41700FD5136 /* Category+CoreDataProperties.swift in Sources */,
 				2C56E9512086A41700FD5136 /* Owner+CoreDataClass.swift in Sources */,
+				2C1C7F6F20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift in Sources */,
 				2C56E94D2086A41700FD5136 /* Category+CoreDataClass.swift in Sources */,
 				2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */,
 				2C56E94F2086A41700FD5136 /* Inventory+CoreDataClass.swift in Sources */,

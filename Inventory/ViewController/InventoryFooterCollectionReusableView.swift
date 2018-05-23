@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchFooter: UICollectionReusableView{
+class InventoryFooterCollectionReusableView: UICollectionReusableView{
     
     @IBOutlet weak var searchResultLabel: UILabel!
     

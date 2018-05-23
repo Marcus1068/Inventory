@@ -41,9 +41,9 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ownersSegment: UISegmentedControl!
     @IBOutlet weak var roomsSegment: UISegmentedControl!
-    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var filterByOwnerLabel: UILabel!
     @IBOutlet weak var filterByRoomLabel: UILabel!
+    @IBOutlet weak var filterSwitch: UISwitch!
     
     var owner : [Owner] = []
     var room : [Room] = []
@@ -76,8 +76,13 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             navigationItem.largeTitleDisplayMode = .always
         }
         
+        
+        
+        // set view title
         self.title = "Reports"
-        filterButton.setTitle("Filter on", for: .normal)
+        
+        // enable filtering
+        filterSwitch.isOn = true
         
         // Setup the Scope Bars
         owner = CoreDataHandler.fetchAllOwners()
@@ -154,6 +159,8 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
+        
+        //collection.contentOffset.y += 100
         
     }
 
@@ -232,6 +239,46 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         
         
         return cell
+    }
+    
+    // used for footer usage displaying a label with number of elements
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "reportHeader",
+                                                                         for: indexPath) as! ReportsHeaderCollectionReusableView
+            let sectionInfo = fetchedResultsController.sections?[indexPath.section]
+            headerView.roomLabel.text = sectionInfo?.name
+            let room = CoreDataHandler.fetchRoomIcon(roomName: (sectionInfo?.name)!)
+            let imageData = room!.roomImage! as Data
+            let image = UIImage(data: imageData, scale:1.0)
+            headerView.roomIcon.image = image
+            
+            return headerView
+            
+        case UICollectionElementKindSectionFooter:
+            let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: "reportFooter",
+                                                                         for: indexPath) as! ReportsFooterCollectionReusableView
+            
+            let sectionInfo = fetchedResultsController.sections?[indexPath.section]
+            footerView.searchResultLabel.textColor = UIColor.blue
+            //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+            
+            if(sectionInfo!.numberOfObjects > 1){
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory items"
+            }
+            else{
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+            }
+            
+            
+            return footerView
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
 
     // rooms segment selection
@@ -328,14 +375,13 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         collection.reloadData()
     }
     
-    // filter button enables or disables segment controls
-    @IBAction func filterButtonAction(_ sender: Any) {
-        let title = filterButton.title(for: .normal)
+    
+    // enable or disable the filtering mechanics
+    @IBAction func filterSwitchAction(_ sender: UISwitch) {
         
         // enable filter segments
-        if title == "Filter off"
+        if sender.isOn
         {
-            filterButton.setTitle("Filter on", for: .normal)
             roomsSegment.isEnabled = true
             roomsSegment.isHidden = false
             ownersSegment.isEnabled = true
@@ -346,10 +392,12 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             // set filters to ALL for rooms and owners, otherwise no data is selectable
             roomsSegment.selectedSegmentIndex = 0
             ownersSegment.selectedSegmentIndex = 0
+            
+            //let position = collection!.contentInset.top
+            //collection!.contentOffset.y += 100
         }
             // disable filter segments
         else{
-            filterButton.setTitle("Filter off", for: .normal)
             roomsSegment.isEnabled = false
             roomsSegment.isHidden = true
             ownersSegment.isEnabled = false
@@ -369,9 +417,10 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
                 print("Fetching error: \(error), \(error.userInfo)")
             }
             
+            //let position = collection!.contentInset.top
+            //collection!.contentOffset.y -= 100
             collection.reloadData()
         }
-        
     }
     
 }

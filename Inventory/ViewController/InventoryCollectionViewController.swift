@@ -272,7 +272,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         case UICollectionElementKindSectionHeader:
             let headerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "header",
-                                                                         for: indexPath) as! InvHeaderCollectionReusableView
+                                                                         for: indexPath) as! InventoryHeaderCollectionReusableView
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             headerView.roomName.text = sectionInfo?.name
             let room = CoreDataHandler.fetchRoomIcon(roomName: (sectionInfo?.name)!)
@@ -285,7 +285,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         case UICollectionElementKindSectionFooter:
             let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "footer",
-                                                                         for: indexPath) as! SearchFooter
+                                                                         for: indexPath) as! InventoryFooterCollectionReusableView
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             footerView.searchResultLabel.textColor = UIColor.blue

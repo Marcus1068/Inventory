@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InvHeaderCollectionReusableView: UICollectionReusableView {
+class InventoryHeaderCollectionReusableView: UICollectionReusableView {
         
     @IBOutlet weak var roomName: UILabel!
     @IBOutlet weak var roomIcon: UIImageView!

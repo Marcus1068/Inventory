@@ -38,7 +38,6 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     }()
    
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var ownersSegment: UISegmentedControl!
     @IBOutlet weak var roomsSegment: UISegmentedControl!
     @IBOutlet weak var filterByOwnerLabel: UILabel!
@@ -49,9 +48,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     var room : [Room] = []
     let searchController = UISearchController(searchResultsController: nil)
     
-    func updateSearchResults(for searchController: UISearchController) {
-        //
-    }
+    // MARK - methods
     
     // fill a segment controll with values
     func replaceOwnersSegments(segments: Array<String>) {
@@ -108,7 +105,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         replaceRoomsSegments(segments: listRooms)
         roomsSegment.selectedSegmentIndex = 0
         
-        searchBar.isHidden = true
+        //searchBar.isHidden = true
         /*
         self made search bar
         self.searchBar.delegate = self
@@ -134,7 +131,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         // Do any additional setup after loading the view.
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "Search for Inventory"
         //searchController.searchBar.delegate = self
         searchController.delegate = self
@@ -281,6 +278,101 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         }
     }
 
+    // MARK - search
+    // called by system when entered search bar
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    }
+    
+    // called when search bar cancel button was clicked
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        fetchedResultsController.fetchRequest.predicate = nil
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        collection.reloadData()
+    }
+    
+    // something entered in search bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+/*        if (searchBarIsEmpty()){
+            fetchedResultsController.fetchRequest.predicate = nil
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
+            }
+            collection.reloadData()
+        } else {
+            //currentInventory = inventory[indexPath.row]
+        }
+        
+        //print("Taste") */
+    }
+    
+    // called by system when entered search bar
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //searchController.searchBar.showsScopeBar = true
+        if (!searchBarIsEmpty()){
+            /*        fetchedResultsController.fetchRequest.predicate = nil
+             do {
+             try fetchedResultsController.performFetch()
+             } catch let error as NSError {
+             print("Fetching error: \(error), \(error.userInfo)")
+             }
+             collection.reloadData() */
+            //searchBar.text = "AAAA"
+        }
+    }
+    
+    // self implemented method
+    func filterContentForSearchText(_ searchText: String) {
+        
+        /*       filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
+         let doesOwnerMatch = (scope == "All") || (inv.inventoryOwner?.ownerName == scope)
+         
+         if searchBarIsEmpty() {
+         return doesOwnerMatch
+         } else {
+         return doesOwnerMatch && inv.inventoryName!.lowercased().contains(searchText.lowercased())
+         }
+         })
+         */
+        fetchedResultsController.fetchRequest.predicate = searchText.count > 0 ?
+            NSPredicate(format: "inventoryName contains[c] %@", searchText.lowercased()) : nil
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
+        collection.reloadData()
+    }
+    
+    // Returns true if the search text is empty or nil
+    func searchBarIsEmpty() -> Bool {
+        
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    // is filter mode enabled?
+    func isFiltering() -> Bool {
+        // true if search controller is active AND (search bar is not empty OR scope filter active)
+        return searchController.isActive && (!searchBarIsEmpty())
+    }
+    
+    // called by system - main search method
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        if(!searchBarIsEmpty()){
+            filterContentForSearchText(searchController.searchBar.text!)
+        }
+    }
+    
+    // MARK  - Actions
+    
     // rooms segment selection
     @IBAction func roomsSelectionSegment(_ sender: Any) {
         switch roomsSegment.selectedSegmentIndex

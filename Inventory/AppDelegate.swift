@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -31,8 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedStringKey.foregroundColor: UIColor.blue,
-             NSAttributedStringKey.font: UIFont(name: "Papyrus", size: 30) ??
+             NSAttributedStringKey.font: UIFont(name: "Arial", size: 30) ??
                 UIFont.systemFont(ofSize: 30)]
+        
         return true
     }
 

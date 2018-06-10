@@ -880,24 +880,6 @@
             </objects>
             <point key="canvasLocation" x="508" y="-106.59670164917542"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="A39-z7-9uL">
-            <objects>
-                <viewController id="C9d-2j-OCc" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gWa-ij-Plo"/>
-                        <viewControllerLayoutGuide type="bottom" id="TGU-gM-cru"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fMR-Iz-PF2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gda-dU-px8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1175" y="746"/>
-        </scene>
         <!--Edit Room-->
         <scene sceneID="Gv0-hu-52d">
             <objects>
@@ -1531,7 +1513,7 @@
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
             <objects>
-                <viewController title="PDF Document" automaticallyAdjustsScrollViewInsets="NO" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7al-kB-bNX"/>
                         <viewControllerLayoutGuide type="bottom" id="eav-Vc-Uce"/>
@@ -1540,17 +1522,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
+                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="XMA-TY-6HE"/>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="124" width="343" height="416"/>
+                                <rect key="frame" x="16" y="34" width="343" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="22o-iB-LVa" secondAttribute="trailing" constant="16" id="03r-fk-Z5B"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="7al-kB-bNX" secondAttribute="bottom" constant="124" id="0FY-uu-md4"/>
-                            <constraint firstItem="eav-Vc-Uce" firstAttribute="top" secondItem="22o-iB-LVa" secondAttribute="bottom" constant="14" id="Bce-BW-Mis"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leading" constant="16" id="Wuz-4K-C2h"/>
+                            <constraint firstItem="eav-Vc-Uce" firstAttribute="top" secondItem="22o-iB-LVa" secondAttribute="bottom" constant="8" id="2Nf-as-I2t"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="trailing" secondItem="H4u-nJ-iBi" secondAttribute="trailingMargin" id="97T-st-gMs"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leading" id="cXk-tT-5mv"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="centerX" secondItem="22o-iB-LVa" secondAttribute="centerX" id="gfb-wJ-dHq"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="top" secondItem="7al-kB-bNX" secondAttribute="bottom" constant="34" id="gtL-Tt-Yja"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="7al-kB-bNX" secondAttribute="bottom" constant="34" id="kIv-rk-jGK"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leadingMargin" id="oJl-PG-twU"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1559,7 +1554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6497" y="-230"/>
+            <point key="canvasLocation" x="6496.8000000000002" y="-230.73463268365819"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">

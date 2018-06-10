@@ -51,18 +51,10 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     // MARK - methods
     
     // fill a segment controll with values
-    func replaceOwnersSegments(segments: Array<String>) {
-        ownersSegment.removeAllSegments()
+    func replaceSegmentContents(segments: Array<String>, control: UISegmentedControl) {
+        control.removeAllSegments()
         for segment in segments {
-            ownersSegment.insertSegment(withTitle: segment, at: ownersSegment.numberOfSegments, animated: false)
-        }
-    }
-    
-    // fill a segment controll with values
-    func replaceRoomsSegments(segments: Array<String>) {
-        roomsSegment.removeAllSegments()
-        for segment in segments {
-            roomsSegment.insertSegment(withTitle: segment, at: roomsSegment.numberOfSegments, animated: false)
+            control.insertSegment(withTitle: segment, at: control.numberOfSegments, animated: false)
         }
     }
     
@@ -72,8 +64,6 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
-        
-        
         
         // set view title
         self.title = "Reports"
@@ -94,7 +84,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             listOwners.append((inv.ownerName)!)
         }
         
-        replaceOwnersSegments(segments: listOwners)
+        replaceSegmentContents(segments: listOwners, control: ownersSegment)
         ownersSegment.selectedSegmentIndex = 0
         
         listRooms.append("All")
@@ -102,53 +92,26 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             listRooms.append((inv.roomName)!)
         }
         
-        replaceRoomsSegments(segments: listRooms)
+        replaceSegmentContents(segments: listRooms, control: roomsSegment)
         roomsSegment.selectedSegmentIndex = 0
-        
-        //searchBar.isHidden = true
-        /*
-        self made search bar
-        self.searchBar.delegate = self
-        self.searchBar.placeholder = "Search for Inventory Name"
-        self.searchBar.scopeButtonTitles = list
-        
-        self.searchBar.showsScopeBar = true
-        //self.searchBar.becomeFirstResponder()
-        self.searchBar.sizeToFit()
-        self.navigationItem.titleView = searchBar
-        self.searchBar.sizeToFit()
-        */
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         // set collection view delegates
         collection.delegate = self
         collection.dataSource = self
 
-        // Register cell classes
-        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "Search for Inventory"
-        //searchController.searchBar.delegate = self
         searchController.delegate = self
-        //navigationItem.searchController = searchController
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
-        
-        //searchController.searchBar.becomeFirstResponder()
-        
         self.navigationItem.titleView = searchController.searchBar
-        
-        //searchController.searchBar.scopeButtonTitles = list
+        searchController.searchBar.placeholder = "Search for Inventory"
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = false
-        
-        definesPresentationContext = true
         navigationController?.isNavigationBarHidden = false
    
         self.navigationItem.hidesSearchBarWhenScrolling = false;
@@ -158,7 +121,6 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         collectionViewLayout?.invalidateLayout()
         
         //collection.contentOffset.y += 100
-        
     }
 
     // initialize the data for the view
@@ -486,7 +448,8 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             ownersSegment.selectedSegmentIndex = 0
             
             //let position = collection!.contentInset.top
-            //collection!.contentOffset.y += 100
+            
+            //collection.contentOffset.y -= 100
         }
             // disable filter segments
         else{
@@ -510,7 +473,9 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             }
             
             //let position = collection!.contentInset.top
-            //collection!.contentOffset.y -= 100
+            
+            //collection.contentOffset.y += 100
+            
             collection.reloadData()
         }
     }

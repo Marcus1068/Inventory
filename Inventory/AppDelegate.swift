@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             CoreDataHandler.generateSampleData()
         }
         
+        // manage large title appearance for all view controllers centrally
+        UINavigationBar.appearance().prefersLargeTitles = true
+        UINavigationBar.appearance().largeTitleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.blue,
+             NSAttributedStringKey.font: UIFont(name: "Papyrus", size: 30) ??
+                UIFont.systemFont(ofSize: 30)]
         return true
     }
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C006CF6209F838F00B6D3C5 /* geographic.pdf */; };
 		2C1C7F6D20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */; };
 		2C1C7F6F20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */; };
 		2C22268320AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift */; };
@@ -46,6 +45,7 @@
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C770C6C208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6B208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift */; };
 		2C99377220A70F8A00EEC002 /* ExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C99377120A70F8A00EEC002 /* ExportViewController.swift */; };
+		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C006CF6209F838F00B6D3C5 /* geographic.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = geographic.pdf; sourceTree = "<group>"; };
 		2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C22268220AF26A9009CE098 /* InventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventory.entitlements; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* ReportsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* ReportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4926DC20921AFE00508874 /* Inventory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory.png; sourceTree = "<group>"; };
@@ -111,6 +111,7 @@
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C770C6B208B674C004F2C12 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C99377120A70F8A00EEC002 /* ExportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportViewController.swift; sourceTree = "<group>"; };
+		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +170,7 @@
 		2C56E8AC2086350A00FD5136 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
-				2C006CF6209F838F00B6D3C5 /* geographic.pdf */,
+				2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */,
 				2C251264208F4C3400A6B5A3 /* Images */,
 				2C56E9092086837000FD5136 /* ViewController */,
 				2C56E90A208683A800FD5136 /* Helper */,
@@ -240,6 +241,7 @@
 				2C501B722098D03100D99949 /* CategoryTableViewController.swift */,
 				2C501B742098E80500D99949 /* CategoryEditViewController.swift */,
 				2C99377120A70F8A00EEC002 /* ExportViewController.swift */,
+				2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -321,6 +323,11 @@
 				TargetAttributes = {
 					2C56E8A92086350A00FD5136 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					2C56E8BF2086350B00FD5136 = {
 						CreatedOnToolsVersion = 9.3;
@@ -361,7 +368,6 @@
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C4926DD20921AFE00508874 /* Inventory.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
-				2C006CF7209F839100B6D3C5 /* geographic.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +404,7 @@
 				2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */,
 				2C56E90C208683D100FD5136 /* Helper.swift in Sources */,
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
+				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,
@@ -590,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Inventory/Inventory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
@@ -609,6 +617,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Inventory/Inventory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;

@@ -9,9 +9,9 @@
 import UIKit
 import PDFKit
 import os.log
+import MobileCoreServices
 
-class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate{
+class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -22,7 +22,7 @@ UINavigationControllerDelegate{
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var pdfImageView: UIImageView!
+    @IBOutlet weak var showFullscreenPDF: UIButton!
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
@@ -32,7 +32,7 @@ UINavigationControllerDelegate{
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
-    @IBOutlet weak var ownerLabel: UILabel!
+    //@IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var inMonthsLabel: UILabel!
     
     @IBOutlet weak var roomButtonLabel: UIButton!
@@ -62,6 +62,7 @@ UINavigationControllerDelegate{
     
     var editmode : EditMode = EditMode.edit
     
+    // MARK: view initializers
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -119,6 +120,12 @@ UINavigationControllerDelegate{
             default:
                 warrantySegmentControl.selectedSegmentIndex = 0
             }
+            
+            // inventory PDF
+            pdfView.autoScales = true
+            pdfView.displayMode = .singlePageContinuous
+            pdfView.displayDirection = .vertical
+            pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
             
             // inventory image
             let imageData = currentInventory!.image! as Data
@@ -201,10 +208,23 @@ UINavigationControllerDelegate{
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControlState.normal)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: document picker methods
+    
+    // called by system with resulting document URL
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        let myURL = url as URL
+        
+        pdfDisplay(file: myURL)
     }
+
+    
+    // in case somebody clicks cancel and does not choose a document then simply dismiss
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("view was cancelled")
+        dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: table view stuff
     
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
@@ -284,6 +304,14 @@ UINavigationControllerDelegate{
         dismiss(animated:true, completion: nil)
     }
     
+    // prepare to transfer data to PDF view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let destination =  segue.destination as! PDFViewController
+   
+        destination.currentPDF = pdfView
+    }
+    
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
         imagePicker.allowsEditing = true
@@ -302,7 +330,15 @@ UINavigationControllerDelegate{
     
     // choose a PDF file
     @IBAction func choosePDFButton(_ sender: Any) {
-        pdfDisplay(fileName: "geographic")
+        
+        // choose only PDF files from document picker
+        let types: NSArray = NSArray(object: kUTTypePDF as NSString)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: types as! [String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.modalPresentationStyle = .formSheet
+        self.present(documentPicker, animated: true, completion: nil)
+        
+        // pdfDisplay(fileName: "geographic")
     }
     
     // choose room with an action sheet filled with all room names
@@ -434,9 +470,9 @@ UINavigationControllerDelegate{
         currentInventory?.image = imageData! as NSData
         
         // invoice PDF binary data
-        let arr : [UInt32] = [32,4,123,4,5,2]
-        let myinvoice = NSData(bytes: arr, length: arr.count * 32)
-        currentInventory?.invoice = myinvoice
+        //let arr : [UInt32] = [32,4,123,4,5,2]
+        //let myinvoice = NSData(bytes: arr, length: arr.count * 32)
+        //currentInventory?.invoice = myinvoice
         
         // add data
         if (editmode == EditMode.add)
@@ -450,22 +486,22 @@ UINavigationControllerDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
-    // display pdf file
-    func pdfDisplay(fileName: String){
-        if let path = Bundle.main.path(forResource: fileName, ofType: "pdf") {
-            let url = URL(fileURLWithPath: path)
-            if let pdfDocument = PDFDocument(url: url) {
-                pdfView.autoScales = true
-                pdfView.displayMode = .singlePageContinuous
-                pdfView.displayDirection = .vertical
-                pdfView.document = pdfDocument
-                
-                // show thumbnail as well
-                captureThumbnails(pdfDocument:pdfDocument)
-            }
+    // MARK: pdf handling
+    // display pdf file from chosen URL
+    func pdfDisplay(file: URL){
+        if let pdfDocument = PDFDocument(url: file) {
+            pdfView.autoScales = true
+            pdfView.displayMode = .singlePageContinuous
+            pdfView.displayDirection = .vertical
+            pdfView.document = pdfDocument
+            
+            currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+            // currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+            // show thumbnail as well
+            //captureThumbnails(pdfDocument:pdfDocument)
         }
     }
-    
+/*
     // generate PDF thumbnail as imageView image
     func captureThumbnails(pdfDocument:PDFDocument) {
         if let page1 = pdfDocument.page(at: 1) {
@@ -479,12 +515,12 @@ UINavigationControllerDelegate{
                 width: page2ImageView.frame.size.width,
                 height: page2ImageView.frame.size.height), for: .artBox)
         } */
-    }
+    } */
 }
 
 
 
-
+// MARK: extensions
 // to get string from a date
 // usage: yourString = yourDate.toString(withFormat: "yyyy")
 extension Date {

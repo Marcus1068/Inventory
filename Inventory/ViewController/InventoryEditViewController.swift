@@ -316,15 +316,15 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBAction func imageButton(_ sender: Any) {
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .camera
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        //imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
     }
     
-    // choose from picture library
+    // choose a picture from picture library
     @IBAction func chooseImageButton(_ sender: Any) {
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        //imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -468,11 +468,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         // image binary data
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
         currentInventory?.image = imageData! as NSData
-        
-        // invoice PDF binary data
-        //let arr : [UInt32] = [32,4,123,4,5,2]
-        //let myinvoice = NSData(bytes: arr, length: arr.count * 32)
-        //currentInventory?.invoice = myinvoice
+        currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".img"
         
         // add data
         if (editmode == EditMode.add)
@@ -496,11 +492,29 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             pdfView.document = pdfDocument
             
             currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            // currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
             // show thumbnail as well
             //captureThumbnails(pdfDocument:pdfDocument)
         }
     }
+    
+    // give filename based on current date
+    func generateFilename(invname: String) -> String{
+        
+        let date :NSDate = NSDate()
+        
+        let dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone
+        
+        let imageName = invname + "_" + "\(dateFormatter.string(from: date as Date))"
+        
+        return imageName
+        
+    }
+    
 /*
     // generate PDF thumbnail as imageView image
     func captureThumbnails(pdfDocument:PDFDocument) {

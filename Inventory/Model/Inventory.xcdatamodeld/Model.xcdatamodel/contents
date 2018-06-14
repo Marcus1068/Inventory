@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Brand" representedClassName="Brand" syncable="YES">
         <attribute name="brandName" attributeType="String" syncable="YES"/>
         <relationship name="brandInventory" toMany="YES" deletionRule="Cascade" destinationEntity="Inventory" inverseName="inventoryBrand" inverseEntity="Inventory" syncable="YES"/>
@@ -11,8 +11,10 @@
     <entity name="Inventory" representedClassName="Inventory" syncable="YES">
         <attribute name="dateOfPurchase" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageFileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="inventoryName" attributeType="String" syncable="YES"/>
         <attribute name="invoice" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="invoiceFileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="remark" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
@@ -35,7 +37,7 @@
     <elements>
         <element name="Brand" positionX="333" positionY="75" width="128" height="73"/>
         <element name="Category" positionX="178" positionY="-99" width="128" height="73"/>
-        <element name="Inventory" positionX="-263" positionY="45" width="128" height="238"/>
+        <element name="Inventory" positionX="-263" positionY="45" width="128" height="270"/>
         <element name="Owner" positionX="-63" positionY="-333" width="128" height="73"/>
         <element name="Room" positionX="-738" positionY="-270" width="128" height="90"/>
     </elements>

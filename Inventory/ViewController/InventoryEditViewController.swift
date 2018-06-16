@@ -468,7 +468,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         // image binary data
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
         currentInventory?.image = imageData! as NSData
-        currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".img"
+        currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
         
         // add data
         if (editmode == EditMode.add)

@@ -39,9 +39,11 @@ public class Inventory: NSManagedObject {
         let coalescedBrandName = inventoryBrand?.brandName ?? ""
         let coalescedOwnerName = inventoryOwner?.ownerName ?? ""
         let coalescedCategoryName = inventoryCategory?.categoryName ?? ""
+        let coalescedInvoiceFileName = invoiceFileName ?? ""
+        let coalescedImageFileName = imageFileName ?? ""
         
         let newLine = """
-        \(coalescedInventoryName),\(stringForDateOfPurchase()),\(coalescedPrice),\(coalescedSerialNumber),\(coalescedRemark),\(stringForDateTimeStamp()),\(coalescedRoomName),\(coalescedOwnerName),\(coalescedCategoryName),\(coalescedBrandName),\(coalescedWarranty)\n
+        \(coalescedInventoryName),\(stringForDateOfPurchase()),\(coalescedPrice),\(coalescedSerialNumber),\(coalescedRemark),\(stringForDateTimeStamp()),\(coalescedRoomName),\(coalescedOwnerName),\(coalescedCategoryName),\(coalescedBrandName),\(coalescedWarranty),\(coalescedInvoiceFileName),\(coalescedImageFileName)\n
         """
         return newLine
         

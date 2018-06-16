@@ -72,6 +72,8 @@ class ExportViewController: UIViewController {
 
     // export to cvs via backgroud task
     // fetch async array, if no array, return nil
+    // create jpeg and pdf files if included in data
+    // link between cvs and external jpeg, pdf files by file name
     func exportCSVFile()
     {
         navigationItem.leftBarButtonItem = activityIndicatorBarButtonItem()
@@ -86,18 +88,18 @@ class ExportViewController: UIViewController {
                 print("ERROR: \(error.localizedDescription)")
             }
             
-            let fileName = "inventoryexport.csv"
+            let cvsFileName = "inventoryexport.csv"
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pathURL = docPath.appendingPathComponent(fileName)
-            let exportDocPath = pathURL.absoluteString
-            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty\n"
+            let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
+            let exportDocPath = pathURLcvs.absoluteString
+            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName\n"
             
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
             }
             
             do {
-                try csvText.write(to: pathURL, atomically: true, encoding: String.Encoding.utf8)
+                try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
                 //print("Export Path: \(exportDocPath)")
                 DispatchQueue.main.async {
                     self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
@@ -108,6 +110,40 @@ class ExportViewController: UIViewController {
             } catch {
                 print("Failed to create inventory csv file")
                 print("\(error)")
+            }
+            
+            // loop through all jpeg files and save them
+            for inv in results{
+                // export JPEG files
+                if inv.imageFileName != "" {
+                    let pathURLjpg = docPath.appendingPathComponent(inv.imageFileName!)
+                    // get your UIImage jpeg data representation and check if the destination file url already exists
+                    let imageData = inv.image! as Data
+                    let image = UIImage(data: imageData, scale: 1.0)
+                    if let data = UIImageJPEGRepresentation(image!, 1.0),
+                        !FileManager.default.fileExists(atPath: pathURLjpg.path) {
+                        do {
+                            // writes the image data to disk
+                            try data.write(to: pathURLjpg, options: .atomic)
+                            //print("jpg file saved")
+                        } catch {
+                            print("error saving jpg file:", error)
+                        }
+                    }
+                }
+                // export PDF files
+                if inv.invoiceFileName != "" {
+                    let pathURLpdf = docPath.appendingPathComponent(inv.invoiceFileName!)
+                    // get your UIImage jpeg data representation and check if the destination file url already exists
+                    let invoiceData = inv.invoice! as Data
+                    do {
+                        // writes the image data to disk
+                        try invoiceData.write(to: pathURLpdf, options: .atomic)
+                        //print("pdf file saved")
+                    } catch {
+                        print("error saving pdf file:", error)
+                    }
+                }
             }
         }
     }
@@ -134,12 +170,6 @@ class ExportViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    // export to cvs via backgroud task
-    // fetch async array, if no array, return nil
-    func exportPDFFile()
-    {
-        // not implemented yet
-    }
     
     // MARK - button actions
     
@@ -148,7 +178,7 @@ class ExportViewController: UIViewController {
     }
     
     @IBAction func exportPDFButton(_ sender: Any) {
-        exportPDFFile()
+        //exportPDFFile()
     }
     
 }

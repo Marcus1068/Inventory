@@ -13,7 +13,7 @@ import PDFKit
 import os.log
 
 
-class ExportViewController: UIViewController {
+class ImportExportViewController: UIViewController {
 
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var exportTextView: UITextView!
@@ -88,7 +88,7 @@ class ExportViewController: UIViewController {
                 print("ERROR: \(error.localizedDescription)")
             }
             
-            let cvsFileName = "inventoryexport.csv"
+            let cvsFileName = Helper.cvsFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
             let exportDocPath = pathURLcvs.absoluteString
@@ -170,6 +170,56 @@ class ExportViewController: UIViewController {
         present(alertController, animated: true)
     }
     
+    // MARK - import stuff
+    
+    func importCVSFile(file: String){
+        var data = readDataFromCSV(fileName: file)
+        data = cleanRows(file: data!)
+        let csvRows = csvImportParser(data: data!)
+        
+        //get data into string array
+        print(csvRows[1][1])
+        
+        // get strings into core data
+        
+        // read jpg and pdf files into memory and update core data
+    }
+    
+    func readDataFromCSV(fileName: String) -> String!{
+        guard let filepath = Bundle.main.path(forResource: fileName, ofType: "cvs")
+            else {
+                return nil
+        }
+        
+        do {
+            var contents = try String(contentsOfFile: filepath, encoding: .utf8)
+            contents = cleanRows(file: contents)
+            return contents
+        } catch {
+            print("File import Read Error for cvs file \(filepath)")
+            return nil
+        }
+    }
+
+    func cleanRows(file: String) -> String{
+        var cleanFile = file
+        cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
+        cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
+        //        cleanFile = cleanFile.replacingOccurrences(of: ";;", with: "")
+        //        cleanFile = cleanFile.replacingOccurrences(of: ";\n", with: "")
+        return cleanFile
+    }
+    
+    // import cvs file parser
+    func csvImportParser(data: String) -> [[String]] {
+        var result: [[String]] = []
+        let rows = data.components(separatedBy: "\n")
+        for row in rows {
+            let columns = row.components(separatedBy: ",")
+            result.append(columns)
+        }
+        return result
+    }
     
     // MARK - button actions
     
@@ -179,6 +229,11 @@ class ExportViewController: UIViewController {
     
     @IBAction func exportPDFButton(_ sender: Any) {
         //exportPDFFile()
+    }
+    
+    // import button
+    @IBAction func importFromCVSFileButton(_ sender: Any) {
+        importCVSFile(file: Helper.cvsFile)
     }
     
 }

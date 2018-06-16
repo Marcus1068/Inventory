@@ -1641,7 +1641,7 @@
         <!--Export-->
         <scene sceneID="mgI-Qm-glO">
             <objects>
-                <viewController id="MUX-Pv-eqU" customClass="ExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MUX-Pv-eqU" customClass="ImportExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uBC-c3-drK"/>
                         <viewControllerLayoutGuide type="bottom" id="z7K-Zi-AhB"/>
@@ -1674,17 +1674,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="265-ji-6f6">
-                                <rect key="frame" x="8" y="232.5" width="359" height="202"/>
+                                <rect key="frame" x="8" y="232" width="359" height="204"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export file:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-sB-dHx">
-                                <rect key="frame" x="8" y="203.5" width="243" height="21"/>
+                                <rect key="frame" x="8" y="203" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
+                                <rect key="frame" x="16" y="487" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BVR-Iv-5g8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Import from CVS file..."/>
+                                <connections>
+                                    <action selector="importFromCVSFileButton:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="f8L-1D-lKZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1696,13 +1707,16 @@
                             <constraint firstItem="265-ji-6f6" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="LQd-l0-Vcg"/>
                             <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="TMv-KC-gj0"/>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="Zr4-ry-h04"/>
+                            <constraint firstItem="g93-Ej-2SW" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="bN7-cc-72l"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="top" secondItem="DYJ-sB-dHx" secondAttribute="bottom" constant="8.3300000000000001" id="c8G-Kh-Hha"/>
                             <constraint firstAttribute="trailing" secondItem="265-ji-6f6" secondAttribute="trailing" constant="8" id="fLd-Se-1J8"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="centerX" secondItem="z5u-gb-85Y" secondAttribute="centerX" id="gXa-EU-4PZ"/>
                             <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="Cad-xq-tCv" secondAttribute="bottom" constant="32" id="haq-VG-7TX"/>
+                            <constraint firstItem="g93-Ej-2SW" firstAttribute="top" secondItem="265-ji-6f6" secondAttribute="bottom" constant="51" id="qXm-Bl-Ltc"/>
                             <constraint firstAttribute="trailing" secondItem="DYJ-sB-dHx" secondAttribute="trailing" constant="124" id="r1u-6Z-KBV"/>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="xdg-AG-QaZ"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="centerX" secondItem="VFe-N0-mPM" secondAttribute="centerX" id="yp7-K6-4f2"/>
+                            <constraint firstItem="g93-Ej-2SW" firstAttribute="trailing" secondItem="VFe-N0-mPM" secondAttribute="trailingMargin" id="zR4-Sa-K05"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Export" image="Export" id="CGe-VZ-Z2L"/>
@@ -1716,7 +1730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.60000000000002" y="1540.6403940886701"/>
+            <point key="canvasLocation" x="645.60000000000002" y="1540.4797601199402"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="yl2-sM-qoP">

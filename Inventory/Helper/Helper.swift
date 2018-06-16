@@ -19,7 +19,7 @@ class Helper: NSObject {
     static let appNameString = "Inventory"
     static let emailAdr = "mdeuss@gmail.com"
     static let website = "http://www.marcus-deuss.de"
-    
+    static let cvsFile = "inventoryexport.csv"
     
     // general functions
     

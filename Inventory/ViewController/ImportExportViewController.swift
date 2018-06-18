@@ -172,41 +172,151 @@ class ImportExportViewController: UIViewController {
     
     // MARK - import stuff
     
+    // makin import loop
     func importCVSFile(file: String){
-        var data = readDataFromCSV(fileName: file)
-        data = cleanRows(file: data!)
+        var context: NSManagedObjectContext
+        context = CoreDataHandler.getContext()
+        
+        var room: Room?
+        var category: Category?
+        var brand: Brand?
+        var owner: Owner?
+        
+        let data = readDataFromCSV(fileName: file)
         let csvRows = csvImportParser(data: data!)
         
+        // default room icon image
+        let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
+        let imageData = UIImageJPEGRepresentation(myImage, 1.0)
+        
         //get data into string array
-        print(csvRows[1][1])
         
-        // get strings into core data
         
-        // read jpg and pdf files into memory and update core data
+        // if there is data, ignore first line since this contains the column names
+        // Do NOT change definition in core data since order is hard coded
+        if csvRows.count > 1{
+            for x in 1 ... csvRows.count - 1 {
+                let inventory = Inventory(context: context)
+                print("Zeile: \(x):", csvRows[x][0])
+                
+                // check if row is complete or if inventory name not set
+                if csvRows[x][0].count == 0{
+                    continue
+                }
+                
+                inventory.inventoryName = csvRows[x][0]
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .short
+                
+                let dateOfPurchase = dateFormatter.date(from: csvRows[x][1])
+                
+                inventory.dateOfPurchase = dateOfPurchase! as NSDate
+                inventory.price = Int32(csvRows[x][2])!
+                inventory.serialNumber = csvRows[x][3]
+                inventory.remark = csvRows[x][4]
+                
+                let timeStamp = dateFormatter.date(from: csvRows[x][1])
+                inventory.timeStamp = timeStamp! as NSDate
+                
+                // room handling
+                room = CoreDataHandler.fetchRoom(roomName: csvRows[x][6])
+                if room != nil{
+                    // room already there
+                    inventory.inventoryRoom = room
+                }
+                else{
+                    // new room has to be inserted in room table
+                    var newRoom = Room(context: context)
+                    newRoom.roomName = csvRows[x][6]
+                    newRoom.roomImage = imageData! as NSData
+                    newRoom = CoreDataHandler.saveRoom(room: newRoom)
+                    inventory.inventoryRoom = newRoom
+                }
+                
+                // owner handling
+                owner = CoreDataHandler.fetchOwner(ownerName: csvRows[x][7])
+                if owner != nil{
+                    // owner already there
+                    inventory.inventoryOwner = owner
+                }
+                else{
+                    // new owner has to be inserted in owner table
+                    var newOwner = Owner(context: context)
+                    newOwner.ownerName = csvRows[x][7]
+                    newOwner = CoreDataHandler.saveOwner(owner: newOwner)
+                    inventory.inventoryOwner = newOwner
+                }
+                
+                // category handling
+                category = CoreDataHandler.fetchCategory(categoryName: csvRows[x][8])
+                if category != nil{
+                    // category already there
+                    inventory.inventoryCategory = category
+                }
+                else{
+                    // new category has to be inserted in owner table
+                    var newCategory = Category(context: context)
+                    newCategory.categoryName = csvRows[x][8]
+                    newCategory = CoreDataHandler.saveCategory(category: newCategory)
+                    inventory.inventoryCategory = newCategory
+                }
+                
+                // brand handling
+                brand = CoreDataHandler.fetchBrand(brandName: csvRows[x][9])
+                if brand != nil{
+                    // brand already there
+                    inventory.inventoryBrand = brand
+                }
+                else{
+                    // new brand has to be inserted in owner table
+                    var newBrand = Brand(context: context)
+                    newBrand.brandName = csvRows[x][9]
+                    newBrand = CoreDataHandler.saveBrand(brand: newBrand)
+                    inventory.inventoryBrand = newBrand
+                }
+                
+                inventory.warranty = Int32(csvRows[x][10])!
+                inventory.imageFileName = csvRows[x][11]
+                inventory.invoiceFileName = csvRows[x][12]
+                
+                // assign image from documents directory
+                inventory.image = nil
+                
+                // assign PDF file from documents directory
+                inventory.invoice = nil
+                
+                // save imported csv line into database
+                let inv = CoreDataHandler.saveInventory(inventory: inventory)
+                print(inv)
+            }
+        }
     }
     
+    // read file as string
     func readDataFromCSV(fileName: String) -> String!{
-        guard let filepath = Bundle.main.path(forResource: fileName, ofType: "cvs")
-            else {
-                return nil
-        }
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let pathURLcvs = docPath.appendingPathComponent(fileName)
         
         do {
-            var contents = try String(contentsOfFile: filepath, encoding: .utf8)
+            var contents = try String(contentsOfFile: pathURLcvs.path, encoding: .utf8)
             contents = cleanRows(file: contents)
             return contents
+            
         } catch {
-            print("File import Read Error for cvs file \(filepath)")
+            print("File import Read Error for cvs file \(pathURLcvs.absoluteString)", error)
             return nil
         }
     }
 
+    // remove special characters from csv file
     func cleanRows(file: String) -> String{
+        
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
         cleanFile = cleanFile.replacingOccurrences(of: "\n\n", with: "\n")
-        //        cleanFile = cleanFile.replacingOccurrences(of: ";;", with: "")
-        //        cleanFile = cleanFile.replacingOccurrences(of: ";\n", with: "")
+        cleanFile = cleanFile.replacingOccurrences(of: ";", with: ",")
+        
         return cleanFile
     }
     
@@ -215,9 +325,12 @@ class ImportExportViewController: UIViewController {
         var result: [[String]] = []
         let rows = data.components(separatedBy: "\n")
         for row in rows {
-            let columns = row.components(separatedBy: ",")
-            result.append(columns)
+            if row.count > 0{
+                let columns = row.components(separatedBy: ",")
+                result.append(columns)
+            }
         }
+        
         return result
     }
     
@@ -235,5 +348,4 @@ class ImportExportViewController: UIViewController {
     @IBAction func importFromCVSFileButton(_ sender: Any) {
         importCVSFile(file: Helper.cvsFile)
     }
-    
 }

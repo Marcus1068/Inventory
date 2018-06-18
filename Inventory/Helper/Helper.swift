@@ -33,7 +33,7 @@ class Helper: NSObject {
     ///   - subtitle: notification subtitle
     ///   - body: notification body text
     ///   - badge: when using badge show number of messages in icon
-    func sendLocalNotification(title: String, subtitle: String, body: String, badge: NSNumber) {
+    class func sendLocalNotification(title: String, subtitle: String, body: String, badge: NSNumber) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle

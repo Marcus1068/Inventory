@@ -349,9 +349,19 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         cell.priceLabel.text = String(inv.price) + "€" // FIXME hardcoded
         cell.warrantyMonthsLabel.text = String(inv.warranty)
         cell.warrantyLabel.text = "Warranty:"
-        let imageData = inv.image! as Data
-        let image = UIImage(data: imageData, scale:1.0)
-        cell.myImage.image = image!
+        
+        var image: UIImage
+        
+        if inv.image != nil{
+            let imageData = inv.image! as Data
+            image = UIImage(data: imageData, scale:1.0)!
+        }
+        else{
+            // to image, set default image
+            let defaultImage = #imageLiteral(resourceName: "Room Icon")
+            image = defaultImage 
+        }
+        cell.myImage.image = image
         
         return cell
     }
@@ -451,7 +461,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         
         switch type {
         case .insert:
-            print("Insert Object: \(String(describing: newIndexPath))")
+            //print("Insert Object: \(String(describing: newIndexPath))")
             
             collection.reloadData()
  /*           if (collection?.numberOfSections)! > 0 {
@@ -507,7 +517,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
             ) */
             break
         case .move:
-            print("Move Object: \(String(describing: indexPath))")
+            //print("Move Object: \(String(describing: indexPath))")
             collection.reloadData()
           /*
             blockOperations.append(

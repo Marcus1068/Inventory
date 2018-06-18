@@ -192,10 +192,19 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         cell.romeNameLabel.text = inv.inventoryRoom?.roomName
         
         cell.priceLabel.text = String(inv.price) + "€"
-        let imageData = inv.image! as Data
-        let image = UIImage(data: imageData, scale:1.0)
-        cell.myImage.image = image!
         
+        var image: UIImage
+        
+        if inv.image != nil{
+            let imageData = inv.image! as Data
+            image = UIImage(data: imageData, scale:1.0)!
+        }
+        else{
+            // to image, set default image
+            let defaultImage = #imageLiteral(resourceName: "Room Icon")
+            image = defaultImage
+        }
+        cell.myImage.image = image
         
         return cell
     }

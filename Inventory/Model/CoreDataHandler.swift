@@ -14,7 +14,7 @@ import os.log
 class CoreDataHandler: NSObject {
     
     
-    
+    // MARK: db context
     // internal: get database context
     class func getContext() -> NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -41,7 +41,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
-    
+    // MARK: room stuff
     // Save a room
     class func saveRoom(room: Room) -> Room
     {
@@ -73,9 +73,28 @@ class CoreDataHandler: NSObject {
         } catch {
             print("Error with fetch request in fetchRoom \(error)")
         }
-        
         return false
+    }
+    
+    // check if room already exists
+    class func fetchRoom(roomName: String) -> Room?{
+        let context = getContext()
         
+        let request : NSFetchRequest<Room> = Room.fetchRequest()
+        request.fetchLimit = 1
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "roomName = %@", roomName)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                return result.first
+            }
+        } catch {
+            print("Error with fetch request in fetchRoom \(error)")
+        }
+        return nil
     }
     
     // fetch room icon
@@ -128,6 +147,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: category stuff
     // Save a category
     class func saveCategory(category: Category) -> Category
     {
@@ -163,6 +183,28 @@ class CoreDataHandler: NSObject {
         return false
     }
     
+    // check if category already exists
+    class func fetchCategory(categoryName: String) -> Category?{
+        let context = getContext()
+        
+        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        request.fetchLimit = 1
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "categoryName = %@", categoryName)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                return result.first
+            }
+        } catch {
+            print("Error with fetch request in fetchCategory \(error)")
+        }
+        
+        return nil
+    }
+    
     // delete category object
     class func deleteCategory(category: Category) -> Bool{
         let context = getContext()
@@ -191,6 +233,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: owner stuff
     // Save an owner
     class func saveOwner(owner: Owner) -> Owner
     {
@@ -226,6 +269,28 @@ class CoreDataHandler: NSObject {
         return false
     }
     
+    // check if owner already exists
+    class func fetchOwner(ownerName: String) -> Owner?{
+        let context = getContext()
+        
+        let request : NSFetchRequest<Owner> = Owner.fetchRequest()
+        request.fetchLimit = 1
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "ownerName = %@", ownerName)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                return result.first
+            }
+        } catch {
+            print("Error with fetch request in fetchOwner \(error)")
+        }
+        
+        return nil
+    }
+    
     // delete owner object
     class func deleteOwner(owner: Owner) -> Bool{
         let context = getContext()
@@ -254,6 +319,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: brand stuff
     // Save a Brand
     class func saveBrand(brand: Brand) -> Brand
     {
@@ -289,6 +355,28 @@ class CoreDataHandler: NSObject {
         return false
     }
     
+    // check if brand already exists
+    class func fetchBrand(brandName: String) -> Brand?{
+        let context = getContext()
+        
+        let request : NSFetchRequest<Brand> = Brand.fetchRequest()
+        request.fetchLimit = 1
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "brandName = %@", brandName)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                return result.first
+            }
+        } catch {
+            print("Error with fetch request in fetchBrand \(error)")
+        }
+        
+        return nil
+    }
+    
     // delete brand object
     class func deleteBrand(brand: Brand) -> Bool{
         let context = getContext()
@@ -317,6 +405,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    // MARK: inventory stuff
     // add a single row to inventory table
     class func saveInventory(inventory: Inventory) -> Inventory{
         let context = getContext()
@@ -396,6 +485,7 @@ class CoreDataHandler: NSObject {
         return false
     }
     
+    // MARK: fetch ALL stuff
     // fetch all category array, otherwise return [] empty array
     class func fetchAllCategories() -> [Category]
     {
@@ -541,6 +631,8 @@ class CoreDataHandler: NSObject {
         return []
     }
     
+    // MARK: generate sample data
+    
     // generate sample data for initial work
     // FIXME must be depening upon system language with switch/case of supported languages, default english
     class func generateSampleData()
@@ -632,7 +724,7 @@ class CoreDataHandler: NSObject {
         
         _ = saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[3], owner: owners[2], room: rooms[3])
         
-        _ = saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[4], owner: owners[1], room: rooms[4])
+ /*       _ = saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[4], owner: owners[1], room: rooms[4])
         
         _ = saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[5], owner: owners[2], room: rooms[2])
         
@@ -699,7 +791,7 @@ class CoreDataHandler: NSObject {
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        
+        */
         CoreDataHandler.showSampleData()
     }
 

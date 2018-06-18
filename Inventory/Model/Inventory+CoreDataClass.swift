@@ -17,6 +17,8 @@ public class Inventory: NSManagedObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "YY-MM-DD"
+        dateFormatter.timeStyle = .none
         return dateFormatter.string(from: dateOfPurchase as Date)
     }
     func stringForDateTimeStamp() -> String {
@@ -24,6 +26,8 @@ public class Inventory: NSManagedObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "YY-MM-DD"
+        dateFormatter.timeStyle = .none
         return dateFormatter.string(from: ts as Date)
     }
     

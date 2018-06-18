@@ -122,15 +122,19 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             }
             
             // inventory PDF
-            pdfView.autoScales = true
-            pdfView.displayMode = .singlePageContinuous
-            pdfView.displayDirection = .vertical
-            pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
+            if currentInventory!.invoice != nil{
+                pdfView.autoScales = true
+                pdfView.displayMode = .singlePageContinuous
+                pdfView.displayDirection = .vertical
+                pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
+            }
             
             // inventory image
-            let imageData = currentInventory!.image! as Data
-            let image = UIImage(data: imageData, scale: 1.0)
-            imageView.image = image
+            if currentInventory!.image != nil{
+                let imageData = currentInventory!.image! as Data
+                let image = UIImage(data: imageData, scale: 1.0)
+                imageView.image = image
+            }
             
             // inventory date
             datePicker.date = currentInventory!.dateOfPurchase! as Date

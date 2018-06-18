@@ -177,19 +177,8 @@ class ImportExportViewController: UIViewController {
         var context: NSManagedObjectContext
         context = CoreDataHandler.getContext()
         
-        var room: Room?
-        var category: Category?
-        var brand: Brand?
-        var owner: Owner?
-        
         let data = readDataFromCSV(fileName: file)
         let csvRows = csvImportParser(data: data!)
-        
-        // default room icon image
-        let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
-        let imageData = UIImageJPEGRepresentation(myImage, 1.0)
-        
-        //get data into string array
         
         
         // if there is data, ignore first line since this contains the column names
@@ -197,7 +186,7 @@ class ImportExportViewController: UIViewController {
         if csvRows.count > 1{
             for x in 1 ... csvRows.count - 1 {
                 let inventory = Inventory(context: context)
-                print("Zeile: \(x):", csvRows[x][0])
+                //print("Zeile: \(x):", csvRows[x][0])
                 
                 // check if row is complete or if inventory name not set
                 if csvRows[x][0].count == 0{
@@ -220,6 +209,7 @@ class ImportExportViewController: UIViewController {
                 inventory.timeStamp = timeStamp! as NSDate
                 
                 // room handling
+                var room: Room?
                 room = CoreDataHandler.fetchRoom(roomName: csvRows[x][6])
                 if room != nil{
                     // room already there
@@ -229,12 +219,16 @@ class ImportExportViewController: UIViewController {
                     // new room has to be inserted in room table
                     var newRoom = Room(context: context)
                     newRoom.roomName = csvRows[x][6]
+                    // default room icon image
+                    let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
+                    let imageData = UIImageJPEGRepresentation(myImage, 1.0)
                     newRoom.roomImage = imageData! as NSData
                     newRoom = CoreDataHandler.saveRoom(room: newRoom)
                     inventory.inventoryRoom = newRoom
                 }
                 
                 // owner handling
+                var owner: Owner?
                 owner = CoreDataHandler.fetchOwner(ownerName: csvRows[x][7])
                 if owner != nil{
                     // owner already there
@@ -249,6 +243,7 @@ class ImportExportViewController: UIViewController {
                 }
                 
                 // category handling
+                var category: Category?
                 category = CoreDataHandler.fetchCategory(categoryName: csvRows[x][8])
                 if category != nil{
                     // category already there
@@ -263,6 +258,7 @@ class ImportExportViewController: UIViewController {
                 }
                 
                 // brand handling
+                var brand: Brand?
                 brand = CoreDataHandler.fetchBrand(brandName: csvRows[x][9])
                 if brand != nil{
                     // brand already there
@@ -280,8 +276,18 @@ class ImportExportViewController: UIViewController {
                 inventory.imageFileName = csvRows[x][11]
                 inventory.invoiceFileName = csvRows[x][12]
                 
-                // assign image from documents directory
-                inventory.image = nil
+                // assign image from directory
+                if inventory.imageFileName! != ""{
+                    let image = getSavedImage(named: inventory.imageFileName!)
+                    let imageData: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                    inventory.image = imageData
+                }
+                else{
+                    // default image if no image was chosen before
+                    let myImage = #imageLiteral(resourceName: "Room Icon")
+                    let imageData = UIImageJPEGRepresentation(myImage, 1.0)
+                    inventory.image = imageData! as NSData
+                }
                 
                 // assign PDF file from documents directory
                 inventory.invoice = nil
@@ -293,7 +299,17 @@ class ImportExportViewController: UIViewController {
         }
     }
     
+    // get jpeg image from file directory
+    // FIXME must change to other directory
+    func getSavedImage(named: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
+    }
+    
     // read file as string
+    // FIXME change directory
     func readDataFromCSV(fileName: String) -> String!{
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let pathURLcvs = docPath.appendingPathComponent(fileName)

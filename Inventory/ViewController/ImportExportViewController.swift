@@ -131,6 +131,7 @@ class ImportExportViewController: UIViewController {
                         }
                     }
                 }
+                
                 // export PDF files
                 if inv.invoiceFileName != "" {
                     let pathURLpdf = docPath.appendingPathComponent(inv.invoiceFileName!)
@@ -290,7 +291,22 @@ class ImportExportViewController: UIViewController {
                 }
                 
                 // assign PDF file from documents directory
-                inventory.invoice = nil
+                if inventory.invoiceFileName! != ""{
+                    let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let pathURL = docPath.appendingPathComponent(inventory.invoiceFileName!)
+                    if let pdfDocument = PDFDocument(url: pathURL) {
+                        
+                        inventory.invoice = pdfDocument.dataRepresentation()! as NSData?
+                    }
+                    else{
+                        // no PDF file chosen
+                        inventory.invoice = nil
+                    }
+                }
+                else{
+                    // no PDF file chosen
+                    inventory.invoice = nil
+                }
                 
                 // save imported csv line into database
                 let inv = CoreDataHandler.saveInventory(inventory: inventory)

@@ -125,7 +125,7 @@ class ImportExportViewController: UIViewController {
                         do {
                             // writes the image data to disk
                             try data.write(to: pathURLjpg, options: .atomic)
-                            //print("jpg file saved")
+                            
                         } catch {
                             print("error saving jpg file:", error)
                         }
@@ -134,10 +134,10 @@ class ImportExportViewController: UIViewController {
                 // export PDF files
                 if inv.invoiceFileName != "" {
                     let pathURLpdf = docPath.appendingPathComponent(inv.invoiceFileName!)
-                    // get your UIImage jpeg data representation and check if the destination file url already exists
+                    
                     let invoiceData = inv.invoice! as Data
                     do {
-                        // writes the image data to disk
+                        // writes the PDF data to disk
                         try invoiceData.write(to: pathURLpdf, options: .atomic)
                         //print("pdf file saved")
                     } catch {

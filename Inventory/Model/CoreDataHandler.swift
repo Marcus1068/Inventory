@@ -406,6 +406,30 @@ class CoreDataHandler: NSObject {
     }
     
     // MARK: inventory stuff
+    
+    // fetch UUID from inventory, found = true
+    class func getInventoryUUID(uuid: UUID) -> Bool{
+        
+        let context = getContext()
+        
+        let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        request.fetchLimit = 1
+        
+        // search predicate
+        request.predicate = NSPredicate(format: "id = %@", uuid as CVarArg)
+        
+        do {
+            let result = try context.fetch(request)
+            if result.count > 0{
+                return true
+            }
+        } catch {
+            print("Error with fetch request in getInventoryUUID \(error)")
+        }
+        
+        return false
+    }
+    
     // add a single row to inventory table
     class func saveInventory(inventory: Inventory) -> Inventory{
         let context = getContext()
@@ -428,6 +452,7 @@ class CoreDataHandler: NSObject {
         let inventory = Inventory(context: context)
         
         // set object with IU values
+        inventory.id = UUID()
         inventory.inventoryName = inventoryName
         inventory.dateOfPurchase = dateOfPurchase
         inventory.price = price

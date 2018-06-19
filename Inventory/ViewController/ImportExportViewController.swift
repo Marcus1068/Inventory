@@ -10,8 +10,6 @@
 import UIKit
 import CoreData
 import PDFKit
-import os.log
-
 
 class ImportExportViewController: UIViewController {
 
@@ -22,6 +20,10 @@ class ImportExportViewController: UIViewController {
     
     @IBOutlet weak var exportPDFBarButton: UIBarButtonItem!
     
+    @IBOutlet weak var importedRowsLabel: UILabel!
+    
+    
+    // MARK: view controller stuff
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +34,7 @@ class ImportExportViewController: UIViewController {
         
         self.exportTextView.text = ""
         self.exportLabel.text = "Export file destination:"
-        //self.title = "Export to CVS/PDF"
+        self.importedRowsLabel.isHidden = true
 
         //self.navigationController?.title = "Export to CVS/PDF"
         //self.navigationItem.title = "Export to CVS/PDF"
@@ -43,7 +45,10 @@ class ImportExportViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.exportTextView.text = ""
+        self.importedRowsLabel.isHidden = true
+        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -92,7 +97,7 @@ class ImportExportViewController: UIViewController {
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
             let exportDocPath = pathURLcvs.absoluteString
-            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName\n"
+            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
             
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
@@ -175,6 +180,8 @@ class ImportExportViewController: UIViewController {
     
     // makin import loop
     func importCVSFile(file: String){
+        
+        var importedRows : Int = 0
         var context: NSManagedObjectContext
         context = CoreDataHandler.getContext()
         
@@ -187,7 +194,6 @@ class ImportExportViewController: UIViewController {
         if csvRows.count > 1{
             for x in 1 ... csvRows.count - 1 {
                 let inventory = Inventory(context: context)
-                //print("Zeile: \(x):", csvRows[x][0])
                 
                 // check if row is complete or if inventory name not set
                 if csvRows[x][0].count == 0{
@@ -277,6 +283,8 @@ class ImportExportViewController: UIViewController {
                 inventory.imageFileName = csvRows[x][11]
                 inventory.invoiceFileName = csvRows[x][12]
                 
+                inventory.id = UUID(uuidString: csvRows[x][13])
+                
                 // assign image from directory
                 if inventory.imageFileName! != ""{
                     let image = getSavedImage(named: inventory.imageFileName!)
@@ -308,11 +316,20 @@ class ImportExportViewController: UIViewController {
                     inventory.invoice = nil
                 }
                 
-                // save imported csv line into database
-                let inv = CoreDataHandler.saveInventory(inventory: inventory)
-                print(inv)
+                // check for UUID, if data is already imported then avoid duplicates
+                let uuid = CoreDataHandler.getInventoryUUID(uuid: UUID(uuidString: csvRows[x][13])!)
+                
+                if !uuid{
+                    // save imported csv line into database
+                    _ = CoreDataHandler.saveInventory(inventory: inventory)
+                    importedRows += importedRows
+                }
             }
         }
+        
+        // at the end of import report number of imported rows to user
+        self.importedRowsLabel.isHidden = false
+        self.importedRowsLabel.text = "Imported rows: " + String(importedRows)
     }
     
     // get jpeg image from file directory
@@ -378,6 +395,9 @@ class ImportExportViewController: UIViewController {
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {
+        self.importedRowsLabel.isHidden = true
+        self.importedRowsLabel.text = ""
+        
         importCVSFile(file: Helper.cvsFile)
     }
 }

@@ -1696,17 +1696,29 @@
                                     <action selector="importFromCVSFileButton:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="f8L-1D-lKZ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
+                                <rect key="frame" x="16" y="548" width="343" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="7wL-HZ-lGk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="1LN-Wj-JdP"/>
+                            <constraint firstItem="oh4-rl-izX" firstAttribute="top" secondItem="g93-Ej-2SW" secondAttribute="bottom" constant="31" id="9fv-xD-ce7"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="centerY" secondItem="VFe-N0-mPM" secondAttribute="centerY" id="CAG-ae-cE8"/>
+                            <constraint firstItem="oh4-rl-izX" firstAttribute="trailing" secondItem="VFe-N0-mPM" secondAttribute="trailingMargin" id="Fjm-Ki-qtm"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" id="Giv-2V-xZa"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="top" secondItem="uBC-c3-drK" secondAttribute="bottom" constant="20" id="JS6-M5-ndR"/>
                             <constraint firstAttribute="trailing" secondItem="z5u-gb-85Y" secondAttribute="trailing" constant="8" id="KZZ-Ce-cy8"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="LQd-l0-Vcg"/>
                             <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="TMv-KC-gj0"/>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="Zr4-ry-h04"/>
+                            <constraint firstItem="oh4-rl-izX" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="aAG-Ri-ahA"/>
                             <constraint firstItem="g93-Ej-2SW" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="bN7-cc-72l"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="top" secondItem="DYJ-sB-dHx" secondAttribute="bottom" constant="8.3300000000000001" id="c8G-Kh-Hha"/>
                             <constraint firstAttribute="trailing" secondItem="265-ji-6f6" secondAttribute="trailing" constant="8" id="fLd-Se-1J8"/>
@@ -1725,6 +1737,7 @@
                         <outlet property="exportLabel" destination="DYJ-sB-dHx" id="JOB-mA-AsU"/>
                         <outlet property="exportPDFBarButton" destination="1XM-1s-jLR" id="Um2-uD-ItQ"/>
                         <outlet property="exportTextView" destination="265-ji-6f6" id="a6t-lA-cvA"/>
+                        <outlet property="importedRowsLabel" destination="oh4-rl-izX" id="pim-lE-hWr"/>
                         <outlet property="navbar" destination="Cad-xq-tCv" id="GnF-Mc-FYF"/>
                     </connections>
                 </viewController>

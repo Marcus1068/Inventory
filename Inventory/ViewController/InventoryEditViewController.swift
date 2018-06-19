@@ -461,6 +461,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // save inventory, either new or update old object
     @IBAction func saveButton(_ sender: Any) {
         
+        currentInventory?.id = UUID()
         currentInventory?.inventoryName = textfieldInventoryName.text   // can only save when inventory name is entered
         currentInventory?.dateOfPurchase = datePicker.date as NSDate?
         currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)

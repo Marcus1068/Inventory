@@ -52,6 +52,17 @@ class Helper: NSObject {
                                                 // Handle error
         })
     }
+    
+    // get a UUID
+    // request.predicate = NSPredicate(format: "uuid == %@", withUuid)
+    
+    class func generateUUID() -> String{
+        
+        return UUID().uuidString
+    }
 
+    class func generateUUID() -> UUID{
+        return UUID()
+    }
 }
 

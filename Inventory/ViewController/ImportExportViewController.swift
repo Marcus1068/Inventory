@@ -218,8 +218,8 @@ class ImportExportViewController: UIViewController {
     func importCVSFile(file: String){
         
         var importedRows : Int = 0
-        var context: NSManagedObjectContext
-        context = CoreDataHandler.getContext()
+       // var context: NSManagedObjectContext
+       // context = CoreDataHandler.getContext()
         
         let data = readDataFromCSV(fileName: file)
         let csvRows = csvImportParser(data: data!)
@@ -234,7 +234,9 @@ class ImportExportViewController: UIViewController {
                 progressView.setProgress(progress, animated: true)
                 progressLabel.text = String(progress) + " %"
                 
-                let inventory = Inventory(context: context)
+                var context: NSManagedObjectContext
+                context = CoreDataHandler.getContext()
+                var inventory = Inventory(context: context)
                 
                 // check if row is complete or if inventory name not set
                 if csvRows[x][0].count == 0{
@@ -362,8 +364,14 @@ class ImportExportViewController: UIViewController {
                 
                 if !uuid{
                     // save imported csv line into database
-                    _ = CoreDataHandler.saveInventory(inventory: inventory)
-                    importedRows += importedRows
+                    //_ = CoreDataHandler.saveInventory(inventory: inventory)
+                    
+                    importedRows += 1
+                }
+                else{
+                    // delete new object from context to avoid duplicates during runtime
+                    let context = CoreDataHandler.getContext()
+                    context.delete(inventory)
                 }
             }
         }

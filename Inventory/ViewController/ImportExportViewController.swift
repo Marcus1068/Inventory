@@ -13,6 +13,9 @@ import PDFKit
 
 class ImportExportViewController: UIViewController {
 
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var exportTextView: UITextView!
     @IBOutlet weak var exportLabel: UILabel!
@@ -21,7 +24,6 @@ class ImportExportViewController: UIViewController {
     @IBOutlet weak var exportPDFBarButton: UIBarButtonItem!
     
     @IBOutlet weak var importedRowsLabel: UILabel!
-    
     
     // MARK: view controller stuff
     override func viewDidLoad() {
@@ -36,6 +38,9 @@ class ImportExportViewController: UIViewController {
         self.exportLabel.text = "Export file destination:"
         self.importedRowsLabel.isHidden = true
 
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = true
+        
         //self.navigationController?.title = "Export to CVS/PDF"
         //self.navigationItem.title = "Export to CVS/PDF"
         //self.navbar.bar
@@ -46,7 +51,8 @@ class ImportExportViewController: UIViewController {
         
         self.exportTextView.text = ""
         self.importedRowsLabel.isHidden = true
-        
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,7 +92,10 @@ class ImportExportViewController: UIViewController {
         let container = CoreDataHandler.persistentContainer()
         
         container.performBackgroundTask { (context) in
+            var exportedRows : Int = 0
+            
             var results: [Inventory] = []
+            
             do {
                 results = try context.fetch(self.inventoryFetchRequest())
             } catch let error as NSError {
@@ -99,8 +108,20 @@ class ImportExportViewController: UIViewController {
             let exportDocPath = pathURLcvs.absoluteString
             var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
             
+            var x : Int = 0
+            
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
+                
+                x += 1
+                DispatchQueue.main.async {
+                    // update progress bar UI
+                    let progress = Float(x) / Float(results.count)
+                    self.progressView.setProgress(progress, animated: true)
+                    self.progressLabel.text = String(progress * 100) + " %"
+                }
+                
+                exportedRows += 1
             }
             
             do {
@@ -109,6 +130,7 @@ class ImportExportViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
                     self.exportTextView.text = exportDocPath
+                    
                     // show alert box with path name
                     //self.showExportFinishedAlertView(exportFilePath)
                 }
@@ -119,6 +141,7 @@ class ImportExportViewController: UIViewController {
             
             // loop through all jpeg files and save them
             for inv in results{
+                
                 // export JPEG files
                 if inv.imageFileName != "" {
                     let pathURLjpg = docPath.appendingPathComponent(inv.imageFileName!)
@@ -151,7 +174,20 @@ class ImportExportViewController: UIViewController {
                     }
                 }
             }
+            
+            DispatchQueue.main.async {
+                // at the end of export report the number of exported rows to user
+                self.importedRowsLabel.isHidden = false
+                self.importedRowsLabel.text = "Exported rows: " + String(exportedRows)
+                
+                // set progress bar to 100% at the end of export
+                self.progressView.setProgress(1.0, animated: true)
+                self.progressLabel.text = "100 %"
+            }
+            
         }
+        
+        
     }
     
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
@@ -193,6 +229,11 @@ class ImportExportViewController: UIViewController {
         // Do NOT change definition in core data since order is hard coded
         if csvRows.count > 1{
             for x in 1 ... csvRows.count - 1 {
+                // update progress bar UI
+                let progress = Float(x) / Float(csvRows.count)
+                progressView.setProgress(progress, animated: true)
+                progressLabel.text = String(progress) + " %"
+                
                 let inventory = Inventory(context: context)
                 
                 // check if row is complete or if inventory name not set
@@ -330,6 +371,9 @@ class ImportExportViewController: UIViewController {
         // at the end of import report number of imported rows to user
         self.importedRowsLabel.isHidden = false
         self.importedRowsLabel.text = "Imported rows: " + String(importedRows)
+        
+        progressView.setProgress(1.0, animated: true)
+        progressLabel.text = "100 %"
     }
     
     // get jpeg image from file directory
@@ -383,9 +427,18 @@ class ImportExportViewController: UIViewController {
         return result
     }
     
+    
     // MARK - button actions
     
     @IBAction func exportCVSButton(_ sender: Any) {
+        
+        importedRowsLabel.isHidden = true
+        importedRowsLabel.text = ""
+        
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = false
+        progressLabel.text = "0 %"
+        
         exportCSVFile()
     }
     
@@ -395,9 +448,16 @@ class ImportExportViewController: UIViewController {
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {
-        self.importedRowsLabel.isHidden = true
-        self.importedRowsLabel.text = ""
+
+        importedRowsLabel.isHidden = true
+        importedRowsLabel.text = ""
+        
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = false
+        progressLabel.text = "0 %"
         
         importCVSFile(file: Helper.cvsFile)
+        
     }
+    
 }

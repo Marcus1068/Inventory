@@ -1674,7 +1674,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="265-ji-6f6">
-                                <rect key="frame" x="8" y="232" width="359" height="204"/>
+                                <rect key="frame" x="8" y="232" width="359" height="167"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1686,7 +1686,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
-                                <rect key="frame" x="16" y="487" width="343" height="30"/>
+                                <rect key="frame" x="16" y="438" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BVR-Iv-5g8"/>
                                 </constraints>
@@ -1697,7 +1697,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
-                                <rect key="frame" x="16" y="548" width="343" height="24"/>
+                                <rect key="frame" x="16" y="476" width="343" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="7wL-HZ-lGk"/>
                                 </constraints>
@@ -1705,12 +1705,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lo5-nO-MVc">
+                                <rect key="frame" x="8" y="520" width="351" height="2"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-Yp-eGe">
+                                <rect key="frame" x="8" y="542" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8TH-th-pba"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="1LN-Wj-JdP"/>
-                            <constraint firstItem="oh4-rl-izX" firstAttribute="top" secondItem="g93-Ej-2SW" secondAttribute="bottom" constant="31" id="9fv-xD-ce7"/>
-                            <constraint firstItem="265-ji-6f6" firstAttribute="centerY" secondItem="VFe-N0-mPM" secondAttribute="centerY" id="CAG-ae-cE8"/>
+                            <constraint firstItem="oh4-rl-izX" firstAttribute="top" secondItem="g93-Ej-2SW" secondAttribute="bottom" constant="8" id="9fv-xD-ce7"/>
+                            <constraint firstItem="265-ji-6f6" firstAttribute="centerY" secondItem="VFe-N0-mPM" secondAttribute="centerY" constant="-18" id="CAG-ae-cE8"/>
+                            <constraint firstItem="cZ1-Yp-eGe" firstAttribute="top" secondItem="lo5-nO-MVc" secondAttribute="bottom" constant="20" id="Ea5-we-psd"/>
                             <constraint firstItem="oh4-rl-izX" firstAttribute="trailing" secondItem="VFe-N0-mPM" secondAttribute="trailingMargin" id="Fjm-Ki-qtm"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" id="Giv-2V-xZa"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="top" secondItem="uBC-c3-drK" secondAttribute="bottom" constant="20" id="JS6-M5-ndR"/>
@@ -1720,11 +1733,15 @@
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="Zr4-ry-h04"/>
                             <constraint firstItem="oh4-rl-izX" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="aAG-Ri-ahA"/>
                             <constraint firstItem="g93-Ej-2SW" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="bN7-cc-72l"/>
+                            <constraint firstItem="lo5-nO-MVc" firstAttribute="trailing" secondItem="VFe-N0-mPM" secondAttribute="trailingMargin" id="bzW-XI-dhi"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="top" secondItem="DYJ-sB-dHx" secondAttribute="bottom" constant="8.3300000000000001" id="c8G-Kh-Hha"/>
                             <constraint firstAttribute="trailing" secondItem="265-ji-6f6" secondAttribute="trailing" constant="8" id="fLd-Se-1J8"/>
                             <constraint firstItem="Cad-xq-tCv" firstAttribute="centerX" secondItem="z5u-gb-85Y" secondAttribute="centerX" id="gXa-EU-4PZ"/>
+                            <constraint firstItem="lo5-nO-MVc" firstAttribute="top" secondItem="oh4-rl-izX" secondAttribute="bottom" constant="20" id="gzL-oD-gRn"/>
                             <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="Cad-xq-tCv" secondAttribute="bottom" constant="32" id="haq-VG-7TX"/>
-                            <constraint firstItem="g93-Ej-2SW" firstAttribute="top" secondItem="265-ji-6f6" secondAttribute="bottom" constant="51" id="qXm-Bl-Ltc"/>
+                            <constraint firstItem="cZ1-Yp-eGe" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leading" constant="8" id="kh1-W4-gYw"/>
+                            <constraint firstItem="lo5-nO-MVc" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" constant="-8" id="p4n-pb-czc"/>
+                            <constraint firstItem="g93-Ej-2SW" firstAttribute="top" secondItem="265-ji-6f6" secondAttribute="bottom" constant="39" id="qXm-Bl-Ltc"/>
                             <constraint firstAttribute="trailing" secondItem="DYJ-sB-dHx" secondAttribute="trailing" constant="124" id="r1u-6Z-KBV"/>
                             <constraint firstItem="DYJ-sB-dHx" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="46" id="xdg-AG-QaZ"/>
                             <constraint firstItem="265-ji-6f6" firstAttribute="centerX" secondItem="VFe-N0-mPM" secondAttribute="centerX" id="yp7-K6-4f2"/>
@@ -1739,6 +1756,8 @@
                         <outlet property="exportTextView" destination="265-ji-6f6" id="a6t-lA-cvA"/>
                         <outlet property="importedRowsLabel" destination="oh4-rl-izX" id="pim-lE-hWr"/>
                         <outlet property="navbar" destination="Cad-xq-tCv" id="GnF-Mc-FYF"/>
+                        <outlet property="progressLabel" destination="cZ1-Yp-eGe" id="ndp-4E-mW1"/>
+                        <outlet property="progressView" destination="lo5-nO-MVc" id="bS4-aU-TYv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>

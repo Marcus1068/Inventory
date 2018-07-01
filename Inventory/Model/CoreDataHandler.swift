@@ -510,6 +510,20 @@ class CoreDataHandler: NSObject {
         return false
     }
     
+    // delete inventory object
+    class func deleteInventory(inventory: Inventory) -> Bool{
+        let context = getContext()
+        
+        context.delete(inventory)
+        
+        do {
+            try context.save()
+            return true
+        } catch  {
+            return false
+        }
+    }
+    
     // MARK: fetch ALL stuff
     // fetch all category array, otherwise return [] empty array
     class func fetchAllCategories() -> [Category]

@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import os.log
 
 private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
@@ -44,22 +43,44 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
 //    var shouldReloadCollectionView = false
 //    var blockOperations: [BlockOperation] = []
 
+    //var deleteMode = false
     var dest = InventoryEditViewController()    // destination view controller
     var size = CGRect()
 //    var inventory : [Inventory] = []
     var owner : [Owner] = []
     var filteredInventory:[Inventory] = []   // in case of search filter by inventory name
     
+    var selectedForDeleteInventory:[Inventory] = []
     
     let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet var collection: UICollectionView!
     
+    // store original nav bar buttons
+    var leftNavBarButton : UIBarButtonItem? = nil
+    var rightNavBarButton : UIBarButtonItem? = nil
+    
+    // store selected items when delete mode = true
+    var indexPaths = [IndexPath]()
+    
+    // enter delete mode
+    var deleteMode: Bool = false {
+        didSet {
+            collectionView?.allowsMultipleSelection = deleteMode
+            
+            guard deleteMode else {
+                // restore buttons to original setup
+                navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
+                navigationItem.setRightBarButtonItems([rightNavBarButton!], animated: true)
+                
+                return
+            }
+        }
+    }
+    
     //var searchFooter = SearchFooter()
     
     override func viewDidLoad() {
-        os_log("viewDidLoad in InventoryCollectionViewController", log: OSLog.default, type: .debug)
-        
         super.viewDidLoad()
         
         // new in ios11: large navbar titles
@@ -68,6 +89,8 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         } else {
             // Earlier version of iOS
         }
+        
+        //print(indexPaths.count)
         
         // set collection view delegates
         collection.delegate = self
@@ -120,6 +143,10 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
         collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
+        
+        leftNavBarButton = self.navigationItem.leftBarButtonItems?.first
+        rightNavBarButton = self.navigationItem.rightBarButtonItems?.first
+        
     }
     
     // initialize the data for the view
@@ -288,7 +315,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                                                                          for: indexPath) as! InventoryFooterCollectionReusableView
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
-            footerView.searchResultLabel.textColor = UIColor.blue
+            footerView.searchResultLabel.textColor = themeColor
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
@@ -348,13 +375,13 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         cell.categoryNameLabel.text = inv.inventoryCategory?.categoryName
         cell.priceLabel.text = String(inv.price) + "€" // FIXME hardcoded
         cell.warrantyMonthsLabel.text = String(inv.warranty)
-        cell.warrantyLabel.text = "Warranty:"
+        cell.warrantyLabel.text = "Warranty:"   // FIXME hardcoded
         
         var image: UIImage
         
         if inv.image != nil{
             let imageData = inv.image! as Data
-            image = UIImage(data: imageData, scale:1.0)!
+            image = UIImage(data: imageData, scale: 1.0)!
         }
         else{
             // to image, set default image
@@ -373,6 +400,53 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         dest.currentInventory = inv
         selectedInventoryItem = inv
+        
+        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
+        if deleteMode{
+            let cell = collection.cellForItem(at: indexPath)
+            cell?.layer.borderWidth = 5.0
+            cell?.layer.borderColor = themeColor.cgColor
+        
+            indexPaths.append(indexPath)
+            selectedForDeleteInventory.append(inv)
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.clear
+        //let inv = fetchedResultsController.object(at: indexPath)
+        
+        if deleteMode{
+            let cell = collection.cellForItem(at: indexPath)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+        
+            if indexPaths.count > 0{
+                indexPaths.removeLast()
+                //selectedForDeleteInventory.remove(at: indexPath.item)
+                selectedForDeleteInventory.removeLast()
+            }
+        }
+    }
+    
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    // avoid automatic segue in case of delete mode
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if deleteMode  {
+            // your code here, like badParameters  = false, e.t.c
+            return false
+        }
+        return true
     }
     
     // prepare to transfer data to another view controller
@@ -390,29 +464,77 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         }
     }
     
+    
+    // add a new inventory element by simply calling perform segue
     @IBAction func addButton(_ sender: Any) {
         
         performSegue(withIdentifier: "addSegue", sender: self)
     }
     
+    // enables delete mode, switches left and right nav bar buttons
     @IBAction func organizeButton(_ sender: Any) {
-        // Enable editing.
-        //self.editor.setEditing(true, animated: true)
+        
+        deleteMode = true
+        
+        // left nav bar button change to cancel
+        self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(InventoryCollectionViewController.cancelDelete)), animated: true)
+        
+        // right nav bar button to done
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(InventoryCollectionViewController.doneDelete)), animated: true)
+        
     }
     
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
+    // no inv items deleted, deselect all and enable edit mode again
+    @objc func cancelDelete(){
+        
+        // enable edit mode again
+        deleteMode = false
+        
+        collection.allowsMultipleSelection = false
+        
+        // deselect all selected items
+        for idx in indexPaths{
+            
+            let cell = collectionView?.cellForItem(at: idx)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        indexPaths.removeAll()
+        selectedForDeleteInventory.removeAll()
+    }
     
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
+    // delete inventory objects which are selected
+    @objc func doneDelete(){
+        
+        deleteMode = false
+        collection.allowsMultipleSelection = false
+        
+        // delete all selected items
+        for idx in indexPaths{
+            let cell = collection.cellForItem(at: idx)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        // delete from database
+        for inv in selectedForDeleteInventory{
+            print(inv.inventoryName!)
+            _ = CoreDataHandler.deleteInventory(inventory: inv)
+        }
+        
+        indexPaths.removeAll()
+        selectedForDeleteInventory.removeAll()
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
+        collection.reloadData()
+    }
+    
  /*
     @nonobjc private let capital = #selector(CollectionViewCell.capital)
     @nonobjc private let copy = #selector(UIResponderStandardEditActions.copy)

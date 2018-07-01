@@ -30,7 +30,7 @@ class ManageTableViewController: UITableViewController {
         }
         
         self.title = "Manage items"
-        
+        //navigationController?.navigationBar.barTintColor = themeColor
         
         self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
         

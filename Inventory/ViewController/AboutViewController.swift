@@ -21,6 +21,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         super.viewDidLoad()
 
         versionNumberLabel.text = Helper.appNameString + " " + Helper.versionString
+        //versionNumberLabel.tintColor = themeColor
+        versionNumberLabel.textColor = themeColor
         copyrightLabel.text = "(c) 2018 by Marcus Deuß"
         iosversionLabel.text = "Running on iOS " + DeviceInfo.showOSVersion()
         

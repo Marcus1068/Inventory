@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 import os.log
 
+let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -32,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSAttributedStringKey.foregroundColor: UIColor.blue,
              NSAttributedStringKey.font: UIFont(name: "Arial", size: 30) ??
                 UIFont.systemFont(ofSize: 30)]
+        
+        window?.tintColor = themeColor
         
         return true
     }

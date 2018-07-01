@@ -70,6 +70,8 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         
         // enable filtering
         filterSwitch.isOn = true
+        filterSwitch.tintColor = themeColor
+        filterSwitch.onTintColor = themeColor
         
         // Setup the Scope Bars
         owner = CoreDataHandler.fetchAllOwners()
@@ -94,6 +96,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         
         replaceSegmentContents(segments: listRooms, control: roomsSegment)
         roomsSegment.selectedSegmentIndex = 0
+        
         
         // set collection view delegates
         collection.delegate = self
@@ -231,7 +234,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
                                                                          for: indexPath) as! ReportsFooterCollectionReusableView
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
-            footerView.searchResultLabel.textColor = UIColor.blue
+            footerView.searchResultLabel.textColor = themeColor
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){

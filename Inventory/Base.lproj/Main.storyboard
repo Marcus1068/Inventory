@@ -413,7 +413,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Inventory Overview" largeTitleDisplayMode="always" id="oiT-kr-v6M">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="2W7-K5-LjG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="2W7-K5-LjG">
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <action selector="organizeButton:" destination="rQj-lp-tZp" id="sop-Eu-9Qm"/>

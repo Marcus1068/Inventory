@@ -43,6 +43,8 @@
 		2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */; };
 		2C5DDF3C20F9F4C700D71782 /* BrandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3B20F9F4C700D71782 /* BrandTableViewController.swift */; };
 		2C5DDF3E20F9F89F00D71782 /* BrandEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */; };
+		2C5DDF4020FA192000D71782 /* OwnerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */; };
+		2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
@@ -111,6 +113,8 @@
 		2C56E9612087CA2100FD5136 /* RoomEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEditViewController.swift; sourceTree = "<group>"; };
 		2C5DDF3B20F9F4C700D71782 /* BrandTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTableViewController.swift; sourceTree = "<group>"; };
 		2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandEditViewController.swift; sourceTree = "<group>"; };
+		2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerEditViewController.swift; sourceTree = "<group>"; };
+		2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerTableViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */,
 				2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */,
 				2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */,
+				2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */,
+				2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				2C4926DB20920DA100508874 /* ReportsCollectionViewCell.swift in Sources */,
 				2C56E90C208683D100FD5136 /* Helper.swift in Sources */,
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
+				2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */,
 				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,
@@ -430,6 +437,7 @@
 				2C56E94E2086A41700FD5136 /* Category+CoreDataProperties.swift in Sources */,
 				2C56E9512086A41700FD5136 /* Owner+CoreDataClass.swift in Sources */,
 				2C1C7F6F20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift in Sources */,
+				2C5DDF4020FA192000D71782 /* OwnerEditViewController.swift in Sources */,
 				2C56E94D2086A41700FD5136 /* Category+CoreDataClass.swift in Sources */,
 				2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */,
 				2C56E94F2086A41700FD5136 /* Inventory+CoreDataClass.swift in Sources */,

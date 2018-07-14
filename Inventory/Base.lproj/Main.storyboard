@@ -135,6 +135,9 @@
                                                 <constraint firstItem="4CK-9n-Mwm" firstAttribute="leading" secondItem="Q4v-35-1B2" secondAttribute="leading" constant="16" id="icy-4k-Tz2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gJg-Vs-sIe" kind="show" id="mNe-wM-gEY"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -252,6 +255,9 @@
                                                 <constraint firstItem="qCh-w3-5pb" firstAttribute="leading" secondItem="BYX-Jr-2LC" secondAttribute="leading" constant="16" id="ccc-g1-6ZQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="m27-nM-3XX" kind="show" id="jjA-ik-3Zw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1997,6 +2003,156 @@
             </objects>
             <point key="canvasLocation" x="3878" y="2254"/>
         </scene>
+        <!--My Owners-->
+        <scene sceneID="zxL-fu-4hd">
+            <objects>
+                <tableViewController id="gJg-Vs-sIe" customClass="OwnerTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xyl-0w-6X7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GlM-9z-INp">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
+                                    <rect key="frame" x="169" y="4" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ownerCell" rowHeight="60" id="fdo-Uz-NgF">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fdo-Uz-NgF" id="wqn-Rc-T7R">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="m27-nM-3XX" kind="show" identifier="editSegueOwner" id="Vam-la-fTe"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gJg-Vs-sIe" id="LPg-U4-7dg"/>
+                            <outlet property="delegate" destination="gJg-Vs-sIe" id="a5R-Vn-vUj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Owners" id="PRz-eY-S4p">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="zK9-Hi-Ss9">
+                            <connections>
+                                <action selector="doneButton:" destination="gJg-Vs-sIe" id="8Rk-ir-xGs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dHQ-uD-MvQ">
+                            <connections>
+                                <action selector="addButton:" destination="gJg-Vs-sIe" id="7jJ-0S-fAm"/>
+                                <segue destination="m27-nM-3XX" kind="show" identifier="addSegueOwner" id="bFR-vc-3Sf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButtonLabel" destination="dHQ-uD-MvQ" id="aau-T9-oVg"/>
+                        <outlet property="doneButtonLabel" destination="zK9-Hi-Ss9" id="qg0-Qm-YbV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6yv-vd-GaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4588" y="2254"/>
+        </scene>
+        <!--Owner-->
+        <scene sceneID="yoA-Yg-70w">
+            <objects>
+                <viewController id="m27-nM-3XX" customClass="OwnerEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C32-he-Pnd"/>
+                        <viewControllerLayoutGuide type="bottom" id="pY8-tZ-cfP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9WE-PY-WUr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imj-n1-qeK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="ePj-83-Gh9">
+                                        <rect key="frame" x="169" y="5" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="6nF-uD-8zg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="4PE-aJ-hDb"/>
+                                    <constraint firstItem="ePj-83-Gh9" firstAttribute="top" secondItem="Imj-n1-qeK" secondAttribute="top" constant="5" id="HSo-Qx-bX5"/>
+                                    <constraint firstItem="ePj-83-Gh9" firstAttribute="centerX" secondItem="Imj-n1-qeK" secondAttribute="centerX" id="Jcm-X2-O9I"/>
+                                    <constraint firstItem="ePj-83-Gh9" firstAttribute="centerY" secondItem="Imj-n1-qeK" secondAttribute="centerY" id="cMh-1m-slS"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Owner name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xgQ-W4-Tf4">
+                                <rect key="frame" x="16" y="155" width="137" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdc-4Q-qWy">
+                                <rect key="frame" x="16" y="118" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the owner name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHQ-NS-mde">
+                                <rect key="frame" x="16" y="228" width="343" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="qew-yc-vq7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Imj-n1-qeK" firstAttribute="leading" secondItem="9WE-PY-WUr" secondAttribute="leading" id="Dnn-u2-hdr"/>
+                            <constraint firstAttribute="trailing" secondItem="xgQ-W4-Tf4" secondAttribute="trailing" constant="222" id="Eol-WA-3ve"/>
+                            <constraint firstItem="xgQ-W4-Tf4" firstAttribute="leading" secondItem="Jdc-4Q-qWy" secondAttribute="leading" id="Kn2-VA-vTz"/>
+                            <constraint firstItem="PHQ-NS-mde" firstAttribute="leading" secondItem="xgQ-W4-Tf4" secondAttribute="leading" id="M11-TB-9CD"/>
+                            <constraint firstItem="PHQ-NS-mde" firstAttribute="top" secondItem="xgQ-W4-Tf4" secondAttribute="bottom" constant="43" id="Mx8-mP-Fil"/>
+                            <constraint firstItem="Imj-n1-qeK" firstAttribute="trailing" secondItem="9WE-PY-WUr" secondAttribute="trailing" id="NNA-wh-KhC"/>
+                            <constraint firstItem="PHQ-NS-mde" firstAttribute="leading" secondItem="9WE-PY-WUr" secondAttribute="leadingMargin" id="S2b-BJ-6BW"/>
+                            <constraint firstItem="Imj-n1-qeK" firstAttribute="top" secondItem="C32-he-Pnd" secondAttribute="bottom" id="UzG-VK-xN3"/>
+                            <constraint firstItem="xgQ-W4-Tf4" firstAttribute="top" secondItem="Jdc-4Q-qWy" secondAttribute="bottom" constant="16" id="XGm-SM-bAr"/>
+                            <constraint firstItem="Jdc-4Q-qWy" firstAttribute="top" secondItem="Imj-n1-qeK" secondAttribute="bottom" constant="8" symbolic="YES" id="ak5-nX-lyY"/>
+                            <constraint firstItem="PHQ-NS-mde" firstAttribute="centerX" secondItem="Imj-n1-qeK" secondAttribute="centerX" id="bD1-mw-shK"/>
+                            <constraint firstItem="xgQ-W4-Tf4" firstAttribute="trailing" secondItem="Jdc-4Q-qWy" secondAttribute="trailing" id="mJE-jE-Pge"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Owner" id="2Dn-lA-ivG">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="UCJ-jw-rah">
+                            <connections>
+                                <action selector="cancelButton:" destination="m27-nM-3XX" id="0pB-OP-Ude"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Gd6-kV-3Jb">
+                            <connections>
+                                <action selector="saveButton:" destination="m27-nM-3XX" id="yrk-sP-SeG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButtonOutlet" destination="UCJ-jw-rah" id="bZT-JF-m5f"/>
+                        <outlet property="saveButtonOutlet" destination="Gd6-kV-3Jb" id="98r-nu-bCC"/>
+                        <outlet property="textfieldOwner" destination="xgQ-W4-Tf4" id="dhj-cR-Sgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bs3-TU-S8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5354" y="2254"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Box Icon" width="30" height="30"/>
@@ -2031,7 +2187,8 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VVD-j9-6Ua"/>
+        <segue reference="jjA-ik-3Zw"/>
+        <segue reference="vym-Dh-yV8"/>
         <segue reference="JWi-qT-NtE"/>
         <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>

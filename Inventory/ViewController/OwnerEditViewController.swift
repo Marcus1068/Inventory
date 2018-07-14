@@ -1,5 +1,5 @@
 //
-//  BrandEditViewController.swift
+//  OwnerEditViewController.swift
 //  Inventory
 //
 //  Created by Marcus Deuß on 01.05.18.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class BrandEditViewController: UIViewController, UITextFieldDelegate {
+class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
     
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     
-    @IBOutlet weak var textfieldBrand: UITextField!
+    @IBOutlet weak var textfieldOwner: UITextField!
     
     // contains the selected object from viewcontroller before
-    weak var currentBrand : Brand?
+    weak var currentOwner : Owner?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,25 +26,25 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        // edit or add brand
-        if currentBrand != nil{
+        // edit or add owner
+        if currentOwner != nil{
             //
-            self.title = "Edit Brand"
-            textfieldBrand.text = currentBrand!.brandName
+            self.title = "Edit Owner"
+            textfieldOwner.text = currentOwner!.ownerName
         }
         else{
-            self.title = "Add Brand"
-            textfieldBrand.text = ""
+            self.title = "Add Owner"
+            textfieldOwner.text = ""
             saveButtonOutlet.isEnabled = false
         }
         
         // focus on first text field
-        textfieldBrand.becomeFirstResponder()
-        textfieldBrand.delegate = self
-        textfieldBrand.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldBrand.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldOwner.becomeFirstResponder()
+        textfieldOwner.delegate = self
+        textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
+        textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
         
-        textfieldBrand.placeholder = "Brand"
+        textfieldOwner.placeholder = "Owner"
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +56,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //os_log("textFieldShouldReturn", log: OSLog.default, type: .debug)
         
-        if (textField == textfieldBrand)
+        if (textField == textfieldOwner)
         {
             // close keyboard
             self.view.endEditing(true)
@@ -72,7 +72,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
         
-        if textfieldBrand.text?.count == 0{
+        if textfieldOwner.text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -102,25 +102,25 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         
         // new brand
-        if (currentBrand == nil)
+        if (currentOwner == nil)
         {
-            if CoreDataHandler.fetchBrand(brandName: textfieldBrand.text!)
+            if CoreDataHandler.fetchOwner(ownerName: textfieldOwner.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
-                textfieldBrand.becomeFirstResponder()
+                textfieldOwner.becomeFirstResponder()
             }
             else{
                 let context = CoreDataHandler.getContext()
                 
-                let brand = Brand(context: context)
+                let owner = Owner(context: context)
                 
                 // set object with UI values
-                brand.brandName = textfieldBrand.text!
+                owner.ownerName = textfieldOwner.text!
                 
-                currentBrand = brand
+                currentOwner = owner
                 
-                _ = CoreDataHandler.saveBrand(brand: currentBrand!)
+                _ = CoreDataHandler.saveOwner(owner: currentOwner!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
@@ -128,9 +128,9 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
             
         }
         else{
-            currentBrand?.brandName = textfieldBrand.text
+            currentOwner?.ownerName = textfieldOwner.text
             
-            _ = CoreDataHandler.saveBrand(brand: currentBrand!)
+            _ = CoreDataHandler.saveOwner(owner: currentOwner!)
             
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
@@ -139,7 +139,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     func showAlertDialog(){
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Brand already exists", message: "Please choose a different brand name", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Owner already exists", message: "Please choose a different owner name", preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in

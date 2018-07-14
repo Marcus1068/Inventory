@@ -106,6 +106,9 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qrm-X6-8aa" secondAttribute="trailing" constant="20" symbolic="YES" id="tPm-b0-nhq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iCz-KG-ewV" kind="show" id="aUd-Fn-dpo"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellManage" id="2qI-tE-jgq">
                                         <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
@@ -220,6 +223,9 @@
                                                 <constraint firstItem="5qk-T5-xmx" firstAttribute="top" secondItem="qhS-J4-txo" secondAttribute="top" constant="8" id="kDw-gh-YQf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Nkn-yK-LRB" kind="show" id="vym-Dh-yV8"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="rix-C6-t4k">
                                         <rect key="frame" x="0.0" y="419.5" width="375" height="44"/>
@@ -504,7 +510,7 @@
             <objects>
                 <tableViewController id="9hb-hU-Cxa" customClass="RoomTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="STY-Pa-Nxh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="p3A-UU-TKg">
@@ -651,7 +657,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOx-Yc-sEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5200.8000000000002" y="1665.5172413793105"/>
+            <point key="canvasLocation" x="2265" y="2254"/>
         </scene>
         <!--Reports-->
         <scene sceneID="Kv0-9X-085">
@@ -1841,6 +1847,156 @@
             </objects>
             <point key="canvasLocation" x="-287" y="-105"/>
         </scene>
+        <!--My Brands-->
+        <scene sceneID="wta-9d-bSL">
+            <objects>
+                <tableViewController id="iCz-KG-ewV" customClass="BrandTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="dVn-3i-FaS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="pmu-bl-MiB">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
+                                    <rect key="frame" x="169" y="4" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="brandCell" rowHeight="60" id="fMR-Lt-QQ7">
+                                <rect key="frame" x="0.0" y="99.5" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fMR-Lt-QQ7" id="dDg-r3-U3O">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="Nkn-yK-LRB" kind="show" identifier="editSegueBrand" id="bbr-hJ-hrN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iCz-KG-ewV" id="gyJ-uO-CdY"/>
+                            <outlet property="delegate" destination="iCz-KG-ewV" id="aTy-V2-UUm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Brands" id="4qt-wy-VB5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="FQ6-ny-3zA">
+                            <connections>
+                                <action selector="doneButton:" destination="iCz-KG-ewV" id="rIa-gs-MJe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="chR-dI-qHw">
+                            <connections>
+                                <action selector="addButton:" destination="iCz-KG-ewV" id="3Yi-wb-fW3"/>
+                                <segue destination="Nkn-yK-LRB" kind="show" identifier="addSegueBrand" id="VVD-j9-6Ua"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButtonLabel" destination="chR-dI-qHw" id="uWC-N7-bcb"/>
+                        <outlet property="doneButtonLabel" destination="FQ6-ny-3zA" id="PMK-cV-COs"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FVV-fH-aFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3095" y="2254"/>
+        </scene>
+        <!--Brand-->
+        <scene sceneID="h6p-jT-qUh">
+            <objects>
+                <viewController id="Nkn-yK-LRB" customClass="BrandEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wAq-LG-8Ak"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cz0-dy-3fP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VR4-4m-3m1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f25-yk-tN8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-ig-L8e">
+                                        <rect key="frame" x="169" y="5" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="b9i-YI-5AV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="1QK-ig-L8e" firstAttribute="top" secondItem="f25-yk-tN8" secondAttribute="top" constant="5" id="EoM-jo-rag"/>
+                                    <constraint firstItem="1QK-ig-L8e" firstAttribute="centerX" secondItem="f25-yk-tN8" secondAttribute="centerX" id="Ta4-ES-9Wg"/>
+                                    <constraint firstItem="1QK-ig-L8e" firstAttribute="centerY" secondItem="f25-yk-tN8" secondAttribute="centerY" id="Xiz-tL-dy7"/>
+                                    <constraint firstAttribute="height" constant="46" id="zje-bu-au8"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xWO-xs-zbZ">
+                                <rect key="frame" x="16" y="155" width="137" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osM-IE-rWU">
+                                <rect key="frame" x="16" y="118" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the brand name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-Nl-hAM">
+                                <rect key="frame" x="16" y="228" width="343" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="gmP-DN-Uy1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xWO-xs-zbZ" secondAttribute="trailing" constant="222" id="09n-mv-0cn"/>
+                            <constraint firstItem="t7b-Nl-hAM" firstAttribute="centerX" secondItem="f25-yk-tN8" secondAttribute="centerX" id="9Z8-Xh-cI9"/>
+                            <constraint firstItem="t7b-Nl-hAM" firstAttribute="leading" secondItem="xWO-xs-zbZ" secondAttribute="leading" id="Io1-vq-GE5"/>
+                            <constraint firstItem="f25-yk-tN8" firstAttribute="leading" secondItem="VR4-4m-3m1" secondAttribute="leading" id="P92-xp-Hi6"/>
+                            <constraint firstItem="t7b-Nl-hAM" firstAttribute="top" secondItem="xWO-xs-zbZ" secondAttribute="bottom" constant="43" id="SDC-Nx-UHr"/>
+                            <constraint firstItem="xWO-xs-zbZ" firstAttribute="trailing" secondItem="osM-IE-rWU" secondAttribute="trailing" id="dp0-Wu-x1P"/>
+                            <constraint firstItem="xWO-xs-zbZ" firstAttribute="top" secondItem="osM-IE-rWU" secondAttribute="bottom" constant="16" id="ehj-Q8-Vsc"/>
+                            <constraint firstItem="xWO-xs-zbZ" firstAttribute="leading" secondItem="osM-IE-rWU" secondAttribute="leading" id="gaR-Mn-wjV"/>
+                            <constraint firstItem="t7b-Nl-hAM" firstAttribute="leading" secondItem="VR4-4m-3m1" secondAttribute="leadingMargin" id="hTW-ok-1I0"/>
+                            <constraint firstItem="f25-yk-tN8" firstAttribute="top" secondItem="wAq-LG-8Ak" secondAttribute="bottom" id="rmB-WU-HME"/>
+                            <constraint firstItem="osM-IE-rWU" firstAttribute="top" secondItem="f25-yk-tN8" secondAttribute="bottom" constant="8" symbolic="YES" id="wuP-AE-Z8H"/>
+                            <constraint firstItem="f25-yk-tN8" firstAttribute="trailing" secondItem="VR4-4m-3m1" secondAttribute="trailing" id="xqV-7p-iwj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Brand" id="tDp-DF-iZg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H00-Q1-XDe">
+                            <connections>
+                                <action selector="cancelButton:" destination="Nkn-yK-LRB" id="nzC-fd-Ci8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="JXh-Fw-sJq">
+                            <connections>
+                                <action selector="saveButton:" destination="Nkn-yK-LRB" id="1IQ-zJ-TTe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButtonOutlet" destination="H00-Q1-XDe" id="g62-3V-Yiz"/>
+                        <outlet property="saveButtonOutlet" destination="JXh-Fw-sJq" id="uxg-Tf-tiD"/>
+                        <outlet property="textfieldBrand" destination="xWO-xs-zbZ" id="PPl-Sq-qVC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SjV-A5-uzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3878" y="2254"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Box Icon" width="30" height="30"/>
@@ -1875,9 +2031,10 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VVD-j9-6Ua"/>
         <segue reference="JWi-qT-NtE"/>
         <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>
-        <segue reference="CJG-Xc-sZ3"/>
+        <segue reference="I7b-Rp-fDa"/>
     </inferredMetricsTieBreakers>
 </document>

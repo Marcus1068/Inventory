@@ -161,7 +161,7 @@ class ImportExportViewController: UIViewController {
                 }
                 
                 // export PDF files
-                if inv.invoiceFileName != "" {
+                if inv.invoiceFileName != nil && inv.invoiceFileName != "" {
                     let pathURLpdf = docPath.appendingPathComponent(inv.invoiceFileName!)
                     
                     let invoiceData = inv.invoice! as Data

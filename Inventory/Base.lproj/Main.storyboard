@@ -1795,10 +1795,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kLY-4E-sxY" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
+                        <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
                         <segue destination="IbM-Ka-Gqt" kind="relationship" relationship="viewControllers" id="RHg-jD-7Uk"/>
                         <segue destination="MUX-Pv-eqU" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
-                        <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
+                        <segue destination="kLY-4E-sxY" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
                         <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                     </connections>
                 </tabBarController>

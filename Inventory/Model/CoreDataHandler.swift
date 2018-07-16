@@ -752,7 +752,24 @@ class CoreDataHandler: NSObject {
         let imageData6 = UIImageJPEGRepresentation(myImage6, 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
+        let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
+                                   "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV Gen4"]
         
+        // generate sample data randomly
+        for i in 1..<100{
+            let remark = "Bemerkung " + String(i)
+            let serial = "S" + String(i) + "N" + String(i*3) + "Z" + String(i+7)
+            
+            let invId = random(min: 0, max: invList.count - 1)
+            let brandId = random(min: 0, max: brandList.count - 1)
+            let catId = random(min: 0, max: categoryList.count - 1)
+            let ownerId = random(min: 0, max: ownerList.count - 1)
+            let roomId = random(min: 0, max: roomList.count - 1)
+            
+            _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
+        }
+        
+        /*
         _ = saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[1], owner: owners[1], room: rooms[1])
         
         _ = saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[2], owner: owners[3], room: rooms[2])
@@ -830,10 +847,14 @@ class CoreDataHandler: NSObject {
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        
+        */
         CoreDataHandler.showSampleData()
     }
 
+    class func random(min: Int, max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(max - min + 1))) + min
+    }
+    
     // just for testing and debugging, will not be used in final app
     class func showSampleData()
     {

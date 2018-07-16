@@ -11,6 +11,7 @@ import CoreData
 import os.log
 
 private let reuseIdentifier = "collectionCellReports"
+private var selectedInventoryItem = Inventory()
 
 class ReportsCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
@@ -44,9 +45,34 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBOutlet weak var filterByRoomLabel: UILabel!
     @IBOutlet weak var filterSwitch: UISwitch!
     
+    // store original nav bar buttons
+    var leftNavBarButton : UIBarButtonItem? = nil
+    var rightNavBarButton : UIBarButtonItem? = nil
+    
     var owner : [Owner] = []
     var room : [Room] = []
     let searchController = UISearchController(searchResultsController: nil)
+    
+    var dest = InventoryEditViewController()    // destination view controller
+    var selectedForDeleteInventory:[Inventory] = []
+    
+    // store selected items when delete mode = true
+    var indexPaths = [IndexPath]()
+    
+    // enter delete mode
+    var deleteMode: Bool = false {
+        didSet {
+            collection?.allowsMultipleSelection = deleteMode
+            
+            guard deleteMode else {
+                // restore buttons to original setup
+                navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
+                navigationItem.setRightBarButtonItems([rightNavBarButton!], animated: true)
+                
+                return
+            }
+        }
+    }
     
     // MARK - methods
     
@@ -124,6 +150,9 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         collectionViewLayout?.invalidateLayout()
         
         //collection.contentOffset.y += 100
+        
+        leftNavBarButton = self.navigationItem.leftBarButtonItems?.first
+        rightNavBarButton = self.navigationItem.rightBarButtonItems?.first
     }
 
     // initialize the data for the view
@@ -141,21 +170,6 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    
-
-
     // number of sections, section devider is room name
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         guard let sections = fetchedResultsController.sections else {
@@ -252,6 +266,75 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         }
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let inv = fetchedResultsController.object(at: indexPath)
+        
+        dest.currentInventory = inv
+        selectedInventoryItem = inv
+        
+        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
+        if deleteMode{
+            let cell = collection.cellForItem(at: indexPath)
+            cell?.layer.borderWidth = 5.0
+            cell?.layer.borderColor = themeColor.cgColor
+            
+            indexPaths.append(indexPath)
+            selectedForDeleteInventory.append(inv)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.clear
+        //let inv = fetchedResultsController.object(at: indexPath)
+        
+        if deleteMode{
+            let cell = collection.cellForItem(at: indexPath)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+            
+            if indexPaths.count > 0{
+                indexPaths.removeLast()
+                //selectedForDeleteInventory.remove(at: indexPath.item)
+                selectedForDeleteInventory.removeLast()
+            }
+        }
+    }
+    
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Uncomment this method to specify if the specified item should be selected
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    // avoid automatic segue in case of delete mode
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if deleteMode  {
+            // your code here, like badParameters  = false, e.t.c
+            return false
+        }
+        return true
+    }
+    
+    // prepare to transfer data to another view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let destination =  segue.destination as! InventoryEditViewController
+        
+        if segue.identifier == "addSegue" {
+            destination.currentInventory = nil
+        }
+        
+        if segue.identifier == "editSegue"  {
+            destination.currentInventory = selectedInventoryItem
+            dest = destination
+        }
+    }
+    
     // MARK - search
     // called by system when entered search bar
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -492,6 +575,74 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         }
     }
     
+    // MARK: - button actions
+    
+    @IBAction func addBarButton(_ sender: Any) {
+        performSegue(withIdentifier: "addSegue", sender: self)
+    }
+    
+    @IBAction func organizeBarButton(_ sender: Any) {
+        deleteMode = true
+        
+        // left nav bar button change to cancel
+        self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(ReportsCollectionViewController.cancelDelete)), animated: true)
+        
+        // right nav bar button to done
+        self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ReportsCollectionViewController.doneDelete)), animated: true)
+        
+    }
+    
+    // no inv items deleted, deselect all and enable edit mode again
+    @objc func cancelDelete(){
+        
+        // enable edit mode again
+        deleteMode = false
+        
+        collection.allowsMultipleSelection = false
+        
+        // deselect all selected items
+        for idx in indexPaths{
+            
+            let cell = collection?.cellForItem(at: idx)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        indexPaths.removeAll()
+        selectedForDeleteInventory.removeAll()
+    }
+    
+    // delete inventory objects which are selected
+    @objc func doneDelete(){
+        
+        deleteMode = false
+        collection.allowsMultipleSelection = false
+        
+        // delete all selected items
+        for idx in indexPaths{
+            let cell = collection.cellForItem(at: idx)
+            cell?.layer.borderWidth = 0.0
+            cell?.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        // delete from database
+        for inv in selectedForDeleteInventory{
+            print(inv.inventoryName!)
+            _ = CoreDataHandler.deleteInventory(inventory: inv)
+        }
+        
+        indexPaths.removeAll()
+        selectedForDeleteInventory.removeAll()
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+        
+        collection.reloadData()
+    }
+    
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
@@ -562,4 +713,5 @@ extension ReportsCollectionViewController: NSFetchedResultsControllerDelegate {
             break
         }
     }
+    
 }

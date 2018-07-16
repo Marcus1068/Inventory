@@ -449,7 +449,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="odd-zx-Gdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3597.5999999999999" y="-171.42857142857144"/>
+            <point key="canvasLocation" x="2665" y="-107"/>
         </scene>
         <!--My Categories-->
         <scene sceneID="zcT-nP-Nf0">
@@ -516,7 +516,7 @@
             <objects>
                 <tableViewController id="9hb-hU-Cxa" customClass="RoomTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="STY-Pa-Nxh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="p3A-UU-TKg">
@@ -740,6 +740,7 @@
                                             <outlet property="ownerLabel" destination="yYm-0Z-sNf" id="XKd-l3-8wR"/>
                                             <outlet property="priceLabel" destination="Vpk-WK-A4x" id="hwP-rD-laL"/>
                                             <outlet property="romeNameLabel" destination="T4w-Lo-E4E" id="TRL-w4-GI3"/>
+                                            <segue destination="1MD-YV-91u" kind="show" identifier="editSegue" id="l8y-iU-ek9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -873,8 +874,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reports" id="x4S-E8-XUR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Wzx-6Z-Phb"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="52M-PK-QvR"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Wzx-6Z-Phb">
+                            <connections>
+                                <action selector="organizeBarButton:" destination="cvw-X7-YXT" id="EwK-Sd-o7V"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="52M-PK-QvR">
+                            <connections>
+                                <action selector="addBarButton:" destination="cvw-X7-YXT" id="79V-NA-SFr"/>
+                                <segue destination="1MD-YV-91u" kind="show" identifier="addSegue" id="7xG-kE-rfw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1519,7 +1529,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5285.6000000000004" y="-172.26386806596702"/>
+            <point key="canvasLocation" x="3591" y="-107"/>
         </scene>
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
@@ -1565,7 +1575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6496.8000000000002" y="-230.73463268365819"/>
+            <point key="canvasLocation" x="4521" y="-107"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -1813,7 +1823,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doL-eI-xyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2513" y="-171"/>
+            <point key="canvasLocation" x="1783" y="-106"/>
         </scene>
         <!--Manage Items-->
         <scene sceneID="pfg-Ho-yVm">
@@ -2192,6 +2202,6 @@
         <segue reference="JWi-qT-NtE"/>
         <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>
-        <segue reference="I7b-Rp-fDa"/>
+        <segue reference="CJG-Xc-sZ3"/>
     </inferredMetricsTieBreakers>
 </document>

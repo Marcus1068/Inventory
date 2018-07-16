@@ -763,7 +763,7 @@ class CoreDataHandler: NSObject {
         
         _ = saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[3], owner: owners[2], room: rooms[3])
         
- /*       _ = saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[4], owner: owners[1], room: rooms[4])
+        _ = saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[4], owner: owners[1], room: rooms[4])
         
         _ = saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[5], owner: owners[2], room: rooms[2])
         
@@ -830,7 +830,7 @@ class CoreDataHandler: NSObject {
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
         _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        */
+        
         CoreDataHandler.showSampleData()
     }
 

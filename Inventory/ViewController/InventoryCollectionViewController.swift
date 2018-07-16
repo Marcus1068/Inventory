@@ -86,11 +86,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
-        } else {
-            // Earlier version of iOS
         }
-        
-        //print(indexPaths.count)
         
         // set collection view delegates
         collection.delegate = self
@@ -226,7 +222,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
                 print("Fetching error: \(error), \(error.userInfo)")
             }
             collection.reloadData() */
-            searchBar.text = "AAAA"
+            searchBar.text = "AAAA"     // FIXME what does that mean?
         }
     }
     

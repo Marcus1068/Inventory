@@ -311,9 +311,14 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let destination =  segue.destination as! PDFViewController
-   
-        destination.currentPDF = pdfView
+        if segue.identifier == "pdfSegue" {
+            let destination =  segue.destination as! PDFViewController
+            destination.currentPDF = pdfView
+        }
+        
+        if segue.identifier == "roomSegue" {
+            let destination = segue.destination as! RoomTableViewController
+        }
     }
     
     // take a new image/take a picture

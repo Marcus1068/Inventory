@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // Do any additional setup after loading the view.
@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // manage large title appearance for all view controllers centrally
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.blue,
-             NSAttributedStringKey.font: UIFont(name: "Arial", size: 30) ??
+            [NSAttributedString.Key.foregroundColor: UIColor.blue,
+             NSAttributedString.Key.font: UIFont(name: "Arial", size: 30) ??
                 UIFont.systemFont(ofSize: 30)]
         
         window?.tintColor = themeColor

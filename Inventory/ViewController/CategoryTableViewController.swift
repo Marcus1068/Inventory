@@ -50,7 +50,7 @@ class CategoryTableViewController: UITableViewController {
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.title = "My Categories"        
-        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         // fetch database contents
         do {
@@ -197,7 +197,7 @@ extension CategoryTableViewController {
     }
     
     // delete rows via UI with swipe gesture
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete{
             let category = fetchedResultsController.object(at: indexPath)

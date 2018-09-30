@@ -76,8 +76,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // focus on first text field
         textfieldRoomName.becomeFirstResponder()
         textfieldRoomName.delegate = self
-        textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
+        textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         textfieldRoomName.placeholder = "Room"
     }
@@ -143,7 +143,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 // set object with UI values
                 room.roomName = textfieldRoomName.text!
                 // image binary data
-                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 1.0)
+                let imageData = chosenImage.image!.jpegData(compressionQuality: 1.0)
                 room.roomImage = imageData! as NSData
                 
                 currentRoom = room
@@ -167,7 +167,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 currentRoom?.roomName = textfieldRoomName.text
                 
                 // image binary data
-                let imageData = UIImageJPEGRepresentation(chosenImage.image!, 1.0)
+                let imageData = chosenImage.image!.jpegData(compressionQuality: 1.0)
                 currentRoom?.roomImage = imageData! as NSData
                 
                 _ = CoreDataHandler.saveRoom(room: currentRoom!)

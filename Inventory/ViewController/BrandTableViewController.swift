@@ -50,7 +50,7 @@ class BrandTableViewController: UITableViewController {
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.title = "My Brands"
-        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         // fetch database contents
         do {
@@ -197,7 +197,7 @@ extension BrandTableViewController {
     }
     
     // delete rows via UI with swipe gesture
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete{
             let brand = fetchedResultsController.object(at: indexPath)

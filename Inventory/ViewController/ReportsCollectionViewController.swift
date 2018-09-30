@@ -146,7 +146,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         self.navigationItem.hidesSearchBarWhenScrolling = false;
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
-        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
+        collectionViewLayout?.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
         
         //collection.contentOffset.y += 100
@@ -229,7 +229,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
     // used for footer usage displaying a label with number of elements
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let headerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "reportHeader",
                                                                          for: indexPath) as! ReportsHeaderCollectionReusableView
@@ -242,7 +242,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             
             return headerView
             
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "reportFooter",
                                                                          for: indexPath) as! ReportsFooterCollectionReusableView

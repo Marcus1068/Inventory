@@ -159,7 +159,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             
             // default placeholder graphic
     //        imageView.image = UIImage(named: "Inventory.png");
-            let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+            let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
             currentInventory?.image = imageData! as NSData
 
             // default warranty
@@ -167,13 +167,13 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             currentInventory?.warranty = Int32(12)
             
             // set item button default texts (first item element for default)
-            roomButtonLabel.setTitle(rooms[0].roomName, for: UIControlState.normal)
+            roomButtonLabel.setTitle(rooms[0].roomName, for: UIControl.State.normal)
             currentInventory?.inventoryRoom = rooms[0]
-            categoryButtonLabel.setTitle(categories[0].categoryName, for: UIControlState.normal)
+            categoryButtonLabel.setTitle(categories[0].categoryName, for: UIControl.State.normal)
             currentInventory?.inventoryCategory = categories[0]
-            brandButtonLabel.setTitle(brands[0].brandName, for: UIControlState.normal)
+            brandButtonLabel.setTitle(brands[0].brandName, for: UIControl.State.normal)
             currentInventory?.inventoryBrand = brands[0]
-            ownerButtonLabel.setTitle(owners[0].ownerName, for: UIControlState.normal)
+            ownerButtonLabel.setTitle(owners[0].ownerName, for: UIControl.State.normal)
             currentInventory?.inventoryOwner = owners[0]
             
             // set timestamp label
@@ -189,7 +189,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         //textfieldPrice.delegate = self
         //textfieldPrice.keyboardType = UIKeyboardType.numberPad  // allow only numbers to be entered
         
-        textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         // auto scroll to top so that all text fields can be entered
         //registerForKeyboardNotifications()
@@ -206,10 +206,10 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         categories = CoreDataHandler.fetchAllCategories()
         
         // set item button texts
-        roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControlState.normal)
-        categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControlState.normal)
-        brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControlState.normal)
-        ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControlState.normal)
+        roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
+        categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
+        brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
+        ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
     }
     
     // MARK: document picker methods
@@ -294,9 +294,12 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     //MARK: - Delegates
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any])
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         imageView.contentMode = .scaleAspectFit
         imageView.image = chosenImage
         
@@ -311,6 +314,20 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+ /*       switch segue.identifier {
+        case "pdfSegue":
+            let destination =  segue.destination as! PDFViewController
+            destination.currentPDF = pdfView
+            break
+        case "roomSegue":
+            let destination = segue.destination as! RoomTableViewController
+            break
+        
+        default:
+            break
+        }
+   */
+        
         if segue.identifier == "pdfSegue" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
@@ -352,17 +369,17 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose room with an action sheet filled with all room names
     @IBAction func roomButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Room", message: "Choose your room", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let myActionSheet = UIAlertController(title: "Room", message: "Choose your room", preferredStyle: UIAlertController.Style.actionSheet)
         
         for room in rooms{
-            let action = UIAlertAction(title: room.roomName, style: UIAlertActionStyle.default) { (ACTION) in
+            let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
                 self.currentInventory?.inventoryRoom? = room
-                self.roomButtonLabel.setTitle(self.currentInventory?.inventoryRoom?.roomName!, for: UIControlState.normal)
+                self.roomButtonLabel.setTitle(self.currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (ACTION) in
+        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -372,17 +389,17 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose category with an action sheet filled with all category names
     @IBAction func categoryButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Category", message: "Choose your category", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let myActionSheet = UIAlertController(title: "Category", message: "Choose your category", preferredStyle: UIAlertController.Style.actionSheet)
         
         for category in categories{
-            let action = UIAlertAction(title: category.categoryName, style: UIAlertActionStyle.default) { (ACTION) in
+            let action = UIAlertAction(title: category.categoryName, style: UIAlertAction.Style.default) { (ACTION) in
                 self.currentInventory?.inventoryCategory? = category
-                self.categoryButtonLabel.setTitle(self.currentInventory?.inventoryCategory?.categoryName!, for: UIControlState.normal)
+                self.categoryButtonLabel.setTitle(self.currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (ACTION) in
+        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -392,17 +409,17 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose brand with an action sheet filled with all brand names
     @IBAction func brandButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Brand", message: "Choose your brand", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let myActionSheet = UIAlertController(title: "Brand", message: "Choose your brand", preferredStyle: UIAlertController.Style.actionSheet)
         
         for brand in brands{
-            let action = UIAlertAction(title: brand.brandName, style: UIAlertActionStyle.default) { (ACTION) in
+            let action = UIAlertAction(title: brand.brandName, style: UIAlertAction.Style.default) { (ACTION) in
                 self.currentInventory?.inventoryBrand? = brand
-                self.brandButtonLabel.setTitle(self.currentInventory?.inventoryBrand?.brandName!, for: UIControlState.normal)
+                self.brandButtonLabel.setTitle(self.currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (ACTION) in
+        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -412,17 +429,17 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose owner with an action sheet filled with all owner names
     @IBAction func ownerButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Owner", message: "Choose your owner", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let myActionSheet = UIAlertController(title: "Owner", message: "Choose your owner", preferredStyle: UIAlertController.Style.actionSheet)
         
         for owner in owners{
-            let action = UIAlertAction(title: owner.ownerName, style: UIAlertActionStyle.default) { (ACTION) in
+            let action = UIAlertAction(title: owner.ownerName, style: UIAlertAction.Style.default) { (ACTION) in
                 self.currentInventory?.inventoryOwner? = owner
-                self.ownerButtonLabel.setTitle(self.currentInventory?.inventoryOwner?.ownerName!, for: UIControlState.normal)
+                self.ownerButtonLabel.setTitle(self.currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (ACTION) in
+        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -476,7 +493,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         
         currentInventory?.timeStamp = Date() as NSDate?
         // image binary data
-        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)
+        let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
         currentInventory?.image = imageData! as NSData
         currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
         
@@ -573,4 +590,14 @@ extension NSDate {
         
         return formatter.string(from: yourDate!)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

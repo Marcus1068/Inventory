@@ -41,8 +41,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         // focus on first text field
         textfieldOwner.becomeFirstResponder()
         textfieldOwner.delegate = self
-        textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
+        textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         textfieldOwner.placeholder = "Owner"
     }

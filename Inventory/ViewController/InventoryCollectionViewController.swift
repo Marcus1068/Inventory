@@ -137,7 +137,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         searchController.searchBar.sizeToFit()
         
         let collectionViewLayout = collection.collectionViewLayout as? UICollectionViewFlowLayout
-        collectionViewLayout?.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)   // some distance to top/buttom/left/rigth
+        collectionViewLayout?.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)   // some distance to top/buttom/left/rigth
         collectionViewLayout?.invalidateLayout()
         
         leftNavBarButton = self.navigationItem.leftBarButtonItems?.first
@@ -292,7 +292,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     // used for footer usage displaying a label with number of elements
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let headerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "header",
                                                                          for: indexPath) as! InventoryHeaderCollectionReusableView
@@ -305,7 +305,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             
             return headerView
             
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             let footerView = collection.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: "footer",
                                                                          for: indexPath) as! InventoryFooterCollectionReusableView

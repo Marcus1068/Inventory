@@ -50,7 +50,7 @@ class OwnerTableViewController: UITableViewController {
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.title = "My Owners"
-        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         // fetch database contents
         do {
@@ -194,7 +194,7 @@ extension OwnerTableViewController {
     }
     
     // delete rows via UI with swipe gesture
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete{
             let owner = fetchedResultsController.object(at: indexPath)

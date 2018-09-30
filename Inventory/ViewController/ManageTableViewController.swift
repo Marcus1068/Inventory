@@ -32,7 +32,7 @@ class ManageTableViewController: UITableViewController {
         self.title = "Manage items"
         //navigationController?.navigationBar.barTintColor = themeColor
         
-        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         //tableView.isScrollEnabled = false
         
@@ -43,7 +43,7 @@ class ManageTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         
-        self.tableView.scrollToNearestSelectedRow(at: UITableViewScrollPosition.bottom, animated: true)
+        self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
   /*      if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }*/

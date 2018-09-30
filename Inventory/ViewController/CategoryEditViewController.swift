@@ -41,8 +41,8 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         // focus on first text field
         textfieldCategory.becomeFirstResponder()
         textfieldCategory.delegate = self
-        textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
+        textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         textfieldCategory.placeholder = "Category"
     }

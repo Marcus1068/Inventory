@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,6 @@
 		2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B32086350A00FD5136 /* Main.storyboard */; };
 		2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
 		2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */; };
-		2C56E8C52086350B00FD5136 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8C42086350B00FD5136 /* InventoryTests.swift */; };
-		2C56E8D02086350B00FD5136 /* InventoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */; };
 		2C56E8DF20866EAF00FD5136 /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
 		2C56E90C208683D100FD5136 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E90B208683D100FD5136 /* Helper.swift */; };
 		2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E90D2086844A00FD5136 /* DeviceInfo.swift */; };
@@ -52,23 +50,6 @@
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2C56E8C12086350B00FD5136 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C56E8A22086350A00FD5136 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C56E8A92086350A00FD5136;
-			remoteInfo = Inventory;
-		};
-		2C56E8CC2086350B00FD5136 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C56E8A22086350A00FD5136 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C56E8A92086350A00FD5136;
-			remoteInfo = Inventory;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2C1C7F6C20B496F5004D5152 /* ReportsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C1C7F6E20B499A5004D5152 /* ReportsFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsFooterCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -85,10 +66,8 @@
 		2C56E8B62086350B00FD5136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C56E8B92086350B00FD5136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C56E8BB2086350B00FD5136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C56E8C02086350B00FD5136 /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8C42086350B00FD5136 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
 		2C56E8C62086350B00FD5136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C56E8CB2086350B00FD5136 /* InventoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8CF2086350B00FD5136 /* InventoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryUITests.swift; sourceTree = "<group>"; };
 		2C56E8D12086350B00FD5136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C56E8DE20866EAF00FD5136 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -130,20 +109,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C56E8BD2086350B00FD5136 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C56E8C82086350B00FD5136 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -169,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				2C56E8AA2086350A00FD5136 /* Inventory.app */,
-				2C56E8C02086350B00FD5136 /* InventoryTests.xctest */,
-				2C56E8CB2086350B00FD5136 /* InventoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,42 +250,6 @@
 			productReference = 2C56E8AA2086350A00FD5136 /* Inventory.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2C56E8BF2086350B00FD5136 /* InventoryTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C56E8D72086350B00FD5136 /* Build configuration list for PBXNativeTarget "InventoryTests" */;
-			buildPhases = (
-				2C56E8BC2086350B00FD5136 /* Sources */,
-				2C56E8BD2086350B00FD5136 /* Frameworks */,
-				2C56E8BE2086350B00FD5136 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C56E8C22086350B00FD5136 /* PBXTargetDependency */,
-			);
-			name = InventoryTests;
-			productName = InventoryTests;
-			productReference = 2C56E8C02086350B00FD5136 /* InventoryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2C56E8CA2086350B00FD5136 /* InventoryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C56E8DA2086350B00FD5136 /* Build configuration list for PBXNativeTarget "InventoryUITests" */;
-			buildPhases = (
-				2C56E8C72086350B00FD5136 /* Sources */,
-				2C56E8C82086350B00FD5136 /* Frameworks */,
-				2C56E8C92086350B00FD5136 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C56E8CD2086350B00FD5136 /* PBXTargetDependency */,
-			);
-			name = InventoryUITests;
-			productName = InventoryUITests;
-			productReference = 2C56E8CB2086350B00FD5136 /* InventoryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -335,24 +262,17 @@
 				TargetAttributes = {
 					2C56E8A92086350A00FD5136 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
 					};
-					2C56E8BF2086350B00FD5136 = {
-						CreatedOnToolsVersion = 9.3;
-						TestTargetID = 2C56E8A92086350A00FD5136;
-					};
-					2C56E8CA2086350B00FD5136 = {
-						CreatedOnToolsVersion = 9.3;
-						TestTargetID = 2C56E8A92086350A00FD5136;
-					};
 				};
 			};
 			buildConfigurationList = 2C56E8A52086350A00FD5136 /* Build configuration list for PBXProject "Inventory" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -365,8 +285,6 @@
 			projectRoot = "";
 			targets = (
 				2C56E8A92086350A00FD5136 /* Inventory */,
-				2C56E8BF2086350B00FD5136 /* InventoryTests */,
-				2C56E8CA2086350B00FD5136 /* InventoryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -380,20 +298,6 @@
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C4926DD20921AFE00508874 /* Inventory.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C56E8BE2086350B00FD5136 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C56E8C92086350B00FD5136 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,36 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C56E8BC2086350B00FD5136 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C56E8C52086350B00FD5136 /* InventoryTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C56E8C72086350B00FD5136 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C56E8D02086350B00FD5136 /* InventoryUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2C56E8C22086350B00FD5136 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C56E8A92086350A00FD5136 /* Inventory */;
-			targetProxy = 2C56E8C12086350B00FD5136 /* PBXContainerItemProxy */;
-		};
-		2C56E8CD2086350B00FD5136 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C56E8A92086350A00FD5136 /* Inventory */;
-			targetProxy = 2C56E8CC2086350B00FD5136 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C56E8B32086350A00FD5136 /* Main.storyboard */ = {
@@ -617,14 +492,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -637,93 +512,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		2C56E8D82086350B00FD5136 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = InventoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.InventoryTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inventory.app/Inventory";
-			};
-			name = Debug;
-		};
-		2C56E8D92086350B00FD5136 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = InventoryTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.InventoryTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Inventory.app/Inventory";
-			};
-			name = Release;
-		};
-		2C56E8DB2086350B00FD5136 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = InventoryUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.InventoryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Inventory;
-			};
-			name = Debug;
-		};
-		2C56E8DC2086350B00FD5136 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = InventoryUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.de.InventoryUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Inventory;
 			};
 			name = Release;
 		};
@@ -744,24 +541,6 @@
 			buildConfigurations = (
 				2C56E8D52086350B00FD5136 /* Debug */,
 				2C56E8D62086350B00FD5136 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C56E8D72086350B00FD5136 /* Build configuration list for PBXNativeTarget "InventoryTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C56E8D82086350B00FD5136 /* Debug */,
-				2C56E8D92086350B00FD5136 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C56E8DA2086350B00FD5136 /* Build configuration list for PBXNativeTarget "InventoryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C56E8DB2086350B00FD5136 /* Debug */,
-				2C56E8DC2086350B00FD5136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

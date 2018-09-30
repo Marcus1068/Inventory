@@ -148,7 +148,7 @@ class ImportExportViewController: UIViewController {
                     // get your UIImage jpeg data representation and check if the destination file url already exists
                     let imageData = inv.image! as Data
                     let image = UIImage(data: imageData, scale: 1.0)
-                    if let data = UIImageJPEGRepresentation(image!, 1.0),
+                    if let data = image!.jpegData(compressionQuality: 1.0),
                         !FileManager.default.fileExists(atPath: pathURLjpg.path) {
                         do {
                             // writes the image data to disk
@@ -191,7 +191,7 @@ class ImportExportViewController: UIViewController {
     }
     
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         activityIndicator.startAnimating()
         
@@ -271,7 +271,7 @@ class ImportExportViewController: UIViewController {
                     newRoom.roomName = csvRows[x][6]
                     // default room icon image
                     let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
-                    let imageData = UIImageJPEGRepresentation(myImage, 1.0)
+                    let imageData = myImage.jpegData(compressionQuality: 1.0)
                     newRoom.roomImage = imageData! as NSData
                     newRoom = CoreDataHandler.saveRoom(room: newRoom)
                     inventory.inventoryRoom = newRoom
@@ -331,13 +331,13 @@ class ImportExportViewController: UIViewController {
                 // assign image from directory
                 if inventory.imageFileName! != ""{
                     let image = getSavedImage(named: inventory.imageFileName!)
-                    let imageData: NSData = UIImageJPEGRepresentation(image!, 1.0)! as NSData
+                    let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
                     inventory.image = imageData
                 }
                 else{
                     // default image if no image was chosen before
                     let myImage = #imageLiteral(resourceName: "Room Icon")
-                    let imageData = UIImageJPEGRepresentation(myImage, 1.0)
+                    let imageData = myImage.jpegData(compressionQuality: 1.0)
                     inventory.image = imageData! as NSData
                 }
                 

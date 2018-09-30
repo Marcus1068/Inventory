@@ -41,8 +41,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         // focus on first text field
         textfieldBrand.becomeFirstResponder()
         textfieldBrand.delegate = self
-        textfieldBrand.addTarget(self, action: #selector(textDidChange(_:)), for: UIControlEvents.editingDidEnd)
-        textfieldBrand.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControlEvents.editingChanged)
+        textfieldBrand.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
+        textfieldBrand.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         textfieldBrand.placeholder = "Brand"
     }

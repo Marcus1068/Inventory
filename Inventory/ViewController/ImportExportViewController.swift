@@ -436,6 +436,37 @@ class ImportExportViewController: UIViewController {
     }
     
     
+    // share via ios system icon/method
+    func exportToFileURL() -> URL? {
+    
+        // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]
+        
+        var contents: [String: Any] = ["Test": String.self]
+        /*
+        
+        if let image = beerImage() {
+            if let data = UIImageJPEGRepresentation(image, 1) {
+                contents[Keys.ImagePath.rawValue] = data.base64EncodedString()
+            }
+        }
+        
+        // 3
+        if let note = note {
+            contents[Keys.Note.rawValue] = note
+        }
+        */
+        
+        guard let path = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first else {
+                return nil
+        }
+        
+        let saveFileURL = path.appendingPathComponent("/\(uname).inv")
+        (contents as NSDictionary).write(to: saveFileURL, atomically: true)
+        
+        return saveFileURL
+    }
+    
     // MARK - button actions
     
     @IBAction func exportCVSButton(_ sender: Any) {
@@ -450,9 +481,21 @@ class ImportExportViewController: UIViewController {
         exportCSVFile()
     }
     
-    @IBAction func exportPDFButton(_ sender: Any) {
-        //exportPDFFile()
+    // share system button
+    @IBAction func exportShareButton(_ sender: Any) {
+        
+        let url = exportToFileURL()
+        
+        let activityViewController = UIActivityViewController(
+            activityItems: ["Share Inventory data", url!],
+            applicationActivities: nil)
+        if let popoverPresentationController = activityViewController.popoverPresentationController {
+            popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
+        }
+        present(activityViewController, animated: true, completion: nil)
+        
     }
+    
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1657,7 +1658,7 @@
             </objects>
             <point key="canvasLocation" x="-287" y="1542"/>
         </scene>
-        <!--Export-->
+        <!--Import/Export-->
         <scene sceneID="mgI-Qm-glO">
             <objects>
                 <viewController id="MUX-Pv-eqU" customClass="ImportExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
@@ -1672,7 +1673,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-xq-tCv">
                                 <rect key="frame" x="0.0" y="40" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Export CVS/PDF" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
+                                    <navigationItem title="Import/Export CVS and PDF" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
                                         <barButtonItem key="leftBarButtonItem" title="CSV" image="Export" id="APE-Oc-XX7">
                                             <connections>
                                                 <action selector="exportCVSButton:" destination="MUX-Pv-eqU" id="hyY-KH-fNk"/>
@@ -1767,7 +1768,7 @@
                             <constraint firstItem="g93-Ej-2SW" firstAttribute="trailing" secondItem="VFe-N0-mPM" secondAttribute="trailingMargin" id="zR4-Sa-K05"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Export" image="Export" id="CGe-VZ-Z2L"/>
+                    <tabBarItem key="tabBarItem" title="Import/Export" image="Export" id="CGe-VZ-Z2L"/>
                     <connections>
                         <outlet property="exportCVSBarButton" destination="APE-Oc-XX7" id="n0w-Wq-acH"/>
                         <outlet property="exportLabel" destination="DYJ-sB-dHx" id="JOB-mA-AsU"/>

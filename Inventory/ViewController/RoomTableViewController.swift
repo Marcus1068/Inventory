@@ -46,7 +46,8 @@ class RoomTableViewController: UITableViewController {
 
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.title = "My Rooms"
+        
+        self.title = NSLocalizedString("My Rooms", comment: "My Rooms")
         self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         // fetch database contents
@@ -89,18 +90,22 @@ class RoomTableViewController: UITableViewController {
         
         var result : Bool = false
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete? All inventory objects depending will be deleted as well...", preferredStyle: .alert)
+        let confirm = NSLocalizedString("Confirm", comment: "Confirm")
+        let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
+        let dialogMessage = UIAlertController(title: confirm, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
-            print("Ok button click...")
+        let msgOK = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: msgOK, style: .destructive, handler: { (action) -> Void in
+            //print("Ok button click...")
             result = true
         })
         
         // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let msgCancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let cancel = UIAlertAction(title: msgCancel, style: .cancel) { (action) -> Void in
             result = false
-            print("Cancel button click...")
+            //print("Cancel button click...")
         }
         
         //Add OK and Cancel button to dialog message
@@ -116,14 +121,18 @@ class RoomTableViewController: UITableViewController {
     // UIAlert for asking user if delete is really ok
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(room: Room) {
-        let alert = UIAlertController(title: "Delete room", message: "Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!", preferredStyle: .actionSheet)
+        let title = NSLocalizedString("Delete room", comment: "Delete room")
+        let message = NSLocalizedString("Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!", comment: "Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
+        let delete = NSLocalizedString("Delete", comment: "Delete")
+        let DeleteAction = UIAlertAction(title: delete, style: .destructive){ (action:UIAlertAction) in
             _ = CoreDataHandler.deleteRoom(room: room)
         }
         
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) // will do nothing
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let CancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil) // will do nothing
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)

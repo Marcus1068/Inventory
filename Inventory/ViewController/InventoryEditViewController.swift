@@ -140,7 +140,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             datePicker.date = currentInventory!.dateOfPurchase! as Date
             
             // set timestamp label
-            timeStampLabel.text = "Created at: " + (currentInventory?.timeStamp?.toString(withFormat: "MM/dd/yy"))!   // FIXME needs to change with US/UK etc.
+            let msg = NSLocalizedString("Created at: ", comment: "Created at: ")
+            timeStampLabel.text = msg + (currentInventory?.timeStamp?.toString(withFormat: "MM/dd/yy"))!   // FIXME needs to change with US/UK etc.
         }
         else    // add new inventory
         {
@@ -178,7 +179,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             
             // set timestamp label
             let today = Date()
-            timeStampLabel.text = "Creating: " + today.toString(withFormat: "MM/dd/yy")
+            let msg = NSLocalizedString("Creating: ", comment: "Creating: ")
+            timeStampLabel.text = msg + today.toString(withFormat: "MM/dd/yy")
         }
         
         // focus on first text field
@@ -224,7 +226,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // in case somebody clicks cancel and does not choose a document then simply dismiss
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("view was cancelled")
+        //print("view was cancelled")
         dismiss(animated: true, completion: nil)
     }
 
@@ -369,7 +371,10 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     // choose room with an action sheet filled with all room names
     @IBAction func roomButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Room", message: "Choose your room", preferredStyle: UIAlertController.Style.actionSheet)
+        let title = NSLocalizedString("Room", comment: "Room")
+        let message = NSLocalizedString("Choose your room", comment: "Choose your room")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for room in rooms{
             let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -379,7 +384,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -389,7 +395,10 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     // choose category with an action sheet filled with all category names
     @IBAction func categoryButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Category", message: "Choose your category", preferredStyle: UIAlertController.Style.actionSheet)
+        let title = NSLocalizedString("Category", comment: "Category")
+        let message = NSLocalizedString("Choose your category", comment: "Choose your category")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for category in categories{
             let action = UIAlertAction(title: category.categoryName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -399,7 +408,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -409,7 +419,10 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     // choose brand with an action sheet filled with all brand names
     @IBAction func brandButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Brand", message: "Choose your brand", preferredStyle: UIAlertController.Style.actionSheet)
+        let title = NSLocalizedString("Brand", comment: "Brand")
+        let message = NSLocalizedString("Choose your brand", comment: "Choose your brand")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for brand in brands{
             let action = UIAlertAction(title: brand.brandName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -419,7 +432,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -429,7 +443,10 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
     
     // choose owner with an action sheet filled with all owner names
     @IBAction func ownerButton(_ sender: Any) {
-        let myActionSheet = UIAlertController(title: "Owner", message: "Choose your owner", preferredStyle: UIAlertController.Style.actionSheet)
+        let title = NSLocalizedString("Owner", comment: "Owner")
+        let message = NSLocalizedString("Choose your owner", comment: "Choose your owner")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for owner in owners{
             let action = UIAlertAction(title: owner.ownerName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -439,7 +456,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             myActionSheet.addAction(action)
         }
         
-        let action = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (ACTION) in
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -532,7 +550,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         let dateFormatter = DateFormatter()
         //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
-        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"      // FIXME hard coded date format
         
         dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone
         

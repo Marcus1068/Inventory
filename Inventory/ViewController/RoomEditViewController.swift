@@ -59,7 +59,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // edit or add room
         if currentRoom != nil{
             // edit
-            self.title = "Edit Room"
+            self.title = NSLocalizedString("Edit Room", comment: "Edit Room")
             textfieldRoomName.text = currentRoom!.roomName
             
             let imageData = currentRoom!.roomImage! as Data
@@ -68,7 +68,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         }
         else{
             // add
-            self.title = "Add Room"
+            self.title = NSLocalizedString("Add Room", comment: "Add Room")
             textfieldRoomName.text = ""
             saveButtonOutlet.isEnabled = false
         }
@@ -180,7 +180,10 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
 
     func showAlertDialog(){
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Room already exists", message: "Please choose a different room name", preferredStyle: .alert)
+        let title = NSLocalizedString("Room already exists", comment: "Room already exists")
+        let message = NSLocalizedString("Please choose a different room name", comment: "Please choose a different room name")
+        
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in

@@ -107,7 +107,8 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         var listRooms :[String] = []
         
         // FIXME tranlation needed
-        listOwners.append("All")
+        let allOwners = NSLocalizedString("All", comment: "All")
+        listOwners.append(allOwners)
         for inv in owner{
             listOwners.append((inv.ownerName)!)
         }
@@ -115,7 +116,8 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         replaceSegmentContents(segments: listOwners, control: ownersSegment)
         ownersSegment.selectedSegmentIndex = 0
         
-        listRooms.append("All")
+        let allRooms = NSLocalizedString("All", comment: "All")
+        listRooms.append(allRooms)
         for inv in room{
             listRooms.append((inv.roomName)!)
         }
@@ -208,7 +210,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName
         cell.romeNameLabel.text = inv.inventoryRoom?.roomName
         
-        cell.priceLabel.text = String(inv.price) + "€"
+        cell.priceLabel.text = String(inv.price) + "€"  //FIXME hardcoded currency
         
         var image: UIImage
         
@@ -252,10 +254,10 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory items"
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory items", comment: " Inventory items")
             }
             else{
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory item", comment: " Inventory item")
             }
             
             
@@ -696,16 +698,16 @@ extension ReportsCollectionViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             collection.reloadData()
-            print("Insert Section: \(sectionIndex)")
+            //print("Insert Section: \(sectionIndex)")
             
             break
         case .delete:
-            print("Delete Section: \(sectionIndex)")
+            //print("Delete Section: \(sectionIndex)")
             collection.reloadData()
             
             break
         case .update:
-            print("Update Section: \(sectionIndex)")
+            //print("Update Section: \(sectionIndex)")
             collection.reloadData()
             
             break

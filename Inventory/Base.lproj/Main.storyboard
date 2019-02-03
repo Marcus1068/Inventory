@@ -615,10 +615,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the category name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp2-5w-JLQ">
-                                <rect key="frame" x="16" y="228" width="343" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the category name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp2-5w-JLQ">
+                                <rect key="frame" x="16" y="228" width="343" height="66"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="bIB-UR-rwu"/>
+                                    <constraint firstAttribute="height" constant="66" id="bIB-UR-rwu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -661,7 +661,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HOx-Yc-sEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="2254"/>
+            <point key="canvasLocation" x="2264.8000000000002" y="2253.8230884557724"/>
         </scene>
         <!--Reports-->
         <scene sceneID="Kv0-9X-085">
@@ -929,7 +929,7 @@
                                     <constraint firstAttribute="height" constant="46" id="i92-ry-T6x"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the room name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-0W-SIY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the room name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-0W-SIY">
                                 <rect key="frame" x="16" y="186.5" width="343" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="S9a-8M-RnR"/>
@@ -949,7 +949,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a symbol for your room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-ft-R03">
-                                <rect key="frame" x="15" y="260.5" width="244" height="21"/>
+                                <rect key="frame" x="15" y="261" width="244" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="FIV-2O-fCk"/>
                                 </constraints>
@@ -1152,7 +1152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5285.6000000000004" y="637.6847290640394"/>
+            <point key="canvasLocation" x="5285.6000000000004" y="637.33133433283365"/>
         </scene>
         <!--Title-->
         <scene sceneID="9Sf-GY-taT">
@@ -1963,10 +1963,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the brand name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-Nl-hAM">
-                                <rect key="frame" x="16" y="228" width="343" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the brand name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7b-Nl-hAM">
+                                <rect key="frame" x="16" y="228" width="343" height="66"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="gmP-DN-Uy1"/>
+                                    <constraint firstAttribute="height" constant="66" id="gmP-DN-Uy1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2009,7 +2009,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjV-A5-uzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3878" y="2254"/>
+            <point key="canvasLocation" x="3877.5999999999999" y="2253.8230884557724"/>
         </scene>
         <!--My Owners-->
         <scene sceneID="zxL-fu-4hd">
@@ -2113,10 +2113,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the owner name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHQ-NS-mde">
-                                <rect key="frame" x="16" y="228" width="343" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the owner name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHQ-NS-mde">
+                                <rect key="frame" x="16" y="228" width="343" height="69"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="qew-yc-vq7"/>
+                                    <constraint firstAttribute="height" constant="69" id="qew-yc-vq7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2159,7 +2159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bs3-TU-S8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5354" y="2254"/>
+            <point key="canvasLocation" x="5352.8000000000002" y="2253.8230884557724"/>
         </scene>
     </scenes>
     <resources>

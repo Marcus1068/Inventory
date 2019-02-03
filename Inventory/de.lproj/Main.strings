@@ -1,0 +1,312 @@
+/* Class = "UILabel"; text = "(c) 2018 by Marcus Deuß"; ObjectID = "0fd-qf-JfD"; */
+"0fd-qf-JfD.text" = "(c) 2018 by Marcus Deuß";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "0Xp-Fw-K8P"; */
+"0Xp-Fw-K8P.text" = "Preis";
+
+/* Class = "UILabel"; text = "Date of purchase"; ObjectID = "1kx-JD-UCb"; */
+"1kx-JD-UCb.text" = "Kaufdatum";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "1x4-xS-Tgd"; */
+"1x4-xS-Tgd.title" = "Element";
+
+/* Class = "UINavigationItem"; title = "Owner"; ObjectID = "2Dn-lA-ivG"; */
+"2Dn-lA-ivG.title" = "Besitzer";
+
+/* Class = "UITabBarItem"; title = "About Inventory"; ObjectID = "2Ep-nZ-I2N"; */
+"2Ep-nZ-I2N.title" = "Über Inventory";
+
+/* Class = "UIButton"; normalTitle = "Take picture..."; ObjectID = "2TE-eQ-5Wq"; */
+"2TE-eQ-5Wq.normalTitle" = "Mache Foto...";
+
+/* Class = "UILabel"; text = "Owners"; ObjectID = "4CK-9n-Mwm"; */
+"4CK-9n-Mwm.text" = "Besitzer";
+
+/* Class = "UINavigationItem"; title = "My Brands"; ObjectID = "4qt-wy-VB5"; */
+"4qt-wy-VB5.title" = "Meine Marken";
+
+/* Class = "UITextField"; placeholder = "Price"; ObjectID = "5B9-Pv-yUz"; */
+"5B9-Pv-yUz.placeholder" = "Preis";
+
+/* Class = "UILabel"; text = "Brand:"; ObjectID = "5Iy-KY-o2N"; */
+"5Iy-KY-o2N.text" = "Marke:";
+
+/* Class = "UILabel"; text = "created: xxx"; ObjectID = "5Ug-AA-mAk"; */
+"5Ug-AA-mAk.text" = "erzeugt: xxx";
+
+/* Class = "UIButton"; normalTitle = "Information"; ObjectID = "6t7-0P-Kka"; */
+"6t7-0P-Kka.normalTitle" = "Information";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7Aa-M1-t4Y"; */
+"7Aa-M1-t4Y.text" = "Label";
+
+/* Class = "UILabel"; text = "Hint: Changing the room name will be reflected in all inventory objects"; ObjectID = "7eY-0W-SIY"; */
+"7eY-0W-SIY.text" = "Hinweis: Ändern des Raumnamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
+
+/* Class = "UITextField"; placeholder = "Category name"; ObjectID = "7Zb-vc-qqF"; */
+"7Zb-vc-qqF.placeholder" = "Kategorie";
+
+/* Class = "UITableViewSection"; headerTitle = "Edit Items"; ObjectID = "8bF-C7-bZ1"; */
+"8bF-C7-bZ1.headerTitle" = "Bearbeite Elemente";
+
+/* Class = "UITabBarItem"; title = "Manage Items"; ObjectID = "8ee-co-69w"; */
+"8ee-co-69w.title" = "Bearbeite Elemente";
+
+/* Class = "UILabel"; text = "Rooms"; ObjectID = "8f4-H8-n7a"; */
+"8f4-H8-n7a.text" = "Räume";
+
+/* Class = "UILabel"; text = "Filter by Owner:"; ObjectID = "8qF-vh-hOd"; */
+"8qF-vh-hOd.text" = "Filter nach Besitzer:";
+
+/* Class = "UITableViewSection"; headerTitle = "Items"; ObjectID = "9LV-2w-smf"; */
+"9LV-2w-smf.headerTitle" = "Elemente";
+
+/* Class = "UITabBarController"; title = "Inventory"; ObjectID = "49e-Tb-3d3"; */
+"49e-Tb-3d3.title" = "Inventory";
+
+/* Class = "UILabel"; text = "Filter:"; ObjectID = "50M-S3-hxH"; */
+"50M-S3-hxH.text" = "Filter:";
+
+/* Class = "UINavigationItem"; title = "My Rooms"; ObjectID = "92t-F3-xz3"; */
+"92t-F3-xz3.title" = "Meine Räume";
+
+/* Class = "UIViewController"; title = "Edit Room"; ObjectID = "AAM-yv-3qO"; */
+"AAM-yv-3qO.title" = "Bearbeite Raum";
+
+/* Class = "UILabel"; text = "Filter by Room:"; ObjectID = "Aen-J4-7Yv"; */
+"Aen-J4-7Yv.text" = "Filter nach Raum:";
+
+/* Class = "UIBarButtonItem"; title = "CSV"; ObjectID = "APE-Oc-XX7"; */
+"APE-Oc-XX7.title" = "CSV";
+
+/* Class = "UITabBarItem"; title = "Reports"; ObjectID = "bMy-mx-l0r"; */
+"bMy-mx-l0r.title" = "Berichte";
+
+/* Class = "UIButton"; normalTitle = "Show fullscreen..."; ObjectID = "bTk-GP-MX1"; */
+"bTk-GP-MX1.normalTitle" = "Zeige Vollbild...";
+
+/* Class = "UILabel"; text = "Warranty:"; ObjectID = "Cch-9P-ZPg"; */
+"Cch-9P-ZPg.text" = "Garantie:";
+
+/* Class = "UINavigationItem"; title = "My Categories"; ObjectID = "ce9-2b-1Ln"; */
+"ce9-2b-1Ln.title" = "Meine Kategorien";
+
+/* Class = "UITabBarItem"; title = "Import/Export"; ObjectID = "CGe-VZ-Z2L"; */
+"CGe-VZ-Z2L.title" = "Import/Export";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cZ1-Yp-eGe"; */
+"cZ1-Yp-eGe.text" = "Label";
+
+/* Class = "UILabel"; text = "iOS Version"; ObjectID = "DBJ-H4-kKI"; */
+"DBJ-H4-kKI.text" = "iOS Version";
+
+/* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
+"dGS-kv-Yx5.text" = "Raumname:";
+
+/* Class = "UILabel"; text = "Export file:"; ObjectID = "DYJ-sB-dHx"; */
+"DYJ-sB-dHx.text" = "Exportiere Datei:";
+
+/* Class = "UIButton"; normalTitle = "Brand..."; ObjectID = "fJy-2X-JZS"; */
+"fJy-2X-JZS.normalTitle" = "Marke...";
+
+/* Class = "UITableViewSection"; headerTitle = "Add Items"; ObjectID = "G2B-Bb-zP5"; */
+"G2B-Bb-zP5.headerTitle" = "Element hinzu...";
+
+/* Class = "UIButton"; normalTitle = "Import from CVS file..."; ObjectID = "g93-Ej-2SW"; */
+"g93-Ej-2SW.normalTitle" = "Importiere aus CVS Datei...";
+
+/* Class = "UILabel"; text = "Categories"; ObjectID = "Gji-Ng-xNH"; */
+"Gji-Ng-xNH.text" = "Kategorien";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hlk-5E-K8Q"; */
+"hlk-5E-K8Q.text" = "Label";
+
+/* Class = "UILabel"; text = "Months of warranty"; ObjectID = "hlP-iq-q6T"; */
+"hlP-iq-q6T.text" = "Garantiemonate";
+
+/* Class = "UIButton"; normalTitle = "Category..."; ObjectID = "HZ1-cV-zKd"; */
+"HZ1-cV-zKd.normalTitle" = "Kategorie...";
+
+/* Class = "UILabel"; text = "Category:"; ObjectID = "I4j-zE-sft"; */
+"I4j-zE-sft.text" = "Kategorie:";
+
+/* Class = "UITextField"; placeholder = "Remark"; ObjectID = "IN8-2w-dXd"; */
+"IN8-2w-dXd.placeholder" = "Bemerkung";
+
+/* Class = "UIButton"; normalTitle = "Feedback"; ObjectID = "iSd-0j-NDU"; */
+"iSd-0j-NDU.normalTitle" = "Feedback";
+
+/* Class = "UILabel"; text = "Owner Name:"; ObjectID = "Jdc-4Q-qWy"; */
+"Jdc-4Q-qWy.text" = "Besitzer:";
+
+/* Class = "UILabel"; text = "Category Name:"; ObjectID = "Kb0-xm-16w"; */
+"Kb0-xm-16w.text" = "Kategorie:";
+
+/* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
+"keT-dq-ecZ.normalTitle" = "Besitzer...";
+
+/* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos..."; ObjectID = "kmW-Er-gZy"; */
+"kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar...";
+
+/* Class = "UIButton"; normalTitle = "Room..."; ObjectID = "Kpe-WT-hVT"; */
+"Kpe-WT-hVT.normalTitle" = "Raum...";
+
+/* Class = "UITextField"; placeholder = "Room name"; ObjectID = "KWu-LK-Nv9"; */
+"KWu-LK-Nv9.placeholder" = "Raumname";
+
+/* Class = "UILabel"; text = "24"; ObjectID = "m06-V0-3kx"; */
+"m06-V0-3kx.text" = "24";
+
+/* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
+"MzL-xY-WrQ.title" = "Kategorie";
+
+/* Class = "UILabel"; text = "Rooms"; ObjectID = "n8T-Ec-edq"; */
+"n8T-Ec-edq.text" = "Räume";
+
+/* Class = "UINavigationItem"; title = "Room"; ObjectID = "NaV-bX-J6V"; */
+"NaV-bX-J6V.title" = "Raum";
+
+/* Class = "UILabel"; text = "Choose a symbol for your room:"; ObjectID = "Ncb-ft-R03"; */
+"Ncb-ft-R03.text" = "Wählen Sie ein Symbol für den Raum:";
+
+/* Class = "UISegmentedControl"; NeC-TT-vjk.segmentTitles[0] = "First"; ObjectID = "NeC-TT-vjk"; */
+"NeC-TT-vjk.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; NeC-TT-vjk.segmentTitles[1] = "Second"; ObjectID = "NeC-TT-vjk"; */
+"NeC-TT-vjk.segmentTitles[1]" = "Second";
+
+/* Class = "UILabel"; text = "Brands"; ObjectID = "O5q-KA-tw5"; */
+"O5q-KA-tw5.text" = "Marken";
+
+/* Class = "UILabel"; text = "imported xx rows"; ObjectID = "oh4-rl-izX"; */
+"oh4-rl-izX.text" = "imported xx rows";
+
+/* Class = "UINavigationItem"; title = "Inventory Overview"; ObjectID = "oiT-kr-v6M"; */
+"oiT-kr-v6M.title" = "Inventory Überblick";
+
+/* Class = "UITextField"; placeholder = "Inventory"; ObjectID = "OjR-LV-GJP"; */
+"OjR-LV-GJP.placeholder" = "Inventory";
+
+/* Class = "UILabel"; text = "Brand Name:"; ObjectID = "osM-IE-rWU"; */
+"osM-IE-rWU.text" = "Markenname:";
+
+/* Class = "UILabel"; text = "room name"; ObjectID = "ovm-oP-2Z3"; */
+"ovm-oP-2Z3.text" = "Raumname";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "OXg-EA-537"; */
+"OXg-EA-537.title" = "Title";
+
+/* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
+"PHQ-NS-mde.text" = "Hinweis: Ändern des Besitzernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
+
+/* Class = "UINavigationItem"; title = "My Owners"; ObjectID = "PRz-eY-S4p"; */
+"PRz-eY-S4p.title" = "Meine Besitzer";
+
+/* Class = "UISegmentedControl"; QaD-2h-ipL.segmentTitles[0] = "First"; ObjectID = "QaD-2h-ipL"; */
+"QaD-2h-ipL.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; QaD-2h-ipL.segmentTitles[1] = "Second"; ObjectID = "QaD-2h-ipL"; */
+"QaD-2h-ipL.segmentTitles[1]" = "Second";
+
+/* Class = "UILabel"; text = "Owners"; ObjectID = "qCh-w3-5pb"; */
+"qCh-w3-5pb.text" = "Besitzer";
+
+/* Class = "UIViewController"; title = "PDF Document"; ObjectID = "qre-Fw-Phh"; */
+"qre-Fw-Phh.title" = "PDF Dokument";
+
+/* Class = "UILabel"; text = "Brands"; ObjectID = "Qrm-X6-8aa"; */
+"Qrm-X6-8aa.text" = "Marken";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QWk-As-Mn9"; */
+"QWk-As-Mn9.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Picture and Invoice"; ObjectID = "rFd-0w-oMC"; */
+"rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
+
+/* Class = "UICollectionViewController"; title = "Inventory Collection"; ObjectID = "rQj-lp-tZp"; */
+"rQj-lp-tZp.title" = "Inventory Sammlung";
+
+/* Class = "UILabel"; text = "owner"; ObjectID = "S4H-bG-DED"; */
+"S4H-bG-DED.text" = "Besitzer";
+
+/* Class = "UIButton"; normalTitle = "Choose Invoice PDF..."; ObjectID = "seV-zU-Yva"; */
+"seV-zU-Yva.normalTitle" = "Choose Rechnung PDF...";
+
+/* Class = "UILabel"; text = "Categories"; ObjectID = "SHR-4B-47W"; */
+"SHR-4B-47W.text" = "Kategorien";
+
+/* Class = "UILabel"; text = "Room"; ObjectID = "T4w-Lo-E4E"; */
+"T4w-Lo-E4E.text" = "Raum";
+
+/* Class = "UILabel"; text = "Hint: Changing the brand name will be reflected in all inventory objects"; ObjectID = "t7b-Nl-hAM"; */
+"t7b-Nl-hAM.text" = "Hinweis: Ändern des Markennamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "TBF-WX-sYi"; */
+"TBF-WX-sYi.title" = "Zurück";
+
+/* Class = "UINavigationItem"; title = "Brand"; ObjectID = "tDp-DF-iZg"; */
+"tDp-DF-iZg.title" = "Marke";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "TJH-da-sBs"; */
+"TJH-da-sBs.text" = "Kategorie";
+
+/* Class = "UITabBarItem"; title = "Inventory"; ObjectID = "tlZ-u3-m0f"; */
+"tlZ-u3-m0f.title" = "Inventory";
+
+/* Class = "UILabel"; text = "Room:"; ObjectID = "u8R-Gv-g47"; */
+"u8R-Gv-g47.text" = "Raum:";
+
+/* Class = "UINavigationItem"; title = "Import/Export CVS and PDF"; ObjectID = "uAR-MY-Vyf"; */
+"uAR-MY-Vyf.title" = "Import/Export CVS and PDF";
+
+/* Class = "UITableViewSection"; headerTitle = "Inventory"; ObjectID = "v9W-KQ-FRH"; */
+"v9W-KQ-FRH.headerTitle" = "Inventory";
+
+/* Class = "UILabel"; text = "Inventory 0.1"; ObjectID = "Vdp-dG-1Do"; */
+"Vdp-dG-1Do.text" = "Inventory 0.1";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "Vpk-WK-A4x"; */
+"Vpk-WK-A4x.text" = "Preis";
+
+/* Class = "UILabel"; text = "Hint: Changing the category name will be reflected in all inventory objects"; ObjectID = "wp2-5w-JLQ"; */
+"wp2-5w-JLQ.text" = "Hinweis: Ändern des Kategorienamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
+
+/* Class = "UITextField"; placeholder = "Serial No."; ObjectID = "wtl-dz-1Ld"; */
+"wtl-dz-1Ld.placeholder" = "Seriennr.";
+
+/* Class = "UINavigationItem"; title = "Reports"; ObjectID = "x4S-E8-XUR"; */
+"x4S-E8-XUR.title" = "Berichte";
+
+/* Class = "UITextField"; placeholder = "Owner name"; ObjectID = "xgQ-W4-Tf4"; */
+"xgQ-W4-Tf4.placeholder" = "Besitzer";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[0] = "0"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[0]" = "0";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[1] = "6"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[1]" = "6";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[2] = "12"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[2]" = "12";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[3] = "24"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[3]" = "24";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[4] = "36"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[4]" = "36";
+
+/* Class = "UITextField"; placeholder = "Brand name"; ObjectID = "xWO-xs-zbZ"; */
+"xWO-xs-zbZ.placeholder" = "Markenname";
+
+/* Class = "UILabel"; text = "Owner:"; ObjectID = "Y6f-Ar-xvF"; */
+"Y6f-Ar-xvF.text" = "Besitzer:";
+
+/* Class = "UIButton"; normalTitle = "Choose Image..."; ObjectID = "YpX-aZ-6kD"; */
+"YpX-aZ-6kD.normalTitle" = "Wähle Bild...";
+
+/* Class = "UILabel"; text = "owner"; ObjectID = "yYm-0Z-sNf"; */
+"yYm-0Z-sNf.text" = "Besitzer";
+
+/* Class = "UILabel"; text = "Export your data to the file system either as csv file or PDF file"; ObjectID = "z5u-gb-85Y"; */
+"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als csv Datei oder PDF Datei";
+

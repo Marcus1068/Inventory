@@ -1,0 +1,31 @@
+/* (c) 2018 by Marcus Deuß */
+"(c) 2018 by Marcus Deuß" = "(c) 2018 durch Marcus Deuß";
+
+/* Add Inventory */
+"Add Inventory" = "Inventar hinzufügen";
+
+/* Edit Inventory */
+"Edit Inventory" = "Inventar bearbeiten";
+
+/* Email could not be sent */
+"Email could not be sent" = "Email konnte nicht gesendet werden";
+
+/* I have some improvement ideas: */
+"I have some improvement ideas: " = "Ich habe ein paar Verbesserungsvorschläge:";
+
+/* Please check your email configuration */
+"Please check your email configuration" = "Bitte prüfen Sie Ihre Email Konfiguration";
+
+/* Running on iOS */
+"Running on iOS " = "Läuft auf iOS ";
+
+/* Localizable.strings
+  Inventory
+
+  Created by Marcus Deuß on 30.01.19.
+  Copyright © 2019 Marcus Deuß. All rights reserved. */
+"Welcome" = "Willkommen";
+
+/* Your device could not send email */
+"Your device could not send email" = "Ihr Gerät konnte keine Email senden";
+

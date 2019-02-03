@@ -94,7 +94,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for Inventory Name"
+        searchController.searchBar.placeholder =  NSLocalizedString("Search for Inventory Name", comment: "Search for Inventory Name")
         //searchController.searchBar.delegate = self
         searchController.delegate = self
         //navigationItem.searchController = searchController
@@ -124,8 +124,9 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         
         //var ownerList : Owner
         
-        // FIXME tranlation needed
-        list.append("All")
+        let msg = NSLocalizedString("All", comment: "All")
+        list.append(msg)
+        
         for inv in owner{
             list.append((inv.ownerName)!)
         }
@@ -227,7 +228,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
     }
     
     // self implemented method
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    func filterContentForSearchText(_ searchText: String, scope: String = NSLocalizedString("All", comment: "All")) {
         
  /*       filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
             let doesOwnerMatch = (scope == "All") || (inv.inventoryOwner?.ownerName == scope)
@@ -315,10 +316,10 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory items"
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory items", comment: " Inventory items")
             }
             else{
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory item", comment: " Inventory item")
             }
             
   /*          if isFiltering(){
@@ -371,7 +372,7 @@ class InventoryCollectionViewController: UICollectionViewController, UISearchCon
         cell.categoryNameLabel.text = inv.inventoryCategory?.categoryName
         cell.priceLabel.text = String(inv.price) + "€" // FIXME hardcoded
         cell.warrantyMonthsLabel.text = String(inv.warranty)
-        cell.warrantyLabel.text = "Warranty:"   // FIXME hardcoded
+        cell.warrantyLabel.text = NSLocalizedString("Warranty:", comment: "Warranty:")
         
         var image: UIImage
         
@@ -678,7 +679,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         switch type {
         case .insert:
             collection.reloadData()
-            print("Insert Section: \(sectionIndex)")
+            //print("Insert Section: \(sectionIndex)")
  /*           blockOperations.append(
                 BlockOperation(block: { [weak self] in
                     if let this = self {
@@ -690,7 +691,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
             ) */
             break
         case .delete:
-            print("Delete Section: \(sectionIndex)")
+            //print("Delete Section: \(sectionIndex)")
             collection.reloadData()
             /*
             blockOperations.append(
@@ -704,7 +705,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
             ) */
             break
         case .update:
-            print("Update Section: \(sectionIndex)")
+            //print("Update Section: \(sectionIndex)")
             collection.reloadData()
             /*
             blockOperations.append(

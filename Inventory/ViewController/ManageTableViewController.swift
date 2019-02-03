@@ -29,7 +29,7 @@ class ManageTableViewController: UITableViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        self.title = "Manage items"
+        self.title = NSLocalizedString("Manage items", comment: "Manage items table view title")
         //navigationController?.navigationBar.barTintColor = themeColor
         
         self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)

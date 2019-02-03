@@ -29,11 +29,11 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         // edit or add room
         if currentCategory != nil{
             //
-            self.title = "Edit Category"
+            self.title = NSLocalizedString("Edit Category", comment: "Edit Category")
             textfieldCategory.text = currentCategory!.categoryName
         }
         else{
-            self.title = "Add Category"
+            self.title = NSLocalizedString("Add Category", comment: "Add Category")
             textfieldCategory.text = ""
             saveButtonOutlet.isEnabled = false
         }
@@ -44,7 +44,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldCategory.placeholder = "Category"
+        textfieldCategory.placeholder = NSLocalizedString("Category", comment: "Category")
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,10 +147,13 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
     
     func showAlertDialog(){
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Category already exists", message: "Please choose a different category name", preferredStyle: .alert)
+        let title = NSLocalizedString("Category already exists", comment: "Category already exists")
+        let message = NSLocalizedString("Please choose a different category name", comment: "Please choose a different category name")
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+        let okMsg = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

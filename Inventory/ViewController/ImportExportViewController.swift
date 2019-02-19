@@ -35,7 +35,7 @@ class ImportExportViewController: UIViewController {
         }
         
         self.exportTextView.text = ""
-        self.exportLabel.text = "Export file destination:"
+        self.exportLabel.text = NSLocalizedString("Export file destination:", comment: "Export file destination:")
         self.importedRowsLabel.isHidden = true
 
         progressView.setProgress(0, animated: true)
@@ -178,7 +178,8 @@ class ImportExportViewController: UIViewController {
             DispatchQueue.main.async {
                 // at the end of export report the number of exported rows to user
                 self.importedRowsLabel.isHidden = false
-                self.importedRowsLabel.text = "Exported rows: " + String(exportedRows)
+                let message = NSLocalizedString("Exported rows: ", comment: "Exported rows: ")
+                self.importedRowsLabel.text = message + String(exportedRows)
                 
                 // set progress bar to 100% at the end of export
                 self.progressView.setProgress(1.0, animated: true)
@@ -199,7 +200,8 @@ class ImportExportViewController: UIViewController {
     }
     
     func exportBarButtonItem() -> UIBarButtonItem {
-        return UIBarButtonItem(title: "Export", style: .plain, target: self, action: #selector(exportCVSButton(_:)))
+        let title = NSLocalizedString("Export", comment: "Export")
+        return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(exportCVSButton(_:)))
     }
     
     // show message where file can be found

@@ -29,11 +29,11 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         // edit or add brand
         if currentBrand != nil{
             //
-            self.title = "Edit Brand"
+            self.title = NSLocalizedString("Edit Brand", comment: "Edit Brand")
             textfieldBrand.text = currentBrand!.brandName
         }
         else{
-            self.title = "Add Brand"
+            self.title = NSLocalizedString("Add Brand", comment: "Add Brand")
             textfieldBrand.text = ""
             saveButtonOutlet.isEnabled = false
         }
@@ -139,10 +139,13 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     func showAlertDialog(){
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Brand already exists", message: "Please choose a different brand name", preferredStyle: .alert)
+        let title = NSLocalizedString("Brand already exists", comment: "Brand already exists")
+        let message = NSLocalizedString("Please choose a different brand name", comment: "Please choose a different brand name")
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+        let okMsg = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

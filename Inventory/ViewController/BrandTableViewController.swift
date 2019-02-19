@@ -92,15 +92,17 @@ class BrandTableViewController: UITableViewController {
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
-            print("Ok button click...")
+        let okMsg = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
+            //print("Ok button click...")
             result = true
         })
         
         // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let cancelMsg = NSLocalizedString("Cancel", comment: "Cancel")
+        let cancel = UIAlertAction(title: cancelMsg, style: .cancel) { (action) -> Void in
             result = false
-            print("Cancel button click...")
+            //print("Cancel button click...")
         }
         
         //Add OK and Cancel button to dialog message
@@ -116,14 +118,18 @@ class BrandTableViewController: UITableViewController {
     // UIAlert for asking user if delete is really ok
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(brand: Brand) {
-        let alert = UIAlertController(title: "Delete brand", message: "Are you sure you want to permanently delete \(brand.brandName!)? Any related inventory with this brand will be deleted as well!", preferredStyle: .actionSheet)
+        let title = NSLocalizedString("Delete brand", comment: "Delete brand")
+        let message = NSLocalizedString("Are you sure you want to permanently delete \(brand.brandName!)? Any related inventory with this brand will be deleted as well!", comment: "Are you sure you want to permanently delete \(brand.brandName!)? Any related inventory with this brand will be deleted as well!")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
+        let delete = NSLocalizedString("Delete", comment: "Delete")
+        let DeleteAction = UIAlertAction(title: delete, style: .destructive){ (action:UIAlertAction) in
             _ = CoreDataHandler.deleteBrand(brand: brand)
         }
         
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) // will do nothing
+        let cancelMsg = NSLocalizedString("Cancel", comment: "Cancel")
+        let CancelAction = UIAlertAction(title: cancelMsg, style: .cancel, handler: nil) // will do nothing
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)

@@ -26,7 +26,7 @@ class PDFViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.title = "PDF invoice"
+        self.title = NSLocalizedString("PDF invoice", comment: "PDF invoice")
         
         pdfView.autoScales = true
         pdfView.displayMode = .singlePageContinuous

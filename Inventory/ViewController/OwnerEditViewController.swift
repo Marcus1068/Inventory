@@ -29,11 +29,11 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         // edit or add owner
         if currentOwner != nil{
             //
-            self.title = "Edit Owner"
+            self.title = NSLocalizedString("Edit Owner", comment: "Edit Owner")
             textfieldOwner.text = currentOwner!.ownerName
         }
         else{
-            self.title = "Add Owner"
+            self.title = NSLocalizedString("Add Owner", comment: "Add Owner")
             textfieldOwner.text = ""
             saveButtonOutlet.isEnabled = false
         }
@@ -44,7 +44,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldOwner.placeholder = "Owner"
+        textfieldOwner.placeholder = NSLocalizedString("Owner", comment: "Owner")
     }
     
     override func didReceiveMemoryWarning() {
@@ -139,10 +139,13 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     func showAlertDialog(){
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Owner already exists", message: "Please choose a different owner name", preferredStyle: .alert)
+        let title = NSLocalizedString("Owner already exists", comment: "Owner already exists")
+        let message = NSLocalizedString("Please choose a different owner name", comment: "Please choose a different owner name")
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+        let okMsg = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

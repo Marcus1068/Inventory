@@ -206,9 +206,11 @@ class ImportExportViewController: UIViewController {
     
     // show message where file can be found
     func showExportFinishedAlertView(_ exportPath: String) {
-        let message = "The exported CSV file can be found at \(exportPath)"
-        let alertController = UIAlertController(title: "Export Finished", message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .default)
+        let message = NSLocalizedString("The exported CSV file can be found at \(exportPath)", comment: "The exported CSV file can be found at \(exportPath)")
+        let title = NSLocalizedString("Export Finished", comment: "Export Finished")
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
+        let dismissAction = UIAlertAction(title: dismiss, style: .default)
         alertController.addAction(dismissAction)
         
         present(alertController, animated: true)
@@ -380,7 +382,8 @@ class ImportExportViewController: UIViewController {
         
         // at the end of import report number of imported rows to user
         self.importedRowsLabel.isHidden = false
-        self.importedRowsLabel.text = "Imported rows: " + String(importedRows)
+        let rows = NSLocalizedString("Imported rows: ", comment: "Imported rows: ")
+        self.importedRowsLabel.text = rows + String(importedRows)
         
         progressView.setProgress(1.0, animated: true)
         progressLabel.text = "100 %"
@@ -488,6 +491,7 @@ class ImportExportViewController: UIViewController {
         
         let url = exportToFileURL()
         
+        // fixme translation needed???
         let activityViewController = UIActivityViewController(
             activityItems: ["Share Inventory data", url!],
             applicationActivities: nil)

@@ -49,7 +49,7 @@ class OwnerTableViewController: UITableViewController {
         
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.title = "My Owners"
+        self.title = NSLocalizedString("My Owners", comment: "My Owners")
         self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
         // fetch database contents
@@ -86,7 +86,9 @@ class OwnerTableViewController: UITableViewController {
         
         var result : Bool = false
         // Declare Alert
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete? All inventory objects depending will be deleted as well...", preferredStyle: .alert)
+        let title = NSLocalizedString("Confirm", comment: "Confirm")
+        let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
+        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in

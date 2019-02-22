@@ -516,5 +516,4 @@ class ImportExportViewController: UIViewController {
         importCVSFile(file: Helper.cvsFile)
         
     }
-    
 }

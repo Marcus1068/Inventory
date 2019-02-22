@@ -32,6 +32,5 @@ class PDFViewController: UIViewController {
         pdfView.displayMode = .singlePageContinuous
         pdfView.displayDirection = .vertical
         pdfView.document = currentPDF?.document
- 
     }
 }

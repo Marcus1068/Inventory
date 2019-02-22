@@ -154,6 +154,5 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
-        
     }
 }

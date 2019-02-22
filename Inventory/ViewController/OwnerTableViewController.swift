@@ -90,6 +90,7 @@ class OwnerTableViewController: UITableViewController {
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
         let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
+        
         // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
             result = true

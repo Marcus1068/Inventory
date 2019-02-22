@@ -13,7 +13,7 @@ import UserNotifications
 class Helper: NSObject {
     
     // used in about view controller and for sending support emails
-    static let versionString = "0.2"
+    static let versionString = "0.3"
     
     // name of the app in about view
     static let appNameString = "Inventory"

@@ -92,12 +92,14 @@ class OwnerTableViewController: UITableViewController {
         
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+        let okMsg = NSLocalizedString("OK", comment: "OK")
+        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
             result = true
         })
         
         // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+        let cancelMsg = NSLocalizedString("Cancel", comment: "Cancel")
+        let cancel = UIAlertAction(title: cancelMsg, style: .cancel) { (action) -> Void in
             result = false
         }
         
@@ -114,14 +116,18 @@ class OwnerTableViewController: UITableViewController {
     // UIAlert for asking user if delete is really ok
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(owner: Owner) {
-        let alert = UIAlertController(title: "Delete owner", message: "Are you sure you want to permanently delete \(owner.ownerName!)? Any related inventory with this owner will be deleted as well!", preferredStyle: .actionSheet)
+        let title = NSLocalizedString("Delete owner", comment: "Delete owner")
+        let message = NSLocalizedString("Are you sure you want to permanently delete \(owner.ownerName!)? Any related inventory with this owner will be deleted as well!", comment: "Are you sure you want to permanently delete \(owner.ownerName!)? Any related inventory with this owner will be deleted as well!")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive){ (action:UIAlertAction) in
+        let delete = NSLocalizedString("Delete", comment: "Delete")
+        let DeleteAction = UIAlertAction(title: delete, style: .destructive){ (action:UIAlertAction) in
             _ = CoreDataHandler.deleteOwner(owner: owner)
         }
         
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) // will do nothing
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let CancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil) // will do nothing
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)

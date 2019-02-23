@@ -117,7 +117,11 @@ class OwnerTableViewController: UITableViewController {
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(owner: Owner) {
         let title = NSLocalizedString("Delete owner", comment: "Delete owner")
-        let message = NSLocalizedString("Are you sure you want to permanently delete \(owner.ownerName!)? Any related inventory with this owner will be deleted as well!", comment: "Are you sure you want to permanently delete \(owner.ownerName!)? Any related inventory with this owner will be deleted as well!")
+        
+        let message1 = NSLocalizedString("Are you sure you want to permanently delete", comment: "Are you sure you want to permanently delete") + " \(owner.ownerName!)" + "?"
+        
+        let message = message1 + NSLocalizedString("Any related inventory with this owner will be deleted as well!", comment: "Any related inventory with this owner will be deleted as well!")
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry

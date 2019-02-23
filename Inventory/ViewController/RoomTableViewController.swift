@@ -122,7 +122,10 @@ class RoomTableViewController: UITableViewController {
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(room: Room) {
         let title = NSLocalizedString("Delete room", comment: "Delete room")
-        let message = NSLocalizedString("Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!", comment: "Are you sure you want to permanently delete \(room.roomName!)? Any related inventory with this room will be deleted as well!")
+        let message1 = NSLocalizedString("Are you sure you want to permanently delete", comment: "Are you sure you want to permanently delete") + " \(room.roomName!)" + "?"
+        
+        let message = message1 + NSLocalizedString("Any related inventory with this room will be deleted as well!", comment: "Any related inventory with this room will be deleted as well!")
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry

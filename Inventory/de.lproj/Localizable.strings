@@ -1,23 +1,197 @@
+/* Inventory item */
+" Inventory item" = "Inventarobjekt";
+
+/* Inventory items */
+" Inventory items" = "Inventarobjekte";
+
 /* (c) 2018 by Marcus Deuß */
 "(c) 2018 by Marcus Deuß" = "(c) 2018 durch Marcus Deuß";
+
+/* Add Brand */
+"Add Brand" = "Marke hinzufügen";
+
+/* Add Category */
+"Add Category" = "Kategorie hinzufügen";
 
 /* Add Inventory */
 "Add Inventory" = "Inventar hinzufügen";
 
+/* Add Owner */
+"Add Owner" = "Eigentümer hinzufügen";
+
+/* Add Room */
+"Add Room" = "Raum hinzufügen";
+
+/* All */
+"All" = "Alle";
+
+/* Any related inventory with this brand will be deleted as well! */
+"Any related inventory with this brand will be deleted as well!" = "Alle Inventarobjekte mit dieser Marke werden gelöscht!";
+
+/* Any related inventory with this category will be deleted as well! */
+"Any related inventory with this category will be deleted as well!" = "Alle Inventarobjekte mit dieser Kategorie werden gelöscht!";
+
+/* Any related inventory with this owner will be deleted as well! */
+"Any related inventory with this owner will be deleted as well!" = "Alle Inventarobjekte mit diesem Eigentümer werden gelöscht!";
+
+/* Any related inventory with this room will be deleted as well! */
+"Any related inventory with this room will be deleted as well!" = "Alle Inventarobjekte mit diesem Raum werden gelöscht!";
+
+/* Are you sure you want to delete? All inventory objects depending will be deleted as well... */
+"Are you sure you want to delete? All inventory objects depending will be deleted as well..." = "Sind Sie sicher? Alle Inventarobjekte die hiervon abhängen werden ebenfalls gelöscht...";
+
+/* Are you sure you want to permanently delete */
+"Are you sure you want to permanently delete" = "Sind Sie sicher, das Sie dauerhaft löschen wollen";
+
+/* Brand */
+"Brand" = "Marke";
+
+/* Brand already exists */
+"Brand already exists" = "Marke existiert bereits";
+
+/* Cancel */
+"Cancel" = "Abbruch";
+
+/* Category */
+"Category" = "Kategorie";
+
+/* Category already exists */
+"Category already exists" = "Kategorie existiert bereits";
+
+/* Choose your brand */
+"Choose your brand" = "Wählen Sie die Marke";
+
+/* Choose your category */
+"Choose your category" = "Wählen Sie die Kategorie";
+
+/* Choose your owner */
+"Choose your owner" = "Wählen Sie den Besitzer";
+
+/* Choose your room */
+"Choose your room" = "Wählen Sie den Raum";
+
+/* Confirm */
+"Confirm" = "Bestätigen";
+
+/* Created at: */
+"Created at: " = "Erzeugt am:";
+
+/* Creating: */
+"Creating: " = "Erzeugt:";
+
+/* Delete */
+"Delete" = "Löschen";
+
+/* Delete brand */
+"Delete brand" = "Marke löschen";
+
+/* Delete category */
+"Delete category" = "Kategorie löschen";
+
+/* Delete owner */
+"Delete owner" = "Eigentümer löschen";
+
+/* Delete room */
+"Delete room" = "Raum löschen";
+
+/* Dismiss */
+"Dismiss" = "Verwerfen";
+
+/* Edit Brand */
+"Edit Brand" = "Marke bearbeiten";
+
+/* Edit Category */
+"Edit Category" = "Kategorie bearbeiten";
+
 /* Edit Inventory */
 "Edit Inventory" = "Inventar bearbeiten";
+
+/* Edit Owner */
+"Edit Owner" = "Eigentümer bearbeiten";
+
+/* Edit Room */
+"Edit Room" = "Raum bearbeiten";
 
 /* Email could not be sent */
 "Email could not be sent" = "Email konnte nicht gesendet werden";
 
+/* Export */
+"Export" = "Exportieren";
+
+/* Export file destination: */
+"Export file destination:" = "Export Verzeichnis:";
+
+/* Export Finished */
+"Export Finished" = "Export beendet";
+
+/* Exported rows: */
+"Exported rows: " = "Exportierte Zeilen:";
+
 /* I have some improvement ideas: */
 "I have some improvement ideas: " = "Ich habe ein paar Verbesserungsvorschläge:";
+
+/* Imported rows: */
+"Imported rows: " = "Importierte Zeilen:";
+
+/* Manage items table view title */
+"Manage items" = "Objekte verwalten";
+
+/* My Brands */
+"My Brands" = "Meine Marken";
+
+/* My Categories */
+"My Categories" = "Meine Kategorien";
+
+/* My Owners */
+"My Owners" = "Meine Eigentümer";
+
+/* My Rooms */
+"My Rooms" = "Meine Räume";
+
+/* OK */
+"OK" = "OK";
+
+/* Owner */
+"Owner" = "Eigentümer";
+
+/* Owner already exists */
+"Owner already exists" = "Eigentümer existiert bereits";
+
+/* PDF invoice */
+"PDF invoice" = "PDF Rechnung";
 
 /* Please check your email configuration */
 "Please check your email configuration" = "Bitte prüfen Sie Ihre Email Konfiguration";
 
+/* Please choose a different brand name */
+"Please choose a different brand name" = "Bitte wählen Sie eine andere Marke";
+
+/* Please choose a different category name */
+"Please choose a different category name" = "Bitte wählen Sie eine andere Kategorie";
+
+/* Please choose a different owner name */
+"Please choose a different owner name" = "Bitte wählen Sie einen anderen Besitzer";
+
+/* Please choose a different room name */
+"Please choose a different room name" = "Bitte wählen Sie einen anderen Raum";
+
+/* Room */
+"Room" = "Raum";
+
+/* Room already exists */
+"Room already exists" = "Raum existiert bereits";
+
 /* Running on iOS */
 "Running on iOS " = "Läuft auf iOS ";
+
+/* Search for Inventory Name */
+"Search for Inventory Name" = "Nach Inventarnamen suchen";
+
+/* The exported CSV file can be found here: */
+"The exported CSV file can be found here: " = "Die exportierte CSV Datei kann hier gefunden werden:";
+
+/* Warranty: */
+"Warranty:" = "Garantie:";
 
 /* Localizable.strings
   Inventory

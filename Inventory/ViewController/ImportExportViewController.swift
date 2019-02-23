@@ -204,9 +204,10 @@ class ImportExportViewController: UIViewController {
         return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(exportCVSButton(_:)))
     }
     
-    // show message where file can be found
+    // show message where file can be located in file system
     func showExportFinishedAlertView(_ exportPath: String) {
-        let message = NSLocalizedString("The exported CSV file can be found at \(exportPath)", comment: "The exported CSV file can be found at \(exportPath)")
+        let message = NSLocalizedString("The exported CSV file can be found here: ", comment: "The exported CSV file can be found here: ") + "\(exportPath)"
+        
         let title = NSLocalizedString("Export Finished", comment: "Export Finished")
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")

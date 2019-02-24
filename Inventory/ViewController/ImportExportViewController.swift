@@ -443,6 +443,8 @@ class ImportExportViewController: UIViewController {
     
     
     // share via ios system icon/method
+    // info from https://www.raywenderlich.com/1018-uiactivityviewcontroller-tutorial-sharing-data
+    
     func exportToFileURL() -> URL? {
     
         // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]

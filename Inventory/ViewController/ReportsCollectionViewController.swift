@@ -92,7 +92,7 @@ class ReportsCollectionViewController: UIViewController, UICollectionViewDataSou
         }
         
         // set view title
-        self.title = "Reports"
+        self.title = NSLocalizedString("Inventory", comment: "Inventory")
         
         // enable filtering
         filterSwitch.isOn = true

@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              NSAttributedString.Key.font: UIFont(name: "Arial", size: 30) ??
                 UIFont.systemFont(ofSize: 30)]
         
-        window?.tintColor = themeColor
+        // influences text color
+        //window?.tintColor = themeColor
         
         return true
     }

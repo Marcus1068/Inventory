@@ -17,6 +17,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
     
+    // setup dynamic font types for all labels
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateFontsforDynamicTypes()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -102,6 +109,21 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    // for using dynamic types: These are the six preset styles. When the view appears the helper method will be called. Implement the viewDidAppear method.
+    func updateFontsforDynamicTypes() {
+        //versionNumberLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        //copyrightLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        //iosversionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        /*
+         headlineLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+         subheadlineLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
+         bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+         footnoteLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+         caption1Label.font = UIFont.preferredFont(forTextStyle: .caption1)
+         caption2Label.font = UIFont.preferredFont(forTextStyle: .caption2)
+         */
     }
 
 }

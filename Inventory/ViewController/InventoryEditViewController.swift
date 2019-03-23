@@ -10,6 +10,7 @@ import UIKit
 import PDFKit
 import os.log
 import MobileCoreServices
+import AVKit
 
 class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
 
@@ -27,6 +28,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
     
+    @IBOutlet weak var cameraNavBarOutlet: UIBarButtonItem!
+    @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
@@ -45,7 +48,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
-    weak var currentInventory : Inventory?
+    var currentInventory : Inventory? // FIXME weak migth be wrong
     
     // get all detail infos
     var rooms : [Room] = []
@@ -66,12 +69,33 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable camera buttons unless user grants access to system privilege
+        cameraNavBarOutlet.isEnabled = false
+        cameraButtonOutlet.isEnabled = false
+        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
 
         imagePicker.delegate = self
         
+        // check for camera permissions
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            self.setupCaptureSession()
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.setupCaptureSession()
+                }
+            }
+            
+        case .denied: // The user has previously denied access.
+            break
+        case .restricted: // The user can't grant access due to restrictions.
+            break
+        }
         
         // Do any additional setup after loading the view.
         
@@ -212,6 +236,13 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
+    }
+    
+    // camera enabled
+    private func setupCaptureSession(){
+        // enable camera buttons
+        cameraNavBarOutlet.isEnabled = true
+        cameraButtonOutlet.isEnabled = true
     }
     
     // MARK: document picker methods
@@ -498,7 +529,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
     }
     
-    // save inventory, either new or update old object
+    // save inventory, either creating new object or update existing object
     @IBAction func saveButton(_ sender: Any) {
         
         currentInventory?.id = UUID()

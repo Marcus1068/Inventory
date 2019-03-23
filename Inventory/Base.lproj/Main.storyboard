@@ -774,7 +774,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlk-5E-K8Q">
-                                            <rect key="frame" x="0.0" y="8" width="367" height="52"/>
+                                            <rect key="frame" x="0.0" y="8" width="367" height="44"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -782,7 +782,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hlk-5E-K8Q" firstAttribute="top" secondItem="RBj-he-424" secondAttribute="topMargin" id="99m-NM-1HI"/>
-                                        <constraint firstAttribute="bottom" secondItem="hlk-5E-K8Q" secondAttribute="bottom" id="ZFE-aw-Ob4"/>
+                                        <constraint firstAttribute="bottom" secondItem="hlk-5E-K8Q" secondAttribute="bottom" constant="8" id="ZFE-aw-Ob4"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hlk-5E-K8Q" secondAttribute="trailing" id="d27-fQ-cke"/>
                                         <constraint firstItem="hlk-5E-K8Q" firstAttribute="leading" secondItem="RBj-he-424" secondAttribute="leading" id="snK-Mq-6gd"/>
                                     </constraints>
@@ -1499,13 +1499,23 @@
                                     <action selector="saveButton:" destination="1MD-YV-91u" id="lx1-ES-yjs"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="camera" id="6Xm-a3-H3h"/>
-                            <barButtonItem title="Item" image="PDF Icon" id="1x4-xS-Tgd"/>
+                            <barButtonItem systemItem="camera" id="6Xm-a3-H3h">
+                                <connections>
+                                    <action selector="imageButton:" destination="1MD-YV-91u" id="TT8-8k-2Hm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="PDF Icon" id="1x4-xS-Tgd">
+                                <connections>
+                                    <action selector="choosePDFButton:" destination="1MD-YV-91u" id="wTV-og-LVo"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="brandButtonLabel" destination="fJy-2X-JZS" id="RSO-y1-jbb"/>
                         <outlet property="brandLabel" destination="5Iy-KY-o2N" id="QDT-UW-JyD"/>
+                        <outlet property="cameraButtonOutlet" destination="2TE-eQ-5Wq" id="e3U-vF-Yzh"/>
+                        <outlet property="cameraNavBarOutlet" destination="6Xm-a3-H3h" id="aVU-RL-eTZ"/>
                         <outlet property="cancelButtonLabel" destination="oLb-bJ-0qD" id="wMj-yX-WfC"/>
                         <outlet property="categoryButtonLabel" destination="HZ1-cV-zKd" id="tGw-S7-UGm"/>
                         <outlet property="categoryLabel" destination="I4j-zE-sft" id="jMb-6z-TmX"/>

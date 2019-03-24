@@ -69,9 +69,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // disable camera buttons unless user grants access to system privilege
-        cameraNavBarOutlet.isEnabled = false
-        cameraButtonOutlet.isEnabled = false
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -79,25 +76,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
 
         imagePicker.delegate = self
         
-        // check for camera permissions
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized: // The user has previously granted access to the camera.
-            self.setupCaptureSession()
-            
-        case .notDetermined: // The user has not yet been asked for camera access.
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.setupCaptureSession()
-                }
-            }
-            
-        case .denied: // The user has previously denied access.
-            break
-        case .restricted: // The user can't grant access due to restrictions.
-            break
-        }
-        
-        // Do any additional setup after loading the view.
         
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
@@ -204,7 +182,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             // set timestamp label
             let today = Date()
             let msg = NSLocalizedString("Creating: ", comment: "Creating: ")
-            timeStampLabel.text = msg + today.toString(withFormat: "MM/dd/yy")
+            timeStampLabel.text = msg + today.toString(withFormat: "MM/dd/yy")  // FIXME hardcoded date format
         }
         
         // focus on first text field
@@ -224,6 +202,28 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // refresh data when view will be redrawn, after choosing room table view etc.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+       
+        // disable camera buttons unless user grants access to system privilege
+        cameraNavBarOutlet.isEnabled = false
+        cameraButtonOutlet.isEnabled = false
+        
+        // check for camera permissions
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            self.setupCaptureSession()
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.setupCaptureSession()
+                }
+            }
+            
+        case .denied: // The user has previously denied access.
+            break
+        case .restricted: // The user can't grant access due to restrictions.
+            break
+        }
         
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
@@ -239,7 +239,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     }
     
     // camera enabled
-    private func setupCaptureSession(){
+    func setupCaptureSession(){
         // enable camera buttons
         cameraNavBarOutlet.isEnabled = true
         cameraButtonOutlet.isEnabled = true
@@ -541,10 +541,18 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         // warranty will be set via segment control
         
         currentInventory?.timeStamp = Date() as NSDate?
+        
         // image binary data
         let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
         currentInventory?.image = imageData! as NSData
         currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
+        
+        
+        // PDF data
+        currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+        if(currentInventory?.invoice != nil){
+            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
+        }
         
         // add data
         if (editmode == EditMode.add)
@@ -567,8 +575,8 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             pdfView.displayDirection = .vertical
             pdfView.document = pdfDocument
             
-            currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
+            //currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+            //currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf" // FIXME crashes when new object, works with existing object to attach a pdf
             // show thumbnail as well
             //captureThumbnails(pdfDocument:pdfDocument)
         }

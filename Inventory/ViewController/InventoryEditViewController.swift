@@ -223,6 +223,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             break
         case .restricted: // The user can't grant access due to restrictions.
             break
+        @unknown default:
+            os_log("viewDidAppear: switch unknown default", log: OSLog.default, type: .debug)
         }
         
         // get the data from Core Data

@@ -237,6 +237,8 @@ extension CategoryTableViewController: NSFetchedResultsControllerDelegate {
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .automatic)
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        @unknown default:
+            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
         }
     }
     

@@ -469,7 +469,7 @@ class ImportExportViewController: UIViewController {
                 return nil
         }
         
-        let saveFileURL = path.appendingPathComponent("/\(uname).inv")
+        let saveFileURL = path.appendingPathComponent("/\(String(describing: uname)).inv")
         (contents as NSDictionary).write(to: saveFileURL, atomically: true)
         
         return saveFileURL

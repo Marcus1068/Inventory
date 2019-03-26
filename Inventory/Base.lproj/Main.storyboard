@@ -1326,7 +1326,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seV-zU-Yva">
-                                                    <rect key="frame" x="8" y="42" width="193" height="27"/>
+                                                    <rect key="frame" x="8" y="21" width="193" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <state key="normal" title="Choose Invoice PDF..."/>
@@ -1339,11 +1339,10 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTk-GP-MX1">
-                                                    <rect key="frame" x="8" y="76" width="193" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTk-GP-MX1">
+                                                    <rect key="frame" x="68" y="56" width="57" height="53"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                    <state key="normal" title="Show fullscreen..."/>
+                                                    <state key="normal" title="Show fullscreen..." image="fullscreen"/>
                                                     <connections>
                                                         <segue destination="qre-Fw-Phh" kind="show" identifier="pdfSegue" id="WfL-AG-t62"/>
                                                     </connections>
@@ -1440,7 +1439,7 @@
                                         <rect key="frame" x="0.0" y="866.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JJb-QU-NOZ" id="b9a-r2-xW6">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keT-dq-ecZ">
@@ -2188,6 +2187,7 @@
         <image name="Room Icon" width="30" height="30"/>
         <image name="about" width="30" height="30"/>
         <image name="createNew" width="30" height="30"/>
+        <image name="fullscreen" width="128" height="128"/>
         <image name="icons8-arbeitsplatz-50" width="37.5" height="37.5"/>
         <image name="icons8-bett-50" width="37.5" height="37.5"/>
         <image name="icons8-bildschirmfoto-filled-50" width="37.5" height="37.5"/>

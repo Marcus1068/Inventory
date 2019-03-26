@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import os.log
 
 private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
@@ -649,6 +650,8 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
                 })
             ) */
             break
+        @unknown default:
+            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
         }
     }
     

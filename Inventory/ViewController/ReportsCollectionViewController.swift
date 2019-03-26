@@ -668,6 +668,8 @@ extension ReportsCollectionViewController: NSFetchedResultsControllerDelegate {
         case .move:
             collection.reloadData()
             break
+        @unknown default:
+            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
         }
     }
     

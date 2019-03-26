@@ -274,7 +274,7 @@
 				TargetAttributes = {
 					2C56E8A92086350A00FD5136 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -290,6 +290,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 2C56E8A12086350A00FD5136;
 			productRefGroup = 2C56E8AB2086350A00FD5136 /* Products */;
@@ -528,7 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -548,7 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

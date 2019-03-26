@@ -449,7 +449,7 @@ class ImportExportViewController: UIViewController {
     
         // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]
         
-        var contents: [String: Any] = ["Test": String.self]
+        let contents: [String: Any] = ["Test": String.self]
         /*
         
         if let image = beerImage() {

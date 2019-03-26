@@ -680,9 +680,33 @@ class CoreDataHandler: NSObject {
         
         let context = getContext()
         
+        let notDefined = NSLocalizedString("<not defined>", comment: "<not defined>")
+        let noCategory = NSLocalizedString("<no category>", comment: "<no category>")
+        let noOwner = NSLocalizedString("<nobody>", comment: "<nobody>")
+        let noBrand = NSLocalizedString("<other>", comment: "<other>")
+        
+        let tech = NSLocalizedString("Technics", comment: "Technics")
+        let furniture = NSLocalizedString("Furniture", comment: "Furniture")
+        let computer = NSLocalizedString("Computer", comment: "Computer")
+        let juwelry = NSLocalizedString("Juwelry", comment: "Juwelry")
+        let toy = NSLocalizedString("Toy", comment: "Toy")
+        let tv = NSLocalizedString("TV", comment: "TV")
+        let smartphone = NSLocalizedString("Smartphone", comment: "Smartphone")
+        let tablet = NSLocalizedString("Tablet", comment: "Tablet")
+        
+        let livingroom = NSLocalizedString("Living room", comment: "Living room")
+        let office = NSLocalizedString("Office", comment: "Office")
+        let nursery1 = NSLocalizedString("Nursery 1", comment: "Nursery 1")
+        let nursery2 = NSLocalizedString("Nursery 2", comment: "Nursery 2")
+        let kitchen = NSLocalizedString("Kitchen", comment: "Kitchen")
+        let basement1 = NSLocalizedString("Basement 1", comment: "Basement 1")
+        let basement2 = NSLocalizedString("Basement 2", comment: "Basement 2")
+        let bedroom = NSLocalizedString("Bedroom", comment: "Bedroom")
+        
         // german room list default data
-        let roomList: [String] = ["<nicht definiert>", "Wohnzimmer", "Buero", "Kinderzimmer 1",
-                                  "Kinderzimmer 2", "Kueche", "Waschkeller", "Schlafzimmer", "Hobbykeller" ]
+        
+        let roomList: [String] = [notDefined, livingroom, office, nursery1,
+                                  nursery2, kitchen, basement1, bedroom, basement2]
         
         for name in roomList{
             let room = Room(context: context)
@@ -697,8 +721,8 @@ class CoreDataHandler: NSObject {
         
         
         // default categories
-        let categoryList: [String] = ["<keine Kategorie>", "Technik", "Moebel", "Computer",
-                                         "Schmuck", "Spielzeug", "Fernseher", "Smartphone", "Tablet"]
+        let categoryList: [String] = [noCategory, tech, furniture, computer,
+                                         juwelry, toy, tv, smartphone, tablet]
         
         for name in categoryList{
             let category = Category(context: context)
@@ -711,8 +735,8 @@ class CoreDataHandler: NSObject {
         
         // default owners
         
-        let ownerList: [String] = ["<keiner>", "Marcus", "Sandra", "Emily",
-                                      "Vincent"]
+        let ownerList: [String] = [noOwner, "Mark", "Eva", "Jane",
+                                      "Johann"]
         
         for name in ownerList{
             let owner = Owner(context: context)
@@ -724,7 +748,7 @@ class CoreDataHandler: NSObject {
         
         // default brands
         
-        let brandList: [String] = ["<sonstige>", "IKEA", "Apple", "Sonos",
+        let brandList: [String] = [noBrand, "IKEA", "Apple", "Sonos",
                                    "Thermomix", "Sony", "Google", "Amazon"]
         
         for name in brandList{
@@ -744,16 +768,16 @@ class CoreDataHandler: NSObject {
         let myImage4 = #imageLiteral(resourceName: "Computer Icon")
         let myImage5 = #imageLiteral(resourceName: "Phone Icon")
         let myImage6 = #imageLiteral(resourceName: "Room Icon")
-        let imageData1 = myImage.jpegData(compressionQuality: 1.0)
-        let imageData2 = myImage2.jpegData(compressionQuality: 1.0)
+        _ = myImage.jpegData(compressionQuality: 1.0)
+        _ = myImage2.jpegData(compressionQuality: 1.0)
         let imageData3 = myImage3.jpegData(compressionQuality: 1.0)
-        let imageData4 = myImage4.jpegData(compressionQuality: 1.0)
-        let imageData5 = myImage5.jpegData(compressionQuality: 1.0)
-        let imageData6 = myImage6.jpegData(compressionQuality: 1.0)
+        _ = myImage4.jpegData(compressionQuality: 1.0)
+        _ = myImage5.jpegData(compressionQuality: 1.0)
+        _ = myImage6.jpegData(compressionQuality: 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
         let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
-                                   "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV Gen4"]
+                                   "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         // generate sample data randomly
         for i in 1..<100{
@@ -769,85 +793,7 @@ class CoreDataHandler: NSObject {
             _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
         }
         
-        /*
-        _ = saveInventory(inventoryName: "Weber Grill", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[1], owner: owners[1], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[2], owner: owners[3], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "Macbook Pro 13", dateOfPurchase: date, price: 2399, remark: "tolles", serialNumber: "12345", warranty: 36, image: imageData5! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[2], owner: owners[3], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "Sony 43 Zoll TV", dateOfPurchase: date, price: 999, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[1], owner: owners[3], room: rooms[4])
-        
-        _ = saveInventory(inventoryName: "Sonos", dateOfPurchase: date, price: 799, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[3], owner: owners[2], room: rooms[3])
-        
-        _ = saveInventory(inventoryName: "Aquarium", dateOfPurchase: date, price: 300, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[4], owner: owners[1], room: rooms[4])
-        
-        _ = saveInventory(inventoryName: "Pixel 2XL", dateOfPurchase: date, price: 900, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[5], owner: owners[2], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "iPhone X", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData4! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[1], category: categories[2], owner: owners[2], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "Irgendwas", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData4! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[3], category: categories[2], owner: owners[2], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "iPhone 7", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[4], category: categories[2], owner: owners[4], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "Samsung S7 Edge", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData5! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[4], category: categories[3], owner: owners[1], room: rooms[3])
-        
-        _ = saveInventory(inventoryName: "iPhone 7Plus", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData1! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[4], category: categories[3], owner: owners[4], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "Lego Apollo Rakete", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[3], category: categories[3], owner: owners[4], room: rooms[1])
-        
-        _ = saveInventory(inventoryName: "Amazon Echo Spot Emily", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData6! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[3], category: categories[4], owner: owners[3], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData5! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[3], category: categories[4], owner: owners[3], room: rooms[4])
-        
-        _ = saveInventory(inventoryName: "Amazon Echo Spot", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData2! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[1], owner: owners[3], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "Sony TV 55 Zoll", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 24, image: imageData4! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[2])
-        
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        _ = saveInventory(inventoryName: "Samsung 40 TV", dateOfPurchase: date, price: 1299, remark: "tolles", serialNumber: "442312345", warranty: 12, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[2], category: categories[4], owner: owners[2], room: rooms[3])
-        */
+        // FIXME must be removed for release
         CoreDataHandler.showSampleData()
     }
 

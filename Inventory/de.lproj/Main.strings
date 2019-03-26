@@ -4,7 +4,7 @@
 /* Class = "UILabel"; text = "Price"; ObjectID = "0Xp-Fw-K8P"; */
 "0Xp-Fw-K8P.text" = "Preis";
 
-/* Class = "UILabel"; text = "Date of purchase"; ObjectID = "1kx-JD-UCb"; */
+/* Class = "UILabel"; text = "Purchase date"; ObjectID = "1kx-JD-UCb"; */
 "1kx-JD-UCb.text" = "Kaufdatum";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "1x4-xS-Tgd"; */
@@ -79,7 +79,7 @@
 /* Class = "UIBarButtonItem"; title = "CSV"; ObjectID = "APE-Oc-XX7"; */
 "APE-Oc-XX7.title" = "CSV";
 
-/* Class = "UITabBarItem"; title = "Reports"; ObjectID = "bMy-mx-l0r"; */
+/* Class = "UITabBarItem"; title = "Inventory"; ObjectID = "bMy-mx-l0r"; */
 "bMy-mx-l0r.title" = "Berichte";
 
 /* Class = "UIButton"; normalTitle = "Show fullscreen..."; ObjectID = "bTk-GP-MX1"; */
@@ -250,7 +250,7 @@
 /* Class = "UILabel"; text = "Category"; ObjectID = "TJH-da-sBs"; */
 "TJH-da-sBs.text" = "Kategorie";
 
-/* Class = "UITabBarItem"; title = "Inventory"; ObjectID = "tlZ-u3-m0f"; */
+/* Class = "UITabBarItem"; title = "Reports"; ObjectID = "tlZ-u3-m0f"; */
 "tlZ-u3-m0f.title" = "Inventar";
 
 /* Class = "UILabel"; text = "Room:"; ObjectID = "u8R-Gv-g47"; */

@@ -7,6 +7,18 @@
 /* (c) 2018 by Marcus Deuß */
 "(c) 2018 by Marcus Deuß" = "(c) 2018 durch Marcus Deuß";
 
+/* <no category> */
+"<no category>" = "<keine Kategorie>";
+
+/* <nobody> */
+"<nobody>" = "<niemand>";
+
+/* <not defined> */
+"<not defined>" = "<nicht definiert>";
+
+/* <other> */
+"<other>" = "<sonstige>";
+
 /* Add Brand */
 "Add Brand" = "Marke hinzufügen";
 
@@ -43,6 +55,15 @@
 /* Are you sure you want to permanently delete */
 "Are you sure you want to permanently delete" = "Sind Sie sicher, das Sie dauerhaft löschen wollen";
 
+/* Basement 1 */
+"Basement 1" = "Kellerraum 1";
+
+/* Basement 2 */
+"Basement 2" = "Kellerraum 2";
+
+/* Bedroom */
+"Bedroom" = "Schlafzimmer";
+
 /* Brand */
 "Brand" = "Marke";
 
@@ -69,6 +90,9 @@
 
 /* Choose your room */
 "Choose your room" = "Wählen Sie den Raum";
+
+/* Computer */
+"Computer" = "Computer";
 
 /* Confirm */
 "Confirm" = "Bestätigen";
@@ -127,11 +151,26 @@
 /* Exported rows: */
 "Exported rows: " = "Exportierte Zeilen:";
 
+/* Furniture */
+"Furniture" = "Möbel";
+
 /* I have some improvement ideas: */
 "I have some improvement ideas: " = "Ich habe ein paar Verbesserungsvorschläge:";
 
 /* Imported rows: */
 "Imported rows: " = "Importierte Zeilen:";
+
+/* Inventory */
+"Inventory" = "Inventar";
+
+/* Juwelry */
+"Juwelry" = "Schmuck";
+
+/* Kitchen */
+"Kitchen" = "Küche";
+
+/* Living room */
+"Living room" = "Schlafzimmer";
 
 /* Manage items table view title */
 "Manage items" = "Objekte verwalten";
@@ -147,6 +186,15 @@
 
 /* My Rooms */
 "My Rooms" = "Meine Räume";
+
+/* Nursery 1 */
+"Nursery 1" = "Kinderzimmer 1";
+
+/* Nursery 2 */
+"Nursery 2" = "Kinderzimmer 2";
+
+/* Office */
+"Office" = "Büro";
 
 /* OK */
 "OK" = "OK";
@@ -187,8 +235,23 @@
 /* Search for Inventory Name */
 "Search for Inventory Name" = "Nach Inventarnamen suchen";
 
+/* Smartphone */
+"Smartphone" = "Handy";
+
+/* Tablet */
+"Tablet" = "Tablet";
+
+/* Technics */
+"Technics" = "Technik";
+
 /* The exported CSV file can be found here: */
 "The exported CSV file can be found here: " = "Die exportierte CSV Datei kann hier gefunden werden:";
+
+/* Toy */
+"Toy" = "Spielzeug";
+
+/* TV */
+"TV" = "Fernseher";
 
 /* Warranty: */
 "Warranty:" = "Garantie:";

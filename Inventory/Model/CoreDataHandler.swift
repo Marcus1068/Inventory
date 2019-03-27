@@ -481,6 +481,7 @@ class CoreDataHandler: NSObject {
         }
     }
     
+    // update inventory object
     class func updateInventory(inventory: Inventory) -> Bool{
         let context = getContext()
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
@@ -693,6 +694,7 @@ class CoreDataHandler: NSObject {
         let tv = NSLocalizedString("TV", comment: "TV")
         let smartphone = NSLocalizedString("Smartphone", comment: "Smartphone")
         let tablet = NSLocalizedString("Tablet", comment: "Tablet")
+        let videogame = NSLocalizedString("Video Game", comment: "Video Game")
         
         let livingroom = NSLocalizedString("Living room", comment: "Living room")
         let office = NSLocalizedString("Office", comment: "Office")
@@ -722,7 +724,7 @@ class CoreDataHandler: NSObject {
         
         // default categories
         let categoryList: [String] = [noCategory, tech, furniture, computer,
-                                         juwelry, toy, tv, smartphone, tablet]
+                                         juwelry, toy, tv, smartphone, tablet, videogame]
         
         for name in categoryList{
             let category = Category(context: context)
@@ -749,7 +751,7 @@ class CoreDataHandler: NSObject {
         // default brands
         
         let brandList: [String] = [noBrand, "IKEA", "Apple", "Sonos",
-                                   "Thermomix", "Sony", "Google", "Amazon"]
+                                   "Thermomix", "Sony", "Google", "Amazon", "Nintendo"]
         
         for name in brandList{
             let brand = Brand(context: context)

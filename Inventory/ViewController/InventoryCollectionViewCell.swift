@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReportsCollectionViewCell: UICollectionViewCell {
+class InventoryCollectionViewCell: UICollectionViewCell {
  /*
     @IBOutlet weak var myLabel: UILabel!
     

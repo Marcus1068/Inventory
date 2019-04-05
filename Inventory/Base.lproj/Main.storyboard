@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -271,184 +271,6 @@
             </objects>
             <point key="canvasLocation" x="2666" y="1334"/>
         </scene>
-        <!--Inventory Collection-->
-        <scene sceneID="pyQ-tk-g04">
-            <objects>
-                <collectionViewController title="Inventory Collection" id="rQj-lp-tZp" customClass="InventoryCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="pkO-Ff-Y7e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r1Q-3A-FDe">
-                            <size key="itemSize" width="176" height="123"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
-                            <size key="footerReferenceSize" width="50" height="50"/>
-                            <inset key="sectionInset" minX="0.0" minY="33" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="collectionCell" id="jbE-29-5gT" customClass="CollectionViewCell" customModule="Inventory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="83" width="176" height="123"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="176" height="123"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4H-bG-DED">
-                                            <rect key="frame" x="8" y="79" width="71" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m06-V0-3kx">
-                                            <rect key="frame" x="60" y="98" width="19" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzI-5C-RBk">
-                                            <rect key="frame" x="87" y="44" width="89" height="70"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xp-Fw-K8P">
-                                            <rect key="frame" x="7" y="64" width="71" height="15"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkF-mx-VPx">
-                                            <rect key="frame" x="10" y="0.0" width="161" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="inventory Name">
-                                                    <attributes>
-                                                        <font key="NSFont" size="16" name="Futura-Bold"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJH-da-sBs">
-                                            <rect key="frame" x="7" y="45" width="71" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Warranty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cch-9P-ZPg">
-                                            <rect key="frame" x="7" y="98" width="50" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="customSize" width="176" height="123"/>
-                                <connections>
-                                    <outlet property="categoryNameLabel" destination="TJH-da-sBs" id="eRV-1A-7sv"/>
-                                    <outlet property="myImage" destination="WzI-5C-RBk" id="lwN-Xc-Wwb"/>
-                                    <outlet property="myLabel" destination="xkF-mx-VPx" id="esr-Ln-msB"/>
-                                    <outlet property="ownerLabel" destination="S4H-bG-DED" id="xDD-yd-DdJ"/>
-                                    <outlet property="priceLabel" destination="0Xp-Fw-K8P" id="KCj-hH-tft"/>
-                                    <outlet property="warrantyLabel" destination="Cch-9P-ZPg" id="UkQ-kJ-DaS"/>
-                                    <outlet property="warrantyMonthsLabel" destination="m06-V0-3kx" id="4e4-Ou-sOF"/>
-                                    <segue destination="1MD-YV-91u" kind="show" identifier="editSegue" id="JWi-qT-NtE"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="kRB-es-JEr" customClass="InventoryHeaderCollectionReusableView" customModule="Inventory" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera Icon" translatesAutoresizingMaskIntoConstraints="NO" id="daY-hJ-Lqe">
-                                    <rect key="frame" x="8" y="8" width="36" height="36"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="36" id="VaL-ta-tAZ"/>
-                                        <constraint firstAttribute="height" constant="36" id="i4V-dj-J49"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="room name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovm-oP-2Z3">
-                                    <rect key="frame" x="70" y="8" width="135" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="34" id="h6Z-dS-cMh"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.57874745130000005" green="0.32151988149999999" blue="0.0" alpha="0.3947185359589041" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstItem="daY-hJ-Lqe" firstAttribute="top" secondItem="kRB-es-JEr" secondAttribute="top" constant="8" id="QwI-JX-LV4"/>
-                                <constraint firstItem="ovm-oP-2Z3" firstAttribute="top" secondItem="kRB-es-JEr" secondAttribute="topMargin" id="Ye2-Hs-haT"/>
-                                <constraint firstItem="daY-hJ-Lqe" firstAttribute="leading" secondItem="kRB-es-JEr" secondAttribute="leading" constant="8" id="aNb-2H-kDG"/>
-                                <constraint firstItem="ovm-oP-2Z3" firstAttribute="leading" secondItem="daY-hJ-Lqe" secondAttribute="trailing" constant="26" id="piq-G5-ims"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="roomIcon" destination="daY-hJ-Lqe" id="bpC-nh-A9C"/>
-                                <outlet property="roomName" destination="ovm-oP-2Z3" id="qcG-gV-0sd"/>
-                            </connections>
-                        </collectionReusableView>
-                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="footer" id="F3Z-o0-aFx" customClass="InventoryFooterCollectionReusableView" customModule="Inventory" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="206" width="375" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e9v-wP-ONQ">
-                                    <rect key="frame" x="0.0" y="20" width="375" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-M1-t4Y">
-                                            <rect key="frame" x="8" y="-9" width="359" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="28"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
-                            </subviews>
-                            <connections>
-                                <outlet property="searchResultLabel" destination="7Aa-M1-t4Y" id="Z7G-bG-bcV"/>
-                            </connections>
-                        </collectionReusableView>
-                        <connections>
-                            <outlet property="dataSource" destination="rQj-lp-tZp" id="Jgr-zl-kkl"/>
-                            <outlet property="delegate" destination="rQj-lp-tZp" id="TU9-l7-eqH"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" title="Inventory Overview" largeTitleDisplayMode="always" id="oiT-kr-v6M">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="2W7-K5-LjG">
-                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                            <connections>
-                                <action selector="organizeButton:" destination="rQj-lp-tZp" id="sop-Eu-9Qm"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jWb-Gj-P8x">
-                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                            <connections>
-                                <action selector="addButton:" destination="rQj-lp-tZp" id="xL3-tX-zfg"/>
-                                <segue destination="1MD-YV-91u" kind="show" identifier="addSegue" id="EMC-Q6-n4L"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <connections>
-                        <outlet property="addButton" destination="jWb-Gj-P8x" id="EPE-BS-7pG"/>
-                        <outlet property="collection" destination="pkO-Ff-Y7e" id="KA4-D2-pUM"/>
-                        <outlet property="organizeButton" destination="2W7-K5-LjG" id="veB-WI-Azx"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="odd-zx-Gdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2689" y="273"/>
-        </scene>
         <!--My Categories-->
         <scene sceneID="zcT-nP-Nf0">
             <objects>
@@ -457,7 +279,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="TDg-hI-3iO">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="TDg-hI-3iO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -523,7 +345,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="169.5" y="-18" width="36" height="36"/>
+                                    <rect key="frame" x="169.5" y="40.5" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="RVi-Bm-oX4"/>
                                         <constraint firstAttribute="width" constant="36" id="mmr-Jt-sfA"/>
@@ -572,7 +394,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glQ-3n-nXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4022" y="638"/>
+            <point key="canvasLocation" x="4960.8000000000002" y="637.33133433283365"/>
         </scene>
         <!--Category-->
         <scene sceneID="t1G-7K-FnA">
@@ -664,10 +486,10 @@
             </objects>
             <point key="canvasLocation" x="2264.8000000000002" y="2253.8230884557724"/>
         </scene>
-        <!--Reports-->
+        <!--Inventory-->
         <scene sceneID="Kv0-9X-085">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cvw-X7-YXT" customClass="ReportsCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cvw-X7-YXT" customClass="InventoryCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xAX-us-xhL"/>
                         <viewControllerLayoutGuide type="bottom" id="TSK-Bq-a9e"/>
@@ -686,7 +508,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="33" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCellReports" id="aNf-6S-hSX" customClass="ReportsCollectionViewCell" customModule="Inventory" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCellReports" id="aNf-6S-hSX" customClass="InventoryCollectionViewCell" customModule="Inventory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="93" width="175" height="123"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -738,7 +560,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="reportHeader" id="FBv-ci-zKe" customClass="ReportsHeaderCollectionReusableView" customModule="Inventory" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="reportHeader" id="FBv-ci-zKe" customClass="InventoryHeaderCollectionReusableView" customModule="Inventory" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -769,12 +591,12 @@
                                         <outlet property="roomLabel" destination="QWk-As-Mn9" id="gue-UN-fK7"/>
                                     </connections>
                                 </collectionReusableView>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="reportFooter" id="RBj-he-424" userLabel="Search Footer" customClass="ReportsFooterCollectionReusableView" customModule="Inventory" customModuleProvider="target">
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="reportFooter" id="RBj-he-424" userLabel="Search Footer" customClass="InventoryFooterCollectionReusableView" customModule="Inventory" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="216" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlk-5E-K8Q">
-                                            <rect key="frame" x="0.0" y="8" width="367" height="44"/>
+                                            <rect key="frame" x="0.0" y="8" width="592" height="44"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -867,7 +689,7 @@
                             <constraint firstItem="Gcf-W0-zxT" firstAttribute="top" secondItem="xAX-us-xhL" secondAttribute="bottom" constant="7" id="zP4-DE-NXz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Reports" id="x4S-E8-XUR">
+                    <navigationItem key="navigationItem" title="Inventory" id="x4S-E8-XUR">
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Wzx-6Z-Phb">
                             <connections>
                                 <action selector="organizeBarButton:" destination="cvw-X7-YXT" id="EwK-Sd-o7V"/>
@@ -954,17 +776,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-home-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-EO-nqg">
-                                <rect key="frame" x="289" y="81" width="37" height="37"/>
+                                <rect key="frame" x="276" y="74.5" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-lp-iWu">
-                                <rect key="frame" x="45" y="237" width="285" height="151"/>
+                                <rect key="frame" x="45" y="237" width="285" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-pW-DdT">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="37"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-lu-eM0">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" image="icons8-bett-50"/>
                                                 <connections>
@@ -972,28 +794,28 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-gB-mKf">
-                                                <rect key="frame" x="59" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="59" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-geschirr-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="bNQ-49-Hqy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6P-fg-E5U">
-                                                <rect key="frame" x="118" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="118" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-teddy-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="sv7-o3-Cni"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCt-nQ-Hy5">
-                                                <rect key="frame" x="177" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="177" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-haus-mit-garten-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="SJ0-3O-8ql"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0x-Az-0TF">
-                                                <rect key="frame" x="236" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="236" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-durchfall-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="8Ke-1P-KfD"/>
@@ -1002,38 +824,38 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1c-SfG">
-                                        <rect key="frame" x="0.0" y="57" width="285" height="37"/>
+                                        <rect key="frame" x="0.0" y="70" width="285" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqO-cg-FGg">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-keller-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="uTo-Bz-k7E"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erR-Jg-g01">
-                                                <rect key="frame" x="59" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="59" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-kochtopf-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="e1M-1K-cbm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqz-KQ-v6T">
-                                                <rect key="frame" x="118" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="118" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-wohnzimmer-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="pSp-1J-lGI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRQ-0e-0xY">
-                                                <rect key="frame" x="177" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="177" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-garage-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="vqO-ni-vGd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-xc-nqY">
-                                                <rect key="frame" x="236" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="236" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-wohnung-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="c5X-P8-kcg"/>
@@ -1042,38 +864,38 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YYc-pt-5kI">
-                                        <rect key="frame" x="0.0" y="114" width="285" height="37"/>
+                                        <rect key="frame" x="0.0" y="140" width="285" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvR-p5-Idh">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-home-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5qA-cB-LdD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70q-re-gZN">
-                                                <rect key="frame" x="59" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="59" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-retro-tv-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5LW-6F-ozy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-VB-FSn">
-                                                <rect key="frame" x="118" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="118" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-arbeitsplatz-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="2h9-5Q-wza"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWh-Nq-cGs">
-                                                <rect key="frame" x="177" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="177" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-home-office-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="KyT-9Q-uwE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-wr-n4g">
-                                                <rect key="frame" x="236" y="0.0" width="49" height="37"/>
+                                                <rect key="frame" x="236" y="0.0" width="49" height="50"/>
                                                 <state key="normal" image="icons8-schreibtischlampe-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="8oC-79-VLk"/>
@@ -1148,12 +970,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5285.6000000000004" y="637.33133433283365"/>
+            <point key="canvasLocation" x="6224.8000000000002" y="637.33133433283365"/>
         </scene>
         <!--Title-->
         <scene sceneID="9Sf-GY-taT">
             <objects>
-                <tableViewController id="1MD-YV-91u" customClass="InventoryEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1MD-YV-91u" customClass="OldInventoryEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="12" sectionFooterHeight="1" id="ukw-Wl-o4G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1358,7 +1180,7 @@
                                         <rect key="frame" x="0.0" y="734.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DxK-ig-D30" id="Nos-Wa-Ixg">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpe-WT-hVT">
@@ -1387,7 +1209,7 @@
                                         <rect key="frame" x="0.0" y="778.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OLc-S6-gTT" id="T02-tF-aWh">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HZ1-cV-zKd">
@@ -1413,7 +1235,7 @@
                                         <rect key="frame" x="0.0" y="822.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wdO-Ai-h6a" id="CWn-zA-Ute">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJy-2X-JZS">
@@ -1538,7 +1360,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3589.5999999999999" y="-107.49625187406298"/>
+            <point key="canvasLocation" x="4528.8000000000002" y="-107.49625187406298"/>
         </scene>
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
@@ -1584,7 +1406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4521" y="-107"/>
+            <point key="canvasLocation" x="5460" y="-107.49625187406298"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -1807,7 +1629,7 @@
                         <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
                         <segue destination="IbM-Ka-Gqt" kind="relationship" relationship="viewControllers" id="RHg-jD-7Uk"/>
                         <segue destination="MUX-Pv-eqU" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
-                        <segue destination="kLY-4E-sxY" kind="relationship" relationship="viewControllers" id="PqV-9d-i2B"/>
+                        <segue destination="iCP-vz-194" kind="relationship" relationship="viewControllers" id="kZk-hl-zvz"/>
                         <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                     </connections>
                 </tabBarController>
@@ -1815,24 +1637,44 @@
             </objects>
             <point key="canvasLocation" x="-716" y="658"/>
         </scene>
-        <!--Reports-->
-        <scene sceneID="7Jp-SO-iJv">
+        <!--Report View Controller-->
+        <scene sceneID="bNy-0e-SAZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kLY-4E-sxY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" image="Report" id="tlZ-u3-m0f"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="geX-ls-1np">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="v2l-5p-iCX" customClass="ReportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fe1-vF-wvT"/>
+                        <viewControllerLayoutGuide type="bottom" id="WU9-As-Uvi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3ZQ-h9-yR7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iem-Ij-bPr">
+                                <rect key="frame" x="16" y="144" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-ES-Wq8">
+                                <rect key="frame" x="24" y="197" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="PDF"/>
+                                <connections>
+                                    <action selector="generatePDF:" destination="v2l-5p-iCX" eventType="touchUpInside" id="qJu-OJ-ku0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rOF-ng-341"/>
                     <connections>
-                        <segue destination="rQj-lp-tZp" kind="relationship" relationship="rootViewController" id="H8c-Xb-lqJ"/>
+                        <outlet property="textfield" destination="iem-Ij-bPr" id="l2e-be-FuU"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="doL-eI-xyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rPu-Li-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="250"/>
+            <point key="canvasLocation" x="1136.8" y="635.53223388305855"/>
         </scene>
         <!--Manage Items-->
         <scene sceneID="pfg-Ho-yVm">
@@ -1880,7 +1722,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="pmu-bl-MiB">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="pmu-bl-MiB">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -2031,7 +1873,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="GlM-9z-INp">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="GlM-9z-INp">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -2174,10 +2016,28 @@
             </objects>
             <point key="canvasLocation" x="5352.8000000000002" y="2253.8230884557724"/>
         </scene>
+        <!--Reports-->
+        <scene sceneID="6tq-4F-V0J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iCP-vz-194" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Reports" image="Report" id="PmY-Hp-6ai"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="65v-9Q-kR6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v2l-5p-iCX" kind="relationship" relationship="rootViewController" id="Cy3-Ay-BGB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7xw-uq-kQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="637"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Brand Icon" width="30" height="30"/>
-        <image name="Camera Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
         <image name="Export" width="30" height="30"/>
         <image name="Inventory3.png" width="1024" height="1024"/>
@@ -2188,24 +2048,24 @@
         <image name="about" width="30" height="30"/>
         <image name="createNew" width="30" height="30"/>
         <image name="fullscreen" width="128" height="128"/>
-        <image name="icons8-arbeitsplatz-50" width="37.5" height="37.5"/>
-        <image name="icons8-bett-50" width="37.5" height="37.5"/>
-        <image name="icons8-bildschirmfoto-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-durchfall-50" width="37.5" height="37.5"/>
-        <image name="icons8-garage-50" width="37.5" height="37.5"/>
-        <image name="icons8-geschirr-50" width="37.5" height="37.5"/>
-        <image name="icons8-haus-mit-garten-50" width="37.5" height="37.5"/>
-        <image name="icons8-home-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-home-office-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-jpg-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-keller-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-kochtopf-50" width="37.5" height="37.5"/>
-        <image name="icons8-retro-tv-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-schreibtischlampe-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-teddy-50" width="37.5" height="37.5"/>
-        <image name="icons8-wohnung-filled-50" width="37.5" height="37.5"/>
-        <image name="icons8-wohnzimmer-50" width="37.5" height="37.5"/>
-        <image name="icons8-xlarge-symbole-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-arbeitsplatz-50" width="50" height="50"/>
+        <image name="icons8-bett-50" width="50" height="50"/>
+        <image name="icons8-bildschirmfoto-filled-50" width="50" height="50"/>
+        <image name="icons8-durchfall-50" width="50" height="50"/>
+        <image name="icons8-garage-50" width="50" height="50"/>
+        <image name="icons8-geschirr-50" width="50" height="50"/>
+        <image name="icons8-haus-mit-garten-50" width="50" height="50"/>
+        <image name="icons8-home-filled-50" width="50" height="50"/>
+        <image name="icons8-home-office-filled-50" width="50" height="50"/>
+        <image name="icons8-jpg-filled-50" width="50" height="50"/>
+        <image name="icons8-keller-filled-50" width="50" height="50"/>
+        <image name="icons8-kochtopf-50" width="50" height="50"/>
+        <image name="icons8-retro-tv-filled-50" width="50" height="50"/>
+        <image name="icons8-schreibtischlampe-filled-50" width="50" height="50"/>
+        <image name="icons8-teddy-50" width="50" height="50"/>
+        <image name="icons8-wohnung-filled-50" width="50" height="50"/>
+        <image name="icons8-wohnzimmer-50" width="50" height="50"/>
+        <image name="icons8-xlarge-symbole-filled-50" width="50" height="50"/>
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -12,7 +12,7 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
+class OldInventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!

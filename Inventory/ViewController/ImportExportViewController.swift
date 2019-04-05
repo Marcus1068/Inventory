@@ -10,6 +10,7 @@
 import UIKit
 import CoreData
 import PDFKit
+import os.log
 
 class ImportExportViewController: UIViewController {
 

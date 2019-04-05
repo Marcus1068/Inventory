@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import os.log
 
 class Helper: NSObject {
     
@@ -64,5 +65,6 @@ class Helper: NSObject {
     class func generateUUID() -> UUID{
         return UUID()
     }
+    
 }
 

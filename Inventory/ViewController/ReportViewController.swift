@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 import os.log
 
 class ReportViewController: UIViewController {
 
     @IBOutlet weak var textfield: UITextField!
+    
+    // store complete inventory as array
+    var results: [Inventory] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +27,125 @@ class ReportViewController: UIViewController {
         }
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
+        
+        // core data contents
+        let context = CoreDataHandler.getContext()
+        
+        do {
+            results = try context.fetch(self.inventoryFetchRequest())
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")
+        }
+        
+        
     }
+    
+    // fetch all inventory sorted by item name
+    private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
+        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        fetchRequest.fetchBatchSize = 20
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        
+        return fetchRequest
+    }
+    
+    // generate HTML header for page start
+    private func headerPDF() -> String{
+    
+        var header : String = ""
+        
+        // html table with alternating light/dark rows, small 1 px frame around table elements
+        header.append("""
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+            </head>
+            <body>
+            """)
+        
+        return header
+    }
+    
+    // generate HTML footer for page end
+    private func footerPDF() -> String{
+        var footer : String = ""
+        
+        footer.append("</body> </html>")
+        
+        return footer
+    }
+    
+    // all inventory items in single report, sorted alphabetically
+    // FIXME implement variable sort order
+    private func reportByInventoryAll() -> String{
+        
+        var pdftext : String = ""
+        
+        // HTML header first
+        pdftext.append(headerPDF())
+        
+        // heading text
+        pdftext.append("<h1>" + NSLocalizedString("Report for all Inventory objects", comment: "Report for all Inventory objects") + "</h1>")
+        
+        // table header with column names
+        pdftext.append("""
+            <h2>Inventory</h2>
+            <table>
+            <tr>
+            <th>Item</th>
+            <th>Owner</th>
+            <th>Room</th>
+            <th>Category</th>
+            <th>Price</th>
+            </tr>
+            """)
+        
+        for inv in results{
+            // loop through all inventory items
+            if inv.inventoryName != "" {
+                pdftext.append("<tr>")
+                pdftext.append("<td>" + inv.inventoryName! + "</td>")
+                pdftext.append("<td>" + inv.inventoryOwner!.ownerName! + "</td>")
+                pdftext.append("<td>" + inv.inventoryRoom!.roomName! + "</td>")
+                pdftext.append("<td>" + inv.inventoryCategory!.categoryName! + "</td>")
+                pdftext.append("<td>" + String(inv.price) + "</td>")
+                //pdftext.append("<br/>")
+                pdftext.append("</tr>")
+            }
+        }
+        
+        // close HTML table
+        pdftext.append("</table")
+        
+        // close HTML tags
+        pdftext.append(footerPDF())
+
+        return pdftext
+    }
+    
     
     // MARK: - Actions
     @IBAction func generatePDF(_ sender: Any) {
-        createPDF(filename: "Test", text: textfield.text ?? "<#default value#>")
+        
+        
+        createPDF(filename: "Test", text: reportByInventoryAll() )
     }
     
     /*

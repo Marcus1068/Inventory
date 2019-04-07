@@ -737,8 +737,7 @@ class CoreDataHandler: NSObject {
         
         // default owners
         
-        let ownerList: [String] = [noOwner, "Mark", "Eva", "Jane",
-                                      "Johann"]
+        let ownerList: [String] = [noOwner, "Mark", "Eva", "Jane", "Johann"]
         
         for name in ownerList{
             let owner = Owner(context: context)
@@ -782,25 +781,21 @@ class CoreDataHandler: NSObject {
                                    "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         // generate sample data randomly
-        for i in 1..<100{
-            let remark = "Bemerkung " + String(i)
-            let serial = "S" + String(i) + "N" + String(i*3) + "Z" + String(i+7)
+        for i in 1..<30{
+            let remark = "Remark " + String(i)
+            let serial = "S. no. " + String(i) + "N" + String(i*3) + "Z" + String(i+7)
             
-            let invId = random(min: 0, max: invList.count - 1)
-            let brandId = random(min: 0, max: brandList.count - 1)
-            let catId = random(min: 0, max: categoryList.count - 1)
-            let ownerId = random(min: 0, max: ownerList.count - 1)
-            let roomId = random(min: 0, max: roomList.count - 1)
+            let invId = Int.random(in: 0 ..< invList.count)
+            let brandId = Int.random(in: 0 ..< brandList.count)
+            let catId = Int.random(in: 0 ..< categoryList.count)
+            let ownerId = Int.random(in: 0 ..< ownerList.count)
+            let roomId = Int.random(in: 0 ..< roomList.count)
             
             _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
         }
         
         // FIXME must be removed for release
         CoreDataHandler.showSampleData()
-    }
-
-    class func random(min: Int, max: Int) -> Int {
-        return Int(arc4random_uniform(UInt32(max - min + 1))) + min
     }
     
     // just for testing and debugging, will not be used in final app
@@ -809,16 +804,16 @@ class CoreDataHandler: NSObject {
         let inventory = fetchInventory()
         
         let rooms = fetchAllRooms()
-        print ("Anzahl rooms:\(rooms.count)")
+        print ("count rooms:\(rooms.count)")
         let categories = fetchAllCategories()
-        print ("Anzahl categories:\(categories.count)")
+        print ("count categories:\(categories.count)")
         let owners = fetchAllOwners()
-        print ("Anzahl owners:\(owners.count)")
+        print ("count owners:\(owners.count)")
         let brands = fetchAllBrands()
-        print ("Anzahl brands:\(brands.count)")
+        print ("count brands:\(brands.count)")
         
         for i in inventory{
-            print("Inventory = \(i.inventoryName!), Raum: \(String(describing: i.inventoryRoom?.roomName))), Kategorie: \(String(describing: i.inventoryCategory?.categoryName))) , Besitzer: \(String(describing: i.inventoryOwner?.ownerName)), Marke: \(String(describing: i.inventoryBrand?.brandName)) ")
+            print("Inventory = \(i.inventoryName!), Room: \(String(describing: i.inventoryRoom?.roomName))), Category: \(String(describing: i.inventoryCategory?.categoryName))) , Owner: \(String(describing: i.inventoryOwner?.ownerName)), Brand: \(String(describing: i.inventoryBrand?.brandName)) ")
         }
         
         for j in rooms{
@@ -837,8 +832,8 @@ class CoreDataHandler: NSObject {
             print("Owner = \(m.ownerName!)")
         }
         
-        let invWohn = fetchInventoryByRoom(roomName: "Wohnzimmer")  // FIXME hardcoded string
-        print ("Anzahl Produkte im Wohnzimmer: \(invWohn.count)")
+        let invWohn = fetchInventoryByRoom(roomName: "Living room")
+        print ("count items in living room: \(invWohn.count)")
     }
     
 }

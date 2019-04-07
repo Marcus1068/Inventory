@@ -75,10 +75,8 @@ class ImportExportViewController: UIViewController {
     private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
         let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         fetchRequest.fetchBatchSize = 20
-        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
-        
-        
+
         return fetchRequest
     }
 

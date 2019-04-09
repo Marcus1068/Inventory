@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
-import os.log
+import os
 
 class Helper: NSObject {
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import os
 
 /// show about view with support email function
 ///
@@ -27,6 +28,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        os_log("About view controller", log: Log.viewcontroller, type: .info)
+        
         versionNumberLabel.text = Helper.appNameString + " " + Helper.versionString
         //versionNumberLabel.tintColor = themeColor
         versionNumberLabel.textColor = themeColor

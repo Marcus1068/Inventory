@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 private let reuseIdentifier = "collectionCellReports"
 private var selectedInventoryItem = Inventory()
@@ -86,6 +86,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("Inventory view controller viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -669,7 +671,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
             collection.reloadData()
             break
         @unknown default:
-            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
+            os_log("controller: switch unknown default", log: Log.viewcontroller, type: .error)
         }
     }
     

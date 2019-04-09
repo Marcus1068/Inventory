@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 class CategoryTableViewController: UITableViewController {
 
@@ -43,6 +43,8 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        os_log("CategoryTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
@@ -65,7 +67,7 @@ class CategoryTableViewController: UITableViewController {
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("prepare for segue", log: OSLog.default, type: .debug)
+        os_log("CategoryTableViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! CategoryEditViewController
         
@@ -166,7 +168,8 @@ extension CategoryTableViewController {
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("accessoryButtonTappedForRowWith", log: OSLog.default, type: .debug)
+        os_log("CategoryTableViewController tableView", log: Log.viewcontroller, type: .info)
+        
         //print(indexPath.row)
         let idx = IndexPath(row: indexPath.row, section: 0)
         tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
@@ -238,7 +241,7 @@ extension CategoryTableViewController: NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath!], with: .automatic)
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         @unknown default:
-            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
+            os_log("CategoryTableViewController controller", log: Log.viewcontroller, type: .error)
         }
     }
     

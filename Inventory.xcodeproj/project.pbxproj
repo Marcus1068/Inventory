@@ -11,6 +11,7 @@
 		2C1C7F6F20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */; };
 		2C22268320AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift */; };
 		2C2B805522577F76007C842E /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B805422577F76007C842E /* ReportViewController.swift */; };
+		2C2B8057225CDE70007C842E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* InventoryCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* InventoryCollectionViewCell.swift */; };
 		2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B722098D03100D99949 /* CategoryTableViewController.swift */; };
@@ -57,6 +58,7 @@
 		2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C22268220AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldInventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C2B805422577F76007C842E /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		2C2B8056225CDE70007C842E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventory.entitlements; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* InventoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				2C56E90B208683D100FD5136 /* Helper.swift */,
 				2C56E90D2086844A00FD5136 /* DeviceInfo.swift */,
+				2C2B8056225CDE70007C842E /* Log.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			files = (
 				2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */,
 				2C5DDF3C20F9F4C700D71782 /* BrandTableViewController.swift in Sources */,
+				2C2B8057225CDE70007C842E /* Log.swift in Sources */,
 				2C2B805522577F76007C842E /* ReportViewController.swift in Sources */,
 				2C5DDF3E20F9F89F00D71782 /* BrandEditViewController.swift in Sources */,
 				2C56E9542086A41700FD5136 /* Room+CoreDataProperties.swift in Sources */,

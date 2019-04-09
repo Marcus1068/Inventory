@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 class ReportViewController: UIViewController {
 
@@ -19,6 +19,8 @@ class ReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
@@ -51,6 +53,7 @@ class ReportViewController: UIViewController {
     
     // generate HTML header for page start
     private func headerPDF() -> String{
+        os_log("ReportViewController headerPDF", log: Log.viewcontroller, type: .info)
     
         var header : String = ""
         
@@ -85,6 +88,8 @@ class ReportViewController: UIViewController {
     
     // generate HTML footer for page end
     private func footerPDF() -> String{
+        os_log("ReportViewController footerPDF", log: Log.viewcontroller, type: .info)
+        
         var footer : String = ""
         
         footer.append("</body> </html>")
@@ -95,6 +100,7 @@ class ReportViewController: UIViewController {
     // all inventory items in single report, sorted alphabetically
     // FIXME implement variable sort order
     private func reportByInventoryAll() -> String{
+        os_log("ReportViewController reportByInventoryAll", log: Log.viewcontroller, type: .info)
         
         var pdftext : String = ""
         
@@ -160,6 +166,7 @@ class ReportViewController: UIViewController {
 
     // create a DIN A based PDF file requires CoreGraphics because pdfkit only allows for displaying PDF files
     private func createPDF(filename: String, text: String) {
+        os_log("ReportViewController createPDF", log: Log.viewcontroller, type: .info)
         
         let formatter = UIMarkupTextPrintFormatter(markupText: text)
         
@@ -196,7 +203,5 @@ class ReportViewController: UIViewController {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         pdfData.write(toFile: "\(documentsPath)/\(filename).pdf", atomically: true)
-        
-        os_log("createPDF", log: OSLog.default, type: .info)
     }
 }

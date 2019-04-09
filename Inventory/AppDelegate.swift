@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
 
@@ -39,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // influences text color
         //window?.tintColor = themeColor
         
+        
+        // get user directory mainly for debugging purposes
+        let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
+        os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
+
         return true
     }
 
@@ -106,7 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     }
-    
     
     static var viewContext: NSManagedObjectContext
     {

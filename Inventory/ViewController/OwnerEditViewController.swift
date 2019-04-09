@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
@@ -21,6 +22,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("OwnerEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

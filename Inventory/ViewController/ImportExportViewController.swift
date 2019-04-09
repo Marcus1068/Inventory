@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 import PDFKit
-import os.log
+import os
 
 class ImportExportViewController: UIViewController {
 
@@ -29,6 +29,8 @@ class ImportExportViewController: UIViewController {
     // MARK: view controller stuff
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("ImportExportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // Do any additional setup after loading the view.
         if #available(iOS 11.0, *) {
@@ -49,6 +51,8 @@ class ImportExportViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        os_log("ImportExportViewController viewDidAppear", log: Log.viewcontroller, type: .info)
         
         self.exportTextView.text = ""
         self.importedRowsLabel.isHidden = true
@@ -401,6 +405,8 @@ class ImportExportViewController: UIViewController {
     // read file as string
     // FIXME change directory
     func readDataFromCSV(fileName: String) -> String!{
+        os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
+        
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let pathURLcvs = docPath.appendingPathComponent(fileName)
         
@@ -446,6 +452,8 @@ class ImportExportViewController: UIViewController {
     
     func exportToFileURL() -> URL? {
     
+        os_log("ImportExportViewController exportToFileURL", log: Log.viewcontroller, type: .info)
+        
         // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]
         
         let contents: [String: Any] = ["Test": String.self]
@@ -491,6 +499,8 @@ class ImportExportViewController: UIViewController {
     // share system button
     @IBAction func exportShareButton(_ sender: Any) {
         
+        os_log("ImportExportViewController exportShareButton", log: Log.viewcontroller, type: .info)
+        
         let url = exportToFileURL()
         
         // fixme translation needed???
@@ -507,7 +517,8 @@ class ImportExportViewController: UIViewController {
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {
-
+        os_log("ImportExportViewController importFromCVSFileButton", log: Log.viewcontroller, type: .info)
+        
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
         

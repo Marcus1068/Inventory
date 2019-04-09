@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class CollectionViewCell: UICollectionViewCell {
     
@@ -22,6 +23,8 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var warrantyLabel: UILabel!
     // select background color, works only on TVOS
     func markSelected(state: Bool){
+        os_log("CollectionViewCell markSelected", log: Log.viewcontroller, type: .info)
+        
         if state == true{
             self.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1)
         }
@@ -31,6 +34,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @objc func capital(_ sender: Any!) {
+        os_log("CollectionViewCell capital", log: Log.viewcontroller, type: .info)
+        
         // find my collection view
         var v : UIView = self
         repeat { v = v.superview! } while !(v is UICollectionView)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
@@ -21,6 +22,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("BrandEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -98,6 +101,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     // save or update
     @IBAction func saveButton(_ sender: Any) {
+        os_log("BrandEditViewController saveButton", log: Log.viewcontroller, type: .info)
+        
         // close keyboard
         self.view.endEditing(true)
         

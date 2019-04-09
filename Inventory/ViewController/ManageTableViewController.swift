@@ -9,12 +9,14 @@
 // will be used to call room edit, add views etc.
 
 import UIKit
+import os
 
 class ManageTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        os_log("ManageTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         // Do any additional setup after loading the view.
         
         //self.tableView.layer.cornerRadius = 8.0

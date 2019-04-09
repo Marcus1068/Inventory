@@ -8,6 +8,7 @@
 
 import UIKit
 import PDFKit
+import os
 
 class PDFViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class PDFViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("PDFViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = .never

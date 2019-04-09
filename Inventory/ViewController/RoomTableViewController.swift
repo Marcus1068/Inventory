@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 class RoomTableViewController: UITableViewController {
     
@@ -39,6 +39,8 @@ class RoomTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("RoomTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -62,7 +64,7 @@ class RoomTableViewController: UITableViewController {
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("prepare for segue", log: OSLog.default, type: .debug)
+        os_log("RoomTableViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! RoomEditViewController
         
@@ -227,7 +229,7 @@ extension RoomTableViewController: NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath!], with: .automatic)
             tableView.insertRows(at: [newIndexPath!], with: .automatic)
         @unknown default:
-            os_log("controller: switch unknown default", log: OSLog.default, type: .debug)
+            os_log("RoomTableViewController controller", log: Log.viewcontroller, type: .error)
         }
     }
     

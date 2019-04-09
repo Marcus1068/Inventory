@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import os.log
+import os
 
 private let reuseIdentifier = "collectionCell"
 private var selectedInventoryItem = Inventory()
@@ -83,6 +83,8 @@ class OldInventoryCollectionViewController: UICollectionViewController, UISearch
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("OldInventoryCollectionViewController tableView", log: Log.viewcontroller, type: .info)
         
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {

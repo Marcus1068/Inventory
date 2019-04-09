@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import os.log
+import os
 
 class RoomEditViewController: UIViewController, UITextFieldDelegate{
     // contains the selected object from viewcontroller before
@@ -51,6 +51,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        os_log("RoomEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

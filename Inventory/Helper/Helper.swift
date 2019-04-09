@@ -22,6 +22,10 @@ class Helper: NSObject {
     static let website = "http://www.marcus-deuss.de"
     static let cvsFile = "inventoryexport.csv"
     
+    // user default keys
+    static let keyUserName = "UserName"
+    static let keyHouseName = "UserHouse"
+    
     // general functions
     
     

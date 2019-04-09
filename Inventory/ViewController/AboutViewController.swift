@@ -17,6 +17,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var versionNumberLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var houseNameTextField: UITextField!
+    
+    // attributes
+    let userDefaults = UserDefaults.standard
     
     // setup dynamic font types for all labels
     override func viewDidAppear(_ animated: Bool) {
@@ -40,8 +45,41 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         iosversionLabel.text = msg + DeviceInfo.showOSVersion()
         
         // Do any additional setup after loading the view.
+        
+        // load user defaults
+        // first run test - no defaults
+        if let user = userDefaults.string(forKey: Helper.keyUserName),
+            let house = userDefaults.string(forKey: Helper.keyHouseName){
+                let userInfo = UserInfo(userName: user, houseName: house)
+            
+                userNameTextField.text = userInfo.userName
+                houseNameTextField.text = userInfo.houseName
+            
+                print(userInfo.userName, userInfo.houseName)
+            }
+            else{
+                // default house name
+                let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
+            
+                userNameTextField.text = userInfo.userName
+                houseNameTextField.text = userInfo.houseName
+            
+                print(userInfo.userName, userInfo.houseName)
+            }
+        
+        
+        
     }
 
+    // save user name and household name as soon as any input entered in user default
+    @IBAction func userNameEditingChanged(_ sender: UITextField) {
+        userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
+    }
+    
+    @IBAction func houseNameEditingChanged(_ sender: UITextField) {
+        userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

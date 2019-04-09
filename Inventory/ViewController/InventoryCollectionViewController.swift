@@ -1,6 +1,7 @@
 //
 //  ReportsCollectionViewController.swift
 //  Inventory
+//  initial view controller, will be loaded after appdelegate and before other view controllers
 //
 //  Created by Marcus Deuß on 25.04.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
@@ -84,10 +85,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
+    // first actions taken here
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("Inventory view controller viewDidLoad", log: Log.viewcontroller, type: .info)
+        os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -164,6 +168,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
  
+        os_log("InventoryCollectionViewController viewDidAppear", log: Log.viewcontroller, type: .info)
+        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {

@@ -279,7 +279,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="TDg-hI-3iO">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TDg-hI-3iO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -345,7 +345,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="169.5" y="40.5" width="36" height="36"/>
+                                    <rect key="frame" x="169.5" y="-18" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="RVi-Bm-oX4"/>
                                         <constraint firstAttribute="width" constant="36" id="mmr-Jt-sfA"/>
@@ -596,7 +596,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlk-5E-K8Q">
-                                            <rect key="frame" x="0.0" y="8" width="592" height="44"/>
+                                            <rect key="frame" x="0.0" y="8" width="367" height="44"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1424,30 +1424,48 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory 0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-dG-1Do">
-                                        <rect key="frame" x="105.5" y="0.0" width="164" height="85.5"/>
+                                        <rect key="frame" x="105.5" y="0.0" width="164" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory3.png" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
-                                        <rect key="frame" x="0.0" y="85.5" width="375" height="85.5"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="375" height="66.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(c) 2018 by Marcus Deuß" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fd-qf-JfD">
-                                        <rect key="frame" x="91" y="171" width="193.5" height="85.5"/>
+                                        <rect key="frame" x="91" y="133" width="193.5" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBJ-H4-kKI">
-                                        <rect key="frame" x="143.5" y="256.5" width="88.5" height="85"/>
+                                        <rect key="frame" x="143.5" y="199.5" width="88.5" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-8f-CMe">
+                                        <rect key="frame" x="141" y="266" width="93" height="66"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="userNameEditingChanged:" destination="d6q-eN-5Vr" eventType="editingChanged" id="Ob7-0a-k4k"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="House Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L29-LM-HTq">
+                                        <rect key="frame" x="135.5" y="332" width="104" height="66.5"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="houseNameEditingChanged:" destination="d6q-eN-5Vr" eventType="editingChanged" id="PuY-k2-uUZ"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-0j-NDU">
-                                        <rect key="frame" x="124" y="341.5" width="127" height="85.5"/>
+                                        <rect key="frame" x="124" y="398.5" width="127" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <state key="normal" title="Feedback"/>
                                         <connections>
@@ -1455,7 +1473,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-0P-Kka">
-                                        <rect key="frame" x="114" y="427" width="147" height="85.5"/>
+                                        <rect key="frame" x="114" y="465" width="147" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <state key="normal" title="Information"/>
                                         <connections>
@@ -1463,7 +1481,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app is free of charge. The source code is available on the Information link where you can get further infos..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-Er-gZy">
-                                        <rect key="frame" x="7" y="512.5" width="361" height="85.5"/>
+                                        <rect key="frame" x="7" y="531.5" width="361" height="66.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1483,7 +1501,9 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="copyrightLabel" destination="0fd-qf-JfD" id="UgU-9H-7aw"/>
+                        <outlet property="houseNameTextField" destination="L29-LM-HTq" id="6De-XN-Ge7"/>
                         <outlet property="iosversionLabel" destination="DBJ-H4-kKI" id="hFV-xv-WmI"/>
+                        <outlet property="userNameTextField" destination="TPe-8f-CMe" id="L7b-5Y-ReR"/>
                         <outlet property="versionNumberLabel" destination="Vdp-dG-1Do" id="gaq-p2-nT9"/>
                     </connections>
                 </viewController>
@@ -1722,7 +1742,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="pmu-bl-MiB">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="pmu-bl-MiB">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1873,7 +1893,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="GlM-9z-INp">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GlM-9z-INp">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

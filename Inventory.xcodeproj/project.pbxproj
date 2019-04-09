@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6C20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift */; };
 		2C1C7F6F20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */; };
 		2C22268320AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C22268220AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C15B22F225CFFF800EB09DD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2C1C7F6C20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C22268220AF26A9009CE098 /* OldInventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldInventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */,
 				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
 				2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */,
+				2C15B22F225CFFF800EB09DD /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */,
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,
 				2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */,
+				2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */,
 				2C56E9502086A41700FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
 				2C56E95A20873E5700FD5136 /* OldInventoryCollectionViewController.swift in Sources */,
 				2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */,

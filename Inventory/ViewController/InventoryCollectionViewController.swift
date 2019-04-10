@@ -54,7 +54,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     var room : [Room] = []
     let searchController = UISearchController(searchResultsController: nil)
     
-    var dest = OldInventoryEditViewController()    // destination view controller
+    var dest = InventoryEditViewController()    // destination view controller
     var selectedForDeleteInventory:[Inventory] = []
     
     // store selected items when delete mode = true
@@ -333,7 +333,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let destination =  segue.destination as! OldInventoryEditViewController
+        let destination =  segue.destination as! InventoryEditViewController
         
         if segue.identifier == "addSegue" {
             destination.currentInventory = nil

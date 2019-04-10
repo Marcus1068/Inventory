@@ -12,7 +12,7 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-class OldInventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
+class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -69,11 +69,15 @@ class OldInventoryEditViewController: UITableViewController, UIImagePickerContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
 
+        // when tapping somewhere on view dismiss keyboard
+        self.hideKeyboardWhenTappedAround()
+        
         imagePicker.delegate = self
         
         
@@ -203,6 +207,8 @@ class OldInventoryEditViewController: UITableViewController, UIImagePickerContro
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
        
+        os_log("InventoryEditViewController viewDidAppear", log: Log.viewcontroller, type: .info)
+        
         // disable camera buttons unless user grants access to system privilege
         cameraNavBarOutlet.isEnabled = false
         cameraButtonOutlet.isEnabled = false
@@ -224,7 +230,7 @@ class OldInventoryEditViewController: UITableViewController, UIImagePickerContro
         case .restricted: // The user can't grant access due to restrictions.
             break
         @unknown default:
-            os_log("viewDidAppear: switch unknown default", log: OSLog.default, type: .debug)
+            os_log("InventoryEditViewController viewDidAppear", log: Log.viewcontroller, type: .error)
         }
         
         // get the data from Core Data
@@ -268,7 +274,7 @@ class OldInventoryEditViewController: UITableViewController, UIImagePickerContro
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("accessoryButtonTappedForRowWith", log: OSLog.default, type: .debug)
+        os_log("InventoryEditViewController tableView", log: Log.viewcontroller, type: .info)
         //print(indexPath.row)
         //let idx = IndexPath(row: indexPath.row, section: 0)
         //tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
@@ -369,7 +375,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         }
         
         if segue.identifier == "roomSegue" {
-            let destination = segue.destination as! RoomTableViewController
+            _ = segue.destination as! RoomTableViewController
         }
     }
     

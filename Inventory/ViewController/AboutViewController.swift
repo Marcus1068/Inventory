@@ -21,7 +21,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var houseNameTextField: UITextField!
     
     // attributes
+    
+    // for using userDefaults local store
     let userDefaults = UserDefaults.standard
+    // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
+    let kvStore = NSUbiquitousKeyValueStore()
     
     // setup dynamic font types for all labels
     override func viewDidAppear(_ animated: Bool) {
@@ -46,39 +50,78 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // Do any additional setup after loading the view.
         
-        // load user defaults
-        // first run test - no defaults
-        if let user = userDefaults.string(forKey: Helper.keyUserName),
-            let house = userDefaults.string(forKey: Helper.keyHouseName){
-                let userInfo = UserInfo(userName: user, houseName: house)
-            
-                userNameTextField.text = userInfo.userName
-                houseNameTextField.text = userInfo.houseName
-            
-                print(userInfo.userName, userInfo.houseName)
-            }
-            else{
-                // default house name
-                let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
-            
-                userNameTextField.text = userInfo.userName
-                houseNameTextField.text = userInfo.houseName
-            
-                print(userInfo.userName, userInfo.houseName)
-            }
+        // either use local of iCloud storage
+        //useLocalSettingsStorage()
+        useiCloudSettingsStorage()
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
         
     }
     
+    // when using iCloud key/value store to sync settings
+    func useiCloudSettingsStorage(){
+        if let user = kvStore.string(forKey: Helper.keyUserName),
+            let house = kvStore.string(forKey: Helper.keyHouseName){
+            let userInfo = UserInfo(userName: user, houseName: house)
+            
+            userNameTextField.text = userInfo.userName
+            houseNameTextField.text = userInfo.houseName
+        }
+        else{
+            // default house name
+            let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
+            
+            userNameTextField.text = userInfo.userName
+            houseNameTextField.text = userInfo.houseName
+        }
+        
+        // notify view controller when changes on other devices occur
+        NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.kvHasChanged(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: kvStore)
+    }
+    
+    // handle notification when iCloud changes occur
+    @objc func kvHasChanged(notification: NSNotification){
+        // update both text fields (complexer apps need to check for changes in all records
+        userNameTextField.text = kvStore.string(forKey: Helper.keyUserName)
+        houseNameTextField.text = kvStore.string(forKey: Helper.keyHouseName)
+    }
+    
+    // when using local storage
+    func useLocalSettingsStorage(){
+        // load user defaults
+        // first run test - no defaults
+        if let user = userDefaults.string(forKey: Helper.keyUserName),
+            let house = userDefaults.string(forKey: Helper.keyHouseName){
+            let userInfo = UserInfo(userName: user, houseName: house)
+            
+            userNameTextField.text = userInfo.userName
+            houseNameTextField.text = userInfo.houseName
+            
+            //print(userInfo.userName, userInfo.houseName)
+        }
+        else{
+            // default house name
+            let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
+            
+            userNameTextField.text = userInfo.userName
+            houseNameTextField.text = userInfo.houseName
+            
+            //print(userInfo.userName, userInfo.houseName)
+        }
+    }
+    
     // save user name and household name as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
-        userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
+        //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
+        kvStore.set(userNameTextField.text!, forKey: Helper.keyUserName)
+        kvStore.synchronize()
     }
     
     @IBAction func houseNameEditingChanged(_ sender: UITextField) {
-        userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
+        //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
+        kvStore.set(houseNameTextField.text!, forKey: Helper.keyHouseName)
+        kvStore.synchronize()
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,6 +130,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func feedbackButton(_ sender: Any) {
+        
+        // hide keyboard
+        self.view.endEditing(true)
         
         let mailComposeViewController = configuredMailComposeViewController()
         
@@ -101,6 +147,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func informationButton(_ sender: Any) {
+        
+        // hide keyboard
+        self.view.endEditing(true)
+        
         // open safari browser for more information, source code etc.
         if let url = URL(string: Helper.website) {
             UIApplication.shared.open(url, options: [:])
@@ -109,8 +159,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     /*
     // MARK: - Email delegate
-
-    
     */
     
     /// Prepares mail sending controller
@@ -170,7 +218,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 
 }
 
-// dismiss keyboard when tapping outside of text fields
+// dismiss keyboard with gesture recognizer when tapping outside of text fields
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

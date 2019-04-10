@@ -67,10 +67,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
                 print(userInfo.userName, userInfo.houseName)
             }
         
-        
+        // when tapping somewhere on view dismiss keyboard
+        self.hideKeyboardWhenTappedAround()
         
     }
-
+    
     // save user name and household name as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
@@ -167,4 +168,17 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
          */
     }
 
+}
+
+// dismiss keyboard when tapping outside of text fields
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

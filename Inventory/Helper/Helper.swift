@@ -22,7 +22,7 @@ class Helper: NSObject {
     static let website = "http://www.marcus-deuss.de"
     static let cvsFile = "inventoryexport.csv"
     
-    // user default keys
+    // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"
     static let keyHouseName = "UserHouse"
     

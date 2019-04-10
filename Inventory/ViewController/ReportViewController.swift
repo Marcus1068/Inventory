@@ -172,30 +172,32 @@ class ReportViewController: UIViewController {
         
         // Add formatter with pageRender
         
-        let render = UIPrintPageRenderer()
-        render.addPrintFormatter(formatter, startingAtPageAt: 0)
+        let renderer = UIPrintPageRenderer()
         
+        renderer.addPrintFormatter(formatter, startingAtPageAt: 0)
         
         // Assign paperRect and printableRect
         
         let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+        
         // Use this to get US Letter size instead
         // let pageRect = CGRect(x: 0, y: 0, width: 612, height: 792)
         let printable = page.insetBy(dx: 0, dy: 0)
         
-        render.setValue(NSValue(cgRect: page), forKey: "paperRect")
-        render.setValue(NSValue(cgRect: printable), forKey: "printableRect")
+        renderer.setValue(NSValue(cgRect: page), forKey: "paperRect")
+        renderer.setValue(NSValue(cgRect: printable), forKey: "printableRect")
         
         // Create PDF context and draw
-        let rect = CGRect.zero
+        let pageRect = CGRect.zero
         
         let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, rect, nil)
+        UIGraphicsBeginPDFContextToData(pdfData, pageRect, nil)
         
-        for i in 1...render.numberOfPages {
+        for i in 1...renderer.numberOfPages {
             UIGraphicsBeginPDFPage();
             let bounds = UIGraphicsGetPDFContextBounds()
-            render.drawPage(at: i - 1, in: bounds)
+            
+            renderer.drawPage(at: i - 1, in: bounds)
         }
         
         UIGraphicsEndPDFContext();
@@ -203,5 +205,41 @@ class ReportViewController: UIViewController {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         pdfData.write(toFile: "\(documentsPath)/\(filename).pdf", atomically: true)
+        
+        pdftest()
+    }
+    
+    
+    func pdftest(){
+        
+        let format = UIGraphicsPDFRendererFormat()
+        format.documentInfo = [ kCGPDFContextAuthor as String : "Micky Maus" ]      // doc author
+        format.documentInfo = [ kCGPDFContextCreator as String : "Micky Maus" ]
+        format.documentInfo = [ kCGPDFContextTitle as String: "Doc Title" ]         // document title
+        
+        let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595.2, height: 841.8), format: format)
+        
+        // create elements of pdf
+        let pdf = renderer.pdfData { (context) in
+            context.beginPage()
+            let attributes = [
+                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)
+            ]
+            let text = "Hello!" as NSString
+            text.draw(in: CGRect(x: 0, y: 0, width: 500, height: 200), withAttributes: attributes)
+        }
+        
+        // save PDF to documents directory
+        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
+        
+        docURL = docURL?.appendingPathComponent( "myFileName.pdf") as NSURL?
+        //let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        
+        do {
+            try pdf.write(to: docURL! as URL, options: .atomic)
+            print("pdf successfully saved!")
+        } catch {
+            print("Pdf could not be saved")
+        }
     }
 }

@@ -39,7 +39,6 @@ class ReportViewController: UIViewController {
             print("ERROR: \(error.localizedDescription)")
         }
         
-        
     }
     
     // fetch all inventory sorted by item name

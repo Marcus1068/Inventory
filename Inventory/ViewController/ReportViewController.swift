@@ -116,8 +116,8 @@ class ReportViewController: UIViewController {
             paper_width = dinA4_width
             paper_height = dinA4_height
             
-            pageNumber_pos_x = dinA4_width - 100.0
-            pageNumber_pos_y = dinA4_height - right_margin
+            pageNumber_pos_x = dinA4_width - 140.0
+            pageNumber_pos_y = dinA4_height - 20
             
             title_pos_x = left_margin
             title_pos_y = 20.0
@@ -125,15 +125,15 @@ class ReportViewController: UIViewController {
             title_height = 30.0
             
             footer_pos_x = left_margin
-            footer_pos_y = dinA4_height - 30.0
+            footer_pos_y = dinA4_height - 20.0
             break
             
         case .usLetter:
             paper_width = usLetter_width
             paper_height = usLetter_height
             
-            pageNumber_pos_x = usLetter_width - 100.0
-            pageNumber_pos_y = usLetter_height - right_margin
+            pageNumber_pos_x = usLetter_width - 140.0
+            pageNumber_pos_y = usLetter_height - 20
             
             title_pos_x = left_margin
             title_pos_y = 20.0
@@ -141,13 +141,13 @@ class ReportViewController: UIViewController {
             title_height = 30.0
             
             footer_pos_x = left_margin
-            footer_pos_y = usLetter_height - 30.0
+            footer_pos_y = usLetter_height - 20.0
             break
         }
     }
     
     // generate title for pdf page
-    func pdfPageTitleHeading(title: String, fontSize: CGFloat){
+    func pdfPageTitleHeading(title: String, fontSize: CGFloat, context: UIGraphicsRendererContext){
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
@@ -160,6 +160,13 @@ class ReportViewController: UIViewController {
         
         let text = title as NSString
         text.draw(in: CGRect(x: title_pos_x, y: title_pos_y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // draw a line
+        context.cgContext.setStrokeColor(UIColor.black.cgColor)
+        context.cgContext.setLineWidth(2)
+        context.cgContext.move(to: CGPoint(x: left_margin, y: 20))
+        context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: 20))
+        context.cgContext.drawPath(using: .fillStroke)
     }
     
     // generate pdf page number
@@ -176,11 +183,11 @@ class ReportViewController: UIViewController {
         
         let page = NSLocalizedString("Page", comment: "Page")
         let text = page + " " + String(pageNumber) as NSString
-        text.draw(in: CGRect(x: pageNumber_pos_x, y: pageNumber_pos_y, width: 80, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: pageNumber_pos_x, y: pageNumber_pos_y, width: 110, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
     // generate pdf page footer
-    func pdfPageFooter(footerText: String){
+    func pdfPageFooter(footerText: String, context: UIGraphicsRendererContext){
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
@@ -193,6 +200,13 @@ class ReportViewController: UIViewController {
         
         let text = footerText as NSString
         text.draw(in: CGRect(x: footer_pos_x, y: footer_pos_y, width: 300, height: 10), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // draw a line
+        context.cgContext.setStrokeColor(UIColor.black.cgColor)
+        context.cgContext.setLineWidth(2)
+        context.cgContext.move(to: CGPoint(x: footer_pos_x, y: paper_height - 30))
+        context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: footer_pos_y - 10))
+        context.cgContext.drawPath(using: .fillStroke)
     }
     
     // generate the PDF document containing all pages, header, footer, page number etc.
@@ -223,17 +237,8 @@ class ReportViewController: UIViewController {
         let pdf = renderer.pdfData { (context) in
             context.beginPage()
             
-            context.cgContext.setStrokeColor(UIColor.black.cgColor)
-            context.cgContext.setLineWidth(2)
-            context.cgContext.move(to: CGPoint(x: left_margin, y: 20))
-            context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: 20))
-            
-            //let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
-            //context.cgContext.addRect(rectangle)
-            context.cgContext.drawPath(using: .fillStroke)
-            
             // Title
-            pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0)
+            pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0, context: context)
             
             y = 50
             // contents
@@ -264,15 +269,15 @@ class ReportViewController: UIViewController {
                 }
             } */
             
-            pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß")
+            pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß", context: context)
             pdfPageNumber(pageNumber: 1)
          
             for page in 2...4 {
                 context.beginPage()
                 // Title
-                pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0)
+                pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0, context: context)
                 
-                pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß")
+                pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß", context: context)
                 
                 pdfPageNumber(pageNumber: page)
             }

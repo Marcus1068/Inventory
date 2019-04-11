@@ -105,7 +105,7 @@ class ImportExportViewController: UIViewController {
                 print("ERROR: \(error.localizedDescription)")
             }
             
-            let cvsFileName = Helper.cvsFile
+            let cvsFileName = Global.cvsFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
             let exportDocPath = pathURLcvs.absoluteString
@@ -526,7 +526,7 @@ class ImportExportViewController: UIViewController {
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
-        importCVSFile(file: Helper.cvsFile)
+        importCVSFile(file: Global.cvsFile)
         
     }
 }

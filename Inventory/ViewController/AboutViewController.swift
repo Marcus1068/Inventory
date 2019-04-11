@@ -39,7 +39,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 
         os_log("About view controller", log: Log.viewcontroller, type: .info)
         
-        versionNumberLabel.text = Helper.appNameString + " " + Helper.versionString
+        versionNumberLabel.text = Global.appNameString + " " + Global.versionString
         //versionNumberLabel.tintColor = themeColor
         versionNumberLabel.textColor = themeColor
         let copyMsg = NSLocalizedString("(c) 2018 by Marcus Deuß", comment: "(c) 2018 by Marcus Deuß")
@@ -61,8 +61,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // when using iCloud key/value store to sync settings
     func useiCloudSettingsStorage(){
-        if let user = kvStore.string(forKey: Helper.keyUserName),
-            let house = kvStore.string(forKey: Helper.keyHouseName){
+        if let user = kvStore.string(forKey: Global.keyUserName),
+            let house = kvStore.string(forKey: Global.keyHouseName){
             let userInfo = UserInfo(userName: user, houseName: house)
             
             userNameTextField.text = userInfo.userName
@@ -83,16 +83,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // handle notification when iCloud changes occur
     @objc func kvHasChanged(notification: NSNotification){
         // update both text fields (complexer apps need to check for changes in all records
-        userNameTextField.text = kvStore.string(forKey: Helper.keyUserName)
-        houseNameTextField.text = kvStore.string(forKey: Helper.keyHouseName)
+        userNameTextField.text = kvStore.string(forKey: Global.keyUserName)
+        houseNameTextField.text = kvStore.string(forKey: Global.keyHouseName)
     }
     
     // when using local storage
     func useLocalSettingsStorage(){
         // load user defaults
         // first run test - no defaults
-        if let user = userDefaults.string(forKey: Helper.keyUserName),
-            let house = userDefaults.string(forKey: Helper.keyHouseName){
+        if let user = userDefaults.string(forKey: Global.keyUserName),
+            let house = userDefaults.string(forKey: Global.keyHouseName){
             let userInfo = UserInfo(userName: user, houseName: house)
             
             userNameTextField.text = userInfo.userName
@@ -114,13 +114,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // save user name and household name as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
-        kvStore.set(userNameTextField.text!, forKey: Helper.keyUserName)
+        kvStore.set(userNameTextField.text!, forKey: Global.keyUserName)
         kvStore.synchronize()
     }
     
     @IBAction func houseNameEditingChanged(_ sender: UITextField) {
         //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
-        kvStore.set(houseNameTextField.text!, forKey: Helper.keyHouseName)
+        kvStore.set(houseNameTextField.text!, forKey: Global.keyHouseName)
         kvStore.synchronize()
     }
     
@@ -152,7 +152,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         self.view.endEditing(true)
         
         // open safari browser for more information, source code etc.
-        if let url = URL(string: Helper.website) {
+        if let url = URL(string: Global.website) {
             UIApplication.shared.open(url, options: [:])
         }
     }
@@ -169,8 +169,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients([Helper.emailAdr])
-        mailComposerVC.setSubject(Helper.appNameString + " " + (Helper.versionString) + " Support")
+        mailComposerVC.setToRecipients([Global.emailAdr])
+        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " Support")
         let msg = NSLocalizedString("I have some improvement ideas: ", comment: "I have some improvement ideas: ")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

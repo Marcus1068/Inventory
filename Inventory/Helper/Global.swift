@@ -1,6 +1,7 @@
 //
-//  Helper.swift
+//  Global.swift
 //  Inventory
+//  contains global variables and methods, all funcs are static so no variable needed
 //
 //  Created by Marcus Deuß on 17.04.18.
 //  Copyright © 2018 Marcus Deuß. All rights reserved.
@@ -11,7 +12,7 @@ import UIKit
 import UserNotifications
 import os
 
-class Helper: NSObject {
+class Global: NSObject {
     
     // used in about view controller and for sending support emails
     static let versionString = "0.4"
@@ -68,6 +69,21 @@ class Helper: NSObject {
 
     class func generateUUID() -> UUID{
         return UUID()
+    }
+    
+    // get min and max from Int array
+    class func minMax(array: [Int]) -> (min: Int, max: Int)? {
+        if array.isEmpty { return nil }
+        var currentMin = array[0]
+        var currentMax = array[0]
+        for value in array[1..<array.count] {
+            if value < currentMin {
+                currentMin = value
+            } else if value > currentMax {
+                currentMax = value
+            }
+        }
+        return (currentMin, currentMax)
     }
     
 }

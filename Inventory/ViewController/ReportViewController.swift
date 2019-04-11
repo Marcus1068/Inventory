@@ -15,6 +15,30 @@ class ReportViewController: UIViewController {
 
     @IBOutlet weak var textfield: UITextField!
     
+    // handle different paper sizes
+    enum PaperSize {
+        case dinA4
+        case usLetter
+    }
+    
+    // should be user changable
+    
+    
+    // general paper size
+    var paper_width = 0.0
+    var paper_height = 0.0
+    // position on page to print page numbers
+    var paper_pageNumber_pos_x = 0.0
+    var paper_pageNumber_pos_y = 0.0
+    
+    // constants for DIN A4 PDF page
+    let dinA4_width = 595.2
+    let dinA4_height = 841.8
+    
+    // constants for US letter PDF page
+    let usLetter_width = 612.0
+    let usLetter_height = 792.0
+    
     // store complete inventory as array
     var results: [Inventory] = []
     
@@ -22,7 +46,7 @@ class ReportViewController: UIViewController {
         super.viewDidLoad()
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
-
+        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
@@ -40,6 +64,29 @@ class ReportViewController: UIViewController {
             print("ERROR: \(error.localizedDescription)")
         }
         
+        // paper size to DinA4
+        // initialize paper size and stuff
+        initPDF(paperSize: PaperSize.dinA4)
+    }
+    
+    // setup paper dimensions
+    // correct position for page numbers etc
+    func initPDF(paperSize: PaperSize){
+        switch (paperSize){
+        case .dinA4:
+            paper_width = dinA4_width
+            paper_height = dinA4_height
+            paper_pageNumber_pos_x = dinA4_width - 50.0
+            paper_pageNumber_pos_y = dinA4_height - 30.0
+            break
+            
+        case .usLetter:
+            paper_width = usLetter_width
+            paper_height = usLetter_height
+            paper_pageNumber_pos_x = usLetter_width - 50.0
+            paper_pageNumber_pos_y = usLetter_height - 30.0
+            break
+        }
     }
     
     // fetch all inventory sorted by item name
@@ -178,7 +225,7 @@ class ReportViewController: UIViewController {
         
         // Assign paperRect and printableRect
         
-        let page = CGRect(x: 0, y: 0, width: 595.2, height: 841.8) // A4, 72 dpi
+        let page = CGRect(x: 0, y: 0, width: dinA4_width, height: dinA4_height) // A4, 72 dpi
         
         // Use this to get US Letter size instead
         // let pageRect = CGRect(x: 0, y: 0, width: 612, height: 792)
@@ -213,20 +260,69 @@ class ReportViewController: UIViewController {
     func pdftest(){
         
         let format = UIGraphicsPDFRendererFormat()
-        format.documentInfo = [ kCGPDFContextAuthor as String : "Micky Maus" ]      // doc author
-        format.documentInfo = [ kCGPDFContextCreator as String : "Micky Maus" ]
-        format.documentInfo = [ kCGPDFContextTitle as String: "Doc Title" ]         // document title
+        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author
+        format.documentInfo = [ kCGPDFContextCreator as String : Global.appNameString ]
+        format.documentInfo = [ kCGPDFContextTitle as String: Global.appNameString ]         // document title
         
-        let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595.2, height: 841.8), format: format)
+        
+        var y = 0.0 // Points from above
+        var x = 0.0 // Points form left
+        var width = 0.0 // length of rect - länge vom rechteck
+        var height = 0.0 // height of rect - höhe vom rechteck
+        var stringRect = CGRect(x: x, y: y, width: width, height: height) // make rect for text
+        let paragraphStyle = NSMutableParagraphStyle() // text alignment
+        var font = UIFont(name: "HelveticaNeue-Bold", size: 10.0) // Important: the font name must be written correct - Wichtig: Textname muss korrekt geschrieben werden
+        var text = ""
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: dinA4_width, height: dinA4_height), format: format)
         
         // create elements of pdf
         let pdf = renderer.pdfData { (context) in
             context.beginPage()
-            let attributes = [
-                NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)
-            ]
-            let text = "Hello!" as NSString
-            text.draw(in: CGRect(x: 0, y: 0, width: 500, height: 200), withAttributes: attributes)
+            
+            // Title
+            font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
+            text = "Überschrift"
+            paragraphStyle.alignment = .left
+            x = 50; y = 30; width = 300; height = 40
+            stringRect = CGRect(x: x, y: y, width: width, height: height)
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            
+            y = 45
+            // contents
+            for i in 1...50{
+                y = y + 15 // distance to above becaus is title - Abstand nach oben, weil Überschrift
+                x = 50; width = 100; height = 20
+                stringRect = CGRect(x: x, y: y, width: width, height: height)
+                font = UIFont(name: "HelveticaNeue", size: 10.0) // change font - verändere schrift
+                text = "Zeile: " + String(i) + " Spalte 1: " + String(y)
+                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                
+                x = 150; width = 100; height = 20
+                stringRect = CGRect(x: x, y: y, width: width, height: height)
+                font = UIFont(name: "HelveticaNeue", size: 10.0) // change font - verändere schrift
+                text = "Zeile: " + String(i) + " Spalte 2: " + String(y)
+                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            }
+            
+            y = paper_pageNumber_pos_y
+            x = paper_pageNumber_pos_x
+           
+            stringRect = CGRect(x: x, y: y, width: width, height: height)
+            font = UIFont(name: "HelveticaNeue", size: 10.0) // change font - verändere schrift
+            text = "Page " + String(1)
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+         
+            for page in 1...3 {
+                context.beginPage()
+                let text = "Page \(page)" as NSString
+                text.draw(in: CGRect(x: paper_pageNumber_pos_x, y: paper_pageNumber_pos_y, width: 80, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+            }
         }
         
         // save PDF to documents directory

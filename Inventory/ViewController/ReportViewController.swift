@@ -29,8 +29,8 @@ class ReportViewController: UIViewController {
     var paper_height = 0.0
     
     // position on page to print page numbers
-    var paper_pageNumber_pos_x = 0.0
-    var paper_pageNumber_pos_y = 0.0
+    var pageNumber_pos_x = 0.0
+    var pageNumber_pos_y = 0.0
     
     // pdf title on page
     var title_pos_x = 0.0
@@ -45,6 +45,14 @@ class ReportViewController: UIViewController {
     // constants for US letter PDF page
     let usLetter_width = 612.0
     let usLetter_height = 792.0
+    
+    // margin from left
+    let left_margin = 30.0
+    let right_margin = 30.0
+    
+    // pdf footer position
+    var footer_pos_x = 0.0
+    var footer_pos_y = 0.0
     
     // store complete inventory as array
     var results: [Inventory] = []
@@ -88,7 +96,7 @@ class ReportViewController: UIViewController {
     // MARK: - Actions
     @IBAction func generatePDF(_ sender: Any) {
         
-        pdftest()
+        pdfCreate()
     }
     
     // MARK: - PDF functions
@@ -108,26 +116,32 @@ class ReportViewController: UIViewController {
             paper_width = dinA4_width
             paper_height = dinA4_height
             
-            paper_pageNumber_pos_x = dinA4_width - 100.0
-            paper_pageNumber_pos_y = dinA4_height - 30.0
+            pageNumber_pos_x = dinA4_width - 100.0
+            pageNumber_pos_y = dinA4_height - right_margin
             
-            title_pos_x = 30.0
+            title_pos_x = left_margin
             title_pos_y = 20.0
             title_width = 300.0
             title_height = 30.0
+            
+            footer_pos_x = left_margin
+            footer_pos_y = dinA4_height - 30.0
             break
             
         case .usLetter:
             paper_width = usLetter_width
             paper_height = usLetter_height
             
-            paper_pageNumber_pos_x = usLetter_width - 100.0
-            paper_pageNumber_pos_y = usLetter_height - 30.0
+            pageNumber_pos_x = usLetter_width - 100.0
+            pageNumber_pos_y = usLetter_height - right_margin
             
-            title_pos_x = 30.0
+            title_pos_x = left_margin
             title_pos_y = 20.0
             title_width = 300.0
             title_height = 30.0
+            
+            footer_pos_x = left_margin
+            footer_pos_y = usLetter_height - 30.0
             break
         }
     }
@@ -135,14 +149,14 @@ class ReportViewController: UIViewController {
     // generate title for pdf page
     func pdfPageTitleHeading(title: String, fontSize: CGFloat){
         let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
         let font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
-        
-        paragraphStyle.alignment = .left
         
         let text = title as NSString
         text.draw(in: CGRect(x: title_pos_x, y: title_pos_y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -151,36 +165,46 @@ class ReportViewController: UIViewController {
     // generate pdf page number
     func pdfPageNumber(pageNumber: Int){
         let paragraphStyle = NSMutableParagraphStyle()
-        let font = UIFont(name: "HelveticaNeue", size: 10.0)
+        paragraphStyle.alignment = .right
+        
+        let font = UIFont(name: "HelveticaNeue", size: 8.0)
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        paragraphStyle.alignment = .right
-        
         let page = NSLocalizedString("Page", comment: "Page")
         let text = page + " " + String(pageNumber) as NSString
-        text.draw(in: CGRect(x: paper_pageNumber_pos_x, y: paper_pageNumber_pos_y, width: 80, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: pageNumber_pos_x, y: pageNumber_pos_y, width: 80, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
+    // generate pdf page footer
+    func pdfPageFooter(footerText: String){
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue", size: 8.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        let text = footerText as NSString
+        text.draw(in: CGRect(x: footer_pos_x, y: footer_pos_y, width: 300, height: 10), withAttributes: attributes as [NSAttributedString.Key : Any])
+    }
     
-    func pdftest(){
-        
-        let format = UIGraphicsPDFRendererFormat()
-        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author
-        format.documentInfo = [ kCGPDFContextCreator as String : Global.appNameString ]
-        format.documentInfo = [ kCGPDFContextTitle as String: Global.appNameString ]         // document title
-        
+    // generate the PDF document containing all pages, header, footer, page number etc.
+    func pdfCreate(){
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
-        var width = 0.0 // length of rect - länge vom rechteck
-        var height = 0.0 // height of rect - höhe vom rechteck
+        var width = 0.0 // length of rect
+        var height = 0.0 // height of rect
         var stringRect = CGRect(x: x, y: y, width: width, height: height) // make rect for text
         let paragraphStyle = NSMutableParagraphStyle() // text alignment
-        var font = UIFont(name: "HelveticaNeue-Bold", size: 10.0) // Important: the font name must be written correct - Wichtig: Textname muss korrekt geschrieben werden
+        let font = UIFont(name: "HelveticaNeue", size: 10.0) // Important: the font name must be written correct
         var text = ""
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
@@ -188,38 +212,67 @@ class ReportViewController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
+        let format = UIGraphicsPDFRendererFormat()
+        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author
+        format.documentInfo = [ kCGPDFContextCreator as String : Global.appNameString ]
+        format.documentInfo = [ kCGPDFContextTitle as String: Global.appNameString ]         // document title
+        
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paper_width, height: paper_height), format: format)
         
         // create elements of pdf
         let pdf = renderer.pdfData { (context) in
             context.beginPage()
             
+            context.cgContext.setStrokeColor(UIColor.black.cgColor)
+            context.cgContext.setLineWidth(2)
+            context.cgContext.move(to: CGPoint(x: left_margin, y: 20))
+            context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: 20))
+            
+            //let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+            //context.cgContext.addRect(rectangle)
+            context.cgContext.drawPath(using: .fillStroke)
+            
             // Title
             pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0)
             
             y = 50
             // contents
-            for i in 1...50{
-                y = y + 15 // distance to above becaus is title - Abstand nach oben, weil Überschrift
-                x = 30; width = 100; height = 20
+            for i in 1...49{
+                y = y + 15 // distance to above because is title
+                x = 30; width = 120; height = 20
                 stringRect = CGRect(x: x, y: y, width: width, height: height)
-                font = UIFont(name: "HelveticaNeue", size: 10.0) // change font - verändere schrift
                 text = "Zeile: " + String(i) + " Spalte 1: " + String(y)
                 text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                 
-                x = 120; width = 100; height = 20
+                x = 150; width = 120; height = 20
                 stringRect = CGRect(x: x, y: y, width: width, height: height)
-                font = UIFont(name: "HelveticaNeue", size: 10.0) // change font - verändere schrift
                 text = "Zeile: " + String(i) + " Spalte 2: " + String(y)
                 text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             }
+ /*
+            for inv in results{
+                // loop through all inventory items
+                if inv.inventoryName != "" {
+                    pdftext.append("<tr>")
+                    pdftext.append("<td>" + inv.inventoryName! + "</td>")
+                    pdftext.append("<td>" + inv.inventoryOwner!.ownerName! + "</td>")
+                    pdftext.append("<td>" + inv.inventoryRoom!.roomName! + "</td>")
+                    pdftext.append("<td>" + inv.inventoryCategory!.categoryName! + "</td>")
+                    pdftext.append("<td>" + String(inv.price) + "</td>")
+                    //pdftext.append("<br/>")
+                    pdftext.append("</tr>")
+                }
+            } */
             
+            pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß")
             pdfPageNumber(pageNumber: 1)
          
             for page in 2...4 {
                 context.beginPage()
                 // Title
                 pdfPageTitleHeading(title: "Inventory Report", fontSize: 25.0)
+                
+                pdfPageFooter(footerText: "generated by Inventory app (c) 2019 Marcus Deuß")
                 
                 pdfPageNumber(pageNumber: page)
             }
@@ -243,7 +296,7 @@ class ReportViewController: UIViewController {
     
     
     // create a DIN A based PDF file requires CoreGraphics because pdfkit only allows for displaying PDF files
-    private func createPDF(filename: String, text: String) {
+    private func createPDFHTML(filename: String, text: String) {
         os_log("ReportViewController createPDF", log: Log.viewcontroller, type: .info)
         
         let formatter = UIMarkupTextPrintFormatter(markupText: text)

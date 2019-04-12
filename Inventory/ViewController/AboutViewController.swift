@@ -10,9 +10,6 @@ import UIKit
 import MessageUI
 import os
 
-/// show about view with support email function
-///
-/// version number of app
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate  {
     @IBOutlet weak var versionNumberLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
@@ -23,16 +20,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // attributes
     
     // for using userDefaults local store
-    let userDefaults = UserDefaults.standard
+    // let userDefaults = UserDefaults.standard
     // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
     let kvStore = NSUbiquitousKeyValueStore()
-    
-    // setup dynamic font types for all labels
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        updateFontsforDynamicTypes()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +32,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         versionNumberLabel.text = Global.appNameString + " " + Global.versionString
         //versionNumberLabel.tintColor = themeColor
         versionNumberLabel.textColor = themeColor
-        let copyMsg = NSLocalizedString("(c) 2018 by Marcus Deuß", comment: "(c) 2018 by Marcus Deuß")
+        let copyMsg = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
         copyrightLabel.text = copyMsg
         let msg = NSLocalizedString("Running on iOS ", comment: "Running on iOS")
         
@@ -50,30 +40,38 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // Do any additional setup after loading the view.
         
+        //useiCloudSettingsStorage()
+    }
+    
+    // setup all things that need to be refreshed when view comes to screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // either use local of iCloud storage
         //useLocalSettingsStorage()
         useiCloudSettingsStorage()
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
-        
     }
     
     // when using iCloud key/value store to sync settings
     func useiCloudSettingsStorage(){
         if let user = kvStore.string(forKey: Global.keyUserName),
             let house = kvStore.string(forKey: Global.keyHouseName){
-            let userInfo = UserInfo(userName: user, houseName: house)
+            //userInfo = UserInfo(userName: user, houseName: house)
+            UserInfo.userName = user
+            UserInfo.houseName = house
             
-            userNameTextField.text = userInfo.userName
-            houseNameTextField.text = userInfo.houseName
+            userNameTextField.text = UserInfo.userName
+            houseNameTextField.text = UserInfo.houseName
         }
         else{
-            // default house name
-            let userInfo = UserInfo()
+            // default user and house name
+            //userInfo = UserInfo()
             
-            userNameTextField.text = userInfo.userName
-            houseNameTextField.text = userInfo.houseName
+            userNameTextField.text = UserInfo.userName
+            houseNameTextField.text = UserInfo.houseName
         }
         
         // notify view controller when changes on other devices occur
@@ -84,9 +82,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @objc func kvHasChanged(notification: NSNotification){
         // update both text fields (complexer apps need to check for changes in all records
         userNameTextField.text = kvStore.string(forKey: Global.keyUserName)
+        UserInfo.userName = userNameTextField.text!
         houseNameTextField.text = kvStore.string(forKey: Global.keyHouseName)
+        UserInfo.houseName = houseNameTextField.text!
     }
     
+    /*
     // when using local storage
     func useLocalSettingsStorage(){
         // load user defaults
@@ -109,25 +110,31 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             
             //print(userInfo.userName, userInfo.houseName)
         }
-    }
+    } */
+    
+    // MARK: - Textfield actions
     
     // save user name and household name as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
-        //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
-        kvStore.set(userNameTextField.text!, forKey: Global.keyUserName)
-        kvStore.synchronize()
+        
+        if (userNameTextField.text!.count > 0){
+            //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
+            kvStore.set(userNameTextField.text!, forKey: Global.keyUserName)
+            kvStore.synchronize()
+            UserInfo.userName = userNameTextField.text!
+        }
     }
     
     @IBAction func houseNameEditingChanged(_ sender: UITextField) {
-        //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
-        kvStore.set(houseNameTextField.text!, forKey: Global.keyHouseName)
-        kvStore.synchronize()
+        if (houseNameTextField.text!.count > 0){
+            //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
+            kvStore.set(houseNameTextField.text!, forKey: Global.keyHouseName)
+            kvStore.synchronize()
+            UserInfo.houseName = houseNameTextField.text!
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: - UI buttons
     
     @IBAction func feedbackButton(_ sender: Any) {
         
@@ -199,21 +206,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
         controller.dismiss(animated: true, completion: nil)
-    }
-    
-    // for using dynamic types: These are the six preset styles. When the view appears the helper method will be called. Implement the viewDidAppear method.
-    func updateFontsforDynamicTypes() {
-        //versionNumberLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        //copyrightLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
-        //iosversionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
-        /*
-         headlineLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-         subheadlineLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-         bodyLabel.font = UIFont.preferredFont(forTextStyle: .body)
-         footnoteLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-         caption1Label.font = UIFont.preferredFont(forTextStyle: .caption1)
-         caption2Label.font = UIFont.preferredFont(forTextStyle: .caption2)
-         */
     }
 
 }

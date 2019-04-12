@@ -26,8 +26,6 @@ class ReportViewController: UIViewController {
     // get user name and house name from iCloud
     let kvStore = NSUbiquitousKeyValueStore()
     
-    var userInfo = UserInfo()
-    
     // general paper size
     var paper_width = 0.0
     var paper_height = 0.0
@@ -73,6 +71,11 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        // update user info
+        //userInfo = aboutVC.userInfo
+        //userInfo.userName = aboutVC.userInfo.userName
+        //userInfo.houseName = aboutVC.userInfo.houseName
+        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
@@ -86,8 +89,9 @@ class ReportViewController: UIViewController {
         
         do {
             results = try context.fetch(self.inventoryFetchRequest())
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
+        } catch _ as NSError {
+            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+            //print("ERROR: \(error.localizedDescription)")
         }
         
         // initialize paper size and stuff
@@ -95,16 +99,17 @@ class ReportViewController: UIViewController {
     }
     
     // refresh user info every time we come back here
-    override func viewDidAppear(_ animated: Bool) {
-        // get user and house name from iCloud
-        if let user = kvStore.string(forKey: Global.keyUserName),
-            let house = kvStore.string(forKey: Global.keyHouseName){
-            userInfo = UserInfo(userName: user, houseName: house)
-        }
-        else{
-            // default house name
-            userInfo = UserInfo()
-        }
+    // This is called every time the view is about to appear, whether or not the view is already in memory.
+    // Put your dynamic code here, such as model logic
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        
+        // update user info
+        //userInfo = aboutVC.userInfo
+        //userInfo.userName = aboutVC.userInfo.userName
+        //userInfo.houseName = aboutVC.userInfo.houseName
     }
     
     // fetch all inventory sorted by item name
@@ -174,7 +179,7 @@ class ReportViewController: UIViewController {
     }
     
     // generate user info for pdf page (on top rigth position of page)
-    func pdfPageUserInfo(userInfo: UserInfo){
+    func pdfPageUserInfo(userName: String, houseName: String){
         os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -187,7 +192,11 @@ class ReportViewController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        let text = "User: " + userInfo.userName + ", House: " + userInfo.houseName as NSString
+        let user = NSLocalizedString("User", comment: "User")
+        let house = NSLocalizedString("House", comment: "House")
+        let text1 = user + ": " + userName + ", " + house + ": " + houseName
+        let text = text1 as NSString
+        
         text.draw(in: CGRect(x: paper_width - 250 - left_margin, y: title_pos_y + 15, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
@@ -335,7 +344,7 @@ class ReportViewController: UIViewController {
             pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
             
             // user Info
-            pdfPageUserInfo(userInfo: userInfo)
+            pdfPageUserInfo(userName: UserInfo.userName, houseName: UserInfo.houseName)
             
             y = contents_begin
             // contents
@@ -383,7 +392,7 @@ class ReportViewController: UIViewController {
                     // title
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
-                    pdfPageUserInfo(userInfo: userInfo)
+                    pdfPageUserInfo(userName: UserInfo.userName, houseName: UserInfo.houseName)
                 }
             }
             

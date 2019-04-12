@@ -204,10 +204,10 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     }
 
     // refresh data when view will be redrawn, after choosing room table view etc.
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
        
-        os_log("InventoryEditViewController viewDidAppear", log: Log.viewcontroller, type: .info)
+        os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // disable camera buttons unless user grants access to system privilege
         cameraNavBarOutlet.isEnabled = false
@@ -230,7 +230,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         case .restricted: // The user can't grant access due to restrictions.
             break
         @unknown default:
-            os_log("InventoryEditViewController viewDidAppear", log: Log.viewcontroller, type: .error)
+            os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .error)
         }
         
         // get the data from Core Data

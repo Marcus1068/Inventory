@@ -9,17 +9,6 @@
 import Foundation
 
 class UserInfo{
-    var userName : String
-    var houseName : String
-    
-    init(userName: String, houseName: String)
-    {
-        self.userName = userName
-        self.houseName = houseName
-    }
-    
-    init(){
-        self.userName = NSLocalizedString("User Name", comment: "User Name")
-        self.houseName = NSLocalizedString("House Name", comment: "House Name")
-    }
+    static var userName : String = NSLocalizedString("User Name", comment: "User Name")
+    static var houseName : String = NSLocalizedString("House Name", comment: "House Name")
 }

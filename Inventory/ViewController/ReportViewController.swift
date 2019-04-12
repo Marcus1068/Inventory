@@ -16,6 +16,7 @@ class ReportViewController: UIViewController {
 
     @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
+    @IBOutlet weak var sortOrderSegment: UISegmentedControl!
     
     @IBOutlet weak var pdfView: PDFView!
     
@@ -84,9 +85,11 @@ class ReportViewController: UIViewController {
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
         
-        
         replaceSegmentContents(segments: ["DINA4", "US Letter"], control: paperFormatSegment)
         paperFormatSegment.selectedSegmentIndex = 0
+        
+        replaceSegmentContents(segments: ["Item", "Category", "Owner", "Room"], control: sortOrderSegment)
+        sortOrderSegment.selectedSegmentIndex = 0
         
         // initialize paper size and stuff
         pdfInit()
@@ -142,6 +145,9 @@ class ReportViewController: UIViewController {
         os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
     }
     
+    @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
+        os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
+    }
     // MARK: - PDF functions
     // setup paper dimensions
     // correct position for page numbers etc

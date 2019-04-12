@@ -8,12 +8,17 @@
 //
 
 import UIKit
+import PDFKit
 import CoreData
 import os
 
 class ReportViewController: UIViewController {
 
     @IBOutlet weak var textfield: UITextField!
+    @IBOutlet weak var paperFormatSegment: UISegmentedControl!
+    
+    @IBOutlet weak var pdfView: PDFView!
+    
     
     // handle different paper sizes
     enum PaperSize {
@@ -71,11 +76,6 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
-        // update user info
-        //userInfo = aboutVC.userInfo
-        //userInfo.userName = aboutVC.userInfo.userName
-        //userInfo.houseName = aboutVC.userInfo.houseName
-        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
@@ -84,15 +84,9 @@ class ReportViewController: UIViewController {
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
         
-        // core data contents
-        let context = CoreDataHandler.getContext()
         
-        do {
-            results = try context.fetch(self.inventoryFetchRequest())
-        } catch _ as NSError {
-            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
-            //print("ERROR: \(error.localizedDescription)")
-        }
+        replaceSegmentContents(segments: ["DINA4", "US Letter"], control: paperFormatSegment)
+        paperFormatSegment.selectedSegmentIndex = 0
         
         // initialize paper size and stuff
         pdfInit()
@@ -106,10 +100,23 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
-        // update user info
-        //userInfo = aboutVC.userInfo
-        //userInfo.userName = aboutVC.userInfo.userName
-        //userInfo.houseName = aboutVC.userInfo.houseName
+        // core data contents
+        let context = CoreDataHandler.getContext()
+        
+        do {
+            results = try context.fetch(self.inventoryFetchRequest())
+        } catch _ as NSError {
+            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+            //print("ERROR: \(error.localizedDescription)")
+        }
+    }
+    
+    // fill a segment controll with values
+    func replaceSegmentContents(segments: Array<String>, control: UISegmentedControl) {
+        control.removeAllSegments()
+        for segment in segments {
+            control.insertSegment(withTitle: segment, at: control.numberOfSegments, animated: false)
+        }
     }
     
     // fetch all inventory sorted by item name
@@ -126,7 +133,13 @@ class ReportViewController: UIViewController {
     // MARK: - Actions
     @IBAction func generatePDF(_ sender: Any) {
         
+        //pdfView.document = currentPDF?.document
+        
         pdfCreateInventoryReport()
+    }
+    
+    @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
+        os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
     }
     
     // MARK: - PDF functions
@@ -270,7 +283,7 @@ class ReportViewController: UIViewController {
     }
     
     // save the pdf to disk
-    func pdfSave(_ pdf: Data) {
+    func pdfSave(_ pdf: Data) -> URL{
         // save PDF to documents directory
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
         
@@ -283,6 +296,8 @@ class ReportViewController: UIViewController {
         } catch {
             os_log("ReportViewController pdfSave error", log: Log.viewcontroller, type: .error)
         }
+        
+        return docURL! as URL
     }
     
     // generate the PDF document containing all pages, header, footer, page number etc.
@@ -401,7 +416,25 @@ class ReportViewController: UIViewController {
         }
         
         // save report to temp dir
-        pdfSave(pdf)
+        let url = pdfSave(pdf)
+        pdfDisplay(file: url)
+        
+        
+    }
+    
+    // display pdf file from chosen URL
+    func pdfDisplay(file: URL){
+        if let pdfDocument = PDFDocument(url: file) {
+            pdfView.autoScales = true
+            pdfView.displayMode = .singlePageContinuous
+            pdfView.displayDirection = .vertical
+            pdfView.document = pdfDocument
+            
+            //currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+            //currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf" // FIXME crashes when new object, works with existing object to attach a pdf
+            // show thumbnail as well
+            //captureThumbnails(pdfDocument:pdfDocument)
+        }
     }
     
     // old stuff for HTML
@@ -448,9 +481,9 @@ class ReportViewController: UIViewController {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         pdfData.write(toFile: "\(documentsPath)/\(filename).pdf", atomically: true)
-        
-        //pdftest()
     }
+    
+    
     // generate HTML header for page start
     private func headerPDF() -> String{
         os_log("ReportViewController headerPDF", log: Log.viewcontroller, type: .info)

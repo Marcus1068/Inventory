@@ -557,10 +557,15 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
         
         // PDF data
-        currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-        if(currentInventory?.invoice != nil){
+        if pdfView.document != nil{
+            currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
             currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
         }
+        
+    /*    currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
+        if(currentInventory?.invoice != nil){
+            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
+        } */
         
         // add data
         if (editmode == EditMode.add)

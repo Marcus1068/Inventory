@@ -14,7 +14,6 @@ import os
 
 class ReportViewController: UIViewController {
 
-    @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
     
@@ -112,6 +111,8 @@ class ReportViewController: UIViewController {
             os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
             //print("ERROR: \(error.localizedDescription)")
         }
+        
+        pdfViewGestureWhenTapped()
     }
     
     // fill a segment controll with values
@@ -148,6 +149,8 @@ class ReportViewController: UIViewController {
     @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
     }
+    
+    
     // MARK: - PDF functions
     // setup paper dimensions
     // correct position for page numbers etc
@@ -442,6 +445,20 @@ class ReportViewController: UIViewController {
             //captureThumbnails(pdfDocument:pdfDocument)
         }
     }
+    
+    // use this method in viewDidLoad to enable tap gesture
+    func pdfViewGestureWhenTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ReportViewController.gestureAction))
+        tap.cancelsTouchesInView = false
+        // register tap with pdfview only
+        pdfView.addGestureRecognizer(tap)
+    }
+    
+    @objc func gestureAction() {
+        os_log("ReportViewController action", log: Log.viewcontroller, type: .info)
+        //view.endEditing(true)
+    }
+    
     
     // old stuff for HTML
     

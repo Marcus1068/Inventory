@@ -23,8 +23,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var showFullscreenPDF: UIButton!
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
     
@@ -75,6 +73,12 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             navigationItem.largeTitleDisplayMode = .always
         }
 
+        // register tap gesture for showing pdf in fullscreen
+        pdfViewGestureWhenTapped()
+        
+        // register tap gesture for showing image in fullscreen
+        imageViewGestureWhenTapped()
+        
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
         
@@ -337,8 +341,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         imageView.contentMode = .scaleAspectFit
@@ -378,6 +382,40 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             _ = segue.destination as! RoomTableViewController
         }
     }
+    
+    // use this method in viewDidLoad to enable tap gesture for pdf view
+    func pdfViewGestureWhenTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.pdfViewGestureAction))
+        tap.cancelsTouchesInView = false
+        // register tap with pdfview only
+        pdfView.addGestureRecognizer(tap)
+    }
+    
+    // show fullscreen pdf view
+    @objc func pdfViewGestureAction() {
+        os_log("InventoryEditViewController pdfViewGestureAction", log: Log.viewcontroller, type: .info)
+        
+        // show pdf view fullscreen
+        performSegue(withIdentifier: "pdfSegue", sender: nil)
+    }
+    
+    // use this method in viewDidLoad to enable tap gesture for image view
+    func imageViewGestureWhenTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.imageViewGestureAction))
+        tap.cancelsTouchesInView = false
+        // register tap with pdfview only
+        imageView.addGestureRecognizer(tap)
+    }
+    
+    // show fullscreen pdf view
+    @objc func imageViewGestureAction() {
+        os_log("InventoryEditViewController imageViewGestureAction", log: Log.viewcontroller, type: .info)
+        
+        // show pdf view fullscreen
+        //performSegue(withIdentifier: "pdfSegue", sender: nil)
+    }
+    
+    // MARK: - UI Acions
     
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {

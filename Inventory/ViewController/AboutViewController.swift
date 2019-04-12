@@ -70,7 +70,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         else{
             // default house name
-            let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
+            let userInfo = UserInfo()
             
             userNameTextField.text = userInfo.userName
             houseNameTextField.text = userInfo.houseName

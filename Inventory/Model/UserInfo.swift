@@ -17,4 +17,9 @@ class UserInfo{
         self.userName = userName
         self.houseName = houseName
     }
+    
+    init(){
+        self.userName = NSLocalizedString("User Name", comment: "User Name")
+        self.houseName = NSLocalizedString("House Name", comment: "House Name")
+    }
 }

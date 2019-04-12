@@ -15,13 +15,14 @@ import os
 class Global: NSObject {
     
     // used in about view controller and for sending support emails
-    static let versionString = "0.4"
+    static let versionString = "0.9alpha"
     
     // name of the app in about view
     static let appNameString = "Inventory"
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "http://www.marcus-deuss.de"
     static let cvsFile = "inventoryexport.csv"
+    static let pdfFile = "inventoryreport.pdf"
     
     // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"

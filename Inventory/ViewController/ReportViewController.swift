@@ -329,8 +329,6 @@ class ReportViewController: UIViewController {
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
-        var width = 0.0 // length of rect
-        var height = 0.0 // height of rect
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var text = ""
         
@@ -346,29 +344,15 @@ class ReportViewController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        // column 1
-        x = left_margin; width = column_width; height = column_height
-        stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = NSLocalizedString("Item", comment: "Item")
-        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        var columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Price", comment: "Price")]
         
-        // column 2
-        x = left_margin + column_width; width = column_width; height = column_height
-        stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = NSLocalizedString("Owner", comment: "Owner")
-        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-        
-        // column 3
-        x = left_margin + column_width * 2; width = column_width; height = column_height
-        stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = NSLocalizedString("Room", comment: "Room")
-        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-        
-        // column 4
-        x = left_margin + column_width * 3; width = column_width; height = column_height
-        stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = NSLocalizedString("Price", comment: "Price")
-        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        x = left_margin
+        for column in columnText{
+            stringRect = CGRect(x: x, y: y, width: column_width, height: column_height)
+            text = column
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width
+        }
         
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
@@ -402,8 +386,6 @@ class ReportViewController: UIViewController {
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
-        var width = 0.0 // length of rect
-        var height = 0.0 // height of rect
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         let paragraphStyle = NSMutableParagraphStyle() // text alignment
         let font = UIFont(name: "HelveticaNeue", size: 10.0) // Important: the font name must be written correct
@@ -470,29 +452,15 @@ class ReportViewController: UIViewController {
                 y = y + 15 // distance to above because is title
                 numberOfRows += 1
                 
-                // column 1
-                x = left_margin; width = column_width; height = column_height
-                stringRect = CGRect(x: x, y: y, width: width, height: height)
-                text = inv.inventoryName!
-                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, String(inv.price)]
                 
-                // column 2
-                x = left_margin + column_width; width = column_width; height = column_height
-                stringRect = CGRect(x: x, y: y, width: width, height: height)
-                text = inv.inventoryOwner!.ownerName!
-                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-                
-                // column 3
-                x = left_margin + column_width * 2; width = column_width; height = column_height
-                stringRect = CGRect(x: x, y: y, width: width, height: height)
-                text = inv.inventoryRoom!.roomName!
-                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-                
-                // column 4
-                x = left_margin + column_width * 3; width = column_width; height = column_height
-                stringRect = CGRect(x: x, y: y, width: width, height: height)
-                text = String(inv.price)
-                text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                x = left_margin
+                for column in columnText{
+                    stringRect = CGRect(x: x, y: y, width: column_width, height: column_height)
+                    text = column
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width
+                }
                 
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter
                 if numberOfRows > paperPrintableRows{

@@ -16,9 +16,7 @@ class ReportViewController: UIViewController {
 
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
-    
     @IBOutlet weak var pdfView: PDFView!
-    
     
     // handle different paper sizes
     enum PaperSize {
@@ -27,6 +25,16 @@ class ReportViewController: UIViewController {
     }
     
     var currentPaperSize = PaperSize.dinA4
+    
+    // handle sort order
+    enum SortOrder : String{
+        case item = "inventoryName"
+        case category = "inventoryCategory.categoryName"
+        case owner = "inventoryOwner.ownerName"
+        case room = "inventoryRoom.roomName"
+    }
+    
+    var currentSortOrder = SortOrder.item
     
     // get user name and house name from iCloud
     let kvStore = NSUbiquitousKeyValueStore()
@@ -54,7 +62,7 @@ class ReportViewController: UIViewController {
     let usLetter_height = 792.0
     
     // column
-    let column_width = 120.0
+    let column_width = 110.0
     let column_height = 20.0
     
     // text contents begin
@@ -112,16 +120,6 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
-        // core data contents
-        let context = CoreDataHandler.getContext()
-        
-        do {
-            results = try context.fetch(self.inventoryFetchRequest(sortOrder: "inventoryCategory.categoryName")) //"inventoryName"
-        } catch _ as NSError {
-            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
-            //print("ERROR: \(error.localizedDescription)")
-        }
-        
         // register tap gesture with pdf view
         pdfViewGestureWhenTapped()
     }
@@ -148,7 +146,15 @@ class ReportViewController: UIViewController {
     // MARK: - Actions
     @IBAction func generatePDF(_ sender: Any) {
         
-        //pdfView.document = currentPDF?.document
+        // core data contents
+        let context = CoreDataHandler.getContext()
+        
+        do {
+            results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue))
+        } catch _ as NSError {
+            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+            //print("ERROR: \(error.localizedDescription)")
+        }
         
         pdfCreateInventoryReport()
     }
@@ -158,9 +164,9 @@ class ReportViewController: UIViewController {
         
         switch paperFormatSegment.selectedSegmentIndex
         {
-        case 0: // 0 months
+        case 0:
             currentPaperSize = .dinA4
-        case 1: // 6 months
+        case 1:
             currentPaperSize = .usLetter
         default:
             break
@@ -169,6 +175,20 @@ class ReportViewController: UIViewController {
     
     @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
+        
+        switch sortOrderSegment.selectedSegmentIndex
+        {
+        case 0:
+            currentSortOrder = .item
+        case 1:
+            currentSortOrder = .category
+        case 2:
+            currentSortOrder = .owner
+        case 3:
+            currentSortOrder = .room
+        default:
+            break
+        }
     }
     
     // prepare to transfer data to PDF view controller
@@ -344,7 +364,7 @@ class ReportViewController: UIViewController {
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        var columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Price", comment: "Price")]
+        let columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Category", comment: "Category"), NSLocalizedString("Price", comment: "Price")]
         
         x = left_margin
         for column in columnText{
@@ -358,7 +378,7 @@ class ReportViewController: UIViewController {
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
         context.cgContext.setLineWidth(1)
         context.cgContext.move(to: CGPoint(x: left_margin, y: 48 + title_height))
-        context.cgContext.addLine(to: CGPoint(x: (4 * column_width), y: 48 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: (Double(columnText.count) * column_width), y: 48 + title_height))
         context.cgContext.drawPath(using: .fillStroke)
     }
     
@@ -452,7 +472,7 @@ class ReportViewController: UIViewController {
                 y = y + 15 // distance to above because is title
                 numberOfRows += 1
                 
-                let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, String(inv.price)]
+                let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
                 
                 x = left_margin
                 for column in columnText{

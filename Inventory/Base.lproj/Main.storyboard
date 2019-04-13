@@ -1357,6 +1357,7 @@
                         <outlet property="timeStampLabel" destination="5Ug-AA-mAk" id="5oV-Ef-IFw"/>
                         <outlet property="warrantySegmentControl" destination="XWi-74-Mt1" id="NwT-7V-LYk"/>
                         <segue destination="qre-Fw-Phh" kind="show" identifier="pdfSegue" id="2I6-Yp-giQ"/>
+                        <segue destination="wSV-fC-zHD" kind="show" identifier="imageSegue" id="wdN-WJ-sqU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1407,7 +1408,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5460" y="-107.49625187406298"/>
+            <point key="canvasLocation" x="5288" y="-468"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="qmC-gY-i0o">
+            <objects>
+                <viewController id="wSV-fC-zHD" customClass="ImageViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2WD-O4-D6z"/>
+                        <viewControllerLayoutGuide type="bottom" id="xhK-3u-k6E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dh0-N0-cmd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="tiL-G8-Oh2">
+                                <rect key="frame" x="20" y="0.0" width="374" height="725"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gB7-gj-vos">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="725"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gB7-gj-vos" firstAttribute="leading" secondItem="tiL-G8-Oh2" secondAttribute="leading" id="142-3S-mlq"/>
+                                    <constraint firstItem="gB7-gj-vos" firstAttribute="centerX" secondItem="tiL-G8-Oh2" secondAttribute="centerX" id="Kui-Mh-IZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="gB7-gj-vos" secondAttribute="trailing" id="SFV-sJ-g1B"/>
+                                    <constraint firstItem="gB7-gj-vos" firstAttribute="centerY" secondItem="tiL-G8-Oh2" secondAttribute="centerY" id="W4J-Et-Q3g"/>
+                                    <constraint firstAttribute="bottom" secondItem="gB7-gj-vos" secondAttribute="bottom" id="dbU-Aj-b7t"/>
+                                    <constraint firstItem="gB7-gj-vos" firstAttribute="top" secondItem="tiL-G8-Oh2" secondAttribute="top" id="yVh-kY-7rn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="wSV-fC-zHD" id="sYm-7e-oT1"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tiL-G8-Oh2" firstAttribute="trailing" secondItem="dh0-N0-cmd" secondAttribute="trailingMargin" id="Pvx-Sm-h3O"/>
+                            <constraint firstItem="tiL-G8-Oh2" firstAttribute="top" secondItem="2WD-O4-D6z" secondAttribute="bottom" id="VLU-YM-aUl"/>
+                            <constraint firstItem="tiL-G8-Oh2" firstAttribute="bottom" secondItem="xhK-3u-k6E" secondAttribute="top" id="ph3-VQ-dzi"/>
+                            <constraint firstItem="tiL-G8-Oh2" firstAttribute="leading" secondItem="dh0-N0-cmd" secondAttribute="leadingMargin" id="xM8-WW-HWh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="gB7-gj-vos" id="Szc-4b-5eq"/>
+                        <outlet property="scrollView" destination="tiL-G8-Oh2" id="x3s-5l-H1Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TPY-HM-kbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5966.666666666667" y="-80.357142857142847"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">

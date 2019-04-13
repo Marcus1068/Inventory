@@ -381,6 +381,11 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         if segue.identifier == "roomSegue" {
             _ = segue.destination as! RoomTableViewController
         }
+        
+        if segue.identifier == "imageSegue" {
+            let destination = segue.destination as! ImageViewController
+            destination.image = imageView.image
+        }
     }
     
     // use this method in viewDidLoad to enable tap gesture for pdf view
@@ -407,12 +412,12 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         imageView.addGestureRecognizer(tap)
     }
     
-    // show fullscreen pdf view
+    // show fullscreen image view
     @objc func imageViewGestureAction() {
         os_log("InventoryEditViewController imageViewGestureAction", log: Log.viewcontroller, type: .info)
         
-        // show pdf view fullscreen
-        //performSegue(withIdentifier: "pdfSegue", sender: nil)
+        // show image view fullscreen
+        performSegue(withIdentifier: "imageSegue", sender: nil)
     }
     
     // MARK: - UI Acions

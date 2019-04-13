@@ -84,11 +84,17 @@ class ReportViewController: UIViewController {
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
         
-        replaceSegmentContents(segments: ["DINA4", "US Letter"], control: paperFormatSegment)
-        paperFormatSegment.selectedSegmentIndex = 0
+        let segmentDinA4 = NSLocalizedString("DIN A4", comment: "DIN A4")
+        let segmentUsLetter = NSLocalizedString("US Letter", comment: "US Letter")
+        replaceSegmentContents(segments: [segmentDinA4, segmentUsLetter], control: paperFormatSegment)
+        paperFormatSegment.selectedSegmentIndex = 0 // default dinA4
         
-        replaceSegmentContents(segments: ["Item", "Category", "Owner", "Room"], control: sortOrderSegment)
-        sortOrderSegment.selectedSegmentIndex = 0
+        let sortItem = NSLocalizedString("Item", comment: "Item")
+        let sortCategory = NSLocalizedString("Category", comment: "Category")
+        let sortOwner = NSLocalizedString("Owner", comment: "Owner")
+        let sortRoom = NSLocalizedString("Room", comment: "Room")
+        replaceSegmentContents(segments: [sortItem, sortCategory, sortOwner, sortRoom], control: sortOrderSegment)
+        sortOrderSegment.selectedSegmentIndex = 0 // default sort by item
         
         // initialize paper size and stuff
         pdfInit()
@@ -106,12 +112,13 @@ class ReportViewController: UIViewController {
         let context = CoreDataHandler.getContext()
         
         do {
-            results = try context.fetch(self.inventoryFetchRequest())
+            results = try context.fetch(self.inventoryFetchRequest(sortOrder: "inventoryCategory.categoryName")) //"inventoryName"
         } catch _ as NSError {
             os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
             //print("ERROR: \(error.localizedDescription)")
         }
         
+        // register tap gesture with pdf view
         pdfViewGestureWhenTapped()
     }
     
@@ -123,13 +130,13 @@ class ReportViewController: UIViewController {
         }
     }
     
-    // fetch all inventory sorted by item name
-    private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
+    // fetch all inventory sorted by sortOrder
+    private func inventoryFetchRequest(sortOrder: String) -> NSFetchRequest<Inventory> {
         os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
         
         let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         fetchRequest.fetchBatchSize = 20
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
         
         return fetchRequest
     }

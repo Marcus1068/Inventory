@@ -43,6 +43,7 @@
 		2C5DDF3E20F9F89F00D71782 /* BrandEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */; };
 		2C5DDF4020FA192000D71782 /* OwnerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */; };
 		2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */; };
+		2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
@@ -102,6 +103,7 @@
 		2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandEditViewController.swift; sourceTree = "<group>"; };
 		2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerEditViewController.swift; sourceTree = "<group>"; };
 		2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerTableViewController.swift; sourceTree = "<group>"; };
+		2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C0DD72201DBFA00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2C6C0DD82201DBFB00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */,
 				2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */,
 				2C2B805422577F76007C842E /* ReportViewController.swift */,
+				2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */,
 				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
+				2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,

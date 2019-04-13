@@ -198,6 +198,7 @@ class ReportViewController: UIViewController {
         if segue.identifier == "fullscreenPDF" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
+            destination.currentTitle = NSLocalizedString("PDF Report", comment: "PDF Report")
         }
         
     }

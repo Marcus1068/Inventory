@@ -14,6 +14,7 @@ class PDFViewController: UIViewController {
 
     // get pdf file from calling view controller
     weak var currentPDF: PDFView?
+    var currentTitle: String?
     
     @IBOutlet weak var pdfView: PDFView!
     
@@ -29,7 +30,8 @@ class PDFViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.title = NSLocalizedString("PDF invoice", comment: "PDF invoice")
+        //self.title = NSLocalizedString("PDF invoice", comment: "PDF invoice")
+        self.title = currentTitle
         
         pdfView.autoScales = true
         pdfView.displayMode = .singlePageContinuous

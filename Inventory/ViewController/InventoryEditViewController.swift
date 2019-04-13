@@ -377,6 +377,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         if segue.identifier == "pdfSegue" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
+            destination.currentTitle = NSLocalizedString("PDF invoice", comment: "PDF invoice")
         }
         
         if segue.identifier == "roomSegue" {

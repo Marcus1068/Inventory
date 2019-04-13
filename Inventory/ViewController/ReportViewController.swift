@@ -17,6 +17,13 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
     @IBOutlet weak var pdfView: PDFView!
+    @IBOutlet weak var filterButton: UIButton!
+    
+    // get all detail infos
+    var rooms : [Room] = []
+    var brands : [Brand] = []
+    var owners : [Owner] = []
+    var categories : [Category] = []
     
     // handle different paper sizes
     enum PaperSize {
@@ -120,6 +127,12 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
+        // get the data from Core Data
+        rooms = CoreDataHandler.fetchAllRooms()
+        brands = CoreDataHandler.fetchAllBrands()
+        owners = CoreDataHandler.fetchAllOwners()
+        categories = CoreDataHandler.fetchAllCategories()
+        
         // register tap gesture with pdf view
         pdfViewGestureWhenTapped()
     }
@@ -141,6 +154,32 @@ class ReportViewController: UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
         
         return fetchRequest
+    }
+    
+    // button will be used dynamically based on selected sort order
+    @IBAction func filterButtonAction(_ sender: UIButton) {
+        os_log("ReportViewController filterButtonAction", log: Log.viewcontroller, type: .info)
+        
+        let title = NSLocalizedString("Room", comment: "Room")
+        let message = NSLocalizedString("Choose your room", comment: "Choose your room")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        
+        for room in rooms{
+            let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
+                //self.currentInventory?.inventoryRoom? = room
+                //self.roomButtonLabel.setTitle(self.currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
+            }
+            myActionSheet.addAction(action)
+        }
+        
+        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+            // do nothing when cancel
+        }
+        
+        myActionSheet.addAction(action)
+        self.present(myActionSheet, animated: true, completion: nil)
     }
     
     // MARK: - Actions

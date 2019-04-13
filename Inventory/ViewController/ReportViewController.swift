@@ -78,16 +78,20 @@ class ReportViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
+        // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationItem.largeTitleDisplayMode = .always
         }
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
         
         let segmentDinA4 = NSLocalizedString("DIN A4", comment: "DIN A4")
         let segmentUsLetter = NSLocalizedString("US Letter", comment: "US Letter")
         replaceSegmentContents(segments: [segmentDinA4, segmentUsLetter], control: paperFormatSegment)
-        paperFormatSegment.selectedSegmentIndex = 0 // default dinA4
+        paperFormatSegment.selectedSegmentIndex = 0 // default din A4
         
         let sortItem = NSLocalizedString("Item", comment: "Item")
         let sortCategory = NSLocalizedString("Category", comment: "Category")
@@ -151,12 +155,32 @@ class ReportViewController: UIViewController {
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
+        
+        switch paperFormatSegment.selectedSegmentIndex
+        {
+        case 0: // 0 months
+            currentPaperSize = .dinA4
+        case 1: // 6 months
+            currentPaperSize = .usLetter
+        default:
+            break
+        }
     }
     
     @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
     }
     
+    // prepare to transfer data to PDF view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        if segue.identifier == "fullscreenPDF" {
+            let destination =  segue.destination as! PDFViewController
+            destination.currentPDF = pdfView
+        }
+        
+    }
     
     // MARK: - PDF functions
     // setup paper dimensions
@@ -300,7 +324,7 @@ class ReportViewController: UIViewController {
     
     
     // generate pdf pdfTableHeader
-    func pdfTableHeader(){
+    func pdfTableHeader(context: UIGraphicsRendererContext){
         os_log("ReportViewController pdfTableHeader", log: Log.viewcontroller, type: .info)
         
         var y = 0.0 // Points from above
@@ -310,7 +334,7 @@ class ReportViewController: UIViewController {
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var text = ""
         
-        y = contents_begin
+        y = contents_begin + 15
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -325,26 +349,33 @@ class ReportViewController: UIViewController {
         // column 1
         x = left_margin; width = column_width; height = column_height
         stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = "Item"
+        text = NSLocalizedString("Item", comment: "Item")
         text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // column 2
         x = left_margin + column_width; width = column_width; height = column_height
         stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = "Owner"
+        text = NSLocalizedString("Owner", comment: "Owner")
         text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // column 3
         x = left_margin + column_width * 2; width = column_width; height = column_height
         stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = "Room"
+        text = NSLocalizedString("Room", comment: "Room")
         text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // column 4
         x = left_margin + column_width * 3; width = column_width; height = column_height
         stringRect = CGRect(x: x, y: y, width: width, height: height)
-        text = "Price"
+        text = NSLocalizedString("Price", comment: "Price")
         text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // draw a line
+        context.cgContext.setStrokeColor(UIColor.black.cgColor)
+        context.cgContext.setLineWidth(1)
+        context.cgContext.move(to: CGPoint(x: left_margin, y: 48 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: (4 * column_width), y: 48 + title_height))
+        context.cgContext.drawPath(using: .fillStroke)
     }
     
     // save the pdf to disk
@@ -405,10 +436,10 @@ class ReportViewController: UIViewController {
         // decide paper size, because printable rows are different
         switch (currentPaperSize){
         case .dinA4:
-            paperPrintableRows = 48
+            paperPrintableRows = 47
             break
         case .usLetter:
-            paperPrintableRows = 45
+            paperPrintableRows = 46
             break
         }
         
@@ -430,7 +461,8 @@ class ReportViewController: UIViewController {
             // contents
             
             // columns
-            pdfTableHeader()
+            pdfTableHeader(context: context)
+            y = y + 15
             
             var numberOfRows = 0
             
@@ -487,7 +519,6 @@ class ReportViewController: UIViewController {
         let url = pdfSave(pdf)
         pdfDisplay(file: url)
         
-        
     }
     
     // display pdf file from chosen URL
@@ -515,7 +546,9 @@ class ReportViewController: UIViewController {
     
     @objc func gestureAction() {
         os_log("ReportViewController action", log: Log.viewcontroller, type: .info)
-        //view.endEditing(true)
+        
+        // show image view fullscreen
+        performSegue(withIdentifier: "fullscreenPDF", sender: nil)
     }
     
     

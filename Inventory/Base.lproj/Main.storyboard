@@ -395,7 +395,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glQ-3n-nXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4960.8000000000002" y="637.33133433283365"/>
+            <point key="canvasLocation" x="3606" y="635"/>
         </scene>
         <!--Category-->
         <scene sceneID="t1G-7K-FnA">
@@ -962,7 +962,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6224.8000000000002" y="637.33133433283365"/>
+            <point key="canvasLocation" x="5201" y="853"/>
         </scene>
         <!--Title-->
         <scene sceneID="9Sf-GY-taT">
@@ -1354,18 +1354,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4527.536231884058" y="-107.8125"/>
+            <point key="canvasLocation" x="3201" y="-105"/>
         </scene>
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="122" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1381,7 +1381,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="20" y="34" width="374" height="683"/>
+                                <rect key="frame" x="20" y="122" width="374" height="683"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -1403,7 +1403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5288" y="-468"/>
+            <point key="canvasLocation" x="2493" y="391"/>
         </scene>
         <!--Show Image-->
         <scene sceneID="qmC-gY-i0o">
@@ -1461,7 +1461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPY-HM-kbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5966.666666666667" y="-80.357142857142847"/>
+            <point key="canvasLocation" x="5145" y="153"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -1821,6 +1821,7 @@
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>
                         <outlet property="pdfView" destination="dcX-Ar-v2A" id="o4a-Z5-nh2"/>
                         <outlet property="sortOrderSegment" destination="iMl-4T-cI9" id="87T-Mu-Riv"/>
+                        <segue destination="qre-Fw-Phh" kind="show" identifier="fullscreenPDF" id="bwM-Ip-VbG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPu-Li-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2215,8 +2216,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="bFR-vc-3Sf"/>
         <segue reference="VVD-j9-6Ua"/>
+        <segue reference="bwM-Ip-VbG"/>
         <segue reference="l8y-iU-ek9"/>
-        <segue reference="hE0-Ui-Mnp"/>
+        <segue reference="wRn-lR-pVR"/>
         <segue reference="tlR-Jn-FPJ"/>
         <segue reference="CJG-Xc-sZ3"/>
     </inferredMetricsTieBreakers>

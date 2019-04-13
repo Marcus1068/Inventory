@@ -298,6 +298,55 @@ class ReportViewController: UIViewController {
         context.cgContext.drawPath(using: .fillStroke)
     }
     
+    
+    // generate pdf pdfTableHeader
+    func pdfTableHeader(){
+        os_log("ReportViewController pdfTableHeader", log: Log.viewcontroller, type: .info)
+        
+        var y = 0.0 // Points from above
+        var x = 0.0 // Points form left
+        var width = 0.0 // length of rect
+        var height = 0.0 // height of rect
+        var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
+        var text = ""
+        
+        y = contents_begin
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue-Bold", size: 10.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        // column 1
+        x = left_margin; width = column_width; height = column_height
+        stringRect = CGRect(x: x, y: y, width: width, height: height)
+        text = "Item"
+        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // column 2
+        x = left_margin + column_width; width = column_width; height = column_height
+        stringRect = CGRect(x: x, y: y, width: width, height: height)
+        text = "Owner"
+        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // column 3
+        x = left_margin + column_width * 2; width = column_width; height = column_height
+        stringRect = CGRect(x: x, y: y, width: width, height: height)
+        text = "Room"
+        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // column 4
+        x = left_margin + column_width * 3; width = column_width; height = column_height
+        stringRect = CGRect(x: x, y: y, width: width, height: height)
+        text = "Price"
+        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+    }
+    
     // save the pdf to disk
     func pdfSave(_ pdf: Data) -> URL{
         // save PDF to documents directory
@@ -379,6 +428,9 @@ class ReportViewController: UIViewController {
             
             y = contents_begin
             // contents
+            
+            // columns
+            pdfTableHeader()
             
             var numberOfRows = 0
             

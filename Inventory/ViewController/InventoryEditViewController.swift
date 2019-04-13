@@ -63,6 +63,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     var editmode : EditMode = EditMode.edit
     
+    
     // MARK: view initializers
     override func viewDidLoad() {
         super.viewDidLoad()

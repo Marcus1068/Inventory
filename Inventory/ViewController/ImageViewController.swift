@@ -4,8 +4,9 @@
 //
 //  Created by Marcus Deuß on 13.04.19.
 //  Copyright © 2019 Marcus Deuß. All rights reserved.
-// look at https://www.raywenderlich.com/560-uiscrollview-tutorial-getting-started for getting info
-// about imageView and embedding in scroll view
+//  look at https://www.raywenderlich.com/560-uiscrollview-tutorial-getting-started for getting info
+//  about imageView and embedding in scroll view
+//  set content mode of imageView to aspect fill for getting image to max screen size and avoid empty scroll view areas
 
 import UIKit
 import os
@@ -25,12 +26,19 @@ class ImageViewController: UIViewController {
 
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationItem.largeTitleDisplayMode = .always
         }
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         self.title = NSLocalizedString("Show Image", comment: "Show Image")
         
         imageView.image = image
         
+        //scrollView.setContentOffset(CGPoint(x:0, y:40), animated: true)
+        
+        //scrollView.bounces = true
     }
     
     override func viewWillLayoutSubviews() {

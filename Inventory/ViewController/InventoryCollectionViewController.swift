@@ -105,9 +105,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         filterSwitch.tintColor = themeColor
         filterSwitch.onTintColor = themeColor
         
-        
-        
-        
         // set collection view delegates
         collection.delegate = self
         collection.dataSource = self

@@ -49,10 +49,10 @@ class ImportExportViewController: UIViewController {
         //self.navbar.bar
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        os_log("ImportExportViewController viewDidAppear", log: Log.viewcontroller, type: .info)
+        os_log("ImportExportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         self.exportTextView.text = ""
         self.importedRowsLabel.isHidden = true
@@ -60,12 +60,6 @@ class ImportExportViewController: UIViewController {
         progressLabel.isHidden = true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
     /*
     // MARK: - Navigation
 

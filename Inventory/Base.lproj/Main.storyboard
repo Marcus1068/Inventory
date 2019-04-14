@@ -1822,6 +1822,9 @@
                                     <segment title="Living Room"/>
                                     <segment title="Bed Room"/>
                                 </segments>
+                                <connections>
+                                    <action selector="roomsSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="fdZ-JO-BaA"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter by owner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXd-j7-KIs">
                                 <rect key="frame" x="20" y="302" width="128" height="21"/>
@@ -1855,9 +1858,12 @@
                                     <segment title="Kalla"/>
                                     <segment title="Sandra"/>
                                 </segments>
+                                <connections>
+                                    <action selector="ownersSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="Ixe-UW-SGg"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-ES-Wq8">
-                                <rect key="frame" x="215" y="363" width="179" height="35"/>
+                                <rect key="frame" x="215" y="367" width="179" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal">
@@ -1881,8 +1887,12 @@
                     <navigationItem key="navigationItem" id="rOF-ng-341"/>
                     <connections>
                         <outlet property="filterButton" destination="uKY-Co-BCc" id="eQQ-IH-ikt"/>
+                        <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
+                        <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>
                         <outlet property="pdfView" destination="dcX-Ar-v2A" id="o4a-Z5-nh2"/>
+                        <outlet property="roomFilterLabel" destination="K90-Fm-Q4b" id="iBt-OH-CHh"/>
+                        <outlet property="roomsSegment" destination="JuC-eq-fIK" id="6DW-Cf-Nw4"/>
                         <outlet property="sortOrderSegment" destination="iMl-4T-cI9" id="87T-Mu-Riv"/>
                         <segue destination="qre-Fw-Phh" kind="show" identifier="fullscreenPDF" id="bwM-Ip-VbG"/>
                     </connections>

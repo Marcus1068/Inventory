@@ -18,6 +18,11 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
     @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var roomsSegment: UISegmentedControl!
+    @IBOutlet weak var ownersSegment: UISegmentedControl!
+    @IBOutlet weak var roomFilterLabel: UILabel!
+    @IBOutlet weak var ownerFilterLabel: UILabel!
+    
     
     // get all detail infos
     var rooms : [Room] = []
@@ -133,7 +138,33 @@ class ReportViewController: UIViewController {
         owners = CoreDataHandler.fetchAllOwners()
         categories = CoreDataHandler.fetchAllCategories()
         
+        var listOwners :[String] = []
+        var listRooms :[String] = []
+        
+        // FIXME tranlation needed
+        let allOwners = NSLocalizedString("All", comment: "All")
+        listOwners.append(allOwners)
+        for owner in owners{
+            listOwners.append((owner.ownerName)!)
+        }
+        
+        replaceSegmentContents(segments: listOwners, control: ownersSegment)
+        ownersSegment.selectedSegmentIndex = 0
+        
+        let allRooms = NSLocalizedString("All", comment: "All")
+        listRooms.append(allRooms)
+        for room in rooms{
+            listRooms.append((room.roomName)!)
+        }
+        
+        replaceSegmentContents(segments: listRooms, control: roomsSegment)
+        roomsSegment.selectedSegmentIndex = 0
         // register tap gesture with pdf view
+        
+        // set to "All" default
+        roomFilterLabel.text = listRooms.first
+        ownerFilterLabel.text = listOwners.first
+        
         pdfViewGestureWhenTapped()
     }
     
@@ -155,6 +186,13 @@ class ReportViewController: UIViewController {
         
         return fetchRequest
     }
+    
+    @IBAction func roomsSegmentAction(_ sender: UISegmentedControl) {
+    }
+    
+    @IBAction func ownersSegmentAction(_ sender: UISegmentedControl) {
+    }
+    
     
     // button will be used dynamically based on selected sort order
     @IBAction func filterButtonAction(_ sender: UIButton) {

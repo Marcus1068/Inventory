@@ -105,31 +105,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         filterSwitch.tintColor = themeColor
         filterSwitch.onTintColor = themeColor
         
-        // Setup the Scope Bars
-        owner = CoreDataHandler.fetchAllOwners()
-        room = CoreDataHandler.fetchAllRooms()
         
-        var listOwners :[String] = []
-        var listRooms :[String] = []
-        
-        // FIXME tranlation needed
-        let allOwners = NSLocalizedString("All", comment: "All")
-        listOwners.append(allOwners)
-        for inv in owner{
-            listOwners.append((inv.ownerName)!)
-        }
-        
-        replaceSegmentContents(segments: listOwners, control: ownersSegment)
-        ownersSegment.selectedSegmentIndex = 0
-        
-        let allRooms = NSLocalizedString("All", comment: "All")
-        listRooms.append(allRooms)
-        for inv in room{
-            listRooms.append((inv.roomName)!)
-        }
-        
-        replaceSegmentContents(segments: listRooms, control: roomsSegment)
-        roomsSegment.selectedSegmentIndex = 0
         
         
         // set collection view delegates
@@ -165,10 +141,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
 
     // initialize the data for the view
     // fetch database etc.
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
  
-        os_log("InventoryCollectionViewController viewDidAppear", log: Log.viewcontroller, type: .info)
+        os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         do {
             try fetchedResultsController.performFetch()
@@ -177,6 +153,32 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         collection.reloadData()
+        
+        // Setup the Scope Bars
+        owner = CoreDataHandler.fetchAllOwners()
+        room = CoreDataHandler.fetchAllRooms()
+        
+        var listOwners :[String] = []
+        var listRooms :[String] = []
+        
+        // FIXME tranlation needed
+        let allOwners = NSLocalizedString("All", comment: "All")
+        listOwners.append(allOwners)
+        for inv in owner{
+            listOwners.append((inv.ownerName)!)
+        }
+        
+        replaceSegmentContents(segments: listOwners, control: ownersSegment)
+        ownersSegment.selectedSegmentIndex = 0
+        
+        let allRooms = NSLocalizedString("All", comment: "All")
+        listRooms.append(allRooms)
+        for inv in room{
+            listRooms.append((inv.roomName)!)
+        }
+        
+        replaceSegmentContents(segments: listRooms, control: roomsSegment)
+        roomsSegment.selectedSegmentIndex = 0
     }
     
     

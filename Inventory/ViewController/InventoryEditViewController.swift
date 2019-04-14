@@ -213,6 +213,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         super.viewWillAppear(animated);
        
         os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+       
+        hideKeyboardWhenTappedAround()
         
         // disable camera buttons unless user grants access to system privilege
         cameraNavBarOutlet.isEnabled = false

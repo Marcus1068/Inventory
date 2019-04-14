@@ -37,6 +37,8 @@ class ReportViewController: UIViewController {
         case usLetter
     }
     
+    var url : URL?
+    
     var currentPaperSize = PaperSize.dinA4
     
     // handle sort order
@@ -194,11 +196,36 @@ class ReportViewController: UIViewController {
         return fetchRequest
     }
     
+    // share a PDF file to iOS: print, save to file
+    func sharePdf(path: URL) {
+        os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .info)
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: path.path) {
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .error)
+            
+            let error = NSLocalizedString("Error", comment: "Error")
+            let message = NSLocalizedString("Document was not found!", comment: "Document was not found!")
+            let alertController = UIAlertController(title: error, message: message, preferredStyle: .alert)
+            let ok = NSLocalizedString("OK", comment: "OK")
+            let defaultAction = UIAlertAction.init(title: ok, style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(defaultAction)
+            navigationController!.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Actions
     
     // sharing PDF for print or email
     @IBAction func shareActionBarButton(_ sender: UIBarButtonItem) {
         os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
+        
+        sharePdf(path: url!)
     }
     
     @IBAction func roomsSegmentAction(_ sender: UISegmentedControl) {
@@ -603,9 +630,8 @@ class ReportViewController: UIViewController {
         }
         
         // save report to temp dir
-        let url = pdfSave(pdf)
-        pdfDisplay(file: url)
-        
+        url = pdfSave(pdf)
+        pdfDisplay(file: url!)
     }
     
     // display pdf file from chosen URL

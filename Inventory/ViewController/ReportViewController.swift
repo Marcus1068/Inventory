@@ -188,9 +188,15 @@ class ReportViewController: UIViewController {
     }
     
     @IBAction func roomsSegmentAction(_ sender: UISegmentedControl) {
+        os_log("ReportViewController roomsSegmentAction", log: Log.viewcontroller, type: .info)
+        
+        roomFilterLabel.text = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
     }
     
     @IBAction func ownersSegmentAction(_ sender: UISegmentedControl) {
+        os_log("ReportViewController ownersSegmentAction", log: Log.viewcontroller, type: .info)
+        
+        ownerFilterLabel.text = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
     }
     
     

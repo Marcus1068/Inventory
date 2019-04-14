@@ -22,6 +22,7 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var ownersSegment: UISegmentedControl!
     @IBOutlet weak var roomFilterLabel: UILabel!
     @IBOutlet weak var ownerFilterLabel: UILabel!
+    @IBOutlet weak var shareActionBarButton: UIBarButtonItem!
     
     
     // get all detail infos
@@ -91,6 +92,8 @@ class ReportViewController: UIViewController {
     // store complete inventory as array
     var results: [Inventory] = []
     
+    // MARK: view load
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,6 +135,10 @@ class ReportViewController: UIViewController {
         
         os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
+        // no pdf document still
+        if pdfView.document == nil{
+            shareActionBarButton.isEnabled = false
+        }
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
         brands = CoreDataHandler.fetchAllBrands()
@@ -187,6 +194,13 @@ class ReportViewController: UIViewController {
         return fetchRequest
     }
     
+    // MARK: - Actions
+    
+    // sharing PDF for print or email
+    @IBAction func shareActionBarButton(_ sender: UIBarButtonItem) {
+        os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
+    }
+    
     @IBAction func roomsSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController roomsSegmentAction", log: Log.viewcontroller, type: .info)
         
@@ -226,10 +240,10 @@ class ReportViewController: UIViewController {
         self.present(myActionSheet, animated: true, completion: nil)
     }
     
-    // MARK: - Actions
     @IBAction func generatePDF(_ sender: Any) {
         
         // core data contents
+        
         let context = CoreDataHandler.getContext()
         
         do {
@@ -240,6 +254,7 @@ class ReportViewController: UIViewController {
         }
         
         pdfCreateInventoryReport()
+        shareActionBarButton.isEnabled = true
     }
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {

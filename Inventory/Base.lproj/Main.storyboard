@@ -1884,7 +1884,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SAb-kd-dML"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rOF-ng-341"/>
+                    <navigationItem key="navigationItem" id="rOF-ng-341">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="JVQ-k1-jrN">
+                            <connections>
+                                <action selector="shareActionBarButton:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="uKY-Co-BCc" id="eQQ-IH-ikt"/>
                         <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
@@ -1893,6 +1899,7 @@
                         <outlet property="pdfView" destination="dcX-Ar-v2A" id="o4a-Z5-nh2"/>
                         <outlet property="roomFilterLabel" destination="K90-Fm-Q4b" id="iBt-OH-CHh"/>
                         <outlet property="roomsSegment" destination="JuC-eq-fIK" id="6DW-Cf-Nw4"/>
+                        <outlet property="shareActionBarButton" destination="JVQ-k1-jrN" id="EPE-2q-imo"/>
                         <outlet property="sortOrderSegment" destination="iMl-4T-cI9" id="87T-Mu-Riv"/>
                         <segue destination="qre-Fw-Phh" kind="show" identifier="fullscreenPDF" id="bwM-Ip-VbG"/>
                     </connections>

@@ -10,9 +10,10 @@
 import UIKit
 import PDFKit
 import CoreData
+import MessageUI
 import os
 
-class ReportViewController: UIViewController {
+class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
@@ -806,4 +807,78 @@ class ReportViewController: UIViewController {
         
         return pdftext
     }
+    
+    /*
+     // MARK: - Email delegate
+     */
+    
+    /// Prepares mail sending controller
+    ///
+    /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    /// - Returns: mailComposerVC
+    
+    func sendPDFEmail(){
+        // hide keyboard
+        self.view.endEditing(true)
+        
+        let mailComposeViewController = configuredMailComposeViewController(url: url)
+        
+        if MFMailComposeViewController.canSendMail()
+        {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        }
+        else
+        {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController(url: URL?) -> MFMailComposeViewController
+    {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setToRecipients([Global.emailAdr])
+        let support = NSLocalizedString("Support", comment: "Support")
+        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + support)
+        let msg = NSLocalizedString("My Inventory Report", comment: "My Inventory Report")
+        mailComposerVC.setMessageBody(msg, isHTML: false)
+        
+        // attachment
+        if url != nil{
+            do{
+            let attachmentData = try Data(contentsOf: url!)
+            mailComposerVC.addAttachmentData(attachmentData, mimeType: "application/pdf", fileName: Global.pdfFile)
+            }
+            catch let error {
+                os_log("ReportViewController email attachement error: %s", log: Log.viewcontroller, type: .error, error.localizedDescription)
+            }
+        }
+        
+        return mailComposerVC
+    }
+    
+    /// show error if mail sending does not work
+    func showSendMailErrorAlert()
+    {
+        let msg = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
+        let msg2 = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
+        
+        let alert = UIAlertController(title: msg, message: msg2, preferredStyle: .alert)
+        
+        let msg3 = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
+        
+        alert.addAction(UIAlertAction(title: msg3, style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+        //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")
+        
+        //alert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
 }

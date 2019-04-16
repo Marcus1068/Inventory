@@ -177,7 +177,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients([Global.emailAdr])
-        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " Support")
+        let support = NSLocalizedString("Support", comment: "Support")
+        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + support)
         let msg = NSLocalizedString("I have some improvement ideas: ", comment: "I have some improvement ideas: ")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

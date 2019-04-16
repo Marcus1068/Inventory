@@ -22,7 +22,7 @@ class Global: NSObject {
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "http://www.marcus-deuss.de"
     static let cvsFile = "inventoryexport.csv"
-    static let pdfFile = "inventoryreport.pdf"
+    static let pdfFile = NSLocalizedString("Inventory Report.pdf", comment: "Inventory Report.pdf")
     
     // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"

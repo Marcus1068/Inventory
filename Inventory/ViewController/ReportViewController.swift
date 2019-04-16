@@ -18,7 +18,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
     @IBOutlet weak var pdfView: PDFView!
-    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var roomsSegment: UISegmentedControl!
     @IBOutlet weak var ownersSegment: UISegmentedControl!
     @IBOutlet weak var roomFilterLabel: UILabel!
@@ -32,6 +31,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     var brands : [Brand] = []
     var owners : [Owner] = []
     var categories : [Category] = []
+    
+    var all : String = ""
     
     // handle different paper sizes
     enum PaperSize {
@@ -103,6 +104,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        all = NSLocalizedString("All", comment: "All")
+        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         // new in ios11: large navbar titles
@@ -154,7 +157,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var listRooms :[String] = []
         
         // FIXME tranlation needed
-        let allOwners = NSLocalizedString("All", comment: "All")
+        let allOwners = all
         listOwners.append(allOwners)
         for owner in owners{
             listOwners.append((owner.ownerName)!)
@@ -163,7 +166,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         replaceSegmentContents(segments: listOwners, control: ownersSegment)
         ownersSegment.selectedSegmentIndex = 0
         
-        let allRooms = NSLocalizedString("All", comment: "All")
+        let allRooms = all
         listRooms.append(allRooms)
         for room in rooms{
             listRooms.append((room.roomName)!)
@@ -189,14 +192,103 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // fetch all inventory sorted by sortOrder
-    private func inventoryFetchRequest(sortOrder: String) -> NSFetchRequest<Inventory> {
+    private func inventoryFetchRequest(sortOrder: String, filterWhere: String, filterCompare1: String, filterCompare2: String) -> NSFetchRequest<Inventory> {
         os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
         
-        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
-        fetchRequest.fetchBatchSize = 20
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
+        let request:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
-        return fetchRequest
+        // search predicate only when filter is used, otherwise no predicate
+        if(filterWhere.count > 0){
+            request.predicate = NSPredicate(format: filterWhere, filterCompare1, filterCompare2)
+        }
+        
+        print(request.predicate.debugDescription)
+        
+        request.fetchBatchSize = 20
+        request.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
+        
+        return request
+    }
+    
+    // fetch all inventory sorted by sortOrder
+    private func inventoryFetchRequest(sortOrder: String, filterWhere: String, filterCompare: String) -> NSFetchRequest<Inventory> {
+        os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        
+        let request:NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        
+        // search predicate only when filter is used, otherwise no predicate
+        if(filterWhere.count > 0){
+            request.predicate = NSPredicate(format: filterWhere, filterCompare)
+        }
+        
+        print(request.predicate.debugDescription)
+        
+        request.fetchBatchSize = 20
+        request.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
+        
+        return request
+    }
+    
+    // get core data bases on selected filter and sort order
+    func fetchData(){
+        // core data contents
+        
+        //var filterWhere : String = ""
+        //var filterCompare : [String] = []
+        
+        let context = CoreDataHandler.getContext()
+        
+        if ownerFilterLabel.text! != all && roomFilterLabel.text! != all{
+            // use both room and owner as filter criteria
+            let filterWhere = "inventoryOwner.ownerName == %@ && inventoryRoom.roomName == %@"
+            let filterCompare1 = ownerFilterLabel.text!
+            let filterCompare2 = roomFilterLabel.text!
+            
+            do {
+                results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare1: filterCompare1, filterCompare2: filterCompare2))
+            } catch{
+                os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+            }
+        }
+        else{
+            if ownerFilterLabel.text! == all && roomFilterLabel.text! != all{
+                // use filter for room only
+                let filterWhere = "inventoryRoom.roomName == %@"
+                let filterCompare = roomFilterLabel.text!
+                
+                do {
+                    results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
+                } catch{
+                    print("Error with fetch request in fetchInventoryByRoom \(error)")
+                    os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+                }
+            }
+            else{
+                if ownerFilterLabel.text! == all && roomFilterLabel.text! == all{
+                    // no filter used
+                    let filterWhere = ""
+                    let filterCompare = ""
+                    do {
+                        results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
+                    } catch{
+                        os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+                    }
+                }
+                else{
+                    // use filter for owner only
+                    let filterWhere = "inventoryOwner.ownerName == %@"
+                    let filterCompare = String(ownerFilterLabel.text!)
+                    
+                    do {
+                        results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
+                    } catch{
+                        os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
+                    }
+                }
+            }
+        }
+        
+        
     }
     
     // share a PDF file to iOS: print, save to file
@@ -248,44 +340,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     
-    // button will be used dynamically based on selected sort order
-    @IBAction func filterButtonAction(_ sender: UIButton) {
-        os_log("ReportViewController filterButtonAction", log: Log.viewcontroller, type: .info)
-        
-        let title = NSLocalizedString("Room", comment: "Room")
-        let message = NSLocalizedString("Choose your room", comment: "Choose your room")
-        
-        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
-        
-        for room in rooms{
-            let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
-                //self.currentInventory?.inventoryRoom? = room
-                //self.roomButtonLabel.setTitle(self.currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
-            }
-            myActionSheet.addAction(action)
-        }
-        
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
-            // do nothing when cancel
-        }
-        
-        myActionSheet.addAction(action)
-        self.present(myActionSheet, animated: true, completion: nil)
-    }
-    
     @IBAction func generatePDF(_ sender: Any) {
         
-        // core data contents
-        
-        let context = CoreDataHandler.getContext()
-        
-        do {
-            results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue))
-        } catch _ as NSError {
-            os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
-            //print("ERROR: \(error.localizedDescription)")
-        }
+        fetchData()
         
         pdfCreateInventoryReport()
         shareActionBarButton.isEnabled = true

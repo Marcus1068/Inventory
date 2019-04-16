@@ -1864,14 +1864,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKY-Co-BCc">
-                                <rect key="frame" x="329" y="223" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter..."/>
-                                <connections>
-                                    <action selector="filterButtonAction:" destination="v2l-5p-iCX" eventType="touchUpInside" id="rd6-3w-C5d"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paper format:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLh-FY-ObP">
                                 <rect key="frame" x="20" y="147" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1967,7 +1959,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailActionButton" destination="am9-QQ-t0y" id="B1S-rY-QUq"/>
-                        <outlet property="filterButton" destination="uKY-Co-BCc" id="eQQ-IH-ikt"/>
                         <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
                         <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>

@@ -659,6 +659,8 @@ class CoreDataHandler: NSObject {
         // search predicate
         request.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName)    // FIXME, migth crash
         
+        //print(request.predicate.debugDescription)
+        
         // sort criteria
         request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
         

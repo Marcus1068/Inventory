@@ -1952,13 +1952,21 @@
                         <viewLayoutGuide key="safeArea" id="SAb-kd-dML"/>
                     </view>
                     <navigationItem key="navigationItem" id="rOF-ng-341">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="JVQ-k1-jrN">
-                            <connections>
-                                <action selector="shareActionBarButton:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="JVQ-k1-jrN">
+                                <connections>
+                                    <action selector="shareActionBarButton:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="compose" id="am9-QQ-t0y">
+                                <connections>
+                                    <action selector="emailActionButton:" destination="v2l-5p-iCX" id="dz5-Ko-eSY"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailActionButton" destination="am9-QQ-t0y" id="B1S-rY-QUq"/>
                         <outlet property="filterButton" destination="uKY-Co-BCc" id="eQQ-IH-ikt"/>
                         <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
                         <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>

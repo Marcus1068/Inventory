@@ -24,6 +24,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var roomFilterLabel: UILabel!
     @IBOutlet weak var ownerFilterLabel: UILabel!
     @IBOutlet weak var shareActionBarButton: UIBarButtonItem!
+    @IBOutlet weak var emailActionButton: UIBarButtonItem!
     
     
     // get all detail infos
@@ -141,6 +142,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // no pdf document still
         if pdfView.document == nil{
             shareActionBarButton.isEnabled = false
+            emailActionButton.isEnabled = false
         }
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
@@ -222,6 +224,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // MARK: - Actions
     
+    @IBAction func emailActionButton(_ sender: UIBarButtonItem) {
+        sendPDFEmail()
+    }
+    
     // sharing PDF for print or email
     @IBAction func shareActionBarButton(_ sender: UIBarButtonItem) {
         os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
@@ -283,6 +289,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         pdfCreateInventoryReport()
         shareActionBarButton.isEnabled = true
+        emailActionButton.isEnabled = true
     }
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {

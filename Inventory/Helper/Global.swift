@@ -86,6 +86,19 @@ class Global: NSObject {
         }
         return (currentMin, currentMax)
     }
+/*
+    // fade in UI control
+    class func showUIControl(_ v: UIView){
+        UIView.animate(0.35)
+        v.isHidden = false
+        v.alpha = 1
+    }
     
+    // fade in UI control
+    class func hideUIControl(_ v: UIView){
+        UIView.animate(withDuration: 0.35)
+        v.isHidden = true
+        v.alpha = 0
+    } */
 }
 

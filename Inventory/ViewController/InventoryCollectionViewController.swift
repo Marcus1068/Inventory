@@ -92,13 +92,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
-        
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
         
         // set view title
-        self.title = NSLocalizedString("Inventory", comment: "Inventory")
+        self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
         
         // enable filtering
         filterSwitch.isOn = true
@@ -119,7 +118,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
         self.navigationItem.titleView = searchController.searchBar
-        searchController.searchBar.placeholder = "Search for Inventory"
+        searchController.searchBar.placeholder = NSLocalizedString("Search for Inventory", comment: "Search for Inventory")
         searchController.searchBar.delegate = self
         searchController.searchBar.showsScopeBar = false
         navigationController?.isNavigationBarHidden = false
@@ -147,6 +146,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController viewWillAppear", log: Log.coredata, type: .error)
         }
         
         collection.reloadData()
@@ -158,7 +158,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         var listOwners :[String] = []
         var listRooms :[String] = []
         
-        // FIXME tranlation needed
         let allOwners = NSLocalizedString("All", comment: "All")
         listOwners.append(allOwners)
         for inv in owner{
@@ -190,7 +189,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // number of collection items, depends on filtering on or off (searchbar used or not)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         guard let sectionInfo = fetchedResultsController.sections?[section] else {
             return 0
         }
@@ -217,7 +215,16 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName
         cell.romeNameLabel.text = inv.inventoryRoom?.roomName
         
-        cell.priceLabel.text = String(inv.price) + "€"  //FIXME hardcoded currency
+        let locale = Locale.current
+        //print(locale.regionCode!)
+        
+        switch (locale.regionCode){
+        case "en-US":
+            cell.priceLabel.text = String(inv.price) + "$"
+            break
+        default:
+            cell.priceLabel.text = String(inv.price) + "€"
+        }
         
         var image: UIImage
         
@@ -261,16 +268,17 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory items", comment: " Inventory items")
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items")
             }
             else{
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + NSLocalizedString(" Inventory item", comment: " Inventory item")
+                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item")
             }
             
             
             return footerView
             
         default:
+            os_log("InventoryCollectionViewController collectionView", log: Log.viewcontroller, type: .error)
             assert(false, "Unexpected element kind")
         }
     }
@@ -332,6 +340,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
+        
         let destination =  segue.destination as! InventoryEditViewController
         
         if segue.identifier == "addSegue" {
@@ -412,6 +422,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController filterContentForSearchText", log: Log.coredata, type: .error)
         }
         
         collection.reloadData()
@@ -481,6 +492,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController roomsSelectionSegment", log: Log.coredata, type: .error)
         }
         
         collection.reloadData()
@@ -528,6 +540,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController ownersSelectionSegment", log: Log.coredata, type: .error)
         }
         
         collection.reloadData()
@@ -574,6 +587,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {
                 print("Fetching error: \(error), \(error.userInfo)")
+                os_log("InventoryCollectionViewController filterSwitchAction", log: Log.coredata, type: .error)
             }
             
             //let position = collection!.contentInset.top

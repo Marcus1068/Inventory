@@ -24,6 +24,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var ownerFilterLabel: UILabel!
     @IBOutlet weak var shareActionBarButton: UIBarButtonItem!
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
+    @IBOutlet weak var generatePDFButton: UIButton!
     
     
     // get all detail infos
@@ -103,6 +104,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         super.viewDidLoad()
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        
+        generatePDFButton.setTitle(NSLocalizedString("Generate PDF", comment: "Generate PDF"), for: .normal)
         
         all = NSLocalizedString("All", comment: "All")
         
@@ -259,7 +262,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 do {
                     results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
                 } catch{
-                    print("Error with fetch request in fetchInventoryByRoom \(error)")
                     os_log("ReportViewController context.fetch", log: Log.viewcontroller, type: .error)
                 }
             }
@@ -287,8 +289,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 }
             }
         }
-        
-        
     }
     
     // share a PDF file to iOS: print, save to file

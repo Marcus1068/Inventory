@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C56E8BF2086350B00FD5136"
+               BlueprintIdentifier = "2CC85CFB225F32BB006973A0"
                BuildableName = "InventoryTests.xctest"
                BlueprintName = "InventoryTests"
                ReferencedContainer = "container:Inventory.xcodeproj">
@@ -65,6 +65,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = "de"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"

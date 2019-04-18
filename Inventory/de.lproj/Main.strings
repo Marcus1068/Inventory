@@ -103,6 +103,9 @@
 /* Class = "UILabel"; text = "Export file:"; ObjectID = "DYJ-sB-dHx"; */
 "DYJ-sB-dHx.text" = "Exportiere Datei:";
 
+/* Class = "UITextView"; text = "Tap to show PDF in fullscreen"; ObjectID = "EhL-X7-z4X"; */
+"EhL-X7-z4X.text" = "Tippen um PDF in Vollbild anzuzeigen";
+
 /* Class = "UILabel"; text = "Filter by room:"; ObjectID = "ehs-Uu-Z20"; */
 "ehs-Uu-Z20.text" = "Filter nach Raum:";
 
@@ -157,8 +160,26 @@
 /* Class = "UILabel"; text = "Owner Name:"; ObjectID = "Jdc-4Q-qWy"; */
 "Jdc-4Q-qWy.text" = "Besitzer:";
 
+/* Class = "UIButton"; normalTitle = "Generate PDF "; ObjectID = "jkP-ES-Wq8"; */
+"jkP-ES-Wq8.normalTitle" = "Erzeuge PDF";
+
 /* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[0] = "All"; ObjectID = "JuC-eq-fIK"; */
 "JuC-eq-fIK.segmentTitles[0]" = "Alle";
+
+/* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[1] = "Basement"; ObjectID = "JuC-eq-fIK"; */
+"JuC-eq-fIK.segmentTitles[1]" = "Keller";
+
+/* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[2] = "Kitchen"; ObjectID = "JuC-eq-fIK"; */
+"JuC-eq-fIK.segmentTitles[2]" = "Küche";
+
+/* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[3] = "Living Room"; ObjectID = "JuC-eq-fIK"; */
+"JuC-eq-fIK.segmentTitles[3]" = "Wohnzimmer";
+
+/* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[4] = "Bed Room"; ObjectID = "JuC-eq-fIK"; */
+"JuC-eq-fIK.segmentTitles[4]" = "Schlafzimmer";
+
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[0] = "All"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[0]" = "Alle";
 
 /* Class = "UILabel"; text = "All"; ObjectID = "K90-Fm-Q4b"; */
 "K90-Fm-Q4b.text" = "Alle";

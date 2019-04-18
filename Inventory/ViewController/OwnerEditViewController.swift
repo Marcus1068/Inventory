@@ -47,7 +47,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldOwner.placeholder = NSLocalizedString("Owner", comment: "Owner")
+        textfieldOwner.placeholder = Global.owner
     }
     
     override func didReceiveMemoryWarning() {
@@ -143,12 +143,10 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     func showAlertDialog(){
         // Declare Alert
         let title = NSLocalizedString("Owner already exists", comment: "Owner already exists")
-        let message = NSLocalizedString("Please choose a different owner name", comment: "Please choose a different owner name")
-        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: title, message: Global.chooseDifferentName, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let okMsg = NSLocalizedString("OK", comment: "OK")
-        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

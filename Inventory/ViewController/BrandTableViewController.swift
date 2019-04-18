@@ -59,6 +59,7 @@ class BrandTableViewController: UITableViewController {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("BrandTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         }
         
     }

@@ -30,7 +30,7 @@ class PDFViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        //self.title = NSLocalizedString("PDF invoice", comment: "PDF invoice")
+        // get title from calling view controller since it will be used in two different use cases
         self.title = currentTitle
         
         pdfView.autoScales = true

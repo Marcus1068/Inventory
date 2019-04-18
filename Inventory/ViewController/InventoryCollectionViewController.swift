@@ -158,7 +158,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         var listOwners :[String] = []
         var listRooms :[String] = []
         
-        let allOwners = NSLocalizedString("All", comment: "All")
+        let allOwners = Global.all
         listOwners.append(allOwners)
         for inv in owner{
             listOwners.append((inv.ownerName)!)
@@ -167,7 +167,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         replaceSegmentContents(segments: listOwners, control: ownersSegment)
         ownersSegment.selectedSegmentIndex = 0
         
-        let allRooms = NSLocalizedString("All", comment: "All")
+        let allRooms = Global.all
         listRooms.append(allRooms)
         for inv in room{
             listRooms.append((inv.roomName)!)
@@ -366,6 +366,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController searchBarTextDidBeginEditing", log: Log.viewcontroller, type: .error)
         }
         collection.reloadData()
     }
@@ -661,6 +662,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController doneDelete", log: Log.viewcontroller, type: .error)
         }
         
         collection.reloadData()

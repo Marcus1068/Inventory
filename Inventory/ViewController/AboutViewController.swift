@@ -188,14 +188,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     /// show error if mail sending does not work
     func showSendMailErrorAlert()
     {
-        let msg = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
-        let msg2 = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
+        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
         
-        let alert = UIAlertController(title: msg, message: msg2, preferredStyle: .alert)
-        
-        let msg3 = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
-        
-        alert.addAction(UIAlertAction(title: msg3, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
         
         //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")

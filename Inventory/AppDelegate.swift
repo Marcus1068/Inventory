@@ -101,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      * The store could not be migrated to the current model version.
                      Check the error message to determine what the actual problem was.
                      */
+                    os_log("persistentContainer: %s", log: Log.appdelegate, type: .error, error.userInfo)
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
             })

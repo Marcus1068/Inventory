@@ -81,7 +81,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldRoomName.placeholder = "Room"
+        textfieldRoomName.placeholder = Global.room
     }
     
     // when user presses return on keyboard
@@ -183,12 +183,10 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     func showAlertDialog(){
         // Declare Alert
         let title = NSLocalizedString("Room already exists", comment: "Room already exists")
-        let message = NSLocalizedString("Please choose a different room name", comment: "Please choose a different room name")
-        
-        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: title, message: Global.chooseDifferentName, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

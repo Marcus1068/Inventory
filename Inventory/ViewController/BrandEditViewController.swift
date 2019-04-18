@@ -47,13 +47,9 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         textfieldBrand.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldBrand.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldBrand.placeholder = "Brand"
+        textfieldBrand.placeholder = Global.brand
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // when user presses return on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -145,12 +141,10 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     func showAlertDialog(){
         // Declare Alert
         let title = NSLocalizedString("Brand already exists", comment: "Brand already exists")
-        let message = NSLocalizedString("Please choose a different brand name", comment: "Please choose a different brand name")
-        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: title, message: Global.chooseDifferentName, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let okMsg = NSLocalizedString("OK", comment: "OK")
-        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

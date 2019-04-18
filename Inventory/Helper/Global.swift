@@ -28,6 +28,26 @@ class Global: NSObject {
     static let keyUserName = "UserName"
     static let keyHouseName = "UserHouse"
     
+    // localization string
+    static let item = NSLocalizedString("Item", comment: "Item")
+    static let category = NSLocalizedString("Category", comment: "Category")
+    static let owner = NSLocalizedString("Owner", comment: "Owner")
+    static let room = NSLocalizedString("Room", comment: "Room")
+    static let brand = NSLocalizedString("Brand", comment: "Brand")
+    static let price = NSLocalizedString("Price", comment: "Price")
+    static let all = NSLocalizedString("All", comment: "All")
+    
+    
+    static let ok = NSLocalizedString("OK", comment: "OK")
+    static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
+    static let delete = NSLocalizedString("Delete", comment: "Delete")
+    static let confirm = NSLocalizedString("Confirm", comment: "Confirm")
+    static let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
+    static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")
+    static let emailNotSent = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
+    static let emailDevice = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
+    static let emailConfig = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
+    
     // general functions
     
     

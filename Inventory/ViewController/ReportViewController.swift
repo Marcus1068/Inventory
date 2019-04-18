@@ -126,11 +126,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         replaceSegmentContents(segments: [segmentDinA4, segmentUsLetter], control: paperFormatSegment)
         paperFormatSegment.selectedSegmentIndex = 0 // default din A4
         
-        let sortItem = NSLocalizedString("Item", comment: "Item")
-        let sortCategory = NSLocalizedString("Category", comment: "Category")
-        let sortOwner = NSLocalizedString("Owner", comment: "Owner")
-        let sortRoom = NSLocalizedString("Room", comment: "Room")
-        replaceSegmentContents(segments: [sortItem, sortCategory, sortOwner, sortRoom], control: sortOrderSegment)
+        replaceSegmentContents(segments: [Global.item, Global.category, Global.owner, Global.room], control: sortOrderSegment)
         sortOrderSegment.selectedSegmentIndex = 0 // default sort by item
         
         // initialize paper size and stuff
@@ -305,7 +301,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .error)
             
             let error = NSLocalizedString("Error", comment: "Error")
-            let message = NSLocalizedString("Document was not found!", comment: "Document was not found!")
+            let message = NSLocalizedString("PDF document not found!", comment: "PDF document not found!")
             let alertController = UIAlertController(title: error, message: message, preferredStyle: .alert)
             let ok = NSLocalizedString("OK", comment: "OK")
             let defaultAction = UIAlertAction.init(title: ok, style: UIAlertAction.Style.default, handler: nil)
@@ -555,7 +551,25 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        let columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Category", comment: "Category"), NSLocalizedString("Price", comment: "Price")]
+        var columnText: [String]
+        
+        // switch column order based on sort order
+        switch (currentSortOrder){
+        case .item:
+            columnText = [Global.item, Global.owner, Global.room, Global.category, Global.price]
+            break
+        case .owner:
+            columnText = [Global.owner, Global.item, Global.room, Global.category, Global.price]
+            break
+        case .category:
+            columnText = [Global.category, Global.item, Global.owner, Global.room,  Global.price]
+            break
+        case .room:
+            columnText = [Global.room, Global.item, Global.owner, Global.category, Global.price]
+            break
+        }
+        
+        //let columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Category", comment: "Category"), NSLocalizedString("Price", comment: "Price")]
         
         x = left_margin
         for column in columnText{
@@ -663,7 +677,25 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 y = y + 15 // distance to above because is title
                 numberOfRows += 1
                 
-                let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                var columnText: [String]
+                
+                // switch column order based on sort order
+                switch (currentSortOrder){
+                case .item:
+                    columnText = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    break
+                case .owner:
+                    columnText = [inv.inventoryOwner!.ownerName!, inv.inventoryName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    break
+                case .category:
+                    columnText = [inv.inventoryCategory!.categoryName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!,  inv.inventoryRoom!.roomName!, String(inv.price)]
+                    break
+                case .room:
+                    columnText = [inv.inventoryRoom!.roomName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    break
+                }
+                
+                //let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
                 
                 x = left_margin
                 for column in columnText{
@@ -776,105 +808,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfData.write(toFile: "\(documentsPath)/\(filename).pdf", atomically: true)
     }
     
-    
-    // generate HTML header for page start
-    private func headerPDF() -> String{
-        os_log("ReportViewController headerPDF", log: Log.viewcontroller, type: .info)
-        
-        var header : String = ""
-        
-        // html table with alternating light/dark rows, small 1 px frame around table elements
-        header.append("""
-            <!DOCTYPE html>
-            <html>
-            <head>
-            <style>
-            table {
-              font-family: arial, sans-serif;
-              border-collapse: collapse;
-              width: 100%;
-            }
-
-            td, th {
-              border: 1px solid #dddddd;
-              text-align: left;
-              padding: 8px;
-            }
-
-            tr:nth-child(even) {
-              background-color: #dddddd;
-            }
-            </style>
-            </head>
-            <body>
-            """)
-        
-        return header
-    }
-    
-    // generate HTML footer for page end
-    private func footerPDF() -> String{
-        os_log("ReportViewController footerPDF", log: Log.viewcontroller, type: .info)
-        
-        var footer : String = ""
-        
-        footer.append("</body> </html>")
-        
-        return footer
-    }
-    
-    // all inventory items in single report, sorted alphabetically
-    // FIXME implement variable sort order
-    private func reportByInventoryAll() -> String{
-        os_log("ReportViewController reportByInventoryAll", log: Log.viewcontroller, type: .info)
-        
-        var pdftext : String = ""
-        
-        // HTML header first
-        pdftext.append(headerPDF())
-        
-        // heading text
-        pdftext.append("<h1>" + NSLocalizedString("Report for all Inventory objects", comment: "Report for all Inventory objects") + "</h1>")
-        
-        // table header with column names
-        pdftext.append("""
-            <h2>Inventory</h2>
-            <table>
-            <tr>
-            <th>Item</th>
-            <th>Owner</th>
-            <th>Room</th>
-            <th>Category</th>
-            <th>Price</th>
-            </tr>
-            """)
-        
-        for inv in results{
-            // loop through all inventory items
-            if inv.inventoryName != "" {
-                pdftext.append("<tr>")
-                pdftext.append("<td>" + inv.inventoryName! + "</td>")
-                pdftext.append("<td>" + inv.inventoryOwner!.ownerName! + "</td>")
-                pdftext.append("<td>" + inv.inventoryRoom!.roomName! + "</td>")
-                pdftext.append("<td>" + inv.inventoryCategory!.categoryName! + "</td>")
-                pdftext.append("<td>" + String(inv.price) + "</td>")
-                //pdftext.append("<br/>")
-                pdftext.append("</tr>")
-            }
-        }
-        
-        // close HTML table
-        pdftext.append("</table")
-        
-        // close HTML tags
-        pdftext.append(footerPDF())
-        
-        return pdftext
-    }
-    
-    /*
      // MARK: - Email delegate
-     */
     
     /// Prepares mail sending controller
     ///
@@ -924,14 +858,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     /// show error if mail sending does not work
     func showSendMailErrorAlert()
     {
-        let msg = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
-        let msg2 = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
+        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
         
-        let alert = UIAlertController(title: msg, message: msg2, preferredStyle: .alert)
-        
-        let msg3 = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
-        
-        alert.addAction(UIAlertAction(title: msg3, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
         
         //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")

@@ -47,7 +47,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldCategory.placeholder = NSLocalizedString("Category", comment: "Category")
+        textfieldCategory.placeholder = Global.category
     }
 
     override func didReceiveMemoryWarning() {
@@ -154,12 +154,10 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
     func showAlertDialog(){
         // Declare Alert
         let title = NSLocalizedString("Category already exists", comment: "Category already exists")
-        let message = NSLocalizedString("Please choose a different category name", comment: "Please choose a different category name")
-        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: title, message: Global.chooseDifferentName, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let okMsg = NSLocalizedString("OK", comment: "OK")
-        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //result = true
         })
         

@@ -97,6 +97,7 @@ class ImportExportViewController: UIViewController {
                 results = try context.fetch(self.inventoryFetchRequest())
             } catch let error as NSError {
                 print("ERROR: \(error.localizedDescription)")
+                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
             let cvsFileName = Global.cvsFile
@@ -153,6 +154,7 @@ class ImportExportViewController: UIViewController {
                             
                         } catch {
                             print("error saving jpg file:", error)
+                            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                         }
                     }
                 }
@@ -168,6 +170,7 @@ class ImportExportViewController: UIViewController {
                         //print("pdf file saved")
                     } catch {
                         print("error saving pdf file:", error)
+                        os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                     }
                 }
             }
@@ -182,10 +185,7 @@ class ImportExportViewController: UIViewController {
                 self.progressView.setProgress(1.0, animated: true)
                 self.progressLabel.text = "100 %"
             }
-            
         }
-        
-        
     }
     
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
@@ -207,8 +207,7 @@ class ImportExportViewController: UIViewController {
         
         let title = NSLocalizedString("Export Finished", comment: "Export Finished")
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
-        let dismissAction = UIAlertAction(title: dismiss, style: .default)
+        let dismissAction = UIAlertAction(title: Global.dismiss, style: .default)
         alertController.addAction(dismissAction)
         
         present(alertController, animated: true)
@@ -411,6 +410,7 @@ class ImportExportViewController: UIViewController {
             
         } catch {
             print("File import Read Error for cvs file \(pathURLcvs.absoluteString)", error)
+            os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .error)
             return nil
         }
     }
@@ -479,6 +479,7 @@ class ImportExportViewController: UIViewController {
     // MARK - button actions
     
     @IBAction func exportCVSButton(_ sender: Any) {
+        os_log("ImportExportViewController exportCVSButton", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""

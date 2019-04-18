@@ -457,10 +457,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose room with an action sheet filled with all room names
     @IBAction func roomButton(_ sender: Any) {
-        let title = NSLocalizedString("Room", comment: "Room")
         let message = NSLocalizedString("Choose your room", comment: "Choose your room")
         
-        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: Global.room, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for room in rooms{
             let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -481,10 +480,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose category with an action sheet filled with all category names
     @IBAction func categoryButton(_ sender: Any) {
-        let title = NSLocalizedString("Category", comment: "Category")
         let message = NSLocalizedString("Choose your category", comment: "Choose your category")
         
-        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: Global.category, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for category in categories{
             let action = UIAlertAction(title: category.categoryName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -505,10 +503,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose brand with an action sheet filled with all brand names
     @IBAction func brandButton(_ sender: Any) {
-        let title = NSLocalizedString("Brand", comment: "Brand")
         let message = NSLocalizedString("Choose your brand", comment: "Choose your brand")
         
-        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: Global.brand, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for brand in brands{
             let action = UIAlertAction(title: brand.brandName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -529,10 +526,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // choose owner with an action sheet filled with all owner names
     @IBAction func ownerButton(_ sender: Any) {
-        let title = NSLocalizedString("Owner", comment: "Owner")
         let message = NSLocalizedString("Choose your owner", comment: "Choose your owner")
         
-        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: Global.owner, message: message, preferredStyle: UIAlertController.Style.actionSheet)
         
         for owner in owners{
             let action = UIAlertAction(title: owner.ownerName, style: UIAlertAction.Style.default) { (ACTION) in

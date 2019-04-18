@@ -59,6 +59,7 @@ class CategoryTableViewController: UITableViewController {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
+            os_log("CategoryTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         }
         
     }

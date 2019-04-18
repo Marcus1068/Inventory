@@ -44,10 +44,10 @@
 "7Zb-vc-qqF.placeholder" = "Kategorie";
 
 /* Class = "UITableViewSection"; headerTitle = "Edit Items"; ObjectID = "8bF-C7-bZ1"; */
-"8bF-C7-bZ1.headerTitle" = "Bearbeite Objekte";
+"8bF-C7-bZ1.headerTitle" = "Bearbeiten";
 
 /* Class = "UITabBarItem"; title = "Manage Items"; ObjectID = "8ee-co-69w"; */
-"8ee-co-69w.title" = "Bearbeite Objekte";
+"8ee-co-69w.title" = "Objekte verwalten";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "8f4-H8-n7a"; */
 "8f4-H8-n7a.text" = "Räume";
@@ -116,7 +116,7 @@
 "fNd-h9-W0h.normalTitle" = "Schließen";
 
 /* Class = "UITableViewSection"; headerTitle = "Add Items"; ObjectID = "G2B-Bb-zP5"; */
-"G2B-Bb-zP5.headerTitle" = "Objekt hinzu...";
+"G2B-Bb-zP5.headerTitle" = "Hinzufügen";
 
 /* Class = "UIButton"; normalTitle = "Import from CVS file..."; ObjectID = "g93-Ej-2SW"; */
 "g93-Ej-2SW.normalTitle" = "Importiere aus CVS Datei...";

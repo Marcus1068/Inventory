@@ -215,16 +215,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName
         cell.romeNameLabel.text = inv.inventoryRoom?.roomName
         
-        let locale = Locale.current
-        //print(locale.regionCode!)
-        
-        switch (locale.regionCode){
-        case "en-US":
-            cell.priceLabel.text = String(inv.price) + "$"
-            break
-        default:
-            cell.priceLabel.text = String(inv.price) + "€"
-        }
+        cell.priceLabel.text = String(inv.price) + Global.currencySymbol!
         
         var image: UIImage
         
@@ -692,7 +683,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
             collection.reloadData()
             break
         @unknown default:
-            os_log("controller: switch unknown default", log: Log.viewcontroller, type: .error)
+            os_log("InventoryCollectionViewController controller: switch unknown default", log: Log.viewcontroller, type: .error)
         }
     }
     

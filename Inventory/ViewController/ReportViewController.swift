@@ -569,8 +569,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             break
         }
         
-        //let columnText : [String] = [NSLocalizedString("Item", comment: "Item"), NSLocalizedString("Owner", comment: "Owner"), NSLocalizedString("Room", comment: "Room"), NSLocalizedString("Category", comment: "Category"), NSLocalizedString("Price", comment: "Price")]
-        
         x = left_margin
         for column in columnText{
             stringRect = CGRect(x: x, y: y, width: column_width, height: column_height)
@@ -589,7 +587,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // save the pdf to disk
     func pdfSave(_ pdf: Data) -> URL{
-        // save PDF to documents directory
+        // save PDF to documents directory  // FIXME document dir to cache dir
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
         
         docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
@@ -613,6 +611,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var x = 0.0 // Points form left
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         let paragraphStyle = NSMutableParagraphStyle() // text alignment
+        paragraphStyle.alignment = .left
         let font = UIFont(name: "HelveticaNeue", size: 10.0) // Important: the font name must be written correct
         var text = ""
         let attributes = [
@@ -622,7 +621,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         let format = UIGraphicsPDFRendererFormat()
-        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author
+        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author in PDF
         format.documentInfo = [ kCGPDFContextCreator as String : Global.appNameString ]
         format.documentInfo = [ kCGPDFContextTitle as String: Global.appNameString ]         // document title
         
@@ -682,16 +681,16 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 // switch column order based on sort order
                 switch (currentSortOrder){
                 case .item:
-                    columnText = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    columnText = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
                     break
                 case .owner:
-                    columnText = [inv.inventoryOwner!.ownerName!, inv.inventoryName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    columnText = [inv.inventoryOwner!.ownerName!, inv.inventoryName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
                     break
                 case .category:
-                    columnText = [inv.inventoryCategory!.categoryName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!,  inv.inventoryRoom!.roomName!, String(inv.price)]
+                    columnText = [inv.inventoryCategory!.categoryName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!,  inv.inventoryRoom!.roomName!, String(inv.price) + Global.currencySymbol!]
                     break
                 case .room:
-                    columnText = [inv.inventoryRoom!.roomName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
+                    columnText = [inv.inventoryRoom!.roomName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
                     break
                 }
                 
@@ -762,52 +761,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     
-    // old stuff for HTML
-    
-    
-    // create a DIN A based PDF file requires CoreGraphics because pdfkit only allows for displaying PDF files
-    private func createPDFHTML(filename: String, text: String) {
-        os_log("ReportViewController createPDF", log: Log.viewcontroller, type: .info)
-        
-        let formatter = UIMarkupTextPrintFormatter(markupText: text)
-        
-        // Add formatter with pageRender
-        
-        let renderer = UIPrintPageRenderer()
-        
-        renderer.addPrintFormatter(formatter, startingAtPageAt: 0)
-        
-        // Assign paperRect and printableRect
-        
-        let page = CGRect(x: 0, y: 0, width: dinA4_width, height: dinA4_height) // A4, 72 dpi
-        
-        // Use this to get US Letter size instead
-        // let pageRect = CGRect(x: 0, y: 0, width: 612, height: 792)
-        let printable = page.insetBy(dx: 0, dy: 0)
-        
-        renderer.setValue(NSValue(cgRect: page), forKey: "paperRect")
-        renderer.setValue(NSValue(cgRect: printable), forKey: "printableRect")
-        
-        // Create PDF context and draw
-        let pageRect = CGRect.zero
-        
-        let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, pageRect, nil)
-        
-        for i in 1...renderer.numberOfPages {
-            UIGraphicsBeginPDFPage();
-            let bounds = UIGraphicsGetPDFContextBounds()
-            
-            renderer.drawPage(at: i - 1, in: bounds)
-        }
-        
-        UIGraphicsEndPDFContext();
-        
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        
-        pdfData.write(toFile: "\(documentsPath)/\(filename).pdf", atomically: true)
-    }
-    
      // MARK: - Email delegate
     
     /// Prepares mail sending controller
@@ -836,8 +789,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         //mailComposerVC.setToRecipients([Global.emailAdr])
-        let support = NSLocalizedString("Support", comment: "Support")
-        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + support)
+        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + Global.support)
         let msg = NSLocalizedString("My Inventory Report", comment: "My Inventory Report")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

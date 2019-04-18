@@ -47,9 +47,13 @@ class Global: NSObject {
     static let emailNotSent = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")
     static let emailDevice = NSLocalizedString("Your device could not send email", comment: "Your device could not send email")
     static let emailConfig = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
+    static let support = NSLocalizedString("Support", comment: "Support")
     
     // general functions
     
+    //User region setting return
+    static let locale = Locale.current
+    static let currencySymbol = locale.currencySymbol
     
     // sending a local notification
     

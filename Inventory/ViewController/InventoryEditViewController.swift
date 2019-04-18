@@ -43,6 +43,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
+    @IBOutlet weak var currencyLabel: UILabel!
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
@@ -85,6 +86,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         
         imagePicker.delegate = self
         
+        currencyLabel.text = Global.currencySymbol!
         
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
@@ -469,8 +471,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             myActionSheet.addAction(action)
         }
         
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -492,8 +493,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             myActionSheet.addAction(action)
         }
         
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -515,8 +515,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             myActionSheet.addAction(action)
         }
         
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -538,8 +537,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             myActionSheet.addAction(action)
         }
         
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let action = UIAlertAction(title: cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
             // do nothing when cancel
         }
         
@@ -645,6 +643,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         
         let dateFormatter = DateFormatter()
         //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
+        
         dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"      // FIXME hard coded date format
         
         dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone

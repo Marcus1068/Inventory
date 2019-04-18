@@ -133,6 +133,7 @@ class ImportExportViewController: UIViewController {
                     //self.showExportFinishedAlertView(exportFilePath)
                 }
             } catch {
+                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                 print("Failed to create inventory csv file")
                 print("\(error)")
             }
@@ -178,8 +179,8 @@ class ImportExportViewController: UIViewController {
             DispatchQueue.main.async {
                 // at the end of export report the number of exported rows to user
                 self.importedRowsLabel.isHidden = false
-                let message = NSLocalizedString("Exported rows: ", comment: "Exported rows: ")
-                self.importedRowsLabel.text = message + String(exportedRows)
+                let message = NSLocalizedString("Exported rows:", comment: "Exported rows:")
+                self.importedRowsLabel.text = message + " " + String(exportedRows)
                 
                 // set progress bar to 100% at the end of export
                 self.progressView.setProgress(1.0, animated: true)
@@ -301,7 +302,7 @@ class ImportExportViewController: UIViewController {
                     inventory.inventoryCategory = category
                 }
                 else{
-                    // new category has to be inserted in owner table
+                    // new category has to be inserted in category table
                     var newCategory = Category(context: context)
                     newCategory.categoryName = csvRows[x][8]
                     newCategory = CoreDataHandler.saveCategory(category: newCategory)
@@ -316,7 +317,7 @@ class ImportExportViewController: UIViewController {
                     inventory.inventoryBrand = brand
                 }
                 else{
-                    // new brand has to be inserted in owner table
+                    // new brand has to be inserted in brand table
                     var newBrand = Brand(context: context)
                     newBrand.brandName = csvRows[x][9]
                     newBrand = CoreDataHandler.saveBrand(brand: newBrand)
@@ -379,8 +380,8 @@ class ImportExportViewController: UIViewController {
         
         // at the end of import report number of imported rows to user
         self.importedRowsLabel.isHidden = false
-        let rows = NSLocalizedString("Imported rows: ", comment: "Imported rows: ")
-        self.importedRowsLabel.text = rows + String(importedRows)
+        let rows = NSLocalizedString("Imported rows:", comment: "Imported rows:")
+        self.importedRowsLabel.text = rows + " " + String(importedRows)
         
         progressView.setProgress(1.0, animated: true)
         progressLabel.text = "100 %"
@@ -389,6 +390,8 @@ class ImportExportViewController: UIViewController {
     // get jpeg image from file directory
     // FIXME must change to other directory
     func getSavedImage(named: String) -> UIImage? {
+        os_log("ImportExportViewController getSavedImage", log: Log.viewcontroller, type: .info)
+        
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
             return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
         }
@@ -417,6 +420,7 @@ class ImportExportViewController: UIViewController {
 
     // remove special characters from csv file
     func cleanRows(file: String) -> String{
+        os_log("ImportExportViewController cleanRows", log: Log.viewcontroller, type: .info)
         
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
@@ -428,6 +432,8 @@ class ImportExportViewController: UIViewController {
     
     // import cvs file parser
     func csvImportParser(data: String) -> [[String]] {
+        os_log("ImportExportViewController csvImportParser", log: Log.viewcontroller, type: .info)
+        
         var result: [[String]] = []
         let rows = data.components(separatedBy: "\n")
         for row in rows {
@@ -445,7 +451,6 @@ class ImportExportViewController: UIViewController {
     // info from https://www.raywenderlich.com/1018-uiactivityviewcontroller-tutorial-sharing-data
     
     func exportToFileURL() -> URL? {
-    
         os_log("ImportExportViewController exportToFileURL", log: Log.viewcontroller, type: .info)
         
         // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]
@@ -476,7 +481,7 @@ class ImportExportViewController: UIViewController {
         return saveFileURL
     }
     
-    // MARK - button actions
+    // MARK: - button actions
     
     @IBAction func exportCVSButton(_ sender: Any) {
         os_log("ImportExportViewController exportCVSButton", log: Log.viewcontroller, type: .info)
@@ -493,7 +498,6 @@ class ImportExportViewController: UIViewController {
     
     // share system button
     @IBAction func exportShareButton(_ sender: Any) {
-        
         os_log("ImportExportViewController exportShareButton", log: Log.viewcontroller, type: .info)
         
         let url = exportToFileURL()

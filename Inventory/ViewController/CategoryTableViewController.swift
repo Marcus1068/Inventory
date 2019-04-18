@@ -90,20 +90,17 @@ class CategoryTableViewController: UITableViewController {
         
         var result : Bool = false
         // Declare Alert
-        let title = NSLocalizedString("Confirm", comment: "Confirm")
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
-        let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: Global.confirm, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let okMsg = NSLocalizedString("OK", comment: "OK")
-        let ok = UIAlertAction(title: okMsg, style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //print("Ok button click...")
             result = true
         })
         
         // Create Cancel button with action handlder
-        let cancelMsg = NSLocalizedString("Cancel", comment: "Cancel")
-        let cancel = UIAlertAction(title: cancelMsg, style: .cancel) { (action) -> Void in
+        let cancel = UIAlertAction(title: Global.cancel, style: .cancel) { (action) -> Void in
             result = false
             //print("Cancel button click...")
         }
@@ -130,13 +127,11 @@ class CategoryTableViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let delete = NSLocalizedString("Delete", comment: "Delete")
-        let DeleteAction = UIAlertAction(title: delete, style: .destructive){ (action:UIAlertAction) in
+        let DeleteAction = UIAlertAction(title: Global.delete, style: .destructive){ (action:UIAlertAction) in
             _ = CoreDataHandler.deleteCategory(category: category)
         }
         
-        let cancelMsg = NSLocalizedString("Cancel", comment: "Cancel")
-        let CancelAction = UIAlertAction(title: cancelMsg, style: .cancel, handler: nil) // will do nothing
+        let CancelAction = UIAlertAction(title: Global.cancel, style: .cancel, handler: nil) // will do nothing
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)

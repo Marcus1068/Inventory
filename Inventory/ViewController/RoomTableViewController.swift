@@ -92,20 +92,17 @@ class RoomTableViewController: UITableViewController {
         
         var result : Bool = false
         // Declare Alert
-        let confirm = NSLocalizedString("Confirm", comment: "Confirm")
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
-        let dialogMessage = UIAlertController(title: confirm, message: message, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: Global.confirm, message: message, preferredStyle: .alert)
         
         // Create OK button with action handler
-        let msgOK = NSLocalizedString("OK", comment: "OK")
-        let ok = UIAlertAction(title: msgOK, style: .destructive, handler: { (action) -> Void in
+        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
             //print("Ok button click...")
             result = true
         })
         
         // Create Cancel button with action handlder
-        let msgCancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let cancel = UIAlertAction(title: msgCancel, style: .cancel) { (action) -> Void in
+        let cancel = UIAlertAction(title: Global.cancel, style: .cancel) { (action) -> Void in
             result = false
             //print("Cancel button click...")
         }
@@ -131,13 +128,11 @@ class RoomTableViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let delete = NSLocalizedString("Delete", comment: "Delete")
-        let DeleteAction = UIAlertAction(title: delete, style: .destructive){ (action:UIAlertAction) in
+        let DeleteAction = UIAlertAction(title: Global.delete, style: .destructive){ (action:UIAlertAction) in
             _ = CoreDataHandler.deleteRoom(room: room)
         }
         
-        let cancel = NSLocalizedString("Cancel", comment: "Cancel")
-        let CancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil) // will do nothing
+        let CancelAction = UIAlertAction(title: Global.cancel, style: .cancel, handler: nil) // will do nothing
         
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)

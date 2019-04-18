@@ -26,6 +26,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
     @IBOutlet weak var generatePDFButton: UIButton!
     
+    @IBOutlet weak var tapToGenerateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
     // get all detail infos
@@ -127,6 +128,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         navigationController?.navigationBar.prefersLargeTitles = true
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
+        
+        self.tapToGenerateLabel.text = NSLocalizedString("Tap Generate PDF to get a new report", comment: "Tap Generate PDF to get a new report")
         
         let segmentDinA4 = NSLocalizedString("DIN A4", comment: "DIN A4")
         let segmentUsLetter = NSLocalizedString("US Letter", comment: "US Letter")

@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import UserNotifications
 import os
+import LocalAuthentication
 
 class Global: NSObject {
     
@@ -69,6 +70,7 @@ class Global: NSObject {
         return languageCode!
     }
     
+    // MARK: - helper functions
     // sending a local notification
     
     /// send a local notification (does not require server)
@@ -110,6 +112,7 @@ class Global: NSObject {
         return UUID()
     }
     
+    // MARK: compute functions
     // get min and max from Int array
     class func minMax(array: [Int]) -> (min: Int, max: Int)? {
         if array.isEmpty { return nil }
@@ -123,6 +126,52 @@ class Global: NSObject {
             }
         }
         return (currentMin, currentMax)
+    }
+    
+    // alter dialog - must be in a view controller class
+    class func showAlertController(_ message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Touch ID auth
+    // touch id support
+    // remove alert functions after test
+    // returns true if auth did work, false otherwise
+    class func authWithTouchID(_ sender: Any) -> Bool{
+        // Get the authentication context from the Local Authentication framework
+        let context = LAContext()
+        var error: NSError?
+        var successFlag : Bool = false
+        
+        // The canEvaluatePolicy method checks if Touch ID is available on the device
+        // check if Touch ID is available
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // The policy is evaluated where the third parameter is a completion handler block.
+            let reason = NSLocalizedString("Authenticate with Touch ID", comment: "Authenticate with Touch ID")
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply:
+                {(success, error) in
+                    // An Alert message is shown wether the Touch ID authentication succeeded or not
+                    if success {
+                        self.showAlertController("Touch ID Authentication Succeeded")
+                        os_log("Global authWithTouchID: touch ID Authentication succeeded", log: Log.viewcontroller, type: .info)
+                        
+                        successFlag = true
+                    }
+                    else {
+                        self.showAlertController("Touch ID Authentication Failed")
+                        os_log("Global authWithTouchID: touch ID Authentication failed", log: Log.viewcontroller, type: .error)
+                    }
+            })
+        }
+            // If Touch ID is not available an Alert message is shown.
+        else {
+            showAlertController("Touch ID not available")
+            os_log("Global authWithTouchID: touch ID not available", log: Log.viewcontroller, type: .error)
+        }
+        
+        return successFlag
     }
 /*
     // fade in UI control

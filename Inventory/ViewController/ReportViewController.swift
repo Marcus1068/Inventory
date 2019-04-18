@@ -26,6 +26,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
     @IBOutlet weak var generatePDFButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // get all detail infos
     var rooms : [Room] = []
@@ -105,9 +106,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        
+        // https://medium.com/@luisfmachado/uiscrollview-autolayout-on-a-storyboard-a-step-by-step-guide-15bd67ee79e9
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+500)
+        
+        
+        
         generatePDFButton.setTitle(NSLocalizedString("Generate PDF", comment: "Generate PDF"), for: .normal)
         
-        all = NSLocalizedString("All", comment: "All")
+        all = Global.all
         
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles

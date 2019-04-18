@@ -628,7 +628,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paper_width, height: paper_height), format: format)
         
         let dateformatter = DateFormatter()
-        
+        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
         dateformatter.dateStyle = DateFormatter.Style.short
         
         dateformatter.timeStyle = DateFormatter.Style.short

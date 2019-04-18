@@ -154,7 +154,14 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             
             // set timestamp label
             let msg = NSLocalizedString("Created at: ", comment: "Created at: ")
-            timeStampLabel.text = msg + (currentInventory?.timeStamp?.toString(withFormat: "MM/dd/yy"))!   // FIXME needs to change with US/UK etc.
+            
+            let dateformatter = DateFormatter()
+            dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+            dateformatter.dateStyle = DateFormatter.Style.short
+            dateformatter.timeStyle = DateFormatter.Style.short
+            let myDate = dateformatter.string(from: currentInventory!.timeStamp! as Date)
+            
+            timeStampLabel.text = msg + " " + myDate
         }
         else    // add new inventory
         {
@@ -191,9 +198,15 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             currentInventory?.inventoryOwner = owners[0]
             
             // set timestamp label
-            let today = Date()
             let msg = NSLocalizedString("Creating: ", comment: "Creating: ")
-            timeStampLabel.text = msg + today.toString(withFormat: "MM/dd/yy")  // FIXME hardcoded date format
+            
+            let dateformatter = DateFormatter()
+            dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+            dateformatter.dateStyle = DateFormatter.Style.short
+            dateformatter.timeStyle = DateFormatter.Style.short
+            let myDate = dateformatter.string(from: Date())
+            
+            timeStampLabel.text = msg + " " + myDate
         }
         
         // focus on first text field
@@ -623,6 +636,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // MARK: pdf handling
     // display pdf file from chosen URL
     func pdfDisplay(file: URL){
+        os_log("InventoryEditViewController pdfDisplay", log: Log.viewcontroller, type: .info)
+        
         if let pdfDocument = PDFDocument(url: file) {
             pdfView.autoScales = true
             pdfView.displayMode = .singlePageContinuous
@@ -636,22 +651,21 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         }
     }
     
-    // give filename based on current date
+    // give filename based on current date, independent of current locale
     func generateFilename(invname: String) -> String{
+        os_log("InventoryEditViewController generateFilename", log: Log.viewcontroller, type: .info)
         
-        let date :NSDate = NSDate()
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+        dateformatter.dateStyle = DateFormatter.Style.short
         
-        let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "yyyy-MM-dd'_'HH:mm:ss"
+        dateformatter.timeStyle = DateFormatter.Style.short
         
-        dateFormatter.dateFormat = "yyyy-MM-dd'_'HH_mm_ss"      // FIXME hard coded date format
+        let now = dateformatter.string(from: Date())
         
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")! as TimeZone
-        
-        let imageName = invname + "_" + "\(dateFormatter.string(from: date as Date))"
+        let imageName = invname + "_" + now
         
         return imageName
-        
     }
     
 /*

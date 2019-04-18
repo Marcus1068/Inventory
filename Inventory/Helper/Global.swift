@@ -53,7 +53,21 @@ class Global: NSObject {
     
     //User region setting return
     static let locale = Locale.current
+    
+    //Returns true if the locale uses the metric system (Note: Only three countries do not use the metric system: the US, Liberia and Myanmar.)
+    static let isMetric = locale.usesMetricSystem
+    
+    //Returns the currency code of the locale. For example, for “zh-Hant-HK”, returns “HKD”.
+    static let currencyCode  = locale.currencyCode
+    
+    //Returns the currency symbol of the locale. For example, for “zh-Hant-HK”, returns “HK$”.
     static let currencySymbol = locale.currencySymbol
+    
+    static let languageCode = locale.languageCode
+    
+    class func currentLocaleForDate() -> String{
+        return languageCode!
+    }
     
     // sending a local notification
     

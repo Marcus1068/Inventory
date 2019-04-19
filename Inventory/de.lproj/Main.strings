@@ -314,7 +314,7 @@
 "u8R-Gv-g47.text" = "Raum:";
 
 /* Class = "UINavigationItem"; title = "Import/Export CVS and PDF"; ObjectID = "uAR-MY-Vyf"; */
-"uAR-MY-Vyf.title" = "Import/Export CVS und PDF";
+"uAR-MY-Vyf.title" = "Import/Export CVS";
 
 /* Class = "UITableViewSection"; headerTitle = "Inventory"; ObjectID = "v9W-KQ-FRH"; */
 "v9W-KQ-FRH.headerTitle" = "Inventar";
@@ -374,5 +374,5 @@
 "yYm-0Z-sNf.text" = "Eigentümer";
 
 /* Class = "UILabel"; text = "Export your data to the file system either as csv file or PDF file"; ObjectID = "z5u-gb-85Y"; */
-"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als csv Datei oder PDF Datei";
+"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als CSV Datei";
 

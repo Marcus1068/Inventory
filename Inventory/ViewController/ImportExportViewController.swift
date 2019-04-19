@@ -11,8 +11,9 @@ import UIKit
 import CoreData
 import PDFKit
 import os
+import MessageUI
 
-class ImportExportViewController: UIViewController {
+class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -20,11 +21,14 @@ class ImportExportViewController: UIViewController {
     @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var exportTextView: UITextView!
     @IBOutlet weak var exportLabel: UILabel!
-    @IBOutlet weak var exportCVSBarButton: UIBarButtonItem!
     
-    @IBOutlet weak var exportPDFBarButton: UIBarButtonItem!
+    @IBOutlet weak var exportCVSButton: UIButton!
+    
+    @IBOutlet weak var shareBarButton: UIBarButtonItem!
     
     @IBOutlet weak var importedRowsLabel: UILabel!
+    
+    var url : URL?
     
     // MARK: view controller stuff
     override func viewDidLoad() {
@@ -44,9 +48,9 @@ class ImportExportViewController: UIViewController {
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
         
-        //self.navigationController?.title = "Export to CVS/PDF"
+        //self.title = NSLocalizedString("Import/Export CSV", comment: "Import/Export CSV")
+        
         //self.navigationItem.title = "Export to CVS/PDF"
-        //self.navbar.bar
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -104,9 +108,11 @@ class ImportExportViewController: UIViewController {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
-            let cvsFileName = Global.cvsFile
+            let cvsFileName = Global.csvFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
+            self.url = pathURLcvs
+            
             let exportDocPath = pathURLcvs.absoluteString
             var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
             
@@ -207,7 +213,7 @@ class ImportExportViewController: UIViewController {
         os_log("ImportExportViewController exportBarButtonItem", log: Log.viewcontroller, type: .info)
         
         let title = NSLocalizedString("Export", comment: "Export")
-        return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(exportCVSButton(_:)))
+        return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(shareButton(_:)))
     }
     
     // show message where file can be located in file system
@@ -234,8 +240,21 @@ class ImportExportViewController: UIViewController {
        // var context: NSManagedObjectContext
        // context = CoreDataHandler.getContext()
         
-        let data = readDataFromCSV(fileName: file)
-        let csvRows = csvImportParser(data: data!)
+        guard let data = readDataFromCSV(fileName: file) else{
+            // no file to import
+            let message = NSLocalizedString("Importing CSV file", comment: "Importing CSV file")
+            let title = NSLocalizedString("No CSV file to import found", comment: "No CSV file to import found")
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: Global.dismiss, style: .default)
+            alertController.addAction(dismissAction)
+            
+            present(alertController, animated: true)
+            
+            os_log("ImportExportViewController importCVSFile: no file to import available", log: Log.viewcontroller, type: .info)
+            return
+        }
+        
+        let csvRows = csvImportParser(data: data)
         
         
         // if there is data, ignore first line since this contains the column names
@@ -344,8 +363,13 @@ class ImportExportViewController: UIViewController {
                 // assign image from directory
                 if inventory.imageFileName! != ""{
                     let image = getSavedImage(named: inventory.imageFileName!)
-                    let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
-                    inventory.image = imageData
+                    if image != nil{
+                        let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
+                        inventory.image = imageData
+                    }
+                    else{
+                        inventory.image = nil
+                    }
                 }
                 else{
                     // default image if no image was chosen before
@@ -400,18 +424,20 @@ class ImportExportViewController: UIViewController {
     
     // get jpeg image from file directory
     // FIXME must change to other directory
+    // return NIL if no file exists
     func getSavedImage(named: String) -> UIImage? {
         os_log("ImportExportViewController getSavedImage", log: Log.viewcontroller, type: .info)
         
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
             return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
         }
+        
         return nil
     }
     
     // read file as string
     // FIXME change directory
-    func readDataFromCSV(fileName: String) -> String!{
+    func readDataFromCSV(fileName: String) -> String?{
         os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
         
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -425,6 +451,7 @@ class ImportExportViewController: UIViewController {
         } catch {
             print("File import Read Error for cvs file \(pathURLcvs.absoluteString)", error)
             os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .error)
+            
             return nil
         }
     }
@@ -494,8 +521,8 @@ class ImportExportViewController: UIViewController {
     
     // MARK: - button actions
     
-    @IBAction func exportCVSButton(_ sender: Any) {
-        os_log("ImportExportViewController exportCVSButton", log: Log.viewcontroller, type: .info)
+    @IBAction func exportCVSButtonAction(_ sender: UIButton) {
+        os_log("ImportExportViewController exportCVSButtonAction", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -508,9 +535,10 @@ class ImportExportViewController: UIViewController {
     }
     
     // share system button
-    @IBAction func exportShareButton(_ sender: Any) {
+    @IBAction func shareButton(_ sender: Any) {
         os_log("ImportExportViewController exportShareButton", log: Log.viewcontroller, type: .info)
         
+        /*
         let url = exportToFileURL()
         
         // fixme translation needed???
@@ -521,7 +549,8 @@ class ImportExportViewController: UIViewController {
             popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
         }
         present(activityViewController, animated: true, completion: nil)
-        
+        */
+        sendCSVEmail(path: self.url)
     }
     
     
@@ -536,7 +565,72 @@ class ImportExportViewController: UIViewController {
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
-        importCVSFile(file: Global.cvsFile)
+        importCVSFile(file: Global.csvFile)
         
     }
+    
+    // MARK: - email
+    /// Prepares mail sending controller
+    ///
+    /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    /// - Returns: mailComposerVC
+    
+    func sendCSVEmail(path: URL?){
+        // hide keyboard
+        self.view.endEditing(true)
+        
+        let mailComposeViewController = configuredMailComposeViewController(url: path)
+        
+        if MFMailComposeViewController.canSendMail()
+        {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        }
+        else
+        {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    func configuredMailComposeViewController(url: URL?) -> MFMailComposeViewController
+    {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setToRecipients([Global.emailAdr])
+        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + Global.support)
+        let msg = NSLocalizedString("My CSV file", comment: "My CSV file")
+        mailComposerVC.setMessageBody(msg, isHTML: false)
+        
+        // attachment
+        if url != nil{
+            do{
+                let attachmentData = try Data(contentsOf: url!)
+                mailComposerVC.addAttachmentData(attachmentData, mimeType: "application/csv", fileName: Global.csvFile)
+            }
+            catch let error {
+                os_log("ImportExportViewController email attachement error: %s", log: Log.viewcontroller, type: .error, error.localizedDescription)
+            }
+        }
+        
+        return mailComposerVC
+    }
+    
+    /// show error if mail sending does not work
+    func showSendMailErrorAlert()
+    {
+        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+        //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")
+        
+        //alert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
 }

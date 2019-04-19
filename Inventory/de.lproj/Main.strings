@@ -8,7 +8,7 @@
 "1x4-xS-Tgd.title" = "Objekt";
 
 /* Class = "UINavigationItem"; title = "Owner"; ObjectID = "2Dn-lA-ivG"; */
-"2Dn-lA-ivG.title" = "Besitzer";
+"2Dn-lA-ivG.title" = "Eigentümer";
 
 /* Class = "UITabBarItem"; title = "About Inventory"; ObjectID = "2Ep-nZ-I2N"; */
 "2Ep-nZ-I2N.title" = "Über Inventory";
@@ -17,7 +17,7 @@
 "2TE-eQ-5Wq.normalTitle" = "Mache Foto...";
 
 /* Class = "UILabel"; text = "Owners"; ObjectID = "4CK-9n-Mwm"; */
-"4CK-9n-Mwm.text" = "Besitzer";
+"4CK-9n-Mwm.text" = "Eigentümer";
 
 /* Class = "UINavigationItem"; title = "My Brands"; ObjectID = "4qt-wy-VB5"; */
 "4qt-wy-VB5.title" = "Meine Marken";
@@ -53,7 +53,7 @@
 "8f4-H8-n7a.text" = "Räume";
 
 /* Class = "UILabel"; text = "Filter by Owner:"; ObjectID = "8qF-vh-hOd"; */
-"8qF-vh-hOd.text" = "Filter nach Besitzer:";
+"8qF-vh-hOd.text" = "Filter nach Eigentümer:";
 
 /* Class = "UITableViewSection"; headerTitle = "Items"; ObjectID = "9LV-2w-smf"; */
 "9LV-2w-smf.headerTitle" = "Objekte";
@@ -143,7 +143,7 @@
 "iMl-4T-cI9.segmentTitles[0]" = "Objekt";
 
 /* Class = "UISegmentedControl"; iMl-4T-cI9.segmentTitles[1] = "Owner"; ObjectID = "iMl-4T-cI9"; */
-"iMl-4T-cI9.segmentTitles[1]" = "Besitzer";
+"iMl-4T-cI9.segmentTitles[1]" = "Eigentümer";
 
 /* Class = "UISegmentedControl"; iMl-4T-cI9.segmentTitles[2] = "Category"; ObjectID = "iMl-4T-cI9"; */
 "iMl-4T-cI9.segmentTitles[2]" = "Kategorie";
@@ -158,7 +158,7 @@
 "iSd-0j-NDU.normalTitle" = "Feedback";
 
 /* Class = "UILabel"; text = "Owner Name:"; ObjectID = "Jdc-4Q-qWy"; */
-"Jdc-4Q-qWy.text" = "Besitzer:";
+"Jdc-4Q-qWy.text" = "Eigentümer:";
 
 /* Class = "UIButton"; normalTitle = "Generate PDF "; ObjectID = "jkP-ES-Wq8"; */
 "jkP-ES-Wq8.normalTitle" = "Erzeuge PDF";
@@ -188,10 +188,10 @@
 "Kb0-xm-16w.text" = "Kategorie:";
 
 /* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
-"keT-dq-ecZ.normalTitle" = "Besitzer...";
+"keT-dq-ecZ.normalTitle" = "Eigentümer...";
 
 /* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos..."; ObjectID = "kmW-Er-gZy"; */
-"kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar...";
+"kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar";
 
 /* Class = "UIButton"; normalTitle = "Room..."; ObjectID = "Kpe-WT-hVT"; */
 "Kpe-WT-hVT.normalTitle" = "Raum...";
@@ -245,13 +245,13 @@
 "OXg-EA-537.title" = "Titel";
 
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
-"PHQ-NS-mde.text" = "Hinweis: Ändern des Besitzernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
+"PHQ-NS-mde.text" = "Hinweis: Ändern des Eigentümernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
 
 /* Class = "UITabBarItem"; title = "Reports"; ObjectID = "PmY-Hp-6ai"; */
 "PmY-Hp-6ai.title" = "Berichte";
 
 /* Class = "UINavigationItem"; title = "My Owners"; ObjectID = "PRz-eY-S4p"; */
-"PRz-eY-S4p.title" = "Meine Besitzer";
+"PRz-eY-S4p.title" = "Meine Eigentümer";
 
 /* Class = "UISegmentedControl"; QaD-2h-ipL.segmentTitles[0] = "First"; ObjectID = "QaD-2h-ipL"; */
 "QaD-2h-ipL.segmentTitles[0]" = "First";
@@ -260,7 +260,7 @@
 "QaD-2h-ipL.segmentTitles[1]" = "Second";
 
 /* Class = "UILabel"; text = "Owners"; ObjectID = "qCh-w3-5pb"; */
-"qCh-w3-5pb.text" = "Besitzer";
+"qCh-w3-5pb.text" = "Eigentümer";
 
 /* Class = "UILabel"; text = "Paper format:"; ObjectID = "QLh-FY-ObP"; */
 "QLh-FY-ObP.text" = "Papierformat:";
@@ -290,7 +290,7 @@
 "SHR-4B-47W.text" = "Kategorien";
 
 /* Class = "UILabel"; text = "Filter by owner:"; ObjectID = "sXd-j7-KIs"; */
-"sXd-j7-KIs.text" = "Filter nach Besitzer:";
+"sXd-j7-KIs.text" = "Filter nach Eigentümer:";
 
 /* Class = "UILabel"; text = "User name:"; ObjectID = "SZt-3J-ob8"; */
 "SZt-3J-ob8.text" = "Benutzername:";
@@ -338,7 +338,7 @@
 "x4S-E8-XUR.title" = "Berichte";
 
 /* Class = "UITextField"; placeholder = "Owner name"; ObjectID = "xgQ-W4-Tf4"; */
-"xgQ-W4-Tf4.placeholder" = "Besitzer";
+"xgQ-W4-Tf4.placeholder" = "Eigentümer";
 
 /* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[0] = "0"; ObjectID = "XWi-74-Mt1"; */
 "XWi-74-Mt1.segmentTitles[0]" = "0";
@@ -365,13 +365,13 @@
 "y1w-k5-zTe.text" = "Diese Information wird beim Ausdrucken von Berichten genutzt";
 
 /* Class = "UILabel"; text = "Owner:"; ObjectID = "Y6f-Ar-xvF"; */
-"Y6f-Ar-xvF.text" = "Besitzer:";
+"Y6f-Ar-xvF.text" = "Eigentümer:";
 
 /* Class = "UIButton"; normalTitle = "Choose Image..."; ObjectID = "YpX-aZ-6kD"; */
 "YpX-aZ-6kD.normalTitle" = "Wähle Bild...";
 
 /* Class = "UILabel"; text = "owner"; ObjectID = "yYm-0Z-sNf"; */
-"yYm-0Z-sNf.text" = "Besitzer";
+"yYm-0Z-sNf.text" = "Eigentümer";
 
 /* Class = "UILabel"; text = "Export your data to the file system either as csv file or PDF file"; ObjectID = "z5u-gb-85Y"; */
 "z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als csv Datei oder PDF Datei";

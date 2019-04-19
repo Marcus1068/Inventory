@@ -80,7 +80,7 @@
 "Choose your category" = "Wählen Sie die Kategorie";
 
 /* Choose your owner */
-"Choose your owner" = "Wählen Sie den Besitzer";
+"Choose your owner" = "Wählen Sie den Eigentümer";
 
 /* Choose your room */
 "Choose your room" = "Wählen Sie den Raum";
@@ -257,7 +257,7 @@
 "Please choose a different category name" = "Bitte wählen Sie eine andere Kategorie";
 
 /* Please choose a different owner name */
-"Please choose a different owner name" = "Bitte wählen Sie einen anderen Besitzer";
+"Please choose a different owner name" = "Bitte wählen Sie einen anderen Eigentümer";
 
 /* Please choose a different room name */
 "Please choose a different room name" = "Bitte wählen Sie einen anderen Raum";

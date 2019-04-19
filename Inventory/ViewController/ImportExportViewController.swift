@@ -71,6 +71,8 @@ class ImportExportViewController: UIViewController {
     */
     
     private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
+        os_log("ImportExportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        
         let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         fetchRequest.fetchBatchSize = 20
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
@@ -84,6 +86,8 @@ class ImportExportViewController: UIViewController {
     // link between cvs and external jpeg, pdf files by file name
     func exportCSVFile()
     {
+        os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
+        
         navigationItem.leftBarButtonItem = activityIndicatorBarButtonItem()
        
         let container = CoreDataHandler.persistentContainer()
@@ -106,15 +110,15 @@ class ImportExportViewController: UIViewController {
             let exportDocPath = pathURLcvs.absoluteString
             var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
             
-            var x : Int = 0
+            var progress : Int = 0
             
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
                 
-                x += 1
+                progress += 1
                 DispatchQueue.main.async {
                     // update progress bar UI
-                    let progress = Float(x) / Float(results.count)
+                    let progress = Float(progress) / Float(results.count)
                     self.progressView.setProgress(progress, animated: true)
                     self.progressLabel.text = String(progress * 100) + " %"
                 }
@@ -190,6 +194,8 @@ class ImportExportViewController: UIViewController {
     }
     
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
+        os_log("ImportExportViewController activityIndicatorBarButtonItem", log: Log.viewcontroller, type: .info)
+        
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         activityIndicator.startAnimating()
@@ -198,12 +204,16 @@ class ImportExportViewController: UIViewController {
     }
     
     func exportBarButtonItem() -> UIBarButtonItem {
+        os_log("ImportExportViewController exportBarButtonItem", log: Log.viewcontroller, type: .info)
+        
         let title = NSLocalizedString("Export", comment: "Export")
         return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(exportCVSButton(_:)))
     }
     
     // show message where file can be located in file system
     func showExportFinishedAlertView(_ exportPath: String) {
+        os_log("ImportExportViewController showExportFinishedAlertView", log: Log.viewcontroller, type: .info)
+        
         let message = NSLocalizedString("The exported CSV file can be found here: ", comment: "The exported CSV file can be found here: ") + "\(exportPath)"
         
         let title = NSLocalizedString("Export Finished", comment: "Export Finished")
@@ -218,6 +228,7 @@ class ImportExportViewController: UIViewController {
     
     // makin import loop
     func importCVSFile(file: String){
+        os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
        // var context: NSManagedObjectContext
@@ -238,7 +249,7 @@ class ImportExportViewController: UIViewController {
                 
                 var context: NSManagedObjectContext
                 context = CoreDataHandler.getContext()
-                var inventory = Inventory(context: context)
+                let inventory = Inventory(context: context)
                 
                 // check if row is complete or if inventory name not set
                 if csvRows[x][0].count == 0{

@@ -404,6 +404,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         if segue.identifier == "imageSegue" {
             let destination = segue.destination as! ImageViewController
             destination.image = imageView.image
+            destination.titleForImage = textfieldInventoryName.text
         }
     }
     

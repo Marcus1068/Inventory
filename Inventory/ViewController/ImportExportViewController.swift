@@ -12,8 +12,9 @@ import CoreData
 import PDFKit
 import os
 import MessageUI
+import MobileCoreServices
 
-class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate {
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -558,14 +559,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBAction func importFromCVSFileButton(_ sender: Any) {
         os_log("ImportExportViewController importFromCVSFileButton", log: Log.viewcontroller, type: .info)
         
-        importedRowsLabel.isHidden = true
-        importedRowsLabel.text = ""
-        
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = false
-        progressLabel.text = "0 %"
-        
-        importCVSFile(file: Global.csvFile)
+        openFilesApp()
         
     }
     
@@ -576,6 +570,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     /// - Returns: mailComposerVC
     
     func sendCSVEmail(path: URL?){
+        
+        os_log("ImportExportViewController sendCSVEmail", log: Log.viewcontroller, type: .info)
+        
         // hide keyboard
         self.view.endEditing(true)
         
@@ -633,4 +630,53 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         controller.dismiss(animated: true, completion: nil)
     }
 
+    
+    // MARK: - document picker of files app
+    
+    func openFilesApp(){
+        os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
+        
+        let controller = UIDocumentPickerViewController(
+            documentTypes: [String(kUTTypeCommaSeparatedText)], // choose your desired documents the user is allowed to select
+            in: .import // choose your desired UIDocumentPickerMode
+        )
+        controller.delegate = self
+        if #available(iOS 11.0, *) {
+            controller.allowsMultipleSelection = false
+        }
+        // e.g. present UIDocumentPickerViewController via your current UIViewController
+        present(
+            controller,
+            animated: true,
+            completion: nil
+        )
+    }
+    /*
+    @available(iOS 11.0, *)
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        // do something with the selected documents
+        os_log("ImportExportViewController multi documentPicker", log: Log.viewcontroller, type: .info)
+    }*/
+    
+    // single document selection
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        // do something with the selected document
+        os_log("ImportExportViewController single documentPicker", log: Log.viewcontroller, type: .info)
+        
+        importedRowsLabel.isHidden = true
+        importedRowsLabel.text = ""
+        
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = false
+        progressLabel.text = "0 %"
+        importCVSFile(file: url.lastPathComponent)
+        //print("BLA" + " " + url.lastPathComponent)
+        //print(url.debugDescription)
+    }
+    
+    // cancel opening/choosing files
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
+    }
+    
 }

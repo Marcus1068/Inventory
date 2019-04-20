@@ -15,6 +15,10 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>AppIcon</string>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>Inventory3.png</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>Inventory Document</string>
 			<key>CFBundleTypeRole</key>
@@ -89,20 +93,42 @@
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.text</string>
+				<string>public.csv</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Inventory Document</string>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>Inventory3.png</string>
+			</array>
 			<key>UTTypeIdentifier</key>
 			<string>de.marcus-deuss.inv</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
-				<string>inv</string>
+				<string>csv</string>
 				<key>public.mime-type</key>
-				<string>application/inventory</string>
+				<string>text/csv</string>
 			</dict>
 		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.csv</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Inventory Document</string>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>Inventory3.png</string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>de.marcus-deuss.inv</string>
+		</dict>
+		<dict/>
 	</array>
 </dict>
 </plist>

@@ -15,6 +15,7 @@ import os
 class ImageViewController: UIViewController {
 
     var image : UIImage?
+    var titleForImage: String?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -32,7 +33,7 @@ class ImageViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.title = NSLocalizedString("Show Image", comment: "Show Image")
+        self.title = titleForImage // NSLocalizedString("Show Image", comment: "Show Image")
         
         imageView.image = image
         

@@ -596,7 +596,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         //mailComposerVC.setToRecipients([Global.emailAdr])
-        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + Global.support)
+        mailComposerVC.setSubject(NSLocalizedString("My CSV file", comment: "My CSV file"))
         let msg = NSLocalizedString("My CSV file", comment: "My CSV file")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         
@@ -604,7 +604,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         if url != nil{
             do{
                 let attachmentData = try Data(contentsOf: url!)
-                mailComposerVC.addAttachmentData(attachmentData, mimeType: "application/csv", fileName: Global.csvFile)
+                mailComposerVC.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: Global.csvFile)
             }
             catch let error {
                 os_log("ImportExportViewController email attachement error: %s", log: Log.viewcontroller, type: .error, error.localizedDescription)

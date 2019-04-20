@@ -52,6 +52,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //self.title = NSLocalizedString("Import/Export CSV", comment: "Import/Export CSV")
         
         //self.navigationItem.title = "Export to CVS/PDF"
+        
+        // if no export happended disable share button because otherwise app crashes
+        shareBarButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +66,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         self.importedRowsLabel.isHidden = true
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
+        
     }
     
     /*
@@ -533,6 +537,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressLabel.text = "0 %"
         
         exportCSVFile()
+        
+        shareBarButton.isEnabled = true
     }
     
     // share system button

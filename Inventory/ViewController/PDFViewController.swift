@@ -12,9 +12,13 @@ import os
 
 class PDFViewController: UIViewController {
 
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    
     // get pdf file from calling view controller
     weak var currentPDF: PDFView?
     var currentTitle: String?
+    var currentPath: URL?
     
     @IBOutlet weak var pdfView: PDFView!
     
@@ -38,4 +42,26 @@ class PDFViewController: UIViewController {
         pdfView.displayDirection = .vertical
         pdfView.document = currentPDF?.document
     }
+    
+    // Mark: - UI actions
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .info)
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: currentPath!.path) {
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [currentPath!], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .error)
+            
+            let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
+            let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(defaultAction)
+            navigationController!.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
 }

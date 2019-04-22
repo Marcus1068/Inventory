@@ -36,7 +36,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -65,7 +65,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -123,7 +123,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -156,7 +156,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -185,7 +185,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -214,7 +214,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -243,7 +243,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
-                                                    <rect key="frame" x="338" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="352" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -295,7 +295,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYe-ZD-Pde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2665.217391304348" y="1333.9285714285713"/>
+            <point key="canvasLocation" x="3575.36231884058" y="1333.9285714285713"/>
         </scene>
         <!--My Categories-->
         <scene sceneID="zcT-nP-Nf0">
@@ -420,7 +420,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glQ-3n-nXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3606" y="635"/>
+            <point key="canvasLocation" x="4515.9420289855079" y="634.82142857142856"/>
         </scene>
         <!--Category-->
         <scene sceneID="t1G-7K-FnA">
@@ -987,7 +987,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="he6-qH-F6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5201" y="853"/>
+            <point key="canvasLocation" x="6110.144927536232" y="852.45535714285711"/>
         </scene>
         <!--Title-->
         <scene sceneID="9Sf-GY-taT">
@@ -1386,24 +1386,24 @@
                         <outlet property="textfieldSerialNumber" destination="wtl-dz-1Ld" id="mXO-pH-TaD"/>
                         <outlet property="timeStampLabel" destination="5Ug-AA-mAk" id="5oV-Ef-IFw"/>
                         <outlet property="warrantySegmentControl" destination="XWi-74-Mt1" id="NwT-7V-LYk"/>
-                        <segue destination="qre-Fw-Phh" kind="show" identifier="pdfSegue" id="2I6-Yp-giQ"/>
+                        <segue destination="Wxf-xK-LFj" kind="show" identifier="pdfSegue" id="2I6-Yp-giQ"/>
                         <segue destination="wSV-fC-zHD" kind="show" identifier="imageSegue" id="wdN-WJ-sqU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOg-6I-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3200.0000000000005" y="-105.13392857142857"/>
+            <point key="canvasLocation" x="4110.144927536232" y="-105.13392857142857"/>
         </scene>
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="34" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="122" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1419,29 +1419,37 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="20" y="34" width="374" height="683"/>
+                                <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kj2-JZ-s03" firstAttribute="bottom" secondItem="22o-iB-LVa" secondAttribute="bottom" constant="8" id="2Nf-as-I2t"/>
+                            <constraint firstItem="kj2-JZ-s03" firstAttribute="bottom" secondItem="22o-iB-LVa" secondAttribute="bottom" id="2Nf-as-I2t"/>
                             <constraint firstItem="22o-iB-LVa" firstAttribute="trailing" secondItem="H4u-nJ-iBi" secondAttribute="trailingMargin" id="97T-st-gMs"/>
                             <constraint firstItem="0hP-bH-xN4" firstAttribute="leading" secondItem="kj2-JZ-s03" secondAttribute="leading" id="cXk-tT-5mv"/>
                             <constraint firstItem="0hP-bH-xN4" firstAttribute="centerX" secondItem="22o-iB-LVa" secondAttribute="centerX" id="gfb-wJ-dHq"/>
                             <constraint firstItem="0hP-bH-xN4" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" constant="34" id="gtL-Tt-Yja"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" constant="34" id="kIv-rk-jGK"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" id="kIv-rk-jGK"/>
                             <constraint firstItem="22o-iB-LVa" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leadingMargin" id="oJl-PG-twU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kj2-JZ-s03"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fry-r7-fXO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2Jr-Mm-NlG">
+                            <connections>
+                                <action selector="shareButtonAction:" destination="qre-Fw-Phh" id="00F-Cw-YwZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pdfView" destination="22o-iB-LVa" id="gfE-BN-lHZ"/>
+                        <outlet property="shareButton" destination="2Jr-Mm-NlG" id="V0D-e2-1Az"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ira-px-Vvg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="391"/>
+            <point key="canvasLocation" x="2691" y="520"/>
         </scene>
         <!--Show Image-->
         <scene sceneID="qmC-gY-i0o">
@@ -1499,7 +1507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPY-HM-kbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5145" y="153"/>
+            <point key="canvasLocation" x="6055.072463768116" y="152.67857142857142"/>
         </scene>
         <!--Privacy View Controller-->
         <scene sceneID="Coz-JF-gGN">
@@ -1685,7 +1693,7 @@
             </objects>
             <point key="canvasLocation" x="-288.40579710144931" y="1540.8482142857142"/>
         </scene>
-        <!--Import/Export-->
+        <!--Import/Export CSV-->
         <scene sceneID="mgI-Qm-glO">
             <objects>
                 <viewController id="MUX-Pv-eqU" customClass="ImportExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
@@ -1693,58 +1701,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cad-xq-tCv">
-                                <rect key="frame" x="0.0" y="64" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Import/Export data as CVS" largeTitleDisplayMode="always" id="uAR-MY-Vyf">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="1XM-1s-jLR">
-                                            <connections>
-                                                <action selector="shareButton:" destination="MUX-Pv-eqU" id="uqG-lK-ZWm"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Export your data to the file system as CSV file" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
-                                <rect key="frame" x="20" y="124" width="374" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
+                                <rect key="frame" x="20" y="124" width="374" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="265-ji-6f6">
-                                <rect key="frame" x="20" y="254" width="374" height="122"/>
+                                <rect key="frame" x="20" y="311" width="374" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Export file location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYJ-sB-dHx">
-                                <rect key="frame" x="20" y="225" width="282" height="21"/>
+                                <rect key="frame" x="20" y="282" width="282" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
-                                <rect key="frame" x="20" y="170" width="374" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Export to CSV file..."/>
-                                <connections>
-                                    <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Import your CSV data from the file system" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XG-Gh-KH6">
-                                <rect key="frame" x="20" y="489" width="374" height="51"/>
+                                <rect key="frame" x="20" y="546" width="374" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
-                                <rect key="frame" x="20" y="543" width="374" height="38"/>
+                                <rect key="frame" x="20" y="600" width="374" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Import from CVS file..."/>
@@ -1753,48 +1739,62 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
-                                <rect key="frame" x="20" y="638" width="374" height="24"/>
+                                <rect key="frame" x="20" y="695" width="374" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHW-c0-TOy">
-                                <rect key="frame" x="20" y="589" width="374" height="32"/>
+                                <rect key="frame" x="20" y="646" width="374" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lo5-nO-MVc">
-                                <rect key="frame" x="20" y="681" width="374" height="2"/>
+                                <rect key="frame" x="20" y="738" width="374" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-Yp-eGe">
-                                <rect key="frame" x="20" y="703" width="374" height="21"/>
+                                <rect key="frame" x="20" y="760" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtK-j7-m75">
-                                <rect key="frame" x="20" y="384" width="374" height="97"/>
+                                <rect key="frame" x="20" y="441" width="374" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
+                                <rect key="frame" x="20" y="214" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Export to CSV file..."/>
+                                <connections>
+                                    <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="8NP-bd-ZaX"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Import/Export" image="Export" id="CGe-VZ-Z2L"/>
+                    <navigationItem key="navigationItem" title="Import/Export CSV" id="b9Z-Dy-nn6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="1XM-1s-jLR">
+                            <connections>
+                                <action selector="shareButton:" destination="MUX-Pv-eqU" id="uqG-lK-ZWm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="exportCVSButton" destination="N3h-yS-BT1" id="qXF-OO-vNP"/>
                         <outlet property="exportLabel" destination="DYJ-sB-dHx" id="JOB-mA-AsU"/>
                         <outlet property="exportTextView" destination="265-ji-6f6" id="a6t-lA-cvA"/>
                         <outlet property="importedRowsLabel" destination="oh4-rl-izX" id="pim-lE-hWr"/>
-                        <outlet property="navbar" destination="Cad-xq-tCv" id="GnF-Mc-FYF"/>
                         <outlet property="progressLabel" destination="cZ1-Yp-eGe" id="ndp-4E-mW1"/>
                         <outlet property="progressView" destination="lo5-nO-MVc" id="bS4-aU-TYv"/>
                         <outlet property="shareBarButton" destination="1XM-1s-jLR" id="Um2-uD-ItQ"/>
@@ -1802,7 +1802,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644.92753623188412" y="1540.1785714285713"/>
+            <point key="canvasLocation" x="1700.0000000000002" y="1604.4642857142856"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="yl2-sM-qoP">
@@ -1815,7 +1815,7 @@
                     <connections>
                         <segue destination="jxM-ak-Z6Q" kind="relationship" relationship="viewControllers" id="xpW-og-dnd"/>
                         <segue destination="IbM-Ka-Gqt" kind="relationship" relationship="viewControllers" id="RHg-jD-7Uk"/>
-                        <segue destination="MUX-Pv-eqU" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
+                        <segue destination="edJ-JG-MDw" kind="relationship" relationship="viewControllers" id="mFK-ig-peM"/>
                         <segue destination="iCP-vz-194" kind="relationship" relationship="viewControllers" id="kZk-hl-zvz"/>
                         <segue destination="d6q-eN-5Vr" kind="relationship" relationship="viewControllers" id="kyn-uQ-bcr"/>
                     </connections>
@@ -1845,6 +1845,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5q-YK-cXD">
+                                                <rect key="frame" x="152" y="23" width="155" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="DINA4"/>
+                                                    <segment title="US Letter"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
+                                                </connections>
+                                            </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KrM-2K-XTm">
                                                 <rect key="frame" x="8" y="69" width="180" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1852,13 +1863,19 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter by room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehs-Uu-Z20">
-                                                <rect key="frame" x="8" y="247" width="194" height="21"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iMl-4T-cI9">
+                                                <rect key="frame" x="8" y="103" width="398" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <segments>
+                                                    <segment title="Item"/>
+                                                    <segment title="Owner"/>
+                                                    <segment title="Category"/>
+                                                    <segment title="Room"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="sortOrderSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="QcH-Z9-JJe"/>
+                                                </connections>
+                                            </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter by owner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXd-j7-KIs">
                                                 <rect key="frame" x="7" y="164" width="195" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1888,47 +1905,20 @@
                                                     <action selector="ownersSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="Ixe-UW-SGg"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last generated report:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-ch-75D">
-                                                <rect key="frame" x="8" y="364" width="180" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter by room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehs-Uu-Z20">
+                                                <rect key="frame" x="8" y="247" width="194" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-ES-Wq8">
-                                                <rect key="frame" x="195" y="361" width="219" height="27"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K90-Fm-Q4b">
+                                                <rect key="frame" x="223" y="246" width="114" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <state key="normal" title="Generate PDF ">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="generatePDF:" destination="v2l-5p-iCX" eventType="touchUpInside" id="qJu-OJ-ku0"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-Cl-6oe">
-                                                <rect key="frame" x="-13" y="392" width="439" height="500"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcX-Ar-v2A" customClass="PDFView">
-                                                        <rect key="frame" x="20" y="20" width="399" height="460"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap on generate to get a new report" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn8-ce-jJK">
-                                                                <rect key="frame" x="8" y="8" width="383" height="83"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JuC-eq-fIK">
                                                 <rect key="frame" x="8" y="276" width="398" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1943,37 +1933,48 @@
                                                     <action selector="roomsSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="fdZ-JO-BaA"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5q-YK-cXD">
-                                                <rect key="frame" x="152" y="23" width="155" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="DINA4"/>
-                                                    <segment title="US Letter"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
-                                                </connections>
-                                            </segmentedControl>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iMl-4T-cI9">
-                                                <rect key="frame" x="8" y="103" width="329" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="Item"/>
-                                                    <segment title="Owner"/>
-                                                    <segment title="Category"/>
-                                                    <segment title="Room"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="sortOrderSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="QcH-Z9-JJe"/>
-                                                </connections>
-                                            </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K90-Fm-Q4b">
-                                                <rect key="frame" x="223" y="246" width="114" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current generated report:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-ch-75D">
+                                                <rect key="frame" x="7" y="363" width="207" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jkP-ES-Wq8">
+                                                <rect key="frame" x="223" y="357" width="183" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <state key="normal" title="Generate PDF ">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="generatePDF:" destination="v2l-5p-iCX" eventType="touchUpInside" id="qJu-OJ-ku0"/>
+                                                    <segue destination="qre-Fw-Phh" kind="show" identifier="fullscreenPDF" id="Hqf-sx-Ebe"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-Cl-6oe">
+                                                <rect key="frame" x="8" y="392" width="398" height="500"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcX-Ar-v2A" customClass="PDFView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="480"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap on generate PDF to get a new report" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn8-ce-jJK">
+                                                                <rect key="frame" x="8" y="61" width="383" height="83"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -2025,7 +2026,7 @@
                         <outlet property="shareActionBarButton" destination="JVQ-k1-jrN" id="EPE-2q-imo"/>
                         <outlet property="sortOrderSegment" destination="iMl-4T-cI9" id="87T-Mu-Riv"/>
                         <outlet property="tapToGenerateLabel" destination="Jn8-ce-jJK" id="hPa-AX-Q5U"/>
-                        <segue destination="qre-Fw-Phh" kind="show" identifier="fullscreenPDF" id="bwM-Ip-VbG"/>
+                        <segue destination="Wxf-xK-LFj" kind="show" identifier="" id="bwM-Ip-VbG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPu-Li-ChU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2049,7 +2050,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsE-KL-yNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="1334"/>
+            <point key="canvasLocation" x="2449.275362318841" y="1333.9285714285713"/>
         </scene>
         <!--Inventory-->
         <scene sceneID="my9-ac-fzL">
@@ -2385,6 +2386,43 @@
             </objects>
             <point key="canvasLocation" x="354" y="637"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1ae-W8-IsD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wxf-xK-LFj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h3n-6S-hFd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qre-Fw-Phh" kind="relationship" relationship="rootViewController" id="bcW-4A-k0F"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HA5-3t-o46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1910" y="418"/>
+        </scene>
+        <!--Import/Export-->
+        <scene sceneID="sne-G9-aG5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="edJ-JG-MDw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Import/Export" image="Export" id="CGe-VZ-Z2L"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y75-1X-dbn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MUX-Pv-eqU" kind="relationship" relationship="rootViewController" id="nSo-a0-ueA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ih2-dZ-7iJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="789.85507246376812" y="1604.4642857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Brand Icon" width="30" height="30"/>
@@ -2418,9 +2456,10 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bwM-Ip-VbG"/>
         <segue reference="jjA-ik-3Zw"/>
         <segue reference="vym-Dh-yV8"/>
-        <segue reference="2I6-Yp-giQ"/>
+        <segue reference="Hqf-sx-Ebe"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>

@@ -107,11 +107,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
-        
         // https://medium.com/@luisfmachado/uiscrollview-autolayout-on-a-storyboard-a-step-by-step-guide-15bd67ee79e9
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+500)
-        
-        
         
         generatePDFButton.setTitle(NSLocalizedString("Generate PDF", comment: "Generate PDF"), for: .normal)
         
@@ -151,11 +148,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
-        // no pdf document still
+ /*       // no pdf document still
         if pdfView.document == nil{
             shareActionBarButton.isEnabled = false
             emailActionButton.isEnabled = false
-        }
+        } */
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
         brands = CoreDataHandler.fetchAllBrands()
@@ -190,6 +187,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ownerFilterLabel.text = listOwners.first
         
         pdfViewGestureWhenTapped()
+        
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
     }
     
     // fill a segment controll with values
@@ -310,11 +313,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         } else {
             os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .error)
             
-            let error = NSLocalizedString("Error", comment: "Error")
-            let message = NSLocalizedString("PDF document not found!", comment: "PDF document not found!")
-            let alertController = UIAlertController(title: error, message: message, preferredStyle: .alert)
-            let ok = NSLocalizedString("OK", comment: "OK")
-            let defaultAction = UIAlertAction.init(title: ok, style: UIAlertAction.Style.default, handler: nil)
+            let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
+            let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(defaultAction)
             navigationController!.present(alertController, animated: true, completion: nil)
         }
@@ -337,22 +337,38 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         os_log("ReportViewController roomsSegmentAction", log: Log.viewcontroller, type: .info)
         
         roomFilterLabel.text = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
+        
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
     }
     
     @IBAction func ownersSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController ownersSegmentAction", log: Log.viewcontroller, type: .info)
         
         ownerFilterLabel.text = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+        
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
     }
     
     
     @IBAction func generatePDF(_ sender: Any) {
         
+        // refresh data from core data
         fetchData()
         
+        // create the pdf report based on selected sort order and filter choice
         pdfCreateInventoryReport()
+    /*
+        // enable share and email bar buttons
         shareActionBarButton.isEnabled = true
-        emailActionButton.isEnabled = true
+        emailActionButton.isEnabled = true */
     }
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
@@ -385,6 +401,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         default:
             break
         }
+        
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
     }
     
     // prepare to transfer data to PDF view controller
@@ -394,7 +416,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         if segue.identifier == "fullscreenPDF" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
-            destination.currentTitle = NSLocalizedString("PDF Report", comment: "PDF Report")
+            destination.currentTitle = NSLocalizedString("Inventory Report (PDF)", comment: "Inventory Report (PDF)")
+            destination.currentPath = url
         }
         
     }

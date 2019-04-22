@@ -19,7 +19,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
-    @IBOutlet weak var navbar: UINavigationBar!
     @IBOutlet weak var exportTextView: UITextView!
     @IBOutlet weak var exportLabel: UILabel!
     
@@ -49,7 +48,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
         
-        //self.title = NSLocalizedString("Import/Export CSV", comment: "Import/Export CSV")
+        self.title = NSLocalizedString("Import/Export CSV", comment: "Import/Export CSV")
         
         //self.navigationItem.title = "Export to CVS/PDF"
         
@@ -141,7 +140,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
                 //print("Export Path: \(exportDocPath)")
                 DispatchQueue.main.async {
-                    self.navigationItem.leftBarButtonItem = self.exportBarButtonItem()
+                    //self.navigationItem.leftBarButtonItem = self.exportBarButtonItem() FIXME
                     self.exportTextView.text = exportDocPath
                     
                     // show alert box with path name
@@ -203,7 +202,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             }
         }
     }
-    
+  
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
         os_log("ImportExportViewController activityIndicatorBarButtonItem", log: Log.viewcontroller, type: .info)
         
@@ -213,13 +212,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         return barButtonItem
     }
-    
+    /*
     func exportBarButtonItem() -> UIBarButtonItem {
         os_log("ImportExportViewController exportBarButtonItem", log: Log.viewcontroller, type: .info)
         
         let title = NSLocalizedString("Export", comment: "Export")
         return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(shareButton(_:)))
-    }
+    } */
     
     // show message where file can be located in file system
     func showExportFinishedAlertView(_ exportPath: String) {
@@ -683,6 +682,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
+        
+        //FIXME put some info into label
     }
     
 }

@@ -53,7 +53,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //self.navigationItem.title = "Export to CVS/PDF"
         
         // if no export happended disable share button because otherwise app crashes
-        shareBarButton.isEnabled = false
+        //shareBarButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +96,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     {
         os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
         
-        navigationItem.leftBarButtonItem = activityIndicatorBarButtonItem()
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        self.url = docPath.appendingPathComponent(Global.csvFile)
+        
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        let barButtonItem = UIBarButtonItem(customView: activityIndicator)
+        navigationItem.leftBarButtonItem = barButtonItem
+        activityIndicator.startAnimating()
        
         let container = CoreDataHandler.persistentContainer()
         
@@ -112,9 +118,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
-            let cvsFileName = Global.csvFile
+            //let cvsFileName = Global.csvFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pathURLcvs = docPath.appendingPathComponent(cvsFileName)
+            let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
             self.url = pathURLcvs
             
             let exportDocPath = pathURLcvs.absoluteString
@@ -199,10 +205,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 // set progress bar to 100% at the end of export
                 self.progressView.setProgress(1.0, animated: true)
                 self.progressLabel.text = "100 %"
+                
+                activityIndicator.stopAnimating()
+                self.navigationItem.leftBarButtonItem = nil
             }
         }
+        
     }
-  
+    
+  /*
     func activityIndicatorBarButtonItem() -> UIBarButtonItem {
         os_log("ImportExportViewController activityIndicatorBarButtonItem", log: Log.viewcontroller, type: .info)
         
@@ -211,7 +222,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         activityIndicator.startAnimating()
         
         return barButtonItem
-    }
+    } */
     /*
     func exportBarButtonItem() -> UIBarButtonItem {
         os_log("ImportExportViewController exportBarButtonItem", log: Log.viewcontroller, type: .info)
@@ -489,40 +500,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     
-    // share via ios system icon/method
-    // info from https://www.raywenderlich.com/1018-uiactivityviewcontroller-tutorial-sharing-data
-    
-    func exportToFileURL() -> URL? {
-        os_log("ImportExportViewController exportToFileURL", log: Log.viewcontroller, type: .info)
-        
-        // var contents: [String : Any] = [Keys.Name.rawValue: uname, Keys.Rating.rawValue: editing]
-        
-        let contents: [String: Any] = ["Test": String.self]
-        /*
-        
-        if let image = beerImage() {
-            if let data = UIImageJPEGRepresentation(image, 1) {
-                contents[Keys.ImagePath.rawValue] = data.base64EncodedString()
-            }
-        }
-        
-        // 3
-        if let note = note {
-            contents[Keys.Note.rawValue] = note
-        }
-        */
-        
-        guard let path = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask).first else {
-                return nil
-        }
-        
-        let saveFileURL = path.appendingPathComponent("/\(String(describing: uname)).inv")
-        (contents as NSDictionary).write(to: saveFileURL, atomically: true)
-        
-        return saveFileURL
-    }
-    
     // MARK: - button actions
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
@@ -537,26 +514,37 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         exportCSVFile()
         
-        shareBarButton.isEnabled = true
+        //shareBarButton.isEnabled = true
     }
     
     // share system button
-    @IBAction func shareButton(_ sender: Any) {
-        os_log("ImportExportViewController exportShareButton", log: Log.viewcontroller, type: .info)
+    @IBAction func shareButtonAction(_ sender: Any) {
+        os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
         
-        /*
-        let url = exportToFileURL()
+        importedRowsLabel.isHidden = true
+        importedRowsLabel.text = ""
         
-        // fixme translation needed???
-        let activityViewController = UIActivityViewController(
-            activityItems: ["Share Inventory data", url!],
-            applicationActivities: nil)
-        if let popoverPresentationController = activityViewController.popoverPresentationController {
-            popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
+        progressView.setProgress(0, animated: true)
+        progressLabel.isHidden = false
+        progressLabel.text = "0 %"
+        
+        exportCSVFile()
+        
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: self.url!.path) {
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: ["Check out this book! I like using Book Tracker.",self.url!], applicationActivities: nil)  //FIXME hardcoded string
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .error)
+            
+            let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
+            let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(defaultAction)
+            navigationController!.present(alertController, animated: true, completion: nil)
         }
-        present(activityViewController, animated: true, completion: nil)
-        */
-        sendCSVEmail(path: self.url)
     }
     
     

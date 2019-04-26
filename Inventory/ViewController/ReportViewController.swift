@@ -24,8 +24,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var ownerFilterLabel: UILabel!
     @IBOutlet weak var shareActionBarButton: UIBarButtonItem!
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
-    @IBOutlet weak var generatePDFButton: UIButton!
-    
     @IBOutlet weak var tapToGenerateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -109,8 +107,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         // https://medium.com/@luisfmachado/uiscrollview-autolayout-on-a-storyboard-a-step-by-step-guide-15bd67ee79e9
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+500)
-        
-        generatePDFButton.setTitle(NSLocalizedString("Generate PDF", comment: "Generate PDF"), for: .normal)
         
         all = Global.all
         
@@ -357,20 +353,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfCreateInventoryReport()
     }
     
-    
-    @IBAction func generatePDF(_ sender: Any) {
-        
-        // refresh data from core data
-        fetchData()
-        
-        // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
-    /*
-        // enable share and email bar buttons
-        shareActionBarButton.isEnabled = true
-        emailActionButton.isEnabled = true */
-    }
-    
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
         os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
         
@@ -378,8 +360,18 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         {
         case 0:
             currentPaperSize = .dinA4
+            // refresh data from core data
+            fetchData()
+            
+            // create the pdf report based on selected sort order and filter choice
+            pdfCreateInventoryReport()
         case 1:
             currentPaperSize = .usLetter
+            // refresh data from core data
+            fetchData()
+            
+            // create the pdf report based on selected sort order and filter choice
+            pdfCreateInventoryReport()
         default:
             break
         }

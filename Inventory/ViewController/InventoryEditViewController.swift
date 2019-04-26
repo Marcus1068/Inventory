@@ -57,6 +57,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     let imagePicker = UIImagePickerController()
     
+    var url : URL?   // for choosing pdf file
+    
     enum EditMode {
         case edit
         case add
@@ -281,6 +283,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         let myURL = url as URL
         
+        self.url = myURL
+        
         pdfDisplay(file: myURL)
     }
 
@@ -342,23 +346,15 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         scrollView.scrollIndicatorInsets = contentInsets
     }
   */
-    
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: - Delegates
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
+        os_log("InventoryEditViewController imagePickerController", log: Log.viewcontroller, type: .info)
+        
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
@@ -377,23 +373,12 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
- /*       switch segue.identifier {
-        case "pdfSegue":
-            let destination =  segue.destination as! PDFViewController
-            destination.currentPDF = pdfView
-            break
-        case "roomSegue":
-            let destination = segue.destination as! RoomTableViewController
-            break
-        
-        default:
-            break
-        }
-   */
+        os_log("InventoryEditViewController prepare", log: Log.viewcontroller, type: .info)
         
         if segue.identifier == "pdfSegue" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
+            destination.currentPath = self.url
             destination.currentTitle = NSLocalizedString("PDF invoice", comment: "PDF invoice")
         }
         

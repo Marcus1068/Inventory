@@ -44,6 +44,9 @@
 		2C5DDF3E20F9F89F00D71782 /* BrandEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */; };
 		2C5DDF4020FA192000D71782 /* OwnerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */; };
 		2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */; };
+		2C5DE31422746DB000C60EEF /* ShowManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DE31322746DB000C60EEF /* ShowManualViewController.swift */; };
+		2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */; };
+		2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */; };
 		2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
@@ -105,6 +108,9 @@
 		2C5DDF3D20F9F89F00D71782 /* BrandEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandEditViewController.swift; sourceTree = "<group>"; };
 		2C5DDF3F20FA192000D71782 /* OwnerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerEditViewController.swift; sourceTree = "<group>"; };
 		2C5DDF4120FA193700D71782 /* OwnerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerTableViewController.swift; sourceTree = "<group>"; };
+		2C5DE31322746DB000C60EEF /* ShowManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManualViewController.swift; sourceTree = "<group>"; };
+		2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Manual.pdf"; sourceTree = "<group>"; };
+		2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Handbuch.pdf"; sourceTree = "<group>"; };
 		2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C0DD72201DBFA00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -176,6 +182,8 @@
 				2C56E8AD2086350A00FD5136 /* AppDelegate.swift */,
 				2C56E8B32086350A00FD5136 /* Main.storyboard */,
 				2C56E8B62086350B00FD5136 /* Assets.xcassets */,
+				2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */,
+				2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */,
 				2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */,
 				2C56E8BB2086350B00FD5136 /* Info.plist */,
 			);
@@ -205,6 +213,7 @@
 		2C56E9092086837000FD5136 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2C5DE31322746DB000C60EEF /* ShowManualViewController.swift */,
 				2C56E95520872E1F00FD5136 /* AboutViewController.swift */,
 				2C4926D82090F85000508874 /* InventoryCollectionViewController.swift */,
 				2C4926DA20920DA100508874 /* InventoryCollectionViewCell.swift */,
@@ -339,10 +348,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */,
+				2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */,
 				2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */,
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C6D5B9922232538009F9053 /* Inventory3.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
+				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +394,7 @@
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,
 				2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */,
 				2C56E94B2086A41700FD5136 /* Brand+CoreDataClass.swift in Sources */,
+				2C5DE31422746DB000C60EEF /* ShowManualViewController.swift in Sources */,
 				2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */,
 				2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */,
 				2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */,

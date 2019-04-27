@@ -1565,7 +1565,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTk-Nm-7bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101.44927536231884" y="2287.5"/>
+            <point key="canvasLocation" x="-75" y="2399"/>
         </scene>
         <!--About Inventory-->
         <scene sceneID="29a-g8-6TL">
@@ -1690,6 +1690,9 @@
                                         <rect key="frame" x="0.0" y="102" width="200" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                         <state key="normal" title="Manual"/>
+                                        <connections>
+                                            <segue destination="gEE-bF-DQe" kind="show" id="1bz-J3-9PU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1749,6 +1752,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqL-BL-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-291.304347826087" y="1539.5089285714284"/>
+        </scene>
+        <!--Show Manual View Controller-->
+        <scene sceneID="Baq-Ei-pV4">
+            <objects>
+                <viewController id="gEE-bF-DQe" customClass="ShowManualViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="msa-uG-tQK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-iL-uFN" customClass="PDFView">
+                                <rect key="frame" x="20" y="102" width="374" height="704"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwZ-ku-G08">
+                                <rect key="frame" x="0.0" y="58" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="aH9-Jl-kkp"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYp-I3-tne">
+                                <rect key="frame" x="116" y="814" width="182" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="K1G-Es-7e5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneAction:" destination="gEE-bF-DQe" eventType="touchUpInside" id="vff-Ps-UzC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PYp-I3-tne" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="116" id="827-1C-jZw"/>
+                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="trailing" secondItem="PYp-I3-tne" secondAttribute="trailing" constant="116" id="Aao-LI-gGc"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="top" secondItem="JwZ-ku-G08" secondAttribute="bottom" id="FY7-IJ-mNx"/>
+                            <constraint firstItem="PYp-I3-tne" firstAttribute="top" secondItem="UB7-iL-uFN" secondAttribute="bottom" constant="8" id="Inc-YF-t7a"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="top" secondItem="JwZ-ku-G08" secondAttribute="bottom" id="OvE-hW-sgI"/>
+                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="trailing" secondItem="UB7-iL-uFN" secondAttribute="trailing" constant="20" id="Se4-DB-Pzg"/>
+                            <constraint firstItem="JwZ-ku-G08" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" id="UOK-cb-hxh"/>
+                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="bottom" secondItem="PYp-I3-tne" secondAttribute="bottom" id="UWx-Pr-HoH"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="20" id="ZLo-Bm-xGF"/>
+                            <constraint firstItem="JwZ-ku-G08" firstAttribute="top" secondItem="Mx9-b9-E7l" secondAttribute="top" constant="14" id="oX3-0F-YmA"/>
+                            <constraint firstItem="JwZ-ku-G08" firstAttribute="trailing" secondItem="Mx9-b9-E7l" secondAttribute="trailing" id="tVq-Tr-j6j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mx9-b9-E7l"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneAction" destination="PYp-I3-tne" id="dpv-UD-SzS"/>
+                        <outlet property="navigationBar" destination="JwZ-ku-G08" id="RHh-cv-00W"/>
+                        <outlet property="pdfView" destination="UB7-iL-uFN" id="ee7-1T-Tvo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oG0-67-s2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1457.9710144927537" y="1539.5089285714284"/>
         </scene>
         <!--Import/Export CSV-->
         <scene sceneID="mgI-Qm-glO">

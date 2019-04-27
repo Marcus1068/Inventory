@@ -18,14 +18,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    
-    @IBOutlet weak var exportTextView: UITextView!
-    @IBOutlet weak var exportLabel: UILabel!
-    
     @IBOutlet weak var exportCVSButton: UIButton!
-    
     @IBOutlet weak var shareBarButton: UIBarButtonItem!
-    
     @IBOutlet weak var importedRowsLabel: UILabel!
     
     var url : URL?
@@ -41,8 +35,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
-        self.exportTextView.text = ""
-        self.exportLabel.text = NSLocalizedString("Export file destination:", comment: "Export file destination:")
         self.importedRowsLabel.isHidden = true
 
         progressView.setProgress(0, animated: true)
@@ -61,7 +53,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         os_log("ImportExportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
-        self.exportTextView.text = ""
         self.importedRowsLabel.isHidden = true
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
@@ -146,11 +137,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
                 //print("Export Path: \(exportDocPath)")
                 DispatchQueue.main.async {
-                    //self.navigationItem.leftBarButtonItem = self.exportBarButtonItem() FIXME
-                    self.exportTextView.text = exportDocPath
                     
                     // show alert box with path name
-                    //self.showExportFinishedAlertView(exportFilePath)
+                    self.showExportFinishedAlertView(exportDocPath)
                 }
             } catch {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)

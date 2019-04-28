@@ -48,6 +48,7 @@
 		2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */; };
 		2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */; };
 		2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE3192275981B00C60EEF /* InfoPlist.strings */; };
+		2C5DE31D2275CDCE00C60EEF /* Apache License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */; };
 		2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
@@ -113,6 +114,7 @@
 		2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Manual.pdf"; sourceTree = "<group>"; };
 		2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Handbuch.pdf"; sourceTree = "<group>"; };
 		2C5DE31A2275981B00C60EEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "Apache License.rtf"; path = "Inventory/Apache License.rtf"; sourceTree = "<group>"; };
 		2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C0DD72201DBFA00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		2C56E8A12086350A00FD5136 = {
 			isa = PBXGroup;
 			children = (
+				2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */,
 				2C6C0DDD2201EBC300367879 /* Localizable.strings */,
 				2C56E8AC2086350A00FD5136 /* Inventory */,
 				2CC85CFD225F32BB006973A0 /* InventoryTests */,
@@ -355,6 +358,7 @@
 				2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */,
 				2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */,
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
+				2C5DE31D2275CDCE00C60EEF /* Apache License.rtf in Resources */,
 				2C6D5B9922232538009F9053 /* Inventory3.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,

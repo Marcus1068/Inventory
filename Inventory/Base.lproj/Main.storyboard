@@ -1561,6 +1561,7 @@
                         <viewLayoutGuide key="safeArea" id="92i-RU-4Uc"/>
                     </view>
                     <connections>
+                        <outlet property="doneAction" destination="fNd-h9-W0h" id="Eig-4j-St0"/>
                         <outlet property="navigationBar" destination="yOZ-rL-WMY" id="Vk0-UA-Y2c"/>
                         <outlet property="privacyText" destination="hIV-W6-cbB" id="i0Y-Pk-L0L"/>
                     </connections>

@@ -45,6 +45,7 @@ class Global: NSObject {
     static let confirm = NSLocalizedString("Confirm", comment: "Confirm")
     static let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
     static let error = NSLocalizedString("Error", comment: "Error")
+    static let done = NSLocalizedString("Done", comment: "Done")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

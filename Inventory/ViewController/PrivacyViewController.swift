@@ -16,6 +16,9 @@ class PrivacyViewController: UIViewController {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    @IBOutlet weak var doneAction: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +28,8 @@ class PrivacyViewController: UIViewController {
         privacyText.text = NSLocalizedString("Your data is safe!", comment: "Privacy Info")
         
         navigationBar.topItem?.title = NSLocalizedString("Privacy Information", comment: "Privacy Information")
+        
+        doneAction.setTitle(Global.done, for: .normal)
         // Do any additional setup after loading the view.
     }
     

@@ -77,16 +77,16 @@
 "Category already exists" = "Kategorie existiert bereits";
 
 /* Choose your brand */
-"Choose your brand" = "Wählen Sie die Marke";
+"Choose your brand" = "Wähle die Marke";
 
 /* Choose your category */
-"Choose your category" = "Wählen Sie die Kategorie";
+"Choose your category" = "Wähle die Kategorie";
 
 /* Choose your owner */
-"Choose your owner" = "Wählen Sie den Eigentümer";
+"Choose your owner" = "Wähle den Eigentümer";
 
 /* Choose your room */
-"Choose your room" = "Wählen Sie den Raum";
+"Choose your room" = "Wähle den Raum";
 
 /* Computer */
 "Computer" = "Computer";
@@ -124,6 +124,9 @@
 /* Document not found */
 "Document not found!" = "Dokument nicht gefunden!";
 
+/* Done */
+"Done" = "Schließen";
+
 /* Edit Brand */
 "Edit Brand" = "Marke bearbeiten";
 
@@ -149,7 +152,7 @@
 "Export" = "Exportieren";
 
 /* Export Finished */
-"Export Finished" = "Export beendet";
+"Export Finished" = "Exportieren beendet";
 
 /* Exported rows: */
 "Exported rows:" = "Exportierte Zeilen:";
@@ -179,10 +182,10 @@
 "Importing CSV file" = "Importiere CSV Datei";
 
 /* Inventory item */
-"Inventory item" = "Inventar Objekt";
+"Inventory item" = "Inventarobjekt";
 
 /* Inventory items */
-"Inventory items" = "Inventar Objekte";
+"Inventory items" = "Inventarobjekte";
 
 /* Inventory Manual */
 "Inventory Manual" = "Inventory Handbuch";
@@ -206,7 +209,7 @@
 "Kitchen" = "Küche";
 
 /* Living room */
-"Living room" = "Schlafzimmer";
+"Living room" = "Wohnzimmer";
 
 /* Manage items table view title */
 "Manage items" = "Objekte verwalten";
@@ -269,7 +272,7 @@
 "Price" = "Preis";
 
 /* Privacy Information */
-"Privacy Information" = "Datenschutz Hinweise";
+"Privacy Information" = "Datenschutzhinweis";
 
 /* Reports */
 "Reports" = "Berichte";

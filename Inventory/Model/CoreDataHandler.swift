@@ -712,7 +712,7 @@ class CoreDataHandler: NSObject {
         let basement2 = NSLocalizedString("Basement 2", comment: "Basement 2")
         let bedroom = NSLocalizedString("Bedroom", comment: "Bedroom")
         
-        // german room list default data
+        // room list
         
         let roomList: [String] = [notDefined, livingroom, office, nursery1,
                                   nursery2, kitchen, basement1, bedroom, basement2]
@@ -757,7 +757,7 @@ class CoreDataHandler: NSObject {
         // default brands
         
         let brandList: [String] = [noBrand, "IKEA", "Apple", "Sonos",
-                                   "Thermomix", "Sony", "Google", "Amazon", "Nintendo"]
+                                   "Thermomix", "Sony", "Google", "Amazon", "Nintendo", "KitchenAid", "Xiaomi", "Samsung"]
         
         for name in brandList{
             let brand = Brand(context: context)
@@ -788,9 +788,9 @@ class CoreDataHandler: NSObject {
                                    "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         // generate sample data randomly
-        for i in 1..<30{
-            let remark = "Remark " + String(i)
-            let serial = "S. no. " + String(i) + "N" + String(i*3) + "Z" + String(i+7)
+        for i in 1..<10{
+            let remark = "Remark " + String(Int.random(in: 1...100))
+            let serial = "S. no. " + String(Int.random(in: 1...100)) + "N" + String(Int.random(in: 1...100)) + "Z" + String(Int.random(in: 1...100))
             
             let invId = Int.random(in: 0 ..< invList.count)
             let brandId = Int.random(in: 0 ..< brandList.count)
@@ -802,7 +802,7 @@ class CoreDataHandler: NSObject {
         }
         
         // FIXME must be removed for release
-        CoreDataHandler.showSampleData()
+        //CoreDataHandler.showSampleData()
     }
     
     // just for testing and debugging, will not be used in final app

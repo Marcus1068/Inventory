@@ -26,6 +26,8 @@ class ShowManualViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationBar.topItem?.title = NSLocalizedString("Inventory Manual", comment: "Inventory Manual")
         
+        doneAction.setTitle(Global.done, for: .normal)
+        
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = .never

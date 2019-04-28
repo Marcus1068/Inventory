@@ -1,5 +1,5 @@
 /* Class = "UILabel"; text = "(c) 2019 by M. Deuß"; ObjectID = "0fd-qf-JfD"; */
-"0fd-qf-JfD.text" = "(c) 2018 M. Deuß";
+"0fd-qf-JfD.text" = "(c) 2019 M. Deuß";
 
 /* Class = "UILabel"; text = "Purchase date"; ObjectID = "1kx-JD-UCb"; */
 "1kx-JD-UCb.text" = "Kaufdatum";
@@ -106,7 +106,7 @@
 /* Class = "UILabel"; text = "iOS Version"; ObjectID = "DBJ-H4-kKI"; */
 "DBJ-H4-kKI.text" = "iOS Version";
 
-/* Class = "UILabel"; text = "Objekte bearbeiten, löschen oder hinzufügen"; ObjectID = "DgC-kb-9Vd"; */
+/* Class = "UILabel"; text = "Add, edit and delete objects"; ObjectID = "DgC-kb-9Vd"; */
 "DgC-kb-9Vd.text" = "Objekte bearbeiten, löschen oder hinzufügen";
 
 /* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
@@ -215,7 +215,7 @@
 "LHW-c0-TOy.text" = "Status Information:";
 
 /* Class = "UILabel"; text = "Household:"; ObjectID = "lXu-4a-v6P"; */
-"lXu-4a-v6P.text" = "Haushalt";
+"lXu-4a-v6P.text" = "Haushalt:";
 
 /* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
 "MzL-xY-WrQ.title" = "Kategorie";
@@ -242,7 +242,7 @@
 "O5q-KA-tw5.text" = "Marken";
 
 /* Class = "UILabel"; text = "inventoryName"; ObjectID = "oBm-B8-oUs"; */
-"oBm-B8-oUs.text" = "InventarName";
+"oBm-B8-oUs.text" = "Inventarname";
 
 /* Class = "UILabel"; text = "imported xx rows"; ObjectID = "oh4-rl-izX"; */
 "oh4-rl-izX.text" = "imported xx rows";
@@ -302,7 +302,7 @@
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
 /* Class = "UIButton"; normalTitle = "Choose Invoice PDF..."; ObjectID = "seV-zU-Yva"; */
-"seV-zU-Yva.normalTitle" = "Wähle Rechnung PDF...";
+"seV-zU-Yva.normalTitle" = "Wähle Rechnung...";
 
 /* Class = "UILabel"; text = "Categories"; ObjectID = "SHR-4B-47W"; */
 "SHR-4B-47W.text" = "Kategorien";
@@ -335,7 +335,7 @@
 "v9W-KQ-FRH.headerTitle" = "Inventar";
 
 /* Class = "UILabel"; text = "Inventory 0.9"; ObjectID = "Vdp-dG-1Do"; */
-"Vdp-dG-1Do.text" = "Inventory 0.1";
+"Vdp-dG-1Do.text" = "Inventory 0.9";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "Vpk-WK-A4x"; */
 "Vpk-WK-A4x.text" = "Preis";
@@ -344,16 +344,16 @@
 "wp2-5w-JLQ.text" = "Hinweis: Ändern des Kategorienamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
 
 /* Class = "UIViewController"; title = "Show Image"; ObjectID = "wSV-fC-zHD"; */
-"wSV-fC-zHD.title" = "Zeige Bild";
+"wSV-fC-zHD.title" = "Bild zeigen";
 
 /* Class = "UITextField"; placeholder = "Serial No."; ObjectID = "wtl-dz-1Ld"; */
 "wtl-dz-1Ld.placeholder" = "Seriennr.";
 
-/* Class = "UITableViewSection"; headerTitle = "Beschreibung"; ObjectID = "wzQ-iq-UEN"; */
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "wzQ-iq-UEN"; */
 "wzQ-iq-UEN.headerTitle" = "Beschreibung";
 
 /* Class = "UINavigationItem"; title = "Inventory"; ObjectID = "x4S-E8-XUR"; */
-"x4S-E8-XUR.title" = "Berichte";
+"x4S-E8-XUR.title" = "Inventar";
 
 /* Class = "UITextField"; placeholder = "Owner name"; ObjectID = "xgQ-W4-Tf4"; */
 "xgQ-W4-Tf4.placeholder" = "Eigentümer";

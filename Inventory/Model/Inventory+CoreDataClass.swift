@@ -17,10 +17,11 @@ public class Inventory: NSManagedObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "YY-MM-DD"
+        dateFormatter.dateFormat = "YY-MM-DD"  // FIXME hard coded date format
         dateFormatter.timeStyle = .none
         return dateFormatter.string(from: dateOfPurchase as Date)
     }
+    
     func stringForDateTimeStamp() -> String {
         guard let ts = timeStamp else { return "" }
         
@@ -51,6 +52,5 @@ public class Inventory: NSManagedObject {
         \(coalescedInventoryName),\(stringForDateOfPurchase()),\(coalescedPrice),\(coalescedSerialNumber),\(coalescedRemark),\(stringForDateTimeStamp()),\(coalescedRoomName),\(coalescedOwnerName),\(coalescedCategoryName),\(coalescedBrandName),\(coalescedWarranty),\(coalescedImageFileName),\(coalescedInvoiceFileName),\(coalescedID)\n
         """
         return newLine
-        
     }
 }

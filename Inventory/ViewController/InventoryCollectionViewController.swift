@@ -214,6 +214,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.inventoryLabel.text = inv.inventoryName
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName
         cell.romeNameLabel.text = inv.inventoryRoom?.roomName
+        cell.categoryLabel.text = inv.inventoryCategory?.categoryName
         
         cell.priceLabel.text = String(inv.price) + Global.currencySymbol!
         

@@ -23,6 +23,7 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var romeNameLabel: UILabel!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     // select background color, works only on TVOS
     func markSelected(state: Bool){

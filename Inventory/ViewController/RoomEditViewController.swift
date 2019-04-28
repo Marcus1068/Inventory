@@ -58,6 +58,9 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
+        // dismiss keyboard
+        hideKeyboardWhenTappedAround()
+        
         // edit or add room
         if currentRoom != nil{
             // edit
@@ -113,11 +116,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    // MARK: - UI actions
     
     @IBAction func cancelButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)

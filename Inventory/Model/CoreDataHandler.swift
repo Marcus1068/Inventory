@@ -717,11 +717,43 @@ class CoreDataHandler: NSObject {
         let roomList: [String] = [notDefined, livingroom, office, nursery1,
                                   nursery2, kitchen, basement1, bedroom, basement2]
         
+        var myRoomImage : UIImage
         for name in roomList{
             let room = Room(context: context)
             room.roomName = name
-            let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
-            let imageData = myImage.jpegData(compressionQuality: 1.0)
+            
+            switch name{
+            case livingroom:
+                myRoomImage = #imageLiteral(resourceName: "icons8-retro-tv-filled-50")
+                break
+                
+            case bedroom:
+                myRoomImage = #imageLiteral(resourceName: "icons8-bett-50")
+                break
+                
+            case office:
+                myRoomImage = #imageLiteral(resourceName: "icons8-arbeitsplatz-50")
+                break
+                
+            case basement1, basement2:
+                myRoomImage = #imageLiteral(resourceName: "icons8-keller-filled-50")
+                break
+                
+            case kitchen:
+                myRoomImage = #imageLiteral(resourceName: "icons8-kochtopf-50")
+                break
+                
+            case nursery1, nursery2:
+                myRoomImage = #imageLiteral(resourceName: "icons8-teddy-50")
+                break
+                
+            default:
+                myRoomImage = #imageLiteral(resourceName: "icons8-home-filled-50")
+                break
+            }
+            
+            //let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
+            let imageData = myRoomImage.jpegData(compressionQuality: 1.0)
             room.roomImage = imageData! as NSData
             _ = saveRoom(room: room)
         }

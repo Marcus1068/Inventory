@@ -34,7 +34,7 @@ import LocalAuthentication
 class Global: NSObject {
     
     // used in about view controller and for sending support emails
-    static let versionString = "1.0 beta"
+    static let versionString = "1.0"
     
     // name of the app in about view
     static let appNameString = "Inventory"

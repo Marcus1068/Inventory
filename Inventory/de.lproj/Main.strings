@@ -1,5 +1,5 @@
-/* Class = "UILabel"; text = "(c) 2019 by Marcus Deuß"; ObjectID = "0fd-qf-JfD"; */
-"0fd-qf-JfD.text" = "(c) 2018 by Marcus Deuß";
+/* Class = "UILabel"; text = "(c) 2019 by M. Deuß"; ObjectID = "0fd-qf-JfD"; */
+"0fd-qf-JfD.text" = "(c) 2018 M. Deuß";
 
 /* Class = "UILabel"; text = "Purchase date"; ObjectID = "1kx-JD-UCb"; */
 "1kx-JD-UCb.text" = "Kaufdatum";
@@ -14,7 +14,10 @@
 "2Ep-nZ-I2N.title" = "Über Inventory";
 
 /* Class = "UIButton"; normalTitle = "Take picture..."; ObjectID = "2TE-eQ-5Wq"; */
-"2TE-eQ-5Wq.normalTitle" = "Mache Foto...";
+"2TE-eQ-5Wq.normalTitle" = "Foto erstellen...";
+
+/* Class = "UILabel"; text = "Import your CSV data from the file system"; ObjectID = "2XG-Gh-KH6"; */
+"2XG-Gh-KH6.text" = "CSV Datei aus Dateisystem importieren";
 
 /* Class = "UILabel"; text = "Owners"; ObjectID = "4CK-9n-Mwm"; */
 "4CK-9n-Mwm.text" = "Eigentümer";
@@ -31,7 +34,7 @@
 /* Class = "UILabel"; text = "created: xxx"; ObjectID = "5Ug-AA-mAk"; */
 "5Ug-AA-mAk.text" = "erzeugt: xxx";
 
-/* Class = "UILabel"; text = "Last generated report:"; ObjectID = "5ZR-ch-75D"; */
+/* Class = "UILabel"; text = "Current generated report:"; ObjectID = "5ZR-ch-75D"; */
 "5ZR-ch-75D.text" = "Letzter Bericht:";
 
 /* Class = "UIButton"; normalTitle = "App Information"; ObjectID = "6t7-0P-Kka"; */
@@ -73,8 +76,11 @@
 /* Class = "UILabel"; text = "Filter by Room:"; ObjectID = "Aen-J4-7Yv"; */
 "Aen-J4-7Yv.text" = "Filter nach Raum:";
 
-/* Class = "UIBarButtonItem"; title = "CSV"; ObjectID = "APE-Oc-XX7"; */
-"APE-Oc-XX7.title" = "CSV";
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "aH9-Jl-kkp"; */
+"aH9-Jl-kkp.title" = "Titel";
+
+/* Class = "UINavigationItem"; title = "Import/Export CSV"; ObjectID = "b9Z-Dy-nn6"; */
+"b9Z-Dy-nn6.title" = "Import/Export CSV";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bbA-Mg-kyA"; */
 "bbA-Mg-kyA.title" = "Titel";
@@ -94,14 +100,17 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "cZ1-Yp-eGe"; */
 "cZ1-Yp-eGe.text" = "Label";
 
+/* Class = "UILabel"; text = "Euro"; ObjectID = "D3M-tw-HxG"; */
+"D3M-tw-HxG.text" = "Euro";
+
 /* Class = "UILabel"; text = "iOS Version"; ObjectID = "DBJ-H4-kKI"; */
 "DBJ-H4-kKI.text" = "iOS Version";
 
+/* Class = "UILabel"; text = "Objekte bearbeiten, löschen oder hinzufügen"; ObjectID = "DgC-kb-9Vd"; */
+"DgC-kb-9Vd.text" = "Objekte bearbeiten, löschen oder hinzufügen";
+
 /* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
 "dGS-kv-Yx5.text" = "Raumname:";
-
-/* Class = "UILabel"; text = "Export file:"; ObjectID = "DYJ-sB-dHx"; */
-"DYJ-sB-dHx.text" = "Exportiere Datei:";
 
 /* Class = "UITextView"; text = "Tap to show PDF in fullscreen"; ObjectID = "EhL-X7-z4X"; */
 "EhL-X7-z4X.text" = "Tippen um PDF in Vollbild anzuzeigen";
@@ -160,9 +169,6 @@
 /* Class = "UILabel"; text = "Owner Name:"; ObjectID = "Jdc-4Q-qWy"; */
 "Jdc-4Q-qWy.text" = "Eigentümer:";
 
-/* Class = "UIButton"; normalTitle = "Generate PDF "; ObjectID = "jkP-ES-Wq8"; */
-"jkP-ES-Wq8.normalTitle" = "Erzeuge PDF";
-
 /* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[0] = "All"; ObjectID = "JuC-eq-fIK"; */
 "JuC-eq-fIK.segmentTitles[0]" = "Alle";
 
@@ -190,7 +196,7 @@
 /* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
 "keT-dq-ecZ.normalTitle" = "Eigentümer...";
 
-/* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos..."; ObjectID = "kmW-Er-gZy"; */
+/* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos"; ObjectID = "kmW-Er-gZy"; */
 "kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar";
 
 /* Class = "UIButton"; normalTitle = "Room..."; ObjectID = "Kpe-WT-hVT"; */
@@ -205,11 +211,17 @@
 /* Class = "UITextField"; placeholder = "Household"; ObjectID = "L29-LM-HTq"; */
 "L29-LM-HTq.placeholder" = "Haushalt";
 
+/* Class = "UILabel"; text = "Status information:"; ObjectID = "LHW-c0-TOy"; */
+"LHW-c0-TOy.text" = "Status Information:";
+
 /* Class = "UILabel"; text = "Household:"; ObjectID = "lXu-4a-v6P"; */
 "lXu-4a-v6P.text" = "Haushalt";
 
 /* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
 "MzL-xY-WrQ.title" = "Kategorie";
+
+/* Class = "UIButton"; normalTitle = "Export to CSV file..."; ObjectID = "N3h-yS-BT1"; */
+"N3h-yS-BT1.normalTitle" = "Exportiere als CSV Datei";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "n8T-Ec-edq"; */
 "n8T-Ec-edq.text" = "Räume";
@@ -247,11 +259,17 @@
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
 "PHQ-NS-mde.text" = "Hinweis: Ändern des Eigentümernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
 
+/* Class = "UIButton"; normalTitle = "Manual"; ObjectID = "pkT-4z-Ecp"; */
+"pkT-4z-Ecp.normalTitle" = "Handbuch";
+
 /* Class = "UITabBarItem"; title = "Reports"; ObjectID = "PmY-Hp-6ai"; */
 "PmY-Hp-6ai.title" = "Berichte";
 
 /* Class = "UINavigationItem"; title = "My Owners"; ObjectID = "PRz-eY-S4p"; */
 "PRz-eY-S4p.title" = "Meine Eigentümer";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "PYp-I3-tne"; */
+"PYp-I3-tne.normalTitle" = "Erledigt";
 
 /* Class = "UISegmentedControl"; QaD-2h-ipL.segmentTitles[0] = "First"; ObjectID = "QaD-2h-ipL"; */
 "QaD-2h-ipL.segmentTitles[0]" = "First";
@@ -313,9 +331,6 @@
 /* Class = "UILabel"; text = "Room:"; ObjectID = "u8R-Gv-g47"; */
 "u8R-Gv-g47.text" = "Raum:";
 
-/* Class = "UINavigationItem"; title = "Import/Export CVS and PDF"; ObjectID = "uAR-MY-Vyf"; */
-"uAR-MY-Vyf.title" = "Import/Export CVS";
-
 /* Class = "UITableViewSection"; headerTitle = "Inventory"; ObjectID = "v9W-KQ-FRH"; */
 "v9W-KQ-FRH.headerTitle" = "Inventar";
 
@@ -333,6 +348,9 @@
 
 /* Class = "UITextField"; placeholder = "Serial No."; ObjectID = "wtl-dz-1Ld"; */
 "wtl-dz-1Ld.placeholder" = "Seriennr.";
+
+/* Class = "UITableViewSection"; headerTitle = "Beschreibung"; ObjectID = "wzQ-iq-UEN"; */
+"wzQ-iq-UEN.headerTitle" = "Beschreibung";
 
 /* Class = "UINavigationItem"; title = "Inventory"; ObjectID = "x4S-E8-XUR"; */
 "x4S-E8-XUR.title" = "Berichte";
@@ -361,7 +379,7 @@
 /* Class = "UILabel"; text = "All"; ObjectID = "xzz-zx-2tp"; */
 "xzz-zx-2tp.text" = "Alle";
 
-/* Class = "UILabel"; text = "This information will be used when printing PDF"; ObjectID = "y1w-k5-zTe"; */
+/* Class = "UILabel"; text = "User and household information will be used when printing PDF"; ObjectID = "y1w-k5-zTe"; */
 "y1w-k5-zTe.text" = "Diese Information wird beim Ausdrucken von Berichten genutzt";
 
 /* Class = "UILabel"; text = "Owner:"; ObjectID = "Y6f-Ar-xvF"; */
@@ -373,6 +391,9 @@
 /* Class = "UILabel"; text = "owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";
 
-/* Class = "UILabel"; text = "Export your data to the file system either as csv file or PDF file"; ObjectID = "z5u-gb-85Y"; */
+/* Class = "UILabel"; text = "Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac."; ObjectID = "z5u-gb-85Y"; */
 "z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als CSV Datei";
+
+/* Class = "UILabel"; text = "Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use"; ObjectID = "ZtK-j7-m75"; */
+"ZtK-j7-m75.text" = "Dateien App in IOS öffnen, um auf die exportierte CSV Datei und alle Bilder und PDF zuzugreifen";
 

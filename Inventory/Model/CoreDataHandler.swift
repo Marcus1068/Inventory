@@ -744,7 +744,7 @@ class CoreDataHandler: NSObject {
         
         // default owners
         
-        let ownerList: [String] = [noOwner, "Mark", "Eva", "Jane", "Johann"]
+        let ownerList: [String] = [noOwner, "Mark", "Eva", "Jennifer", "Josef"]
         
         for name in ownerList{
             let owner = Owner(context: context)

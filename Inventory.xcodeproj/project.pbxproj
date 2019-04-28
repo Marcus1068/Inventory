@@ -47,6 +47,7 @@
 		2C5DE31422746DB000C60EEF /* ShowManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5DE31322746DB000C60EEF /* ShowManualViewController.swift */; };
 		2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */; };
 		2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */; };
+		2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE3192275981B00C60EEF /* InfoPlist.strings */; };
 		2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
@@ -111,6 +112,7 @@
 		2C5DE31322746DB000C60EEF /* ShowManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowManualViewController.swift; sourceTree = "<group>"; };
 		2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Manual.pdf"; sourceTree = "<group>"; };
 		2C5DE317227472D000C60EEF /* Inventory App Handbuch.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Inventory App Handbuch.pdf"; sourceTree = "<group>"; };
+		2C5DE31A2275981B00C60EEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C0DD72201DBFA00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				2C5DE315227471D900C60EEF /* Inventory App Manual.pdf */,
 				2C56E8B82086350B00FD5136 /* LaunchScreen.storyboard */,
 				2C56E8BB2086350B00FD5136 /* Info.plist */,
+				2C5DE3192275981B00C60EEF /* InfoPlist.strings */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */,
+				2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */,
 				2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */,
 				2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */,
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
@@ -451,6 +455,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		2C5DE3192275981B00C60EEF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C5DE31A2275981B00C60EEF /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		2C6C0DDD2201EBC300367879 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -516,12 +528,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -571,11 +584,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -588,7 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

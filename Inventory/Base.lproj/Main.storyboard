@@ -1307,7 +1307,7 @@
                                                     </connections>
                                                 </button>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GD8-WO-ewe" customClass="PDFView">
-                                                    <rect key="frame" x="245" y="21" width="93" height="77.5"/>
+                                                    <rect key="frame" x="245" y="18" width="101" height="83.5"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Tap to show PDF in fullscreen" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhL-X7-z4X">
                                                             <rect key="frame" x="0.0" y="0.0" width="93" height="78"/>
@@ -1706,10 +1706,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Your data is secure!" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIV-W6-cbB">
-                                <rect key="frame" x="16" y="121" width="343" height="376"/>
+                                <rect key="frame" x="16" y="121" width="343" height="450"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="376" id="SaA-F1-Mws"/>
+                                    <constraint firstAttribute="height" constant="450" id="SaA-F1-Mws"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

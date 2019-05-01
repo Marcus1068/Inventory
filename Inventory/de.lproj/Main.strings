@@ -58,6 +58,9 @@
 /* Class = "UILabel"; text = "Filter by Owner:"; ObjectID = "8qF-vh-hOd"; */
 "8qF-vh-hOd.text" = "Filter nach Eigentümer:";
 
+/* Class = "UILabel"; text = "Category"; ObjectID = "8VG-gy-buE"; */
+"8VG-gy-buE.text" = "Kategorie";
+
 /* Class = "UITableViewSection"; headerTitle = "Items"; ObjectID = "9LV-2w-smf"; */
 "9LV-2w-smf.headerTitle" = "Objekte";
 
@@ -208,13 +211,13 @@
 /* Class = "UITextField"; placeholder = "Room name"; ObjectID = "KWu-LK-Nv9"; */
 "KWu-LK-Nv9.placeholder" = "Raumname";
 
-/* Class = "UITextField"; placeholder = "Household"; ObjectID = "L29-LM-HTq"; */
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "L29-LM-HTq"; */
 "L29-LM-HTq.placeholder" = "Haushalt";
 
 /* Class = "UILabel"; text = "Status information:"; ObjectID = "LHW-c0-TOy"; */
 "LHW-c0-TOy.text" = "Status Information:";
 
-/* Class = "UILabel"; text = "Household:"; ObjectID = "lXu-4a-v6P"; */
+/* Class = "UILabel"; text = "Address:"; ObjectID = "lXu-4a-v6P"; */
 "lXu-4a-v6P.text" = "Haushalt:";
 
 /* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
@@ -388,7 +391,7 @@
 /* Class = "UIButton"; normalTitle = "Choose Image..."; ObjectID = "YpX-aZ-6kD"; */
 "YpX-aZ-6kD.normalTitle" = "Wähle Bild...";
 
-/* Class = "UILabel"; text = "owner"; ObjectID = "yYm-0Z-sNf"; */
+/* Class = "UILabel"; text = "Owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";
 
 /* Class = "UILabel"; text = "Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac."; ObjectID = "z5u-gb-85Y"; */

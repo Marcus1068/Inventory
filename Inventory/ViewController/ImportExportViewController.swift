@@ -419,7 +419,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 
                 // check for UUID, if data is already imported then avoid duplicates
-                let uuid = CoreDataHandler.getInventoryUUID(uuid: UUID(uuidString: csvRows[x][13])!) //FIXME crash with import
+                let uuid = CoreDataHandler.getInventoryUUID(uuid: UUID(uuidString: csvRows[x][13])!)
                 
                 if !uuid{
                     // save imported csv line into database

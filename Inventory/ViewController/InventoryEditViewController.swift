@@ -663,11 +663,14 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
         dateformatter.dateStyle = DateFormatter.Style.short
         
-        dateformatter.timeStyle = DateFormatter.Style.short
+        let nowDate = dateformatter.string(from: Date())
         
-        let now = dateformatter.string(from: Date())
+        dateformatter.dateStyle = DateFormatter.Style.none
+        dateformatter.timeStyle = DateFormatter.Style.medium
         
-        let imageName = invname + "_" + now
+        let nowTime = dateformatter.string(from: Date())
+        
+        let imageName = invname + "_" + nowDate + " " + nowTime
         
         return imageName
     }

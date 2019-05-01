@@ -127,6 +127,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         all = Global.all
         
+        // set colors for UI elements
+        roomsSegment.tintColor = themeColorUIControls
+        ownersSegment.tintColor = themeColorUIControls
+        sortOrderSegment.tintColor = themeColorUIControls
+        paperFormatSegment.tintColor = themeColorUIControls
+        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         // new in ios11: large navbar titles

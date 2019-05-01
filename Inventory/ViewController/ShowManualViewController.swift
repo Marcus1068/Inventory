@@ -40,8 +40,11 @@ class ShowManualViewController: UIViewController {
         
         os_log("ShowManualViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
+        // setup colors for UI controls
+        doneAction.tintColor = themeColorUIControls
+        
         // Do any additional setup after loading the view.
-        navigationBar.topItem?.title = NSLocalizedString("Inventory Manual", comment: "Inventory Manual")
+        navigationBar.topItem?.title = NSLocalizedString("Inventory User Manual", comment: "Inventory User Manual")
         
         doneAction.setTitle(Global.done, for: .normal)
         

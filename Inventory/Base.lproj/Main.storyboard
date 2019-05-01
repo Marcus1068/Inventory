@@ -1343,7 +1343,7 @@
                                         <rect key="frame" x="0.0" y="769.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DxK-ig-D30" id="Nos-Wa-Ixg">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8R-Gv-g47">
@@ -1385,7 +1385,7 @@
                                         <rect key="frame" x="0.0" y="813.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OLc-S6-gTT" id="T02-tF-aWh">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4j-zE-sft">
@@ -1424,7 +1424,7 @@
                                         <rect key="frame" x="0.0" y="857.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wdO-Ai-h6a" id="CWn-zA-Ute">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Iy-KY-o2N">
@@ -1463,7 +1463,7 @@
                                         <rect key="frame" x="0.0" y="901.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JJb-QU-NOZ" id="b9a-r2-xW6">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6f-Ar-xvF">
@@ -1560,6 +1560,8 @@
                         <outlet property="cancelButtonLabel" destination="oLb-bJ-0qD" id="wMj-yX-WfC"/>
                         <outlet property="categoryButtonLabel" destination="HZ1-cV-zKd" id="tGw-S7-UGm"/>
                         <outlet property="categoryLabel" destination="I4j-zE-sft" id="jMb-6z-TmX"/>
+                        <outlet property="chooseImageButton" destination="YpX-aZ-6kD" id="9PN-Ev-vdg"/>
+                        <outlet property="choosePDFButton" destination="seV-zU-Yva" id="cRy-V6-XV5"/>
                         <outlet property="currencyLabel" destination="D3M-tw-HxG" id="gzN-me-TKl"/>
                         <outlet property="datePicker" destination="vv5-78-5Gs" id="suc-PO-rKt"/>
                         <outlet property="dateofPurchaseLabel" destination="1kx-JD-UCb" id="Brs-IA-4aH"/>
@@ -1570,6 +1572,7 @@
                         <outlet property="roomButtonLabel" destination="Kpe-WT-hVT" id="f9i-8y-0qC"/>
                         <outlet property="roomLabel" destination="u8R-Gv-g47" id="lUM-tF-kU3"/>
                         <outlet property="saveButtonLabel" destination="iWf-0h-p7e" id="2oD-dH-hqn"/>
+                        <outlet property="tapToShowTextView" destination="EhL-X7-z4X" id="aH0-vX-leo"/>
                         <outlet property="textfieldInventoryName" destination="OjR-LV-GJP" id="uNO-UR-OCr"/>
                         <outlet property="textfieldPrice" destination="5B9-Pv-yUz" id="kuB-QR-tBU"/>
                         <outlet property="textfieldRemark" destination="IN8-2w-dXd" id="DRD-bQ-GDw"/>
@@ -1878,7 +1881,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-4z-Ecp">
                                         <rect key="frame" x="0.0" y="102" width="200" height="32"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <state key="normal" title="Manual"/>
+                                        <state key="normal" title="User Manual"/>
                                         <connections>
                                             <segue destination="gEE-bF-DQe" kind="show" id="1bz-J3-9PU"/>
                                         </connections>
@@ -1934,10 +1937,14 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressTextField" destination="L29-LM-HTq" id="6De-XN-Ge7"/>
+                        <outlet property="appInformationButton" destination="6t7-0P-Kka" id="7oX-pt-QFA"/>
+                        <outlet property="appVersionNumberLabel" destination="Vdp-dG-1Do" id="gaq-p2-nT9"/>
                         <outlet property="copyrightLabel" destination="0fd-qf-JfD" id="UgU-9H-7aw"/>
+                        <outlet property="feedbackButton" destination="iSd-0j-NDU" id="Cse-B9-Rzn"/>
                         <outlet property="iosversionLabel" destination="DBJ-H4-kKI" id="hFV-xv-WmI"/>
+                        <outlet property="privacyButton" destination="C0D-o8-29K" id="zEI-Av-zLe"/>
+                        <outlet property="userManualButton" destination="pkT-4z-Ecp" id="DNQ-sh-Kfm"/>
                         <outlet property="userNameTextField" destination="TPe-8f-CMe" id="L7b-5Y-ReR"/>
-                        <outlet property="versionNumberLabel" destination="Vdp-dG-1Do" id="gaq-p2-nT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqL-BL-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2132,6 +2139,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="exportCVSButton" destination="N3h-yS-BT1" id="qXF-OO-vNP"/>
+                        <outlet property="importCVSButton" destination="g93-Ej-2SW" id="rZe-la-rW5"/>
                         <outlet property="importedRowsLabel" destination="oh4-rl-izX" id="pim-lE-hWr"/>
                         <outlet property="progressLabel" destination="cZ1-Yp-eGe" id="ndp-4E-mW1"/>
                         <outlet property="progressView" destination="lo5-nO-MVc" id="bS4-aU-TYv"/>

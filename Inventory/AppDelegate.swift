@@ -28,9 +28,11 @@ import UIKit
 import CoreData
 import os
 
-let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+// define global variables that are available throughout the app
+let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
+let themeColorUIControls = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
 
-
+// here starts everything
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

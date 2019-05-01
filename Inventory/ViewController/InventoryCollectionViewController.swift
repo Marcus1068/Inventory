@@ -119,8 +119,14 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         // enable filtering
         filterSwitch.isOn = true
-        filterSwitch.tintColor = themeColor
-        filterSwitch.onTintColor = themeColor
+        
+        // set colors for UI controls
+        filterSwitch.tintColor = themeColorUIControls
+        filterSwitch.onTintColor = themeColorUIControls
+        roomsSegment.tintColor = themeColorUIControls
+        ownersSegment.tintColor = themeColorUIControls
+        
+        
         
         // set collection view delegates
         collection.delegate = self
@@ -274,7 +280,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                                                                          for: indexPath) as! InventoryFooterCollectionReusableView
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
-            footerView.searchResultLabel.textColor = themeColor
+            //footerView.searchResultLabel.textColor = themeColor
             //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
@@ -303,7 +309,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         if deleteMode{
             let cell = collection.cellForItem(at: indexPath)
             cell?.layer.borderWidth = 5.0
-            cell?.layer.borderColor = themeColor.cgColor
+            //cell?.layer.borderColor = themeColor.cgColor
             
             indexPaths.append(indexPath)
             selectedForDeleteInventory.append(inv)

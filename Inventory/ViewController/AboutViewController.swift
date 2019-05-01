@@ -29,11 +29,15 @@ import MessageUI
 import os
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate  {
-    @IBOutlet weak var versionNumberLabel: UILabel!
+    @IBOutlet weak var appVersionNumberLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var appInformationButton: UIButton!
+    @IBOutlet weak var feedbackButton: UIButton!
+    @IBOutlet weak var privacyButton: UIButton!
+    @IBOutlet weak var userManualButton: UIButton!
     
     // attributes
     
@@ -47,14 +51,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 
         os_log("About view controller", log: Log.viewcontroller, type: .info)
         
-        versionNumberLabel.text = Global.appNameString + " " + Global.versionString
-        //versionNumberLabel.tintColor = themeColor
-        versionNumberLabel.textColor = themeColor
-        let copyMsg = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
-        copyrightLabel.text = copyMsg
-        let msg = NSLocalizedString("Running on iOS ", comment: "Running on iOS")
+        // setup colors for UI controls
+        appInformationButton.tintColor = themeColorUIControls
+        feedbackButton.tintColor = themeColorUIControls
+        privacyButton.tintColor = themeColorUIControls
+        userManualButton.tintColor = themeColorUIControls
+        appVersionNumberLabel.textColor = themeColorUIControls
         
-        iosversionLabel.text = msg + DeviceInfo.showOSVersion()
+        appVersionNumberLabel.text = Global.appNameString + " " + Global.versionString
+        //versionNumberLabel.tintColor = themeColor
+        
+        copyrightLabel.text = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
+        iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.showOSVersion()
         
         // Do any additional setup after loading the view.
         

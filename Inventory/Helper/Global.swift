@@ -41,7 +41,7 @@ class Global: NSObject {
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryexport.csv"
-    static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf")
+    static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf") // FIXME: why translate?
     
     // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"

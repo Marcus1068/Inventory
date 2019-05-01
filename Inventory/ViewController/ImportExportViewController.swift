@@ -39,6 +39,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var exportCVSButton: UIButton!
     @IBOutlet weak var shareBarButton: UIBarButtonItem!
     @IBOutlet weak var importedRowsLabel: UILabel!
+    @IBOutlet weak var importCVSButton: UIButton!
     
     var url : URL?
     
@@ -48,6 +49,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         os_log("ImportExportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
+        // setup colors for UI controls
+        exportCVSButton.tintColor = themeColorUIControls
+        importCVSButton.tintColor = themeColorUIControls
+        
         // Do any additional setup after loading the view.
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

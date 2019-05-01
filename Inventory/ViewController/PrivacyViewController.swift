@@ -42,6 +42,9 @@ class PrivacyViewController: UIViewController {
 
         os_log("PrivacyViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        // setup colors for UI controls
+        doneAction.tintColor = themeColorUIControls
+        
         var fileName : String
         
         switch Global.currentLocaleForDate(){

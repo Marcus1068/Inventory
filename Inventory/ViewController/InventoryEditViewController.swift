@@ -44,6 +44,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
     
+    @IBOutlet weak var tapToShowTextView: UITextView!
+    @IBOutlet weak var choosePDFButton: UIButton!
+    @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var cameraNavBarOutlet: UIBarButtonItem!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
@@ -90,6 +93,20 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         super.viewDidLoad()
         
         os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        
+        // setup colors for UI controls
+        datePicker.tintColor = themeColorUIControls
+        warrantySegmentControl.tintColor = themeColorUIControls
+        roomButtonLabel.tintColor = themeColorUIControls
+        categoryButtonLabel.tintColor = themeColorUIControls
+        ownerButtonLabel.tintColor = themeColorUIControls
+        brandButtonLabel.tintColor = themeColorUIControls
+        cameraButtonOutlet.tintColor = themeColorUIControls
+        cameraNavBarOutlet.tintColor = themeColorUIControls
+        chooseImageButton.tintColor = themeColorUIControls
+        choosePDFButton.tintColor = themeColorUIControls
+        tapToShowTextView.tintColor = themeColorUIControls
+        pdfView.tintColor = themeColorUIControls
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always

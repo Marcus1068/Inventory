@@ -37,11 +37,11 @@ class Global: NSObject {
     static let versionString = "1.0"
     
     // name of the app in about view
-    static let appNameString = "Inventory"
+    static let appNameString = "Inventory App"
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryexport.csv"
-    static let pdfFile = NSLocalizedString("Inventory Report.pdf", comment: "Inventory Report.pdf")
+    static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf")
     
     // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"

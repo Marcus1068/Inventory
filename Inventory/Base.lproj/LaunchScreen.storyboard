@@ -22,8 +22,8 @@
                                 <rect key="frame" x="22" y="241" width="331" height="330"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="330" id="1W0-QX-JED"/>
-                                    <constraint firstAttribute="width" constant="331" id="XY0-Nn-OY5"/>
+                                    <constraint firstAttribute="width" constant="331" id="YGB-D9-7ZU"/>
+                                    <constraint firstAttribute="height" constant="330" id="dhV-I8-4eM"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgh-zG-bUN">
@@ -48,9 +48,9 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fwK-pB-TEK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0d0-2Q-3Qq"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="top" secondItem="mgh-zG-bUN" secondAttribute="bottom" constant="57" id="Kkt-fl-DzD"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UPm-HA-BRD"/>
                             <constraint firstItem="mgh-zG-bUN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="85" id="X1Q-oA-Qjb"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="gPu-ep-lDB"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="dCs-uy-qVA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mgh-zG-bUN" secondAttribute="trailing" constant="20" id="osp-8O-Nes"/>
                             <constraint firstItem="mgh-zG-bUN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="xtp-Mk-CRb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fwK-pB-TEK" secondAttribute="bottom" constant="90" id="yP5-O2-5w6"/>

@@ -72,7 +72,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     var currentSortOrder = SortOrder.item
     
-    // get user name and house name from iCloud
+    // get user name and address from iCloud
     let kvStore = NSUbiquitousKeyValueStore()
     
     // general paper size
@@ -478,7 +478,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // generate user info for pdf page (on top rigth position of page)
-    func pdfPageUserInfo(userName: String, houseName: String){
+    func pdfPageUserInfo(userName: String, address: String){
         os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -491,9 +491,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        let user = NSLocalizedString("User", comment: "User")
-        let house = NSLocalizedString("House", comment: "House")
-        let text1 = user + ": " + userName + ", " + house + ": " + houseName
+        let userText = NSLocalizedString("User", comment: "User")
+        let addressText = NSLocalizedString("Address", comment: "Address")
+        let text1 = userText + ": " + userName + ", " + addressText + ": " + address
         let text = text1 as NSString
         
         text.draw(in: CGRect(x: paper_width - 250 - left_margin, y: title_pos_y + 15, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -700,7 +700,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
             
             // user Info
-            pdfPageUserInfo(userName: UserInfo.userName, houseName: UserInfo.houseName)
+            pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
             
             y = contents_begin
             // contents
@@ -756,7 +756,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     // title
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
-                    pdfPageUserInfo(userName: UserInfo.userName, houseName: UserInfo.houseName)
+                    pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
                 }
             }
             

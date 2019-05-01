@@ -33,7 +33,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var houseNameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
     
     // attributes
     
@@ -76,20 +76,20 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // when using iCloud key/value store to sync settings
     func useiCloudSettingsStorage(){
         if let user = kvStore.string(forKey: Global.keyUserName),
-            let house = kvStore.string(forKey: Global.keyHouseName){
+            let address = kvStore.string(forKey: Global.keyHouseName){
             //userInfo = UserInfo(userName: user, houseName: house)
             UserInfo.userName = user
-            UserInfo.houseName = house
+            UserInfo.addressName = address
             
             userNameTextField.text = UserInfo.userName
-            houseNameTextField.text = UserInfo.houseName
+            addressTextField.text = UserInfo.addressName
         }
         else{
             // default user and house name
             //userInfo = UserInfo()
             
             userNameTextField.text = UserInfo.userName
-            houseNameTextField.text = UserInfo.houseName
+            addressTextField.text = UserInfo.addressName
         }
         
         // notify view controller when changes on other devices occur
@@ -101,8 +101,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         // update both text fields (complexer apps need to check for changes in all records
         userNameTextField.text = kvStore.string(forKey: Global.keyUserName)
         UserInfo.userName = userNameTextField.text!
-        houseNameTextField.text = kvStore.string(forKey: Global.keyHouseName)
-        UserInfo.houseName = houseNameTextField.text!
+        addressTextField.text = kvStore.string(forKey: Global.keyHouseName)
+        UserInfo.addressName = addressTextField.text!
     }
     
     /*
@@ -132,7 +132,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: - Textfield actions
     
-    // save user name and household name as soon as any input entered in user default
+    // save user name and address as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         
         if (userNameTextField.text!.count > 0){
@@ -143,12 +143,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
-    @IBAction func houseNameEditingChanged(_ sender: UITextField) {
-        if (houseNameTextField.text!.count > 0){
+    @IBAction func addressEditingChanged(_ sender: UITextField) {
+        if (addressTextField.text!.count > 0){
             //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
-            kvStore.set(houseNameTextField.text!, forKey: Global.keyHouseName)
+            kvStore.set(addressTextField.text!, forKey: Global.keyHouseName)
             kvStore.synchronize()
-            UserInfo.houseName = houseNameTextField.text!
+            UserInfo.addressName = addressTextField.text!
         }
     }
     

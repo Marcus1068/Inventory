@@ -133,7 +133,7 @@ class Global: NSObject {
     class func generateUUID() -> UUID{
         return UUID()
     }
-    
+/*
     // MARK: compute functions
     // get min and max from Int array
     class func minMax(array: [Int]) -> (min: Int, max: Int)? {
@@ -149,14 +149,15 @@ class Global: NSObject {
         }
         return (currentMin, currentMax)
     }
-    
+    */
     // alter dialog - must be in a view controller class
     class func showAlertController(_ message: String) {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         //present(alertController, animated: true, completion: nil)
     }
-    
+
+    /*
     // MARK: - Touch ID auth
     // touch id support
     // remove alert functions after test
@@ -194,20 +195,6 @@ class Global: NSObject {
         }
         
         return successFlag
-    }
-/*
-    // fade in UI control
-    class func showUIControl(_ v: UIView){
-        UIView.animate(0.35)
-        v.isHidden = false
-        v.alpha = 1
-    }
-    
-    // fade in UI control
-    class func hideUIControl(_ v: UIView){
-        UIView.animate(withDuration: 0.35)
-        v.isHidden = true
-        v.alpha = 0
     } */
 }
 

@@ -39,7 +39,7 @@ class Global: NSObject {
     // name of the app in about view
     static let appNameString = "Inventory"
     static let emailAdr = "mdeuss+inventory@gmail.com"
-    static let website = "http://www.marcus-deuss.de"
+    static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryexport.csv"
     static let pdfFile = NSLocalizedString("Inventory Report.pdf", comment: "Inventory Report.pdf")
     

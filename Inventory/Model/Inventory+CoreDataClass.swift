@@ -35,7 +35,7 @@ public class Inventory: NSManagedObject {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        dateFormatter.dateFormat = "YY-MM-DD"  // FIXME hard coded date format
+        dateFormatter.dateFormat = "YY-MM-DD"  // FIXME: hard coded date format
         dateFormatter.timeStyle = .none
         return dateFormatter.string(from: dateOfPurchase as Date)
     }

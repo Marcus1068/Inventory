@@ -445,7 +445,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // get jpeg image from file directory
-    // FIXME must change to other directory
+    // FIXME: must change to other directory
     // return NIL if no file exists
     func getSavedImage(named: String) -> UIImage? {
         os_log("ImportExportViewController getSavedImage", log: Log.viewcontroller, type: .info)
@@ -458,7 +458,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // read file as string
-    // FIXME change directory
+    // FIXME: change directory
     func readDataFromCSV(fileName: String) -> String?{
         os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
         
@@ -524,6 +524,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //shareBarButton.isEnabled = true
     }
     
+    /*
     // share system button
     @IBAction func shareButtonAction(_ sender: Any) {
         os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
@@ -552,7 +553,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             alertController.addAction(defaultAction)
             navigationController!.present(alertController, animated: true, completion: nil)
         }
-    }
+    } */
     
     
     // import button

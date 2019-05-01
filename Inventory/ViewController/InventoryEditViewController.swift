@@ -65,7 +65,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
-    var currentInventory : Inventory? // FIXME weak migth be wrong
+    var currentInventory : Inventory? // FIXME: weak migth be wrong
     
     // get all detail infos
     var rooms : [Room] = []
@@ -646,12 +646,15 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
             pdfView.autoScales = true
             pdfView.displayMode = .singlePageContinuous
             pdfView.displayDirection = .vertical
-            pdfView.document = pdfDocument
             
-            //currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            //currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf" // FIXME crashes when new object, works with existing object to attach a pdf
-            // show thumbnail as well
-            //captureThumbnails(pdfDocument:pdfDocument)
+            // scroll PDF to top
+            DispatchQueue.main.async
+                {
+                    guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
+                    self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
+            }
+            
+            pdfView.document = pdfDocument
         }
     }
     

@@ -167,7 +167,6 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 
                 currentRoom = room
                 
-                // FIXME update will save another record instead of updating
                 _ = CoreDataHandler.saveRoom(room: currentRoom!)
                 
                 navigationController?.popViewController(animated: true)

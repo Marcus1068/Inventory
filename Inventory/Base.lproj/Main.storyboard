@@ -831,14 +831,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a symbol for your room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncb-ft-R03">
                                 <rect key="frame" x="11" y="242" width="244" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="FIV-2O-fCk"/>
+                                    <constraint firstAttribute="height" constant="21" id="kwR-UA-TC4"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="244" id="pGe-fv-3mp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-lp-iWu">
-                                <rect key="frame" x="41" y="282.5" width="285" height="190"/>
+                                <rect key="frame" x="41" y="283" width="285" height="190"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-pW-DdT">
                                         <rect key="frame" x="0.0" y="0.0" width="285" height="50"/>
@@ -966,24 +967,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LSJ-Ox-96U" firstAttribute="bottom" secondItem="yPu-lp-iWu" secondAttribute="bottom" constant="81" id="0iI-Xq-SWf"/>
                             <constraint firstItem="dGS-kv-Yx5" firstAttribute="leading" secondItem="KWu-LK-Nv9" secondAttribute="leading" id="1aq-VE-ZSW"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" secondItem="7eY-0W-SIY" secondAttribute="trailing" constant="20" id="39L-dL-naZ"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" secondItem="dFO-EO-nqg" secondAttribute="trailing" constant="49" id="8js-o6-y76"/>
                             <constraint firstItem="dGS-kv-Yx5" firstAttribute="top" secondItem="YKC-2j-9Q5" secondAttribute="bottom" constant="10" id="Evb-SR-uVF"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="top" secondItem="LSJ-Ox-96U" secondAttribute="top" id="HVO-H2-0IR"/>
                             <constraint firstItem="yPu-lp-iWu" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="41" id="Ipn-1O-2Jv"/>
+                            <constraint firstItem="yPu-lp-iWu" firstAttribute="top" secondItem="Ncb-ft-R03" secondAttribute="bottom" constant="20" id="MJ2-Y3-R4k"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" secondItem="yPu-lp-iWu" secondAttribute="trailing" constant="49" id="RUy-IN-dg1"/>
                             <constraint firstItem="KWu-LK-Nv9" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="16" id="S8O-Ke-pX3"/>
+                            <constraint firstItem="Ncb-ft-R03" firstAttribute="top" secondItem="7eY-0W-SIY" secondAttribute="bottom" constant="8" id="SSk-OQ-1rJ"/>
                             <constraint firstItem="7eY-0W-SIY" firstAttribute="top" secondItem="KWu-LK-Nv9" secondAttribute="bottom" constant="53.5" id="a8V-7n-mV3"/>
-                            <constraint firstItem="yPu-lp-iWu" firstAttribute="top" secondItem="Ncb-ft-R03" secondAttribute="bottom" constant="19.5" id="ahp-Xf-lgq"/>
-                            <constraint firstItem="Ncb-ft-R03" firstAttribute="top" secondItem="7eY-0W-SIY" secondAttribute="bottom" constant="8" id="dAo-f3-Bco"/>
-                            <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" secondItem="Ncb-ft-R03" secondAttribute="trailing" constant="120" id="itb-5t-txb"/>
+                            <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ncb-ft-R03" secondAttribute="trailing" symbolic="YES" id="ejz-o4-J8Z"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dGS-kv-Yx5" secondAttribute="trailing" symbolic="YES" id="ium-se-9J4"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="trailing" secondItem="LSJ-Ox-96U" secondAttribute="trailing" id="loF-4h-kHE"/>
                             <constraint firstItem="7eY-0W-SIY" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="12" id="nYw-j7-qLI"/>
+                            <constraint firstItem="Ncb-ft-R03" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="11" id="qtE-VL-Ky8"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KWu-LK-Nv9" secondAttribute="trailing" constant="20" symbolic="YES" id="rUu-M7-RP2"/>
                             <constraint firstItem="KWu-LK-Nv9" firstAttribute="top" secondItem="dGS-kv-Yx5" secondAttribute="bottom" constant="8" symbolic="YES" id="tsa-NR-x6l"/>
-                            <constraint firstItem="Ncb-ft-R03" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LSJ-Ox-96U" secondAttribute="leading" id="wdQ-BJ-5Ov"/>
                             <constraint firstItem="dFO-EO-nqg" firstAttribute="centerY" secondItem="KWu-LK-Nv9" secondAttribute="centerY" id="ws5-tP-Y5d"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" id="z10-Q4-xyp"/>
                         </constraints>

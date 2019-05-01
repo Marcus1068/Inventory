@@ -173,7 +173,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var listOwners :[String] = []
         var listRooms :[String] = []
         
-        // FIXME tranlation needed
         let allOwners = all
         listOwners.append(allOwners)
         for owner in owners{
@@ -627,7 +626,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // save the pdf to disk
     func pdfSave(_ pdf: Data) -> URL{
-        // save PDF to documents directory  // FIXME document dir to cache dir
+        // save PDF to documents directory  // FIXME: document dir to cache dir
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
         
         docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
@@ -785,11 +784,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             }
             
             pdfView.document = pdfDocument
-            
-            //currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            //currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf" // FIXME crashes when new object, works with existing object to attach a pdf
-            // show thumbnail as well
-            //captureThumbnails(pdfDocument:pdfDocument)
         }
     }
     

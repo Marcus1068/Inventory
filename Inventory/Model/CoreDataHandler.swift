@@ -675,7 +675,7 @@ class CoreDataHandler: NSObject {
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
         // search predicate
-        request.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName)    // FIXME, migth crash
+        request.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName)
         
         //print(request.predicate.debugDescription)
         
@@ -699,7 +699,7 @@ class CoreDataHandler: NSObject {
     // MARK: generate sample data
     
     // generate sample data for initial work
-    // FIXME must be depening upon system language with switch/case of supported languages, default english
+    // FIXME: must be depening upon system language with switch/case of supported languages, default english
     class func generateSampleData()
     {
         os_log("CoreDataHandler generateSampleData", log: Log.coredata, type: .info)
@@ -851,7 +851,7 @@ class CoreDataHandler: NSObject {
             _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
         }
         
-        // FIXME must be removed for release
+        // FIXME: must be removed for release
         //CoreDataHandler.showSampleData()
     }
     

@@ -529,7 +529,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let printSortOrder = sortOrderText as NSString
         printSortOrder.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 20
+        y = y + 25
         
         let tmp = NSLocalizedString("Room filter used", comment: "Room filter used")
         if roomFilterLabel.text == Global.all{
@@ -541,7 +541,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 20
+        y = y + 25
         
         let tmp2 = NSLocalizedString("Owner filter used", comment: "Owner filter used")
         if ownerFilterLabel.text == Global.all{
@@ -553,11 +553,16 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 20
+        y = y + 25
         
         let tmp3 = NSLocalizedString("Number of inventory items", comment: "Number of inventory item")
         let numberOfRowsText = tmp3 + ": " + String(numberOfRows)
         numberOfRowsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        y = y + 25
+        
+        let appInfoText = Global.appNameString + " " + Global.versionString
+        appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
     // generate user info for pdf page (on top rigth position of page)

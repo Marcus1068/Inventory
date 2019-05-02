@@ -17,7 +17,7 @@
  */
 
 //
-//  ReportsCollectionViewController.swift
+//  InventoryCollectionViewController.swift
 //  Inventory
 //  initial view controller, will be loaded after appdelegate and before other view controllers
 //
@@ -157,6 +157,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         leftNavBarButton = self.navigationItem.leftBarButtonItems?.first
         rightNavBarButton = self.navigationItem.rightBarButtonItems?.first
+        
+        // check for camera permission
+        let _ = Global.checkCameraPermission()
     }
 
     // initialize the data for the view

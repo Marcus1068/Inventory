@@ -39,6 +39,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var userManualButton: UIButton!
     @IBOutlet weak var openSourceLabel: UILabel!
+    @IBOutlet weak var appSettingsButton: UIButton!
     
     // attributes
     
@@ -57,10 +58,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         feedbackButton.tintColor = themeColorUIControls
         privacyButton.tintColor = themeColorUIControls
         userManualButton.tintColor = themeColorUIControls
-        appVersionNumberLabel.textColor = themeColorUIControls
+        //appVersionNumberLabel.textColor = themeColorUIControls
+        appSettingsButton.tintColor = themeColorUIControls
         
         appVersionNumberLabel.text = Global.appNameString + " " + Global.versionString
-        //versionNumberLabel.tintColor = themeColor
+        appVersionNumberLabel.textColor = themeColorText
         
         copyrightLabel.text = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
         iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.showOSVersion()
@@ -144,6 +146,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     } */
     
     // MARK: - Textfield actions
+    
+    // show app settings
+    @IBAction func appSettingsAction(_ sender: UIButton) {
+        Global.callAppSettings()
+    }
     
     // save user name and address as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {

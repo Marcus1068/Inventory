@@ -260,7 +260,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         //registerForKeyboardNotifications()
     }
 
-    // refresh data when view will be redrawn, after choosing room table view etc.
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
        
@@ -272,24 +273,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         cameraNavBarOutlet.isEnabled = false
         cameraButtonOutlet.isEnabled = false
         
-        // check for camera permissions
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized: // The user has previously granted access to the camera.
-            self.setupCaptureSession()
-            
-        case .notDetermined: // The user has not yet been asked for camera access.
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.setupCaptureSession()
-                }
-            }
-            
-        case .denied: // The user has previously denied access.
-            break
-        case .restricted: // The user can't grant access due to restrictions.
-            break
-        @unknown default:
-            os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .error)
+        if Global.checkCameraPermission() == true{
+            cameraNavBarOutlet.isEnabled = true
+            cameraButtonOutlet.isEnabled = true
         }
         
         // get the data from Core Data
@@ -303,13 +289,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
-    }
-    
-    // camera enabled
-    func setupCaptureSession(){
-        // enable camera buttons
-        cameraNavBarOutlet.isEnabled = true
-        cameraButtonOutlet.isEnabled = true
     }
     
     // MARK: document picker methods

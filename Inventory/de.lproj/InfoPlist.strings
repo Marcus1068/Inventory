@@ -1,8 +1,8 @@
 /* Bundle display name */
-"CFBundleDisplayName" = "Inventory";
+"CFBundleDisplayName" = "Inventory App";
 
 /* Bundle name */
-"CFBundleName" = "Inventory";
+"CFBundleName" = "Inventory App";
 
 /* (No Comment) */
 "Inventory Document" = "Inventory Dokument";

@@ -27,10 +27,12 @@
 import UIKit
 import CoreData
 import os
+import AVFoundation
 
 // define global variables that are available throughout the app
 let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
 let themeColorUIControls = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
+let themeColorText = UIColor.blue
 
 // here starts everything
 @UIApplicationMain

@@ -30,6 +30,7 @@ import UIKit
 import UserNotifications
 import os
 import LocalAuthentication
+import AVFoundation
 
 class Global: NSObject {
     
@@ -150,14 +151,36 @@ class Global: NSObject {
         return (currentMin, currentMax)
     }
     */
+    
+    // call app settings iOS dialog
+    class func callAppSettings(){
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    // Finished opening URL
+                })
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(settingsUrl)
+            }
+        }
+    }
+    
     // alter dialog - must be in a view controller class
-    class func showAlertController(_ message: String) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    class func showAlertController(title: String, message: String) {
+        if title.count == 0{
+            let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Global.ok, style: .default, handler: nil))
+        }
+        else{
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: Global.ok, style: .default, handler: nil))
+        }
         //present(alertController, animated: true, completion: nil)
     }
-
-    /*
+    
+    
     // MARK: - Touch ID auth
     // touch id support
     // remove alert functions after test
@@ -177,24 +200,58 @@ class Global: NSObject {
                 {(success, error) in
                     // An Alert message is shown wether the Touch ID authentication succeeded or not
                     if success {
-                        self.showAlertController("Touch ID Authentication Succeeded")
+                        self.showAlertController(title: "", message: "Touch ID Authentication Succeeded")
                         os_log("Global authWithTouchID: touch ID Authentication succeeded", log: Log.viewcontroller, type: .info)
                         
                         successFlag = true
                     }
                     else {
-                        self.showAlertController("Touch ID Authentication Failed")
+                        self.showAlertController(title: "", message: "Touch ID Authentication Failed")
                         os_log("Global authWithTouchID: touch ID Authentication failed", log: Log.viewcontroller, type: .error)
                     }
             })
         }
             // If Touch ID is not available an Alert message is shown.
         else {
-            showAlertController("Touch ID not available")
+            showAlertController(title: "", message: "Touch ID not available")
             os_log("Global authWithTouchID: touch ID not available", log: Log.viewcontroller, type: .error)
         }
         
         return successFlag
-    } */
+    }
+    
+    // check for camera permission
+    class func checkCameraPermission() -> Bool{
+        os_log("Global checkCameraPermission", log: Log.viewcontroller, type: .info)
+        
+        var allowed : Bool = true
+        
+        // check for camera permissions
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: // The user has previously granted access to the camera.
+            allowed = true
+            break
+            
+        case .notDetermined: // The user has not yet been asked for camera access.
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    allowed = true
+                }
+            }
+            
+        case .denied: // The user has previously denied access.
+            allowed = false
+            break
+            
+        case .restricted: // The user can't grant access due to restrictions.
+            allowed = false
+            break
+            
+        @unknown default:
+            os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .error)
+        }
+        
+        return allowed
+    }
 }
 

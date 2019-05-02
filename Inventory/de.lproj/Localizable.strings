@@ -190,14 +190,14 @@
 /* Inventory items */
 "Inventory items" = "Inventarobjekte";
 
-/* Inventory Manual */
-"Inventory Manual" = "Inventory Handbuch";
-
 /* Inventory Report */
 "Inventory Report" = "Inventar Bericht";
 
 /* Inventory Report (PDF) */
 "Inventory Report (PDF)" = "Inventar Bericht (PDF)";
+
+/* Inventory User Manual */
+"Inventory User Manual" = "Inventory App Handbuch";
 
 /* Item */
 "Item" = "Objekt";

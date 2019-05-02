@@ -136,6 +136,9 @@
 /* Class = "UILabel"; text = "Categories"; ObjectID = "Gji-Ng-xNH"; */
 "Gji-Ng-xNH.text" = "Kategorien";
 
+/* Class = "UIButton"; normalTitle = "App Settings"; ObjectID = "hbs-GL-8lS"; */
+"hbs-GL-8lS.normalTitle" = "App Einstellungen";
+
 /* Class = "UITextView"; text = "Your data is secure!"; ObjectID = "hIV-W6-cbB"; */
 "hIV-W6-cbB.text" = "Ihre Daten sind sicher!";
 
@@ -262,7 +265,7 @@
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
 "PHQ-NS-mde.text" = "Hinweis: Ändern des Eigentümernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";
 
-/* Class = "UIButton"; normalTitle = "Manual"; ObjectID = "pkT-4z-Ecp"; */
+/* Class = "UIButton"; normalTitle = "User Manual"; ObjectID = "pkT-4z-Ecp"; */
 "pkT-4z-Ecp.normalTitle" = "Handbuch";
 
 /* Class = "UITabBarItem"; title = "Reports"; ObjectID = "PmY-Hp-6ai"; */

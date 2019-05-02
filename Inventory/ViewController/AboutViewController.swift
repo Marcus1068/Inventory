@@ -51,7 +51,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        os_log("About view controller", log: Log.viewcontroller, type: .info)
+        os_log("About view controller viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // setup colors for UI controls
         appInformationButton.tintColor = themeColorUIControls

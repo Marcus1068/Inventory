@@ -38,6 +38,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var feedbackButton: UIButton!
     @IBOutlet weak var privacyButton: UIButton!
     @IBOutlet weak var userManualButton: UIButton!
+    @IBOutlet weak var openSourceLabel: UILabel!
     
     // attributes
     
@@ -64,6 +65,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         copyrightLabel.text = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
         iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.showOSVersion()
         
+        // hide this label when iPhone screen size too small
+        if UIDevice.current.iPhone5{
+            openSourceLabel.isHidden = true
+        }
         // Do any additional setup after loading the view.
         
         //useiCloudSettingsStorage()

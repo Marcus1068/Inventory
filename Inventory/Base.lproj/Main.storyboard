@@ -1942,6 +1942,7 @@
                         <outlet property="copyrightLabel" destination="0fd-qf-JfD" id="UgU-9H-7aw"/>
                         <outlet property="feedbackButton" destination="iSd-0j-NDU" id="Cse-B9-Rzn"/>
                         <outlet property="iosversionLabel" destination="DBJ-H4-kKI" id="hFV-xv-WmI"/>
+                        <outlet property="openSourceLabel" destination="kmW-Er-gZy" id="cKe-rx-LC2"/>
                         <outlet property="privacyButton" destination="C0D-o8-29K" id="zEI-Av-zLe"/>
                         <outlet property="userManualButton" destination="pkT-4z-Ecp" id="DNQ-sh-Kfm"/>
                         <outlet property="userNameTextField" destination="TPe-8f-CMe" id="L7b-5Y-ReR"/>

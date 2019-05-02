@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.blue,
-             NSAttributedString.Key.font: UIFont(name: "Arial", size: 30) ??
+             NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 30) ??    // Arial
                 UIFont.systemFont(ofSize: 30)]
         
         // influences text color
@@ -65,6 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // get user directory mainly for debugging purposes
         let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
         os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
+        
+        // change UI Tab bar font
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .selected)
         
         return true
     }

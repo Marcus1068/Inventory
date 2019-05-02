@@ -483,6 +483,83 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    // add a summary page at the end of the PDF report
+    func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
+        os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
+        
+        var y : Double
+        
+        let summary = NSLocalizedString("Summary", comment: "Summary")
+        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        
+        // user Info
+        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        
+        y = contents_begin
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue", size: 15.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        y = y + 15
+        
+        // switch column order based on sort order
+        var sortOrderText : String
+        switch (currentSortOrder){
+        case .item:
+            sortOrderText = NSLocalizedString("Sorted by item", comment: "Sorted by item")
+            break
+        case .owner:
+            sortOrderText = NSLocalizedString("Sorted by owner", comment: "Sorted by owner")
+            break
+        case .category:
+            sortOrderText = NSLocalizedString("Sorted by category", comment: "Sorted by category")
+            break
+        case .room:
+            sortOrderText = NSLocalizedString("Sorted by room", comment: "Sorted by room")
+            break
+        }
+        
+        let printSortOrder = sortOrderText as NSString
+        printSortOrder.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        y = y + 20
+        
+        let tmp = NSLocalizedString("Room filter used", comment: "Room filter used")
+        if roomFilterLabel.text == Global.all{
+            let printRoomFilter = tmp + ": " + Global.none as NSString
+            printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        }
+        else{
+            let printRoomFilter = tmp + ": " + roomFilterLabel.text! as NSString
+            printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        }
+        
+        y = y + 20
+        
+        let tmp2 = NSLocalizedString("Owner filter used", comment: "Owner filter used")
+        if ownerFilterLabel.text == Global.all{
+            let printOwnerFilter = tmp2 + ": " + Global.none as NSString
+            printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        }
+        else{
+            let printOwnerFilter = tmp2 + ": " + ownerFilterLabel.text! as NSString
+            printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        }
+        
+        y = y + 20
+        
+        let tmp3 = NSLocalizedString("Number of inventory items", comment: "Number of inventory item")
+        let numberOfRowsText = tmp3 + ": " + String(numberOfRows)
+        numberOfRowsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+    }
+    
     // generate user info for pdf page (on top rigth position of page)
     func pdfPageUserInfo(userName: String, address: String){
         os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
@@ -768,6 +845,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages)
+            
+            // add a summary page at the end of the report
+            context.beginPage()
+            pdfSummaryPage(numberOfRows: results.count, context: context)
+            pdfPageFooter(footerText: footerText, context: context)
+            pdfPageNumber(pageNumber: numberOfPages + 1)
         }
         
         // save report to temp dir

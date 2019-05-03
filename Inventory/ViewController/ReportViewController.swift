@@ -561,7 +561,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 25
         
-        let appInfoText = Global.appNameString + " " + Global.versionString
+        let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + Global.appNameString + " " + Global.versionString
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
@@ -714,11 +714,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // save the pdf to disk
     func pdfSave(_ pdf: Data) -> URL{
-        // save PDF to documents directory  // FIXME: document dir to cache dir
-        var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
+        // save PDF to documents directory
+        var docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
         
         docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
-        //let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         
         do {
             try pdf.write(to: docURL! as URL, options: .atomic)

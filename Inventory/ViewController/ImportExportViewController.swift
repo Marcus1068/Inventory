@@ -137,7 +137,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
             self.url = pathURLcvs
             
-            let exportDocPath = pathURLcvs.absoluteString
+            //let exportDocPath = pathURLcvs.absoluteString
             var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
             
             var progress : Int = 0
@@ -162,7 +162,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 DispatchQueue.main.async {
                     
                     // show alert box with path name
-                    self.showExportFinishedAlertView(exportDocPath)
+                    self.showExportFinishedAlertView()
                 }
             } catch {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
@@ -225,29 +225,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
     }
     
-  /*
-    func activityIndicatorBarButtonItem() -> UIBarButtonItem {
-        os_log("ImportExportViewController activityIndicatorBarButtonItem", log: Log.viewcontroller, type: .info)
-        
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
-        let barButtonItem = UIBarButtonItem(customView: activityIndicator)
-        activityIndicator.startAnimating()
-        
-        return barButtonItem
-    } */
-    /*
-    func exportBarButtonItem() -> UIBarButtonItem {
-        os_log("ImportExportViewController exportBarButtonItem", log: Log.viewcontroller, type: .info)
-        
-        let title = NSLocalizedString("Export", comment: "Export")
-        return UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(shareButton(_:)))
-    } */
-    
     // show message where file can be located in file system
-    func showExportFinishedAlertView(_ exportPath: String) {
+    func showExportFinishedAlertView() {
         os_log("ImportExportViewController showExportFinishedAlertView", log: Log.viewcontroller, type: .info)
         
-        let message = NSLocalizedString("The exported CSV file can be found here: ", comment: "The exported CSV file can be found here: ") + "\(exportPath)"
+        let message = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
         
         let title = NSLocalizedString("Export Finished", comment: "Export Finished")
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -529,15 +511,16 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //shareBarButton.isEnabled = true
     }
     
-    /*
-    // share system button
+    
+    // share system button to share csv file
     @IBAction func shareButtonAction(_ sender: Any) {
         os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
-        
+        // FIXME: this function needs testing and change
+        // FIXME: progress bar at 100% when cvs share action cancelled
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
         
-        progressView.setProgress(0, animated: true)
+        progressView.setProgress(0, animated: false)
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
@@ -547,7 +530,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let fileManager = FileManager.default
         
         if fileManager.fileExists(atPath: self.url!.path) {
-            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: ["Check out this book! I like using Book Tracker.",self.url!], applicationActivities: nil)  //FIXME hardcoded string
+            let text = NSLocalizedString("Shared by Inventory App", comment: "Shared by Inventory App")
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [text, self.url!], applicationActivities: nil)  //FIXME hardcoded string
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         } else {
@@ -558,8 +542,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             alertController.addAction(defaultAction)
             navigationController!.present(alertController, animated: true, completion: nil)
         }
-    } */
-    
+    }
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {
@@ -573,7 +556,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     /// Prepares mail sending controller
     ///
     /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-    /// - Returns: mailComposerVC
     
     func sendCSVEmail(path: URL?){
         
@@ -624,10 +606,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
-        
-        //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")
-        
-        //alert.show()
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
@@ -657,12 +635,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             completion: nil
         )
     }
-    /*
-    @available(iOS 11.0, *)
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        // do something with the selected documents
-        os_log("ImportExportViewController multi documentPicker", log: Log.viewcontroller, type: .info)
-    }*/
     
     // single document selection
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
@@ -684,7 +656,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
         
-        //FIXME put some info into label
+        //progressLabel.isHidden = false
+        importedRowsLabel.isHidden = false
+        importedRowsLabel.text = NSLocalizedString("No file selected for importing", comment: "No file selected for importing")
     }
     
 }

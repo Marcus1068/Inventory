@@ -706,11 +706,13 @@ class CoreDataHandler: NSObject {
         
         let context = getContext()
         
+        // general text
         let notDefined = NSLocalizedString("<not defined>", comment: "<not defined>")
         let noCategory = NSLocalizedString("<no category>", comment: "<no category>")
         let noOwner = NSLocalizedString("<nobody>", comment: "<nobody>")
         let noBrand = NSLocalizedString("<other>", comment: "<other>")
         
+        // category data
         let tech = NSLocalizedString("Technics", comment: "Technics")
         let furniture = NSLocalizedString("Furniture", comment: "Furniture")
         let computer = NSLocalizedString("Computer", comment: "Computer")
@@ -721,6 +723,7 @@ class CoreDataHandler: NSObject {
         let tablet = NSLocalizedString("Tablet", comment: "Tablet")
         let videogame = NSLocalizedString("Video Game", comment: "Video Game")
         
+        // room data
         let livingroom = NSLocalizedString("Living room", comment: "Living room")
         let office = NSLocalizedString("Office", comment: "Office")
         let nursery1 = NSLocalizedString("Nursery 1", comment: "Nursery 1")

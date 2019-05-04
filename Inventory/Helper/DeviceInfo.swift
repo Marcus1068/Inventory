@@ -29,25 +29,45 @@ import UIKit
 class DeviceInfo: NSObject {
     
     // iOS version info
-    static func showOSVersion() -> String
+    /// get the current iOS version
+    ///
+    /// - Parameters:
+    ///
+    /// - Returns: String with version number
+    
+    static func getOSVersion() -> String
     {
         return UIDevice.current.systemVersion
     }
     
-    // returns the battery level as float
-    static func showbatteryLevel() -> Float
+    // iOS battery level
+    /// get the current iOS battery level
+    ///
+    /// - Parameters:
+    ///
+    /// - Returns: Float with battery level
+    
+    static func getbatteryLevel() -> Float
     {
         return UIDevice.current.batteryLevel
     }
     
-    // returns the device name as String
-    static func showDeviceName() -> String
+    /// get the current iOS device name
+    ///
+    /// - Parameters:
+    /// - Returns:  the device name as String
+    
+    static func getDeviceName() -> String
     {
         return UIDevice.current.name
     }
     
-    // returns the device running this app as UUID
-    static func showDeviceUUID() -> UUID
+    /// get the current iOS device UUID
+    ///
+    /// - Parameters:
+    /// - Returns:  the device UUID
+    
+    static func getDeviceUUID() -> UUID
     {
         return UIDevice.current.identifierForVendor!
     }

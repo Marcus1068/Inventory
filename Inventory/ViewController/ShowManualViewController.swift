@@ -84,15 +84,8 @@ class ShowManualViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    // MARK: - UI actions
 
     @IBAction func doneAction(_ sender: UIButton) {
         os_log("ShowManualViewController doneAction", log: Log.viewcontroller, type: .info)

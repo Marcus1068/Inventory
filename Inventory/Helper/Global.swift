@@ -139,13 +139,25 @@ class Global: NSObject {
         return UUID().uuidString
     }
 
+    /// generate a UUID
+    ///
+    /// - Parameters:
+    ///
+    ///
+    /// - Returns: UUID
+    
     class func generateUUID() -> UUID{
         return UUID()
     }
     
-/*
-    // MARK: compute functions
-    // get min and max from Int array
+
+    /// get max of two values
+    ///
+    /// - Parameters:
+    ///   - array: integer array
+    ///
+    /// - Returns: (minumum value, maximum value)? or nil if array empty
+
     class func minMax(array: [Int]) -> (min: Int, max: Int)? {
         if array.isEmpty { return nil }
         var currentMin = array[0]
@@ -159,7 +171,6 @@ class Global: NSObject {
         }
         return (currentMin, currentMax)
     }
-    */
     
     /// call iOS app settings dialog from inside the app
     ///

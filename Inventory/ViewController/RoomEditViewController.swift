@@ -76,6 +76,10 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
+        // UI controls color theme
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
+        
         // dismiss keyboard
         hideKeyboardWhenTappedAround()
         

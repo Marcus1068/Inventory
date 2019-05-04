@@ -125,7 +125,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         filterSwitch.onTintColor = themeColorUIControls
         roomsSegment.tintColor = themeColorUIControls
         ownersSegment.tintColor = themeColorUIControls
-        
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
         
         
         // set collection view delegates

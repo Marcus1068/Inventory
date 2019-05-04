@@ -841,7 +841,7 @@ class CoreDataHandler: NSObject {
                                    "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         // generate sample data randomly
-        for i in 1..<110{
+        for i in 1..<11{
             let remark = "Remark " + String(Int.random(in: 1...100))
             let serial = "S. no. " + String(Int.random(in: 1...100)) + "N" + String(Int.random(in: 1...100)) + "Z" + String(Int.random(in: 1...100))
             

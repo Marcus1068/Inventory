@@ -67,6 +67,10 @@ class CategoryTableViewController: UITableViewController {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
+        // UI controls color theme
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
+        
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.title = NSLocalizedString("My Categories", comment: "My Categories")

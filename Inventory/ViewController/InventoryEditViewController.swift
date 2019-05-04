@@ -107,6 +107,8 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         choosePDFButton.tintColor = themeColorUIControls
         sharePDFBarButton.tintColor = themeColorUIControls
         pdfView.tintColor = themeColorUIControls
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always

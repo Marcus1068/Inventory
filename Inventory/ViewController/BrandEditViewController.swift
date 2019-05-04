@@ -47,6 +47,10 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
         
+        // UI controls color theme
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
+        
         // edit or add brand
         if currentBrand != nil{
             //

@@ -95,6 +95,7 @@ class Global: NSObject {
     }
     
     // MARK: - helper functions
+    
     // sending a local notification
     
     /// send a local notification (does not require server)
@@ -104,6 +105,8 @@ class Global: NSObject {
     ///   - subtitle: notification subtitle
     ///   - body: notification body text
     ///   - badge: when using badge show number of messages in icon
+    /// - Returns: <none>
+    
     class func sendLocalNotification(title: String, subtitle: String, body: String, badge: NSNumber) {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -124,8 +127,12 @@ class Global: NSObject {
         })
     }
     
-    // get a UUID
-    // request.predicate = NSPredicate(format: "uuid == %@", withUuid)
+    /// generate a UUID
+    ///
+    /// - Parameters:
+    ///
+    ///
+    /// - Returns: UUID as String
     
     class func generateUUID() -> String{
         
@@ -135,6 +142,7 @@ class Global: NSObject {
     class func generateUUID() -> UUID{
         return UUID()
     }
+    
 /*
     // MARK: compute functions
     // get min and max from Int array
@@ -153,7 +161,13 @@ class Global: NSObject {
     }
     */
     
-    // call app settings iOS dialog
+    /// call iOS app settings dialog from inside the app
+    ///
+    /// - Parameters:
+    ///
+    ///
+    /// - Returns:
+    
     class func callAppSettings(){
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
         if UIApplication.shared.canOpenURL(settingsUrl) {
@@ -168,7 +182,14 @@ class Global: NSObject {
         }
     }
     
-    // alter dialog - must be in a view controller class
+    /// show an alert dialog
+    ///
+    /// - Parameters:
+    ///   - title: notification title
+    ///   - message: notification message
+    ///
+    /// - Returns:
+
     class func showAlertController(title: String, message: String) {
         if title.count == 0{
             let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -182,10 +203,12 @@ class Global: NSObject {
     }
     
     
-    // MARK: - Touch ID auth
-    // touch id support
-    // remove alert functions after test
-    // returns true if auth did work, false otherwise
+    /// authenticate with touch id or face id
+    ///
+    /// - Parameters:
+    ///
+    /// - Returns: true if auth did work, false otherwise
+
     class func authWithTouchID(_ sender: Any) -> Bool{
         // Get the authentication context from the Local Authentication framework
         let context = LAContext()
@@ -221,7 +244,12 @@ class Global: NSObject {
         return successFlag
     }
     
-    // check for camera permission
+    /// check for camera permissions
+    ///
+    /// - Parameters:
+    ///
+    /// - Returns: true if camera allowed, false otherwise
+
     class func checkCameraPermission() -> Bool{
         os_log("Global checkCameraPermission", log: Log.viewcontroller, type: .info)
         

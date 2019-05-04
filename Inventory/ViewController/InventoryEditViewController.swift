@@ -44,7 +44,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
     
-    @IBOutlet weak var tapToShowTextView: UITextView!
     @IBOutlet weak var choosePDFButton: UIButton!
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var cameraNavBarOutlet: UIBarButtonItem!
@@ -65,6 +64,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var saveButtonLabel: UIBarButtonItem!
     @IBOutlet weak var cancelButtonLabel: UIBarButtonItem!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var sharePDFBarButton: UIBarButtonItem!
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
@@ -105,7 +105,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         cameraNavBarOutlet.tintColor = themeColorUIControls
         chooseImageButton.tintColor = themeColorUIControls
         choosePDFButton.tintColor = themeColorUIControls
-        tapToShowTextView.tintColor = themeColorUIControls
+        sharePDFBarButton.tintColor = themeColorUIControls
         pdfView.tintColor = themeColorUIControls
         
         if #available(iOS 11.0, *) {

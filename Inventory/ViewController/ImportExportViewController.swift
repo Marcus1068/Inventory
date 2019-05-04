@@ -52,6 +52,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         // setup colors for UI controls
         exportCVSButton.tintColor = themeColorUIControls
         importCVSButton.tintColor = themeColorUIControls
+        shareBarButton.tintColor = themeColorUIControls
+        
         
         // Do any additional setup after loading the view.
         if #available(iOS 11.0, *) {

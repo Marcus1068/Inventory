@@ -75,6 +75,16 @@ class PrivacyViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // need this to scroll textview to top at start
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async{
+            let desiredOffset = CGPoint(x: 0, y: -self.privacyText.contentInset.top)
+            self.privacyText.setContentOffset(desiredOffset, animated: false)
+        }
+    }
+    
 
     @IBAction func doneButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

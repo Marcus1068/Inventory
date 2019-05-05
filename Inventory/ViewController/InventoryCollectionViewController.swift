@@ -313,7 +313,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         if deleteMode{
             let cell = collection.cellForItem(at: indexPath)
             cell?.layer.borderWidth = 5.0
-            //cell?.layer.borderColor = themeColor.cgColor
+            cell?.layer.borderColor = themeColor.cgColor
             
             indexPaths.append(indexPath)
             selectedForDeleteInventory.append(inv)
@@ -634,6 +634,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // right nav bar button to done
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(InventoryCollectionViewController.doneDelete)), animated: true)
         
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
     }
     
     // no inv items deleted, deselect all and enable edit mode again
@@ -654,6 +656,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         indexPaths.removeAll()
         selectedForDeleteInventory.removeAll()
+        
+        collection.reloadData()
     }
     
     // delete inventory objects which are selected
@@ -671,7 +675,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         // delete from database
         for inv in selectedForDeleteInventory{
-            print(inv.inventoryName!)
+            //print(inv.inventoryName!)
             _ = CoreDataHandler.deleteInventory(inventory: inv)
         }
         

@@ -495,7 +495,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         return result
     }
     
-    
     // MARK: - button actions
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
@@ -513,7 +512,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //shareBarButton.isEnabled = true
     }
     
-    
     // share system button to share csv file
     @IBAction func shareButtonAction(_ sender: Any) {
         os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
@@ -522,18 +520,17 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
         
-        progressView.setProgress(0, animated: false)
+        progressView.setProgress(0, animated: true)
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
         exportCSVFile()
         
-        
         let fileManager = FileManager.default
         
         if fileManager.fileExists(atPath: self.url!.path) {
             let text = NSLocalizedString("Shared by Inventory App", comment: "Shared by Inventory App")
-            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [text, self.url!], applicationActivities: nil)  //FIXME hardcoded string
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [text, self.url!], applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         } else {

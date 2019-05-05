@@ -80,8 +80,9 @@ class ManageTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "Futura", size: 38)!
+        header.textLabel?.font = UIFont(name: "HelveticaNeue", size: 20)!
         header.textLabel?.textColor = UIColor.lightGray
+        header.backgroundView?.backgroundColor = themeColorUIControls
     }
     
 }

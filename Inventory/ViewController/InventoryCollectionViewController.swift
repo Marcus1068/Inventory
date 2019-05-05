@@ -240,9 +240,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         //currentInventory = inv
         
         cell.inventoryLabel.text = inv.inventoryName
-        cell.ownerLabel.text = inv.inventoryOwner?.ownerName?.truncate(length: 10)
-        cell.roomNameLabel.text = inv.inventoryRoom?.roomName?.truncate(length: 10)
-        cell.categoryLabel.text = inv.inventoryCategory?.categoryName?.truncate(length: 10)
+        cell.ownerLabel.text = inv.inventoryOwner?.ownerName?.truncate(length: 11)
+        cell.brandNameLabel.text = inv.inventoryBrand?.brandName?.truncate(length: 11)
+        cell.categoryLabel.text = inv.inventoryCategory?.categoryName?.truncate(length: 11)
         
         cell.priceLabel.text = String(inv.price) + Global.currencySymbol!
         
@@ -257,6 +257,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let defaultImage = #imageLiteral(resourceName: "Room Icon")
             image = defaultImage
         }
+        
         cell.myImage.image = image
         
         return cell

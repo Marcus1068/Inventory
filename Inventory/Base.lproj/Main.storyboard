@@ -598,7 +598,7 @@
                                             <outlet property="myImage" destination="fjz-Zl-ju7" id="YPh-zm-m7g"/>
                                             <outlet property="ownerLabel" destination="yYm-0Z-sNf" id="XKd-l3-8wR"/>
                                             <outlet property="priceLabel" destination="Vpk-WK-A4x" id="hwP-rD-laL"/>
-                                            <outlet property="romeNameLabel" destination="T4w-Lo-E4E" id="TRL-w4-GI3"/>
+                                            <outlet property="roomNameLabel" destination="T4w-Lo-E4E" id="TRL-w4-GI3"/>
                                             <segue destination="1MD-YV-91u" kind="show" identifier="editSegue" id="l8y-iU-ek9"/>
                                         </connections>
                                     </collectionViewCell>
@@ -620,7 +620,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="QWk-As-Mn9" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" constant="55" id="azW-HX-EdR"/>
                                         <constraint firstItem="iLi-4f-ZUh" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" id="cIj-sH-0ZY"/>

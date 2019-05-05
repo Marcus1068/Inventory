@@ -240,9 +240,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         //currentInventory = inv
         
         cell.inventoryLabel.text = inv.inventoryName
-        cell.ownerLabel.text = inv.inventoryOwner?.ownerName
-        cell.romeNameLabel.text = inv.inventoryRoom?.roomName
-        cell.categoryLabel.text = inv.inventoryCategory?.categoryName
+        cell.ownerLabel.text = inv.inventoryOwner?.ownerName?.truncate(length: 10)
+        cell.roomNameLabel.text = inv.inventoryRoom?.roomName?.truncate(length: 10)
+        cell.categoryLabel.text = inv.inventoryCategory?.categoryName?.truncate(length: 10)
         
         cell.priceLabel.text = String(inv.price) + Global.currencySymbol!
         

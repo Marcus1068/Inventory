@@ -192,10 +192,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 pdfView.displayMode = .singlePageContinuous
                 pdfView.displayDirection = .vertical
                 pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
-                pdfPlaceholderImage.isHidden = true
+                //pdfPlaceholderImage.isHidden = true
             }
             else{
-                pdfPlaceholderImage.isHidden = false
+                //pdfPlaceholderImage.isHidden = false
             }
             
             // inventory image
@@ -297,7 +297,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
         
-        
+        // inventory PDF
+        if currentInventory!.invoice != nil{
+            pdfPlaceholderImage.isHidden = true
+        }
+        else{
+            pdfPlaceholderImage.isHidden = false
+        }
         
     }
     
@@ -454,7 +460,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBAction func choosePDFButton(_ sender: Any) {
         
         // choose only PDF files from document picker
-        pdfPlaceholderImage.isHidden = true
+        //pdfPlaceholderImage.isHidden = true
         let types: NSArray = NSArray(object: kUTTypePDF as NSString)
         let documentPicker = UIDocumentPickerViewController(documentTypes: types as! [String], in: .import)
         documentPicker.delegate = self

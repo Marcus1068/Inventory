@@ -14,7 +14,7 @@
 "2Ep-nZ-I2N.title" = "Über Inventory";
 
 /* Class = "UIButton"; normalTitle = "Take picture..."; ObjectID = "2TE-eQ-5Wq"; */
-"2TE-eQ-5Wq.normalTitle" = "Foto erstellen...";
+"2TE-eQ-5Wq.normalTitle" = "Foto erstellen";
 
 /* Class = "UILabel"; text = "Import your CSV data from the file system"; ObjectID = "2XG-Gh-KH6"; */
 "2XG-Gh-KH6.text" = "CSV Datei aus Dateisystem importieren";
@@ -305,7 +305,7 @@
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
 /* Class = "UIButton"; normalTitle = "Choose Invoice PDF..."; ObjectID = "seV-zU-Yva"; */
-"seV-zU-Yva.normalTitle" = "Wähle Rechnung...";
+"seV-zU-Yva.normalTitle" = "Wähle Rechnung";
 
 /* Class = "UILabel"; text = "Categories"; ObjectID = "SHR-4B-47W"; */
 "SHR-4B-47W.text" = "Kategorien";

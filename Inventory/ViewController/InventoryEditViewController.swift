@@ -44,6 +44,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
+    @IBOutlet weak var pdfPlaceholderImage: UIImageView!
     
     @IBOutlet weak var choosePDFButton: UIButton!
     //@IBOutlet weak var chooseImageButton: UIButton!
@@ -107,7 +108,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brandButtonLabel.tintColor = themeColorUIControls
         cameraButtonOutlet.tintColor = themeColorUIControls
         cameraNavBarOutlet.tintColor = themeColorUIControls
-        //chooseImageButton.tintColor = themeColorUIControls
         choosePDFButton.tintColor = themeColorUIControls
         sharePDFBarButton.tintColor = themeColorUIControls
         pdfView.tintColor = themeColorUIControls
@@ -124,16 +124,27 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         // register tap gesture for showing image in fullscreen
         imageViewGestureWhenTapped()
         
-        // when tapping somewhere on view dismiss keyboard
-        self.hideKeyboardWhenTappedAround()
-        
         currencyLabel.text = Global.currencySymbol!
+        
+        // focus on first text field
+        textfieldInventoryName.becomeFirstResponder()
+        
+        // needed for reaction on text fields, e.g. return key
+        textfieldInventoryName.delegate = self as? UITextFieldDelegate
+        
+        textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         // get the data from Core Data
         rooms = CoreDataHandler.fetchAllRooms()
         brands = CoreDataHandler.fetchAllBrands()
         owners = CoreDataHandler.fetchAllOwners()
         categories = CoreDataHandler.fetchAllCategories()
+        
+        // set item button texts
+        roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
+        categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
+        brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
+        ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
         
         // edit inventory
         if (currentInventory != nil)
@@ -181,6 +192,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 pdfView.displayMode = .singlePageContinuous
                 pdfView.displayDirection = .vertical
                 pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
+                pdfPlaceholderImage.isHidden = true
+            }
+            else{
+                pdfPlaceholderImage.isHidden = false
             }
             
             // inventory image
@@ -189,6 +204,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 let image = UIImage(data: imageData, scale: 1.0)
                 imageView.image = image
             }
+            
             
             // inventory date
             datePicker.date = currentInventory!.dateOfPurchase! as Date
@@ -220,10 +236,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             textfieldPrice.text = ""
             
             // default placeholder graphic
-    //        imageView.image = UIImage(named: "Inventory.png");
+            //        imageView.image = UIImage(named: "Inventory.png");
             let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
             currentInventory?.image = imageData! as NSData
-
+            
             // default warranty
             warrantySegmentControl.selectedSegmentIndex = 0
             currentInventory?.warranty = Int32(12)
@@ -250,21 +266,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             timeStampLabel.text = msg + " " + myDate
         }
         
-        // focus on first text field
-        textfieldInventoryName.becomeFirstResponder()
-        
-        // needed for reaction on text fields, e.g. return key
-        textfieldInventoryName.delegate = self as? UITextFieldDelegate
-        //textfieldPrice.delegate = self
-        //textfieldPrice.keyboardType = UIKeyboardType.numberPad  // allow only numbers to be entered
-        
-        textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
-        
-        // auto scroll to top so that all text fields can be entered
-        //registerForKeyboardNotifications()
     }
 
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
@@ -293,6 +296,9 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
+        
+        
+        
     }
     
     // MARK: document picker methods
@@ -318,11 +324,17 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("InventoryEditViewController tableView", log: Log.viewcontroller, type: .info)
+        os_log("InventoryEditViewController accessoryButtonTappedForRowWith", log: Log.viewcontroller, type: .info)
         //print(indexPath.row)
         //let idx = IndexPath(row: indexPath.row, section: 0)
         //tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        os_log("InventoryEditViewController didSelectRowAt", log: Log.viewcontroller, type: .info)
+        
+        tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
     }
     
     // called for every typed keyboard stroke
@@ -424,23 +436,25 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // take a new picture
     @IBAction func cameraNavBarAction(_ sender: Any) {
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
+            self.view.endEditing(true)
             self.imagePicker.present(from: self.view)
-        }
+        //}
     }
     
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
-        DispatchQueue.main.async {
+        //DispatchQueue.main.async {
             self.view.endEditing(true)
             self.imagePicker.present(from: sender as! UIView)
-        }
+        //}
     }
     
     // choose a PDF file
     @IBAction func choosePDFButton(_ sender: Any) {
         
         // choose only PDF files from document picker
+        pdfPlaceholderImage.isHidden = true
         let types: NSArray = NSArray(object: kUTTypePDF as NSString)
         let documentPicker = UIDocumentPickerViewController(documentTypes: types as! [String], in: .import)
         documentPicker.delegate = self

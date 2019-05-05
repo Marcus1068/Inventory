@@ -115,9 +115,6 @@
 /* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
 "dGS-kv-Yx5.text" = "Raumname:";
 
-/* Class = "UITextView"; text = "Tap to show PDF in fullscreen"; ObjectID = "EhL-X7-z4X"; */
-"EhL-X7-z4X.text" = "Tippen um PDF in Vollbild anzuzeigen";
-
 /* Class = "UILabel"; text = "Filter by room:"; ObjectID = "ehs-Uu-Z20"; */
 "ehs-Uu-Z20.text" = "Filter nach Raum:";
 
@@ -391,8 +388,8 @@
 /* Class = "UILabel"; text = "Owner:"; ObjectID = "Y6f-Ar-xvF"; */
 "Y6f-Ar-xvF.text" = "Eigentümer:";
 
-/* Class = "UIButton"; normalTitle = "Choose Image..."; ObjectID = "YpX-aZ-6kD"; */
-"YpX-aZ-6kD.normalTitle" = "Wähle Bild...";
+/* Class = "UIButton"; normalTitle = "Photo Library..."; ObjectID = "YpX-aZ-6kD"; */
+"YpX-aZ-6kD.normalTitle" = "Fotobibliothek...";
 
 /* Class = "UILabel"; text = "Owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";

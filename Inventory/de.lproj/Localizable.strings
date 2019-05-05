@@ -103,6 +103,9 @@
 /* Creating: */
 "Creating: " = "Erzeugt:";
 
+/* The exported CSV file can be found here */
+"CSV file can be found in Inventory App documents folder" = "DIe csv Datei kann innerhalb des Dokumenten Ordners der Inventory App gefunden werden";
+
 /* Delete */
 "Delete" = "Löschen";
 
@@ -150,9 +153,6 @@
 
 /* Error */
 "Error" = "Fehler";
-
-/* Export */
-"Export" = "Exportieren";
 
 /* Export Finished */
 "Export Finished" = "Exportieren beendet";
@@ -238,6 +238,15 @@
 /* No CSV file to import found */
 "No CSV file to import found" = "Keine CSV Datei zum Importieren gefunden";
 
+/* No file selected for importing */
+"No file selected for importing" = "Keine Datei zum Importieren ausgewählt";
+
+/* None */
+"None" = "Keine";
+
+/* Number of inventory item */
+"Number of inventory items" = "Anzahl an Inventar Objekten";
+
 /* Nursery 1 */
 "Nursery 1" = "Kinderzimmer 1";
 
@@ -255,6 +264,9 @@
 
 /* Owner already exists */
 "Owner already exists" = "Eigentümer existiert bereits";
+
+/* Owner filter used */
+"Owner filter used" = "Eigentümer Filter angewendet";
 
 /* Page */
 "Page" = "Seite";
@@ -274,6 +286,9 @@
 /* Privacy Information */
 "Privacy Information" = "Datenschutzhinweis";
 
+/* Provided by */
+"Provided by" = "Bereitgestellt durch";
+
 /* Reports */
 "Reports" = "Berichte";
 
@@ -283,17 +298,38 @@
 /* Room already exists */
 "Room already exists" = "Raum existiert bereits";
 
+/* Room filter used */
+"Room filter used" = "Raum Filter angewendet";
+
 /* Running on iOS */
 "Running on iOS " = "Läuft auf iOS ";
 
 /* Search for Inventory */
 "Search for Inventory" = "Suche im Inventar";
 
+/* Shared by Inventory App */
+"Shared by Inventory App" = "Geteilt von Inventory App";
+
 /* Show Image */
 "Show Image" = "Zeige Bild";
 
 /* Smartphone */
 "Smartphone" = "Handy";
+
+/* Sorted by category */
+"Sorted by category" = "Sortiert nach Kategorie";
+
+/* Sorted by item */
+"Sorted by item" = "Sortiert nach Objekt";
+
+/* Sorted by owner */
+"Sorted by owner" = "Sortiert nach Eigentümer";
+
+/* Sorted by room */
+"Sorted by room" = "Sortiert nach Raum";
+
+/* Summary */
+"Summary" = "Zusammenfassung";
 
 /* Support */
 "Support" = "Unterstützung";
@@ -303,9 +339,6 @@
 
 /* Technics */
 "Technics" = "Technik";
-
-/* The exported CSV file can be found here: */
-"The exported CSV file can be found here: " = "Die exportierte CSV Datei kann hier gefunden werden:";
 
 /* Toy */
 "Toy" = "Spielzeug";

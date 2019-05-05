@@ -39,6 +39,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     @IBOutlet weak var warrantySegmentControl: UISegmentedControl!
     
+    @IBOutlet weak var cameraNavBarButton: UIBarButtonItem!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -420,6 +421,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     }
     
     // MARK: - UI Acions
+    
+    // take a new picture
+    @IBAction func cameraNavBarAction(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.imagePicker.present(from: self.view)
+        }
+    }
     
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {

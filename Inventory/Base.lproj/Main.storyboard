@@ -1508,7 +1508,11 @@
                                     <action selector="saveButton:" destination="1MD-YV-91u" id="lx1-ES-yjs"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="camera" id="6Xm-a3-H3h"/>
+                            <barButtonItem systemItem="camera" id="6Xm-a3-H3h">
+                                <connections>
+                                    <action selector="cameraNavBarAction:" destination="1MD-YV-91u" id="JVE-my-JcZ"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Item" image="PDF Icon" id="1x4-xS-Tgd">
                                 <connections>
                                     <action selector="choosePDFButton:" destination="1MD-YV-91u" id="wTV-og-LVo"/>
@@ -1520,6 +1524,7 @@
                         <outlet property="brandButtonLabel" destination="fJy-2X-JZS" id="RSO-y1-jbb"/>
                         <outlet property="brandLabel" destination="5Iy-KY-o2N" id="QDT-UW-JyD"/>
                         <outlet property="cameraButtonOutlet" destination="2TE-eQ-5Wq" id="e3U-vF-Yzh"/>
+                        <outlet property="cameraNavBarButton" destination="6Xm-a3-H3h" id="ZQ4-Ge-Cfv"/>
                         <outlet property="cameraNavBarOutlet" destination="6Xm-a3-H3h" id="aVU-RL-eTZ"/>
                         <outlet property="cancelButtonLabel" destination="oLb-bJ-0qD" id="wMj-yX-WfC"/>
                         <outlet property="categoryButtonLabel" destination="HZ1-cV-zKd" id="tGw-S7-UGm"/>
@@ -1556,11 +1561,11 @@
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="98" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1576,7 +1581,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2821,10 +2826,10 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bwM-Ip-VbG"/>
+        <segue reference="2I6-Yp-giQ"/>
         <segue reference="jjA-ik-3Zw"/>
         <segue reference="vym-Dh-yV8"/>
-        <segue reference="bcU-E7-2cp"/>
+        <segue reference="sZP-kj-dZy"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="hE0-Ui-Mnp"/>
         <segue reference="Jmz-UD-5Ui"/>

@@ -489,7 +489,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         myActionSheet.addAction(action)
-        self.present(myActionSheet, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
     
     // choose category with an action sheet filled with all category names
@@ -511,7 +512,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         myActionSheet.addAction(action)
-        self.present(myActionSheet, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
     
     // choose brand with an action sheet filled with all brand names
@@ -533,7 +535,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         myActionSheet.addAction(action)
-        self.present(myActionSheet, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
     
     // choose owner with an action sheet filled with all owner names
@@ -555,7 +558,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         myActionSheet.addAction(action)
-        self.present(myActionSheet, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
     
     // called when segment index changes
@@ -738,5 +742,17 @@ extension InventoryEditViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
         self.imageView.image = image
+    }
+}
+
+// for action sheets on ipad and iPhone, works on both devices, otherwise app crashes
+// displays action sheet in the middle of iPad screen, on bottom on iPhone screen as usual
+extension UIViewController {
+    public func addActionSheetForiPad(actionSheet: UIAlertController) {
+        if let popoverPresentationController = actionSheet.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverPresentationController.permittedArrowDirections = []
+        }
     }
 }

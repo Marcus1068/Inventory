@@ -143,23 +143,23 @@ class RoomTableViewController: UITableViewController {
     // UIAlert view is not modal so we need to do it this way
     func confirmDelete(room: Room) {
         let title = NSLocalizedString("Delete room", comment: "Delete room")
-        let message1 = NSLocalizedString("Are you sure you want to permanently delete", comment: "Are you sure you want to permanently delete") + " \(room.roomName!)" + "?"
+        let message = NSLocalizedString("Are you sure you really want to delete? Any related inventory will be deleted as well!", comment: "Are you sure you really want to delete")
         
-        let message = message1 + NSLocalizedString("Any related inventory with this room will be deleted as well!", comment: "Any related inventory with this room will be deleted as well!")
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let DeleteAction = UIAlertAction(title: Global.delete, style: .destructive){ (action:UIAlertAction) in
+        let DeleteAction = UIAlertAction(title: Global.delete + " \(room.roomName!)", style: UIAlertAction.Style.destructive){ (ACTION) in
             _ = CoreDataHandler.deleteRoom(room: room)
         }
+        myActionSheet.addAction(DeleteAction)
         
-        let CancelAction = UIAlertAction(title: Global.cancel, style: .cancel, handler: nil) // will do nothing
+        let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+            // do nothing when cancel
+        }
+        myActionSheet.addAction(CancelAction)
         
-        alert.addAction(DeleteAction)
-        alert.addAction(CancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
 }
 

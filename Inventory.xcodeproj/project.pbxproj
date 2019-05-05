@@ -69,6 +69,14 @@
 		2C89B984227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.53.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B978227F7D9A00DB74D3 /* Screen Shot 2019-05-05 at 22.19.53.png */; };
 		2C89B985227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B979227F7D9A00DB74D3 /* Screen Shot 2019-05-05 at 22.20.10.png */; };
 		2C89B986227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.20.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B97A227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.20.png */; };
+		2C89B992227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98A227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png */; };
+		2C89B993227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98B227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png */; };
+		2C89B994227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98C227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png */; };
+		2C89B995227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98D227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png */; };
+		2C89B996227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98E227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png */; };
+		2C89B997227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B98F227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png */; };
+		2C89B998227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B990227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png */; };
+		2C89B999227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B991227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
 /* End PBXBuildFile section */
@@ -152,6 +160,14 @@
 		2C89B978227F7D9A00DB74D3 /* Screen Shot 2019-05-05 at 22.19.53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2019-05-05 at 22.19.53.png"; sourceTree = "<group>"; };
 		2C89B979227F7D9A00DB74D3 /* Screen Shot 2019-05-05 at 22.20.10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2019-05-05 at 22.20.10.png"; sourceTree = "<group>"; };
 		2C89B97A227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2019-05-05 at 22.20.20.png"; sourceTree = "<group>"; };
+		2C89B98A227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png"; sourceTree = "<group>"; };
+		2C89B98B227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png"; sourceTree = "<group>"; };
+		2C89B98C227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png"; sourceTree = "<group>"; };
+		2C89B98D227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png"; sourceTree = "<group>"; };
+		2C89B98E227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png"; sourceTree = "<group>"; };
+		2C89B98F227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png"; sourceTree = "<group>"; };
+		2C89B990227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png"; sourceTree = "<group>"; };
+		2C89B991227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png"; sourceTree = "<group>"; };
 		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		2CC85CFC225F32BB006973A0 /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC85CFE225F32BB006973A0 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
@@ -291,6 +307,8 @@
 		2C89B96D227F7BAB00DB74D3 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				2C89B988227F7E2100DB74D3 /* iPad 9.7 */,
+				2C89B987227F7E1100DB74D3 /* iPhone 8 */,
 				2C89B96E227F7D7800DB74D3 /* iPhone XS Max */,
 			);
 			path = Screenshots;
@@ -312,6 +330,36 @@
 				2C89B97A227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.20.png */,
 			);
 			path = "iPhone XS Max";
+			sourceTree = "<group>";
+		};
+		2C89B987227F7E1100DB74D3 /* iPhone 8 */ = {
+			isa = PBXGroup;
+			children = (
+				2C89B989227F809D00DB74D3 /* German */,
+			);
+			path = "iPhone 8";
+			sourceTree = "<group>";
+		};
+		2C89B988227F7E2100DB74D3 /* iPad 9.7 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "iPad 9.7";
+			sourceTree = "<group>";
+		};
+		2C89B989227F809D00DB74D3 /* German */ = {
+			isa = PBXGroup;
+			children = (
+				2C89B98A227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png */,
+				2C89B990227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png */,
+				2C89B991227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png */,
+				2C89B98E227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png */,
+				2C89B98C227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png */,
+				2C89B98B227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png */,
+				2C89B98F227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png */,
+				2C89B98D227F80AF00DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png */,
+			);
+			path = German;
 			sourceTree = "<group>";
 		};
 		2CC85CFD225F32BB006973A0 /* InventoryTests */ = {
@@ -416,16 +464,24 @@
 				2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */,
 				2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */,
 				2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */,
+				2C89B995227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.53.png in Resources */,
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C5DE31D2275CDCE00C60EEF /* Apache License.rtf in Resources */,
 				2C89B981227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.15.png in Resources */,
 				2C89B985227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.20.10.png in Resources */,
+				2C89B992227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.32.57.png in Resources */,
+				2C89B997227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png in Resources */,
 				2C89B97D227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.44.png in Resources */,
 				2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */,
 				2C6D5B9922232538009F9053 /* Inventory3.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
+				2C89B996227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png in Resources */,
+				2C89B993227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png in Resources */,
+				2C89B998227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.24.png in Resources */,
 				2C89B97E227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.29.png in Resources */,
+				2C89B994227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.04.png in Resources */,
 				2C89B97F227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.32.png in Resources */,
+				2C89B999227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.37.png in Resources */,
 				2C89B97B227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.38.png in Resources */,
 				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,
 				2C89B97C227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.24.png in Resources */,

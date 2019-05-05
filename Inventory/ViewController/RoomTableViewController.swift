@@ -183,6 +183,7 @@ extension RoomTableViewController {
         let image = UIImage(data: imageData, scale:1.0)
         cell.imageView?.image = image!
         cell.backgroundColor = UIColor.clear
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)
         
     }
     

@@ -198,6 +198,7 @@ extension BrandTableViewController {
         
         let brand = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = brand.brandName
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

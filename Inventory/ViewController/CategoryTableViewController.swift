@@ -198,6 +198,7 @@ extension CategoryTableViewController {
         
         let category = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = category.categoryName
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

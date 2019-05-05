@@ -196,6 +196,7 @@ extension OwnerTableViewController {
         
         let owner = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = owner.ownerName
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

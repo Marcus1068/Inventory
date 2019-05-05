@@ -51,7 +51,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        os_log("About view controller viewDidLoad", log: Log.viewcontroller, type: .info)
+        os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // setup colors for UI controls
         appInformationButton.tintColor = themeColorUIControls
@@ -80,6 +80,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        os_log("AboutViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        
         // either use local of iCloud storage
         //useLocalSettingsStorage()
         useiCloudSettingsStorage()
@@ -90,22 +92,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // when using iCloud key/value store to sync settings
     func useiCloudSettingsStorage(){
-        if let user = kvStore.string(forKey: Global.keyUserName),
-            let address = kvStore.string(forKey: Global.keyHouseName){
-            //userInfo = UserInfo(userName: user, houseName: house)
-            UserInfo.userName = user
-            UserInfo.addressName = address
-            
             userNameTextField.text = UserInfo.userName
             addressTextField.text = UserInfo.addressName
-        }
-        else{
-            // default user and house name
-            //userInfo = UserInfo()
-            
-            userNameTextField.text = UserInfo.userName
-            addressTextField.text = UserInfo.addressName
-        }
         
         // notify view controller when changes on other devices occur
         NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.kvHasChanged(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: kvStore)

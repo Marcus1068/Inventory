@@ -39,6 +39,8 @@ let themeColorText = UIColor.blue
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let kvStore = NSUbiquitousKeyValueStore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -69,6 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // change UI Tab bar font
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .selected)
+        
+        // get user name and address from iCloud
+        getiCloudStorageInfo()
         
         return true
     }
@@ -147,6 +152,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return persistentContainer.viewContext
     }
     
+    // get user name and address from icloud storage
+    func getiCloudStorageInfo(){
+        os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
+        
+        if let user = kvStore.string(forKey: Global.keyUserName),
+            let address = kvStore.string(forKey: Global.keyHouseName){
+            UserInfo.userName = user
+            UserInfo.addressName = address
+        }
+    }
 }
 
 // find out what device size we have

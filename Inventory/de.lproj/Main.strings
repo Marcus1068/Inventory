@@ -13,7 +13,7 @@
 /* Class = "UITabBarItem"; title = "About Inventory"; ObjectID = "2Ep-nZ-I2N"; */
 "2Ep-nZ-I2N.title" = "Über Inventory";
 
-/* Class = "UIButton"; normalTitle = "Take picture..."; ObjectID = "2TE-eQ-5Wq"; */
+/* Class = "UIButton"; normalTitle = "Picture"; ObjectID = "2TE-eQ-5Wq"; */
 "2TE-eQ-5Wq.normalTitle" = "Foto erstellen";
 
 /* Class = "UILabel"; text = "Import your CSV data from the file system"; ObjectID = "2XG-Gh-KH6"; */
@@ -46,7 +46,7 @@
 /* Class = "UITextField"; placeholder = "Category name"; ObjectID = "7Zb-vc-qqF"; */
 "7Zb-vc-qqF.placeholder" = "Kategorie";
 
-/* Class = "UITableViewSection"; headerTitle = "Edit Items"; ObjectID = "8bF-C7-bZ1"; */
+/* Class = "UITableViewSection"; headerTitle = "Edit or delete Items"; ObjectID = "8bF-C7-bZ1"; */
 "8bF-C7-bZ1.headerTitle" = "Bearbeiten";
 
 /* Class = "UITabBarItem"; title = "Manage Items"; ObjectID = "8ee-co-69w"; */
@@ -108,9 +108,6 @@
 
 /* Class = "UILabel"; text = "iOS Version"; ObjectID = "DBJ-H4-kKI"; */
 "DBJ-H4-kKI.text" = "iOS Version";
-
-/* Class = "UILabel"; text = "Add, edit and delete objects"; ObjectID = "DgC-kb-9Vd"; */
-"DgC-kb-9Vd.text" = "Objekte bearbeiten, löschen oder hinzufügen";
 
 /* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
 "dGS-kv-Yx5.text" = "Raumname:";
@@ -304,7 +301,7 @@
 /* Class = "UITableViewSection"; headerTitle = "Picture and Invoice"; ObjectID = "rFd-0w-oMC"; */
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
-/* Class = "UIButton"; normalTitle = "Choose Invoice PDF..."; ObjectID = "seV-zU-Yva"; */
+/* Class = "UIButton"; normalTitle = "Choose Invoice"; ObjectID = "seV-zU-Yva"; */
 "seV-zU-Yva.normalTitle" = "Wähle Rechnung";
 
 /* Class = "UILabel"; text = "Categories"; ObjectID = "SHR-4B-47W"; */
@@ -352,9 +349,6 @@
 /* Class = "UITextField"; placeholder = "Serial No."; ObjectID = "wtl-dz-1Ld"; */
 "wtl-dz-1Ld.placeholder" = "Seriennr.";
 
-/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "wzQ-iq-UEN"; */
-"wzQ-iq-UEN.headerTitle" = "Beschreibung";
-
 /* Class = "UINavigationItem"; title = "Inventory"; ObjectID = "x4S-E8-XUR"; */
 "x4S-E8-XUR.title" = "Inventar";
 
@@ -387,9 +381,6 @@
 
 /* Class = "UILabel"; text = "Owner:"; ObjectID = "Y6f-Ar-xvF"; */
 "Y6f-Ar-xvF.text" = "Eigentümer:";
-
-/* Class = "UIButton"; normalTitle = "Photo Library..."; ObjectID = "YpX-aZ-6kD"; */
-"YpX-aZ-6kD.normalTitle" = "Fotobibliothek...";
 
 /* Class = "UILabel"; text = "Owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";

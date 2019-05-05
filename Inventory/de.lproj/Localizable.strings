@@ -70,6 +70,9 @@
 /* Brand already exists */
 "Brand already exists" = "Marke existiert bereits";
 
+/* Camera Roll */
+"Camera Roll" = "Gespeicherte Fotos";
+
 /* Cancel */
 "Cancel" = "Abbruch";
 
@@ -274,6 +277,9 @@
 /* PDF invoice */
 "PDF invoice" = "PDF Rechnung";
 
+/* Photo Library */
+"Photo Library" = "Fotobibliothek";
+
 /* Please check your email configuration */
 "Please check your email configuration" = "Bitte prüfen Sie Ihre Email Konfiguration";
 
@@ -336,6 +342,9 @@
 
 /* Tablet */
 "Tablet" = "Tablet";
+
+/* Take Photo */
+"Take Photo" = "Mache Foto";
 
 /* Technics */
 "Technics" = "Technik";

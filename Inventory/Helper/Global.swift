@@ -74,6 +74,10 @@ class Global: NSObject {
     static let emailConfig = NSLocalizedString("Please check your email configuration", comment: "Please check your email configuration")
     static let support = NSLocalizedString("Support", comment: "Support")
     
+    static let takePhoto = NSLocalizedString("Take Photo", comment: "Take Photo")
+    static let cameraRoll = NSLocalizedString("Camera Roll", comment: "Camera Roll")
+    static let photoLibrary = NSLocalizedString("Photo Library", comment: "Photo Library")
+    
     // general functions
     
     //User region setting return

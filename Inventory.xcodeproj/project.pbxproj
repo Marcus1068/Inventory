@@ -57,6 +57,7 @@
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B967227997D600DB74D3 /* Privacy german.rtf */; };
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
+		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C89B967227997D600DB74D3 /* Privacy german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy german.rtf"; sourceTree = "<group>"; };
 		2C89B9692279995500DB74D3 /* Privacy english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy english.rtf"; sourceTree = "<group>"; };
+		2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		2CC85CFC225F32BB006973A0 /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC85CFE225F32BB006973A0 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				2C2B805422577F76007C842E /* ReportViewController.swift */,
 				2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */,
 				2C4D3F052265D98C00169656 /* PrivacyViewController.swift */,
+				2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */,
 				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
+				2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */,
 				2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */,
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,

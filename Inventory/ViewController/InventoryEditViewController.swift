@@ -30,7 +30,7 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-class InventoryEditViewController: UITableViewController, UIImagePickerControllerDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
+class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -45,7 +45,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     @IBOutlet weak var pdfView: PDFView!
     
     @IBOutlet weak var choosePDFButton: UIButton!
-    @IBOutlet weak var chooseImageButton: UIButton!
+    //@IBOutlet weak var chooseImageButton: UIButton!
     @IBOutlet weak var cameraNavBarOutlet: UIBarButtonItem!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
@@ -76,7 +76,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     var owners : [Owner] = []
     var categories : [Category] = []
     
-    let imagePicker = UIImagePickerController()
+    var imagePicker : ImagePicker!
     
     var url : URL?   // for choosing pdf file
     
@@ -94,6 +94,9 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         
         os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        // initialize image picker class
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
         // setup colors for UI controls
         datePicker.tintColor = themeColorUIControls
         warrantySegmentControl.tintColor = themeColorUIControls
@@ -103,7 +106,7 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         brandButtonLabel.tintColor = themeColorUIControls
         cameraButtonOutlet.tintColor = themeColorUIControls
         cameraNavBarOutlet.tintColor = themeColorUIControls
-        chooseImageButton.tintColor = themeColorUIControls
+        //chooseImageButton.tintColor = themeColorUIControls
         choosePDFButton.tintColor = themeColorUIControls
         sharePDFBarButton.tintColor = themeColorUIControls
         pdfView.tintColor = themeColorUIControls
@@ -122,8 +125,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
-        
-        imagePicker.delegate = self
         
         currencyLabel.text = Global.currencySymbol!
         
@@ -363,29 +364,6 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     }
   */
 
-    
-    //MARK: - Delegates
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-    {
-        os_log("InventoryEditViewController imagePickerController", log: Log.viewcontroller, type: .info)
-        
-        // Local variable inserted by Swift 4.2 migrator.
-        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        let chosenImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = chosenImage
-        
-        dismiss(animated:true, completion: nil)
-    }
-    
-    // cancel picker
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated:true, completion: nil)
-    }
-    
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -445,18 +423,10 @@ class InventoryEditViewController: UITableViewController, UIImagePickerControlle
     
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
-        imagePicker.allowsEditing = true
-        imagePicker.sourceType = .camera
-        //imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    // choose a picture from picture library
-    @IBAction func chooseImageButton(_ sender: Any) {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        //imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        present(imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.view.endEditing(true)
+            self.imagePicker.present(from: sender as! UIView)
+        }
     }
     
     // choose a PDF file
@@ -734,4 +704,11 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
+}
+
+extension InventoryEditViewController: ImagePickerDelegate {
+    
+    func didSelect(image: UIImage?) {
+        self.imageView.image = image
+    }
 }

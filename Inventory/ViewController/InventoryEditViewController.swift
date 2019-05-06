@@ -30,7 +30,7 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate{
+class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -44,7 +44,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pdfView: PDFView!
-    @IBOutlet weak var pdfPlaceholderImage: UIImageView!
     
     @IBOutlet weak var choosePDFButton: UIButton!
     //@IBOutlet weak var chooseImageButton: UIButton!
@@ -98,6 +97,11 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         // initialize image picker class
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        // support iPad Drop of PDF invoice files into edit inventory collection
+        let dropInteraction = UIDropInteraction(delegate: self)
+        view.addInteraction(dropInteraction)
+        view.isUserInteractionEnabled = true
         
         // setup colors for UI controls
         datePicker.tintColor = themeColorUIControls
@@ -268,7 +272,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
        
@@ -297,17 +300,108 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
         
-        // inventory PDF
-        if currentInventory!.invoice != nil{
-            pdfPlaceholderImage.isHidden = true
-        }
-        else{
-            pdfPlaceholderImage.isHidden = false
-        }
-        
     }
     
-    // MARK: document picker methods
+    // MARK: - drag and drop support
+    
+    // To enable a view to consume data from a drop session, you implement three delegate methods.
+    // First, your app can refuse the drag items based on their uniform type identifiers (UTIs), the state of your app, or other requirements.
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+        os_log("InventoryEditViewController dropInteraction canHandle", log: Log.viewcontroller, type: .info)
+        
+        // must be of kUTTypePDF, otherwise other drop methods will not be called
+        return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeFileURL as String, kUTTypePDF as String, kUTTypeImage as String]) && session.items.count == 1
+    }
+
+    // Second, you must tell the system how you want to consume the data, which is typically by copying it. You specify this choice by way of a drop proposal:
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        os_log("InventoryEditViewController dropInteraction sessionDidUpdate", log: Log.viewcontroller, type: .info)
+        
+        let dropLocation = session.location(in: view)
+        //updateLayers(forDropLocation: dropLocation)
+        
+        let operation: UIDropOperation
+        
+        //print(view.frame)
+        if view.frame.contains(dropLocation) {
+            /*
+             If you add in-app drag-and-drop support for the .move operation,
+             you must write code to coordinate between the drag interaction
+             delegate and the drop interaction delegate.
+             */
+            operation = session.localDragSession == nil ? .copy : .move
+        } else {
+            // Do not allow dropping outside of the pdf view.
+            operation = .cancel
+        }
+        
+        return UIDropProposal(operation: operation)
+    }
+    
+    // Finally, after the user lifts their finger from the screen, indicating their intent to drop the drag items, your view has one opportunity to request particular data representations of the drag items
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        os_log("InventoryEditViewController dropInteraction performDrop", log: Log.viewcontroller, type: .info)
+     
+        // check for image file drop
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]){
+            print("here")
+            
+
+            session.loadObjects(ofClass: UIImage.self) { imageItems in
+                let images = imageItems as! [UIImage]
+    
+                DispatchQueue.main.async
+                {
+                    self.imageView.image = images.first
+                }
+            }
+        }
+        
+        // check for pdf file drop
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypePDF as String]){
+            session.loadObjects(ofClass: DropFile.self) { items in
+                if let fileItems = items as? [DropFile] {
+                    let url = self.createDropObject(fileItems: fileItems)
+                    let pdf = PDFDocument(url: url!)
+                    
+                    DispatchQueue.main.async
+                    {
+                        self.pdfView.autoScales = true
+                        self.pdfView.displayMode = .singlePageContinuous
+                        self.pdfView.displayDirection = .vertical
+                        self.pdfView.document = pdf
+                        guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
+                        self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
+                    }
+                }
+            }
+        }
+    }
+    
+    // helper for saving dropped file in temp directory, and getting if back from URL
+    func createDropObject(fileItems: [DropFile]) -> URL?{
+        var fileName : URL?
+        
+        let docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
+        
+        //docURL = docURL?.appendingPathComponent("UserDropInbox/") as NSURL?
+        
+        let dropFilePath = docURL!.appendingPathComponent("File")!.appendingPathExtension("pdf")
+        
+        for file in fileItems {
+            do {
+                fileName = dropFilePath
+                try file.fileData?.write(to:dropFilePath)
+            } catch {
+                NSLog(error as! String)
+            }
+        }
+        
+        return fileName
+        //FileImportInboxManager.shared.hasReceivedFiles = true;
+    }
+    
+    // MARK: - document picker methods
     
     // called by system with resulting document URL
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {

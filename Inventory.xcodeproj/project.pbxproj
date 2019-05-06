@@ -50,6 +50,7 @@
 		2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE3192275981B00C60EEF /* InfoPlist.strings */; };
 		2C5DE31D2275CDCE00C60EEF /* Apache License.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */; };
 		2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */; };
+		2C6A69F6228038D600140B39 /* DropFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A69F5228038D600140B39 /* DropFile.swift */; };
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
@@ -138,6 +139,7 @@
 		2C5DE31A2275981B00C60EEF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Apache License.rtf"; sourceTree = "<group>"; };
 		2C661DEE2261CDF60070B8F3 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		2C6A69F5228038D600140B39 /* DropFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropFile.swift; sourceTree = "<group>"; };
 		2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHandler.swift; sourceTree = "<group>"; };
 		2C6C0DD72201DBFA00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2C6C0DD82201DBFB00367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				2C56E90B208683D100FD5136 /* Global.swift */,
 				2C56E90D2086844A00FD5136 /* DeviceInfo.swift */,
 				2C2B8056225CDE70007C842E /* Log.swift */,
+				2C6A69F5228038D600140B39 /* DropFile.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,
 				2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */,
 				2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */,
+				2C6A69F6228038D600140B39 /* DropFile.swift in Sources */,
 				2C56E9502086A41700FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
 				2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */,
 				2C56E95E208756D500FD5136 /* RoomNavigationViewController.swift in Sources */,

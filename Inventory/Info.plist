@@ -88,47 +88,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UTExportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.csv</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Inventory Document</string>
-			<key>UTTypeIconFiles</key>
-			<array>
-				<string>Inventory3.png</string>
-			</array>
-			<key>UTTypeIdentifier</key>
-			<string>de.marcus-deuss.inv</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<string>csv</string>
-				<key>public.mime-type</key>
-				<string>text/csv</string>
-			</dict>
-		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.csv</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Inventory Document</string>
-			<key>UTTypeIconFiles</key>
-			<array>
-				<string>Inventory3.png</string>
-			</array>
-			<key>UTTypeIdentifier</key>
-			<string>de.marcus-deuss.inv</string>
-		</dict>
-		<dict/>
-	</array>
 </dict>
 </plist>

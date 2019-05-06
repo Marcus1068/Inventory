@@ -28,7 +28,7 @@ import PDFKit
 import os
 
 
-class ShowManualViewController: UIViewController {
+class ShowUserManualViewController: UIViewController {
 
     @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var doneAction: UIButton!
@@ -38,7 +38,7 @@ class ShowManualViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("ShowManualViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        os_log("ShowUserManualViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // setup colors for UI controls
         doneAction.tintColor = themeColorUIControls
@@ -88,7 +88,7 @@ class ShowManualViewController: UIViewController {
     // MARK: - UI actions
 
     @IBAction func doneAction(_ sender: UIButton) {
-        os_log("ShowManualViewController doneAction", log: Log.viewcontroller, type: .info)
+        os_log("ShowUserManualViewController doneAction", log: Log.viewcontroller, type: .info)
         
         dismiss(animated: true, completion: nil)
     }

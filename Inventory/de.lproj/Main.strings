@@ -187,6 +187,21 @@
 /* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[0] = "All"; ObjectID = "jvJ-91-pTc"; */
 "jvJ-91-pTc.segmentTitles[0]" = "Alle";
 
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[1] = "Marie"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[1]" = "Marie";
+
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[2] = "Vincent"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[2]" = "Vincent";
+
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[3] = "Peter"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[3]" = "Peter";
+
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[4] = "Kalla"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[4]" = "Kalla";
+
+/* Class = "UISegmentedControl"; jvJ-91-pTc.segmentTitles[5] = "Sandra"; ObjectID = "jvJ-91-pTc"; */
+"jvJ-91-pTc.segmentTitles[5]" = "Sandra";
+
 /* Class = "UILabel"; text = "All"; ObjectID = "K90-Fm-Q4b"; */
 "K90-Fm-Q4b.text" = "Alle";
 

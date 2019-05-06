@@ -34,23 +34,11 @@
 /* All */
 "All" = "Alle";
 
-/* Any related inventory with this brand will be deleted as well! */
-"Any related inventory with this brand will be deleted as well!" = "Alle Inventarobjekte mit dieser Marke werden gelöscht!";
-
-/* Any related inventory with this category will be deleted as well! */
-"Any related inventory with this category will be deleted as well!" = "Alle Inventarobjekte mit dieser Kategorie werden gelöscht!";
-
-/* Any related inventory with this owner will be deleted as well! */
-"Any related inventory with this owner will be deleted as well!" = "Alle Inventarobjekte mit diesem Eigentümer werden gelöscht!";
-
-/* Any related inventory with this room will be deleted as well! */
-"Any related inventory with this room will be deleted as well!" = "Alle Inventarobjekte mit diesem Raum werden gelöscht!";
+/* Are you sure you really want to delete */
+"Are you sure you really want to delete? Any related inventory will be deleted as well!" = "Wollen Sie wirklich löschen? Alle hier von abhängenden Objekte werden ebenfalls gelöscht!";
 
 /* Are you sure you want to delete? All inventory objects depending will be deleted as well... */
 "Are you sure you want to delete? All inventory objects depending will be deleted as well..." = "Sind Sie sicher? Alle Inventarobjekte die hiervon abhängen werden ebenfalls gelöscht...";
-
-/* Are you sure you want to permanently delete */
-"Are you sure you want to permanently delete" = "Sind Sie sicher, das Sie dauerhaft löschen wollen";
 
 /* Authenticate with Touch ID */
 "Authenticate with Touch ID" = "Authentifizieren mit Touch ID";

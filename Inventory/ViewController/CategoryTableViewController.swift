@@ -142,23 +142,24 @@ class CategoryTableViewController: UITableViewController {
     func confirmDelete(category: Category) {
         let title = NSLocalizedString("Delete category", comment: "Delete category")
         
-        let message1 = NSLocalizedString("Are you sure you want to permanently delete", comment: "Are you sure you want to permanently delete") + " \(category.categoryName!)" + "?"
+        let message = NSLocalizedString("Are you sure you really want to delete? Any related inventory will be deleted as well!", comment: "Are you sure you really want to delete")
         
-        let message = message1 + NSLocalizedString("Any related inventory with this category will be deleted as well!", comment: "Any related inventory with this category will be deleted as well!")
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         // use closure to delete database entry
-        let DeleteAction = UIAlertAction(title: Global.delete, style: .destructive){ (action:UIAlertAction) in
+        let DeleteAction = UIAlertAction(title: Global.delete + " \(category.categoryName!)", style: UIAlertAction.Style.destructive){ (ACTION) in
             _ = CoreDataHandler.deleteCategory(category: category)
         }
         
-        let CancelAction = UIAlertAction(title: Global.cancel, style: .cancel, handler: nil) // will do nothing
+        let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+            // do nothing when cancel
+        }
         
-        alert.addAction(DeleteAction)
-        alert.addAction(CancelAction)
+        myActionSheet.addAction(DeleteAction)
+        myActionSheet.addAction(CancelAction)
         
-        self.present(alert, animated: true, completion: nil)
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
 
     /*

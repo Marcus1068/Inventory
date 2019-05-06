@@ -181,7 +181,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                     // get your UIImage jpeg data representation and check if the destination file url already exists
                     let imageData = inv.image! as Data
                     let image = UIImage(data: imageData, scale: 1.0)
-                    if let data = image!.jpegData(compressionQuality: 1.0),
+                    if let data = image!.jpegData(compressionQuality: 0.0),
                         !FileManager.default.fileExists(atPath: pathURLjpg.path) {
                         do {
                             // writes the image data to disk

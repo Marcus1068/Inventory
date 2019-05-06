@@ -38,7 +38,7 @@ class Global: NSObject {
     static let versionString = "1.0"
     
     // compression factor in reducing jpg file size to 1/10th (value goes from 0.0 to 1.0)
-    static let imageQuality: CGFloat = 0.1
+    static let imageQuality: CGFloat = 0.0
     
     // system sound for drop operation
     static let systemSound = 1322

@@ -28,11 +28,15 @@
 import UIKit
 import CoreData
 import os
+import MobileCoreServices
+import AVFoundation
+
 
 private let reuseIdentifier = "collectionCellReports"
 private var selectedInventoryItem = Inventory()
 
-class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate {
+    
     
     // define fetch results controller based on core data entity (Room)
     // define sort descriptors
@@ -93,7 +97,77 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
-    // MARK - methods
+    // MARK: - drop support
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        canHandle session: UIDropSession) -> Bool{
+        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        
+        return session.hasItemsConforming(toTypeIdentifiers:
+            [kUTTypeImage as String])
+    }
+    
+    // As the user’s finger moves, the collection view tracks the potential drop location and notifies your delegate by calling its collectionView(_:dropSessionDidUpdate:withDestinationIndexPath:)
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal
+    {
+        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        
+        if session.localDragSession != nil {
+            return UICollectionViewDropProposal(operation: .forbidden,
+                                                intent: .unspecified)
+        } else {
+            return UICollectionViewDropProposal(operation: .copy,
+                                                intent: .insertIntoDestinationIndexPath)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        
+        let destinationIndexPath =
+            coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
+        
+        switch coordinator.proposal.operation {
+        case .copy:
+            
+            let items = coordinator.items
+            
+            for item in items {
+                item.dragItem.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: {(newImage, error)  -> Void in
+                    
+                    if let image = newImage as? UIImage {
+                        DispatchQueue.main.async {
+                            let inv = self.fetchedResultsController.object(at: destinationIndexPath)
+                            print(inv.inventoryName!)
+                            // image binary data
+                            let imageData = image.jpegData(compressionQuality: 0.1)
+                            inv.image = imageData! as NSData
+                            inv.imageFileName = Global.generateFilename(invname: inv.inventoryName!) + ".jpg"
+                            
+                            _ = CoreDataHandler.saveInventory(inventory: inv)
+                            
+                            self.collection.reloadData()
+                            
+                            // create a sound ID, in this case its the tweet sound.
+                            let systemSoundID: SystemSoundID = SystemSoundID(Global.systemSound)
+                            
+                            // to play sound
+                            AudioServicesPlaySystemSound (systemSoundID)
+                        }
+                        //self.images.insert(image, at: destinationIndexPath.item)
+                        
+                        /*DispatchQueue.main.async {
+                            collectionView.insertItems(
+                                at: [destinationIndexPath])
+                        } */
+                    }
+                })
+            }
+        default: return
+        }
+    }
+    
+    // MARK: - methods
     
     // fill a segment controll with values
     func replaceSegmentContents(segments: Array<String>, control: UISegmentedControl) {
@@ -113,6 +187,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
+        
+        // to enable drag/drop support
+        collection.dropDelegate = self
         
         // set view title
         self.title = NSLocalizedString("My Inventory", comment: "My Inventory")

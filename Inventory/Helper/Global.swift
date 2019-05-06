@@ -37,6 +37,9 @@ class Global: NSObject {
     // used in about view controller and for sending support emails
     static let versionString = "1.0"
     
+    // system sound for drop operation
+    static let systemSound = 1322
+    
     // name of the app in about view
     static let appNameString = "Inventory App"
     static let emailAdr = "mdeuss+inventory@gmail.com"
@@ -296,6 +299,26 @@ class Global: NSObject {
         }
         
         return allowed
+    }
+    
+    // give filename based on current date, independent of current locale
+    static func generateFilename(invname: String) -> String{
+        os_log("InventoryEditViewController generateFilename", log: Log.viewcontroller, type: .info)
+        
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+        dateformatter.dateStyle = DateFormatter.Style.short
+        
+        let nowDate = dateformatter.string(from: Date())
+        
+        dateformatter.dateStyle = DateFormatter.Style.none
+        dateformatter.timeStyle = DateFormatter.Style.medium
+        
+        let nowTime = dateformatter.string(from: Date())
+        
+        let imageName = invname + "_" + nowDate + " " + nowTime
+        
+        return imageName
     }
 }
 

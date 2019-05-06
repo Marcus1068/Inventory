@@ -344,15 +344,18 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
      
         // check for image file drop
         if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]){
-            print("here")
-            
-
             session.loadObjects(ofClass: UIImage.self) { imageItems in
                 let images = imageItems as! [UIImage]
     
                 DispatchQueue.main.async
                 {
                     self.imageView.image = images.first
+
+                    // create a sound ID, in this case its the tweet sound.
+                    let systemSoundID: SystemSoundID = SystemSoundID(Global.systemSound)
+                    
+                    // to play sound
+                    AudioServicesPlaySystemSound (systemSoundID)
                 }
             }
         }
@@ -372,6 +375,12 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                         self.pdfView.document = pdf
                         guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
                         self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
+                        
+                        // create a sound ID, in this case its the tweet sound.
+                        let systemSoundID: SystemSoundID = SystemSoundID(Global.systemSound)
+                        
+                        // to play sound
+                        AudioServicesPlaySystemSound (systemSoundID)
                     }
                 }
             }
@@ -700,13 +709,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         // image binary data
         let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
         currentInventory?.image = imageData! as NSData
-        currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
+        currentInventory?.imageFileName = Global.generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
         
         
         // PDF data
         if pdfView.document != nil{
             currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
+            currentInventory?.invoiceFileName = Global.generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
         }
         
     /*    currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
@@ -745,26 +754,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             
             pdfView.document = pdfDocument
         }
-    }
-    
-    // give filename based on current date, independent of current locale
-    func generateFilename(invname: String) -> String{
-        os_log("InventoryEditViewController generateFilename", log: Log.viewcontroller, type: .info)
-        
-        let dateformatter = DateFormatter()
-        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
-        dateformatter.dateStyle = DateFormatter.Style.short
-        
-        let nowDate = dateformatter.string(from: Date())
-        
-        dateformatter.dateStyle = DateFormatter.Style.none
-        dateformatter.timeStyle = DateFormatter.Style.medium
-        
-        let nowTime = dateformatter.string(from: Date())
-        
-        let imageName = invname + "_" + nowDate + " " + nowTime
-        
-        return imageName
     }
     
 /*

@@ -244,7 +244,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             
             // default placeholder graphic
             //        imageView.image = UIImage(named: "Inventory.png");
-            let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
+            let imageData = imageView.image!.jpegData(compressionQuality: Global.imageQuality)
             currentInventory?.image = imageData! as NSData
             
             // default warranty
@@ -692,7 +692,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         currentInventory?.timeStamp = Date() as NSDate?
         
         // image binary data
-        let imageData = imageView.image!.jpegData(compressionQuality: 0.1)
+        let imageData = imageView.image!.jpegData(compressionQuality: Global.imageQuality)
         currentInventory?.image = imageData! as NSData
         currentInventory?.imageFileName = Global.generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
         

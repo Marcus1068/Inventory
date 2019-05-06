@@ -142,7 +142,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
                             print(inv.inventoryName!)
                             // image binary data
-                            let imageData = image.jpegData(compressionQuality: 0.1)
+                            let imageData = image.jpegData(compressionQuality: Global.imageQuality)
                             inv.image = imageData! as NSData
                             inv.imageFileName = Global.generateFilename(invname: inv.inventoryName!) + ".jpg"
                             

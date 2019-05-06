@@ -65,7 +65,7 @@ class ImageViewController: UIViewController {
         
         os_log("ImageViewController viewWillLayoutSubviews", log: Log.viewcontroller, type: .info)
         
-        updateMinZoomScaleForSize(view.bounds.size)
+        //updateMinZoomScaleForSize(view.bounds.size)
     }
 
     fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {

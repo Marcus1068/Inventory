@@ -475,7 +475,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
             destination.currentPath = self.url
-            destination.currentTitle = NSLocalizedString("PDF invoice", comment: "PDF invoice")
+            destination.currentTitle = NSLocalizedString("PDF invoice for", comment: "PDF invoice for") + " " + currentInventory!.inventoryName!
         }
         
         if segue.identifier == "roomSegue" {

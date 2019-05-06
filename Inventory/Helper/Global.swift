@@ -341,6 +341,21 @@ class Global: NSObject {
         
         return dropFilePath
     }
+    
+    // scale an image
+    static func scaleImage (image:UIImage, width: CGFloat) -> UIImage {
+        let oldWidth = image.size.width
+        let scaleFactor = width / oldWidth
+        
+        let newHeight = image.size.height * scaleFactor
+        let newWidth = oldWidth * scaleFactor
+        
+        UIGraphicsBeginImageContext(CGSize(width:newWidth, height:newHeight))
+        image.draw(in: CGRect(x:0, y:0, width:newWidth, height:newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 }
 
 // extensions

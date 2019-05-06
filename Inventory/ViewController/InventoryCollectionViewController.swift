@@ -30,6 +30,7 @@ import CoreData
 import os
 import MobileCoreServices
 import AVFoundation
+import PDFKit
 
 
 private let reuseIdentifier = "collectionCellReports"
@@ -104,7 +105,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
         
         return session.hasItemsConforming(toTypeIdentifiers:
-            [kUTTypeImage as String])
+            [kUTTypeImage as String, kUTTypePDF as String])
     }
     
     // As the user’s finger moves, the collection view tracks the potential drop location and notifies your delegate by calling its collectionView(_:dropSessionDidUpdate:withDestinationIndexPath:)
@@ -121,6 +122,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
+    // perform the drop operation, get image from external app and change image of selected (dropped) inventory item
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
         
@@ -162,6 +164,30 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                         } */
                     }
                 })
+                
+                item.dragItem.itemProvider.loadObject(ofClass: DropFile.self) { (provider, error) in
+                    print("loaded urls")
+                    DispatchQueue.main.async {
+                        if let fileItem = provider as? DropFile {
+                            let inv = self.fetchedResultsController.object(at: destinationIndexPath)
+                            print(inv.inventoryName!)
+                            
+                            let url = Global.createTempDropObject(fileItems: [fileItem])
+                            let pdf = PDFDocument(url: url!)
+                            inv.invoice = pdf?.dataRepresentation() as NSData?
+                            inv.invoiceFileName = Global.generateFilename(invname: inv.inventoryName!) + ".pdf"
+                            _ = CoreDataHandler.saveInventory(inventory: inv)
+                            
+                            self.collection.reloadData()
+                            
+                            // create a sound ID, in this case its the tweet sound.
+                            let systemSoundID: SystemSoundID = SystemSoundID(Global.systemSound)
+                            
+                            // to play sound
+                            AudioServicesPlaySystemSound (systemSoundID)
+                            }
+                        }
+                    }
             }
         default: return
         }

@@ -196,10 +196,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 pdfView.displayMode = .singlePageContinuous
                 pdfView.displayDirection = .vertical
                 pdfView.document = PDFDocument(data: (currentInventory!.invoice! as NSData) as Data)
-                //pdfPlaceholderImage.isHidden = true
-            }
-            else{
-                //pdfPlaceholderImage.isHidden = false
+                
+                // scroll PDF to top
+                DispatchQueue.main.async
+                    {
+                        guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
+                        self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
+                }
             }
             
             // inventory image
@@ -364,7 +367,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         if session.hasItemsConforming(toTypeIdentifiers: [kUTTypePDF as String]){
             session.loadObjects(ofClass: DropFile.self) { items in
                 if let fileItems = items as? [DropFile] {
-                    let url = self.createTempDropObject(fileItems: fileItems)
+                    let url = Global.createTempDropObject(fileItems: fileItems)
                     let pdf = PDFDocument(url: url!)
                     
                     DispatchQueue.main.async
@@ -385,24 +388,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 }
             }
         }
-    }
-    
-    // helper for saving dropped file in temp directory, and getting if back from URL
-    private func createTempDropObject(fileItems: [DropFile]) -> URL?{
-        os_log("InventoryEditViewController createTempDropObject", log: Log.viewcontroller, type: .info)
-        
-        let docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
-        let dropFilePath = docURL!.appendingPathComponent("File")!.appendingPathExtension("pdf")
-        
-        for file in fileItems {
-            do {
-                try file.fileData?.write(to:dropFilePath)
-            } catch {
-                os_log("InventoryEditViewController createTempDropObject", log: Log.viewcontroller, type: .error)
-            }
-        }
-        
-        return dropFilePath
     }
     
     // MARK: - document picker methods

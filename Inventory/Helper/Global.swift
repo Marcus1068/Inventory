@@ -295,7 +295,7 @@ class Global: NSObject {
             break
             
         @unknown default:
-            os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .error)
+            os_log("Global checkCameraPermission", log: Log.viewcontroller, type: .error)
         }
         
         return allowed
@@ -303,7 +303,7 @@ class Global: NSObject {
     
     // give filename based on current date, independent of current locale
     static func generateFilename(invname: String) -> String{
-        os_log("InventoryEditViewController generateFilename", log: Log.viewcontroller, type: .info)
+        os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
         
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
@@ -319,6 +319,24 @@ class Global: NSObject {
         let imageName = invname + "_" + nowDate + " " + nowTime
         
         return imageName
+    }
+    
+    // helper for saving dropped file in temp directory, and getting if back from URL
+    static func createTempDropObject(fileItems: [DropFile]) -> URL?{
+        os_log("Global createTempDropObject", log: Log.viewcontroller, type: .info)
+        
+        let docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
+        let dropFilePath = docURL!.appendingPathComponent("File")!.appendingPathExtension("pdf")
+        
+        for file in fileItems {
+            do {
+                try file.fileData?.write(to:dropFilePath)
+            } catch {
+                os_log("Global createTempDropObject", log: Log.viewcontroller, type: .error)
+            }
+        }
+        
+        return dropFilePath
     }
 }
 

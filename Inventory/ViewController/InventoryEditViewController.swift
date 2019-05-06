@@ -361,7 +361,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         if session.hasItemsConforming(toTypeIdentifiers: [kUTTypePDF as String]){
             session.loadObjects(ofClass: DropFile.self) { items in
                 if let fileItems = items as? [DropFile] {
-                    let url = self.createDropObject(fileItems: fileItems)
+                    let url = self.createTempDropObject(fileItems: fileItems)
                     let pdf = PDFDocument(url: url!)
                     
                     DispatchQueue.main.async
@@ -379,26 +379,21 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     }
     
     // helper for saving dropped file in temp directory, and getting if back from URL
-    func createDropObject(fileItems: [DropFile]) -> URL?{
-        var fileName : URL?
+    private func createTempDropObject(fileItems: [DropFile]) -> URL?{
+        os_log("InventoryEditViewController createTempDropObject", log: Log.viewcontroller, type: .info)
         
         let docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
-        
-        //docURL = docURL?.appendingPathComponent("UserDropInbox/") as NSURL?
-        
         let dropFilePath = docURL!.appendingPathComponent("File")!.appendingPathExtension("pdf")
         
         for file in fileItems {
             do {
-                fileName = dropFilePath
                 try file.fileData?.write(to:dropFilePath)
             } catch {
-                NSLog(error as! String)
+                os_log("InventoryEditViewController createTempDropObject", log: Log.viewcontroller, type: .error)
             }
         }
         
-        return fileName
-        //FileImportInboxManager.shared.hasReceivedFiles = true;
+        return dropFilePath
     }
     
     // MARK: - document picker methods

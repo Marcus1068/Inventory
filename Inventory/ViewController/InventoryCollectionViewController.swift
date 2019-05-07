@@ -81,7 +81,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     var selectedForDeleteInventory:[Inventory] = []
     
     // store selected items when delete mode = true
-    var indexPaths = [IndexPath]()
+    var indexPathsForDeletion = [IndexPath]()
     
     // enter delete mode
     var deleteMode: Bool = false {
@@ -102,7 +102,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView,
                         canHandle session: UIDropSession) -> Bool{
-        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
         
         return session.hasItemsConforming(toTypeIdentifiers:
             [kUTTypeImage as String, kUTTypePDF as String])
@@ -111,7 +111,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // As the user’s finger moves, the collection view tracks the potential drop location and notifies your delegate by calling its collectionView(_:dropSessionDidUpdate:withDestinationIndexPath:)
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal
     {
-        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
         
         if session.localDragSession != nil {
             return UICollectionViewDropProposal(operation: .forbidden,
@@ -124,7 +124,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // perform the drop operation, get image from external app and change image of selected (dropped) inventory item
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
         
         let destinationIndexPath =
             coordinator.destinationIndexPath ?? IndexPath(item: 0, section: 0)
@@ -166,7 +166,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                 })
                 
                 item.dragItem.itemProvider.loadObject(ofClass: DropFile.self) { (provider, error) in
-                    print("loaded urls")
+                    //print("loaded urls")
                     DispatchQueue.main.async {
                         if let fileItem = provider as? DropFile {
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
@@ -208,7 +208,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -271,7 +271,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
  
-        os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         do {
             try fetchedResultsController.performFetch()
@@ -402,11 +402,26 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             return footerView
             
         default:
-            os_log("InventoryCollectionViewController collectionView", log: Log.viewcontroller, type: .error)
+            os_log("InventoryCollectionViewController collectionView viewForSupplementaryElementOfKind", log: Log.viewcontroller, type: .error)
             assert(false, "Unexpected element kind")
         }
     }
 
+    // selects a cell with thick border in theme color
+    func selectCell(indexPath: IndexPath){
+        let cell = collection.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 5.0
+        cell?.layer.borderColor = themeColor.cgColor
+    }
+    
+    // deselects a cell to remove thick border and theme color
+    func deSelectCell(indexPath: IndexPath){
+        let cell = collection.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    //
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let inv = fetchedResultsController.object(at: indexPath)
         
@@ -415,29 +430,29 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
         if deleteMode{
-            let cell = collection.cellForItem(at: indexPath)
-            cell?.layer.borderWidth = 5.0
-            cell?.layer.borderColor = themeColor.cgColor
+            selectCell(indexPath: indexPath)
             
-            indexPaths.append(indexPath)
+            indexPathsForDeletion.append(indexPath)
             selectedForDeleteInventory.append(inv)
         }
     }
     
+    // when deselecting collection items remove them from list of objects to delete
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.clear
         //let inv = fetchedResultsController.object(at: indexPath)
         
         if deleteMode{
-            let cell = collection.cellForItem(at: indexPath)
-            cell?.layer.borderWidth = 0.0
-            cell?.layer.borderColor = UIColor.clear.cgColor
+            deSelectCell(indexPath: indexPath)
             
-            if indexPaths.count > 0{
-                indexPaths.removeLast()
+            if indexPathsForDeletion.count > 0{
+                indexPathsForDeletion.removeLast()
                 //selectedForDeleteInventory.remove(at: indexPath.item)
                 selectedForDeleteInventory.removeLast()
             }
+        }
+        else{
+            deSelectCell(indexPath: indexPath)
         }
     }
     
@@ -448,7 +463,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // Uncomment this method to specify if the specified item should be selected
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        
         return true
     }
     
@@ -464,7 +478,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! InventoryEditViewController
         
@@ -486,6 +500,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // called when search bar cancel button was clicked
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         fetchedResultsController.fetchRequest.predicate = nil
+        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
@@ -555,7 +570,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // Returns true if the search text is empty or nil
     func searchBarIsEmpty() -> Bool {
-        
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
@@ -580,7 +594,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         switch roomsSegment.selectedSegmentIndex
         {
         case 0: // not filtering by rooms
-            
             // not filtering by room, not filtering by owners
             if(ownersSegment.selectedSegmentIndex == 0)
             {
@@ -595,7 +608,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             break
             
         default:    // filtering by rooms
-            
             // filtering by rooms, not filtering by owners
             if(ownersSegment.selectedSegmentIndex == 0)
             {
@@ -628,7 +640,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         switch ownersSegment.selectedSegmentIndex
         {
         case 0: // not filtering by owners
-            
             // not filtering by room, not filtering by owners
             if(roomsSegment.selectedSegmentIndex == 0)
             {
@@ -643,7 +654,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             break
             
         default: // filtering by owners
-            
             // not filtering by rooms, filtering by owners
             if(roomsSegment.selectedSegmentIndex == 0)
             {
@@ -674,7 +684,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // enable or disable the filtering mechanics
     @IBAction func filterSwitchAction(_ sender: UISwitch) {
-        
         // enable filter segments
         if sender.isOn
         {
@@ -744,37 +753,29 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // no inv items deleted, deselect all and enable edit mode again
     @objc func cancelDelete(){
-        
         // enable edit mode again
         deleteMode = false
         
         collection.allowsMultipleSelection = false
         
         // deselect all selected items
-        for idx in indexPaths{
-            
-            let cell = collection?.cellForItem(at: idx)
-            cell?.layer.borderWidth = 0.0
-            cell?.layer.borderColor = UIColor.clear.cgColor
+        for idx in indexPathsForDeletion{
+            deSelectCell(indexPath: idx)
         }
         
-        indexPaths.removeAll()
+        indexPathsForDeletion.removeAll()
         selectedForDeleteInventory.removeAll()
-        
-        collection.reloadData()
     }
     
     // delete inventory objects which are selected
     @objc func doneDelete(){
-        
+        // enable edit mode again
         deleteMode = false
         collection.allowsMultipleSelection = false
         
         // delete all selected items
-        for idx in indexPaths{
-            let cell = collection.cellForItem(at: idx)
-            cell?.layer.borderWidth = 0.0
-            cell?.layer.borderColor = UIColor.clear.cgColor
+        for idx in indexPathsForDeletion{
+            deSelectCell(indexPath: idx)
         }
         
         // delete from database
@@ -783,7 +784,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             _ = CoreDataHandler.deleteInventory(inventory: inv)
         }
         
-        indexPaths.removeAll()
+        indexPathsForDeletion.removeAll()
         selectedForDeleteInventory.removeAll()
         
         do {

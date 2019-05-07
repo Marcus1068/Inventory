@@ -44,7 +44,7 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     
     // select background color, works only on TVOS
-    func markSelected(state: Bool){
+ /*   func markSelected(state: Bool){
         if state == true{
             self.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 1, alpha: 1)
         }
@@ -52,8 +52,8 @@ class InventoryCollectionViewCell: UICollectionViewCell {
             self.backgroundColor = UIColor(white: 0.9, alpha: 1)
         }
     }
-    
-    override var isHighlighted: Bool {
+    */
+ /*   override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
@@ -65,8 +65,8 @@ class InventoryCollectionViewCell: UICollectionViewCell {
                 }, completion: nil)
             }
         }
-    }
-    
+    } */
+  /*
     @objc func capital(_ sender: Any!) {
         // find my collection view
         var v : UIView = self
@@ -76,5 +76,5 @@ class InventoryCollectionViewCell: UICollectionViewCell {
         let ip = cv.indexPath(for: self)!
         // relay to its delegate
         cv.delegate?.collectionView?(cv, performAction:#selector(capital), forItemAt: ip, withSender: sender)
-    }
+    } */
 }

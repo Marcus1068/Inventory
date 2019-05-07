@@ -546,7 +546,7 @@ class CoreDataHandler: NSObject {
     // fetch all category array, otherwise return [] empty array
     class func fetchAllCategories() -> [Category]
     {
-        os_log("CoreDataHandler fetchAllCategories", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchAllCategories", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Category> = Category.fetchRequest()
         
@@ -571,7 +571,7 @@ class CoreDataHandler: NSObject {
     // fetch all brand array, otherwise return [] empty array
     class func fetchAllBrands() -> [Brand]
     {
-        os_log("CoreDataHandler fetchAllBrands", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchAllBrands", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Brand> = Brand.fetchRequest()
         
@@ -596,7 +596,7 @@ class CoreDataHandler: NSObject {
     // fetch all owner array, otherwise return [] empty array
     class func fetchAllOwners() -> [Owner]
     {
-        os_log("CoreDataHandler fetchAllOwners", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchAllOwners", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Owner> = Owner.fetchRequest()
         
@@ -620,7 +620,7 @@ class CoreDataHandler: NSObject {
     // fetch all room array, otherwise return [] empty array
     class func fetchAllRooms() -> [Room]
     {
-        os_log("CoreDataHandler fetchAllRooms", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchAllRooms", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Room> = Room.fetchRequest()
         
@@ -644,7 +644,7 @@ class CoreDataHandler: NSObject {
     // fetch array, if no array, return nil
     class func fetchInventory() -> [Inventory]
     {
-        os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
@@ -670,7 +670,7 @@ class CoreDataHandler: NSObject {
     // fetch all inventory from a certain room array, otherwise return [] empty array
     class func fetchInventoryByRoom(roomName: String) -> [Inventory]
     {
-        os_log("CoreDataHandler fetchInventoryByRoom", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler fetchInventoryByRoom", log: Log.coredata, type: .info)
         
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
@@ -702,7 +702,7 @@ class CoreDataHandler: NSObject {
     // FIXME: must be depening upon system language with switch/case of supported languages, default english
     class func generateSampleData()
     {
-        os_log("CoreDataHandler generateSampleData", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler generateSampleData", log: Log.coredata, type: .info)
         
         let context = getContext()
         
@@ -861,7 +861,7 @@ class CoreDataHandler: NSObject {
     // just for testing and debugging, will not be used in final app
     class func showSampleData()
     {
-        os_log("CoreDataHandler showSampleData", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler showSampleData", log: Log.coredata, type: .info)
         
         let inventory = fetchInventory()
         

@@ -145,7 +145,6 @@ class Global: NSObject {
     /// - Returns: UUID as String
     
     class func generateUUID() -> String{
-        
         return UUID().uuidString
     }
 
@@ -272,7 +271,7 @@ class Global: NSObject {
     /// - Returns: true if camera allowed, false otherwise
 
     class func checkCameraPermission() -> Bool{
-        os_log("Global checkCameraPermission", log: Log.viewcontroller, type: .info)
+        //os_log("Global checkCameraPermission", log: Log.viewcontroller, type: .info)
         
         var allowed : Bool = true
         
@@ -305,28 +304,23 @@ class Global: NSObject {
     }
     
     // give filename based on current date, independent of current locale
+    // format like invname_20191022060310
     static func generateFilename(invname: String) -> String{
-        os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
+        //os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
         
-        let dateformatter = DateFormatter()
-        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
-        dateformatter.dateStyle = DateFormatter.Style.short
+        let cal = Calendar.current
+        let now = Date()
+        let comps = cal.dateComponents([.day, .month, .year, .hour, .minute, .second], from: now)
+        let dateString = String(comps.year!) + String(comps.day!) + String(comps.month!) + String(comps.hour!) + String(comps.minute!) + String(comps.second!)
         
-        let nowDate = dateformatter.string(from: Date())
-        
-        dateformatter.dateStyle = DateFormatter.Style.none
-        dateformatter.timeStyle = DateFormatter.Style.medium
-        
-        let nowTime = dateformatter.string(from: Date())
-        
-        let imageName = invname + "_" + nowDate + " " + nowTime
+        let imageName = invname + "_" + dateString
         
         return imageName
     }
     
     // helper for saving dropped file in temp directory, and getting if back from URL
     static func createTempDropObject(fileItems: [DropFile]) -> URL?{
-        os_log("Global createTempDropObject", log: Log.viewcontroller, type: .info)
+        //os_log("Global createTempDropObject", log: Log.viewcontroller, type: .info)
         
         let docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
         let dropFilePath = docURL!.appendingPathComponent("File")!.appendingPathExtension("pdf")

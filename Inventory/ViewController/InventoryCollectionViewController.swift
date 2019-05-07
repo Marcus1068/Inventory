@@ -267,7 +267,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     fileprivate func updateViewTitle() {
         let obj = NSLocalizedString("items", comment: "items")
         let countAll = fetchedResultsController.fetchedObjects?.count ?? 0
-        let searchCount = 10 //FIXME
+        //let searchCount = 10 //FIXME
         self.numberOfItems.text = String(countAll) + " " + obj
     }
     

@@ -217,9 +217,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // to enable drag/drop support
         collection.dropDelegate = self
         
-        // set view title
-        self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
-        
         // enable filtering
         filterSwitch.isOn = true
         
@@ -240,11 +237,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // Do any additional setup after loading the view.
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.delegate = self
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.titleView = searchController.searchBar
         searchController.searchBar.placeholder = NSLocalizedString("Search for Inventory", comment: "Search for Inventory")
         searchController.searchBar.delegate = self
@@ -266,6 +263,14 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         let _ = Global.checkCameraPermission()
     }
 
+    fileprivate func updateViewTitle() {
+        // set view title
+        let title = NSLocalizedString("My Inventory", comment: "My Inventory")
+        let obj = NSLocalizedString("items", comment: "items")
+        let count = fetchedResultsController.fetchedObjects?.count ?? 0
+        self.title = title + " - " + String(count) + " " + obj
+    }
+    
     // initialize the data for the view
     // fetch database etc.
     override func viewWillAppear(_ animated: Bool) {
@@ -279,6 +284,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             print("Fetching error: \(error), \(error.userInfo)")
             os_log("InventoryCollectionViewController viewWillAppear", log: Log.coredata, type: .error)
         }
+        
+        updateViewTitle()
         
         collection.reloadData()
         
@@ -452,7 +459,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             }
         }
         else{
-            deSelectCell(indexPath: indexPath)
+            //deSelectCell(indexPath: indexPath)
         }
     }
     
@@ -493,11 +500,61 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     }
     
     // MARK - search
-    // called by system when entered search bar
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    
+    // needed for iPad
+    func configureCancelBarButton() {
+        //let cancelButton = UIBarButtonItem()
+        //cancelButton.image = UIImage(named: "cancelButton")
+        //cancelButton.action = #selector(InventoryCollectionViewController.iPadCancelButton)
+        //cancelButton.target = self
+        self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(InventoryCollectionViewController.iPadCancelButton)), animated: true)
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        //self.navigationItem.setLeftBarButton(cancelButton, animated: true)
+    }
+   
+    @objc func iPadCancelButton()
+    {
+        fetchedResultsController.fetchRequest.predicate = nil
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController searchBarTextDidBeginEditing", log: Log.viewcontroller, type: .error)
+        }
+        
+        self.view.endEditing(true)
+        searchController.searchBar.text? = ""
+        
+        navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        collection.reloadData()
+        // FIXME restore old right bar button
     }
     
-    // called when search bar cancel button was clicked
+    // called by system when entered search bar
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+        // It's an iPhone
+            break
+            
+        case .pad:
+        // It's an iPad
+            configureCancelBarButton()
+            break
+            
+        case .unspecified:
+            // Uh, oh! What could it be?
+            break
+            
+        default:
+            break
+        }
+        
+    }
+    
+    // called when search bar cancel button was clicked, does only work on iPhones, not iPad (Apple bug)
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         fetchedResultsController.fetchRequest.predicate = nil
         
@@ -507,6 +564,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             print("Fetching error: \(error), \(error.userInfo)")
             os_log("InventoryCollectionViewController searchBarTextDidBeginEditing", log: Log.viewcontroller, type: .error)
         }
+        
         collection.reloadData()
     }
     
@@ -795,6 +853,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         collection.reloadData()
+        //updateViewTitle()
     }
     
 }
@@ -810,15 +869,19 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         switch type {
         case .insert:
             collection.reloadData()
+            updateViewTitle()
             break
         case .delete:
             collection.reloadData()
+            updateViewTitle()
             break
         case .update:
             collection.reloadData()
+            updateViewTitle()
             break
         case .move:
             collection.reloadData()
+            updateViewTitle()
             break
         @unknown default:
             os_log("InventoryCollectionViewController controller: switch unknown default", log: Log.viewcontroller, type: .error)
@@ -852,19 +915,19 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         switch type {
         case .insert:
             collection.reloadData()
-            //print("Insert Section: \(sectionIndex)")
-            
+            updateViewTitle()
             break
+            
         case .delete:
-            //print("Delete Section: \(sectionIndex)")
             collection.reloadData()
-            
+            updateViewTitle()
             break
+            
         case .update:
-            //print("Update Section: \(sectionIndex)")
             collection.reloadData()
-            
+            updateViewTitle()
             break
+            
         default:
             break
         }

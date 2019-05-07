@@ -311,9 +311,8 @@ class Global: NSObject {
         let cal = Calendar.current
         let now = Date()
         let comps = cal.dateComponents([.day, .month, .year, .hour, .minute, .second], from: now)
-        let dateString = String(comps.year!) + String(comps.day!) + String(comps.month!) + String(comps.hour!) + String(comps.minute!) + String(comps.second!)
         
-        let imageName = invname + "_" + dateString
+        let imageName = invname + "_" + String(comps.year!) + "_" + String(comps.day!) + "_" + String(comps.month!) + "_" + String(comps.hour!) + "_" + String(comps.minute!) + "_" + String(comps.second!)
         
         return imageName
     }

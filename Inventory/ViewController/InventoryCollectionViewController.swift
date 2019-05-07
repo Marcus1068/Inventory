@@ -68,6 +68,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var filterByOwnerLabel: UILabel!
     @IBOutlet weak var filterByRoomLabel: UILabel!
     @IBOutlet weak var filterSwitch: UISwitch!
+    @IBOutlet weak var numberOfItems: UILabel!
     
     // store original nav bar buttons
     var leftNavBarButton : UIBarButtonItem? = nil
@@ -264,11 +265,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     }
 
     fileprivate func updateViewTitle() {
-        // set view title
-        let title = NSLocalizedString("My Inventory", comment: "My Inventory")
         let obj = NSLocalizedString("items", comment: "items")
-        let count = fetchedResultsController.fetchedObjects?.count ?? 0
-        self.title = title + " - " + String(count) + " " + obj
+        let countAll = fetchedResultsController.fetchedObjects?.count ?? 0
+        let searchCount = 10 //FIXME
+        self.numberOfItems.text = String(countAll) + " " + obj
     }
     
     // initialize the data for the view
@@ -284,6 +284,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             print("Fetching error: \(error), \(error.userInfo)")
             os_log("InventoryCollectionViewController viewWillAppear", log: Log.coredata, type: .error)
         }
+        
+        self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
         
         updateViewTitle()
         

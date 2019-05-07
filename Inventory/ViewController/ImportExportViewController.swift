@@ -256,7 +256,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
         
-        
+   /*
         var results: [Inventory] = []
         let context = CoreDataHandler.getContext()
         do {
@@ -266,7 +266,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
         }
         print(results.count)
-        
+      */
         
         
        // var context: NSManagedObjectContext
@@ -331,14 +331,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 else{
                     // new room has to be inserted in room table
-                    var newRoom = Room(context: context)
+                    let newRoom = Room(context: context)
                     newRoom.roomName = csvRows[x][6]
                     // default room icon image
                     let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
                     let imageData = myImage.jpegData(compressionQuality: 1.0)
                     newRoom.roomImage = imageData! as NSData
-                    newRoom = CoreDataHandler.saveRoom(room: newRoom)
                     inventory.inventoryRoom = newRoom
+                    //newRoom = CoreDataHandler.saveRoom(room: newRoom)
                 }
                 
                 // owner handling
@@ -350,10 +350,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 else{
                     // new owner has to be inserted in owner table
-                    var newOwner = Owner(context: context)
+                    let newOwner = Owner(context: context)
                     newOwner.ownerName = csvRows[x][7]
-                    newOwner = CoreDataHandler.saveOwner(owner: newOwner)
                     inventory.inventoryOwner = newOwner
+                    //newOwner = CoreDataHandler.saveOwner(owner: newOwner)
                 }
                 
                 // category handling
@@ -365,10 +365,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 else{
                     // new category has to be inserted in category table
-                    var newCategory = Category(context: context)
+                    let newCategory = Category(context: context)
                     newCategory.categoryName = csvRows[x][8]
-                    newCategory = CoreDataHandler.saveCategory(category: newCategory)
                     inventory.inventoryCategory = newCategory
+                    //newCategory = CoreDataHandler.saveCategory(category: newCategory)
                 }
                 
                 // brand handling
@@ -380,10 +380,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 else{
                     // new brand has to be inserted in brand table
-                    var newBrand = Brand(context: context)
+                    let newBrand = Brand(context: context)
                     newBrand.brandName = csvRows[x][9]
-                    newBrand = CoreDataHandler.saveBrand(brand: newBrand)
                     inventory.inventoryBrand = newBrand
+                    //newBrand = CoreDataHandler.saveBrand(brand: newBrand)
                 }
                 
                 inventory.warranty = Int32(csvRows[x][10])!

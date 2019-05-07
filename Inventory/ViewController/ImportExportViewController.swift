@@ -115,6 +115,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
         
+        let imagesFolderPath = URL.createFolder(folderName: "Images")
+        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         navigationItem.leftBarButtonItem = barButtonItem
@@ -177,7 +180,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // export JPEG files
                 if inv.imageFileName != "" {
-                    let pathURLjpg = docPath.appendingPathComponent(inv.imageFileName!)
+                    let pathURLjpg = imagesFolderPath!.appendingPathComponent(inv.imageFileName!)
                     // get your UIImage jpeg data representation and check if the destination file url already exists
                     let imageData = inv.image! as Data
                     let image = UIImage(data: imageData, scale: 1.0)
@@ -196,7 +199,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // export PDF files
                 if inv.invoiceFileName != nil && inv.invoiceFileName != "" {
-                    let pathURLpdf = docPath.appendingPathComponent(inv.invoiceFileName!)
+                    let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
                     
                     let invoiceData = inv.invoice! as Data
                     do {
@@ -248,6 +251,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
+        
+        let imagesFolderPath = URL.createFolder(folderName: "Images")
+        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        
        // var context: NSManagedObjectContext
        // context = CoreDataHandler.getContext()
         
@@ -373,7 +380,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // assign image from directory
                 if inventory.imageFileName! != ""{
-                    let image = getSavedImage(named: inventory.imageFileName!)
+                    //let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
+                    let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
+                    let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
+                    
                     if image != nil{
                         let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
                         inventory.image = imageData
@@ -391,10 +401,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // assign PDF file from documents directory
                 if inventory.invoiceFileName! != ""{
-                    let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                    let pathURL = docPath.appendingPathComponent(inventory.invoiceFileName!)
+                    //let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                    let pathURL = pdfFolderPath!.appendingPathComponent(inventory.invoiceFileName!)
                     if let pdfDocument = PDFDocument(url: pathURL) {
-                        
                         inventory.invoice = pdfDocument.dataRepresentation()! as NSData?
                     }
                     else{
@@ -431,19 +440,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         progressView.setProgress(1.0, animated: true)
         progressLabel.text = "100 %"
-    }
-    
-    // get jpeg image from file directory
-    // FIXME: must change to other directory
-    // return NIL if no file exists
-    func getSavedImage(named: String) -> UIImage? {
-        os_log("ImportExportViewController getSavedImage", log: Log.viewcontroller, type: .info)
-        
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
-        }
-        
-        return nil
     }
     
     // read file as string
@@ -660,4 +656,36 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         importedRowsLabel.text = NSLocalizedString("No file selected for importing", comment: "No file selected for importing")
     }
     
+}
+
+// used to create folders inside of document folder like this:
+// For example, to create the folder "MyStuff", you would call it like this:
+// let myStuffURL = URL.createFolder(folderName: "MyStuff")
+extension URL {
+    static func createFolder(folderName: String) -> URL? {
+        let fileManager = FileManager.default
+        // Get document directory for device, this should succeed
+        if let documentDirectory = fileManager.urls(for: .documentDirectory,
+                                                    in: .userDomainMask).first {
+            // Construct a URL with desired folder name
+            let folderURL = documentDirectory.appendingPathComponent(folderName)
+            // If folder URL does not exist, create it
+            if !fileManager.fileExists(atPath: folderURL.path) {
+                do {
+                    // Attempt to create folder
+                    try fileManager.createDirectory(atPath: folderURL.path,
+                                                    withIntermediateDirectories: true,
+                                                    attributes: nil)
+                } catch {
+                    // Creation failed. Print error & return nil
+                    print(error.localizedDescription)
+                    return nil
+                }
+            }
+            // Folder either exists, or was created. Return URL
+            return folderURL
+        }
+        // Will only be called if document directory not found
+        return nil
+    }
 }

@@ -520,16 +520,14 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Fetching error: \(error), \(error.userInfo)")
-            os_log("InventoryCollectionViewController searchBarTextDidBeginEditing", log: Log.viewcontroller, type: .error)
+            os_log("InventoryCollectionViewController iPadCancelButton", log: Log.viewcontroller, type: .error)
         }
         
-        self.view.endEditing(true)
+        self.searchController.searchBar.endEditing(true)
         searchController.searchBar.text? = ""
-        
         navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         collection.reloadData()
-        // FIXME restore old right bar button
     }
     
     // called by system when entered search bar

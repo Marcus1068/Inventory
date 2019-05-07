@@ -101,6 +101,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // MARK: - drop support
     
+    // define the file types for drop support
     func collectionView(_ collectionView: UICollectionView,
                         canHandle session: UIDropSession) -> Bool{
         //os_log("InventoryCollectionViewController dropSessionDidUpdate", log: Log.viewcontroller, type: .info)
@@ -278,6 +279,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
  
         //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
+        // clear selected index paths
+        indexPathsForDeletion.removeAll()
+        selectedForDeleteInventory.removeAll()
+        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
@@ -315,6 +320,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         replaceSegmentContents(segments: listRooms, control: roomsSegment)
         roomsSegment.selectedSegmentIndex = 0
+        
+        // set collection view to always scroll to top when opening view
+        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
+        self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
     }
     
     
@@ -371,6 +380,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         cell.myImage.image = image
+        cell.layer.borderWidth = 0.0
+        cell.layer.borderColor = UIColor.clear.cgColor
         
         return cell
     }
@@ -417,21 +428,22 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     }
 
     // selects a cell with thick border in theme color
-    func selectCell(indexPath: IndexPath){
+    private func selectCell(indexPath: IndexPath){
         let cell = collection.cellForItem(at: indexPath)
-        cell?.layer.borderWidth = 5.0
+        cell?.layer.borderWidth = 4.0
         cell?.layer.borderColor = themeColor.cgColor
+        
     }
     
     // deselects a cell to remove thick border and theme color
-    func deSelectCell(indexPath: IndexPath){
+    private func deSelectCell(indexPath: IndexPath){
         let cell = collection.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 0.0
         cell?.layer.borderColor = UIColor.clear.cgColor
+        
     }
-    
-    //
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    /*
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let inv = fetchedResultsController.object(at: indexPath)
         
         dest.currentInventory = inv
@@ -440,33 +452,63 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
         if deleteMode{
             selectCell(indexPath: indexPath)
-            
-            indexPathsForDeletion.append(indexPath)
             selectedForDeleteInventory.append(inv)
+            indexPathsForDeletion.append(indexPath)
+            //print("selected \(indexPathsForDeletion.count)")
+        }
+        
+        return true
+    } */
+    
+    // The collection view calls this method when the user successfully selects an item in the collection view. It does not call this method when you programmatically set the selection.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //let cell = collectionView.cellForItem(at: indexPath) as! InventoryCollectionViewCell
+        
+        //cell.toggleSelected()
+       
+        let inv = fetchedResultsController.object(at: indexPath)
+        
+        dest.currentInventory = inv
+        selectedInventoryItem = inv
+        
+        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
+        if deleteMode{
+            selectCell(indexPath: indexPath)
+            selectedForDeleteInventory.append(inv)
+            indexPathsForDeletion.append(indexPath)
+            //print("selected \(indexPathsForDeletion.count)")
         }
     }
     
+    /*
+    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    } */
+    
+    
+    // The collection view calls this method when the user successfully deselects an item in the collection view. It does not call this method when you programmatically deselect items.
     // when deselecting collection items remove them from list of objects to delete
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.clear
-        //let inv = fetchedResultsController.object(at: indexPath)
+        //let cell = collectionView.cellForItem(at: indexPath) as! InventoryCollectionViewCell
+        
+        //cell.toggleSelected()
         
         if deleteMode{
-            deSelectCell(indexPath: indexPath)
-            
             if indexPathsForDeletion.count > 0{
-                indexPathsForDeletion.removeLast()
-                //selectedForDeleteInventory.remove(at: indexPath.item)
                 selectedForDeleteInventory.removeLast()
+                deSelectCell(indexPath: indexPath)
+                indexPathsForDeletion.removeLast()
+                //print("selected \(indexPathsForDeletion.count)")
             }
         }
-        else{
-            //deSelectCell(indexPath: indexPath)
-        }
     }
-    
+/*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldUnHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     
@@ -474,7 +516,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    */
     // avoid automatic segue in case of delete mode
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if deleteMode  {
@@ -813,16 +855,19 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @objc func cancelDelete(){
         // enable edit mode again
         deleteMode = false
-        
         collection.allowsMultipleSelection = false
         
         // deselect all selected items
+        //print("cancel delete: selected \(indexPathsForDeletion.count)")
         for idx in indexPathsForDeletion{
             deSelectCell(indexPath: idx)
         }
         
         indexPathsForDeletion.removeAll()
         selectedForDeleteInventory.removeAll()
+        
+        // FIXME: - deselect does not always work
+        collection.reloadData()
     }
     
     // delete inventory objects which are selected
@@ -906,7 +951,6 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
          }
          } */
     }
-    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         

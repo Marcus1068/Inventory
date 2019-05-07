@@ -42,6 +42,22 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
+/*
+    // gets called when user selects a cell in collection view
+    override var isSelected: Bool {
+        didSet {
+            //myImage.layer.borderWidth = isSelected ? 10 : 0
+            //print("is selected")
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //myImage.layer.borderColor = themeColor.cgColor
+        isSelected = false
+    }
+ 
+ */
     
     // select background color, works only on TVOS
  /*   func markSelected(state: Bool){
@@ -66,15 +82,13 @@ class InventoryCollectionViewCell: UICollectionViewCell {
             }
         }
     } */
-  /*
-    @objc func capital(_ sender: Any!) {
-        // find my collection view
-        var v : UIView = self
-        repeat { v = v.superview! } while !(v is UICollectionView)
-        let cv = v as! UICollectionView
-        // ask it what index path we are
-        let ip = cv.indexPath(for: self)!
-        // relay to its delegate
-        cv.delegate?.collectionView?(cv, performAction:#selector(capital), forItemAt: ip, withSender: sender)
-    } */
+    
+    func toggleSelected()
+    {
+        if (isSelected){
+            backgroundColor = UIColor.green
+        }else {
+            backgroundColor = UIColor.gray
+        }
+    }
 }

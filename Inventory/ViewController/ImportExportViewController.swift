@@ -255,6 +255,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let imagesFolderPath = URL.createFolder(folderName: "Images")
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
+        
+        
+        var results: [Inventory] = []
+        let context = CoreDataHandler.getContext()
+        do {
+            results = try context.fetch(self.inventoryFetchRequest())
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")
+            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+        }
+        print(results.count)
+        
+        
+        
        // var context: NSManagedObjectContext
        // context = CoreDataHandler.getContext()
         
@@ -376,8 +390,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 inventory.imageFileName = csvRows[x][11]
                 inventory.invoiceFileName = csvRows[x][12]
                 
-                inventory.id = UUID(uuidString: csvRows[x][13])
-                
                 // assign image from directory
                 if inventory.imageFileName! != ""{
                     //let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
@@ -421,7 +433,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 if !uuid{
                     // save imported csv line into database
-                    //_ = CoreDataHandler.saveInventory(inventory: inventory)
+                    // assign inventory id afterwards because otherwise getInventoryUUID() will always be true
+                    inventory.id = UUID(uuidString: csvRows[x][13])
+                    _ = CoreDataHandler.saveInventory(inventory: inventory)
                     
                     importedRows += 1
                 }

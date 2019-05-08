@@ -70,6 +70,9 @@
 /* Class = "UILabel"; text = "Filter:"; ObjectID = "50M-S3-hxH"; */
 "50M-S3-hxH.text" = "Filter:";
 
+/* Class = "UILabel"; text = "number of items"; ObjectID = "61K-AB-efW"; */
+"61K-AB-efW.text" = "Anzahl Objekte";
+
 /* Class = "UINavigationItem"; title = "My Rooms"; ObjectID = "92t-F3-xz3"; */
 "92t-F3-xz3.title" = "Meine Räume";
 

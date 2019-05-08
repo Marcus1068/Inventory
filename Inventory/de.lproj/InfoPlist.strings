@@ -4,9 +4,6 @@
 /* Bundle name */
 "CFBundleName" = "Inventory App";
 
-/* (No Comment) */
-"Inventory Document" = "Inventory Dokument";
-
 /* Privacy - Camera Usage Description */
 "NSCameraUsageDescription" = "Kamera notwendig um Fotos zu erstellen";
 

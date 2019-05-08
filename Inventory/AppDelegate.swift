@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // generate sample data if none available
         if (myInventory.count == 0){
-            //CoreDataHandler.generateSampleData()
+            CoreDataHandler.generateSampleData()
         }
         
         // manage large title appearance for all view controllers centrally

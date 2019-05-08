@@ -825,34 +825,65 @@ class CoreDataHandler: NSObject {
         let arr : [UInt32] = [32,4,123,4,5,2]
         let myImage = #imageLiteral(resourceName: "Owner Icon")
         let myImage2 = #imageLiteral(resourceName: "Category Icon")
-        let myImage3 = #imageLiteral(resourceName: "Camera Icon")
+        //let myImage3 = #imageLiteral(resourceName: "Camera Icon")
         let myImage4 = #imageLiteral(resourceName: "Computer Icon")
         let myImage5 = #imageLiteral(resourceName: "Phone Icon")
         let myImage6 = #imageLiteral(resourceName: "Room Icon")
         _ = myImage.jpegData(compressionQuality: 1.0)
         _ = myImage2.jpegData(compressionQuality: 1.0)
-        let imageData3 = myImage3.jpegData(compressionQuality: 1.0)
+        //let imageData3 = myImage3.jpegData(compressionQuality: 1.0)
         _ = myImage4.jpegData(compressionQuality: 1.0)
         _ = myImage5.jpegData(compressionQuality: 1.0)
         _ = myImage6.jpegData(compressionQuality: 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
-        let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
-                                   "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
+  //      let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
+  //                                 "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
+        
+        let imageSpeaker = UIImage(named: "Speaker")
+        let imageSpeakerData = imageSpeaker?.jpegData(compressionQuality: 1.0)
+        let imageThermo = UIImage(named: "Thermo")
+        let imageThermoData = imageThermo?.jpegData(compressionQuality: 1.0)
+        let imageKitchen = UIImage(named: "Kitchen")
+        let imageKitchenData = imageKitchen?.jpegData(compressionQuality: 1.0)
+        let imageToaster = UIImage(named: "Toaster")
+        let imageToasterData = imageToaster?.jpegData(compressionQuality: 1.0)
+        let imageGame = UIImage(named: "Game")
+        let imageGameData = imageGame?.jpegData(compressionQuality: 1.0)
+        //let imageKitchenData = imageKitchen.jpegData(compressionQuality: 1.0)
+        //let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
+        //                          "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         // generate sample data randomly
-        for i in 1..<6{
-            let remark = "Remark " + String(Int.random(in: 1...100))
-            let serial = "S. no. " + String(Int.random(in: 1...100)) + "N" + String(Int.random(in: 1...100)) + "Z" + String(Int.random(in: 1...100))
-            
-            let invId = Int.random(in: 0 ..< invList.count)
-            let brandId = Int.random(in: 0 ..< brandList.count)
-            let catId = Int.random(in: 0 ..< categoryList.count)
-            let ownerId = Int.random(in: 0 ..< ownerList.count)
-            let roomId = Int.random(in: 0 ..< roomList.count)
-            
-            _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
-        }
+        
+        /*
+         for i in 1..<6{
+         let remark = "Remark " + String(Int.random(in: 1...100))
+         let serial = "S. no. " + String(Int.random(in: 1...100)) + "N" + String(Int.random(in: 1...100)) + "Z" + String(Int.random(in: 1...100))
+         
+         let invId = Int.random(in: 0 ..< invList.count)
+         let brandId = Int.random(in: 0 ..< brandList.count)
+         let catId = Int.random(in: 0 ..< categoryList.count)
+         let ownerId = Int.random(in: 0 ..< ownerList.count)
+         let roomId = Int.random(in: 0 ..< roomList.count)
+         
+         _ = saveInventory(inventoryName: invList[invId], dateOfPurchase: date, price: Int32(i*5), remark: remark, serialNumber: serial, warranty: 6, image: imageData3! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[brandId], category: categories[catId], owner: owners[ownerId], room: rooms[roomId])
+         }
+         */
+        
+        let remark = NSLocalizedString("Remark", comment: "Remark") + " " + String(Int.random(in: 1...100))
+        let serial = NSLocalizedString("Serial no.", comment: "Serial no.") + " " + String(Int.random(in: 1...100)) + "N" + String(Int.random(in: 1...100)) + "Z" + String(Int.random(in: 1...100))
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        
         
         // FIXME: must be removed for release
         //CoreDataHandler.showSampleData()

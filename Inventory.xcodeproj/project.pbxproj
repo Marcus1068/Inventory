@@ -54,7 +54,6 @@
 		2C6B4AD4208E5551003CD033 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
-		2C6D5B9922232538009F9053 /* Inventory3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C6D5B9822232538009F9053 /* Inventory3.png */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B967227997D600DB74D3 /* Privacy german.rtf */; };
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
@@ -146,7 +145,6 @@
 		2C6C0DDC2201EBC300367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C0DDE2201EBD900367879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
-		2C6D5B9822232538009F9053 /* Inventory3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Inventory3.png; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C89B967227997D600DB74D3 /* Privacy german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy german.rtf"; sourceTree = "<group>"; };
 		2C89B9692279995500DB74D3 /* Privacy english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy english.rtf"; sourceTree = "<group>"; };
@@ -194,14 +192,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C251264208F4C3400A6B5A3 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				2C6D5B9822232538009F9053 /* Inventory3.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		2C56E8A12086350A00FD5136 = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */,
-				2C251264208F4C3400A6B5A3 /* Images */,
 				2C56E9092086837000FD5136 /* ViewController */,
 				2C56E90A208683A800FD5136 /* Helper */,
 				2C56E9082086834300FD5136 /* Model */,
@@ -476,7 +465,6 @@
 				2C89B997227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.31.png in Resources */,
 				2C89B97D227F7D9B00DB74D3 /* Screen Shot 2019-05-05 at 22.19.44.png in Resources */,
 				2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */,
-				2C6D5B9922232538009F9053 /* Inventory3.png in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 				2C89B996227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.33.48.png in Resources */,
 				2C89B993227F80B000DB74D3 /* Simulator Screen Shot - iPhone 8 - 2019-05-05 at 22.34.16.png in Resources */,

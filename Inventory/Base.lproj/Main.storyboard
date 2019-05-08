@@ -1714,7 +1714,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory3.png" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory3" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
                                 <rect key="frame" x="230" y="64" width="129" height="118"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2778,7 +2778,7 @@
         <image name="Camera Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
         <image name="Export" width="30" height="30"/>
-        <image name="Inventory3.png" width="1024" height="1024"/>
+        <image name="Inventory3" width="341.33334350585938" height="341.33334350585938"/>
         <image name="Owner Icon" width="30" height="30"/>
         <image name="PDF Icon" width="30" height="30"/>
         <image name="Report" width="30" height="30"/>

@@ -280,8 +280,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // clear selected index paths
-        indexPathsForDeletion.removeAll()
-        selectedForDeleteInventory.removeAll()
+        //indexPathsForDeletion.removeAll()
+        //selectedForDeleteInventory.removeAll()
         
         do {
             try fetchedResultsController.performFetch()

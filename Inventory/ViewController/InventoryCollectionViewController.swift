@@ -424,7 +424,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         default:
             os_log("InventoryCollectionViewController collectionView viewForSupplementaryElementOfKind", log: Log.viewcontroller, type: .error)
             assert(false, "Unexpected element kind")
+            
         }
+        
+        fatalError("Unexpected element kind")
     }
 
     // selects a cell with thick border in theme color

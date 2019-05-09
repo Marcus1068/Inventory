@@ -589,7 +589,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWk-As-Mn9">
-                                            <rect key="frame" x="63" y="16" width="61.5" height="21"/>
+                                            <rect key="frame" x="63" y="0.0" width="62" height="50"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -599,9 +599,9 @@
                                     <constraints>
                                         <constraint firstItem="QWk-As-Mn9" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" constant="55" id="azW-HX-EdR"/>
                                         <constraint firstItem="iLi-4f-ZUh" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" id="cIj-sH-0ZY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QWk-As-Mn9" secondAttribute="bottom" constant="5" id="fWP-G4-hjB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="QWk-As-Mn9" secondAttribute="bottom" constant="-8" id="fWP-G4-hjB"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QWk-As-Mn9" secondAttribute="trailing" constant="20" symbolic="YES" id="fou-j2-Eac"/>
-                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" constant="8" id="jK4-Gq-Pzu"/>
+                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" constant="-8" id="jK4-Gq-Pzu"/>
                                         <constraint firstItem="iLi-4f-ZUh" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" id="r5E-JO-bz6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iLi-4f-ZUh" secondAttribute="bottom" constant="-2" id="rvx-Wy-z2f"/>
                                     </constraints>

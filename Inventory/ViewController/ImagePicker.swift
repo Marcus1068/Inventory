@@ -60,7 +60,6 @@ public protocol ImagePickerDelegate: class {
 }
 
 open class ImagePicker: NSObject {
-    
     private let pickerController: UIImagePickerController
     private weak var presentationController: UIViewController?
     private weak var delegate: ImagePickerDelegate?
@@ -79,7 +78,7 @@ open class ImagePicker: NSObject {
     }
     
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
-        os_log("ImagePicker action", log: Log.viewcontroller, type: .info)
+        //os_log("ImagePicker action", log: Log.viewcontroller, type: .info)
         
         guard UIImagePickerController.isSourceTypeAvailable(type) else {
             return nil
@@ -92,7 +91,7 @@ open class ImagePicker: NSObject {
     }
     
     public func present(from sourceView: UIView) {
-        os_log("ImagePicker present", log: Log.viewcontroller, type: .info)
+        //os_log("ImagePicker present", log: Log.viewcontroller, type: .info)
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -120,7 +119,7 @@ open class ImagePicker: NSObject {
     }
     
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
-        os_log("ImagePicker pickerController", log: Log.viewcontroller, type: .info)
+        //os_log("ImagePicker pickerController", log: Log.viewcontroller, type: .info)
         
         controller.dismiss(animated: true, completion: nil)
         

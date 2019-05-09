@@ -47,7 +47,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("ImportExportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // setup colors for UI controls
         exportCVSButton.tintColor = themeColorUIControls
@@ -76,7 +76,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        os_log("ImportExportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         self.importedRowsLabel.isHidden = true
         progressView.setProgress(0, animated: true)
@@ -95,7 +95,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     */
     
     private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
-        os_log("ImportExportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
         
         let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         fetchRequest.fetchBatchSize = 20
@@ -110,7 +110,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // link between cvs and external jpeg, pdf files by file name
     func exportCSVFile()
     {
-        os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
         
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
@@ -232,7 +232,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // show message where file can be located in file system
     func showExportFinishedAlertView() {
-        os_log("ImportExportViewController showExportFinishedAlertView", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController showExportFinishedAlertView", log: Log.viewcontroller, type: .info)
         
         let message = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
         
@@ -248,7 +248,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // makin import loop
     func importCVSFile(file: String){
-        os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
         
@@ -459,7 +459,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // read file as string
     // FIXME: change directory
     func readDataFromCSV(fileName: String) -> String?{
-        os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
         
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let pathURLcvs = docPath.appendingPathComponent(fileName)
@@ -479,7 +479,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 
     // remove special characters from csv file
     func cleanRows(file: String) -> String{
-        os_log("ImportExportViewController cleanRows", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController cleanRows", log: Log.viewcontroller, type: .info)
         
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
@@ -491,7 +491,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // import cvs file parser
     func csvImportParser(data: String) -> [[String]] {
-        os_log("ImportExportViewController csvImportParser", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController csvImportParser", log: Log.viewcontroller, type: .info)
         
         var result: [[String]] = []
         let rows = data.components(separatedBy: "\n")
@@ -508,7 +508,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK: - button actions
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
-        os_log("ImportExportViewController exportCVSButtonAction", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController exportCVSButtonAction", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -524,8 +524,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // share system button to share csv file
     @IBAction func shareButtonAction(_ sender: Any) {
-        os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
-        // FIXME: this function needs testing and change
+        //os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
         // FIXME: progress bar at 100% when cvs share action cancelled
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -544,7 +543,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         } else {
-            os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .error)
+            //os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .error)
             
             let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
             let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
@@ -555,7 +554,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // import button
     @IBAction func importFromCVSFileButton(_ sender: Any) {
-        os_log("ImportExportViewController importFromCVSFileButton", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController importFromCVSFileButton", log: Log.viewcontroller, type: .info)
         
         openFilesApp()
         
@@ -567,8 +566,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
     
     func sendCSVEmail(path: URL?){
-        
-        os_log("ImportExportViewController sendCSVEmail", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController sendCSVEmail", log: Log.viewcontroller, type: .info)
         
         // hide keyboard
         self.view.endEditing(true)
@@ -627,7 +625,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK: - document picker of files app
     
     func openFilesApp(){
-        os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
         
         let controller = UIDocumentPickerViewController(
             documentTypes: [String(kUTTypeCommaSeparatedText)], // choose your desired documents the user is allowed to select
@@ -648,7 +646,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // single document selection
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         // do something with the selected document
-        os_log("ImportExportViewController single documentPicker", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController single documentPicker", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -663,7 +661,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
+        //os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
         
         //progressLabel.isHidden = false
         importedRowsLabel.isHidden = false

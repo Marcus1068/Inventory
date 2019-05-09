@@ -41,7 +41,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("OwnerEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("OwnerEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -72,11 +72,6 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         textfieldOwner.placeholder = Global.owner
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // when user presses return on keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //os_log("textFieldShouldReturn", log: OSLog.default, type: .debug)
@@ -96,7 +91,6 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
-        
         if textfieldOwner.text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }

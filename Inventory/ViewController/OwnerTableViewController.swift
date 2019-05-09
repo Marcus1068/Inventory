@@ -61,7 +61,7 @@ class OwnerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("OwnerTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("OwnerTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -90,7 +90,7 @@ class OwnerTableViewController: UITableViewController {
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("OwnerTableViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("OwnerTableViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! OwnerEditViewController
         
@@ -108,7 +108,6 @@ class OwnerTableViewController: UITableViewController {
     
     // return true if ok is clicked, false otherwise
     func showAlertDialog() -> Bool{
-        
         var result : Bool = false
         // Declare Alert
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
@@ -160,15 +159,7 @@ class OwnerTableViewController: UITableViewController {
         present(myActionSheet, animated: true, completion: nil)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
     @IBAction func doneButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -185,7 +176,7 @@ extension OwnerTableViewController {
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("OwnerTableViewController tableView", log: Log.viewcontroller, type: .info)
+        //os_log("OwnerTableViewController tableView", log: Log.viewcontroller, type: .info)
         
         //print(indexPath.row)
         let idx = IndexPath(row: indexPath.row, section: 0)
@@ -194,7 +185,6 @@ extension OwnerTableViewController {
     }
     
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {
-        
         let owner = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = owner.ownerName
         cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)

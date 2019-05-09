@@ -70,7 +70,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("RoomEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("RoomEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -220,7 +220,6 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     
     // manage all icon buttons
     @IBAction func iconButton(_ sender: UIButton) {
-        
         switch sender {
         case bedroomIcon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-bett-50")
@@ -270,9 +269,6 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         default:
             chosenImage.image = #imageLiteral(resourceName: "icons8-home-filled-50")
             break
-            
         }
-
     }
-    
 }

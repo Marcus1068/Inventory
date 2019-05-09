@@ -51,7 +51,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // setup colors for UI controls
         appInformationButton.tintColor = themeColorUIControls
@@ -80,7 +80,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        os_log("AboutViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("AboutViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // either use local of iCloud storage
         //useLocalSettingsStorage()
@@ -142,7 +142,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // save user name and address as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
-        
         if (userNameTextField.text!.count > 0){
             //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
             kvStore.set(userNameTextField.text!, forKey: Global.keyUserName)
@@ -163,7 +162,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // MARK: - UI buttons
     
     @IBAction func feedbackButton(_ sender: Any) {
-        
         // hide keyboard
         self.view.endEditing(true)
         
@@ -180,7 +178,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func informationButton(_ sender: Any) {
-        
         // hide keyboard
         self.view.endEditing(true)
         
@@ -234,7 +231,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
 // dismiss keyboard with gesture recognizer when tapping outside of text fields
 // this extension method can be used in all view controllers of the app
 extension UIViewController {
-    
     // use this method in viewDidLoad of any view controller that uses text edit fields
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

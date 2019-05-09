@@ -41,7 +41,7 @@ class ImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("ImageViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("ImageViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // new in ios11: large navbar titles
         if #available(iOS 11.0, *) {
@@ -63,7 +63,7 @@ class ImageViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        os_log("ImageViewController viewWillLayoutSubviews", log: Log.viewcontroller, type: .info)
+        //os_log("ImageViewController viewWillLayoutSubviews", log: Log.viewcontroller, type: .info)
         
         //updateMinZoomScaleForSize(view.bounds.size)
     }
@@ -81,7 +81,7 @@ class ImageViewController: UIViewController {
 
 extension ImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        os_log("ImageViewController viewForZooming", log: Log.viewcontroller, type: .info)
+        //os_log("ImageViewController viewForZooming", log: Log.viewcontroller, type: .info)
         
         return imageView
     }

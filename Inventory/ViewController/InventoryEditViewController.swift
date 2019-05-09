@@ -93,7 +93,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // initialize image picker class
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -278,7 +278,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
        
-        os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .info)
        
         hideKeyboardWhenTappedAround()
         
@@ -310,7 +310,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // To enable a view to consume data from a drop session, you implement three delegate methods.
     // First, your app can refuse the drag items based on their uniform type identifiers (UTIs), the state of your app, or other requirements.
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        os_log("InventoryEditViewController dropInteraction canHandle", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController dropInteraction canHandle", log: Log.viewcontroller, type: .info)
         
         // must be of kUTTypePDF, otherwise other drop methods will not be called
         return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeFileURL as String, kUTTypePDF as String, kUTTypeImage as String]) && session.items.count == 1
@@ -318,7 +318,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
 
     // Second, you must tell the system how you want to consume the data, which is typically by copying it. You specify this choice by way of a drop proposal:
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        os_log("InventoryEditViewController dropInteraction sessionDidUpdate", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController dropInteraction sessionDidUpdate", log: Log.viewcontroller, type: .info)
         
         let dropLocation = session.location(in: view)
         //updateLayers(forDropLocation: dropLocation)
@@ -343,7 +343,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // Finally, after the user lifts their finger from the screen, indicating their intent to drop the drag items, your view has one opportunity to request particular data representations of the drag items
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        os_log("InventoryEditViewController dropInteraction performDrop", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController dropInteraction performDrop", log: Log.viewcontroller, type: .info)
      
         // check for image file drop
         if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeImage as String]){
@@ -413,7 +413,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("InventoryEditViewController accessoryButtonTappedForRowWith", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController accessoryButtonTappedForRowWith", log: Log.viewcontroller, type: .info)
         //print(indexPath.row)
         //let idx = IndexPath(row: indexPath.row, section: 0)
         //tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
@@ -421,7 +421,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        os_log("InventoryEditViewController didSelectRowAt", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController didSelectRowAt", log: Log.viewcontroller, type: .info)
         
         tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true)
     }
@@ -469,7 +469,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("InventoryEditViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController prepare", log: Log.viewcontroller, type: .info)
         
         if segue.identifier == "pdfSegue" {
             let destination =  segue.destination as! PDFViewController
@@ -499,7 +499,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // show fullscreen pdf view
     @objc func pdfViewGestureAction() {
-        os_log("InventoryEditViewController pdfViewGestureAction", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController pdfViewGestureAction", log: Log.viewcontroller, type: .info)
         
         // show pdf view fullscreen
         performSegue(withIdentifier: "pdfSegue", sender: nil)
@@ -515,7 +515,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // show fullscreen image view
     @objc func imageViewGestureAction() {
-        os_log("InventoryEditViewController imageViewGestureAction", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController imageViewGestureAction", log: Log.viewcontroller, type: .info)
         
         // show image view fullscreen
         performSegue(withIdentifier: "imageSegue", sender: nil)
@@ -723,7 +723,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // MARK: pdf handling
     // display pdf file from chosen URL
     func pdfDisplay(file: URL){
-        os_log("InventoryEditViewController pdfDisplay", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryEditViewController pdfDisplay", log: Log.viewcontroller, type: .info)
         
         if let pdfDocument = PDFDocument(url: file) {
             pdfView.autoScales = true
@@ -764,7 +764,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
 // to get string from a date
 // usage: yourString = yourDate.toString(withFormat: "yyyy")
 extension Date {
-    
     func toString(withFormat format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
@@ -779,7 +778,6 @@ extension Date {
 }
 
 extension NSDate {
-    
     func toString(withFormat format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format

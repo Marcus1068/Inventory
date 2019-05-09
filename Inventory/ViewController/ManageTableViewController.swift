@@ -34,7 +34,7 @@ class ManageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        os_log("ManageTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("ManageTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         // Do any additional setup after loading the view.
         
         //self.tableView.layer.cornerRadius = 8.0
@@ -62,7 +62,7 @@ class ManageTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        os_log("ManageTableViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("ManageTableViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
   /*      if #available(iOS 11.0, *) {

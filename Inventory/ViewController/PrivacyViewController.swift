@@ -40,7 +40,7 @@ class PrivacyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        os_log("PrivacyViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("PrivacyViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // setup colors for UI controls
         doneAction.tintColor = themeColorUIControls

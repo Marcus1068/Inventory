@@ -58,7 +58,7 @@ class RoomTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("RoomTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("RoomTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -86,7 +86,7 @@ class RoomTableViewController: UITableViewController {
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("RoomTableViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("RoomTableViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! RoomEditViewController
         
@@ -111,7 +111,6 @@ class RoomTableViewController: UITableViewController {
     
     // return true if ok is clicked, false otherwise
     func showAlertDialog() -> Bool{
-        
         var result : Bool = false
         // Declare Alert
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")

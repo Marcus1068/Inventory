@@ -65,8 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // get user directory mainly for debugging purposes
-        let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
-        os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
+        //let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
+        //os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
         
         // change UI Tab bar font
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // get user name and address from icloud storage
     func getiCloudStorageInfo(){
-        os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
+        //os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
         
         if let user = kvStore.string(forKey: Global.keyUserName),
             let address = kvStore.string(forKey: Global.keyHouseName){

@@ -61,7 +61,7 @@ class BrandTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("BrandTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("BrandTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -90,7 +90,7 @@ class BrandTableViewController: UITableViewController {
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("BrandTableViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("BrandTableViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! BrandEditViewController
         
@@ -109,7 +109,6 @@ class BrandTableViewController: UITableViewController {
     
     // return true if ok is clicked, false otherwise
     func showAlertDialog() -> Bool{
-        
         var result : Bool = false
         // Declare Alert
         let message = NSLocalizedString("Are you sure you want to delete? All inventory objects depending will be deleted as well...", comment: "Are you sure you want to delete? All inventory objects depending will be deleted as well...")
@@ -187,7 +186,7 @@ extension BrandTableViewController {
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        os_log("BrandTableViewController tableView", log: Log.viewcontroller, type: .info)
+        //os_log("BrandTableViewController tableView", log: Log.viewcontroller, type: .info)
         
         //print(indexPath.row)
         let idx = IndexPath(row: indexPath.row, section: 0)
@@ -196,7 +195,6 @@ extension BrandTableViewController {
     }
     
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {
-        
         let brand = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = brand.brandName
         cell.textLabel?.font = UIFont(name: "HelveticaNeue", size:20)

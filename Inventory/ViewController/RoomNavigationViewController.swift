@@ -32,7 +32,7 @@ class RoomNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("RoomNavigationViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("RoomNavigationViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always

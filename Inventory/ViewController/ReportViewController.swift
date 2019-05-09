@@ -120,7 +120,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // https://medium.com/@luisfmachado/uiscrollview-autolayout-on-a-storyboard-a-step-by-step-guide-15bd67ee79e9
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+500)
@@ -165,7 +165,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
  /*       // no pdf document still
         if pdfView.document == nil{
@@ -223,7 +223,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // fetch all inventory sorted by sortOrder
     private func inventoryFetchRequest(sortOrder: String, filterWhere: String, filterCompare1: String, filterCompare2: String) -> NSFetchRequest<Inventory> {
-        os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
         
         let request:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
@@ -242,7 +242,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // fetch all inventory sorted by sortOrder
     private func inventoryFetchRequest(sortOrder: String, filterWhere: String, filterCompare: String) -> NSFetchRequest<Inventory> {
-        os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
         
         let request:NSFetchRequest<Inventory> = Inventory.fetchRequest()
         
@@ -320,7 +320,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // share a PDF file to iOS: print, save to file
     func sharePdf(path: URL) {
-        os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController sharePdf", log: Log.viewcontroller, type: .info)
         
         let fileManager = FileManager.default
         
@@ -352,7 +352,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @IBAction func roomsSegmentAction(_ sender: UISegmentedControl) {
-        os_log("ReportViewController roomsSegmentAction", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController roomsSegmentAction", log: Log.viewcontroller, type: .info)
         
         roomFilterLabel.text = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
         
@@ -364,7 +364,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @IBAction func ownersSegmentAction(_ sender: UISegmentedControl) {
-        os_log("ReportViewController ownersSegmentAction", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController ownersSegmentAction", log: Log.viewcontroller, type: .info)
         
         ownerFilterLabel.text = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
         
@@ -376,7 +376,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
-        os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController paperFormatSegmentAction", log: Log.viewcontroller, type: .info)
         
         switch paperFormatSegment.selectedSegmentIndex
         {
@@ -400,7 +400,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
-        os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController sortOrderSegmentAction", log: Log.viewcontroller, type: .info)
         
         switch sortOrderSegment.selectedSegmentIndex
         {
@@ -426,7 +426,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
         if segue.identifier == "fullscreenPDF" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
@@ -448,7 +447,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // usLetter_height = 792.0
     //
     func pdfInit(){
-        os_log("ReportViewController pdfInit", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfInit", log: Log.viewcontroller, type: .info)
         
         switch (currentPaperSize){
         case .dinA4:
@@ -487,7 +486,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // add a summary page at the end of the PDF report
     func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
-        os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         var y : Double
         
@@ -569,7 +568,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate user info for pdf page (on top rigth position of page)
     func pdfPageUserInfo(userName: String, address: String){
-        os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
@@ -591,7 +590,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate title for pdf page (on top of each page)
     func pdfPageTitleHeading(title: String, fontSize: CGFloat, context: UIGraphicsRendererContext){
-        os_log("ReportViewController pdfPageTitleHeading", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfPageTitleHeading", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -616,7 +615,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate pdf page number
     func pdfPageNumber(pageNumber: Int){
-        os_log("ReportViewController pdfPageNumber", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfPageNumber", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
@@ -635,7 +634,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate pdf page footer
     func pdfPageFooter(footerText: String, context: UIGraphicsRendererContext){
-        os_log("ReportViewController pdfPageFooter", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfPageFooter", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -661,7 +660,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate pdf pdfTableHeader
     func pdfTableHeader(context: UIGraphicsRendererContext){
-        os_log("ReportViewController pdfTableHeader", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfTableHeader", log: Log.viewcontroller, type: .info)
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
@@ -733,7 +732,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate the PDF document containing all pages, header, footer, page number etc.
     func pdfCreateInventoryReport(){
-        os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
@@ -891,7 +890,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @objc func gestureAction() {
-        os_log("ReportViewController action", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController action", log: Log.viewcontroller, type: .info)
         
         // show image view fullscreen
         performSegue(withIdentifier: "fullscreenPDF", sender: nil)

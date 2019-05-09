@@ -43,7 +43,7 @@ class PDFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("PDFViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("PDFViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         if #available(iOS 11.0, *) {
             self.navigationItem.largeTitleDisplayMode = .never
@@ -75,7 +75,7 @@ class PDFViewController: UIViewController {
     // Mark: - UI actions
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .info)
+        //os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .info)
         
         let fileManager = FileManager.default
         
@@ -84,7 +84,7 @@ class PDFViewController: UIViewController {
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
         } else {
-            os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .error)
+            //os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .error)
             
             let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
             let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)

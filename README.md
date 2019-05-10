@@ -7,7 +7,7 @@ User can manage rooms, persons living in household, item categories, brands etc.
 
 Exporting data in csv files is possible and re importing afterwards as well.
 
-Reporting module gives users a PDF file with sorted and filtered options to view their belongings.
+Reporting module Provider users with a PDF file with sorting and filter options to view their belongings.
 
 The ultimate goal of this app is to let users print out a report in case they need to call their insurance after some incident happened so they have a list of all personal items, ordered by room, or category.
 

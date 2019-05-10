@@ -48,9 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Do any additional setup after loading the view.
         let myInventory = CoreDataHandler.fetchInventory()
         
-        // generate sample data if none available
+        // generate initial data if none available
         if (myInventory.count == 0){
-            CoreDataHandler.generateSampleData()
+            let rooms = CoreDataHandler.fetchAllRooms()
+            let categories = CoreDataHandler.fetchAllCategories()
+            let owners = CoreDataHandler.fetchAllOwners()
+            let brands = CoreDataHandler.fetchAllBrands()
+            
+            // only generate data if complete data is gone
+            if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
+                CoreDataHandler.generateInitialAppData()
+            }
         }
         
         // manage large title appearance for all view controllers centrally

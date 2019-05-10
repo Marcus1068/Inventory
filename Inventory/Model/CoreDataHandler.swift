@@ -700,9 +700,9 @@ class CoreDataHandler: NSObject {
     
     // generate sample data for initial work
     // FIXME: must be depening upon system language with switch/case of supported languages, default english
-    class func generateSampleData()
+    class func generateInitialAppData()
     {
-        //os_log("CoreDataHandler generateSampleData", log: Log.coredata, type: .info)
+        //os_log("CoreDataHandler generateInitialAppData", log: Log.coredata, type: .info)
         
         let context = getContext()
         

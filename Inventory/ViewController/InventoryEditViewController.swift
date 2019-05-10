@@ -254,6 +254,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             // set item button default texts (first item element for default)
             roomButtonLabel.setTitle(rooms[0].roomName, for: UIControl.State.normal)
             currentInventory?.inventoryRoom = rooms[0]
+            
             categoryButtonLabel.setTitle(categories[0].categoryName, for: UIControl.State.normal)
             currentInventory?.inventoryCategory = categories[0]
             brandButtonLabel.setTitle(brands[0].brandName, for: UIControl.State.normal)

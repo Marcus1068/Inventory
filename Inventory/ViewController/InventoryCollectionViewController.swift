@@ -76,6 +76,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     var owner : [Owner] = []
     var room : [Room] = []
+    var brand: [Brand] = []
+    var category: [Category] = []
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     var dest = InventoryEditViewController()    // destination view controller
@@ -210,7 +213,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -277,7 +280,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
  
-        //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // clear selected index paths
         //indexPathsForDeletion.removeAll()
@@ -299,6 +302,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // Setup the Scope Bars
         owner = CoreDataHandler.fetchAllOwners()
         room = CoreDataHandler.fetchAllRooms()
+        
+        // also load brand and category to see if there are any object
+        category = CoreDataHandler.fetchAllCategories()
+        brand = CoreDataHandler.fetchAllBrands()
         
         var listOwners :[String] = []
         var listRooms :[String] = []
@@ -322,8 +329,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         roomsSegment.selectedSegmentIndex = 0
         
         // set collection view to always scroll to top when opening view
-        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
-        self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
+        if fetchedResultsController.fetchedObjects!.count > 0{
+            let indexPathForFirstRow = IndexPath(row: 0, section: 0)
+            self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
+        }
+        
+        
     }
     
     
@@ -522,21 +533,44 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     */
     // avoid automatic segue in case of delete mode
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        // do not perform segue if delete mode
         if deleteMode  {
             // your code here, like badParameters  = false, e.t.c
             return false
         }
-        return true
+        
+        // check if any rooms, categories, brands and owners are available, otherwise refuse to add an item
+        if room.count > 0 && category.count > 0 && brand.count > 0 && owner.count > 0{
+            return true
+        }
+        else{
+            let message = NSLocalizedString("Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects", comment: "Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects") 
+            let myActionSheet = UIAlertController(title: Global.error, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+            
+            let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+                // do nothing when cancel
+            }
+            
+            myActionSheet.addAction(action)
+            addActionSheetForiPad(actionSheet: myActionSheet)
+            present(myActionSheet, animated: true, completion: nil)
+            
+            return false
+        }
+        
+        //return true
     }
     
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        //os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
+        os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! InventoryEditViewController
         
         if segue.identifier == "addSegue" {
+            
             destination.currentInventory = nil
         }
         

@@ -277,6 +277,9 @@
 /* Photo Library */
 "Photo Library" = "Fotobibliothek";
 
+/* Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects */
+"Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects" = "Bitte mindestens einen Raum, eine Kategorie, eine Marke und einen Eigentümer anlegen, um ein Inventarobjekt anlegen zu können";
+
 /* Please check your email configuration */
 "Please check your email configuration" = "Bitte prüfen Sie Ihre Email Konfiguration";
 

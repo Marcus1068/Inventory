@@ -402,11 +402,11 @@
             <objects>
                 <viewController id="BNp-7u-MBg" customClass="CategoryEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="db6-tD-OsW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUQ-Gt-7Jv">
-                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-8A-JRQ">
                                         <rect key="frame" x="169.5" y="5" width="36" height="36"/>
@@ -424,19 +424,19 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Zb-vc-qqF">
-                                <rect key="frame" x="16" y="155" width="137" height="30"/>
+                                <rect key="frame" x="16" y="91" width="137" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb0-xm-16w">
-                                <rect key="frame" x="16" y="118" width="137" height="21"/>
+                                <rect key="frame" x="16" y="54" width="137" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the category name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wp2-5w-JLQ">
-                                <rect key="frame" x="16" y="228" width="343" height="66"/>
+                                <rect key="frame" x="16" y="164" width="343" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="bIB-UR-rwu"/>
                                 </constraints>
@@ -1723,7 +1723,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory3" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
                                 <rect key="frame" x="230" y="64" width="129" height="118"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2787,7 +2787,7 @@
         <image name="Camera Icon" width="30" height="30"/>
         <image name="Category Icon" width="30" height="30"/>
         <image name="Export" width="30" height="30"/>
-        <image name="Inventory3" width="512" height="512"/>
+        <image name="Inventory" width="512" height="512"/>
         <image name="Owner Icon" width="30" height="30"/>
         <image name="PDF Icon" width="30" height="30"/>
         <image name="Report" width="30" height="30"/>
@@ -2821,7 +2821,7 @@
         <segue reference="sZP-kj-dZy"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="hE0-Ui-Mnp"/>
-        <segue reference="Jmz-UD-5Ui"/>
+        <segue reference="tlR-Jn-FPJ"/>
         <segue reference="CJG-Xc-sZ3"/>
         <segue reference="zj2-bl-WMz"/>
     </inferredMetricsTieBreakers>

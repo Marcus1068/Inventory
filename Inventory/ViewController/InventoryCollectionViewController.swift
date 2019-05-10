@@ -213,7 +213,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -268,11 +268,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         let _ = Global.checkCameraPermission()
     }
 
-    fileprivate func updateViewTitle() {
+    fileprivate func updateNumberOfItemsLabel() {
         let obj = NSLocalizedString("items", comment: "items")
         let countAll = fetchedResultsController.fetchedObjects?.count ?? 0
         //let searchCount = 10 //FIXME
-        self.numberOfItems.text = String(countAll) + " " + obj
+        self.numberOfItems.text = String(countAll) + " " + obj + " " + "in inventory"
     }
     
     // initialize the data for the view
@@ -280,7 +280,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
  
-        os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // clear selected index paths
         //indexPathsForDeletion.removeAll()
@@ -295,7 +295,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
         
-        updateViewTitle()
+        updateNumberOfItemsLabel()
         
         collection.reloadData()
         
@@ -951,19 +951,19 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         switch type {
         case .insert:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
         case .delete:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
         case .update:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
         case .move:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
         @unknown default:
             os_log("InventoryCollectionViewController controller: switch unknown default", log: Log.viewcontroller, type: .error)
@@ -996,17 +996,17 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         switch type {
         case .insert:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
             
         case .delete:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
             
         case .update:
             collection.reloadData()
-            updateViewTitle()
+            updateNumberOfItemsLabel()
             break
             
         default:

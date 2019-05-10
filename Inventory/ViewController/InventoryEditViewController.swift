@@ -483,6 +483,18 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             _ = segue.destination as! RoomTableViewController
         }
         
+        if segue.identifier == "categorySegue" {
+            _ = segue.destination as! CategoryTableViewController
+        }
+        
+        if segue.identifier == "ownerSegue" {
+            _ = segue.destination as! OwnerTableViewController
+        }
+        
+        if segue.identifier == "brandSegue" {
+            _ = segue.destination as! BrandTableViewController
+        }
+        
         if segue.identifier == "imageSegue" {
             let destination = segue.destination as! ImageViewController
             destination.image = imageView.image

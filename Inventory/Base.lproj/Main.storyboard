@@ -285,17 +285,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
-                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="9aT-qz-g0L"/>
-                                        <constraint firstAttribute="width" constant="35" id="ZrJ-d9-ODK"/>
-                                    </constraints>
+                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="fdO-gf-h77" firstAttribute="centerX" secondItem="TDg-hI-3iO" secondAttribute="centerX" id="4Mc-WN-lR6"/>
-                                <constraint firstAttribute="bottom" secondItem="fdO-gf-h77" secondAttribute="bottom" constant="4" id="jLe-mD-nfp"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="centerX" secondItem="TDg-hI-3iO" secondAttribute="centerX" id="CXp-iy-cpi"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="centerY" secondItem="TDg-hI-3iO" secondAttribute="centerY" id="d3B-kU-ndB"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -353,17 +349,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="169.5" y="0.0" width="36" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="UFX-TA-7en"/>
-                                        <constraint firstAttribute="width" constant="36" id="fRC-Z7-ItD"/>
-                                    </constraints>
+                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerX" secondItem="p3A-UU-TKg" secondAttribute="centerX" id="DF6-Gf-K2q"/>
-                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" id="Ubf-IC-SLl"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerY" secondItem="p3A-UU-TKg" secondAttribute="centerY" id="CH4-xV-lar"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerX" secondItem="p3A-UU-TKg" secondAttribute="centerX" id="Xfv-nF-Wbc"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -973,7 +965,7 @@
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="trailing" secondItem="LSJ-Ox-96U" secondAttribute="trailing" id="loF-4h-kHE"/>
                             <constraint firstItem="7eY-0W-SIY" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="12" id="nYw-j7-qLI"/>
                             <constraint firstItem="Ncb-ft-R03" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="11" id="qtE-VL-Ky8"/>
-                            <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KWu-LK-Nv9" secondAttribute="trailing" constant="20" symbolic="YES" id="rUu-M7-RP2"/>
+                            <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KWu-LK-Nv9" secondAttribute="trailing" symbolic="YES" id="rUu-M7-RP2"/>
                             <constraint firstItem="KWu-LK-Nv9" firstAttribute="top" secondItem="dGS-kv-Yx5" secondAttribute="bottom" constant="8" symbolic="YES" id="tsa-NR-x6l"/>
                             <constraint firstItem="dFO-EO-nqg" firstAttribute="centerY" secondItem="KWu-LK-Nv9" secondAttribute="centerY" id="ws5-tP-Y5d"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" id="z10-Q4-xyp"/>
@@ -2449,17 +2441,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
-                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="8dt-g5-ssL"/>
-                                        <constraint firstAttribute="width" constant="35" id="Fyb-j6-UpQ"/>
-                                    </constraints>
+                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerY" secondItem="pmu-bl-MiB" secondAttribute="centerY" id="D0H-uA-9TD"/>
-                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerX" secondItem="pmu-bl-MiB" secondAttribute="centerX" id="D9o-BE-G8d"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerX" secondItem="pmu-bl-MiB" secondAttribute="centerX" id="oZO-Po-PWM"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerY" secondItem="pmu-bl-MiB" secondAttribute="centerY" id="qAl-Xx-lx3"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -2604,17 +2592,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
-                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="C3F-CT-yEd"/>
-                                        <constraint firstAttribute="width" constant="35" id="HTb-96-0Xt"/>
-                                    </constraints>
+                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerX" secondItem="GlM-9z-INp" secondAttribute="centerX" id="6zx-Qg-xDe"/>
-                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerY" secondItem="GlM-9z-INp" secondAttribute="centerY" id="EOm-Mj-i5s"/>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerY" secondItem="GlM-9z-INp" secondAttribute="centerY" id="BZB-Qm-XQP"/>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerX" secondItem="GlM-9z-INp" secondAttribute="centerX" id="zxP-n6-5aW"/>
                             </constraints>
                         </view>
                         <prototypes>

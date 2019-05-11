@@ -280,16 +280,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="TDg-hI-3iO">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TDg-hI-3iO">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
-                                    <rect key="frame" x="169" y="4" width="36" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
+                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="9aT-qz-g0L"/>
+                                        <constraint firstAttribute="width" constant="35" id="ZrJ-d9-ODK"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="centerX" secondItem="TDg-hI-3iO" secondAttribute="centerX" id="4Mc-WN-lR6"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="top" secondItem="TDg-hI-3iO" secondAttribute="top" constant="4" id="e0l-KS-UU5"/>
+                                <constraint firstAttribute="bottom" secondItem="fdO-gf-h77" secondAttribute="bottom" constant="4" id="jLe-mD-nfp"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="60" id="Hur-5T-tqk">
@@ -341,22 +349,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="p3A-UU-TKg">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="p3A-UU-TKg">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
                                     <rect key="frame" x="169.5" y="0.0" width="36" height="36"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="RVi-Bm-oX4"/>
-                                        <constraint firstAttribute="width" constant="36" id="mmr-Jt-sfA"/>
+                                        <constraint firstAttribute="height" constant="36" id="UFX-TA-7en"/>
+                                        <constraint firstAttribute="width" constant="36" id="fRC-Z7-ItD"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" id="cU3-6d-s28"/>
-                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerX" secondItem="p3A-UU-TKg" secondAttribute="centerX" id="eVr-Vh-IvC"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerX" secondItem="p3A-UU-TKg" secondAttribute="centerX" id="axw-p1-uxn"/>
+                                <constraint firstAttribute="bottom" secondItem="eGR-vJ-kYR" secondAttribute="bottom" constant="8" id="rGJ-hU-9XM"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" id="rPu-bc-ndx"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -2437,16 +2446,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="pmu-bl-MiB">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="pmu-bl-MiB">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
-                                    <rect key="frame" x="169" y="4" width="36" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
+                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="8dt-g5-ssL"/>
+                                        <constraint firstAttribute="width" constant="35" id="Fyb-j6-UpQ"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="w23-Wc-G3Z" secondAttribute="bottom" constant="4" id="8Td-mF-U97"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerX" secondItem="pmu-bl-MiB" secondAttribute="centerX" id="T24-Tl-gqQ"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="top" secondItem="pmu-bl-MiB" secondAttribute="top" constant="4" id="g3M-hm-94x"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="brandCell" rowHeight="60" id="fMR-Lt-QQ7">
@@ -2585,16 +2602,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="GlM-9z-INp">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GlM-9z-INp">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
-                                    <rect key="frame" x="169" y="4" width="36" height="36"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
+                                    <rect key="frame" x="170" y="4" width="35" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="C3F-CT-yEd"/>
+                                        <constraint firstAttribute="width" constant="35" id="HTb-96-0Xt"/>
+                                    </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="top" secondItem="GlM-9z-INp" secondAttribute="top" constant="4" id="2ta-3g-tov"/>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerX" secondItem="GlM-9z-INp" secondAttribute="centerX" id="6Qg-7T-mup"/>
+                                <constraint firstAttribute="bottom" secondItem="7Yh-3G-0L4" secondAttribute="bottom" constant="4" id="VSD-qs-lAg"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="ownerCell" rowHeight="60" id="fdo-Uz-NgF">

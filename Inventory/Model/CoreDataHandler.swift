@@ -823,18 +823,18 @@ class CoreDataHandler: NSObject {
         
         let date = Date() as NSDate // today
         let arr : [UInt32] = [32,4,123,4,5,2]
-        let myImage = #imageLiteral(resourceName: "Owner Icon")
-        let myImage2 = #imageLiteral(resourceName: "Category Icon")
+        //let myImage = #imageLiteral(resourceName: "Owner Icon")
+        //let myImage2 = #imageLiteral(resourceName: "Category Icon")
         //let myImage3 = #imageLiteral(resourceName: "Camera Icon")
-        let myImage4 = #imageLiteral(resourceName: "Computer Icon")
-        let myImage5 = #imageLiteral(resourceName: "Phone Icon")
-        let myImage6 = #imageLiteral(resourceName: "Room Icon")
-        _ = myImage.jpegData(compressionQuality: 1.0)
-        _ = myImage2.jpegData(compressionQuality: 1.0)
+        //let myImage4 = #imageLiteral(resourceName: "Computer Icon")
+        //let myImage5 = #imageLiteral(resourceName: "Phone Icon")
+        //let myImage6 = #imageLiteral(resourceName: "Room Icon")
+        //_ = myImage.jpegData(compressionQuality: 1.0)
+        //_ = myImage2.jpegData(compressionQuality: 1.0)
         //let imageData3 = myImage3.jpegData(compressionQuality: 1.0)
-        _ = myImage4.jpegData(compressionQuality: 1.0)
-        _ = myImage5.jpegData(compressionQuality: 1.0)
-        _ = myImage6.jpegData(compressionQuality: 1.0)
+        //_ = myImage4.jpegData(compressionQuality: 1.0)
+        //_ = myImage5.jpegData(compressionQuality: 1.0)
+        //_ = myImage6.jpegData(compressionQuality: 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
   //      let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",

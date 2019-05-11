@@ -55,6 +55,7 @@
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
+		2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E992286E1DE0063EF25 /* InventorySplash.jpg */; };
 		2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B967227997D600DB74D3 /* Privacy german.rtf */; };
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
 		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
@@ -127,6 +128,7 @@
 		2C6C0DDE2201EBD900367879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
+		2C847E992286E1DE0063EF25 /* InventorySplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InventorySplash.jpg; sourceTree = "<group>"; };
 		2C89B967227997D600DB74D3 /* Privacy german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy german.rtf"; sourceTree = "<group>"; };
 		2C89B9692279995500DB74D3 /* Privacy english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy english.rtf"; sourceTree = "<group>"; };
 		2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		2C56E8AC2086350A00FD5136 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				2C847E982286E1940063EF25 /* Images */,
 				2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */,
 				2C56E9092086837000FD5136 /* ViewController */,
 				2C56E90A208683A800FD5136 /* Helper */,
@@ -255,6 +258,14 @@
 				2C6A69F5228038D600140B39 /* DropFile.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		2C847E982286E1940063EF25 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2C847E992286E1DE0063EF25 /* InventorySplash.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		2CC85CFD225F32BB006973A0 /* InventoryTests */ = {
@@ -363,6 +374,7 @@
 				2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */,
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,
+				2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */,
 				2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

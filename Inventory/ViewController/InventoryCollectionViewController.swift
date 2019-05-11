@@ -69,6 +69,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var filterByRoomLabel: UILabel!
     @IBOutlet weak var filterSwitch: UISwitch!
     @IBOutlet weak var numberOfItems: UILabel!
+    @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var roomLabel: UILabel!
     
     // store original nav bar buttons
     var leftNavBarButton : UIBarButtonItem? = nil
@@ -272,7 +274,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         let obj = NSLocalizedString("items", comment: "items")
         let countAll = fetchedResultsController.fetchedObjects?.count ?? 0
         //let searchCount = 10 //FIXME
-        self.numberOfItems.text = String(countAll) + " " + obj
+        self.numberOfItems.text = String(countAll) + " " + obj + " " + "total"
     }
     
     // initialize the data for the view
@@ -315,6 +317,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         for inv in owner{
             listOwners.append((inv.ownerName)!)
         }
+        ownerLabel.text = Global.all
         
         replaceSegmentContents(segments: listOwners, control: ownersSegment)
         ownersSegment.selectedSegmentIndex = 0
@@ -324,6 +327,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         for inv in room{
             listRooms.append((inv.roomName)!)
         }
+        roomLabel.text = Global.all
         
         replaceSegmentContents(segments: listRooms, control: roomsSegment)
         roomsSegment.selectedSegmentIndex = 0
@@ -735,11 +739,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             if(ownersSegment.selectedSegmentIndex == 0)
             {
                 fetchedResultsController.fetchRequest.predicate = nil
-                
+                roomLabel.text = Global.all
             }
                 // not filtering by rooms, filtering by owners
             else{
                 let ownerName = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+                ownerLabel.text = ownerName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryOwner.ownerName = %@", ownerName!)
             }
             break
@@ -749,13 +754,15 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             if(ownersSegment.selectedSegmentIndex == 0)
             {
                 let roomName = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
+                roomLabel.text = roomName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName!)
             }
                 // filtering by rooms AND filtering by owners
             else{
                 let ownerName = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+                ownerLabel.text = ownerName
                 let roomName = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
-                
+                roomLabel.text = roomName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryOwner.ownerName = %@ AND inventoryRoom.roomName = %@", ownerName!, roomName!)
             }
             break
@@ -781,11 +788,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             if(roomsSegment.selectedSegmentIndex == 0)
             {
                 fetchedResultsController.fetchRequest.predicate = nil
-                
+                ownerLabel.text = Global.all
             }
                 // filtering by rooms, not filtering by owners
             else{
                 let roomName = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
+                roomLabel.text = roomName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryRoom.roomName = %@", roomName!)
             }
             break
@@ -795,13 +803,15 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             if(roomsSegment.selectedSegmentIndex == 0)
             {
                 let ownerName = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+                ownerLabel.text = ownerName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryOwner.ownerName = %@", ownerName!)
             }
                 // filtering by rooms AND filtering by owners
             else{
                 let ownerName = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+                ownerLabel.text = ownerName
                 let roomName = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
-                
+                roomLabel.text = roomName
                 fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "inventoryOwner.ownerName = %@ AND inventoryRoom.roomName = %@", ownerName!, roomName!)
             }
             break
@@ -831,6 +841,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             filterByRoomLabel.isHidden = false
             filterByOwnerLabel.isHidden = false
             
+            roomLabel.isHidden = false
+            ownerLabel.isHidden = false
             // set filters to ALL for rooms and owners, otherwise no data is selectable
             roomsSegment.selectedSegmentIndex = 0
             ownersSegment.selectedSegmentIndex = 0
@@ -847,6 +859,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             ownersSegment.isHidden = true
             filterByRoomLabel.isHidden = true
             filterByOwnerLabel.isHidden = true
+            
+            roomLabel.isHidden = true
+            ownerLabel.isHidden = true
             
             // set filters to ALL for rooms and owners, otherwise no data is selectable
             roomsSegment.selectedSegmentIndex = 0

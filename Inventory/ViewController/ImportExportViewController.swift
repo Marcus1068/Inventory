@@ -143,7 +143,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             self.url = pathURLcvs
             
             //let exportDocPath = pathURLcvs.absoluteString
-            var csvText = "inventoryName,dateofPurchase,price,serialNumber,remark,timeStamp,roomName,ownerName,categoryName,brandName,warranty,imageFileName,invoiceFileName,id\n"
+            var csvText = Global.csvMetadata
             
             var progress : Int = 0
             
@@ -255,23 +255,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let imagesFolderPath = URL.createFolder(folderName: "Images")
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
-        
-   /*
-        var results: [Inventory] = []
-        let context = CoreDataHandler.getContext()
-        do {
-            results = try context.fetch(self.inventoryFetchRequest())
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
-        }
-        print(results.count)
-      */
-        
-        
-       // var context: NSManagedObjectContext
-       // context = CoreDataHandler.getContext()
-        
         guard let data = readDataFromCSV(fileName: file) else{
             // no file to import
             let message = NSLocalizedString("Importing CSV file", comment: "Importing CSV file")
@@ -287,6 +270,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         
         let csvRows = csvImportParser(data: data)
+        
+        // check for correct metadata names
+        guard let _ = csvCheckMetadata(csvRows: csvRows) else{
+            let message = NSLocalizedString("CSV file format different than expected", comment: "CSV file format different than expected")
+            let title = NSLocalizedString("CSV file cannot be imported", comment: "CSV file cannot be imported")
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: Global.dismiss, style: .default)
+            alertController.addAction(dismissAction)
+            
+            present(alertController, animated: true)
+            
+            os_log("ImportExportViewController importCVSFile: csv file format different", log: Log.viewcontroller, type: .info)
+            return
+        }
         
         
         // if there is data, ignore first line since this contains the column names
@@ -456,8 +453,69 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressLabel.text = "100 %"
     }
     
+    // check for correct file format
+    func csvCheckMetadata(csvRows: [[String]]) -> String?{
+        
+        if csvRows[0][0] != Global.inventoryName_csv{
+            return nil
+        }
+        
+        if csvRows[0][1] != Global.dateofPurchase_csv{
+            return nil
+        }
+        
+        if csvRows[0][2] != Global.price_csv{
+            return nil
+        }
+        
+        if csvRows[0][3] != Global.serialNumber_csv{
+            return nil
+        }
+        
+        if csvRows[0][4] != Global.remark_csv{
+            return nil
+        }
+        
+        if csvRows[0][5] != Global.timeStamp_csv{
+            return nil
+        }
+        
+        if csvRows[0][6] != Global.roomName_csv{
+            return nil
+        }
+        
+        if csvRows[0][7] != Global.ownerName_csv{
+            return nil
+        }
+        
+        if csvRows[0][8] != Global.categoryName_csv{
+            return nil
+        }
+        
+        if csvRows[0][9] != Global.brandName_csv{
+            return nil
+        }
+        
+        if csvRows[0][10] != Global.warranty_csv{
+            return nil
+        }
+        
+        if csvRows[0][11] != Global.imageFileName_csv{
+            return nil
+        }
+        
+        if csvRows[0][12] != Global.invoiceFileName_csv{
+            return nil
+        }
+        
+        if csvRows[0][13] != Global.id_csv{
+            return nil
+        }
+        
+        return "ok"
+    }
+    
     // read file as string
-    // FIXME: change directory
     func readDataFromCSV(fileName: String) -> String?{
         //os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
         
@@ -670,34 +728,4 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
 }
 
-// used to create folders inside of document folder like this:
-// For example, to create the folder "MyStuff", you would call it like this:
-// let myStuffURL = URL.createFolder(folderName: "MyStuff")
-extension URL {
-    static func createFolder(folderName: String) -> URL? {
-        let fileManager = FileManager.default
-        // Get document directory for device, this should succeed
-        if let documentDirectory = fileManager.urls(for: .documentDirectory,
-                                                    in: .userDomainMask).first {
-            // Construct a URL with desired folder name
-            let folderURL = documentDirectory.appendingPathComponent(folderName)
-            // If folder URL does not exist, create it
-            if !fileManager.fileExists(atPath: folderURL.path) {
-                do {
-                    // Attempt to create folder
-                    try fileManager.createDirectory(atPath: folderURL.path,
-                                                    withIntermediateDirectories: true,
-                                                    attributes: nil)
-                } catch {
-                    // Creation failed. Print error & return nil
-                    print(error.localizedDescription)
-                    return nil
-                }
-            }
-            // Folder either exists, or was created. Return URL
-            return folderURL
-        }
-        // Will only be called if document directory not found
-        return nil
-    }
-}
+

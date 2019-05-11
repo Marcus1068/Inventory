@@ -104,6 +104,25 @@ class Global: NSObject {
         return languageCode!
     }
     
+    // define column names for import and export functions for csv file
+    static let inventoryName_csv = "inventoryName"
+    static let dateofPurchase_csv = "dateofPurchase"
+    static let price_csv = "price"
+    static let serialNumber_csv = "serialNumber"
+    static let remark_csv = "remark"
+    static let timeStamp_csv = "timeStamp"
+    static let roomName_csv = "roomName"
+    static let ownerName_csv = "ownerName"
+    static let categoryName_csv = "categoryName"
+    static let brandName_csv = "brandName"
+    static let warranty_csv = "warranty"
+    static let imageFileName_csv = "imageFileName"
+    static let invoiceFileName_csv = "invoiceFileName"
+    static let id_csv = "id"
+    
+    static let csvMetadata = "\(Global.inventoryName_csv),\(Global.dateofPurchase_csv),\(Global.price_csv),\(Global.serialNumber_csv),\(Global.remark_csv),\(Global.timeStamp_csv),\(Global.roomName_csv),\(Global.ownerName_csv),\(Global.categoryName_csv),\(Global.brandName_csv),\(Global.warranty_csv),\(Global.imageFileName_csv),\(Global.invoiceFileName_csv),\(Global.id_csv)\n"
+    
+    
     // MARK: - helper functions
     
     // sending a local notification
@@ -369,5 +388,37 @@ extension String {
     // return an array of lines of strings
     var lines: [String] {
         return self.components(separatedBy: "\n")
+    }
+}
+
+// used to create folders inside of document folder like this:
+// For example, to create the folder "MyStuff", you would call it like this:
+// let myStuffURL = URL.createFolder(folderName: "MyStuff")
+extension URL {
+    static func createFolder(folderName: String) -> URL? {
+        let fileManager = FileManager.default
+        // Get document directory for device, this should succeed
+        if let documentDirectory = fileManager.urls(for: .documentDirectory,
+                                                    in: .userDomainMask).first {
+            // Construct a URL with desired folder name
+            let folderURL = documentDirectory.appendingPathComponent(folderName)
+            // If folder URL does not exist, create it
+            if !fileManager.fileExists(atPath: folderURL.path) {
+                do {
+                    // Attempt to create folder
+                    try fileManager.createDirectory(atPath: folderURL.path,
+                                                    withIntermediateDirectories: true,
+                                                    attributes: nil)
+                } catch {
+                    // Creation failed. Print error & return nil
+                    print(error.localizedDescription)
+                    return nil
+                }
+            }
+            // Folder either exists, or was created. Return URL
+            return folderURL
+        }
+        // Will only be called if document directory not found
+        return nil
     }
 }

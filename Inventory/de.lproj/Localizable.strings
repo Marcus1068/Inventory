@@ -97,6 +97,12 @@
 /* The exported CSV file can be found here */
 "CSV file can be found in Inventory App documents folder" = "DIe csv Datei kann innerhalb des Dokumenten Ordners der Inventory App gefunden werden";
 
+/* CSV file cannot be imported */
+"CSV file cannot be imported" = "CSV Datei kann nicht importiert werden";
+
+/* CSV file format different than expected */
+"CSV file format different than expected" = "CSV Datei Format anders als erwartet";
+
 /* Delete */
 "Delete" = "Löschen";
 

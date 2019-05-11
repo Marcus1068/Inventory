@@ -272,7 +272,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         let obj = NSLocalizedString("items", comment: "items")
         let countAll = fetchedResultsController.fetchedObjects?.count ?? 0
         //let searchCount = 10 //FIXME
-        self.numberOfItems.text = String(countAll) + " " + obj + " " + "in inventory"
+        self.numberOfItems.text = String(countAll) + " " + obj
     }
     
     // initialize the data for the view

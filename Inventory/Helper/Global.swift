@@ -365,4 +365,9 @@ extension String {
     func truncate(length: Int, trailing: String = "…") -> String {
         return (self.count > length) ? self.prefix(length) + trailing : self
     }
+    
+    // return an array of lines of strings
+    var lines: [String] {
+        return self.components(separatedBy: "\n")
+    }
 }

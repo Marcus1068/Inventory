@@ -67,6 +67,13 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var office3Icon: UIButton!
     
+    @IBOutlet weak var girlIcon: UIButton!
+    @IBOutlet weak var boyIcon: UIButton!
+    @IBOutlet weak var kidsbedIcon: UIButton!
+    @IBOutlet weak var girlAndBoyIcon: UIButton!
+    @IBOutlet weak var office4Icon: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -265,6 +272,21 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             break
         case office3Icon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-schreibtischlampe-filled-50")
+            break
+        case office4Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-buchhaltung-96")
+            break
+        case girlIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-maedchen-96")
+            break
+        case boyIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-junge-96")
+            break
+        case girlAndBoyIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-kinder-90")
+            break
+        case kidsbedIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-krippe-96")
             break
         default:
             chosenImage.image = #imageLiteral(resourceName: "icons8-home-filled-50")

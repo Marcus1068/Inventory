@@ -232,7 +232,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             request.predicate = NSPredicate(format: filterWhere, filterCompare1, filterCompare2)
         }
         
-        print(request.predicate.debugDescription)
+        //print(request.predicate.debugDescription)
         
         request.fetchBatchSize = 20
         request.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
@@ -251,7 +251,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             request.predicate = NSPredicate(format: filterWhere, filterCompare)
         }
         
-        print(request.predicate.debugDescription)
+        //print(request.predicate.debugDescription)
         
         request.fetchBatchSize = 20
         request.sortDescriptors = [NSSortDescriptor(key: sortOrder, ascending: true)]
@@ -346,7 +346,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // sharing PDF for print or email
     @IBAction func shareActionBarButton(_ sender: UIBarButtonItem) {
-        os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
+        //os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
         
         sharePdf(path: url!)
     }
@@ -722,7 +722,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         do {
             try pdf.write(to: docURL! as URL, options: .atomic)
-            os_log("ReportViewController pdfSave successfull", log: Log.viewcontroller, type: .info)
+            //os_log("ReportViewController pdfSave successfull", log: Log.viewcontroller, type: .info)
         } catch {
             os_log("ReportViewController pdfSave error", log: Log.viewcontroller, type: .error)
         }

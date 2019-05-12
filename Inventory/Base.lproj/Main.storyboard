@@ -2151,19 +2151,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5q-YK-cXD">
-                                                <rect key="frame" x="221" y="19" width="145" height="29"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="jwo-Dc-h0n"/>
-                                                </constraints>
-                                                <segments>
-                                                    <segment title="DINA4"/>
-                                                    <segment title="US Letter"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
-                                                </connections>
-                                            </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KrM-2K-XTm">
                                                 <rect key="frame" x="8" y="55" width="64" height="26"/>
                                                 <constraints>
@@ -2242,7 +2229,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JuC-eq-fIK">
-                                                <rect key="frame" x="7" y="247" width="359" height="29"/>
+                                                <rect key="frame" x="8" y="247" width="358" height="29"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="L6Z-dc-bOg"/>
                                                 </constraints>
@@ -2258,7 +2245,7 @@
                                                 </connections>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current generated report:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-ch-75D">
-                                                <rect key="frame" x="8" y="302" width="207" height="21"/>
+                                                <rect key="frame" x="8" y="303" width="207" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="8xM-I8-bDB"/>
                                                 </constraints>
@@ -2267,10 +2254,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxD-Cl-6oe">
-                                                <rect key="frame" x="8" y="339" width="359" height="203"/>
+                                                <rect key="frame" x="8" y="340" width="359" height="202"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcX-Ar-v2A" customClass="PDFView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="203"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="359" height="202"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>
@@ -2284,9 +2271,23 @@
                                                     <constraint firstItem="dcX-Ar-v2A" firstAttribute="width" secondItem="yxD-Cl-6oe" secondAttribute="width" id="xvA-d4-OrB"/>
                                                 </constraints>
                                             </view>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="R5q-YK-cXD">
+                                                <rect key="frame" x="144" y="19" width="145" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="jwo-Dc-h0n"/>
+                                                </constraints>
+                                                <segments>
+                                                    <segment title="DINA4"/>
+                                                    <segment title="US Letter"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
+                                                </connections>
+                                            </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="R5q-YK-cXD" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="19" id="1Ko-5s-JFC"/>
                                             <constraint firstItem="JuC-eq-fIK" firstAttribute="top" secondItem="ehs-Uu-Z20" secondAttribute="bottom" constant="8" id="6CS-8v-Lrg"/>
                                             <constraint firstItem="xzz-zx-2tp" firstAttribute="leading" secondItem="sXd-j7-KIs" secondAttribute="trailing" constant="12" id="6lr-ZX-bNT"/>
                                             <constraint firstItem="QLh-FY-ObP" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="6pL-B1-cgO"/>
@@ -2295,18 +2296,16 @@
                                             <constraint firstAttribute="trailing" secondItem="jvJ-91-pTc" secondAttribute="trailing" constant="8" id="9gm-vV-pFf"/>
                                             <constraint firstItem="KrM-2K-XTm" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="C8s-3B-N0V"/>
                                             <constraint firstItem="K90-Fm-Q4b" firstAttribute="leading" secondItem="ehs-Uu-Z20" secondAttribute="trailing" constant="20" id="CBl-Fh-uCe"/>
-                                            <constraint firstItem="5ZR-ch-75D" firstAttribute="top" secondItem="JuC-eq-fIK" secondAttribute="bottom" constant="27" id="ClS-72-rij"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R5q-YK-cXD" secondAttribute="trailing" constant="20" symbolic="YES" id="CIe-RZ-Shi"/>
+                                            <constraint firstItem="5ZR-ch-75D" firstAttribute="top" secondItem="JuC-eq-fIK" secondAttribute="bottom" constant="28" id="ClS-72-rij"/>
                                             <constraint firstItem="xzz-zx-2tp" firstAttribute="top" secondItem="iMl-4T-cI9" secondAttribute="bottom" constant="24" id="FU7-cH-fgQ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KrM-2K-XTm" secondAttribute="trailing" constant="20" symbolic="YES" id="Fe4-Hn-U2q"/>
-                                            <constraint firstAttribute="trailing" secondItem="R5q-YK-cXD" secondAttribute="trailing" constant="9" id="GTc-h9-aE2"/>
                                             <constraint firstAttribute="bottom" secondItem="yxD-Cl-6oe" secondAttribute="bottom" constant="125" id="GyJ-UN-8gh"/>
                                             <constraint firstItem="K90-Fm-Q4b" firstAttribute="top" secondItem="jvJ-91-pTc" secondAttribute="bottom" constant="20" id="KfN-1F-dk6"/>
                                             <constraint firstItem="ehs-Uu-Z20" firstAttribute="top" secondItem="jvJ-91-pTc" secondAttribute="bottom" constant="20" id="NQl-w9-vnH"/>
-                                            <constraint firstItem="JuC-eq-fIK" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="7" id="P4e-5d-YFZ"/>
+                                            <constraint firstItem="JuC-eq-fIK" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="P4e-5d-YFZ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5ZR-ch-75D" secondAttribute="trailing" constant="20" symbolic="YES" id="PTa-2V-XNa"/>
                                             <constraint firstAttribute="trailing" secondItem="iMl-4T-cI9" secondAttribute="trailing" constant="8" id="QoQ-XH-SG8"/>
-                                            <constraint firstItem="KrM-2K-XTm" firstAttribute="top" secondItem="R5q-YK-cXD" secondAttribute="bottom" constant="8" id="RfE-oQ-DSW"/>
-                                            <constraint firstItem="R5q-YK-cXD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QLh-FY-ObP" secondAttribute="trailing" constant="8" symbolic="YES" id="VX5-D5-RTF"/>
                                             <constraint firstItem="iMl-4T-cI9" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="YoB-VG-bCd"/>
                                             <constraint firstItem="5ZR-ch-75D" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="Z6B-sS-pRB"/>
                                             <constraint firstItem="yxD-Cl-6oe" firstAttribute="top" secondItem="5ZR-ch-75D" secondAttribute="bottom" constant="16" id="d6v-oX-7He"/>
@@ -2315,7 +2314,9 @@
                                             <constraint firstItem="jvJ-91-pTc" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="lQx-9N-fmy"/>
                                             <constraint firstItem="yxD-Cl-6oe" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="mlB-Dn-YZE"/>
                                             <constraint firstItem="jvJ-91-pTc" firstAttribute="top" secondItem="sXd-j7-KIs" secondAttribute="bottom" constant="8" id="nDF-gY-04y"/>
+                                            <constraint firstItem="R5q-YK-cXD" firstAttribute="leading" secondItem="QLh-FY-ObP" secondAttribute="trailing" constant="26" id="nUr-bC-2Aw"/>
                                             <constraint firstItem="ehs-Uu-Z20" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="o2v-uc-QlP"/>
+                                            <constraint firstItem="KrM-2K-XTm" firstAttribute="top" secondItem="QLh-FY-ObP" secondAttribute="bottom" constant="8" symbolic="YES" id="oCo-sK-39D"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xzz-zx-2tp" secondAttribute="trailing" constant="20" symbolic="YES" id="qQS-7Y-PaG"/>
                                             <constraint firstAttribute="trailing" secondItem="JuC-eq-fIK" secondAttribute="trailing" constant="9" id="se9-qN-ONX"/>
                                             <constraint firstItem="R5q-YK-cXD" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="19" id="wfS-pL-zwO"/>

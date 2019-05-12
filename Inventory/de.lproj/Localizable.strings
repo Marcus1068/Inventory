@@ -181,6 +181,9 @@
 /* Importing CSV file */
 "Importing CSV file" = "Importiere CSV Datei";
 
+/* in inventory */
+"in inventory" = "im Inventar";
+
 /* Inventory App Report.pdf */
 "Inventory App Report.pdf" = "Inventory App Report.pdf";
 

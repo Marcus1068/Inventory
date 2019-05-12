@@ -91,7 +91,7 @@
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bbA-Mg-kyA"; */
 "bbA-Mg-kyA.title" = "Titel";
 
-/* Class = "UITabBarItem"; title = "Inventory"; ObjectID = "bMy-mx-l0r"; */
+/* Class = "UITabBarItem"; title = "My Inventory"; ObjectID = "bMy-mx-l0r"; */
 "bMy-mx-l0r.title" = "Mein Inventar";
 
 /* Class = "UIButton"; normalTitle = "Privacy Information"; ObjectID = "C0D-o8-29K"; */
@@ -366,9 +366,6 @@
 
 /* Class = "UITextField"; placeholder = "Serial No."; ObjectID = "wtl-dz-1Ld"; */
 "wtl-dz-1Ld.placeholder" = "Seriennr.";
-
-/* Class = "UINavigationItem"; title = "Inventory"; ObjectID = "x4S-E8-XUR"; */
-"x4S-E8-XUR.title" = "Inventar";
 
 /* Class = "UITextField"; placeholder = "Owner name"; ObjectID = "xgQ-W4-Tf4"; */
 "xgQ-W4-Tf4.placeholder" = "Eigentümer";

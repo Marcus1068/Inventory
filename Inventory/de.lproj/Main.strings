@@ -92,7 +92,7 @@
 "bbA-Mg-kyA.title" = "Titel";
 
 /* Class = "UITabBarItem"; title = "Inventory"; ObjectID = "bMy-mx-l0r"; */
-"bMy-mx-l0r.title" = "Berichte";
+"bMy-mx-l0r.title" = "Mein Inventar";
 
 /* Class = "UIButton"; normalTitle = "Privacy Information"; ObjectID = "C0D-o8-29K"; */
 "C0D-o8-29K.normalTitle" = "Datenschutz Informationen";

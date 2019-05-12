@@ -2461,11 +2461,11 @@
             </objects>
             <point key="canvasLocation" x="2449.275362318841" y="1333.9285714285713"/>
         </scene>
-        <!--Inventory-->
+        <!--My Inventory-->
         <scene sceneID="my9-ac-fzL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jxM-ak-Z6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Inventory" image="createNew" id="bMy-mx-l0r"/>
+                    <tabBarItem key="tabBarItem" title="My Inventory" image="createNew" id="bMy-mx-l0r"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XZ5-lm-emo">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

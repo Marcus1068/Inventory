@@ -483,7 +483,7 @@
             </objects>
             <point key="canvasLocation" x="4575" y="2195"/>
         </scene>
-        <!--Inventory-->
+        <!--Inventory Collection View Controller-->
         <scene sceneID="Kv0-9X-085">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="cvw-X7-YXT" customClass="InventoryCollectionViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
@@ -750,7 +750,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lf7-aM-lhL"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Inventory" id="x4S-E8-XUR">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="x4S-E8-XUR">
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Wzx-6Z-Phb">
                             <connections>
                                 <action selector="organizeBarButton:" destination="cvw-X7-YXT" id="EwK-Sd-o7V"/>

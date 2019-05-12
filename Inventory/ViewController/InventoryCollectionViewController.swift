@@ -217,9 +217,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
-        if #available(iOS 11.0, *) {
+    /*    if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
+       */
+        //self.navigationItem.titleView = UIView()
+         self.title = nil
         
         // to enable drag/drop support
         collection.dropDelegate = self
@@ -295,7 +298,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             os_log("InventoryCollectionViewController viewWillAppear", log: Log.coredata, type: .error)
         }
         
-        self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
+        //self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
         
         updateNumberOfItemsLabel()
         

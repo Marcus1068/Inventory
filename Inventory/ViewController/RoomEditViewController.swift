@@ -237,7 +237,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             chosenImage.image = #imageLiteral(resourceName: "icons8-garage-50")
             break
         case bathIcon:
-            chosenImage.image = #imageLiteral(resourceName: "icons8-durchfall-50")
+            chosenImage.image = #imageLiteral(resourceName: "icons8-dusche-und-badewanne-96")
             break
         case cellarIcon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-keller-filled-50")

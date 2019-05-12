@@ -284,14 +284,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
-                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="fdO-gf-h77" firstAttribute="centerX" secondItem="TDg-hI-3iO" secondAttribute="centerX" id="3zv-Vx-OsN"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="width" secondItem="TDg-hI-3iO" secondAttribute="width" id="Eoh-zv-RrF"/>
                                 <constraint firstItem="fdO-gf-h77" firstAttribute="centerY" secondItem="TDg-hI-3iO" secondAttribute="centerY" id="MFS-eF-WOI"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="height" secondItem="TDg-hI-3iO" secondAttribute="height" id="nXP-9p-00Z"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -348,13 +350,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="height" secondItem="p3A-UU-TKg" secondAttribute="height" id="Iju-9s-Pyr"/>
                                 <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerY" secondItem="p3A-UU-TKg" secondAttribute="centerY" id="ako-pm-qiU"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="width" secondItem="p3A-UU-TKg" secondAttribute="width" id="igm-j3-xex"/>
                                 <constraint firstItem="eGR-vJ-kYR" firstAttribute="centerX" secondItem="p3A-UU-TKg" secondAttribute="centerX" id="yJG-sv-7Rz"/>
                             </constraints>
                         </view>
@@ -2014,143 +2018,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqS-29-dJm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="MCJ-b6-EcT">
+                                <rect key="frame" x="16" y="72" width="343" height="538"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69u-Al-uhL">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="563"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
-                                                <rect key="frame" x="16" y="8" width="343" height="77"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="77" id="sWG-8d-FFe"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
-                                                <rect key="frame" x="16" y="93" width="343" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="skK-hM-ZeA"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <state key="normal" title="Export to CSV file..."/>
-                                                <connections>
-                                                    <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtK-j7-m75">
-                                                <rect key="frame" x="16" y="148" width="343" height="72"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="72" id="nJB-Mo-Fiz"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
-                                                <rect key="frame" x="16" y="285" width="343" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="BAu-Tj-cbt"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <state key="normal" title="Import from CVS file..."/>
-                                                <connections>
-                                                    <action selector="importFromCVSFileButton:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="f8L-1D-lKZ"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHW-c0-TOy">
-                                                <rect key="frame" x="16" y="327" width="343" height="35"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="ZhA-d2-eHv"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
-                                                <rect key="frame" x="16" y="387" width="343" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="eA4-Bn-Ehm"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lo5-nO-MVc">
-                                                <rect key="frame" x="16" y="469" width="343" height="2"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="2" id="P2y-OJ-xd9"/>
-                                                </constraints>
-                                            </progressView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-Yp-eGe">
-                                                <rect key="frame" x="16" y="501" width="343" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="fDt-KK-XgM"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Import your CSV data from the file system" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XG-Gh-KH6">
-                                                <rect key="frame" x="16" y="241" width="343" height="36"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="36" id="ARS-fM-9tq"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="N3h-yS-BT1" secondAttribute="trailing" constant="16" id="0Ce-Ef-zFK"/>
-                                            <constraint firstItem="g93-Ej-2SW" firstAttribute="top" secondItem="2XG-Gh-KH6" secondAttribute="bottom" constant="8" id="0X6-dx-6A2"/>
-                                            <constraint firstItem="lo5-nO-MVc" firstAttribute="top" secondItem="oh4-rl-izX" secondAttribute="bottom" constant="58" id="2LD-I1-f7v"/>
-                                            <constraint firstAttribute="trailing" secondItem="LHW-c0-TOy" secondAttribute="trailing" constant="16" id="8Jd-4n-ORz"/>
-                                            <constraint firstItem="oh4-rl-izX" firstAttribute="top" secondItem="LHW-c0-TOy" secondAttribute="bottom" constant="25" id="8L0-vg-AKy"/>
-                                            <constraint firstAttribute="trailing" secondItem="g93-Ej-2SW" secondAttribute="trailing" constant="16" id="8d9-2L-GiG"/>
-                                            <constraint firstItem="2XG-Gh-KH6" firstAttribute="top" secondItem="ZtK-j7-m75" secondAttribute="bottom" constant="21" id="8db-79-i13"/>
-                                            <constraint firstItem="cZ1-Yp-eGe" firstAttribute="top" secondItem="lo5-nO-MVc" secondAttribute="bottom" constant="30" id="FEO-6G-ib3"/>
-                                            <constraint firstAttribute="trailing" secondItem="z5u-gb-85Y" secondAttribute="trailing" constant="16" id="FNj-MA-Yqm"/>
-                                            <constraint firstAttribute="trailing" secondItem="ZtK-j7-m75" secondAttribute="trailing" constant="16" id="KL5-xj-8NV"/>
-                                            <constraint firstItem="z5u-gb-85Y" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="OWj-Tf-34z"/>
-                                            <constraint firstItem="LHW-c0-TOy" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="P5w-KP-Ou0"/>
-                                            <constraint firstItem="2XG-Gh-KH6" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="SY7-YU-f3S"/>
-                                            <constraint firstAttribute="trailing" secondItem="oh4-rl-izX" secondAttribute="trailing" constant="16" id="Tkn-DR-0Ms"/>
-                                            <constraint firstAttribute="trailing" secondItem="cZ1-Yp-eGe" secondAttribute="trailing" constant="16" id="VOd-oP-DBs"/>
-                                            <constraint firstItem="lo5-nO-MVc" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="XJC-ly-yos"/>
-                                            <constraint firstItem="ZtK-j7-m75" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="XcO-Ka-owL"/>
-                                            <constraint firstItem="oh4-rl-izX" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="Xm0-EY-D2P"/>
-                                            <constraint firstItem="N3h-yS-BT1" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="Zfz-zd-EPn"/>
-                                            <constraint firstAttribute="trailing" secondItem="2XG-Gh-KH6" secondAttribute="trailing" constant="16" id="aH6-Tv-M1z"/>
-                                            <constraint firstItem="LHW-c0-TOy" firstAttribute="top" secondItem="g93-Ej-2SW" secondAttribute="bottom" constant="8" id="aw0-W7-wk7"/>
-                                            <constraint firstAttribute="trailing" secondItem="lo5-nO-MVc" secondAttribute="trailing" constant="16" id="b3R-mW-3Fo"/>
-                                            <constraint firstItem="g93-Ej-2SW" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="nUB-Fd-avB"/>
-                                            <constraint firstItem="N3h-yS-BT1" firstAttribute="top" secondItem="z5u-gb-85Y" secondAttribute="bottom" constant="8" id="o0g-2o-YJF"/>
-                                            <constraint firstItem="z5u-gb-85Y" firstAttribute="top" secondItem="69u-Al-uhL" secondAttribute="top" constant="8" id="sFZ-kS-vOe"/>
-                                            <constraint firstItem="ZtK-j7-m75" firstAttribute="top" secondItem="N3h-yS-BT1" secondAttribute="bottom" constant="11" id="v3m-dn-ePd"/>
-                                            <constraint firstItem="cZ1-Yp-eGe" firstAttribute="leading" secondItem="69u-Al-uhL" secondAttribute="leading" constant="16" id="z3q-nQ-hnb"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="64.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
+                                        <rect key="frame" x="0.0" y="94" width="343" height="44"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="Export to CSV file..."/>
+                                        <connections>
+                                            <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" text="Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtK-j7-m75">
+                                        <rect key="frame" x="0.0" y="168" width="343" height="64.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Import your CSV data from the file system" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XG-Gh-KH6">
+                                        <rect key="frame" x="0.0" y="262" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
+                                        <rect key="frame" x="0.0" y="312" width="343" height="44"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="Import from CVS file..."/>
+                                        <connections>
+                                            <action selector="importFromCVSFileButton:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="f8L-1D-lKZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status information:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHW-c0-TOy">
+                                        <rect key="frame" x="0.0" y="385.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
+                                        <rect key="frame" x="0.0" y="436" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lo5-nO-MVc">
+                                        <rect key="frame" x="0.0" y="486" width="343" height="2"/>
+                                    </progressView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-Yp-eGe">
+                                        <rect key="frame" x="0.0" y="517.5" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="69u-Al-uhL" firstAttribute="height" secondItem="GqS-29-dJm" secondAttribute="height" constant="-104" id="82c-qG-AC2"/>
-                                    <constraint firstItem="69u-Al-uhL" firstAttribute="top" secondItem="GqS-29-dJm" secondAttribute="top" constant="56" id="A9j-dG-z0j"/>
-                                    <constraint firstAttribute="trailing" secondItem="69u-Al-uhL" secondAttribute="trailing" id="CZd-5a-Yyo"/>
-                                    <constraint firstAttribute="bottom" secondItem="69u-Al-uhL" secondAttribute="bottom" constant="48" id="Nze-Sf-od5"/>
-                                    <constraint firstItem="69u-Al-uhL" firstAttribute="width" secondItem="GqS-29-dJm" secondAttribute="width" id="SsC-XY-u1p"/>
-                                    <constraint firstItem="69u-Al-uhL" firstAttribute="leading" secondItem="GqS-29-dJm" secondAttribute="leading" id="k35-0q-yIS"/>
-                                </constraints>
-                            </scrollView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GqS-29-dJm" firstAttribute="leading" secondItem="8NP-bd-ZaX" secondAttribute="leading" id="2in-IZ-HQa"/>
-                            <constraint firstItem="GqS-29-dJm" firstAttribute="trailing" secondItem="8NP-bd-ZaX" secondAttribute="trailing" id="2o0-5J-Zb7"/>
-                            <constraint firstItem="GqS-29-dJm" firstAttribute="top" secondItem="VFe-N0-mPM" secondAttribute="top" id="9bp-CM-D0l"/>
-                            <constraint firstAttribute="bottom" secondItem="GqS-29-dJm" secondAttribute="bottom" id="FnI-X1-5Sq"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="top" secondItem="8NP-bd-ZaX" secondAttribute="top" constant="8" id="R1j-Cv-Aha"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="width" secondItem="8NP-bd-ZaX" secondAttribute="width" constant="-32" id="b5d-a8-zII"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="height" secondItem="8NP-bd-ZaX" secondAttribute="height" constant="-16" id="c7a-LV-ziS"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="leading" secondItem="8NP-bd-ZaX" secondAttribute="leading" constant="16" id="mmK-9A-aJk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NP-bd-ZaX"/>
                     </view>
@@ -2492,13 +2426,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
-                                    <rect key="frame" x="172.5" y="7" width="30" height="30"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerY" secondItem="pmu-bl-MiB" secondAttribute="centerY" id="Gs3-xc-kcW"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="height" secondItem="pmu-bl-MiB" secondAttribute="height" id="oVg-SM-StZ"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="width" secondItem="pmu-bl-MiB" secondAttribute="width" id="pvm-xB-S2O"/>
                                 <constraint firstItem="w23-Wc-G3Z" firstAttribute="centerX" secondItem="pmu-bl-MiB" secondAttribute="centerX" id="zDt-rs-zNv"/>
                             </constraints>
                         </view>
@@ -2643,12 +2579,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
-                                    <rect key="frame" x="172.5" y="6" width="30" height="30"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
+                                    <rect key="frame" x="0.0" y="6" width="375" height="44"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="width" secondItem="GlM-9z-INp" secondAttribute="width" id="N19-jg-gJj"/>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="height" secondItem="GlM-9z-INp" secondAttribute="height" id="Tuh-cP-a19"/>
                                 <constraint firstItem="7Yh-3G-0L4" firstAttribute="centerX" secondItem="GlM-9z-INp" secondAttribute="centerX" id="X7v-yd-5KN"/>
                                 <constraint firstItem="7Yh-3G-0L4" firstAttribute="top" secondItem="GlM-9z-INp" secondAttribute="top" constant="6" id="eJR-Ms-W0v"/>
                             </constraints>

@@ -77,8 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
         
         // change UI Tab bar font
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .selected)
+        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
+        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .selected)
         
         // get user name and address from iCloud
         getiCloudStorageInfo()

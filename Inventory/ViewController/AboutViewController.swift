@@ -64,7 +64,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         appVersionNumberLabel.text = Global.appNameString + " " + Global.versionString
         appVersionNumberLabel.textColor = themeColorText
         
-        copyrightLabel.text = NSLocalizedString("(c) 2019 by Marcus Deuß", comment: "(c) 2019 by Marcus Deuß")
+        copyrightLabel.text = NSLocalizedString("(c) 2019 by M. Deuß", comment: "(c) 2019 by M. Deuß")
         iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.getOSVersion()
         
         // hide this label when iPhone screen size too small

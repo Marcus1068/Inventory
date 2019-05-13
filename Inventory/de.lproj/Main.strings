@@ -215,7 +215,7 @@
 "keT-dq-ecZ.normalTitle" = "Eigentümer...";
 
 /* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos"; ObjectID = "kmW-Er-gZy"; */
-"kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar";
+"kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar. Einige verwendete Icons sind von https://icons8.de";
 
 /* Class = "UIButton"; normalTitle = "Room..."; ObjectID = "Kpe-WT-hVT"; */
 "Kpe-WT-hVT.normalTitle" = "Raum...";

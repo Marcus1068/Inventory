@@ -34,9 +34,6 @@ import AVFoundation
 
 class Global: NSObject {
     
-    // used in about view controller and for sending support emails
-    static let versionString = "1.0"
-    
     // compression factor in reducing jpg file size to 1/10th (value goes from 0.0 to 1.0)
     static let imageQuality: CGFloat = 0.0
     
@@ -420,5 +417,12 @@ extension URL {
         }
         // Will only be called if document directory not found
         return nil
+    }
+}
+
+// get app version number from Xcode version number
+extension UIApplication {
+    static var appVersion: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
 }

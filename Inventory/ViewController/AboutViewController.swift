@@ -61,7 +61,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //appVersionNumberLabel.textColor = themeColorUIControls
         appSettingsButton.tintColor = themeColorUIControls
         
-        appVersionNumberLabel.text = Global.appNameString + " " + Global.versionString
+        appVersionNumberLabel.text = Global.appNameString + " " + UIApplication.appVersion!
         appVersionNumberLabel.textColor = themeColorText
         
         copyrightLabel.text = NSLocalizedString("(c) 2019 by M. Deuß", comment: "(c) 2019 by M. Deuß")
@@ -200,7 +200,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients([Global.emailAdr])
-        mailComposerVC.setSubject(Global.appNameString + " " + (Global.versionString) + " " + Global.support)
+        mailComposerVC.setSubject(Global.appNameString + " " + (UIApplication.appVersion!) + " " + Global.support)
         let msg = NSLocalizedString("I have some suggestions: ", comment: "I have some suggestions: ")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

@@ -72,6 +72,11 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var kidsbedIcon: UIButton!
     @IBOutlet weak var girlAndBoyIcon: UIButton!
     @IBOutlet weak var office4Icon: UIButton!
+    @IBOutlet weak var bedroom2Icon: UIButton!
+    @IBOutlet weak var generalRoomIcon: UIButton!
+    @IBOutlet weak var toasterIcon: UIButton!
+    @IBOutlet weak var showerIcon: UIButton!
+    @IBOutlet weak var garage2Icon: UIButton!
     
     
     override func viewDidLoad() {
@@ -288,9 +293,25 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         case kidsbedIcon:
             chosenImage.image = #imageLiteral(resourceName: "icons8-krippe-96")
             break
+        case bedroom2Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-schlafen-96")
+            break
+        case generalRoomIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-zimmer-96")
+            break
+        case toasterIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-toaster-96")
+            break
+        case showerIcon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-dusche-96")
+            break
+        case garage2Icon:
+            chosenImage.image = #imageLiteral(resourceName: "icons8-garage-96")
+            break
         default:
             chosenImage.image = #imageLiteral(resourceName: "icons8-home-filled-50")
             break
         }
     }
 }
+

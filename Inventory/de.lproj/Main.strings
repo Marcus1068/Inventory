@@ -14,7 +14,7 @@
 "2Ep-nZ-I2N.title" = "Über Inventory";
 
 /* Class = "UIButton"; normalTitle = "Picture"; ObjectID = "2TE-eQ-5Wq"; */
-"2TE-eQ-5Wq.normalTitle" = "Foto erstellen";
+"2TE-eQ-5Wq.normalTitle" = "Foto";
 
 /* Class = "UILabel"; text = "Import your CSV data from the file system"; ObjectID = "2XG-Gh-KH6"; */
 "2XG-Gh-KH6.text" = "CSV Datei aus Dateisystem importieren";
@@ -112,7 +112,7 @@
 /* Class = "UILabel"; text = "iOS Version"; ObjectID = "DBJ-H4-kKI"; */
 "DBJ-H4-kKI.text" = "iOS Version";
 
-/* Class = "UILabel"; text = "Room Name:"; ObjectID = "dGS-kv-Yx5"; */
+/* Class = "UILabel"; text = "Room name:"; ObjectID = "dGS-kv-Yx5"; */
 "dGS-kv-Yx5.text" = "Raumname:";
 
 /* Class = "UILabel"; text = "Filter by room:"; ObjectID = "ehs-Uu-Z20"; */
@@ -142,7 +142,7 @@
 /* Class = "UILabel"; text = "Label"; ObjectID = "hlk-5E-K8Q"; */
 "hlk-5E-K8Q.text" = "Label";
 
-/* Class = "UILabel"; text = "Months of warranty"; ObjectID = "hlP-iq-q6T"; */
+/* Class = "UILabel"; text = "Warranty"; ObjectID = "hlP-iq-q6T"; */
 "hlP-iq-q6T.text" = "Garantiemonate";
 
 /* Class = "UIButton"; normalTitle = "Category..."; ObjectID = "HZ1-cV-zKd"; */
@@ -169,7 +169,7 @@
 /* Class = "UIButton"; normalTitle = "Feedback"; ObjectID = "iSd-0j-NDU"; */
 "iSd-0j-NDU.normalTitle" = "Feedback";
 
-/* Class = "UILabel"; text = "Owner Name:"; ObjectID = "Jdc-4Q-qWy"; */
+/* Class = "UILabel"; text = "Owner name:"; ObjectID = "Jdc-4Q-qWy"; */
 "Jdc-4Q-qWy.text" = "Eigentümer:";
 
 /* Class = "UISegmentedControl"; JuC-eq-fIK.segmentTitles[0] = "All"; ObjectID = "JuC-eq-fIK"; */
@@ -208,7 +208,7 @@
 /* Class = "UILabel"; text = "All"; ObjectID = "K90-Fm-Q4b"; */
 "K90-Fm-Q4b.text" = "Alle";
 
-/* Class = "UILabel"; text = "Category Name:"; ObjectID = "Kb0-xm-16w"; */
+/* Class = "UILabel"; text = "Category name:"; ObjectID = "Kb0-xm-16w"; */
 "Kb0-xm-16w.text" = "Kategorie:";
 
 /* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
@@ -268,7 +268,7 @@
 /* Class = "UITextField"; placeholder = "Inventory"; ObjectID = "OjR-LV-GJP"; */
 "OjR-LV-GJP.placeholder" = "Inventar";
 
-/* Class = "UILabel"; text = "Brand Name:"; ObjectID = "osM-IE-rWU"; */
+/* Class = "UILabel"; text = "Brand name:"; ObjectID = "osM-IE-rWU"; */
 "osM-IE-rWU.text" = "Markenname:";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "OXg-EA-537"; */
@@ -319,8 +319,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Picture and Invoice"; ObjectID = "rFd-0w-oMC"; */
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
-/* Class = "UIButton"; normalTitle = "Choose Invoice"; ObjectID = "seV-zU-Yva"; */
-"seV-zU-Yva.normalTitle" = "Wähle Rechnung";
+/* Class = "UIButton"; normalTitle = "Invoice"; ObjectID = "seV-zU-Yva"; */
+"seV-zU-Yva.normalTitle" = "Rechnung";
 
 /* Class = "UILabel"; text = "Categories"; ObjectID = "SHR-4B-47W"; */
 "SHR-4B-47W.text" = "Kategorien";

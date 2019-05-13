@@ -538,18 +538,16 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // take a new picture
     @IBAction func cameraNavBarAction(_ sender: Any) {
-        //DispatchQueue.main.async {
-            self.view.endEditing(true)
-            self.imagePicker.present(from: self.view)
-        //}
+        self.view.endEditing(true)
+        //self.imagePicker.present(from: self.view)
+        // FIXME does not work in 12.3 anymore
+        //self.imagePicker.present(from: sender as! UIView )
     }
     
     // take a new image/take a picture
     @IBAction func imageButton(_ sender: Any) {
-        //DispatchQueue.main.async {
-            self.view.endEditing(true)
-            self.imagePicker.present(from: sender as! UIView)
-        //}
+        self.view.endEditing(true)
+        self.imagePicker.present(from: sender as! UIView)
     }
     
     // choose a PDF file

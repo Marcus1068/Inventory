@@ -844,14 +844,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-lp-iWu">
-                                <rect key="frame" x="16" y="262.5" width="343" height="274.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-lp-iWu">
+                                <rect key="frame" x="16" y="267.5" width="343" height="269.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-pW-DdT">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="61"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dp1-pW-DdT">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="67.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEr-lu-eM0">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="67.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" image="icons8-bett-50"/>
                                                 <connections>
@@ -859,28 +859,28 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFv-gB-mKf">
-                                                <rect key="frame" x="70.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="63" height="67.5"/>
                                                 <state key="normal" image="icons8-geschirr-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="bNQ-49-Hqy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6P-fg-E5U">
-                                                <rect key="frame" x="141" y="0.0" width="61" height="61"/>
+                                                <rect key="frame" x="146.5" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-teddy-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="sv7-o3-Cni"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCt-nQ-Hy5">
-                                                <rect key="frame" x="212" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="220" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-haus-mit-garten-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="SJ0-3O-8ql"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0x-Az-0TF">
-                                                <rect key="frame" x="282.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="293.5" y="0.0" width="49.5" height="67.5"/>
                                                 <state key="normal" image="icons8-dusche-und-badewanne-96"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="8Ke-1P-KfD"/>
@@ -888,39 +888,39 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1c-SfG">
-                                        <rect key="frame" x="0.0" y="71" width="343" height="61.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Yb-1c-SfG">
+                                        <rect key="frame" x="0.0" y="67.5" width="343" height="67.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqO-cg-FGg">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="61.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-keller-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="uTo-Bz-k7E"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erR-Jg-g01">
-                                                <rect key="frame" x="70.5" y="0.0" width="60.5" height="61.5"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="63" height="67.5"/>
                                                 <state key="normal" image="icons8-kochtopf-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="e1M-1K-cbm"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqz-KQ-v6T">
-                                                <rect key="frame" x="141" y="0.0" width="61" height="61.5"/>
+                                                <rect key="frame" x="146.5" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-wohnzimmer-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="pSp-1J-lGI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRQ-0e-0xY">
-                                                <rect key="frame" x="212" y="0.0" width="60.5" height="61.5"/>
+                                                <rect key="frame" x="220" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-garage-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="vqO-ni-vGd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-xc-nqY">
-                                                <rect key="frame" x="282.5" y="0.0" width="60.5" height="61.5"/>
+                                                <rect key="frame" x="293.5" y="0.0" width="49.5" height="67.5"/>
                                                 <state key="normal" image="icons8-wohnung-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="c5X-P8-kcg"/>
@@ -928,39 +928,39 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YYc-pt-5kI">
-                                        <rect key="frame" x="0.0" y="142.5" width="343" height="61"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YYc-pt-5kI">
+                                        <rect key="frame" x="0.0" y="135" width="343" height="67"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvR-p5-Idh">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="67"/>
                                                 <state key="normal" image="icons8-home-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5qA-cB-LdD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70q-re-gZN">
-                                                <rect key="frame" x="70.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="63" height="67"/>
                                                 <state key="normal" image="icons8-retro-tv-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5LW-6F-ozy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-VB-FSn">
-                                                <rect key="frame" x="141" y="0.0" width="61" height="61"/>
+                                                <rect key="frame" x="146.5" y="0.0" width="63.5" height="67"/>
                                                 <state key="normal" image="icons8-arbeitsplatz-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="2h9-5Q-wza"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWh-Nq-cGs">
-                                                <rect key="frame" x="212" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="220" y="0.0" width="63.5" height="67"/>
                                                 <state key="normal" image="icons8-home-office-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="KyT-9Q-uwE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThF-wr-n4g">
-                                                <rect key="frame" x="282.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="293.5" y="0.0" width="49.5" height="67"/>
                                                 <state key="normal" image="icons8-schreibtischlampe-filled-50"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="8oC-79-VLk"/>
@@ -968,39 +968,39 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SHe-BE-lVX">
-                                        <rect key="frame" x="0.0" y="213.5" width="343" height="61"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SHe-BE-lVX">
+                                        <rect key="frame" x="0.0" y="202" width="343" height="67.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLG-Ar-4PX">
-                                                <rect key="frame" x="0.0" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-maedchen-96"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="5lR-Nd-d0L"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ud8-89-xsM">
-                                                <rect key="frame" x="70.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="73.5" y="0.0" width="63" height="67.5"/>
                                                 <state key="normal" image="icons8-junge-96"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="U3r-xJ-VF8"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-DE-ZSv">
-                                                <rect key="frame" x="141" y="0.0" width="61" height="61"/>
+                                                <rect key="frame" x="146.5" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-krippe-96"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="bhk-Zg-rcv"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-ba-tYB">
-                                                <rect key="frame" x="212" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="220" y="0.0" width="63.5" height="67.5"/>
                                                 <state key="normal" image="icons8-kinder-90"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="nLg-sF-YYy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dk-hc-e8R">
-                                                <rect key="frame" x="282.5" y="0.0" width="60.5" height="61"/>
+                                                <rect key="frame" x="293.5" y="0.0" width="49.5" height="67.5"/>
                                                 <state key="normal" image="icons8-buchhaltung-96"/>
                                                 <connections>
                                                     <action selector="iconButton:" destination="AAM-yv-3qO" eventType="touchUpInside" id="0eL-9f-e8o"/>
@@ -1029,7 +1029,7 @@
                             <constraint firstItem="dGS-kv-Yx5" firstAttribute="top" secondItem="YKC-2j-9Q5" secondAttribute="bottom" constant="10" id="Evb-SR-uVF"/>
                             <constraint firstItem="YKC-2j-9Q5" firstAttribute="top" secondItem="LSJ-Ox-96U" secondAttribute="top" id="HVO-H2-0IR"/>
                             <constraint firstItem="yPu-lp-iWu" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="16" id="Ipn-1O-2Jv"/>
-                            <constraint firstItem="yPu-lp-iWu" firstAttribute="top" secondItem="Ncb-ft-R03" secondAttribute="bottom" constant="20" id="MJ2-Y3-R4k"/>
+                            <constraint firstItem="yPu-lp-iWu" firstAttribute="top" secondItem="Ncb-ft-R03" secondAttribute="bottom" constant="25" id="MJ2-Y3-R4k"/>
                             <constraint firstItem="dFO-EO-nqg" firstAttribute="top" secondItem="YKC-2j-9Q5" secondAttribute="bottom" constant="16" id="OQB-oU-pcx"/>
                             <constraint firstItem="LSJ-Ox-96U" firstAttribute="trailing" secondItem="yPu-lp-iWu" secondAttribute="trailing" constant="16" id="RUy-IN-dg1"/>
                             <constraint firstItem="KWu-LK-Nv9" firstAttribute="leading" secondItem="LSJ-Ox-96U" secondAttribute="leading" constant="16" id="S8O-Ke-pX3"/>

@@ -65,7 +65,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
         
-        self.title = NSLocalizedString("Import/Export CSV", comment: "Import/Export CSV")
+        self.title = NSLocalizedString("Import/Export", comment: "Import/Export")
         
         //self.navigationItem.title = "Export to CVS/PDF"
         

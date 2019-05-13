@@ -562,7 +562,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 25
         
-        let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + Global.appNameString + " " + UIApplication.appVersion!
+        let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion!
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
@@ -748,9 +748,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         let format = UIGraphicsPDFRendererFormat()
-        format.documentInfo = [ kCGPDFContextAuthor as String : Global.appNameString ]      // doc author in PDF
-        format.documentInfo = [ kCGPDFContextCreator as String : Global.appNameString ]
-        format.documentInfo = [ kCGPDFContextTitle as String: Global.appNameString ]         // document title
+        format.documentInfo = [ kCGPDFContextAuthor as String : UIApplication.appName! ]      // doc author in PDF
+        format.documentInfo = [ kCGPDFContextCreator as String : UIApplication.appName! ]
+        format.documentInfo = [ kCGPDFContextTitle as String: UIApplication.appName! ]         // document title
         
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paper_width, height: paper_height), format: format)
         
@@ -925,7 +925,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         //mailComposerVC.setToRecipients([Global.emailAdr])
-        mailComposerVC.setSubject(Global.appNameString + " " + (UIApplication.appVersion!) + " " + Global.support)
+        mailComposerVC.setSubject(UIApplication.appName! + " " + (UIApplication.appVersion!) + " " + Global.support)
         let msg = NSLocalizedString("My Inventory Report", comment: "My Inventory Report")
         mailComposerVC.setMessageBody(msg, isHTML: false)
         

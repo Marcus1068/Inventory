@@ -41,7 +41,6 @@ class Global: NSObject {
     static let systemSound = 1322
     
     // name of the app in about view
-    static let appNameString = "Inventory App"
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryAppExport.csv"
@@ -422,7 +421,19 @@ extension URL {
 
 // get app version number from Xcode version number
 extension UIApplication {
+    // xcode version string
     static var appVersion: String? {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
     }
+    
+    // xcode build number
+    static var appBuild: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+    }
+    
+    // xcode app name
+    static var appName: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String
+    }
 }
+

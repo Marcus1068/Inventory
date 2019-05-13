@@ -172,8 +172,8 @@
 /* I have some suggestions: */
 "I have some suggestions: " = "Ich habe ein paar Vorschläge:";
 
-/* Import/Export CSV */
-"Import/Export CSV" = "Import/Export CSV";
+/* Import/Export */
+"Import/Export" = "Import/Export";
 
 /* Imported rows: */
 "Imported rows:" = "Importierte Zeilen:";

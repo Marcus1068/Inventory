@@ -127,8 +127,8 @@
 /* Class = "UITableViewSection"; headerTitle = "Add Items"; ObjectID = "G2B-Bb-zP5"; */
 "G2B-Bb-zP5.headerTitle" = "Hinzufügen";
 
-/* Class = "UIButton"; normalTitle = "Import from CVS file..."; ObjectID = "g93-Ej-2SW"; */
-"g93-Ej-2SW.normalTitle" = "Importiere aus CVS Datei...";
+/* Class = "UIButton"; normalTitle = "Import csv file..."; ObjectID = "g93-Ej-2SW"; */
+"g93-Ej-2SW.normalTitle" = "Importiere csv Datei...";
 
 /* Class = "UILabel"; text = "Categories"; ObjectID = "Gji-Ng-xNH"; */
 "Gji-Ng-xNH.text" = "Kategorien";
@@ -214,7 +214,7 @@
 /* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
 "keT-dq-ecZ.normalTitle" = "Eigentümer...";
 
-/* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos"; ObjectID = "kmW-Er-gZy"; */
+/* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos. Some icons used in this app are from https://icons8.de"; ObjectID = "kmW-Er-gZy"; */
 "kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar. Einige verwendete Icons sind von https://icons8.de";
 
 /* Class = "UIButton"; normalTitle = "Room..."; ObjectID = "Kpe-WT-hVT"; */
@@ -238,8 +238,8 @@
 /* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
 "MzL-xY-WrQ.title" = "Kategorie";
 
-/* Class = "UIButton"; normalTitle = "Export to CSV file..."; ObjectID = "N3h-yS-BT1"; */
-"N3h-yS-BT1.normalTitle" = "Exportiere als CSV Datei";
+/* Class = "UIButton"; normalTitle = "Export csv file..."; ObjectID = "N3h-yS-BT1"; */
+"N3h-yS-BT1.normalTitle" = "Exportiere csv Datei";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "n8T-Ec-edq"; */
 "n8T-Ec-edq.text" = "Räume";

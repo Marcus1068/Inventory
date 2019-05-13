@@ -68,9 +68,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.getOSVersion()
         
         // hide this label when iPhone screen size too small
-        if UIDevice.current.iPhone5{
+    /*    if UIDevice.current.iPhone5{
             openSourceLabel.isHidden = true
-        }
+        } */
         // Do any additional setup after loading the view.
         
         //useiCloudSettingsStorage()

@@ -36,7 +36,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -65,7 +65,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -123,7 +123,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -156,7 +156,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -185,7 +185,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -214,7 +214,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -243,7 +243,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1953,11 +1953,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="6WH-II-AAJ">
-                                                <rect key="frame" x="16" y="349" width="140" height="131"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6WH-II-AAJ">
+                                                <rect key="frame" x="16" y="349" width="140" height="128"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-0P-Kka">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="117" height="32"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="App Information"/>
                                                         <connections>
@@ -1965,7 +1965,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-0j-NDU">
-                                                        <rect key="frame" x="0.0" y="33" width="140" height="32"/>
+                                                        <rect key="frame" x="0.0" y="32" width="72" height="32"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="Feedback"/>
                                                         <connections>
@@ -1973,7 +1973,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0D-o8-29K">
-                                                        <rect key="frame" x="0.0" y="66" width="140" height="32"/>
+                                                        <rect key="frame" x="0.0" y="64" width="140" height="32"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="Privacy Information"/>
                                                         <connections>
@@ -1981,7 +1981,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-4z-Ecp">
-                                                        <rect key="frame" x="0.0" y="99" width="140" height="32"/>
+                                                        <rect key="frame" x="0.0" y="96" width="91" height="32"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="User Manual"/>
                                                         <connections>
@@ -1991,9 +1991,9 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-Er-gZy">
-                                                <rect key="frame" x="16" y="488" width="336.5" height="75"/>
+                                                <rect key="frame" x="16" y="485" width="336.5" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="75" id="3yz-aa-q7Q"/>
+                                                    <constraint firstAttribute="height" constant="60" id="3yz-aa-q7Q"/>
                                                 </constraints>
                                                 <string key="text">This app is free of charge. The source code is available on the Information link where you can get further infos. Some icons used in this app are from https://icons8.de</string>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
@@ -2104,10 +2104,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-iL-uFN" customClass="PDFView">
-                                <rect key="frame" x="20" y="78" width="335" height="513"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwZ-ku-G08">
                                 <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2115,10 +2111,14 @@
                                     <navigationItem title="Title" id="aH9-Jl-kkp"/>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UB7-iL-uFN" customClass="PDFView">
+                                <rect key="frame" x="16" y="78" width="343" height="513"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYp-I3-tne">
-                                <rect key="frame" x="83" y="599" width="209" height="48"/>
+                                <rect key="frame" x="83" y="609" width="209" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="K1G-Es-7e5"/>
+                                    <constraint firstAttribute="height" constant="48" id="vsb-6X-oH4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="Done"/>
@@ -2129,15 +2129,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PYp-I3-tne" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="83" id="827-1C-jZw"/>
-                            <constraint firstItem="UB7-iL-uFN" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="20" id="8f6-YW-Via"/>
-                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="trailing" secondItem="PYp-I3-tne" secondAttribute="trailing" constant="83" id="Aao-LI-gGc"/>
-                            <constraint firstItem="UB7-iL-uFN" firstAttribute="centerX" secondItem="Mx9-b9-E7l" secondAttribute="centerX" id="G59-ss-41g"/>
-                            <constraint firstItem="UB7-iL-uFN" firstAttribute="top" secondItem="JwZ-ku-G08" secondAttribute="bottom" id="KFO-sg-zVM"/>
+                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="bottom" secondItem="PYp-I3-tne" secondAttribute="bottom" constant="10" id="AlE-iY-VTA"/>
+                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="trailing" secondItem="PYp-I3-tne" secondAttribute="trailing" constant="83" id="C3a-Pm-AYa"/>
+                            <constraint firstItem="PYp-I3-tne" firstAttribute="top" secondItem="UB7-iL-uFN" secondAttribute="bottom" constant="18" id="GKo-W5-17O"/>
+                            <constraint firstItem="PYp-I3-tne" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="83" id="SQQ-lC-egv"/>
                             <constraint firstItem="JwZ-ku-G08" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" id="UOK-cb-hxh"/>
-                            <constraint firstItem="Mx9-b9-E7l" firstAttribute="bottom" secondItem="PYp-I3-tne" secondAttribute="bottom" constant="20" id="UWx-Pr-HoH"/>
-                            <constraint firstItem="UB7-iL-uFN" firstAttribute="centerY" secondItem="Mx9-b9-E7l" secondAttribute="centerY" constant="-9" id="ffL-i5-J9n"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="top" secondItem="JwZ-ku-G08" secondAttribute="bottom" id="Whh-Ud-dpG"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="width" secondItem="msa-uG-tQK" secondAttribute="width" constant="-32" id="arZ-Th-21X"/>
                             <constraint firstItem="JwZ-ku-G08" firstAttribute="top" secondItem="Mx9-b9-E7l" secondAttribute="top" constant="14" id="oX3-0F-YmA"/>
+                            <constraint firstItem="UB7-iL-uFN" firstAttribute="leading" secondItem="Mx9-b9-E7l" secondAttribute="leading" constant="16" id="rl3-O0-Avx"/>
                             <constraint firstItem="JwZ-ku-G08" firstAttribute="trailing" secondItem="Mx9-b9-E7l" secondAttribute="trailing" id="tVq-Tr-j6j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mx9-b9-E7l"/>
@@ -2172,7 +2172,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
                                         <rect key="frame" x="0.0" y="94" width="343" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Export to CSV file..."/>
+                                        <state key="normal" title="Export csv file..."/>
                                         <connections>
                                             <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
                                         </connections>
@@ -2192,7 +2192,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
                                         <rect key="frame" x="0.0" y="312" width="343" height="44"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Import from CVS file..."/>
+                                        <state key="normal" title="Import csv file..."/>
                                         <connections>
                                             <action selector="importFromCVSFileButton:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="f8L-1D-lKZ"/>
                                         </connections>

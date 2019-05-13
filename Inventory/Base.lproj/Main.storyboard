@@ -837,7 +837,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Changing the room name will be reflected in all inventory objects" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-0W-SIY">
-                                                <rect key="frame" x="8" y="116" width="351" height="57"/>
+                                                <rect key="frame" x="8" y="116" width="290.5" height="57"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="57" id="qEx-vl-kD8"/>
                                                 </constraints>
@@ -846,7 +846,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-home-filled-50" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-EO-nqg">
-                                                <rect key="frame" x="293" y="46" width="74" height="74"/>
+                                                <rect key="frame" x="232.5" y="46" width="74" height="74"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="74" id="cWE-bw-LiN"/>
@@ -1035,7 +1035,7 @@
                                             <constraint firstAttribute="trailing" secondItem="yPu-lp-iWu" secondAttribute="trailing" constant="8" id="7s6-FJ-J9l"/>
                                             <constraint firstItem="dFO-EO-nqg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dGS-kv-Yx5" secondAttribute="trailing" constant="8" symbolic="YES" id="8Ec-d7-DRK"/>
                                             <constraint firstItem="dFO-EO-nqg" firstAttribute="leading" secondItem="7eY-0W-SIY" secondAttribute="trailing" constant="-66" id="9IN-iB-WI9"/>
-                                            <constraint firstAttribute="trailing" secondItem="dFO-EO-nqg" secondAttribute="trailing" constant="8" id="9lE-5o-NP9"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dFO-EO-nqg" secondAttribute="trailing" constant="8" id="9lE-5o-NP9"/>
                                             <constraint firstItem="Ncb-ft-R03" firstAttribute="leading" secondItem="8LC-oo-Anm" secondAttribute="leading" constant="8" id="EIO-ro-QZS"/>
                                             <constraint firstItem="KWu-LK-Nv9" firstAttribute="top" secondItem="dGS-kv-Yx5" secondAttribute="bottom" constant="8" symbolic="YES" id="Ghj-R6-FkI"/>
                                             <constraint firstItem="7eY-0W-SIY" firstAttribute="top" secondItem="KWu-LK-Nv9" secondAttribute="bottom" constant="8" symbolic="YES" id="IFh-1x-xk7"/>

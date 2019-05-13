@@ -85,7 +85,7 @@
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "aH9-Jl-kkp"; */
 "aH9-Jl-kkp.title" = "Titel";
 
-/* Class = "UINavigationItem"; title = "Import/Export CSV"; ObjectID = "b9Z-Dy-nn6"; */
+/* Class = "UINavigationItem"; title = "Import/Export"; ObjectID = "b9Z-Dy-nn6"; */
 "b9Z-Dy-nn6.title" = "Import/Export CSV";
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "bbA-Mg-kyA"; */

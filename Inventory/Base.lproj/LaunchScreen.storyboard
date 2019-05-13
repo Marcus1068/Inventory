@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,24 +15,21 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InventorySplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-TL-b4z">
-                                <rect key="frame" x="22" y="241" width="331" height="330"/>
+                                <rect key="frame" x="22" y="207" width="980" height="952"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="5fh-TL-b4z" secondAttribute="height" multiplier="331:330" id="c05-q6-MJo"/>
-                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Inventory App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgh-zG-bUN">
-                                <rect key="frame" x="20" y="148" width="335" height="36"/>
+                                <rect key="frame" x="20" y="114" width="984" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(c) 2019 Marcus Deuß" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwK-pB-TEK">
-                                <rect key="frame" x="20" y="667" width="335" height="21"/>
+                                <rect key="frame" x="20" y="1255" width="984" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="b76-QL-HZM"/>
                                 </constraints>
@@ -44,13 +41,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fwK-pB-TEK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0d0-2Q-3Qq"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="top" secondItem="mgh-zG-bUN" secondAttribute="bottom" constant="57" id="3tZ-d1-oKN"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1Mi-ZX-gx2"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerX" secondItem="mgh-zG-bUN" secondAttribute="centerX" id="Ipb-DW-lRZ"/>
                             <constraint firstItem="mgh-zG-bUN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SCz-uD-jft"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5fh-TL-b4z" secondAttribute="trailing" constant="22" id="T0L-HF-kPA"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UPm-HA-BRD"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-5" id="dCs-uy-qVA"/>
-                            <constraint firstItem="5fh-TL-b4z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="oqk-s5-tIh"/>
+                            <constraint firstItem="fwK-pB-TEK" firstAttribute="top" secondItem="5fh-TL-b4z" secondAttribute="bottom" constant="96" id="XX9-7I-Ums"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mgh-zG-bUN" secondAttribute="trailing" constant="20" id="pkO-X6-37U"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="top" secondItem="mgh-zG-bUN" secondAttribute="bottom" constant="57" id="uA1-sf-Hlf"/>
+                            <constraint firstItem="5fh-TL-b4z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="xKy-Ac-VLO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fwK-pB-TEK" secondAttribute="bottom" constant="90" id="yP5-O2-5w6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fwK-pB-TEK" secondAttribute="trailing" constant="20" id="yVK-BU-L0Z"/>
                         </constraints>

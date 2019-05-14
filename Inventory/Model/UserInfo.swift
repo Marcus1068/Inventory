@@ -27,7 +27,12 @@
 import Foundation
 
 // singleton approach for storing user data app wide
-class UserInfo{
+class UserInfo {//: CustomStringConvertible{
     static var userName : String = NSLocalizedString("User Name", comment: "User Name")
     static var addressName : String = NSLocalizedString("Address", comment: "Address")
+    
+    /*
+    var description: String{
+        return "user name: \(userName), address: \(addressName)"
+    } */
 }

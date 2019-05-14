@@ -162,14 +162,10 @@ class Global: NSObject {
     class func generateUUID() -> String{
         return UUID().uuidString
     }
-
+    
     /// generate a UUID
     ///
-    /// - Parameters:
-    ///
-    ///
-    /// - Returns: UUID
-    
+    /// - Returns: a new UUID
     class func generateUUID() -> UUID{
         return UUID()
     }
@@ -318,8 +314,10 @@ class Global: NSObject {
         return allowed
     }
     
-    // give filename based on current date, independent of current locale
-    // format like invname_20191022060310
+    /// generates a string like invname_20191022060310
+    ///
+    /// - Parameter invname: inventory name
+    /// - Returns: inventory name with date components added
     static func generateFilename(invname: String) -> String{
         //os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
         
@@ -332,7 +330,10 @@ class Global: NSObject {
         return imageName
     }
     
-    // helper for saving dropped file in temp directory, and getting if back from URL
+    /// creates a temporary file after drop operation
+    ///
+    /// - Parameter fileItems: the file that gets dropped over the app
+    /// - Returns: a URL with the file stored in cache directory
     static func createTempDropObject(fileItems: [DropFile]) -> URL?{
         //os_log("Global createTempDropObject", log: Log.viewcontroller, type: .info)
         
@@ -350,7 +351,12 @@ class Global: NSObject {
         return dropFilePath
     }
     
-    // scale an image
+    /// scales an image to a different size
+    ///
+    /// - Parameters:
+    ///   - image: the image to be scaled
+    ///   - width: the width of the new image
+    /// - Returns: a new image with different width
     static func scaleImage (image:UIImage, width: CGFloat) -> UIImage {
         let oldWidth = image.size.width
         let scaleFactor = width / oldWidth

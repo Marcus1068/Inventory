@@ -263,8 +263,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
        
-        //os_log("InventoryEditViewController viewWillAppear", log: Log.viewcontroller, type: .info)
-       
         hideKeyboardWhenTappedAround()
         
         // disable camera buttons unless user grants access to system privilege

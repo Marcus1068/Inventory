@@ -28,7 +28,7 @@ import UIKit
 import MessageUI
 import os
 
-class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate  {
+class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate  {
     @IBOutlet weak var appVersionNumberLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
@@ -133,11 +133,46 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     } */
     
+    // MARK: - popover/popup windows methods
+    
+    func popOver(text: String, sender: UIButton){
+        // create popover via storyboard instead of segue
+        let myVC = storyboard?
+            .instantiateViewController(withIdentifier: "PopupViewController")   // defined in Storyboard identifier
+            as! PopupViewController
+        myVC.myText = text
+        // this needs to define calling view controller type
+        myVC.aboutVC = self
+        
+        // show the popover
+        myVC.modalPresentationStyle = .popover
+        let popPC = myVC.popoverPresentationController!
+        popPC.sourceView = sender
+        popPC.sourceRect = sender.bounds
+        popPC.permittedArrowDirections = .up
+        popPC.delegate = self
+        present(myVC, animated:true, completion: nil)
+    }
+    
+    // needed for iPhone compatibilty when using popup controller
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
     // MARK: - Textfield actions
     
     // show app settings
     @IBAction func appSettingsAction(_ sender: UIButton) {
-        Global.callAppSettings()
+        //Global.callAppSettings()
+        
+        // calling popover window
+        let myText = """
+                Ganz viel Text steht hier
+                Und hier noch viel mehr
+                Und darum sage ich euch: es immer noch immer gutgegangen
+                """
+        let text = NSLocalizedString("Hier steht ein super sinnvoller Hilfetext. Wenn der lang genug ist verstehen auch Deppen wie diese App funktioniert...", comment: "Hier steht ein super sinnvoller Hilfetext")
+        popOver(text: myText, sender: sender)
     }
     
     // save user name and address as soon as any input entered in user default

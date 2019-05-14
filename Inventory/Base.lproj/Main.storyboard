@@ -36,7 +36,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -65,7 +65,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -123,7 +123,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -156,7 +156,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -185,7 +185,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -214,7 +214,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -243,7 +243,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
-                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
+                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1684,16 +1684,49 @@
             </objects>
             <point key="canvasLocation" x="4213.6000000000004" y="327.88605697151428"/>
         </scene>
+        <!--Popup View Controller-->
+        <scene sceneID="V5G-pw-VKz">
+            <objects>
+                <viewController storyboardIdentifier="PopupViewController" id="Jwr-Bz-0pH" customClass="PopupViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xBh-Rt-Yxg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Qp-hbL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="itN-Qp-hbL" firstAttribute="top" secondItem="CUW-YH-HeY" secondAttribute="top" id="8zA-be-0sb"/>
+                            <constraint firstItem="CUW-YH-HeY" firstAttribute="bottom" secondItem="itN-Qp-hbL" secondAttribute="bottom" id="MFC-ds-dQ1"/>
+                            <constraint firstItem="itN-Qp-hbL" firstAttribute="leading" secondItem="CUW-YH-HeY" secondAttribute="leading" id="OaF-iq-KhQ"/>
+                            <constraint firstItem="CUW-YH-HeY" firstAttribute="trailing" secondItem="itN-Qp-hbL" secondAttribute="trailing" id="vV9-mi-BsN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CUW-YH-HeY"/>
+                    </view>
+                    <connections>
+                        <outlet property="infotxt" destination="itN-Qp-hbL" id="79W-3j-RkP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uH9-xo-XMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3065" y="-481"/>
+        </scene>
         <!--PDF Document-->
         <scene sceneID="ujA-he-9Ae">
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1709,7 +1742,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="0.0" width="343" height="554"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2400,6 +2433,17 @@
                                                     <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-sy-zca">
+                                                <rect key="frame" x="328" y="16" width="30" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <state key="normal" title="?"/>
+                                                <connections>
+                                                    <segue destination="Jwr-Bz-0pH" kind="popoverPresentation" identifier="reportPopover" popoverAnchorView="4G3-sy-zca" id="Vov-tt-nEM">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -2887,7 +2931,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HA5-3t-o46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1913" y="231"/>
+            <point key="canvasLocation" x="2138" y="657"/>
         </scene>
         <!--Import/Export-->
         <scene sceneID="sne-G9-aG5">
@@ -2955,7 +2999,7 @@
         <segue reference="gCg-sP-rqZ"/>
         <segue reference="bbr-hJ-hrN"/>
         <segue reference="zuV-QX-I4e"/>
-        <segue reference="sZP-kj-dZy"/>
+        <segue reference="bcW-4A-k0F"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="hE0-Ui-Mnp"/>
         <segue reference="tlR-Jn-FPJ"/>

@@ -31,7 +31,7 @@ import CoreData
 import MessageUI
 import os
 
-class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
@@ -433,6 +433,29 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             destination.currentPath = url
         }
         
+        // show popover window
+        if segue.identifier == "reportPopover"{
+            if let dest = segue.destination as? PopupViewController,
+                let popPC = dest.popoverPresentationController,
+                let btn = sender as? UIButton
+            {
+                // where should the arrow be allowed
+                // popPC.permittedArrowDirections = [.up, .left]
+                popPC.permittedArrowDirections = [.up]
+                popPC.sourceRect = btn.bounds
+                popPC.delegate = self
+                
+                // here goes the popup text
+                dest.myText = NSLocalizedString("Inventory Report (PDF)", comment: "Inventory Report (PDF)")
+            }
+
+        }
+        
+    }
+    
+    // needed for popup controller, needed for iPhone compatability
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: - PDF functions

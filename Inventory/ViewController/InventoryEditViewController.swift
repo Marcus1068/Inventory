@@ -212,7 +212,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 imageView.image = image
             }
             
-            
             // inventory date
             datePicker.date = currentInventory!.dateOfPurchase! as Date
             
@@ -231,9 +230,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         {
             editmode = EditMode.add
             
-            let context = CoreDataHandler.getContext()
-            currentInventory = Inventory(context: context) // setup new inventory object
-            
             saveButtonLabel.isEnabled = false
             
             self.title = NSLocalizedString("Add Inventory", comment: "Add Inventory")
@@ -242,25 +238,14 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             textfieldInventoryName.text = ""
             textfieldPrice.text = ""
             
-            // default placeholder graphic
-            //        imageView.image = UIImage(named: "Inventory.png");
-            let imageData = imageView.image!.jpegData(compressionQuality: Global.imageQuality)
-            currentInventory?.image = imageData! as NSData
-            
             // default warranty
             warrantySegmentControl.selectedSegmentIndex = 0
-            currentInventory?.warranty = Int32(12)
             
             // set item button default texts (first item element for default)
             roomButtonLabel.setTitle(rooms[0].roomName, for: UIControl.State.normal)
-            currentInventory?.inventoryRoom = rooms[0]
-            
             categoryButtonLabel.setTitle(categories[0].categoryName, for: UIControl.State.normal)
-            currentInventory?.inventoryCategory = categories[0]
             brandButtonLabel.setTitle(brands[0].brandName, for: UIControl.State.normal)
-            currentInventory?.inventoryBrand = brands[0]
             ownerButtonLabel.setTitle(owners[0].ownerName, for: UIControl.State.normal)
-            currentInventory?.inventoryOwner = owners[0]
             
             // set timestamp label
             let msg = NSLocalizedString("Creating: ", comment: "Creating: ")
@@ -273,7 +258,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             
             timeStampLabel.text = msg + " " + myDate
         }
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -297,13 +281,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brands = CoreDataHandler.fetchAllBrands()
         owners = CoreDataHandler.fetchAllOwners()
         categories = CoreDataHandler.fetchAllCategories()
-        
+        /*
         // set item button texts
         roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
         categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
-        
+        */
     }
     
     // MARK: - drag and drop support
@@ -572,8 +556,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         for room in rooms{
             let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
-                self.currentInventory?.inventoryRoom? = room
-                self.roomButtonLabel.setTitle(self.currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
+                self.roomButtonLabel.setTitle(room.roomName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
@@ -595,8 +578,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         for category in categories{
             let action = UIAlertAction(title: category.categoryName, style: UIAlertAction.Style.default) { (ACTION) in
-                self.currentInventory?.inventoryCategory? = category
-                self.categoryButtonLabel.setTitle(self.currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
+                self.categoryButtonLabel.setTitle(category.categoryName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
@@ -618,8 +600,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         for brand in brands{
             let action = UIAlertAction(title: brand.brandName, style: UIAlertAction.Style.default) { (ACTION) in
-                self.currentInventory?.inventoryBrand? = brand
-                self.brandButtonLabel.setTitle(self.currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
+                self.brandButtonLabel.setTitle(brand.brandName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
@@ -641,8 +622,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         for owner in owners{
             let action = UIAlertAction(title: owner.ownerName, style: UIAlertAction.Style.default) { (ACTION) in
-                self.currentInventory?.inventoryOwner? = owner
-                self.ownerButtonLabel.setTitle(self.currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
+                self.ownerButtonLabel.setTitle(owner.ownerName!, for: UIControl.State.normal)
             }
             myActionSheet.addAction(action)
         }
@@ -658,6 +638,34 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // called when segment index changes
     @IBAction func warrantySegmentIndex(_ sender: Any) {
+     
+    }
+    
+    // do nothing, close view controller
+    @IBAction func cancelButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    // save inventory, either creating new object or update existing object
+    @IBAction func saveButton(_ sender: Any) {
+        
+        // get new context only if adding new object
+        if editmode == EditMode.add{
+            let context = CoreDataHandler.getContext()
+            currentInventory = Inventory(context: context) // setup new inventory object
+        }
+        
+        currentInventory?.id = UUID()
+        currentInventory?.inventoryName = textfieldInventoryName.text   // can only save when inventory name is entered
+        currentInventory?.dateOfPurchase = datePicker.date as NSDate?
+        currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
+        currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
+        currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
+        
+        // warranty will be set via segment control
+        
         switch warrantySegmentControl.selectedSegmentIndex
         {
         case 0: // 0 months
@@ -673,32 +681,30 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         default:
             break
         }
-    }
-    
-    // do nothing, close view controller
-    @IBAction func cancelButton(_ sender: Any) {
-        // workaround for adding new element by mistake if Add will be chosen and cancel clicked
-        if editmode == EditMode.add
-        {
-            let context = CoreDataHandler.getContext()
-            context.delete(currentInventory!)
+        
+        for owner in owners{
+            if ownerButtonLabel.titleLabel!.text! == owner.ownerName{
+                currentInventory?.inventoryOwner = owner
+            }
         }
         
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        for room in rooms{
+            if roomButtonLabel.titleLabel!.text! == room.roomName{
+                currentInventory?.inventoryRoom = room
+            }
+        }
         
-    }
-    
-    // save inventory, either creating new object or update existing object
-    @IBAction func saveButton(_ sender: Any) {
+        for category in categories{
+            if categoryButtonLabel.titleLabel!.text! == category.categoryName{
+                currentInventory?.inventoryCategory = category
+            }
+        }
         
-        currentInventory?.id = UUID()
-        currentInventory?.inventoryName = textfieldInventoryName.text   // can only save when inventory name is entered
-        currentInventory?.dateOfPurchase = datePicker.date as NSDate?
-        currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
-        currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
-        currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
-        // warranty will be set via segment control
+        for brand in brands{
+            if brandButtonLabel.titleLabel!.text! == brand.brandName{
+                currentInventory?.inventoryBrand = brand
+            }
+        }
         
         currentInventory?.timeStamp = Date() as NSDate?
         

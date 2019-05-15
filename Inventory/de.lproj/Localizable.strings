@@ -157,6 +157,9 @@
 /* Exported rows: */
 "Exported rows:" = "Exportierte Zeilen:";
 
+/* First page */
+"First Page" = "Erste Seite";
+
 /* Furniture */
 "Furniture" = "Möbel";
 
@@ -216,6 +219,9 @@
 
 /* Kitchen Helper */
 "Kitchen Helper" = "Küchenhelfer";
+
+/* Last page */
+"Last Page" = "Letzte Seite";
 
 /* Living room */
 "Living room" = "Wohnzimmer";

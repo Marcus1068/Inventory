@@ -30,7 +30,7 @@ class PopupViewController: UIViewController {
 
     @IBOutlet weak var infotxt: UITextView!
     
-    var myText : String?
+    var myText : NSAttributedString?
     weak var aboutVC: AboutViewController!  // reference to calling view controller
     
     // needed to calculate dynamic resizing of content in text view
@@ -48,7 +48,7 @@ class PopupViewController: UIViewController {
         super.viewDidLoad()
 
         if myText != nil{
-            infotxt.text = myText
+            infotxt.attributedText = myText
         }
     }
 }

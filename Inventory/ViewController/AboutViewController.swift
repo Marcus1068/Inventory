@@ -136,7 +136,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: - popover/popup windows methods
     
-    func popOver(text: String, sender: UIButton){
+    func popOver(text: NSAttributedString, sender: UIButton){
         // create popover via storyboard instead of segue
         let myVC = storyboard?
             .instantiateViewController(withIdentifier: "PopupViewController")   // defined in Storyboard identifier
@@ -165,15 +165,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // show app settings
     @IBAction func appSettingsAction(_ sender: UIButton) {
         Global.callAppSettings()
-        
-        // calling popover window
-        /*let myText = """
-                Ganz viel Text steht hier
-                Und hier noch viel mehr
-                Und darum sage ich euch: es immer noch immer gutgegangen
-                """ */
-        //let text = NSLocalizedString("Hier steht ein super sinnvoller Hilfetext. Wenn der lang genug ist verstehen auch Deppen wie diese App funktioniert...", comment: "Hier steht ein super sinnvoller Hilfetext")
-        //popOver(text: myText, sender: sender)
     }
     
     // save user name and address as soon as any input entered in user default
@@ -197,6 +188,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: - UI buttons
     
+    /// call email window for feedback dialog
+    ///
+    /// - Parameter sender: which button called
     @IBAction func feedbackButton(_ sender: Any) {
         // hide keyboard
         self.view.endEditing(true)
@@ -213,6 +207,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    /// show web site opening a safari windows
+    ///
+    /// - Parameter sender: which button called
     @IBAction func informationButton(_ sender: Any) {
         // hide keyboard
         self.view.endEditing(true)
@@ -223,8 +220,40 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
+    
+    /// show popover with some useful help information
+    ///
+    /// - Parameter sender: which button called
     @IBAction func helpButton(_ sender: UIButton) {
-        let help = NSLocalizedString("Here you can read about privacy information, the users manual, the website and access the app settings. Also you can enter user name and address which will be used in the reports section.", comment: "AboutView help")
+        
+        var fileName : String
+        var help : NSAttributedString
+        
+        let str = "help file not found!"
+        let attributedQuote = NSAttributedString(string: str)
+        help = attributedQuote
+        
+        switch Global.currentLocaleForDate(){
+        case "de_DE", "de_AT", "de_CH", "de":
+            fileName = "Aboutview Help German"
+            break
+            
+        default: // all other languages get english privacy statement
+            fileName = "Aboutview Help English"
+            break
+        }
+        
+        // load privacy statement according to german or english language
+        if let rtfPath = Bundle.main.url(forResource: fileName, withExtension: "rtf") {
+            do {
+                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
+                
+                    help = attributedStringWithRtf
+            } catch _ {
+                os_log("AboutViewController helpButton", log: Log.viewcontroller, type: .error)
+            }
+        }
+        
         popOver(text: help, sender: sender)
     }
     

@@ -46,8 +46,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBOutlet weak var pdfView: PDFView!
     
     @IBOutlet weak var choosePDFButton: UIButton!
-    //@IBOutlet weak var chooseImageButton: UIButton!
-    @IBOutlet weak var cameraNavBarOutlet: UIBarButtonItem!
     @IBOutlet weak var cameraButtonOutlet: UIButton!
     @IBOutlet weak var dateofPurchaseLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
@@ -111,7 +109,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         ownerButtonLabel.tintColor = themeColorUIControls
         brandButtonLabel.tintColor = themeColorUIControls
         cameraButtonOutlet.tintColor = themeColorUIControls
-        cameraNavBarOutlet.tintColor = themeColorUIControls
+        cameraNavBarButton.tintColor = themeColorUIControls
         choosePDFButton.tintColor = themeColorUIControls
         sharePDFBarButton.tintColor = themeColorUIControls
         pdfView.tintColor = themeColorUIControls
@@ -266,11 +264,11 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         hideKeyboardWhenTappedAround()
         
         // disable camera buttons unless user grants access to system privilege
-        cameraNavBarOutlet.isEnabled = false
+        cameraNavBarButton.isEnabled = false
         cameraButtonOutlet.isEnabled = false
         
         if Global.checkCameraPermission() == true{
-            cameraNavBarOutlet.isEnabled = true
+            cameraNavBarButton.isEnabled = true
             cameraButtonOutlet.isEnabled = true
         }
         
@@ -519,17 +517,16 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // MARK: - UI Acions
     
     // take a new picture
-    @IBAction func cameraNavBarAction(_ sender: Any) {
+    @IBAction func cameraNavBarAction(_ sender: UIBarButtonItem) {
         self.view.endEditing(true)
-        //self.imagePicker.present(from: self.view)
-        // FIXME does not work in 12.3 anymore
-        //self.imagePicker.present(from: sender as! UIView )
+        self.imagePicker.present(from: cameraButtonOutlet as UIView) // trick: use UIBarButtonItem would crash since not allowed in this context
+        // will show popup on iPad over cameraButtonOutlet/imageButton
     }
     
     // take a new image/take a picture
-    @IBAction func imageButton(_ sender: Any) {
+    @IBAction func imageButton(_ sender: UIButton) {
         self.view.endEditing(true)
-        self.imagePicker.present(from: sender as! UIView)
+        self.imagePicker.present(from: sender as UIView)
     }
     
     // choose a PDF file

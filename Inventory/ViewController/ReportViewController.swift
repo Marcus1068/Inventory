@@ -43,6 +43,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var shareActionBarButton: UIBarButtonItem!
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var helpButton: UIButton!
     
     // get all detail infos
     var rooms : [Room] = []
@@ -142,6 +143,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             self.navigationItem.largeTitleDisplayMode = .never
             self.navigationItem.largeTitleDisplayMode = .always
         }
+        
+        helpButton.isHidden = true // FIXME will be enabled in next version
         
         navigationController?.navigationBar.prefersLargeTitles = true
         

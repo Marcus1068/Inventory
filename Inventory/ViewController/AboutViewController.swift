@@ -163,16 +163,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // show app settings
     @IBAction func appSettingsAction(_ sender: UIButton) {
-        //Global.callAppSettings()
+        Global.callAppSettings()
         
         // calling popover window
-        let myText = """
+        /*let myText = """
                 Ganz viel Text steht hier
                 Und hier noch viel mehr
                 Und darum sage ich euch: es immer noch immer gutgegangen
-                """
-        let text = NSLocalizedString("Hier steht ein super sinnvoller Hilfetext. Wenn der lang genug ist verstehen auch Deppen wie diese App funktioniert...", comment: "Hier steht ein super sinnvoller Hilfetext")
-        popOver(text: myText, sender: sender)
+                """ */
+        //let text = NSLocalizedString("Hier steht ein super sinnvoller Hilfetext. Wenn der lang genug ist verstehen auch Deppen wie diese App funktioniert...", comment: "Hier steht ein super sinnvoller Hilfetext")
+        //popOver(text: myText, sender: sender)
     }
     
     // save user name and address as soon as any input entered in user default

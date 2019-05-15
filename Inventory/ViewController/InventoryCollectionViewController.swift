@@ -581,7 +581,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         if segue.identifier == "editSegue"  {
-            destination.currentInventory = selectedInventoryItem
+            destination.currentInventory = selectedInventoryItem    // FIXME: generates Core data error at runtime: Failed to call designated initializer on NSManagedObject class "Inventory"
             dest = destination
         }
     }

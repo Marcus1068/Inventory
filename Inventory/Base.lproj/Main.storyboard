@@ -36,7 +36,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -65,7 +65,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -123,7 +123,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -156,7 +156,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -185,7 +185,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -214,7 +214,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -243,7 +243,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
-                                                    <rect key="frame" x="317" y="8" width="16" height="16"/>
+                                                    <rect key="frame" x="303" y="8" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1653,7 +1653,6 @@
                         <outlet property="brandLabel" destination="5Iy-KY-o2N" id="QDT-UW-JyD"/>
                         <outlet property="cameraButtonOutlet" destination="2TE-eQ-5Wq" id="e3U-vF-Yzh"/>
                         <outlet property="cameraNavBarButton" destination="6Xm-a3-H3h" id="ZQ4-Ge-Cfv"/>
-                        <outlet property="cameraNavBarOutlet" destination="6Xm-a3-H3h" id="aVU-RL-eTZ"/>
                         <outlet property="cancelButtonLabel" destination="oLb-bJ-0qD" id="wMj-yX-WfC"/>
                         <outlet property="categoryButtonLabel" destination="HZ1-cV-zKd" id="tGw-S7-UGm"/>
                         <outlet property="categoryLabel" destination="I4j-zE-sft" id="jMb-6z-TmX"/>
@@ -1722,11 +1721,11 @@
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="98" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1742,7 +1741,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2521,6 +2520,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailActionButton" destination="am9-QQ-t0y" id="B1S-rY-QUq"/>
+                        <outlet property="helpButton" destination="4G3-sy-zca" id="GdL-8h-rAo"/>
                         <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
                         <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>
@@ -2999,7 +2999,7 @@
         <segue reference="gCg-sP-rqZ"/>
         <segue reference="bbr-hJ-hrN"/>
         <segue reference="zuV-QX-I4e"/>
-        <segue reference="bcW-4A-k0F"/>
+        <segue reference="sZP-kj-dZy"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="hE0-Ui-Mnp"/>
         <segue reference="tlR-Jn-FPJ"/>

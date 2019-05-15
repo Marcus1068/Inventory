@@ -490,7 +490,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         dest.currentInventory = inv
         selectedInventoryItem = inv
-        
+
         //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
         if deleteMode{
             selectCell(indexPath: indexPath)
@@ -500,11 +500,17 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
-    /*
-    func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
+    // will be called before prepare and avoids core data error:
+    // "Core data error at runtime: Failed to call designated initializer on NSManagedObject class "Inventory""
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        
+        let inv = fetchedResultsController.object(at: indexPath)
+        
+        dest.currentInventory = inv
+        selectedInventoryItem = inv
+        
         return true
-    } */
-    
+    }
     
     // The collection view calls this method when the user successfully deselects an item in the collection view. It does not call this method when you programmatically deselect items.
     // when deselecting collection items remove them from list of objects to delete
@@ -522,21 +528,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             }
         }
     }
-/*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, shouldUnHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // Uncomment this method to specify if the specified item should be selected
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
+
     // avoid automatic segue in case of delete mode
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
@@ -571,7 +563,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // prepare to transfer data to another view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
+        //os_log("InventoryCollectionViewController prepare", log: Log.viewcontroller, type: .info)
         
         let destination =  segue.destination as! InventoryEditViewController
         
@@ -581,7 +573,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         if segue.identifier == "editSegue"  {
-            destination.currentInventory = selectedInventoryItem    // FIXME: generates Core data error at runtime: Failed to call designated initializer on NSManagedObject class "Inventory"
+            destination.currentInventory = selectedInventoryItem
             dest = destination
         }
     }

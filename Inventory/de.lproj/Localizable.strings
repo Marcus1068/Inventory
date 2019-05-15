@@ -301,6 +301,9 @@
 /* Please choose a different name */
 "Please choose a different name" = "Bitte wählen Sie einen anderen Namen";
 
+/* Report View help text */
+"Please select a filter to limit result set. The share action button let users share the PDF report as a file. The email share icon directly opens an email with the report included. Tipping on the report itself opens a fullscreen view." = "Bitte wählen Sie einen Filter zum Begrenzen der Auswahlmenge. Das Share Icon ermöglicht das Speichern des Berichts als Datei. Das Email Symbol öffnet direkt eine Email zum Versand. Wenn man den Bericht antippt erscheint eine vergrößerte Ansicht.";
+
 /* Price */
 "Price" = "Preis";
 

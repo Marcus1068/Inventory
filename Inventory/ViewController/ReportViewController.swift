@@ -144,8 +144,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             self.navigationItem.largeTitleDisplayMode = .always
         }
         
-        helpButton.isHidden = true // FIXME will be enabled in next version
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         self.title = NSLocalizedString("Reports", comment: "Reports")
@@ -449,7 +447,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 popPC.delegate = self
                 
                 // here goes the popup text
-                dest.myText = NSLocalizedString("Inventory Report (PDF)", comment: "Inventory Report (PDF)")
+                dest.myText = NSLocalizedString("Please select a filter to limit result set. The share action button let users share the PDF report as a file. The email share icon directly opens an email with the report included. Tipping on the report itself opens a fullscreen view.", comment: "Report View help text")
             }
 
         }

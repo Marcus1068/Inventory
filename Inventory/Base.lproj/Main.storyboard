@@ -1691,11 +1691,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Qp-hbL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Qp-hbL">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -1721,11 +1720,11 @@
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1741,7 +1740,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="0.0" width="343" height="554"/>
+                                <rect key="frame" x="16" y="64" width="343" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2432,11 +2431,13 @@
                                                     <action selector="paperFormatSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="0fR-Cm-WTO"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-sy-zca">
-                                                <rect key="frame" x="328" y="16" width="30" height="33"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                <state key="normal" title="?"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-sy-zca">
+                                                <rect key="frame" x="331" y="16" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="35" id="Dhl-3y-r95"/>
+                                                    <constraint firstAttribute="height" constant="35" id="pIY-YP-PfK"/>
+                                                </constraints>
+                                                <state key="normal" title="?" image="icons8-hilfe-96"/>
                                                 <connections>
                                                     <segue destination="Jwr-Bz-0pH" kind="popoverPresentation" identifier="reportPopover" popoverAnchorView="4G3-sy-zca" id="Vov-tt-nEM">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -2447,6 +2448,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="R5q-YK-cXD" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="19" id="1Ko-5s-JFC"/>
+                                            <constraint firstItem="4G3-sy-zca" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="16" id="5hq-Wp-lp2"/>
                                             <constraint firstItem="JuC-eq-fIK" firstAttribute="top" secondItem="ehs-Uu-Z20" secondAttribute="bottom" constant="8" id="6CS-8v-Lrg"/>
                                             <constraint firstItem="xzz-zx-2tp" firstAttribute="leading" secondItem="sXd-j7-KIs" secondAttribute="trailing" constant="12" id="6lr-ZX-bNT"/>
                                             <constraint firstItem="QLh-FY-ObP" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="6pL-B1-cgO"/>
@@ -2467,6 +2469,7 @@
                                             <constraint firstAttribute="trailing" secondItem="iMl-4T-cI9" secondAttribute="trailing" constant="8" id="QoQ-XH-SG8"/>
                                             <constraint firstItem="iMl-4T-cI9" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="YoB-VG-bCd"/>
                                             <constraint firstItem="5ZR-ch-75D" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="Z6B-sS-pRB"/>
+                                            <constraint firstAttribute="trailing" secondItem="4G3-sy-zca" secondAttribute="trailing" constant="9" id="bRx-Mo-5Xc"/>
                                             <constraint firstItem="yxD-Cl-6oe" firstAttribute="top" secondItem="5ZR-ch-75D" secondAttribute="bottom" constant="16" id="d6v-oX-7He"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K90-Fm-Q4b" secondAttribute="trailing" constant="20" symbolic="YES" id="fUB-bU-rSp"/>
                                             <constraint firstAttribute="trailing" secondItem="yxD-Cl-6oe" secondAttribute="trailing" constant="8" id="jXb-Gx-HBW"/>
@@ -2974,6 +2977,7 @@
         <image name="icons8-garage-96" width="96" height="96"/>
         <image name="icons8-geschirr-50" width="96" height="96"/>
         <image name="icons8-haus-mit-garten-50" width="96" height="96"/>
+        <image name="icons8-hilfe-96" width="96" height="96"/>
         <image name="icons8-home-filled-50" width="96" height="96"/>
         <image name="icons8-home-office-filled-50" width="96" height="96"/>
         <image name="icons8-junge-96" width="96" height="96"/>
@@ -2994,12 +2998,12 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2I6-Yp-giQ"/>
+        <segue reference="bwM-Ip-VbG"/>
         <segue reference="bFR-vc-3Sf"/>
         <segue reference="gCg-sP-rqZ"/>
         <segue reference="bbr-hJ-hrN"/>
         <segue reference="zuV-QX-I4e"/>
-        <segue reference="sZP-kj-dZy"/>
+        <segue reference="bcU-E7-2cp"/>
         <segue reference="l8y-iU-ek9"/>
         <segue reference="hE0-Ui-Mnp"/>
         <segue reference="tlR-Jn-FPJ"/>

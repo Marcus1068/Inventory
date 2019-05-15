@@ -162,11 +162,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: - Textfield actions
     
-    // show app settings
-    @IBAction func appSettingsAction(_ sender: UIButton) {
-        Global.callAppSettings()
-    }
-    
     // save user name and address as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         if (userNameTextField.text!.count > 0){
@@ -187,6 +182,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     // MARK: - UI buttons
+    
+    // show app settings
+    @IBAction func appSettingsAction(_ sender: UIButton) {
+        Global.callAppSettings()
+    }
     
     /// call email window for feedback dialog
     ///
@@ -233,15 +233,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             fileName = "Aboutview Help German"
             break
             
-        default: // all other languages get english privacy statement
+        default: // all other languages get english
             fileName = "Aboutview Help English"
             break
         }
         
         popOver(text: Global.getRTFFileFromBundle(fileName: fileName), sender: sender)
     }
-    
-    
     
     /*
     // MARK: - Email delegate

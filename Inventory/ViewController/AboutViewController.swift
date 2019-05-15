@@ -40,6 +40,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var userManualButton: UIButton!
     @IBOutlet weak var openSourceLabel: UILabel!
     @IBOutlet weak var appSettingsButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
     
     // attributes
     
@@ -220,6 +221,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         if let url = URL(string: Global.website) {
             UIApplication.shared.open(url, options: [:])
         }
+    }
+    
+    @IBAction func helpButton(_ sender: UIButton) {
+        let help = NSLocalizedString("Here you can read about privacy information, the users manual, the website and access the app settings. Also you can enter user name and address which will be used in the reports section.", comment: "AboutView help")
+        popOver(text: help, sender: sender)
     }
     
     /*

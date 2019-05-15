@@ -1896,7 +1896,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="598"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="Gxx-oK-DNV">
-                                                <rect key="frame" x="16" y="8" width="156" height="158.5"/>
+                                                <rect key="frame" x="16" y="8" width="296" height="158.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Inventory 0.9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vdp-dG-1Do">
                                                         <rect key="frame" x="0.0" y="0.0" width="148.5" height="31.5"/>
@@ -2018,8 +2018,19 @@
                                                     <action selector="addressEditingChanged:" destination="d6q-eN-5Vr" eventType="editingChanged" id="PuY-k2-uUZ"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2S-3c-xlr">
+                                                <rect key="frame" x="320" y="8" width="35" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="B2S-3c-xlr" secondAttribute="height" multiplier="1:1" id="CZA-wa-cLC"/>
+                                                    <constraint firstAttribute="height" constant="35" id="Yjw-MP-tb1"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="icons8-hilfe-96"/>
+                                                <connections>
+                                                    <action selector="helpButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="f4k-Dn-VY8"/>
+                                                </connections>
+                                            </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Inventory" translatesAutoresizingMaskIntoConstraints="NO" id="7VG-2i-9dA">
-                                                <rect key="frame" x="229" y="83" width="118" height="118"/>
+                                                <rect key="frame" x="241" y="83" width="118" height="118"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -2032,19 +2043,22 @@
                                         <constraints>
                                             <constraint firstItem="SZt-3J-ob8" firstAttribute="top" secondItem="hbs-GL-8lS" secondAttribute="bottom" constant="29" id="2LS-6U-6Y8"/>
                                             <constraint firstItem="SZt-3J-ob8" firstAttribute="leading" secondItem="90B-jU-Ox5" secondAttribute="leading" constant="16" id="3bZ-IU-NUs"/>
+                                            <constraint firstAttribute="trailing" secondItem="B2S-3c-xlr" secondAttribute="trailing" constant="20" id="9ZY-ha-xuN"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kmW-Er-gZy" secondAttribute="trailing" constant="20" symbolic="YES" id="AMM-0M-gYC"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L29-LM-HTq" secondAttribute="trailing" constant="20" symbolic="YES" id="Bmg-AX-jkP"/>
                                             <constraint firstItem="lXu-4a-v6P" firstAttribute="leading" secondItem="90B-jU-Ox5" secondAttribute="leading" constant="16" id="CHR-Ts-tNF"/>
                                             <constraint firstItem="kmW-Er-gZy" firstAttribute="top" secondItem="6WH-II-AAJ" secondAttribute="bottom" constant="8" id="DFJ-Ne-m61"/>
                                             <constraint firstItem="kmW-Er-gZy" firstAttribute="leading" secondItem="90B-jU-Ox5" secondAttribute="leading" constant="16" id="Dbu-Pv-XQo"/>
-                                            <constraint firstAttribute="trailing" secondItem="7VG-2i-9dA" secondAttribute="trailing" constant="28" id="Goc-gY-RqG"/>
+                                            <constraint firstAttribute="trailing" secondItem="7VG-2i-9dA" secondAttribute="trailing" constant="16" id="Goc-gY-RqG"/>
                                             <constraint firstItem="TPe-8f-CMe" firstAttribute="leading" secondItem="L29-LM-HTq" secondAttribute="leading" id="HUm-Av-Op7"/>
                                             <constraint firstAttribute="height" priority="250" constant="598" id="Hon-eB-MCP"/>
                                             <constraint firstItem="6WH-II-AAJ" firstAttribute="leading" secondItem="lXu-4a-v6P" secondAttribute="leading" id="IiV-zC-Yxl"/>
                                             <constraint firstItem="hbs-GL-8lS" firstAttribute="leading" secondItem="90B-jU-Ox5" secondAttribute="leading" constant="16" id="Koy-ix-zCn"/>
                                             <constraint firstItem="Gxx-oK-DNV" firstAttribute="leading" secondItem="hbs-GL-8lS" secondAttribute="leading" id="M1b-m4-n05"/>
                                             <constraint firstItem="lXu-4a-v6P" firstAttribute="top" secondItem="SZt-3J-ob8" secondAttribute="bottom" constant="8" id="NwV-Qi-90m"/>
+                                            <constraint firstItem="B2S-3c-xlr" firstAttribute="top" secondItem="90B-jU-Ox5" secondAttribute="top" constant="8" id="ODi-Fv-lal"/>
                                             <constraint firstItem="L29-LM-HTq" firstAttribute="top" secondItem="TPe-8f-CMe" secondAttribute="bottom" constant="8" symbolic="YES" id="YtA-4l-rTf"/>
+                                            <constraint firstItem="B2S-3c-xlr" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Gxx-oK-DNV" secondAttribute="trailing" constant="8" symbolic="YES" id="aDN-U0-94z"/>
                                             <constraint firstItem="7VG-2i-9dA" firstAttribute="top" secondItem="90B-jU-Ox5" secondAttribute="top" constant="83" id="dI4-GX-rZ1"/>
                                             <constraint firstItem="TPe-8f-CMe" firstAttribute="top" secondItem="SZt-3J-ob8" secondAttribute="top" id="eaF-Zc-SPv"/>
                                             <constraint firstItem="6WH-II-AAJ" firstAttribute="top" secondItem="lXu-4a-v6P" secondAttribute="bottom" constant="16" id="g5u-Nr-Bkc"/>
@@ -2090,6 +2104,7 @@
                         <outlet property="appVersionNumberLabel" destination="Vdp-dG-1Do" id="gaq-p2-nT9"/>
                         <outlet property="copyrightLabel" destination="0fd-qf-JfD" id="UgU-9H-7aw"/>
                         <outlet property="feedbackButton" destination="iSd-0j-NDU" id="Cse-B9-Rzn"/>
+                        <outlet property="helpButton" destination="B2S-3c-xlr" id="Noi-ff-4bJ"/>
                         <outlet property="iosversionLabel" destination="DBJ-H4-kKI" id="hFV-xv-WmI"/>
                         <outlet property="openSourceLabel" destination="kmW-Er-gZy" id="cKe-rx-LC2"/>
                         <outlet property="privacyButton" destination="C0D-o8-29K" id="zEI-Av-zLe"/>

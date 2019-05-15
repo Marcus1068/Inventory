@@ -51,4 +51,14 @@ class PopupViewController: UIViewController {
             infotxt.attributedText = myText
         }
     }
+    
+    // need this to scroll textview to top at start
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async{
+            let desiredOffset = CGPoint(x: 0, y: -self.infotxt.contentInset.top)
+            self.infotxt.setContentOffset(desiredOffset, animated: false)
+        }
+    }
 }

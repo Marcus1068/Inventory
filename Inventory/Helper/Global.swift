@@ -370,6 +370,27 @@ class Global: NSObject {
         UIGraphicsEndImageContext()
         return newImage!
     }
+    
+    /// read a rtf file from main bundle and return as attributed string for putting into UITextfield
+    ///
+    /// - Parameter fileName: the rtf filename used in main bundle
+    /// - Returns: an attributed string made from rtf file or a file not found message
+    static func getRTFFileFromBundle(fileName: String) -> NSAttributedString{
+        let str = "rtf file not found!"
+        let attributedText = NSAttributedString(string: str)
+        
+        if let rtfPath = Bundle.main.url(forResource: fileName, withExtension: "rtf") {
+            do {
+                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
+                
+                return attributedStringWithRtf
+            } catch _ {
+                os_log("AboutViewController helpButton", log: Log.viewcontroller, type: .error)
+            }
+        }
+        
+        return attributedText
+    }
 }
 
 // extensions

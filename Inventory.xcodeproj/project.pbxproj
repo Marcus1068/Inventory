@@ -14,6 +14,8 @@
 		2C2B8057225CDE70007C842E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2C36FA49228C9139004C1560 /* Aboutview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */; };
 		2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */; };
+		2C36FA4D228C9CB2004C1560 /* Reportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */; };
+		2C36FA4F228C9CCC004C1560 /* Reportview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4E228C9CCC004C1560 /* Reportview Help English.rtf */; };
 		2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926D82090F85000508874 /* InventoryCollectionViewController.swift */; };
 		2C4926DB20920DA100508874 /* InventoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4926DA20920DA100508874 /* InventoryCollectionViewCell.swift */; };
 		2C4D3F062265D98C00169656 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D3F052265D98C00169656 /* PrivacyViewController.swift */; };
@@ -85,6 +87,8 @@
 		2C2B8056225CDE70007C842E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Aboutview Help German.rtf"; sourceTree = "<group>"; };
 		2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Aboutview Help English.rtf"; sourceTree = "<group>"; };
+		2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Reportview Help German.rtf"; sourceTree = "<group>"; };
+		2C36FA4E228C9CCC004C1560 /* Reportview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Reportview Help English.rtf"; sourceTree = "<group>"; };
 		2C44B26A20CD216D00C5AD6B /* Inventory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventory.entitlements; sourceTree = "<group>"; };
 		2C4926D82090F85000508874 /* InventoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewController.swift; sourceTree = "<group>"; };
 		2C4926DA20920DA100508874 /* InventoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				2C89B9692279995500DB74D3 /* Privacy english.rtf */,
 				2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */,
 				2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */,
+				2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */,
+				2C36FA4E228C9CCC004C1560 /* Reportview Help English.rtf */,
 			);
 			path = HelpTexts;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 			files = (
 				2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */,
 				2C36FA49228C9139004C1560 /* Aboutview Help German.rtf in Resources */,
+				2C36FA4D228C9CB2004C1560 /* Reportview Help German.rtf in Resources */,
 				2C5DE31B2275981B00C60EEF /* InfoPlist.strings in Resources */,
 				2C5DE316227471DA00C60EEF /* Inventory App Manual.pdf in Resources */,
 				2C56E8BA2086350B00FD5136 /* LaunchScreen.storyboard in Resources */,
@@ -399,6 +406,7 @@
 				2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */,
 				2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */,
 				2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */,
+				2C36FA4F228C9CCC004C1560 /* Reportview Help English.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

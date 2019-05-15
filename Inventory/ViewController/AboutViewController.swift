@@ -227,11 +227,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBAction func helpButton(_ sender: UIButton) {
         
         var fileName : String
-        var help : NSAttributedString
-        
-        let str = "help file not found!"
-        let attributedQuote = NSAttributedString(string: str)
-        help = attributedQuote
         
         switch Global.currentLocaleForDate(){
         case "de_DE", "de_AT", "de_CH", "de":
@@ -243,19 +238,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             break
         }
         
-        // load privacy statement according to german or english language
-        if let rtfPath = Bundle.main.url(forResource: fileName, withExtension: "rtf") {
-            do {
-                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
-                
-                    help = attributedStringWithRtf
-            } catch _ {
-                os_log("AboutViewController helpButton", log: Log.viewcontroller, type: .error)
-            }
-        }
-        
-        popOver(text: help, sender: sender)
+        popOver(text: Global.getRTFFileFromBundle(fileName: fileName), sender: sender)
     }
+    
+    
     
     /*
     // MARK: - Email delegate

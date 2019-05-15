@@ -447,12 +447,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 popPC.delegate = self
                 
                 // here goes the popup text
-                let str = "help file not found!"
-                var help : NSAttributedString
-                let attributedQuote = NSAttributedString(string: str)
-                help = attributedQuote
+                var fileName : String
                 
-                dest.myText = help //NSLocalizedString("Please select a filter to limit result set. The share action button let users share the PDF report as a file. The email share icon directly opens an email with the report included. Tipping on the report itself opens a fullscreen view.", comment: "Report View help text")
+                switch Global.currentLocaleForDate(){
+                case "de_DE", "de_AT", "de_CH", "de":
+                    fileName = "Reportview Help German"
+                    break
+                    
+                default: // all other languages get english text
+                    fileName = "Reportview Help English"
+                    break
+                }
+                
+                dest.myText = Global.getRTFFileFromBundle(fileName: fileName)
             }
 
         }

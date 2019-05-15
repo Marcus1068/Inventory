@@ -57,17 +57,7 @@ class PrivacyViewController: UIViewController {
             break
         }
         
-        // load privacy statement according to german or english language
-        if let rtfPath = Bundle.main.url(forResource: fileName, withExtension: "rtf") {
-            do {
-                let attributedStringWithRtf: NSAttributedString = try NSAttributedString(url: rtfPath, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
-                self.privacyText.attributedText = attributedStringWithRtf
-            } catch _ {
-                os_log("PrivacyViewController viewDidLoad", log: Log.viewcontroller, type: .error)
-            }
-        }
-        
-        //privacyText.text = NSLocalizedString("Your data is safe!", comment: "Privacy Info")
+        privacyText.attributedText = Global.getRTFFileFromBundle(fileName: fileName)
         
         navigationBar.topItem?.title = NSLocalizedString("Privacy Information", comment: "Privacy Information")
         

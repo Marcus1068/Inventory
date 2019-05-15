@@ -340,7 +340,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
         }
         
-        
     }
     
     

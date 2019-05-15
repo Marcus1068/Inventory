@@ -67,7 +67,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
-    var currentInventory : Inventory? // FIXME: weak migth be wrong
+    var currentInventory : Inventory?
     
     // get all detail infos
     var rooms : [Room] = []
@@ -121,7 +121,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
 
         // register tap gesture for showing pdf in fullscreen
-        pdfViewGestureWhenTapped()
+        //pdfViewGestureWhenTapped()
         
         // register tap gesture for showing image in fullscreen
         imageViewGestureWhenTapped()
@@ -380,12 +380,15 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         self.url = myURL
         
         pdfDisplay(file: myURL)
+        
+        // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
+        pdfViewGestureWhenTapped()
     }
 
     
     // in case somebody clicks cancel and does not choose a document then simply dismiss
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        //print("view was cancelled")
+        print("view was cancelled")
         dismiss(animated: true, completion: nil)
     }
 
@@ -639,7 +642,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // do nothing, close view controller
     @IBAction func cancelButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -728,8 +731,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         else{ // edit data
             _ = CoreDataHandler.updateInventory(inventory: currentInventory!)
         }
+        
+        // FIXME calling view controller viewdidload() always gets called
         navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: pdf handling

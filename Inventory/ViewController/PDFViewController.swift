@@ -34,7 +34,7 @@ class PDFViewController: UIViewController {
     
     
     // get pdf file from calling view controller
-    weak var currentPDF: PDFView?
+    var currentPDF: PDFView!
     var currentTitle: String?
     var currentPath: URL?
     
@@ -70,6 +70,27 @@ class PDFViewController: UIViewController {
         }
         
         pdfView.document = currentPDF?.document
+        
+        // add first page and last page bar buttons
+        let lastPageStr = NSLocalizedString("Last Page", comment: "Last page")
+        let firstPageStr = NSLocalizedString("First Page", comment: "First page")
+        let lastPageBtn = UIBarButtonItem(title: lastPageStr, style: .plain, target: self, action: #selector(lastPage))
+        let firstPageBtn = UIBarButtonItem(title: firstPageStr, style: .plain, target: self, action: #selector(firstPage))
+        
+        let arr = navigationItem.rightBarButtonItems
+        navigationItem.rightBarButtonItems = arr! + [lastPageBtn, firstPageBtn]
+        
+        // setup colors for UI controls
+        lastPageBtn.tintColor = themeColorUIControls
+        firstPageBtn.tintColor = themeColorUIControls
+    }
+    
+    @objc func firstPage() {
+        pdfView.goToFirstPage(nil)
+    }
+    
+    @objc func lastPage() {
+        pdfView.goToLastPage(nil)
     }
     
     // Mark: - UI actions

@@ -713,7 +713,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let page = NSLocalizedString("Page", comment: "Page")
         let text = page + " " + String(pageNumber) as NSString
-        text.draw(in: CGRect(x: pageNumber_pos_x, y: pageNumber_pos_y, width: 110, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: pageNumber_pos_x, y: pageNumber_pos_y - 5, width: 110, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
     // generate pdf page footer
@@ -731,7 +731,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         let text = footerText as NSString
-        text.draw(in: CGRect(x: footer_pos_x, y: footer_pos_y, width: 300, height: 10), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: footer_pos_x, y: footer_pos_y - 5, width: 300, height: 10), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)

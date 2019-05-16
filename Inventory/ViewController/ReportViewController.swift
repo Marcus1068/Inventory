@@ -113,6 +113,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     var footer_pos_x = 0.0
     var footer_pos_y = 0.0
     
+    // inventory app logo appearing on oage
+    let logoSizeHeight = 35.0
+    let logoSizeWidth = 35.0
+    let logoPosX = 30.0
+    let logoPosY = 10.0
+    
     // store complete inventory as array
     var results: [Inventory] = []
     
@@ -520,6 +526,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    func pdfImageLogo(){
+        let image = UIImage(named: "InventorySplash.jpg")
+        image!.draw(in: CGRect(x: logoPosX, y: logoPosY, width: logoSizeHeight, height: logoSizeWidth))
+    }
+    
     // add a summary page at the end of the PDF report
     func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
         //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
@@ -639,7 +650,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         let text = title as NSString
-        text.draw(in: CGRect(x: title_pos_x, y: title_pos_y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: title_pos_x + logoSizeWidth + 10, y: title_pos_y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
@@ -819,6 +830,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             numberOfPages += 1
             
+            // logo
+            pdfImageLogo()
+            
             // Title
             let title = NSLocalizedString("Inventory Report", comment: "Inventory Report")
             pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
@@ -877,6 +891,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     numberOfPages += 1
                     
                     context.beginPage()
+                    
                     // title
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
@@ -892,6 +907,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfSummaryPage(numberOfRows: results.count, context: context)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 1)
+            
+            pdfImageLogo()
         }
         
         // save report to temp dir

@@ -884,6 +884,115 @@ class CoreDataHandler: NSObject {
         
         _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
         
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        _ = saveInventory(inventoryName: NSLocalizedString("Kitchen Helper", comment: "Kitchen Helper"), dateOfPurchase: date, price: Int32(699), remark: remark, serialNumber: serial, warranty: 12, image: imageKitchenData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Toaster", comment: "Toaster"), dateOfPurchase: date, price: Int32(200), remark: remark, serialNumber: serial, warranty: 12, image: imageToasterData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[5], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Game", comment: "Game"), dateOfPurchase: date, price: Int32(35), remark: remark, serialNumber: serial, warranty: 12, image: imageGameData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[0], category: categories[9], owner: owners[1], room: rooms[2])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Wizzard", comment: "Wizzard"), dateOfPurchase: date, price: Int32(1190), remark: remark, serialNumber: serial, warranty: 24, image: imageThermoData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[10], category: categories[8], owner: owners[2], room: rooms[6])
+        
+        _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
+        
         
         // FIXME: must be removed for release
         //CoreDataHandler.showSampleData()

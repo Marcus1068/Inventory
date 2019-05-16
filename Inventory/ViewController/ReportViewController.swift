@@ -98,7 +98,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     let usLetter_width = 612.0
     let usLetter_height = 792.0
     
-    // column
+    // text column size
     let column_width = 110.0
     let column_height = 20.0
     
@@ -119,6 +119,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     let logoPosX = 30.0
     let logoPosY = 10.0
     
+    // image size for inventory object
+    let imageSizeWidth = 30.0
+    let imageSizeHeight = 30.0
+    var imageSizePosX = 0.0
+    
+    
     // store complete inventory as array
     var results: [Inventory] = []
     
@@ -126,6 +132,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // compute image start position
+        imageSizePosX = column_width - imageSizeWidth + 20
         
         //os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
@@ -526,9 +535,26 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    // print the app logo on every page
     func pdfImageLogo(){
         let image = UIImage(named: "InventorySplash.jpg")
         image!.draw(in: CGRect(x: logoPosX, y: logoPosY, width: logoSizeHeight, height: logoSizeWidth))
+    }
+    
+    // print the inventory image next to inventory name if available
+    func pdfImageForIntenvory(yPos: Double, imageData: NSData?){
+        
+        guard (imageData != nil) else{
+            return
+        }
+        
+        //let imageData = currentInventory!.image! as Data
+        if let image = UIImage(data: imageData! as Data, scale: 0.1){
+        
+            //let image = UIImage(named: imageName)
+            image.draw(in: CGRect(x: imageSizePosX, y: yPos, width: imageSizeWidth, height: imageSizeHeight))
+        }
+        // otherwise do nothing since to image available
     }
     
     // add a summary page at the end of the PDF report
@@ -816,10 +842,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // decide paper size, because printable rows are different
         switch (currentPaperSize){
         case .dinA4:
-            paperPrintableRows = 47
+            paperPrintableRows = 19
             break
         case .usLetter:
-            paperPrintableRows = 46
+            paperPrintableRows = 18
             break
         }
         
@@ -850,7 +876,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             var numberOfRows = 0
             
             for inv in results{
-                y = y + 15 // distance to above because is title
+                y = y + 35 // distance to above because is title
                 numberOfRows += 1
                 
                 var columnText: [String]
@@ -881,6 +907,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + column_width
                 }
                 
+                // print the inventory image
+                pdfImageForIntenvory(yPos: y, imageData: inv.image)
+                
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter
                 if numberOfRows > paperPrintableRows{
                     numberOfRows = 1
@@ -892,6 +921,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     context.beginPage()
                     
+                    // logo
+                    pdfImageLogo()
                     // title
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
@@ -904,11 +935,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // add a summary page at the end of the report
             context.beginPage()
+            pdfImageLogo()
             pdfSummaryPage(numberOfRows: results.count, context: context)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 1)
             
-            pdfImageLogo()
         }
         
         // save report to temp dir

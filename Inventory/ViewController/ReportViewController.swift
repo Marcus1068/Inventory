@@ -44,6 +44,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var emailActionButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var imageSwitch: UISwitch!
     
     // get all detail infos
     var rooms : [Room] = []
@@ -150,6 +151,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         paperFormatSegment.tintColor = themeColorUIControls
         shareActionBarButton.tintColor =  themeColorUIControls
         emailActionButton.tintColor = themeColorUIControls
+        imageSwitch.tintColor = themeColorUIControls
+        imageSwitch.onTintColor = themeColorUIControls
         
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
@@ -355,6 +358,14 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // MARK: - Actions
+    
+    @IBAction func imageSwitch(_ sender: UISwitch) {
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
+    }
     
     @IBAction func emailActionButton(_ sender: UIBarButtonItem) {
         sendPDFEmail()
@@ -908,11 +919,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 }
                 
                 // print the inventory image
-                pdfImageForIntenvory(yPos: y, imageData: inv.image)
+                if imageSwitch.isOn{
+                    pdfImageForIntenvory(yPos: y, imageData: inv.image)
+                }
                 
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter
                 if numberOfRows > paperPrintableRows{
-                    numberOfRows = 1
+                    numberOfRows = 0
                     y = contents_begin
                     
                     pdfPageFooter(footerText: footerText, context: context)
@@ -927,6 +940,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
                     pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+                    
+                    pdfTableHeader(context: context)
                 }
             }
             

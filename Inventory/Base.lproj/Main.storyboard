@@ -2406,8 +2406,8 @@
                                                     <action selector="roomsSegmentAction:" destination="v2l-5p-iCX" eventType="valueChanged" id="fdZ-JO-BaA"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current generated report:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-ch-75D">
-                                                <rect key="frame" x="8" y="303" width="207" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last report:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZR-ch-75D">
+                                                <rect key="frame" x="8" y="303" width="93.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="8xM-I8-bDB"/>
                                                 </constraints>
@@ -2459,10 +2459,26 @@
                                                     </segue>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-6q-xB3">
+                                                <rect key="frame" x="159" y="302" width="60.5" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="CGb-js-lBv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFV-54-aco">
+                                                <rect key="frame" x="244.5" y="298" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="imageSwitch:" destination="v2l-5p-iCX" eventType="valueChanged" id="MOC-19-lya"/>
+                                                </connections>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="R5q-YK-cXD" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="19" id="1Ko-5s-JFC"/>
+                                            <constraint firstItem="uFV-54-aco" firstAttribute="leading" secondItem="MPQ-6q-xB3" secondAttribute="trailing" constant="25" id="5WP-WX-GTq"/>
                                             <constraint firstItem="4G3-sy-zca" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="16" id="5hq-Wp-lp2"/>
                                             <constraint firstItem="JuC-eq-fIK" firstAttribute="top" secondItem="ehs-Uu-Z20" secondAttribute="bottom" constant="8" id="6CS-8v-Lrg"/>
                                             <constraint firstItem="xzz-zx-2tp" firstAttribute="leading" secondItem="sXd-j7-KIs" secondAttribute="trailing" constant="12" id="6lr-ZX-bNT"/>
@@ -2482,11 +2498,13 @@
                                             <constraint firstItem="JuC-eq-fIK" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="P4e-5d-YFZ"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5ZR-ch-75D" secondAttribute="trailing" constant="20" symbolic="YES" id="PTa-2V-XNa"/>
                                             <constraint firstAttribute="trailing" secondItem="iMl-4T-cI9" secondAttribute="trailing" constant="8" id="QoQ-XH-SG8"/>
+                                            <constraint firstItem="uFV-54-aco" firstAttribute="centerY" secondItem="5ZR-ch-75D" secondAttribute="centerY" id="Tki-Yu-i8G"/>
                                             <constraint firstItem="iMl-4T-cI9" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="YoB-VG-bCd"/>
                                             <constraint firstItem="5ZR-ch-75D" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="Z6B-sS-pRB"/>
                                             <constraint firstAttribute="trailing" secondItem="4G3-sy-zca" secondAttribute="trailing" constant="9" id="bRx-Mo-5Xc"/>
                                             <constraint firstItem="yxD-Cl-6oe" firstAttribute="top" secondItem="5ZR-ch-75D" secondAttribute="bottom" constant="16" id="d6v-oX-7He"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K90-Fm-Q4b" secondAttribute="trailing" constant="20" symbolic="YES" id="fUB-bU-rSp"/>
+                                            <constraint firstItem="uFV-54-aco" firstAttribute="centerY" secondItem="MPQ-6q-xB3" secondAttribute="centerY" constant="1" id="gdR-wc-9Pv"/>
                                             <constraint firstAttribute="trailing" secondItem="yxD-Cl-6oe" secondAttribute="trailing" constant="8" id="jXb-Gx-HBW"/>
                                             <constraint firstItem="jvJ-91-pTc" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="lQx-9N-fmy"/>
                                             <constraint firstItem="yxD-Cl-6oe" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="mlB-Dn-YZE"/>
@@ -2494,6 +2512,7 @@
                                             <constraint firstItem="R5q-YK-cXD" firstAttribute="leading" secondItem="QLh-FY-ObP" secondAttribute="trailing" constant="26" id="nUr-bC-2Aw"/>
                                             <constraint firstItem="ehs-Uu-Z20" firstAttribute="leading" secondItem="y8H-zp-Pqv" secondAttribute="leading" constant="8" id="o2v-uc-QlP"/>
                                             <constraint firstItem="KrM-2K-XTm" firstAttribute="top" secondItem="QLh-FY-ObP" secondAttribute="bottom" constant="8" symbolic="YES" id="oCo-sK-39D"/>
+                                            <constraint firstItem="MPQ-6q-xB3" firstAttribute="leading" secondItem="5ZR-ch-75D" secondAttribute="trailing" constant="57.5" id="qCh-Dy-GRz"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xzz-zx-2tp" secondAttribute="trailing" constant="20" symbolic="YES" id="qQS-7Y-PaG"/>
                                             <constraint firstAttribute="trailing" secondItem="JuC-eq-fIK" secondAttribute="trailing" constant="9" id="se9-qN-ONX"/>
                                             <constraint firstItem="R5q-YK-cXD" firstAttribute="top" secondItem="y8H-zp-Pqv" secondAttribute="top" constant="19" id="wfS-pL-zwO"/>
@@ -2539,6 +2558,7 @@
                     <connections>
                         <outlet property="emailActionButton" destination="am9-QQ-t0y" id="B1S-rY-QUq"/>
                         <outlet property="helpButton" destination="4G3-sy-zca" id="GdL-8h-rAo"/>
+                        <outlet property="imageSwitch" destination="uFV-54-aco" id="rdN-ec-K0j"/>
                         <outlet property="ownerFilterLabel" destination="xzz-zx-2tp" id="feg-tA-8F4"/>
                         <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>

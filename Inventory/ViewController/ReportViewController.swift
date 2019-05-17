@@ -78,8 +78,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     let kvStore = NSUbiquitousKeyValueStore()
     
     // general paper size
-    var paper_width = 0.0
-    var paper_height = 0.0
+    var paperWidth = 0.0
+    var paperHeight = 0.0
     
     // position on page to print page numbers
     var pageNumber_pos_x = 0.0
@@ -92,12 +92,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     var title_width = 0.0
     
     // constants for DIN A4 PDF page
-    let dinA4_width = 595.2
-    let dinA4_height = 841.8
+    let dinA4Width = 595.2
+    let dinA4Height = 841.8
     
     // constants for US letter PDF page
-    let usLetter_width = 612.0
-    let usLetter_height = 792.0
+    let usLetterWidth = 612.0
+    let usLetterHeight = 792.0
     
     // text column size
     // sum of all 5 columns must be 5 * 110 = 550
@@ -111,11 +111,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     let columnWidthBrand = 90.0
     
     // text contents begin
-    let contents_begin = 50.0
+    let contentsBegin = 50.0
     
     // margin from left
-    let left_margin = 30.0
-    let right_margin = 30.0
+    let leftMargin = 30.0
+    let rightMargin = 30.0
     
     // pdf footer position
     var footer_pos_x = 0.0
@@ -523,35 +523,35 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         switch (currentPaperSize){
         case .dinA4:
-            paper_width = dinA4_width
-            paper_height = dinA4_height
+            paperWidth = dinA4Width
+            paperHeight = dinA4Height
             
-            pageNumber_pos_x = dinA4_width - 140.0
-            pageNumber_pos_y = dinA4_height - 20
+            pageNumber_pos_x = dinA4Width - 140.0
+            pageNumber_pos_y = dinA4Height - 20
             
-            title_pos_x = left_margin
+            title_pos_x = leftMargin
             title_pos_y = 20.0
             title_width = 500.0
             title_height = 30.0
             
-            footer_pos_x = left_margin
-            footer_pos_y = dinA4_height - 20.0
+            footer_pos_x = leftMargin
+            footer_pos_y = dinA4Height - 20.0
             break
             
         case .usLetter:
-            paper_width = usLetter_width
-            paper_height = usLetter_height
+            paperWidth = usLetterWidth
+            paperHeight = usLetterHeight
             
-            pageNumber_pos_x = usLetter_width - 140.0
-            pageNumber_pos_y = usLetter_height - 20
+            pageNumber_pos_x = usLetterWidth - 140.0
+            pageNumber_pos_y = usLetterHeight - 20
             
-            title_pos_x = left_margin
+            title_pos_x = leftMargin
             title_pos_y = 20.0
             title_width = 500.0
             title_height = 30.0
             
-            footer_pos_x = left_margin
-            footer_pos_y = usLetter_height - 20.0
+            footer_pos_x = leftMargin
+            footer_pos_y = usLetterHeight - 20.0
             break
         }
     }
@@ -590,7 +590,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // user Info
         pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
         
-        y = contents_begin
+        y = contentsBegin
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -685,7 +685,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let text1 = userText + ": " + userName + ", " + addressText + ": " + address
         let text = text1 as NSString
         
-        text.draw(in: CGRect(x: paper_width - 250 - left_margin, y: title_pos_y + 15, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: paperWidth - 250 - leftMargin, y: title_pos_y + 15, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
     // generate title for pdf page (on top of each page)
@@ -708,8 +708,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
         context.cgContext.setLineWidth(2)
-        context.cgContext.move(to: CGPoint(x: left_margin, y: 20 + title_height))
-        context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: 20 + title_height))
+        context.cgContext.move(to: CGPoint(x: leftMargin, y: 20 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: paperWidth - rightMargin, y: 20 + title_height))
         context.cgContext.drawPath(using: .fillStroke)
     }
     
@@ -752,8 +752,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
         context.cgContext.setLineWidth(2)
-        context.cgContext.move(to: CGPoint(x: footer_pos_x, y: paper_height - 30))
-        context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: footer_pos_y - 10))
+        context.cgContext.move(to: CGPoint(x: footer_pos_x, y: paperHeight - 30))
+        context.cgContext.addLine(to: CGPoint(x: paperWidth - rightMargin, y: footer_pos_y - 10))
         context.cgContext.drawPath(using: .fillStroke)
     }
  /*
@@ -787,8 +787,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var text = ""
         
-        y = contents_begin + 15
-        x = left_margin
+        y = contentsBegin + 15
+        x = leftMargin
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -956,12 +956,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
         }
         
-        x = left_margin
+        x = leftMargin
         
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
         context.cgContext.setLineWidth(1)
-        context.cgContext.move(to: CGPoint(x: left_margin, y: 48 + title_height))
+        context.cgContext.move(to: CGPoint(x: leftMargin, y: 48 + title_height))
         context.cgContext.addLine(to: CGPoint(x: (5.0 * columnWidth), y: 48 + title_height))
         context.cgContext.drawPath(using: .fillStroke)
     }
@@ -1005,7 +1005,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         format.documentInfo = [ kCGPDFContextCreator as String : UIApplication.appName! ]
         format.documentInfo = [ kCGPDFContextTitle as String: UIApplication.appName! ]         // document title
         
-        let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paper_width, height: paper_height), format: format)
+        let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paperWidth, height: paperHeight), format: format)
         
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
@@ -1046,7 +1046,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             // user Info
             pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
             
-            y = contents_begin
+            y = contentsBegin
             // contents
             
             // columns
@@ -1065,7 +1065,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 // add sum of prices for summary page
                 itemPricesSum += Int(inv.price)
                 
-                x = left_margin
+                x = leftMargin
                 
                 // switch column order based on sort order
                 switch (currentSortOrder){
@@ -1242,13 +1242,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     break
                 }
                 
-                x = left_margin
+                x = leftMargin
                 
                 
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter
                 if numberOfRows > paperPrintableRows{
                     numberOfRows = 0
-                    y = contents_begin
+                    y = contentsBegin
                     
                     pdfPageFooter(footerText: footerText, context: context)
                     pdfPageNumber(pageNumber: numberOfPages)

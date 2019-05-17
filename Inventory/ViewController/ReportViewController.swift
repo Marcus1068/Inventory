@@ -553,7 +553,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // print the inventory image next to inventory name if available
-    func pdfImageForIntenvory(yPos: Double, imageData: NSData?){
+    func pdfImageForIntenvory(xPos: Double, yPos: Double, imageData: NSData?){
         
         guard (imageData != nil) else{
             return
@@ -563,7 +563,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         if let image = UIImage(data: imageData! as Data, scale: 0.1){
         
             //let image = UIImage(named: imageName)
-            image.draw(in: CGRect(x: imageSizePosX, y: yPos, width: imageSizeWidth, height: imageSizeHeight))
+            image.draw(in: CGRect(x: xPos, y: yPos, width: imageSizeWidth, height: imageSizeHeight))
         }
         // otherwise do nothing since to image available
     }
@@ -896,15 +896,31 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 switch (currentSortOrder){
                 case .item:
                     columnText = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
+                    // print the inventory image
+                    if imageSwitch.isOn{
+                        pdfImageForIntenvory(xPos: imageSizePosX, yPos: y, imageData: inv.image)
+                    }
                     break
                 case .owner:
                     columnText = [inv.inventoryOwner!.ownerName!, inv.inventoryName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
+                    // print the inventory image
+                    if imageSwitch.isOn{
+                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                    }
                     break
                 case .category:
                     columnText = [inv.inventoryCategory!.categoryName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!,  inv.inventoryRoom!.roomName!, String(inv.price) + Global.currencySymbol!]
+                    // print the inventory image
+                    if imageSwitch.isOn{
+                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                    }
                     break
                 case .room:
                     columnText = [inv.inventoryRoom!.roomName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
+                    // print the inventory image
+                    if imageSwitch.isOn{
+                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                    }
                     break
                 }
                 
@@ -918,10 +934,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + column_width
                 }
                 
-                // print the inventory image
-                if imageSwitch.isOn{
-                    pdfImageForIntenvory(yPos: y, imageData: inv.image)
-                }
+                
                 
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter
                 if numberOfRows > paperPrintableRows{

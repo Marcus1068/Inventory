@@ -756,7 +756,27 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         context.cgContext.addLine(to: CGPoint(x: paper_width - right_margin, y: footer_pos_y - 10))
         context.cgContext.drawPath(using: .fillStroke)
     }
-    
+ /*
+    func itemColumn(xPos: Double, yPos: Double, text: String) -> Double{
+        let x = left_margin
+        var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue-Bold", size: 10.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        // item
+        stringRect = CGRect(x: xPos, y: yPos, width: column_width_item, height: column_height)
+        let text = Global.item
+        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        return x + column_width_item
+    } */
     
     // generate pdf pdfTableHeader
     func pdfTableHeader(context: UIGraphicsRendererContext){
@@ -1052,7 +1072,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 case .item:
                     // item
                     stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
-                    text = inv.inventoryName!
+                    text = inv.inventoryName!.truncate(length: 14)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + column_width_item
                     
@@ -1101,7 +1121,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // item
                     stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
-                    text = inv.inventoryName!
+                    text = inv.inventoryName!.truncate(length: 14)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + column_width_item
                     
@@ -1144,7 +1164,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // item
                     stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
-                    text = inv.inventoryName!
+                    text = inv.inventoryName!.truncate(length: 14)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + column_width_item
                     
@@ -1187,7 +1207,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // item
                     stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
-                    text = inv.inventoryName!
+                    text = inv.inventoryName!.truncate(length: 14)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + column_width_item
                     

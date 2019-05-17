@@ -619,7 +619,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 30
         
-        let tmp = NSLocalizedString("Room filter used", comment: "Room filter used")
+        let tmp = NSLocalizedString("Room filter applied", comment: "Room filter applied")
         if roomFilterLabel.text == Global.all{
             let printRoomFilter = tmp + ": " + Global.none as NSString
             printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -631,7 +631,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 30
         
-        let tmp2 = NSLocalizedString("Owner filter used", comment: "Owner filter used")
+        let tmp2 = NSLocalizedString("Owner filter applied", comment: "Owner filter applied")
         if ownerFilterLabel.text == Global.all{
             let printOwnerFilter = tmp2 + ": " + Global.none as NSString
             printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -655,7 +655,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 30
         
-        let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion!
+        let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     

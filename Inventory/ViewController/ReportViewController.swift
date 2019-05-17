@@ -129,6 +129,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // store complete inventory as array
     var results: [Inventory] = []
     
+    // store sum of item prices
+    var itemPricesSum = 0
+    
     // MARK: view load
     
     override func viewDidLoad() {
@@ -614,7 +617,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let printSortOrder = sortOrderText as NSString
         printSortOrder.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 25
+        y = y + 30
         
         let tmp = NSLocalizedString("Room filter used", comment: "Room filter used")
         if roomFilterLabel.text == Global.all{
@@ -626,7 +629,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 25
+        y = y + 30
         
         let tmp2 = NSLocalizedString("Owner filter used", comment: "Owner filter used")
         if ownerFilterLabel.text == Global.all{
@@ -638,13 +641,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 25
+        y = y + 30
         
         let tmp3 = NSLocalizedString("Number of inventory items", comment: "Number of inventory item")
         let numberOfRowsText = tmp3 + ": " + String(numberOfRows)
         numberOfRowsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 25
+        y = y + 30
+        
+        let tmp4 = NSLocalizedString("Amount of money spent on items", comment: "Amount of money spent on items")
+        let priceSumText = tmp4 + ": " + String(itemPricesSum) + Global.currencySymbol!
+        priceSumText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        y = y + 30
         
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion!
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -886,9 +895,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             var numberOfRows = 0
             
+            // set item prices sum = 0 since we always start with 0
+            itemPricesSum = 0
+            
             for inv in results{
                 y = y + 35 // distance to above because is title
                 numberOfRows += 1
+                
+                // add sum of prices for summary page
+                itemPricesSum += Int(inv.price)
                 
                 var columnText: [String]
                 

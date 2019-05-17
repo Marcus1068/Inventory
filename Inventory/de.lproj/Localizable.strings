@@ -34,6 +34,9 @@
 /* All */
 "All" = "Alle";
 
+/* Amount of money spent on items */
+"Amount of money spent on items" = "Gesamtkosten aller Gegenstände";
+
 /* Are you sure you really want to delete */
 "Are you sure you really want to delete? Any related inventory will be deleted as well!" = "Wollen Sie wirklich löschen? Alle hier von abhängenden Objekte werden ebenfalls gelöscht!";
 
@@ -280,8 +283,8 @@
 /* Owner already exists */
 "Owner already exists" = "Eigentümer existiert bereits";
 
-/* Owner filter used */
-"Owner filter used" = "Eigentümer Filter angewendet";
+/* Owner filter applied */
+"Owner filter applied" = "Eigentümer Filter angewendet";
 
 /* Page */
 "Page" = "Seite";
@@ -300,9 +303,6 @@
 
 /* Please choose a different name */
 "Please choose a different name" = "Bitte wählen Sie einen anderen Namen";
-
-/* Report View help text */
-"Please select a filter to limit result set. The share action button let users share the PDF report as a file. The email share icon directly opens an email with the report included. Tipping on the report itself opens a fullscreen view." = "Bitte wählen Sie einen Filter zum Begrenzen der Auswahlmenge. Das Share Icon ermöglicht das Speichern des Berichts als Datei. Das Email Symbol öffnet direkt eine Email zum Versand. Wenn man den Bericht antippt erscheint eine vergrößerte Ansicht.";
 
 /* Price */
 "Price" = "Preis";
@@ -325,8 +325,8 @@
 /* Room already exists */
 "Room already exists" = "Raum existiert bereits";
 
-/* Room filter used */
-"Room filter used" = "Raum Filter angewendet";
+/* Room filter applied */
+"Room filter applied" = "Raum Filter angewendet";
 
 /* Running on iOS */
 "Running on iOS " = "Läuft auf iOS ";
@@ -406,9 +406,6 @@
 
 /* Wizzard */
 "Wizzard" = "Zauberer";
-
-/* Privacy Info */
-"Your data is safe!" = "Ihre Daten sind sicher!";
 
 /* Your device could not send email */
 "Your device could not send email" = "Ihr Gerät konnte keine Email senden";

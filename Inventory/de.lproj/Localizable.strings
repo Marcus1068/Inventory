@@ -208,6 +208,12 @@
 /* Inventory User Manual */
 "Inventory User Manual" = "Inventory App Handbuch";
 
+/* Invoice */
+"Invoice" = "Rechnung";
+
+/* Invoice for */
+"Invoice for" = "Rechnung für";
+
 /* Item */
 "Item" = "Objekt";
 
@@ -288,9 +294,6 @@
 
 /* Page */
 "Page" = "Seite";
-
-/* PDF invoice for */
-"PDF invoice for" = "PDF Rechnung für";
 
 /* Photo Library */
 "Photo Library" = "Fotobibliothek";

@@ -100,8 +100,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     let usLetter_height = 792.0
     
     // text column size
-    let column_width = 110.0
+    // sum of all 5 columns must be 5 * 110 = 550
+    let columnWidth = 110.0
     let column_height = 20.0
+    let column_width_item = 130.0
+    let column_width_category = 90.0
+    let column_width_price = 60.0
+    let column_width_room = 90.0
+    let column_width_owner = 90.0
+    let column_width_brand = 90.0
     
     // text contents begin
     let contents_begin = 50.0
@@ -123,7 +130,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // image size for inventory object
     let imageSizeWidth = 30.0
     let imageSizeHeight = 30.0
-    var imageSizePosX = 0.0
+    //var imageSizePosX = 0.0
     
     
     // store complete inventory as array
@@ -138,7 +145,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         super.viewDidLoad()
         
         // compute image start position
-        imageSizePosX = column_width - imageSizeWidth + 20
+        //imageSizePosX = column_width_item - imageSizeWidth + 20
         
         //os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
@@ -761,6 +768,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var text = ""
         
         y = contents_begin + 15
+        x = left_margin
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -772,37 +780,169 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        var columnText: [String]
-        
         // switch column order based on sort order
         switch (currentSortOrder){
         case .item:
-            columnText = [Global.item, Global.owner, Global.room, Global.category, Global.price]
+            // item
+            stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+            text = Global.item
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_item
+            
+            // owner
+            stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+            text = Global.owner
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_owner
+            
+            // room
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.room
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_room
+            
+            // category
+            stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+            text = Global.category
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_category
+            
+            // brand
+            stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+            text = Global.brand
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_brand
+            
+            // price
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.price
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_price
             break
+            
         case .owner:
-            columnText = [Global.owner, Global.item, Global.room, Global.category, Global.price]
+            // owner
+            stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+            text = Global.owner
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_owner
+            
+            // item
+            stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+            text = Global.item
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_item
+            
+            // room
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.room
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_room
+            
+            // category
+            stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+            text = Global.category
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_category
+            
+            // brand
+            stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+            text = Global.brand
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_brand
+            
+            // price
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.price
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_price
             break
+            
         case .category:
-            columnText = [Global.category, Global.item, Global.owner, Global.room,  Global.price]
+            // category
+            stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+            text = Global.category
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_category
+            
+            // item
+            stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+            text = Global.item
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_item
+            
+            // owner
+            stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+            text = Global.owner
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_owner
+            
+            // room
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.room
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_room
+            
+            // brand
+            stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+            text = Global.brand
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_brand
+            
+            // price
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.price
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_price
             break
+            
         case .room:
-            columnText = [Global.room, Global.item, Global.owner, Global.category, Global.price]
+            // room
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.room
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_room
+            
+            // item
+            stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+            text = Global.item
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_item
+            
+            // owner
+            stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+            text = Global.owner
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_owner
+            
+            // category
+            stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+            text = Global.category
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_category
+            
+            // brand
+            stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+            text = Global.brand
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_brand
+            
+            // price
+            stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+            text = Global.price
+            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+            x = x + column_width_price
             break
+            
         }
         
         x = left_margin
-        for column in columnText{
-            stringRect = CGRect(x: x, y: y, width: column_width, height: column_height)
-            text = column
-            text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-            x = x + column_width
-        }
         
         // draw a line
         context.cgContext.setStrokeColor(UIColor.black.cgColor)
         context.cgContext.setLineWidth(1)
         context.cgContext.move(to: CGPoint(x: left_margin, y: 48 + title_height))
-        context.cgContext.addLine(to: CGPoint(x: (Double(columnText.count) * column_width), y: 48 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: (5.0 * columnWidth), y: 48 + title_height))
         context.cgContext.drawPath(using: .fillStroke)
     }
     
@@ -823,7 +963,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         return docURL! as URL
     }
     
-    // generate the PDF document containing all pages, header, footer, page number etc.
+    // generate the PDF document containing all pages, header, footer, page number, logo, images etc.
     func pdfCreateInventoryReport(){
         //os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
         
@@ -905,50 +1045,184 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 // add sum of prices for summary page
                 itemPricesSum += Int(inv.price)
                 
-                var columnText: [String]
+                x = left_margin
                 
                 // switch column order based on sort order
                 switch (currentSortOrder){
                 case .item:
-                    columnText = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
-                    // print the inventory image
+                    // item
+                    stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+                    text = inv.inventoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_item
+                    
+                    // owner
+                    stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+                    text = inv.inventoryOwner!.ownerName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_owner
+                    
+                    // room
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = inv.inventoryRoom!.roomName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_room
+                    
+                    // category
+                    stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+                    text = inv.inventoryCategory!.categoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_category
+                    
+                    // brand
+                    stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+                    text = inv.inventoryBrand!.brandName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_brand
+                    
+                    // price
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = String(inv.price) + Global.currencySymbol!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_price
+
+                    // print image only when image switch is on
                     if imageSwitch.isOn{
-                        pdfImageForIntenvory(xPos: imageSizePosX, yPos: y, imageData: inv.image)
+                        pdfImageForIntenvory(xPos: column_width_item - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
+                    
                 case .owner:
-                    columnText = [inv.inventoryOwner!.ownerName!, inv.inventoryName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
-                    // print the inventory image
+                    // owner
+                    stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+                    text = inv.inventoryOwner!.ownerName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_owner
+                    
+                    // item
+                    stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+                    text = inv.inventoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_item
+                    
+                    // room
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = inv.inventoryRoom!.roomName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_room
+                    
+                    // category
+                    stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+                    text = inv.inventoryCategory!.categoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_category
+                    
+                    // brand
+                    stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+                    text = inv.inventoryBrand!.brandName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_brand
+                    
+                    // price
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = String(inv.price) + Global.currencySymbol!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_price
+                    
+                    // print image only when image switch is on
                     if imageSwitch.isOn{
-                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                        pdfImageForIntenvory(xPos: column_width_owner + column_width_item - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
+                    
                 case .category:
-                    columnText = [inv.inventoryCategory!.categoryName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!,  inv.inventoryRoom!.roomName!, String(inv.price) + Global.currencySymbol!]
-                    // print the inventory image
+                    // category
+                    stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+                    text = inv.inventoryCategory!.categoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_category
+                    
+                    // item
+                    stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+                    text = inv.inventoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_item
+                    
+                    // owner
+                    stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+                    text = inv.inventoryOwner!.ownerName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_owner
+                    
+                    // room
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = inv.inventoryRoom!.roomName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_room
+                    
+                    // brand
+                    stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+                    text = inv.inventoryBrand!.brandName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_brand
+                    
+                    // price
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = String(inv.price) + Global.currencySymbol!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_price
+                    
+                    // print image only when image switch is on
                     if imageSwitch.isOn{
-                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                        pdfImageForIntenvory(xPos: column_width_category + column_width_item - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
+                    
                 case .room:
-                    columnText = [inv.inventoryRoom!.roomName!, inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryCategory!.categoryName!, String(inv.price) + Global.currencySymbol!]
-                    // print the inventory image
+                    // room
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = inv.inventoryRoom!.roomName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_room
+                    
+                    // item
+                    stringRect = CGRect(x: x, y: y, width: column_width_item, height: column_height)
+                    text = inv.inventoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_item
+                    
+                    // owner
+                    stringRect = CGRect(x: x, y: y, width: column_width_owner, height: column_height)
+                    text = inv.inventoryOwner!.ownerName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_owner
+                    
+                    // category
+                    stringRect = CGRect(x: x, y: y, width: column_width_category, height: column_height)
+                    text = inv.inventoryCategory!.categoryName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_category
+                    
+                    // brand
+                    stringRect = CGRect(x: x, y: y, width: column_width_brand, height: column_height)
+                    text = inv.inventoryBrand!.brandName!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_brand
+                    
+                    // price
+                    stringRect = CGRect(x: x, y: y, width: column_width_room, height: column_height)
+                    text = String(inv.price) + Global.currencySymbol!
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    x = x + column_width_price
+                    
+                    // print image only when image switch is on
                     if imageSwitch.isOn{
-                        pdfImageForIntenvory(xPos: imageSizePosX + column_width, yPos: y, imageData: inv.image)
+                        pdfImageForIntenvory(xPos: column_width_room + column_width_item - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
                 }
-                
-                //let columnText : [String] = [inv.inventoryName!, inv.inventoryOwner!.ownerName!, inv.inventoryRoom!.roomName!, inv.inventoryCategory!.categoryName!, String(inv.price)]
                 
                 x = left_margin
-                for column in columnText{
-                    stringRect = CGRect(x: x, y: y, width: column_width, height: column_height)
-                    text = column
-                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-                    x = x + column_width
-                }
-                
                 
                 
                 // current layout fits 49 rows in one page with dinA4, 47 rows in USLetter

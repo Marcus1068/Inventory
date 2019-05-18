@@ -201,6 +201,9 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                         guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
                         self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
                 }
+                
+                // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
+                pdfViewGestureWhenTapped()
             }
             
             // inventory image

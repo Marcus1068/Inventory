@@ -756,9 +756,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         context.cgContext.addLine(to: CGPoint(x: paperWidth - rightMargin, y: footer_pos_y - 10))
         context.cgContext.drawPath(using: .fillStroke)
     }
- /*
+
     func itemColumn(xPos: Double, yPos: Double, text: String) -> Double{
-        let x = left_margin
+        let x = leftMargin
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
@@ -771,12 +771,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         // item
-        stringRect = CGRect(x: xPos, y: yPos, width: column_width_item, height: column_height)
-        let text = Global.item
-        text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        stringRect = CGRect(x: xPos, y: yPos, width: columnWidthItem, height: columnHeight)
+        let textToDraw = text
+        textToDraw.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        return x + column_width_item
-    } */
+        return x + columnWidthItem
+    }
     
     // generate pdf pdfTableHeader
     func pdfTableHeader(context: UIGraphicsRendererContext){
@@ -804,11 +804,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         switch (currentSortOrder){
         case .item:
             // item
-            stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
+            x = itemColumn(xPos: x, yPos: y, text: Global.item)
+        /*    stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
             text = Global.item
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthItem
-            
+          */
             // owner
             stringRect = CGRect(x: x, y: y, width: columnWidthOwner, height: columnHeight)
             text = Global.owner

@@ -30,7 +30,8 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate{
+class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate,
+                                    UIDropInteractionDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -288,6 +289,26 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
         */
     }
+    
+    // for 3D Touch peek and pop needed in detail view controller for defining actions
+    override var previewActionItems : [UIPreviewActionItem] {
+        
+        let actionTitle = "Like"
+        let action1 = UIPreviewAction(title: actionTitle, style: .default) { (action, controller) in
+            
+        }
+        
+        let action2 = UIPreviewAction(title: "Cancel", style: .destructive) { (action, controller) in
+            print("Cancel Action Selected")
+        }
+        
+        let actionGroup = UIPreviewActionGroup(title: "More Actions", style: .default, actions: [action1, action2])
+        
+        let finalArray = NSArray.init(object: actionGroup)
+        return finalArray as! [UIPreviewActionItem]
+        
+    }
+    
     
     // MARK: - drag and drop support
     

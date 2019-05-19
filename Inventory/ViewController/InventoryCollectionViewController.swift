@@ -217,6 +217,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
+        // register peek and pop function
+        registerForPeekAndPopWithCollectionView(collectionView: collection)
+        
+        
     /*    if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
@@ -1022,4 +1026,41 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
         }
     }
     
+}
+
+// implement peek and pop on 3D touch enabled devices like iPhone 8 onwards
+extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate {
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collection.indexPathForItem(at: location),
+            let cell = collection.cellForItem(at: indexPath) else { return nil }
+        
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? InventoryEditViewController else { return nil }
+        
+        let inv = fetchedResultsController.object(at: indexPath)
+        
+        detailVC.currentInventory = inv
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 300)
+        
+        previewingContext.sourceRect = cell.frame
+
+        
+        return detailVC
+    }
+    
+    
+    // pop will open new view controller
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: nil)
+    }
+    
+}
+
+// implement peek and pop on 3D touch enabled devices like iPhone 8 onwards
+extension InventoryCollectionViewController {
+    func registerForPeekAndPopWithCollectionView(collectionView: UICollectionView) {
+        guard #available(iOS 9.0, *) else { return }
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
+        }
+    }
 }

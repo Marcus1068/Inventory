@@ -1038,11 +1038,10 @@ extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate 
         
         let inv = fetchedResultsController.object(at: indexPath)
         
+        detailVC.delegate = self
         detailVC.currentInventory = inv
         detailVC.preferredContentSize = CGSize(width: 0.0, height: 400)
-        
         previewingContext.sourceRect = cell.frame
-
         
         return detailVC
     }
@@ -1052,7 +1051,25 @@ extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate 
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         show(viewControllerToCommit, sender: nil)
     }
-    
+}
+
+// MARK: - InventoryEditViewControllerDelegate
+extension InventoryCollectionViewController: InventoryEditViewControllerDelegate {
+    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController) {
+        switch action.title {
+        case "Edit":
+            print("Edit")
+            navigationController?.show(previewedController, sender: nil)
+        case "Delete":
+            print("Delete")
+            navigationController?.show(previewedController, sender: nil)
+            /*guard let addGeotificationViewController = previewedController as? InventoryEditViewController,
+                let geotification = addGeotificationViewController.geotification else { return }
+            remove(geotification) */
+        default:
+            break
+        }
+    }
 }
 
 // implement peek and pop on 3D touch enabled devices like iPhone 8 onwards

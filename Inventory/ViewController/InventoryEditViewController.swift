@@ -30,6 +30,13 @@ import os.log
 import MobileCoreServices
 import AVKit
 
+protocol InventoryEditViewControllerDelegate {
+    //func addGeotificationViewController(_ controller: InventoryEditViewController, didAdd geotification: Geotification)
+    //func addGeotificationViewController(_ controller: AddGeotificationViewController, didChange oldGeotifcation: Geotification, to newGeotification: Geotification)
+    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController)
+}
+
+
 class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate,
                                     UIDropInteractionDelegate{
 
@@ -69,6 +76,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // contains the selected object from viewcontroller before
     // either inventory for edit or nil, then add new inventory to database
     var currentInventory : Inventory?
+    
+    var delegate: InventoryEditViewControllerDelegate?
     
     // get all detail infos
     var rooms : [Room] = []
@@ -291,7 +300,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     }
     
     // for 3D Touch peek and pop needed in detail view controller for defining actions
-    override var previewActionItems : [UIPreviewActionItem] {
+/*    override var previewActionItems : [UIPreviewActionItem] {
         
         let deleteTitle = Global.delete
         let action1 = UIPreviewAction(title: deleteTitle, style: .default) { (action, controller) in
@@ -313,8 +322,27 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         //let finalArray = NSArray.init(object: actionGroup)
         return [action1, action2, action3] //finalArray as! [UIPreviewActionItem]
         
+    } */
+    
+    // for 3D Touch peek and pop needed in detail view controller for defining actions
+    override var previewActionItems: [UIPreviewActionItem] {
+        let editAction = UIPreviewAction(title: "Edit", style: .default) {
+            [weak self] (action, controller) in
+            self?.handle(action: action, and: controller)
+        }
+        
+        let deleteAction = UIPreviewAction(title: "Delete", style: .destructive) {
+            [weak self] (action, controller) in
+            self?.handle(action: action, and: controller)
+        }
+        return [editAction, deleteAction]
     }
     
+    // call delegate
+    private func handle(action: UIPreviewAction, and controller: UIViewController) {
+        delegate?.inventoryEditViewController(self, didSelect: action, for: controller)
+    }
+
     
     // MARK: - drag and drop support
     

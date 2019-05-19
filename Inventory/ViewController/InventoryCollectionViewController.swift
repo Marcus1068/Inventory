@@ -1039,7 +1039,7 @@ extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate 
         let inv = fetchedResultsController.object(at: indexPath)
         
         detailVC.currentInventory = inv
-        detailVC.preferredContentSize = CGSize(width: 0.0, height: 300)
+        detailVC.preferredContentSize = CGSize(width: 0.0, height: 400)
         
         previewingContext.sourceRect = cell.frame
 

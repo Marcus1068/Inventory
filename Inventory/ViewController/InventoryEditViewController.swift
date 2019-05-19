@@ -33,7 +33,7 @@ import AVKit
 protocol InventoryEditViewControllerDelegate {
     //func addGeotificationViewController(_ controller: InventoryEditViewController, didAdd geotification: Geotification)
     //func addGeotificationViewController(_ controller: AddGeotificationViewController, didChange oldGeotifcation: Geotification, to newGeotification: Geotification)
-    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController)
+    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController, which inventory: Inventory)
 }
 
 
@@ -326,21 +326,33 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // for 3D Touch peek and pop needed in detail view controller for defining actions
     override var previewActionItems: [UIPreviewActionItem] {
-        let editAction = UIPreviewAction(title: "Edit", style: .default) {
+        
+        let duplicateAction = UIPreviewAction(title: Global.duplicate, style: .default) {
             [weak self] (action, controller) in
             self?.handle(action: action, and: controller)
         }
         
-        let deleteAction = UIPreviewAction(title: "Delete", style: .destructive) {
+        let deleteAction = UIPreviewAction(title: Global.delete, style: .destructive) {
             [weak self] (action, controller) in
             self?.handle(action: action, and: controller)
         }
-        return [editAction, deleteAction]
+        
+        let cancelAction = UIPreviewAction(title: Global.cancel, style: .default) {
+            [weak self] (action, controller) in
+            self?.handle(action: action, and: controller)
+        }
+        
+        let editAction = UIPreviewAction(title: Global.edit, style: .default) {
+            [weak self] (action, controller) in
+            self?.handle(action: action, and: controller)
+        }
+        
+        return [duplicateAction, editAction, deleteAction, cancelAction]
     }
     
     // call delegate
     private func handle(action: UIPreviewAction, and controller: UIViewController) {
-        delegate?.inventoryEditViewController(self, didSelect: action, for: controller)
+        delegate?.inventoryEditViewController(self, didSelect: action, for: controller, which: currentInventory!)
     }
 
     

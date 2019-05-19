@@ -1055,20 +1055,78 @@ extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate 
 
 // MARK: - InventoryEditViewControllerDelegate
 extension InventoryCollectionViewController: InventoryEditViewControllerDelegate {
-    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController) {
+    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController, which inventory: Inventory) {
+        
         switch action.title {
-        case "Edit":
-            print("Edit")
+        case Global.cancel:
+            //print("cancel")
+            //navigationController?.show(previewedController, sender: nil)
+            // do nothing
+            break
+            
+        case Global.delete:
+            // delete current inventory object
+            //print(inventory.inventoryName!)
+            _ = CoreDataHandler.deleteInventory(inventory: inventory)
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
+                os_log("InventoryCollectionViewController doneDelete", log: Log.viewcontroller, type: .error)
+            }
+            collection.reloadData()
+            //navigationController?.show(previewedController, sender: nil)
+            break
+        
+        case Global.duplicate:
+            // duplicate current inventory object
+            print("duplicate")
+            if let _ = duplicateIntentoryItem(inv: inventory){
+                do {
+                    try fetchedResultsController.performFetch()
+                } catch let error as NSError {
+                    print("Fetching error: \(error), \(error.userInfo)")
+                    os_log("InventoryCollectionViewController doneDelete", log: Log.viewcontroller, type: .error)
+                }
+                collection.reloadData()
+            }
+            break
+            
+        case Global.edit:
             navigationController?.show(previewedController, sender: nil)
-        case "Delete":
-            print("Delete")
-            navigationController?.show(previewedController, sender: nil)
-            /*guard let addGeotificationViewController = previewedController as? InventoryEditViewController,
-                let geotification = addGeotificationViewController.geotification else { return }
-            remove(geotification) */
+            break
+            
         default:
             break
         }
+    }
+    
+    // duplicate inventory item in memory and in core data
+    func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
+        let context = CoreDataHandler.getContext()
+        let currentInventory = Inventory(context: context) // setup new inventory object
+    
+        // duplicate every attribute but UUID, has to be new, and inventory name gets "inv name (copy)"
+        currentInventory.id = UUID()
+        currentInventory.inventoryName = inv.inventoryName! + " (" + Global.copy + ")"
+        currentInventory.dateOfPurchase = inv.dateOfPurchase
+        currentInventory.price = inv.price
+        currentInventory.remark = inv.remark
+        currentInventory.serialNumber = inv.serialNumber
+        currentInventory.warranty = inv.warranty
+        currentInventory.inventoryOwner = inv.inventoryOwner
+        currentInventory.inventoryRoom = inv.inventoryRoom
+        currentInventory.inventoryBrand = inv.inventoryBrand
+        currentInventory.inventoryCategory = inv.inventoryCategory
+        currentInventory.timeStamp = Date() as NSDate?  // set new date since this is a copy but new
+        currentInventory.image = inv.image
+        currentInventory.imageFileName = inv.imageFileName
+        currentInventory.invoice = inv.invoice
+        currentInventory.invoiceFileName = inv.invoiceFileName
+        
+        _ = CoreDataHandler.saveInventory(inventory: currentInventory)
+        
+        return currentInventory
     }
 }
 

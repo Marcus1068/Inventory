@@ -68,6 +68,9 @@ class Global: NSObject {
     static let error = NSLocalizedString("Error", comment: "Error")
     static let done = NSLocalizedString("Done", comment: "Done")
     static let none = NSLocalizedString("None", comment: "None")
+    static let duplicate = NSLocalizedString("Duplicate", comment: "Duplicate")
+    static let edit = NSLocalizedString("Edit", comment: "Edit")
+    static let copy = NSLocalizedString("Copy", comment: "Copy")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

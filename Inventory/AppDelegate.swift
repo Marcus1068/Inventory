@@ -119,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: shortcutType) else {
             return false
         }
+        
         return selectTabBarItemForIdentifier(shortcutIdentifier)
     }
     
@@ -126,9 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return false
         }
-        //print(identifier as Any)
-        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        var reqVC : UIViewController!
         
         switch (identifier) {
         case .OpenShare:
@@ -146,21 +144,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .OpenImportExport:
             //tabBarController.selectedIndex = 2
             
+            tabBarController.selectedIndex = 0
             
-            reqVC = mainStoryboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
+            let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
             
-            //return true
+            let nav = tabBarController.viewControllers![0] as! UINavigationController
+            let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
+            editView.currentInventory = nil
+            
+            nav.pushViewController(editView, animated: true)
+            
+            
+            return true
         }
         
-        if let homeVC = self.window?.rootViewController as? UITabBarController{
-            //homeVC.pushViewController(reqVC, animated: true)
-            homeVC.performSegue(withIdentifier: "EditViewController", sender: self)
-        }
-        else{
-            return false
-        }
-        
-        return true
+        //return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -72,6 +72,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
     
+    // gesture recignizer for long press
+    var gestureRecognizer = UILongPressGestureRecognizer()
+    
     // store original nav bar buttons
     var leftNavBarButton : UIBarButtonItem? = nil
     var rightNavBarButton : UIBarButtonItem? = nil
@@ -88,6 +91,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // store selected items when delete mode = true
     var indexPathsForDeletion = [IndexPath]()
+    
+    // needed for long press gesture recognizer
+    var longPressInventoryItem : Inventory?
     
     // enter delete mode
     var deleteMode: Bool = false {
@@ -217,8 +223,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
-        // register peek and pop function
-        registerForPeekAndPopWithCollectionView(collectionView: collection)
         
         
     /*    if #available(iOS 11.0, *) {
@@ -275,6 +279,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         // check for camera permission
         let _ = Global.checkCameraPermission()
+        
+        // register peek and pop function
+        registerForPeekAndPopWithCollectionView(collectionView: collection)
     }
 
     fileprivate func updateNumberOfItemsLabel() {
@@ -289,6 +296,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         super.viewWillAppear(animated)
  
         //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
+        
+        // reset: no inv item selected
+        longPressInventoryItem = nil
         
         // clear selected index paths
         //indexPathsForDeletion.removeAll()
@@ -1072,7 +1082,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {
                 print("Fetching error: \(error), \(error.userInfo)")
-                os_log("InventoryCollectionViewController doneDelete", log: Log.viewcontroller, type: .error)
+                os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
             }
             collection.reloadData()
             //navigationController?.show(previewedController, sender: nil)
@@ -1086,7 +1096,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                     try fetchedResultsController.performFetch()
                 } catch let error as NSError {
                     print("Fetching error: \(error), \(error.userInfo)")
-                    os_log("InventoryCollectionViewController doneDelete", log: Log.viewcontroller, type: .error)
+                    os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
                 }
                 collection.reloadData()
             }
@@ -1164,11 +1174,106 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
 }
 
 // implement peek and pop on 3D touch enabled devices like iPhone 8 onwards
+// if not available offer menu and long press gesture recognizer
 extension InventoryCollectionViewController {
     func registerForPeekAndPopWithCollectionView(collectionView: UICollectionView) {
         guard #available(iOS 9.0, *) else { return }
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
         }
+        else{
+            // long press gesture recignizer
+            gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(InventoryCollectionViewController.longPressGesture))
+            
+            gestureRecognizer.minimumPressDuration = 0.3
+            collection.addGestureRecognizer(gestureRecognizer)
+        }
+    }
+}
+
+// for handling long press gesture recognizer
+extension InventoryCollectionViewController{
+    
+    // must return true otherwise no UIMenu appears
+    override var canBecomeFirstResponder: Bool{
+        return true
+    }
+    /*
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return true
+    } */
+    
+    // gets called by long press gesture in case we do not have a 3D touch enabled device
+    @objc func longPressGesture(sender: UILongPressGestureRecognizer){
+        
+        guard sender.state == .began
+            //let senderView = sender.view
+            else { return }
+        //print("long press")
+        // Make collection the window's first responder
+        collection.becomeFirstResponder()
+        
+        let menuController: UIMenuController = UIMenuController.shared
+        
+        // Set up the shared UIMenuController
+        let duplicateMenuItem = UIMenuItem(title: Global.duplicate, action: #selector(duplicateTapped))
+        let deleteMenuItem = UIMenuItem(title: Global.delete, action: #selector(deleteTapped))
+        
+        // Animate the menu onto view
+        menuController.setMenuVisible(true, animated: true)
+        menuController.arrowDirection = UIMenuController.ArrowDirection.default
+        menuController.menuItems = [duplicateMenuItem, deleteMenuItem]
+        
+        // Tell the menu controller the first responder's frame and its super view
+        //menuController.setTargetRect(CGRect.zero, in: gestureRecognizer.view!)
+        
+        // Set the location of the menu in the view.
+        let location = gestureRecognizer.location(in: gestureRecognizer.view)
+        //print(location)
+        let menuLocation = CGRect(x: location.x, y: location.y - 40, width: 0, height: 0)   // FIXME 40 hard coded!!!
+        menuController.setTargetRect(menuLocation, in: gestureRecognizer.view!)
+        
+        let point = location
+        let indexPath = collection.indexPathForItem(at: point)
+        
+        if indexPath != nil {
+            let inv = fetchedResultsController.object(at: indexPath!)
+            longPressInventoryItem = inv
+        }
+    }
+    
+    // duplicate menu item
+    @objc func duplicateTapped() {
+        if let inv = longPressInventoryItem{
+            if let _ = duplicateIntentoryItem(inv: inv){
+                do {
+                    try fetchedResultsController.performFetch()
+                } catch let error as NSError {
+                    print("Fetching error: \(error), \(error.userInfo)")
+                    os_log("InventoryCollectionViewController duplicateTapped", log: Log.viewcontroller, type: .error)
+                }
+                collection.reloadData()
+            }
+        }
+        // ...
+        // This would be a good place to optionally resign
+        // responsiveView's first responder status if you need to
+        collection.resignFirstResponder()
+    }
+    
+    // delete menu item
+    @objc func deleteTapped() {
+        if let inv = longPressInventoryItem{
+            _ = CoreDataHandler.deleteInventory(inventory: inv)
+            do {
+                try fetchedResultsController.performFetch()
+            } catch let error as NSError {
+                print("Fetching error: \(error), \(error.userInfo)")
+                os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
+            }
+            collection.reloadData()
+        }
+        // ...
+        collection.resignFirstResponder()
     }
 }

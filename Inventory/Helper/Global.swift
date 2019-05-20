@@ -71,6 +71,7 @@ class Global: NSObject {
     static let duplicate = NSLocalizedString("Duplicate", comment: "Duplicate")
     static let edit = NSLocalizedString("Edit", comment: "Edit")
     static let copy = NSLocalizedString("Copy", comment: "Copy")
+    static let printInvoice = NSLocalizedString("Print Invoice", comment: "Print Invoice")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

@@ -347,7 +347,12 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             self?.handle(action: action, and: controller)
         }
         
-        return [duplicateAction, editAction, deleteAction, cancelAction]
+        let printAction = UIPreviewAction(title: Global.printInvoice, style: .default) {
+            [weak self] (action, controller) in
+            self?.handle(action: action, and: controller)
+        }
+        
+        return [duplicateAction, printAction, editAction, deleteAction, cancelAction]
     }
     
     // call delegate

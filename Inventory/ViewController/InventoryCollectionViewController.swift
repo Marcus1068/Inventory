@@ -1080,7 +1080,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
         
         case Global.duplicate:
             // duplicate current inventory object
-            print("duplicate")
+            //print("duplicate")
             if let _ = duplicateIntentoryItem(inv: inventory){
                 do {
                     try fetchedResultsController.performFetch()
@@ -1094,6 +1094,39 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
             
         case Global.edit:
             navigationController?.show(previewedController, sender: nil)
+            break
+            
+        case Global.printInvoice:
+            if let print = inventory.invoice{
+                //print("drucken")
+                if UIPrintInteractionController.canPrint(print as Data) {
+                    let printInfo = UIPrintInfo(dictionary: nil)
+                    printInfo.jobName = inventory.invoiceFileName!
+                    printInfo.outputType = .general
+                    
+                    let printController = UIPrintInteractionController.shared
+                    printController.printInfo = printInfo
+                    printController.showsNumberOfCopies = false
+                    
+                    printController.printingItem = print
+                    
+                    printController.present(animated: true, completionHandler: nil)
+                }
+                else{
+                    let title = NSLocalizedString("No invoice", comment: "No invoice")
+                    let message = NSLocalizedString("Item does not have an invoice to print", comment: "Item does not have an invoice to print")
+                    let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+                    
+                    let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+                        // do nothing when cancel
+                    }
+                    
+                    myActionSheet.addAction(action)
+                    addActionSheetForiPad(actionSheet: myActionSheet)
+                    present(myActionSheet, animated: true, completion: nil)
+                }
+            }
+            //navigationController?.show(previewedController, sender: nil)
             break
             
         default:

@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case OpenShare
         case OpenReport
         case OpenImportExport
+        case OpenAddItem
         
         init?(fullIdentifier: String) {
             guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
@@ -142,8 +143,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
             
         case .OpenImportExport:
-            //tabBarController.selectedIndex = 2
+            tabBarController.selectedIndex = 2
             
+            return true
+            
+        case .OpenAddItem:
             tabBarController.selectedIndex = 0
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
@@ -153,7 +157,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             editView.currentInventory = nil
             
             nav.pushViewController(editView, animated: true)
-            
             
             return true
         }

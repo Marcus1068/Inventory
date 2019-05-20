@@ -36,6 +36,16 @@
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenImportExport</string>
 		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeAdd</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>shortcutSubtitleAddItem</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcutTitleAddItem</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenAddItem</string>
+		</dict>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Inventory App</string>

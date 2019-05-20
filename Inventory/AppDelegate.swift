@@ -127,6 +127,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         //print(identifier as Any)
+        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        var reqVC : UIViewController!
+        
         switch (identifier) {
         case .OpenShare:
             self.shareAppLink()
@@ -141,10 +144,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
             
         case .OpenImportExport:
-            tabBarController.selectedIndex = 2
-            return true
+            //tabBarController.selectedIndex = 2
             
+            
+            reqVC = mainStoryboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
+            
+            //return true
         }
+        
+        if let homeVC = self.window?.rootViewController as? UITabBarController{
+            //homeVC.pushViewController(reqVC, animated: true)
+            homeVC.performSegue(withIdentifier: "EditViewController", sender: self)
+        }
+        else{
+            return false
+        }
+        
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -280,19 +296,13 @@ extension AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    var rootViewController: UITabBarController {
-        return window!.rootViewController as! UITabBarController
-    }
-    
+    // share the apps link in 3D touch action
     func shareAppLink() {
-        
-        // https://itunes.apple.com/us/app/inventory-app/id1386694734?l=de&ls=1&mt=8
-        // URL(string: "itms-apps://itunes.apple.com/app/" + "id1386694734")
-        let url = URL(string: "https://itunes.apple.com/de/app/inventory-app/id1386694734?l=de&ls=1&mt=8")
+        let url = URL(string: Global.AppLink)
         
         let shareItems:Array = [url]
         let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
-        
-        rootViewController.present(activityViewController, animated: true, completion: nil)
+
+        window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
     }
 }

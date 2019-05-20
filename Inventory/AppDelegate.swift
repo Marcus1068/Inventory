@@ -42,6 +42,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let kvStore = NSUbiquitousKeyValueStore()
 
+    enum ShortcutIdentifier: String {
+        case OpenShare
+        case OpenReport
+        case OpenImportExport
+        
+        init?(fullIdentifier: String) {
+            guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            self.init(rawValue: shortIdentifier)
+        }
+    }
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -83,10 +97,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // get user name and address from iCloud
         getiCloudStorageInfo()
         
+        // handle short cut
+        if let shortcutItem =
+            launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem]
+                as? UIApplicationShortcutItem {
+            
+            let _ = handleShortcut(shortcutItem: shortcutItem)
+            return false
+        }
+        
         return true
     }
 
-
+    // perform 3D touch icon short cuts
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+    }
+    
+    private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: shortcutType) else {
+            return false
+        }
+        return selectTabBarItemForIdentifier(shortcutIdentifier)
+    }
+    
+    fileprivate func selectTabBarItemForIdentifier(_ identifier: ShortcutIdentifier) -> Bool {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return false
+        }
+        //print(identifier as Any)
+        switch (identifier) {
+        case .OpenShare:
+            self.shareAppLink()
+            //tabBarController.selectedIndex = 1
+            // https://itunes.apple.com/us/app/inventory-app/id1386694734?l=de&ls=1&mt=8
+            // URL(string: "itms-apps://itunes.apple.com/app/" + "id1386694734")
+            
+            return true
+            
+        case .OpenReport:
+            tabBarController.selectedIndex = 3
+            return true
+            
+        case .OpenImportExport:
+            tabBarController.selectedIndex = 2
+            return true
+            
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -212,5 +272,27 @@ extension UIDevice {
         default:
             return .unknown
         }
+    }
+}
+
+extension AppDelegate {
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var rootViewController: UITabBarController {
+        return window!.rootViewController as! UITabBarController
+    }
+    
+    func shareAppLink() {
+        
+        // https://itunes.apple.com/us/app/inventory-app/id1386694734?l=de&ls=1&mt=8
+        // URL(string: "itms-apps://itunes.apple.com/app/" + "id1386694734")
+        let url = URL(string: "https://itunes.apple.com/de/app/inventory-app/id1386694734?l=de&ls=1&mt=8")
+        
+        let shareItems:Array = [url]
+        let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
+        
+        rootViewController.present(activityViewController, animated: true, completion: nil)
     }
 }

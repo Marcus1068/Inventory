@@ -4,6 +4,39 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>shortcutSubtitleShare</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcutTitleShare</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenShare</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Report</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>shortcutSubtitleReport</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcutTitleReport</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenReport</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>Export</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>shortcutSubtitleImportExport</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>shortcutTitleImportExport</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).OpenImportExport</string>
+		</dict>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Inventory App</string>
 	<key>CFBundleDocumentTypes</key>

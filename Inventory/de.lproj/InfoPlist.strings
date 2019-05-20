@@ -10,3 +10,11 @@
 /* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Kamera notwendig um Fotos zu erstellen";
 
+shortcutTitleReport = "Report";
+shortcutSubtitleReport = "Show your items and print/share them";
+
+shortcutTitleImportExport = "Import/Export";
+shortcutSubtitleImportExport = "get data in and out of your app";
+
+shortcutTitleShare = "Share Inventory App";
+shortcutSubtitleShare = "Recommend this app to somebody";

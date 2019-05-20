@@ -1114,7 +1114,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                 }
                 else{
                     let title = NSLocalizedString("No invoice", comment: "No invoice")
-                    let message = NSLocalizedString("Item does not have an invoice to print", comment: "Item does not have an invoice to print")
+                    let message = NSLocalizedString("Item does not have an invoice to print, please attach an invoice to your item first", comment: "Item does not have an invoice to print")
                     let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
                     
                     let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in

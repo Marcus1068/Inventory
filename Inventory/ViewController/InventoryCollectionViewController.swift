@@ -280,8 +280,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // check for camera permission
         let _ = Global.checkCameraPermission()
         
-        // register peek and pop function
-        registerForPeekAndPopWithCollectionView(collectionView: collection)
+        
     }
 
     fileprivate func updateNumberOfItemsLabel() {
@@ -354,8 +353,16 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
         }
         
+        // register peek and pop function
+        registerForPeekAndPopWithCollectionView(collectionView: collection)
     }
     
+    // when user chooses a different tab bar item and view disapprears
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+        collection.removeGestureRecognizer(gestureRecognizer)
+        collection.resignFirstResponder()
+    }
     
     // number of sections, section devider is room name
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -1177,7 +1184,6 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
 // if not available offer menu and long press gesture recognizer
 extension InventoryCollectionViewController {
     func registerForPeekAndPopWithCollectionView(collectionView: UICollectionView) {
-        guard #available(iOS 9.0, *) else { return }
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
         }
@@ -1185,8 +1191,9 @@ extension InventoryCollectionViewController {
             // long press gesture recignizer
             gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(InventoryCollectionViewController.longPressGesture))
             
-            gestureRecognizer.minimumPressDuration = 0.3
+            gestureRecognizer.minimumPressDuration = 0.5
             collection.addGestureRecognizer(gestureRecognizer)
+            print("gesture rec. registered")
         }
     }
 }
@@ -1196,6 +1203,7 @@ extension InventoryCollectionViewController{
     
     // must return true otherwise no UIMenu appears
     override var canBecomeFirstResponder: Bool{
+        print("canbecomefirstresponder")
         return true
     }
     /*
@@ -1209,6 +1217,7 @@ extension InventoryCollectionViewController{
         guard sender.state == .began
             //let senderView = sender.view
             else { return }
+        
         //print("long press")
         // Make collection the window's first responder
         collection.becomeFirstResponder()
@@ -1218,11 +1227,12 @@ extension InventoryCollectionViewController{
         // Set up the shared UIMenuController
         let duplicateMenuItem = UIMenuItem(title: Global.duplicate, action: #selector(duplicateTapped))
         let deleteMenuItem = UIMenuItem(title: Global.delete, action: #selector(deleteTapped))
+        let cancelMenuItem = UIMenuItem(title: Global.cancel, action: #selector(cancelTapped))
         
         // Animate the menu onto view
         menuController.setMenuVisible(true, animated: true)
         menuController.arrowDirection = UIMenuController.ArrowDirection.default
-        menuController.menuItems = [duplicateMenuItem, deleteMenuItem]
+        menuController.menuItems = [duplicateMenuItem, deleteMenuItem, cancelMenuItem]
         
         // Tell the menu controller the first responder's frame and its super view
         //menuController.setTargetRect(CGRect.zero, in: gestureRecognizer.view!)
@@ -1240,6 +1250,7 @@ extension InventoryCollectionViewController{
             let inv = fetchedResultsController.object(at: indexPath!)
             longPressInventoryItem = inv
         }
+        
     }
     
     // duplicate menu item
@@ -1259,6 +1270,7 @@ extension InventoryCollectionViewController{
         // This would be a good place to optionally resign
         // responsiveView's first responder status if you need to
         collection.resignFirstResponder()
+        longPressInventoryItem = nil
     }
     
     // delete menu item
@@ -1275,5 +1287,12 @@ extension InventoryCollectionViewController{
         }
         // ...
         collection.resignFirstResponder()
+        longPressInventoryItem = nil
+    }
+    
+    // cancel tapped
+    @objc func cancelTapped() {
+        collection.resignFirstResponder()
+        longPressInventoryItem = nil
     }
 }

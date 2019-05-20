@@ -5,19 +5,32 @@
 "CFBundleName" = "Inventory App";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Kamera notwendig um Fotos zu erstellen";
+"NSCameraUsageDescription" = "Kamera Nutzung notwendig, um Fotos zu erstellen";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Kamera notwendig um Fotos zu erstellen";
+"NSPhotoLibraryUsageDescription" = "Kamera Nutzung notwendig, um Fotos zu erstellen";
 
-shortcutTitleReport = "Report";
-shortcutSubtitleReport = "Show your report";
+/* (No Comment) */
+"shortcutSubtitleAddItem" = "Dem Inventar hinzufügen";
 
-shortcutTitleImportExport = "Import/Export";
-shortcutSubtitleImportExport = "get data in and out";
+/* (No Comment) */
+"shortcutSubtitleImportExport" = "Daten rein und raus";
 
-shortcutTitleShare = "Share App Link";
-shortcutSubtitleShare = "Recommend this app";
+/* (No Comment) */
+"shortcutSubtitleReport" = "Bericht anzeigen";
 
-shortcutTitleAddItem = "Add item";
-shortcutSubtitleAddItem = "Adding item to inventory";
+/* (No Comment) */
+"shortcutSubtitleShare" = "App empfehlen";
+
+/* (No Comment) */
+"shortcutTitleAddItem" = "Objekt hinzufügen";
+
+/* (No Comment) */
+"shortcutTitleImportExport" = "Import/Export";
+
+/* (No Comment) */
+"shortcutTitleReport" = "Bericht";
+
+/* (No Comment) */
+"shortcutTitleShare" = "Teile App Link";
+

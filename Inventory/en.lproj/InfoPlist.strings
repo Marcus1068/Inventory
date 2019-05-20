@@ -1,0 +1,36 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "Inventory App";
+
+/* Bundle name */
+"CFBundleName" = "Inventory App";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Camera use necessary to capture inventory photos";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Camera use necessary to capture inventory photos";
+
+/* (No Comment) */
+"shortcutSubtitleAddItem" = "Adding item to inventory";
+
+/* (No Comment) */
+"shortcutSubtitleImportExport" = "get data in and out";
+
+/* (No Comment) */
+"shortcutSubtitleReport" = "Show Report";
+
+/* (No Comment) */
+"shortcutSubtitleShare" = "Recommend this app";
+
+/* (No Comment) */
+"shortcutTitleAddItem" = "Add item";
+
+/* (No Comment) */
+"shortcutTitleImportExport" = "Import/Export";
+
+/* (No Comment) */
+"shortcutTitleReport" = "Report";
+
+/* (No Comment) */
+"shortcutTitleShare" = "Share App Link";
+

@@ -91,6 +91,9 @@
 /* Confirm */
 "Confirm" = "Bestätigen";
 
+/* Copy */
+"Copy" = "Kopieren";
+
 /* Created at: */
 "Created at: " = "Erzeugt am:";
 
@@ -132,6 +135,12 @@
 
 /* Done */
 "Done" = "Schließen";
+
+/* Duplicate */
+"Duplicate" = "Duplizieren";
+
+/* Edit */
+"Edit" = "Bearbeiten";
 
 /* Edit Brand */
 "Edit Brand" = "Marke bearbeiten";
@@ -217,6 +226,9 @@
 /* Item */
 "Item" = "Objekt";
 
+/* Item does not have an invoice to print */
+"Item does not have an invoice to print, please attach an invoice to your item first" = "Objekt hat keine Rechnung zugewiesen, bitte zuerst eine Rechnung auswählen";
+
 /* items */
 "items" = "Objekte";
 
@@ -265,6 +277,9 @@
 /* No file selected for importing */
 "No file selected for importing" = "Keine Datei zum Importieren ausgewählt";
 
+/* No invoice */
+"No invoice" = "Keine Rechnung";
+
 /* None */
 "None" = "Keine";
 
@@ -309,6 +324,9 @@
 
 /* Price */
 "Price" = "Preis";
+
+/* Print Invoice */
+"Print Invoice" = "Drucke Rechnung";
 
 /* Privacy Information */
 "Privacy Information" = "Datenschutzhinweis";

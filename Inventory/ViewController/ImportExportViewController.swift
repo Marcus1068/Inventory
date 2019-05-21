@@ -637,7 +637,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         else
         {
-            self.showSendMailErrorAlert()
+            displayAlert(title: Global.emailNotSent, message: Global.emailDevice, buttonText: Global.emailConfig)
         }
     }
     
@@ -662,15 +662,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         
         return mailComposerVC
-    }
-    
-    /// show error if mail sending does not work
-    func showSendMailErrorAlert()
-    {
-        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method

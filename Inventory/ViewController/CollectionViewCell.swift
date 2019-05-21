@@ -40,7 +40,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var warrantyLabel: UILabel!
     // select background color, works only on TVOS
-    func markSelected(state: Bool){
+/*    func markSelected(state: Bool){
         //os_log("CollectionViewCell markSelected", log: Log.viewcontroller, type: .info)
         
         if state == true{
@@ -62,5 +62,5 @@ class CollectionViewCell: UICollectionViewCell {
         let ip = cv.indexPath(for: self)!
         // relay to its delegate
         cv.delegate?.collectionView?(cv, performAction:#selector(capital), forItemAt: ip, withSender: sender)
-    }
+    } */
 }

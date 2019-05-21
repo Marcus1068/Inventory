@@ -474,3 +474,55 @@ extension UIApplication {
     }
 }
 
+// dismiss keyboard with gesture recognizer when tapping outside of text fields
+// this extension method can be used in all view controllers of the app
+extension UIViewController {
+    // use this method in viewDidLoad of any view controller that uses text edit fields
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // general alert extension with just one button to be pressed
+    func displayAlert(title: String, message: String, buttonText: String) {
+        
+        // Create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        // Add an action
+        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { action in
+            
+            // Dismiss when the button is pressed
+            self.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        // Add it to viewController
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// for action sheets on ipad and iPhone, works on both devices, otherwise app crashes
+// displays action sheet in the middle of iPad screen, on bottom on iPhone screen as usual
+extension UIViewController {
+    public func addActionSheetForiPad(actionSheet: UIAlertController) {
+        if let popoverPresentationController = actionSheet.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverPresentationController.permittedArrowDirections = []
+        }
+    }
+}
+
+extension ImageViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        //os_log("ImageViewController viewForZooming", log: Log.viewcontroller, type: .info)
+        
+        return imageView
+    }
+}

@@ -78,11 +78,3 @@ class ImageViewController: UIViewController {
     }
 
 }
-
-extension ImageViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        //os_log("ImageViewController viewForZooming", log: Log.viewcontroller, type: .info)
-        
-        return imageView
-    }
-}

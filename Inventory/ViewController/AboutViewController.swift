@@ -268,36 +268,3 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
 
 }
-
-// dismiss keyboard with gesture recognizer when tapping outside of text fields
-// this extension method can be used in all view controllers of the app
-extension UIViewController {
-    // use this method in viewDidLoad of any view controller that uses text edit fields
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    // general alert extension with just one button to be pressed
-    func displayAlert(title: String, message: String, buttonText: String) {
-        
-        // Create the alert
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
-        // Add an action
-        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { action in
-            
-            // Dismiss when the button is pressed
-            self.dismiss(animated: true, completion: nil)
-            
-        }))
-        
-        // Add it to viewController
-        self.present(alert, animated: true, completion: nil)
-    }
-}

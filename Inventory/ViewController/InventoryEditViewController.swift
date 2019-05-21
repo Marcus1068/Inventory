@@ -908,14 +908,4 @@ extension InventoryEditViewController: ImagePickerDelegate {
     }
 }
 
-// for action sheets on ipad and iPhone, works on both devices, otherwise app crashes
-// displays action sheet in the middle of iPad screen, on bottom on iPhone screen as usual
-extension UIViewController {
-    public func addActionSheetForiPad(actionSheet: UIAlertController) {
-        if let popoverPresentationController = actionSheet.popoverPresentationController {
-            popoverPresentationController.sourceView = self.view
-            popoverPresentationController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-            popoverPresentationController.permittedArrowDirections = []
-        }
-    }
-}
+

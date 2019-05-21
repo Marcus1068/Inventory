@@ -203,7 +203,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         else
         {
-            self.showSendMailErrorAlert()
+            displayAlert(title: Global.emailNotSent, message: Global.emailDevice, buttonText: Global.emailConfig)
         }
     }
     
@@ -261,19 +261,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         return mailComposerVC
     }
     
-    /// show error if mail sending does not work
-    func showSendMailErrorAlert()
-    {
-        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-        
-        //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")
-        
-        //alert.show()
-    }
-    
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
@@ -294,5 +281,23 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    // general alert extension with just one button to be pressed
+    func displayAlert(title: String, message: String, buttonText: String) {
+        
+        // Create the alert
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        // Add an action
+        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { action in
+            
+            // Dismiss when the button is pressed
+            self.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        // Add it to viewController
+        self.present(alert, animated: true, completion: nil)
     }
 }

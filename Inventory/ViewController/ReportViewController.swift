@@ -1338,7 +1338,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
         else
         {
-            self.showSendMailErrorAlert()
+            displayAlert(title: Global.emailNotSent, message: Global.emailDevice, buttonText: Global.emailConfig)
         }
     }
     
@@ -1363,19 +1363,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
         
         return mailComposerVC
-    }
-    
-    /// show error if mail sending does not work
-    func showSendMailErrorAlert()
-    {
-        let alert = UIAlertController(title: Global.emailNotSent, message: Global.emailDevice, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: Global.emailConfig, style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-        
-        //let sendMailErrorAlert = UIAlertView(title: "Email konnte nicht gesendet werden", message: "Ihr Gerät konnte keine Email senden.  Bitte Email Konfiguration prüfen.", delegate: self, cancelButtonTitle: "OK")
-        
-        //alert.show()
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method

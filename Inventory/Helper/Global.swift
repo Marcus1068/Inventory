@@ -32,7 +32,7 @@ import os
 import LocalAuthentication
 import AVFoundation
 
-class Global: NSObject {
+class Global: UIViewController {
     
     // compression factor in reducing jpg file size to 1/10th (value goes from 0.0 to 1.0)
     static let imageQuality: CGFloat = 0.0
@@ -227,7 +227,7 @@ class Global: NSObject {
     ///   - message: notification message
     ///
     /// - Returns:
-
+/*
     class func showAlertController(title: String, message: String) {
         if title.count == 0{
             let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -239,7 +239,7 @@ class Global: NSObject {
         }
         //present(alertController, animated: true, completion: nil)
     }
-    
+    */
     
     /// authenticate with touch id or face id
     ///
@@ -262,20 +262,23 @@ class Global: NSObject {
                 {(success, error) in
                     // An Alert message is shown wether the Touch ID authentication succeeded or not
                     if success {
-                        self.showAlertController(title: "", message: "Touch ID Authentication Succeeded")
+                        //displayAlert(title: "Touch ID", message: "Touch ID Authentication Succeeded", buttonText: self.ok)
+                        //self.showAlertController(title: "", message: "Touch ID Authentication Succeeded")
                         os_log("Global authWithTouchID: touch ID Authentication succeeded", log: Log.viewcontroller, type: .info)
                         
                         successFlag = true
                     }
                     else {
-                        self.showAlertController(title: "", message: "Touch ID Authentication Failed")
+                        //displayAlert(title: <#T##String#>, message: <#T##String#>, buttonText: <#T##String#>)
+                        //self.showAlertController(title: "", message: "Touch ID Authentication Failed")
                         os_log("Global authWithTouchID: touch ID Authentication failed", log: Log.viewcontroller, type: .error)
                     }
             })
         }
             // If Touch ID is not available an Alert message is shown.
         else {
-            showAlertController(title: "", message: "Touch ID not available")
+            //displayAlert(title: <#T##String#>, message: <#T##String#>, buttonText: <#T##String#>)
+            //showAlertController(title: "", message: "Touch ID not available")
             os_log("Global authWithTouchID: touch ID not available", log: Log.viewcontroller, type: .error)
         }
         

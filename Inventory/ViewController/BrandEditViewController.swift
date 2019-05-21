@@ -162,17 +162,6 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     func showAlertDialog(){
         // Declare Alert
         let title = NSLocalizedString("Brand already exists", comment: "Brand already exists")
-        let dialogMessage = UIAlertController(title: title, message: Global.chooseDifferentName, preferredStyle: .alert)
-        
-        // Create OK button with action handler
-        let ok = UIAlertAction(title: Global.ok, style: .destructive, handler: { (action) -> Void in
-            //result = true
-        })
-        
-        //Add OK button to dialog message
-        dialogMessage.addAction(ok)
-        
-        // Present dialog message to user
-        self.present(dialogMessage, animated: true, completion: nil)
+        displayAlert(title: title, message: Global.chooseDifferentName, buttonText: Global.ok)
     }
 }

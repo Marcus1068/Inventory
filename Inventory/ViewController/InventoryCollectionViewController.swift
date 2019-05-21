@@ -153,7 +153,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                     if let image = newImage as? UIImage {
                         DispatchQueue.main.async {
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
-                            print(inv.inventoryName!)
+                            //print(inv.inventoryName!)
                             // image binary data
                             let imageData = image.jpegData(compressionQuality: Global.imageQuality)
                             inv.image = imageData! as NSData
@@ -183,10 +183,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                     DispatchQueue.main.async {
                         if let fileItem = provider as? DropFile {
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
-                            print(inv.inventoryName!)
+                            //print(inv.inventoryName!)
                             
                             let url = Global.createTempDropObject(fileItems: [fileItem])
-                            let pdf = PDFDocument(url: url!)
+                            let pdf = PDFDocument(url: url!) // FIXME change to document instead of pdf document
                             inv.invoice = pdf?.dataRepresentation() as NSData?
                             inv.invoiceFileName = Global.generateFilename(invname: inv.inventoryName!) + ".pdf"
                             _ = CoreDataHandler.saveInventory(inventory: inv)
@@ -359,9 +359,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // when user chooses a different tab bar item and view disapprears
     override func viewWillDisappear(_ animated: Bool) {
-        print("disappear")
+        /* print("disappear")
         collection.removeGestureRecognizer(gestureRecognizer)
-        collection.resignFirstResponder()
+        collection.resignFirstResponder() */
     }
     
     // number of sections, section devider is room name
@@ -1191,9 +1191,9 @@ extension InventoryCollectionViewController {
             // long press gesture recignizer
             gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(InventoryCollectionViewController.longPressGesture))
             
-            gestureRecognizer.minimumPressDuration = 0.5
+            gestureRecognizer.minimumPressDuration = 0.3
             collection.addGestureRecognizer(gestureRecognizer)
-            print("gesture rec. registered")
+            //print("gesture rec. registered")
         }
     }
 }
@@ -1203,7 +1203,7 @@ extension InventoryCollectionViewController{
     
     // must return true otherwise no UIMenu appears
     override var canBecomeFirstResponder: Bool{
-        print("canbecomefirstresponder")
+        //print("canbecomefirstresponder")
         return true
     }
     /*
@@ -1213,14 +1213,18 @@ extension InventoryCollectionViewController{
     
     // gets called by long press gesture in case we do not have a 3D touch enabled device
     @objc func longPressGesture(sender: UILongPressGestureRecognizer){
-        
+        //print(sender.state)
         guard sender.state == .began
             //let senderView = sender.view
             else { return }
         
         //print("long press")
+        //print(collection.isFirstResponder)
         // Make collection the window's first responder
-        collection.becomeFirstResponder()
+        self.becomeFirstResponder()
+        
+        //print("after become")
+        //print(collection.isFirstResponder)
         
         let menuController: UIMenuController = UIMenuController.shared
         
@@ -1234,14 +1238,15 @@ extension InventoryCollectionViewController{
         menuController.arrowDirection = UIMenuController.ArrowDirection.default
         menuController.menuItems = [duplicateMenuItem, deleteMenuItem, cancelMenuItem]
         
+        
         // Tell the menu controller the first responder's frame and its super view
         //menuController.setTargetRect(CGRect.zero, in: gestureRecognizer.view!)
         
         // Set the location of the menu in the view.
-        let location = gestureRecognizer.location(in: gestureRecognizer.view)
+        let location = gestureRecognizer.location(in: collection)
         //print(location)
-        let menuLocation = CGRect(x: location.x, y: location.y - 40, width: 0, height: 0)   // FIXME 40 hard coded!!!
-        menuController.setTargetRect(menuLocation, in: gestureRecognizer.view!)
+        let menuLocation = CGRect(x: location.x, y: location.y, width: 0, height: 0)   // FIXME 40 hard coded!!!
+        menuController.setTargetRect(menuLocation, in: collection)
         
         let point = location
         let indexPath = collection.indexPathForItem(at: point)
@@ -1252,7 +1257,6 @@ extension InventoryCollectionViewController{
         }
         
     }
-    
     // duplicate menu item
     @objc func duplicateTapped() {
         if let inv = longPressInventoryItem{
@@ -1269,7 +1273,7 @@ extension InventoryCollectionViewController{
         // ...
         // This would be a good place to optionally resign
         // responsiveView's first responder status if you need to
-        collection.resignFirstResponder()
+        self.view.resignFirstResponder()
         longPressInventoryItem = nil
     }
     
@@ -1286,13 +1290,13 @@ extension InventoryCollectionViewController{
             collection.reloadData()
         }
         // ...
-        collection.resignFirstResponder()
+        self.view.resignFirstResponder()
         longPressInventoryItem = nil
     }
     
     // cancel tapped
     @objc func cancelTapped() {
-        collection.resignFirstResponder()
+        self.view.resignFirstResponder()
         longPressInventoryItem = nil
     }
 }

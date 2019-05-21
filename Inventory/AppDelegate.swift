@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let kvStore = NSUbiquitousKeyValueStore()
 
+    // used for app icon shortcut info.plist entries
     enum ShortcutIdentifier: String {
         case OpenShare
         case OpenReport
@@ -56,11 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    
+    // app starts here
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Do any additional setup after loading the view.
+   /*     // Do any additional setup after loading the view.
         let myInventory = CoreDataHandler.fetchInventory()
         
         // generate initial data if none available
@@ -74,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
                 CoreDataHandler.generateInitialAppData()
             }
-        }
+        } */
         
         // manage large title appearance for all view controllers centrally
         UINavigationBar.appearance().prefersLargeTitles = true
@@ -98,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // get user name and address from iCloud
         getiCloudStorageInfo()
         
-        // handle short cut
+        // handle app icon short cut
         if let shortcutItem =
             launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem]
                 as? UIApplicationShortcutItem {

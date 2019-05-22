@@ -50,10 +50,7 @@ class TabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
         
         // enable statistics collection
-        let stat = Statistics.shared
-        //print(stat.numberOfImages)
-        print(stat.getInventoryItemCount())
-        print(stat.getStatisticsForImages())
+        let _ = Statistics.shared
     }
     
     

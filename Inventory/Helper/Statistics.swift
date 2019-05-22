@@ -69,6 +69,40 @@ class Statistics: CoreDataHandler{
         return inventory.count
     }
     
+    // size of complete inventory in megabyte
+    public func getInventorySizeinMegaBytes() -> Double{
+        var storageSize = 0.0
+        
+        for inv in inventory{
+            if let imgSize = inv.image?.length{
+                storageSize += Double(imgSize)
+            }
+            
+            if let pdfSize = inv.invoice?.length{
+                storageSize += Double(pdfSize)
+            }
+            
+            storageSize += Double(MemoryLayout.size(ofValue: inv))
+        }
+        
+        if storageSize > 0{
+            return storageSize / 1024.0 / 1024.0
+        }
+        
+        return 0.0
+    }
+    
+    // return sum of all item prices
+    public func itemPricesSum() -> Int{
+        var sum = 0
+        
+        for inv in inventory{
+            sum += Int(inv.price)
+        }
+        
+        return sum
+    }
+    
     // will be called automatically by notification observer for core data
     public func refresh(){
         inventory = CoreDataHandler.fetchInventory()

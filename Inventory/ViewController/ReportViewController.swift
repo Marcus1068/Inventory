@@ -136,9 +136,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // store complete inventory as array
     var results: [Inventory] = []
     
-    // store sum of item prices
-    var itemPricesSum = 0
-    
     // MARK: view load
     
     override func viewDidLoad() {
@@ -579,7 +576,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // add a summary page at the end of the PDF report
-    func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext, storageSize: Double){
+    func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
         //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         var y : Double
@@ -657,13 +654,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         y = y + 30
         
         let tmp4 = NSLocalizedString("Amount of money spent on items", comment: "Amount of money spent on items")
-        let priceSumText = tmp4 + ": " + String(itemPricesSum) + Global.currencySymbol!
+        let priceSumText = tmp4 + ": " + String(Statistics.shared.itemPricesSum()) + Global.currencySymbol!
         priceSumText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         y = y + 30
         
         let tmp5 = NSLocalizedString("Database size used for images, pdf files etc.", comment: "Database size")
-        let storageText = tmp5 + ": " + String(round(storageSize)) + " MB"
+        let storageText = tmp5 + ": " + String(format: "%.2f", Statistics.shared.getInventorySizeinMegaBytes()) + " MB"
         storageText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         y = y + 30
@@ -1061,21 +1058,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             var numberOfRows = 0
             
-            // set item prices sum = 0 since we always start with 0
-            itemPricesSum = 0
-            
-            var storageSize : Double = 0
-            
             for inv in results{
-                
-                // compute size of inventory items
-                storageSize += inv.getStorageSizeinMegaBytes(inventory: inv)
                     
                 y = y + 35 // distance to above because is title
                 numberOfRows += 1
-                
-                // add sum of prices for summary page
-                itemPricesSum += Int(inv.price)
                 
                 x = leftMargin
                 
@@ -1287,7 +1273,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             // add a summary page at the end of the report
             context.beginPage()
             pdfImageLogo()
-            pdfSummaryPage(numberOfRows: results.count, context: context, storageSize: storageSize)
+            pdfSummaryPage(numberOfRows: results.count, context: context)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 1)
             

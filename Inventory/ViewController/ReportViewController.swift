@@ -579,7 +579,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // add a summary page at the end of the PDF report
-    func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
+    func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext, storageSize: Double){
         //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         var y : Double
@@ -662,6 +662,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 30
         
+        let tmp5 = NSLocalizedString("Database size used for images, pdf files etc.", comment: "Database size")
+        let storageText = tmp5 + ": " + String(round(storageSize)) + " MB"
+        storageText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        y = y + 30
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
@@ -1059,7 +1064,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             // set item prices sum = 0 since we always start with 0
             itemPricesSum = 0
             
+            var storageSize : Double = 0
+            
             for inv in results{
+                
+                // compute size of inventory items
+                storageSize += inv.getStorageSizeinMegaBytes(inventory: inv)
+                    
                 y = y + 35 // distance to above because is title
                 numberOfRows += 1
                 
@@ -1268,13 +1279,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 }
             }
             
+            //print("Inventory size in MB = \(storageSize)")
+            
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages)
             
             // add a summary page at the end of the report
             context.beginPage()
             pdfImageLogo()
-            pdfSummaryPage(numberOfRows: results.count, context: context)
+            pdfSummaryPage(numberOfRows: results.count, context: context, storageSize: storageSize)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 1)
             

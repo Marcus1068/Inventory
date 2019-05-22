@@ -71,4 +71,28 @@ public class Inventory: NSManagedObject {
         """
         return newLine
     }
+    
+    /// get the sum of megabyte of an intentory item
+    ///
+    /// - Parameter inventory: invnetory object
+    /// - Returns: size of object in megabyte
+    func getStorageSizeinMegaBytes(inventory: Inventory) -> Double{
+        var storageSize = 0.0
+        
+        if let imgSize = image?.length{
+            storageSize += Double(imgSize)
+        }
+        
+        if let pdfSize = invoice?.length{
+            storageSize += Double(pdfSize)
+        }
+        
+        storageSize += Double(MemoryLayout.size(ofValue: inventory))
+        
+        if storageSize > 0{
+            return storageSize / 1024.0 / 1024.0
+        }
+        
+        return 0
+    }
 }

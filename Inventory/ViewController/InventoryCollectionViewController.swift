@@ -280,7 +280,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // check for camera permission
         let _ = Global.checkCameraPermission()
         
-        
+        // add core data observer for changes in database
+        NotificationCenter.default.addObserver(self, selector: #selector(InventoryCollectionViewController.contextObjectsDidChange(_:)), name: Notification.Name.NSManagedObjectContextObjectsDidChange, object: nil)
     }
 
     fileprivate func updateNumberOfItemsLabel() {
@@ -362,6 +363,14 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         /* print("disappear")
         collection.removeGestureRecognizer(gestureRecognizer)
         collection.resignFirstResponder() */
+    }
+    
+    // core data change notification
+    // makea a new fetch request for inventory objects in case something in core data has changed.
+    // Reason: avoid multiple fetch requests when getting statistics data
+    @objc func contextObjectsDidChange(_ notification: Notification) {
+        let stats = Statistics.shared
+        stats.refresh()
     }
     
     // number of sections, section devider is room name

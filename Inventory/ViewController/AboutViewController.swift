@@ -89,6 +89,14 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
+        
+        // enable statistics collection
+        let stat = Statistics.shared
+        //print(stat.numberOfImages)
+        //print(stat.getInventoryItemCount())
+        //print(stat.getStatisticsForImages())
+        print("Number of inv items with image attached: \(stat.images)")
+        print("Number of inv items with pdf attached: \(stat.pdfs)")
     }
     
     // when using iCloud key/value store to sync settings

@@ -31,6 +31,7 @@ import UserNotifications
 import os
 import LocalAuthentication
 import AVFoundation
+import CoreData
 
 class Global: UIViewController {
     

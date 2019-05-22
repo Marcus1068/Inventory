@@ -63,6 +63,7 @@
 		2C847E9C2286EADD0063EF25 /* image_file1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E9B2286EADD0063EF25 /* image_file1024.jpg */; };
 		2C870A17229293E200F36F99 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C870A16229293E100F36F99 /* Default-568h@2x.png */; };
 		2C870A1A2293557100F36F99 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A192293557100F36F99 /* TabBarViewController.swift */; };
+		2C870A1C22957D6800F36F99 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
 		2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B967227997D600DB74D3 /* Privacy german.rtf */; };
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
 		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
@@ -145,6 +146,7 @@
 		2C870A16229293E100F36F99 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C870A182292E75E00F36F99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C870A192293557100F36F99 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		2C870A1B22957D6800F36F99 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		2C89B967227997D600DB74D3 /* Privacy german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy german.rtf"; sourceTree = "<group>"; };
 		2C89B9692279995500DB74D3 /* Privacy english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy english.rtf"; sourceTree = "<group>"; };
 		2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				2C56E90D2086844A00FD5136 /* DeviceInfo.swift */,
 				2C2B8056225CDE70007C842E /* Log.swift */,
 				2C6A69F5228038D600140B39 /* DropFile.swift */,
+				2C870A1B22957D6800F36F99 /* Statistics.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				2C56E94B2086A41700FD5136 /* Brand+CoreDataClass.swift in Sources */,
 				2C5DE31422746DB000C60EEF /* ShowUserManualViewController.swift in Sources */,
 				2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */,
+				2C870A1C22957D6800F36F99 /* Statistics.swift in Sources */,
 				2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */,
 				2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */,
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,

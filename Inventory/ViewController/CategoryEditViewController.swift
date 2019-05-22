@@ -143,7 +143,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
                 let category = Category(context: context)
                 
                 // set object with UI values
-                category.categoryName = textfieldCategory.text!
+                category.categoryName = textfieldCategory.text!.capitalized
                 
                 currentCategory = category
                 

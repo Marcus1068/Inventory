@@ -107,4 +107,57 @@ class Statistics: CoreDataHandler{
     public func refresh(){
         inventory = CoreDataHandler.fetchInventory()
     }
+    
+    // most items by room
+    // let arr = ["FOO", "FOO", "BAR", "FOOBAR"]
+    // let counts = arr.reduce(into: [:]) { counts, word in counts[word, default: 0] += 1 }
+    // print(counts)
+    // ["BAR": 1, "FOOBAR": 1, "FOO": 2]
+    func countItemsByRoomDict() -> [(key: String, value: Int)]{
+        var arr : [String] = []
+
+        for inv in inventory{
+            arr.append(inv.inventoryRoom?.roomName ?? "")
+        }
+
+        let dict = arr.reduce(into: [:]) { counts, word in counts[word, default: 0] += 1 }
+        
+        return dict.sorted { $0.value > $1.value }
+    }
+    
+    func countItemsByOwnerDict() -> [(key: String, value: Int)]{
+        var arr : [String] = []
+        
+        for inv in inventory{
+            arr.append(inv.inventoryOwner?.ownerName ?? "")
+        }
+        
+        let dict = arr.reduce(into: [:]) { counts, word in counts[word, default: 0] += 1 }
+        
+        return dict.sorted { $0.value > $1.value }
+    }
+    
+    func countItemsByCategoryDict() -> [(key: String, value: Int)]{
+        var arr : [String] = []
+        
+        for inv in inventory{
+            arr.append(inv.inventoryCategory?.categoryName ?? "")
+        }
+        
+        let dict = arr.reduce(into: [:]) { counts, word in counts[word, default: 0] += 1 }
+        
+        return dict.sorted { $0.value > $1.value }
+    }
+    
+    func countItemsByBrandDict() -> [(key: String, value: Int)]{
+        var arr : [String] = []
+        
+        for inv in inventory{
+            arr.append(inv.inventoryBrand?.brandName ?? "")
+        }
+        
+        let dict = arr.reduce(into: [:]) { counts, word in counts[word, default: 0] += 1 }
+        
+        return dict.sorted { $0.value > $1.value }
+    }
 }

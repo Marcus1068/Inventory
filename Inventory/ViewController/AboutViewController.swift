@@ -89,6 +89,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
+        
+        let sorted = Statistics.shared.countItemsByRoomDict().sorted { $0.value > $1.value }
+        //let keysArraySorted = Array(sorted.map({ $0.key }))
+        //let valuesArraySorted = Array(sorted.map({ $0.value }))
+        
+        for (str, index) in sorted{
+            print("Room: \(str) count: \(index)" )
+        }
+        
+        let sortedO = Statistics.shared.countItemsByOwnerDict().sorted { $0.value > $1.value }
+        for (str, index) in sortedO{
+            print("Owner: \(str) count: \(index)" )
+        }
     }
     
     // when using iCloud key/value store to sync settings

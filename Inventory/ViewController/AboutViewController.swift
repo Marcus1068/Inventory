@@ -49,9 +49,14 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
     let kvStore = NSUbiquitousKeyValueStore()
     
+    var connectivityHandler : ConnectivityHandler!
+    var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.connectivityHandler = (UIApplication.shared.delegate as? AppDelegate)?.connectivityHandler
+        
         //os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // setup colors for UI controls
@@ -184,6 +189,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
         for inv in topPrices{
             print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+        }
+        
+        
+        // watch send message
+        
+        
+        counter += 1
+        connectivityHandler.session.sendMessage(["msg" : "Message \(counter)"], replyHandler: nil) { (error) in
+            //os_log("AboutViewController viewWillAppear: error %@", log: Log.viewcontroller, type: .info, error)
+            NSLog("%@", "Error sending message: \(error)")
         }
         
     }

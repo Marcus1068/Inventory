@@ -29,6 +29,7 @@
                             </items>
                         </table>
                         <button width="1" alignment="left" title="Button" id="DCZ-oo-4EU">
+                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                             <connections>
                                 <action selector="requestInfo" destination="AgC-eL-Hgc" id="3xp-kz-TSh"/>

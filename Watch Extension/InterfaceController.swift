@@ -37,6 +37,8 @@ class MessageRow: NSObject{
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
   
+    @IBOutlet weak var messagesTable: WKInterfaceTable!
+    
     var session : WCSession?
     
     let titles = [
@@ -44,15 +46,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         "Most by category","success",
         "failure","retry"
     ]
-    
-    // MARK: - WCSessionDelegate
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
-        print("in watch app: \(activationState)")
-    }
-    
-
-    @IBOutlet weak var messagesTable: WKInterfaceTable!
     
     // MARK: - Messages Table
     
@@ -62,6 +55,19 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 self.updateMessagesTable()
             }
         }
+    }
+    
+    // MARK: - WCSessionDelegate
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
+        print("in watch app: \(activationState)")
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        os_log("InterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
+        
+        let msg = message["msg"]!
+        self.messages.append("Message \(msg)")
     }
     
     func updateMessagesTable() {

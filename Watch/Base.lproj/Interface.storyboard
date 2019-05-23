@@ -22,6 +22,9 @@
                         </picker>
                         <button width="1" alignment="left" title="Button" id="DCZ-oo-4EU">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <connections>
+                                <action selector="buttonAction" destination="AgC-eL-Hgc" id="vW2-cK-WEx"/>
+                            </connections>
                         </button>
                     </items>
                     <connections>

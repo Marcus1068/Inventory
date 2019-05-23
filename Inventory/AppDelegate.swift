@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // enable statistics collection
         let _ = Statistics.shared
         
-        let _ = CoreDataStorage.shared
+        //let _ = CoreDataStorage.shared
         
         return true
     }

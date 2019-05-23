@@ -50,9 +50,10 @@ class Statistics: NSObject{
         
         // setup all properties
         self.setup = "setup"
-        let store = CoreDataStorage.shared
-        self.inventory = store.fetchInventory()
+        //let store = CoreDataStorage.shared
         //self.inventory = store.fetchInventory()
+        //self.inventory = store.fetchInventory()
+        self.inventory = CoreDataHandler.fetchInventory()
     }
     
   /*  convenience init(text: String) {
@@ -121,9 +122,9 @@ class Statistics: NSObject{
     
     /// will be called automatically by notification observer for core data
     public func refresh(){
-        let store = CoreDataStorage.shared
-        self.inventory = store.fetchInventory()
-        //inventory = CoreDataHandler.fetchInventory()
+        //let store = CoreDataStorage.shared
+        //self.inventory = store.fetchInventory()
+        inventory = CoreDataHandler.fetchInventory()
     }
     
     /// most items by room

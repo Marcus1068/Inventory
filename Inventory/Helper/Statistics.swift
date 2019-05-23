@@ -71,7 +71,7 @@ class Statistics: NSObject{
     
 
     /// return the size of complete inventory in megabyte
-    ///
+    /// will be calculated as all image sizes + all pdf file sizes + memory of object itself
     /// - Returns: Double containing size in MB
     public func getInventorySizeinMegaBytes() -> Double{
         var storageSize = 0.0
@@ -187,7 +187,7 @@ class Statistics: NSObject{
     
     /// return an inventory array sorted by price and reduced to n elements
     ///
-    /// - Parameter elementsCount: number of elements to be returned
+    /// - Parameter elementsCount: number of array elements to be returned
     /// - Returns: inventory array sorted by price with most expensive item first
     func mostExpensiveItems(elementsCount: Int) -> [Inventory]{
         let sortedByPrice = inventory.sorted(by: {$0.price > $1.price})

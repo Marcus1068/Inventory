@@ -28,6 +28,8 @@ import UIKit
 import CoreData
 import os
 import AVFoundation
+import WatchConnectivity
+
 
 // define global variables that are available throughout the app
 let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
@@ -39,6 +41,9 @@ let themeColorText = UIColor.blue
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // for handling watch app connectivity
+    var connectivityHandler : ConnectivityHandler?
     
     let kvStore = NSUbiquitousKeyValueStore()
 
@@ -61,22 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-   /*     // Do any additional setup after loading the view.
-        let myInventory = CoreDataHandler.fetchInventory()
-        
-        // generate initial data if none available
-        if (myInventory.count == 0){
-            let rooms = CoreDataHandler.fetchAllRooms()
-            let categories = CoreDataHandler.fetchAllCategories()
-            let owners = CoreDataHandler.fetchAllOwners()
-            let brands = CoreDataHandler.fetchAllBrands()
-            
-            // only generate data if complete data is gone
-            if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
-                CoreDataHandler.generateInitialAppData()
-            }
-        } */
-        
         // manage large title appearance for all view controllers centrally
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =
@@ -86,15 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // influences text color
         //window?.tintColor = themeColor
-        
-        
-        // get user directory mainly for debugging purposes
-        //let urls = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)
-        //os_log("app directory is: %s", log: Log.appdelegate, type: .info, urls.description)
-        
-        // change UI Tab bar font
-        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .normal)
-        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 10)!], for: .selected)
         
         // get user name and address from iCloud
         getiCloudStorageInfo()
@@ -128,6 +108,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // enable statistics collection
         let _ = Statistics.shared
+        
+        // check for watch session
+        if WCSession.isSupported() {
+            self.connectivityHandler = ConnectivityHandler()
+        } else {
+            os_log("WCSession not supported (f.e. on iPad).")
+        }
         
         return true
     }

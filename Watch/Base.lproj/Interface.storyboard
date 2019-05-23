@@ -14,22 +14,29 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
-                        <label width="131" alignment="left" text="Label" id="Me3-Cc-d5r"/>
-                        <picker height="78" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="a6I-XB-Pil">
-                            <connections>
-                                <action selector="pickerDidChange:" destination="AgC-eL-Hgc" id="hZW-BR-Zui"/>
-                            </connections>
-                        </picker>
+                        <table alignment="left" id="kaL-XS-KsM">
+                            <items>
+                                <tableRow identifier="MessageRow" id="cMg-YR-Ow9" customClass="MessageRow" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="vqX-We-TSJ">
+                                        <items>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="SQN-hv-chk"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="label" destination="SQN-hv-chk" id="sb4-ln-TpW"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                         <button width="1" alignment="left" title="Button" id="DCZ-oo-4EU">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                             <connections>
-                                <action selector="buttonAction" destination="AgC-eL-Hgc" id="vW2-cK-WEx"/>
+                                <action selector="requestInfo" destination="AgC-eL-Hgc" id="3xp-kz-TSh"/>
                             </connections>
                         </button>
                     </items>
                     <connections>
-                        <outlet property="myLabel" destination="Me3-Cc-d5r" id="sJS-jy-U2h"/>
-                        <outlet property="pickerOutlet" destination="a6I-XB-Pil" id="7BV-Sd-Mzl"/>
+                        <outlet property="messagesTable" destination="kaL-XS-KsM" id="47t-SW-5LC"/>
                     </connections>
                 </controller>
             </objects>

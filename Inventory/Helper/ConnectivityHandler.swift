@@ -55,7 +55,8 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
         session.delegate = self
         session.activate()
         
-        os_log("%@", "ConnectivityHandler: Paired Watch: \(session.isPaired), Watch App Installed: \(session.isWatchAppInstalled)")
+        os_log("%@ ConnectivityHandler: Paired Watch:", log: Log.viewcontroller, type: .info, session.isPaired)
+        os_log("%@ ConnectivityHandler: Installed:", log: Log.viewcontroller, type: .info, session.isWatchAppInstalled)
     }
     
     // MARK: - WCSessionDelegate
@@ -65,19 +66,19 @@ class ConnectivityHandler : NSObject, WCSessionDelegate {
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        os_log("%@", "ConnectivityHandler: sessionDidBecomeInactive: \(session)")
+        os_log("%@ ConnectivityHandler: sessionDidBecomeInactive:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        os_log("%@", "ConnectivityHandler: sessionDidDeactivate: \(session)")
+        os_log("%@ ConnectivityHandler: sessionDidDeactivate:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionWatchStateDidChange(_ session: WCSession) {
-        os_log("%@", "ConnectivityHandler: sessionWatchStateDidChange: \(session)")
+        os_log("%@ ConnectivityHandler: sessionWatchStateDidChange:", log: Log.viewcontroller, type: .info, session)
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        os_log("didReceiveMessage: %@", message)
+        os_log("didReceiveMessage: %@", log: Log.viewcontroller, type: .info, message)
         if message["request"] as? String == "date" {
             replyHandler(["date" : "\(Date())"])
         }

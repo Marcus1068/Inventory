@@ -47,6 +47,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
         print("in watch app: \(activationState)")
     }
     
@@ -88,6 +89,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // FIXME: updateapplicationContext to share data
     
     override func willActivate() {
+        os_log("InterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
@@ -100,6 +102,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     override func didDeactivate() {
+        os_log("InterfaceController: didDeactivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
@@ -113,6 +116,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     } */
 
     @IBAction func requestInfo() {
+        os_log("InterfaceController: requestInfo()", log: Log.viewcontroller, type: .info)
         session?.sendMessage(["request" : "date"],
                              replyHandler: { (response) in
                                 self.messages.append("Reply: \(response)")

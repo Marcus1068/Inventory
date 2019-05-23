@@ -77,6 +77,7 @@
 		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
 		2CD2FBE32297062000A7ED47 /* ConnectivityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD2FBE22297062000A7ED47 /* ConnectivityHandler.swift */; };
+		2CD2FBE422971FA700A7ED47 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
 		2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9462086A41700FD5136 /* Inventory+CoreDataProperties.swift */; };
 		2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9452086A41700FD5136 /* Inventory+CoreDataClass.swift */; };
@@ -675,6 +676,7 @@
 				2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */,
 				2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */,
 				2CDB2B08229692AB0060F7F8 /* Brand+CoreDataProperties.swift in Sources */,
+				2CD2FBE422971FA700A7ED47 /* Log.swift in Sources */,
 				2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */,
 				2CDB2B152296CFBD0060F7F8 /* CoreDataStorage.swift in Sources */,
 				2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */,

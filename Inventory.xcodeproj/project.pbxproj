@@ -221,6 +221,7 @@
 		2CC85CFC225F32BB006973A0 /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC85CFE225F32BB006973A0 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
 		2CC85D00225F32BB006973A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Watch Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +395,7 @@
 		2CC648BE22968F7100A6DA65 /* Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */,
 				2CC648BF22968F7100A6DA65 /* InterfaceController.swift */,
 				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
@@ -499,6 +501,9 @@
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -509,6 +514,11 @@
 					};
 					2CC648B922968F7100A6DA65 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2CC85CFB225F32BB006973A0 = {
 						CreatedOnToolsVersion = 10.2;
@@ -942,6 +952,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
@@ -966,6 +977,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";

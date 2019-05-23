@@ -8,7 +8,7 @@
 
 import WatchKit
 import Foundation
-
+import CoreData
 
 class InterfaceController: WKInterfaceController {
 
@@ -21,12 +21,15 @@ class InterfaceController: WKInterfaceController {
         "failure","retry"
     ]
 
+    let stat = Statistics.shared
+    var topList : [Inventory] = []
+    
     // MARK: - callbacks
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        
+        topList = stat.mostExpensiveItems(elementsCount: 3)
         
     }
     
@@ -54,9 +57,14 @@ class InterfaceController: WKInterfaceController {
     
     func refreshPickerItems(){
         var pickerItems:[WKPickerItem] = []
-        for item in titles{
+        /*for item in titles{
             let pickerItem = WKPickerItem()
             pickerItem.title = item
+            pickerItems += [pickerItem]
+        }*/
+        for item in topList{
+            let pickerItem = WKPickerItem()
+            pickerItem.title = item.inventoryName
             pickerItems += [pickerItem]
         }
         pickerOutlet.setItems(pickerItems)

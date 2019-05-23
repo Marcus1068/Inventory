@@ -204,7 +204,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              application to it. This property is optional since there are legitimate
              error conditions that could cause the creation of the store to fail.
              */
-            let container = NSPersistentContainer(name: "Inventory")
+            //let container = NSPersistentContainer(name: "Inventory")
+            let container = NSCustomPersistentContainer(name: "Inventory")
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
                 if let error = error as NSError? {
                     // Replace this implementation with code to handle the error appropriately.
@@ -265,4 +266,15 @@ extension AppDelegate {
 
         window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
     }
+}
+
+// for using group container as location for core data
+class NSCustomPersistentContainer: NSPersistentContainer {
+    
+    override open class func defaultDirectoryURL() -> URL {
+        var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.de.marcus-deuss")
+        storeURL = storeURL?.appendingPathComponent("Inventory.sqlite")
+        return storeURL!
+    }
+    
 }

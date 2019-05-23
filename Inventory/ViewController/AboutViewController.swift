@@ -91,7 +91,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         self.hideKeyboardWhenTappedAround()
         
         // initialize arrays
-        Statistics.shared.start()
+        //Statistics.shared.start()
+        
         
         for (str, index) in Statistics.shared.countItemsByRoomDict(){
             print("Room: \(str) count: \(index)" )

@@ -50,19 +50,10 @@ class Statistics: NSObject{
         
         // setup all properties
         self.setup = "setup"
-        //let store = CoreDataStorage.shared
-        //self.inventory = store.fetchInventory()
-        //self.inventory = store.fetchInventory()
-        self.inventory = CoreDataHandler.fetchInventory()
-    }
-    
-  /*  convenience init(text: String) {
-        self.init()
         
-        //self.inventory = CoreDataHandler.fetchInventory()
-        let store = CoreDataStorage()
+        let store = CoreDataStorage.shared
         self.inventory = store.fetchInventory()
-    } */
+    }
     
     // MARK: - methods
     
@@ -122,9 +113,8 @@ class Statistics: NSObject{
     
     /// will be called automatically by notification observer for core data
     public func refresh(){
-        //let store = CoreDataStorage.shared
-        //self.inventory = store.fetchInventory()
-        inventory = CoreDataHandler.fetchInventory()
+        let store = CoreDataStorage.shared
+        self.inventory = store.fetchInventory()
     }
     
     /// most items by room

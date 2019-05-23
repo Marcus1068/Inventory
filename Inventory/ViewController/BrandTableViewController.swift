@@ -28,6 +28,8 @@ import UIKit
 import CoreData
 import os
 
+private let store = CoreDataStorage.shared
+
 class BrandTableViewController: UITableViewController {
     
     // cell identifier
@@ -46,7 +48,7 @@ class BrandTableViewController: UITableViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataHandler.getContext(),
+            managedObjectContext: store.getContext(),
             sectionNameKeyPath: nil,
             cacheName: nil)
         
@@ -147,7 +149,7 @@ class BrandTableViewController: UITableViewController {
         
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: Global.delete + " \(brand.brandName!)", style: .destructive){ (action:UIAlertAction) in
-            _ = CoreDataHandler.deleteBrand(brand: brand)
+            _ = store.deleteBrand(brand: brand)
         }
         
         let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in

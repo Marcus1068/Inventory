@@ -31,6 +31,8 @@ import CoreData
 import MessageUI
 import os
 
+private let store = CoreDataStorage.shared
+
 class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
@@ -199,10 +201,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             emailActionButton.isEnabled = false
         } */
         // get the data from Core Data
-        rooms = CoreDataHandler.fetchAllRooms()
-        brands = CoreDataHandler.fetchAllBrands()
-        owners = CoreDataHandler.fetchAllOwners()
-        categories = CoreDataHandler.fetchAllCategories()
+        rooms = store.fetchAllRooms()
+        brands = store.fetchAllBrands()
+        owners = store.fetchAllOwners()
+        categories = store.fetchAllCategories()
         
         var listOwners :[String] = []
         var listRooms :[String] = []
@@ -292,7 +294,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         //var filterWhere : String = ""
         //var filterCompare : [String] = []
         
-        let context = CoreDataHandler.getContext()
+        let context = store.getContext()
         
         if ownerFilterLabel.text! != all && roomFilterLabel.text! != all{
             // use both room and owner as filter criteria

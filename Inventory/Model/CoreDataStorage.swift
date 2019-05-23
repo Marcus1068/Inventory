@@ -790,7 +790,7 @@ public class CoreDataStorage {
             _ = saveRoom(room: room)
         }
         
-        let rooms = CoreDataHandler.fetchAllRooms()
+        let rooms = fetchAllRooms()
         
         
         // default categories
@@ -803,7 +803,7 @@ public class CoreDataStorage {
             _ = saveCategory(category: category)
         }
         
-        let categories = CoreDataHandler.fetchAllCategories()
+        let categories = fetchAllCategories()
         
         
         // default owners
@@ -816,7 +816,7 @@ public class CoreDataStorage {
             _ = saveOwner(owner: owner)
         }
         
-        let owners = CoreDataHandler.fetchAllOwners()
+        let owners = fetchAllOwners()
         
         // default brands
         
@@ -829,7 +829,7 @@ public class CoreDataStorage {
             _ = saveBrand(brand: brand)
         }
         
-        let brands = CoreDataHandler.fetchAllBrands()
+        let brands = fetchAllBrands()
         
         
         let date = Date() as NSDate // today

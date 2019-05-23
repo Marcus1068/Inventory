@@ -27,6 +27,8 @@
 import UIKit
 import os
 
+private let store = CoreDataStorage.shared
+
 class RoomEditViewController: UIViewController, UITextFieldDelegate{
     // contains the selected object from viewcontroller before
     weak var currentRoom : Room?
@@ -164,16 +166,16 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         // new room
         if (currentRoom == nil)
         {
-            if CoreDataHandler.fetchRoom(roomName: textfieldRoomName.text!)
+            if store.fetchRoom(roomName: textfieldRoomName.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldRoomName.becomeFirstResponder()
             }
             else{
-                let context = CoreDataHandler.getContext()
+                //let context = CoreDataHandler.getContext()
                 
-                let room = Room(context: context)
+                let room = Room(context: store.getContext())
                 
                 // set object with UI values
                 room.roomName = textfieldRoomName.text!.capitalized
@@ -183,7 +185,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 
                 currentRoom = room
                 
-                _ = CoreDataHandler.saveRoom(room: currentRoom!)
+                _ = store.saveRoom(room: currentRoom!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
@@ -204,7 +206,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 let imageData = chosenImage.image!.jpegData(compressionQuality: 1.0)
                 currentRoom?.roomImage = imageData! as NSData
                 
-                _ = CoreDataHandler.saveRoom(room: currentRoom!)
+                _ = store.saveRoom(room: currentRoom!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)

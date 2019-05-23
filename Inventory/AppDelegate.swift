@@ -109,26 +109,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // Do any additional setup after loading the view.
-        let myInventory = CoreDataHandler.fetchInventory()
+        let store = CoreDataStorage.shared
+        let myInventory = store.fetchInventory()
         
         // generate initial data if none available
         if (myInventory.count == 0){
-            let rooms = CoreDataHandler.fetchAllRooms()
-            let categories = CoreDataHandler.fetchAllCategories()
-            let owners = CoreDataHandler.fetchAllOwners()
-            let brands = CoreDataHandler.fetchAllBrands()
+            let rooms = store.fetchAllRooms()
+            let categories = store.fetchAllCategories()
+            let owners = store.fetchAllOwners()
+            let brands = store.fetchAllBrands()
             
             // only generate data if complete data is gone
             if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
-                CoreDataHandler.generateInitialAppData()
+                store.generateInitialAppData()
             }
         }
         // Do any additional setup after loading the view.
         
         // enable statistics collection
         let _ = Statistics.shared
-        
-        //let _ = CoreDataStorage.shared
         
         return true
     }
@@ -196,7 +195,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
-        CoreDataHandler.saveContext()
+        let store = CoreDataStorage.shared
+        store.saveContext()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -213,7 +213,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         
-        CoreDataHandler.saveContext()
+        let store = CoreDataStorage.shared
+        store.saveContext()
     }
     
     // get user name and address from icloud storage

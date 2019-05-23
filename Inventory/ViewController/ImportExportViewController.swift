@@ -32,6 +32,8 @@ import os
 import MessageUI
 import MobileCoreServices
 
+private let store = CoreDataStorage.shared
+
 class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate {
 
     @IBOutlet weak var progressLabel: UILabel!
@@ -123,7 +125,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         navigationItem.leftBarButtonItem = barButtonItem
         activityIndicator.startAnimating()
        
-        let container = CoreDataHandler.persistentContainer
+        let container = store.persistentContainer
         
         container.performBackgroundTask { (context) in
             var exportedRows : Int = 0
@@ -295,9 +297,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 progressView.setProgress(progress, animated: true)
                 progressLabel.text = String(progress) + " %"
                 
-                var context: NSManagedObjectContext
-                context = CoreDataHandler.getContext()
-                let inventory = Inventory(context: context)
+                //var context: NSManagedObjectContext
+                //context = CoreDataHandler.getContext()
+                let inventory = Inventory(context: store.getContext())
                 
                 // check if row is complete or if inventory name not set
                 if csvRows[x][0].count == 0{
@@ -321,14 +323,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // room handling
                 var room: Room?
-                room = CoreDataHandler.fetchRoom(roomName: csvRows[x][6])
+                room = store.fetchRoom(roomName: csvRows[x][6])
                 if room != nil{
                     // room already there
                     inventory.inventoryRoom = room
                 }
                 else{
                     // new room has to be inserted in room table
-                    let newRoom = Room(context: context)
+                    let newRoom = Room(context: store.getContext())
                     newRoom.roomName = csvRows[x][6]
                     // default room icon image
                     let myImage = #imageLiteral(resourceName: "icons8-home-filled-50")
@@ -340,14 +342,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // owner handling
                 var owner: Owner?
-                owner = CoreDataHandler.fetchOwner(ownerName: csvRows[x][7])
+                owner = store.fetchOwner(ownerName: csvRows[x][7])
                 if owner != nil{
                     // owner already there
                     inventory.inventoryOwner = owner
                 }
                 else{
                     // new owner has to be inserted in owner table
-                    let newOwner = Owner(context: context)
+                    let newOwner = Owner(context: store.getContext())
                     newOwner.ownerName = csvRows[x][7]
                     inventory.inventoryOwner = newOwner
                     //newOwner = CoreDataHandler.saveOwner(owner: newOwner)
@@ -355,14 +357,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // category handling
                 var category: Category?
-                category = CoreDataHandler.fetchCategory(categoryName: csvRows[x][8])
+                category = store.fetchCategory(categoryName: csvRows[x][8])
                 if category != nil{
                     // category already there
                     inventory.inventoryCategory = category
                 }
                 else{
                     // new category has to be inserted in category table
-                    let newCategory = Category(context: context)
+                    let newCategory = Category(context: store.getContext())
                     newCategory.categoryName = csvRows[x][8]
                     inventory.inventoryCategory = newCategory
                     //newCategory = CoreDataHandler.saveCategory(category: newCategory)
@@ -370,14 +372,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // brand handling
                 var brand: Brand?
-                brand = CoreDataHandler.fetchBrand(brandName: csvRows[x][9])
+                brand = store.fetchBrand(brandName: csvRows[x][9])
                 if brand != nil{
                     // brand already there
                     inventory.inventoryBrand = brand
                 }
                 else{
                     // new brand has to be inserted in brand table
-                    let newBrand = Brand(context: context)
+                    let newBrand = Brand(context: store.getContext())
                     newBrand.brandName = csvRows[x][9]
                     inventory.inventoryBrand = newBrand
                     //newBrand = CoreDataHandler.saveBrand(brand: newBrand)
@@ -426,19 +428,19 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 
                 // check for UUID, if data is already imported then avoid duplicates
-                let uuid = CoreDataHandler.getInventoryUUID(uuid: UUID(uuidString: csvRows[x][13])!)
+                let uuid = store.getInventoryUUID(uuid: UUID(uuidString: csvRows[x][13])!)
                 
                 if !uuid{
                     // save imported csv line into database
                     // assign inventory id afterwards because otherwise getInventoryUUID() will always be true
                     inventory.id = UUID(uuidString: csvRows[x][13])
-                    _ = CoreDataHandler.saveInventory(inventory: inventory)
+                    _ = store.saveInventory(inventory: inventory)
                     
                     importedRows += 1
                 }
                 else{
                     // delete new object from context to avoid duplicates during runtime
-                    let context = CoreDataHandler.getContext()
+                    let context = store.getContext()
                     context.delete(inventory)
                 }
             }

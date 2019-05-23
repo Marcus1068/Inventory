@@ -36,7 +36,10 @@ import PDFKit
 private let reuseIdentifier = "collectionCellReports"
 private var selectedInventoryItem = Inventory()
 
+private let store = CoreDataStorage.shared
+
 class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate {
+    
     
     
     // define fetch results controller based on core data entity (Room)
@@ -53,7 +56,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataHandler.getContext(),
+            managedObjectContext: store.getContext(),
             sectionNameKeyPath: #keyPath(Inventory.inventoryRoom.roomName),     // section defined here
             cacheName: nil)  // "inventoryCache"
         
@@ -159,7 +162,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             inv.image = imageData! as NSData
                             inv.imageFileName = Global.generateFilename(invname: inv.inventoryName!) + ".jpg"
                             
-                            _ = CoreDataHandler.saveInventory(inventory: inv)
+                            _ = store.saveInventory(inventory: inv)
                             
                             self.collection.reloadData()
                             
@@ -189,7 +192,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             let pdf = PDFDocument(url: url!) // FIXME change to document instead of pdf document
                             inv.invoice = pdf?.dataRepresentation() as NSData?
                             inv.invoiceFileName = Global.generateFilename(invname: inv.inventoryName!) + ".pdf"
-                            _ = CoreDataHandler.saveInventory(inventory: inv)
+                            _ = store.saveInventory(inventory: inv)
                             
                             self.collection.reloadData()
                             
@@ -318,12 +321,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         collection.reloadData()
         
         // Setup the Scope Bars
-        owner = CoreDataHandler.fetchAllOwners()
-        room = CoreDataHandler.fetchAllRooms()
+        owner = store.fetchAllOwners()
+        room = store.fetchAllRooms()
         
         // also load brand and category to see if there are any object
-        category = CoreDataHandler.fetchAllCategories()
-        brand = CoreDataHandler.fetchAllBrands()
+        category = store.fetchAllCategories()
+        brand = store.fetchAllBrands()
         
         var listOwners :[String] = []
         var listRooms :[String] = []
@@ -441,7 +444,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                                                                          for: indexPath) as! InventoryHeaderCollectionReusableView
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             headerView.roomLabel.text = sectionInfo?.name
-            let room = CoreDataHandler.fetchRoomIcon(roomName: (sectionInfo?.name)!)
+            let room = store.fetchRoomIcon(roomName: (sectionInfo?.name)!)
             let imageData = room!.roomImage! as Data
             let image = UIImage(data: imageData, scale:1.0)
             headerView.roomIcon.image = image
@@ -959,7 +962,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // delete from database
         for inv in selectedForDeleteInventory{
             //print(inv.inventoryName!)
-            _ = CoreDataHandler.deleteInventory(inventory: inv)
+            _ = store.deleteInventory(inventory: inv)
         }
         
         indexPathsForDeletion.removeAll()
@@ -1093,7 +1096,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
         case Global.delete:
             // delete current inventory object
             //print(inventory.inventoryName!)
-            _ = CoreDataHandler.deleteInventory(inventory: inventory)
+            _ = store.deleteInventory(inventory: inventory)
             do {
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {
@@ -1162,8 +1165,8 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
     
     // duplicate inventory item in memory and in core data
     func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
-        let context = CoreDataHandler.getContext()
-        let currentInventory = Inventory(context: context) // setup new inventory object
+        //let context = CoreDataHandler.getContext()
+        let currentInventory = Inventory(context: store.getContext()) // setup new inventory object
     
         // duplicate every attribute but UUID, has to be new, and inventory name gets "inv name (copy)"
         currentInventory.id = UUID()
@@ -1183,7 +1186,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
         currentInventory.invoice = inv.invoice
         currentInventory.invoiceFileName = inv.invoiceFileName
         
-        _ = CoreDataHandler.saveInventory(inventory: currentInventory)
+        _ = store.saveInventory(inventory: currentInventory)
         
         return currentInventory
     }
@@ -1289,7 +1292,7 @@ extension InventoryCollectionViewController{
     // delete menu item
     @objc func deleteTapped() {
         if let inv = longPressInventoryItem{
-            _ = CoreDataHandler.deleteInventory(inventory: inv)
+            _ = store.deleteInventory(inventory: inv)
             do {
                 try fetchedResultsController.performFetch()
             } catch let error as NSError {

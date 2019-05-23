@@ -28,6 +28,8 @@ import UIKit
 import CoreData
 import os
 
+private let store = CoreDataStorage.shared
+
 class CategoryTableViewController: UITableViewController {
 
     // cell identifier
@@ -46,7 +48,7 @@ class CategoryTableViewController: UITableViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataHandler.getContext(),
+            managedObjectContext: store.getContext(),
             sectionNameKeyPath: nil,
             cacheName: nil)
         
@@ -147,7 +149,7 @@ class CategoryTableViewController: UITableViewController {
         
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: Global.delete + " \(category.categoryName!)", style: UIAlertAction.Style.destructive){ (ACTION) in
-            _ = CoreDataHandler.deleteCategory(category: category)
+            _ = store.deleteCategory(category: category)
         }
         
         let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in

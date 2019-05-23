@@ -27,6 +27,8 @@
 import UIKit
 import os
 
+private let store = CoreDataStorage.shared
+
 class CategoryEditViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
@@ -131,23 +133,23 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         // new category
         if (currentCategory == nil)
         {
-            if CoreDataHandler.fetchCategory(categoryName: textfieldCategory.text!)
+            if store.fetchCategory(categoryName: textfieldCategory.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldCategory.becomeFirstResponder()
             }
             else{
-                let context = CoreDataHandler.getContext()
+               // let context = CoreDataHandler.getContext()
                 
-                let category = Category(context: context)
+                let category = Category(context: store.getContext())
                 
                 // set object with UI values
                 category.categoryName = textfieldCategory.text!.capitalized
                 
                 currentCategory = category
                 
-                _ = CoreDataHandler.saveCategory(category: currentCategory!)
+                _ = store.saveCategory(category: currentCategory!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
@@ -164,7 +166,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
             else{ */
                 currentCategory?.categoryName = textfieldCategory.text
                 
-                _ = CoreDataHandler.saveCategory(category: currentCategory!)
+                _ = store.saveCategory(category: currentCategory!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)

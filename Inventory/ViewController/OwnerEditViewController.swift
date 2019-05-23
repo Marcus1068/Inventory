@@ -27,6 +27,8 @@
 import UIKit
 import os
 
+private let store = CoreDataStorage.shared
+
 class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
@@ -123,23 +125,23 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         // new brand
         if (currentOwner == nil)
         {
-            if CoreDataHandler.fetchOwner(ownerName: textfieldOwner.text!)
+            if store.fetchOwner(ownerName: textfieldOwner.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldOwner.becomeFirstResponder()
             }
             else{
-                let context = CoreDataHandler.getContext()
+                //let context = CoreDataHandler.getContext()
                 
-                let owner = Owner(context: context)
+                let owner = Owner(context: store.getContext())
                 
                 // set object with UI values
                 owner.ownerName = textfieldOwner.text!.capitalized
                 
                 currentOwner = owner
                 
-                _ = CoreDataHandler.saveOwner(owner: currentOwner!)
+                _ = store.saveOwner(owner: currentOwner!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
@@ -149,7 +151,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         else{
             currentOwner?.ownerName = textfieldOwner.text
             
-            _ = CoreDataHandler.saveOwner(owner: currentOwner!)
+            _ = store.saveOwner(owner: currentOwner!)
             
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)

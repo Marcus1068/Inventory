@@ -28,6 +28,8 @@ import UIKit
 import CoreData
 import os
 
+private let store = CoreDataStorage.shared
+
 class RoomTableViewController: UITableViewController {
     
     // cell identifier
@@ -46,7 +48,7 @@ class RoomTableViewController: UITableViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataHandler.getContext(),
+            managedObjectContext: store.getContext(),
             sectionNameKeyPath: nil,
             cacheName: nil)
         
@@ -148,7 +150,7 @@ class RoomTableViewController: UITableViewController {
         
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: Global.delete + " \(room.roomName!)", style: UIAlertAction.Style.destructive){ (ACTION) in
-            _ = CoreDataHandler.deleteRoom(room: room)
+            _ = store.deleteRoom(room: room)
         }
         myActionSheet.addAction(DeleteAction)
         

@@ -36,6 +36,7 @@ protocol InventoryEditViewControllerDelegate {
     func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController, which inventory: Inventory)
 }
 
+private let store = CoreDataStorage.shared
 
 class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate,
                                     UIDropInteractionDelegate{
@@ -147,10 +148,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
         // get the data from Core Data
-        rooms = CoreDataHandler.fetchAllRooms()
-        brands = CoreDataHandler.fetchAllBrands()
-        owners = CoreDataHandler.fetchAllOwners()
-        categories = CoreDataHandler.fetchAllCategories()
+        rooms = store.fetchAllRooms()
+        brands = store.fetchAllBrands()
+        owners = store.fetchAllOwners()
+        categories = store.fetchAllCategories()
         
         // set item button texts
         roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
@@ -286,10 +287,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         // get the data from Core Data
-        rooms = CoreDataHandler.fetchAllRooms()
-        brands = CoreDataHandler.fetchAllBrands()
-        owners = CoreDataHandler.fetchAllOwners()
-        categories = CoreDataHandler.fetchAllCategories()
+        rooms = store.fetchAllRooms()
+        brands = store.fetchAllBrands()
+        owners = store.fetchAllOwners()
+        categories = store.fetchAllCategories()
         /*
         // set item button texts
         roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
@@ -736,8 +737,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         // get new context only if adding new object
         if editmode == EditMode.add{
-            let context = CoreDataHandler.getContext()
-            currentInventory = Inventory(context: context) // setup new inventory object
+            //let context = CoreDataHandler.getContext()
+            currentInventory = Inventory(context: store.getContext()) // setup new inventory object
         }
         
         currentInventory?.id = UUID()
@@ -811,10 +812,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         // add data
         if (editmode == EditMode.add)
         {
-            _ = CoreDataHandler.saveInventory(inventory: currentInventory!)
+            _ = store.saveInventory(inventory: currentInventory!)
         }
         else{ // edit data
-            _ = CoreDataHandler.updateInventory(inventory: currentInventory!)
+            _ = store.updateInventory(inventory: currentInventory!)
         }
         
         // FIXME calling view controller viewdidload() always gets called

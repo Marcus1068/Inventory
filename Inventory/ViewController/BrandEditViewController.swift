@@ -27,6 +27,8 @@
 import UIKit
 import os
 
+private let store = CoreDataStorage.shared
+
 class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cancelButtonOutlet: UIBarButtonItem!
@@ -126,23 +128,23 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         // new brand
         if (currentBrand == nil)
         {
-            if CoreDataHandler.fetchBrand(brandName: textfieldBrand.text!)
+            if store.fetchBrand(brandName: textfieldBrand.text!)
             {
                 showAlertDialog()
                 self.view.endEditing(false)
                 textfieldBrand.becomeFirstResponder()
             }
             else{
-                let context = CoreDataHandler.getContext()
+                //let context = CoreDataHandler.getContext()
                 
-                let brand = Brand(context: context)
+                let brand = Brand(context: store.getContext())
                 
                 // set object with UI values
                 brand.brandName = textfieldBrand.text!.capitalized
                 
                 currentBrand = brand
                 
-                _ = CoreDataHandler.saveBrand(brand: currentBrand!)
+                _ = store.saveBrand(brand: currentBrand!)
                 
                 navigationController?.popViewController(animated: true)
                 self.dismiss(animated: true, completion: nil)
@@ -152,7 +154,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         else{
             currentBrand?.brandName = textfieldBrand.text
             
-            _ = CoreDataHandler.saveBrand(brand: currentBrand!)
+            _ = store.saveBrand(brand: currentBrand!)
             
             navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)

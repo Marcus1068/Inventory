@@ -28,6 +28,8 @@ import UIKit
 import CoreData
 import os
 
+private let store = CoreDataStorage.shared
+
 class OwnerTableViewController: UITableViewController {
     
     // cell identifier
@@ -46,7 +48,7 @@ class OwnerTableViewController: UITableViewController {
         
         let fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataHandler.getContext(),
+            managedObjectContext: store.getContext(),
             sectionNameKeyPath: nil,
             cacheName: nil)
         
@@ -145,7 +147,7 @@ class OwnerTableViewController: UITableViewController {
         
         // use closure to delete database entry
         let DeleteAction = UIAlertAction(title: Global.delete + " \(owner.ownerName!)", style: .destructive){ (ACTION) in
-            _ = CoreDataHandler.deleteOwner(owner: owner)
+            _ = store.deleteOwner(owner: owner)
         }
         
         let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in

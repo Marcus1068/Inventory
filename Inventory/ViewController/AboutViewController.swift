@@ -107,6 +107,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         for (str, index) in Statistics.shared.countItemsByBrandDict(){
             print("Brand: \(str) count: \(index)" )
         }
+        
+        let invNames = Statistics.shared.allInventory(elementsCount: 5)
+        for inv in invNames{
+            print(inv.inventoryName!)
+        }
+        
+        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
+        for inv in topPrices{
+            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+        }
     }
     
     // when using iCloud key/value store to sync settings

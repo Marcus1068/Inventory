@@ -90,6 +90,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
         
+        // initialize arrays
+        Statistics.shared.start()
         
         for (str, index) in Statistics.shared.countItemsByRoomDict(){
             print("Room: \(str) count: \(index)" )

@@ -18,7 +18,7 @@ class Statistics: NSObject{
     // MARK: - Properties
     
     // shared enables singleton usage
-    static let shared = Statistics(setup: "Init")
+    static let shared = Statistics()
     
     var setup: String
     var inventory: [Inventory]
@@ -44,14 +44,76 @@ class Statistics: NSObject{
         return numberOfpdf
     }
     
+    // fetch array, if no array, return nil
+    func fetchInventory() -> [Inventory]
+    {
+        //os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
+        
+        let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        
+        // sort criteria
+        request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        request.fetchBatchSize = 20
+        
+        let context = persistentContainer.viewContext
+        
+        do {
+            let inventory = try context.fetch(request)
+            
+            return inventory
+            
+        } catch {
+            print("Error with fetch request in fetchInventory \(error)")
+        }
+        
+        return []
+    }
+    
     // MARK: - Initialization
     
-    init(setup: String) {
-        self.setup = setup
+    override init() {
+        //super.init()
         
-        inventory = CoreDataHandler.fetchInventory()
+        // setup all properties
+        self.setup = "setup"
+        inventory = []
+    }
+    
+    func start(){
+        self.inventory = fetchInventory()
     }
 
+    
+    
+    lazy var persistentContainer: NSPersistentContainer =
+        {
+            /*
+             The persistent container for the application. This implementation
+             creates and returns a container, having loaded the store for the
+             application to it. This property is optional since there are legitimate
+             error conditions that could cause the creation of the store to fail.
+             */
+            let container = NSPersistentContainer(name: "Inventory")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    
+                    /*
+                     Typical reasons for an error here include:
+                     * The parent directory does not exist, cannot be created, or disallows writing.
+                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                     * The device is out of space.
+                     * The store could not be migrated to the current model version.
+                     Check the error message to determine what the actual problem was.
+                     */
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+    }()
+    
+    
     // MARK: - methods
     
     func getStatisticsForImages() -> Double{
@@ -110,7 +172,7 @@ class Statistics: NSObject{
     
     /// will be called automatically by notification observer for core data
     public func refresh(){
-        inventory = CoreDataHandler.fetchInventory()
+        inventory = self.fetchInventory()
     }
     
     /// most items by room

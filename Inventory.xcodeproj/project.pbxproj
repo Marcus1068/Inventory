@@ -77,6 +77,17 @@
 		2CC648C422968F7100A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648C322968F7100A6DA65 /* Assets.xcassets */; };
 		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
+		2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
+		2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9462086A41700FD5136 /* Inventory+CoreDataProperties.swift */; };
+		2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9452086A41700FD5136 /* Inventory+CoreDataClass.swift */; };
+		2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9412086A41700FD5136 /* Brand+CoreDataClass.swift */; };
+		2CDB2B08229692AB0060F7F8 /* Brand+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9422086A41700FD5136 /* Brand+CoreDataProperties.swift */; };
+		2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9432086A41700FD5136 /* Category+CoreDataClass.swift */; };
+		2CDB2B0A229692B10060F7F8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9442086A41700FD5136 /* Category+CoreDataProperties.swift */; };
+		2CDB2B0B229692B50060F7F8 /* Owner+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9472086A41700FD5136 /* Owner+CoreDataClass.swift */; };
+		2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9482086A41700FD5136 /* Owner+CoreDataProperties.swift */; };
+		2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */; };
+		2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -635,8 +646,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */,
 				2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */,
+				2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */,
+				2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */,
+				2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */,
+				2CDB2B08229692AB0060F7F8 /* Brand+CoreDataProperties.swift in Sources */,
+				2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */,
+				2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */,
 				2CC648C022968F7100A6DA65 /* InterfaceController.swift in Sources */,
+				2CDB2B0A229692B10060F7F8 /* Category+CoreDataProperties.swift in Sources */,
+				2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */,
+				2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */,
+				2CDB2B0B229692B50060F7F8 /* Owner+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

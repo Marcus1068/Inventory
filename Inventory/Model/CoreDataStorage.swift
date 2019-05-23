@@ -1,61 +1,46 @@
-/*
- 
- Copyright 2019 Marcus Deuß
- 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
- 
- http://www.apache.org/licenses/LICENSE-2.0
- 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
- 
- */
-
 //
-//  CoreDataHandler.swift
+//  CoreDataStorage.swift
 //  Inventory
 //
-//  Created by Marcus Deuß on 23.04.18.
-//  Copyright © 2018 Marcus Deuß. All rights reserved.
+//  Created by Marcus Deuß on 23.05.19.
+//  Copyright © 2019 Marcus Deuß. All rights reserved.
 //
 
-// FIXME: important
-//Since your users might have already an Sqlite file in the Documents directory of your App bundle, you must migrate the Sqlite file to the new shared bundle. You need to perform this migration at the first launch of the App update
 
 import UIKit
+import Foundation
 import CoreData
-import os
 
 
-class CoreDataHandler: NSObject {
-    
+public class CoreDataStorage {
     // MARK: - Core Data stack
     
+    // shared enables singleton usage
+    static let shared = CoreDataStorage()
+    
+    init(){
+        //let a = persistentContainer
+    }
+    
     // access persistent container
-    static var persistentContainer: NSPersistentContainer =
-        {
-            //let container = NSPersistentContainer(name: "Inventory")
-            let container = NSPersistentContainer(name: "Inventory")
-            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
-                    
-                    /*
-                     Typical reasons for an error here include:
-                     * The parent directory does not exist, cannot be created, or disallows writing.
-                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                     * The device is out of space.
-                     * The store could not be migrated to the current model version.
-                     Check the error message to determine what the actual problem was.
-                     */
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
+    lazy var persistentContainer: NSPersistentContainer =
+    {
+        let container = NSPersistentContainer(name: "Inventory")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
     }()
     
     // convenience method for accessing persistent store container
@@ -64,14 +49,14 @@ class CoreDataHandler: NSObject {
     
     // MARK: db context
     // internal: get database context
-    class func getContext() -> NSManagedObjectContext{
+    func getContext() -> NSManagedObjectContext{
         //let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         return persistentContainer.viewContext
     }
     
     // save everything
-    class func saveContext(){
+    func saveContext(){
         let context = getContext()
         
         do {
@@ -86,7 +71,7 @@ class CoreDataHandler: NSObject {
     
     // MARK: room stuff
     // Save a room
-    class func saveRoom(room: Room) -> Room
+    func saveRoom(room: Room) -> Room
     {
         let context = getContext()
         
@@ -101,7 +86,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if room already exists
-    class func fetchRoom(roomName: String) -> Bool{
+    func fetchRoom(roomName: String) -> Bool{
         let context = getContext()
         
         let request : NSFetchRequest<Room> = Room.fetchRequest()
@@ -120,7 +105,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if room already exists
-    class func fetchRoom(roomName: String) -> Room?{
+    func fetchRoom(roomName: String) -> Room?{
         let context = getContext()
         
         let request : NSFetchRequest<Room> = Room.fetchRequest()
@@ -141,7 +126,7 @@ class CoreDataHandler: NSObject {
     }
     
     // fetch room icon
-    class func fetchRoomIcon(roomName: String) -> Room?{
+    func fetchRoomIcon(roomName: String) -> Room?{
         let context = getContext()
         
         let request : NSFetchRequest<Room> = Room.fetchRequest()
@@ -163,7 +148,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete room object
-    class func deleteRoom(room: Room) -> Bool{
+    func deleteRoom(room: Room) -> Bool{
         let context = getContext()
         
         context.delete(room)
@@ -177,7 +162,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete all room objects
-    class func deleteAllRooms() -> Bool{
+    func deleteAllRooms() -> Bool{
         let context = getContext()
         
         let delete = NSBatchDeleteRequest(fetchRequest: Room.fetchRequest())
@@ -192,7 +177,7 @@ class CoreDataHandler: NSObject {
     
     // MARK: category stuff
     // Save a category
-    class func saveCategory(category: Category) -> Category
+    func saveCategory(category: Category) -> Category
     {
         let context = getContext()
         
@@ -207,7 +192,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if category already exists
-    class func fetchCategory(categoryName: String) -> Bool{
+    func fetchCategory(categoryName: String) -> Bool{
         let context = getContext()
         
         let request : NSFetchRequest<Category> = Category.fetchRequest()
@@ -227,7 +212,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if category already exists
-    class func fetchCategory(categoryName: String) -> Category?{
+    func fetchCategory(categoryName: String) -> Category?{
         let context = getContext()
         
         let request : NSFetchRequest<Category> = Category.fetchRequest()
@@ -249,7 +234,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete category object
-    class func deleteCategory(category: Category) -> Bool{
+    func deleteCategory(category: Category) -> Bool{
         let context = getContext()
         
         context.delete(category)
@@ -263,7 +248,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete all category objects
-    class func deleteAllCategories() -> Bool{
+    func deleteAllCategories() -> Bool{
         let context = getContext()
         
         let delete = NSBatchDeleteRequest(fetchRequest: Category.fetchRequest())
@@ -278,7 +263,7 @@ class CoreDataHandler: NSObject {
     
     // MARK: owner stuff
     // Save an owner
-    class func saveOwner(owner: Owner) -> Owner
+    func saveOwner(owner: Owner) -> Owner
     {
         let context = getContext()
         
@@ -293,7 +278,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if owner already exists
-    class func fetchOwner(ownerName: String) -> Bool{
+    func fetchOwner(ownerName: String) -> Bool{
         let context = getContext()
         
         let request : NSFetchRequest<Owner> = Owner.fetchRequest()
@@ -313,7 +298,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if owner already exists
-    class func fetchOwner(ownerName: String) -> Owner?{
+    func fetchOwner(ownerName: String) -> Owner?{
         let context = getContext()
         
         let request : NSFetchRequest<Owner> = Owner.fetchRequest()
@@ -335,7 +320,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete owner object
-    class func deleteOwner(owner: Owner) -> Bool{
+    func deleteOwner(owner: Owner) -> Bool{
         let context = getContext()
         
         context.delete(owner)
@@ -349,7 +334,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete all owner objects
-    class func deleteAllOwners() -> Bool{
+    func deleteAllOwners() -> Bool{
         let context = getContext()
         
         let delete = NSBatchDeleteRequest(fetchRequest: Owner.fetchRequest())
@@ -364,7 +349,7 @@ class CoreDataHandler: NSObject {
     
     // MARK: brand stuff
     // Save a Brand
-    class func saveBrand(brand: Brand) -> Brand
+    func saveBrand(brand: Brand) -> Brand
     {
         let context = getContext()
         
@@ -379,7 +364,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if brand already exists
-    class func fetchBrand(brandName: String) -> Bool{
+    func fetchBrand(brandName: String) -> Bool{
         let context = getContext()
         
         let request : NSFetchRequest<Brand> = Brand.fetchRequest()
@@ -399,7 +384,7 @@ class CoreDataHandler: NSObject {
     }
     
     // check if brand already exists
-    class func fetchBrand(brandName: String) -> Brand?{
+    func fetchBrand(brandName: String) -> Brand?{
         let context = getContext()
         
         let request : NSFetchRequest<Brand> = Brand.fetchRequest()
@@ -421,7 +406,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete brand object
-    class func deleteBrand(brand: Brand) -> Bool{
+    func deleteBrand(brand: Brand) -> Bool{
         let context = getContext()
         
         context.delete(brand)
@@ -435,7 +420,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete all brand objects
-    class func deleteAllBrands() -> Bool{
+    func deleteAllBrands() -> Bool{
         let context = getContext()
         
         let delete = NSBatchDeleteRequest(fetchRequest: Brand.fetchRequest())
@@ -451,7 +436,7 @@ class CoreDataHandler: NSObject {
     // MARK: inventory stuff
     
     // fetch UUID from inventory, found = true
-    class func getInventoryUUID(uuid: UUID) -> Bool{
+    func getInventoryUUID(uuid: UUID) -> Bool{
         
         let context = getContext()
         
@@ -474,7 +459,7 @@ class CoreDataHandler: NSObject {
     }
     
     // add a single row to inventory table
-    class func saveInventory(inventory: Inventory) -> Inventory{
+    func saveInventory(inventory: Inventory) -> Inventory{
         let context = getContext()
         // save data
         do {
@@ -488,7 +473,7 @@ class CoreDataHandler: NSObject {
     }
     
     // add a single row to inventory table
-    class func saveInventory(inventoryName: String, dateOfPurchase: NSDate, price: Int32, remark: String, serialNumber: String, warranty: Int32, image: NSData, invoice: NSData, imageFileName: String, invoiceFileName: String, brand: Brand, category: Category, owner: Owner, room: Room) -> Inventory
+    func saveInventory(inventoryName: String, dateOfPurchase: NSDate, price: Int32, remark: String, serialNumber: String, warranty: Int32, image: NSData, invoice: NSData, imageFileName: String, invoiceFileName: String, brand: Brand, category: Category, owner: Owner, room: Room) -> Inventory
     {
         let context = getContext()
         
@@ -525,7 +510,7 @@ class CoreDataHandler: NSObject {
     }
     
     // update inventory object
-    class func updateInventory(inventory: Inventory) -> Bool{
+    func updateInventory(inventory: Inventory) -> Bool{
         let context = getContext()
         let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
         var found = false
@@ -555,7 +540,7 @@ class CoreDataHandler: NSObject {
     }
     
     // delete inventory object
-    class func deleteInventory(inventory: Inventory) -> Bool{
+    func deleteInventory(inventory: Inventory) -> Bool{
         let context = getContext()
         
         context.delete(inventory)
@@ -570,7 +555,7 @@ class CoreDataHandler: NSObject {
     
     // MARK: fetch ALL stuff
     // fetch all category array, otherwise return [] empty array
-    class func fetchAllCategories() -> [Category]
+    func fetchAllCategories() -> [Category]
     {
         //os_log("CoreDataHandler fetchAllCategories", log: Log.coredata, type: .info)
         
@@ -595,7 +580,7 @@ class CoreDataHandler: NSObject {
     }
     
     // fetch all brand array, otherwise return [] empty array
-    class func fetchAllBrands() -> [Brand]
+    func fetchAllBrands() -> [Brand]
     {
         //os_log("CoreDataHandler fetchAllBrands", log: Log.coredata, type: .info)
         
@@ -620,7 +605,7 @@ class CoreDataHandler: NSObject {
     }
     
     // fetch all owner array, otherwise return [] empty array
-    class func fetchAllOwners() -> [Owner]
+    func fetchAllOwners() -> [Owner]
     {
         //os_log("CoreDataHandler fetchAllOwners", log: Log.coredata, type: .info)
         
@@ -644,7 +629,7 @@ class CoreDataHandler: NSObject {
     }
     
     // fetch all room array, otherwise return [] empty array
-    class func fetchAllRooms() -> [Room]
+    func fetchAllRooms() -> [Room]
     {
         //os_log("CoreDataHandler fetchAllRooms", log: Log.coredata, type: .info)
         
@@ -668,7 +653,7 @@ class CoreDataHandler: NSObject {
     }
     
     // fetch array, if no array, return nil
-    class func fetchInventory() -> [Inventory]
+    func fetchInventory() -> [Inventory]
     {
         //os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
         
@@ -694,7 +679,7 @@ class CoreDataHandler: NSObject {
     
     
     // fetch all inventory from a certain room array, otherwise return [] empty array
-    class func fetchInventoryByRoom(roomName: String) -> [Inventory]
+    func fetchInventoryByRoom(roomName: String) -> [Inventory]
     {
         //os_log("CoreDataHandler fetchInventoryByRoom", log: Log.coredata, type: .info)
         
@@ -726,7 +711,7 @@ class CoreDataHandler: NSObject {
     
     // generate sample data for initial work
     // FIXME: must be depening upon system language with switch/case of supported languages, default english
-    class func generateInitialAppData()
+    func generateInitialAppData()
     {
         //os_log("CoreDataHandler generateInitialAppData", log: Log.coredata, type: .info)
         
@@ -810,7 +795,7 @@ class CoreDataHandler: NSObject {
         
         // default categories
         let categoryList: [String] = [noCategory, tech, furniture, computer,
-                                         juwelry, toy, tv, smartphone, tablet, videogame]
+                                      juwelry, toy, tv, smartphone, tablet, videogame]
         
         for name in categoryList{
             let category = Category(context: context)
@@ -863,8 +848,8 @@ class CoreDataHandler: NSObject {
         //_ = myImage6.jpegData(compressionQuality: 1.0)
         let myinvoice = NSData(bytes: arr, length: arr.count * 32)
         
-  //      let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
-  //                                 "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
+        //      let invList: [String] = ["Weber Grill", "Macbook Pro", "Amazon Echo Spot", "Sony TV",
+        //                                 "Samsung TV", "Thermomix", "Apple TV 4K", "Apple TV HD"]
         
         let imageSpeaker = UIImage(named: "Speaker")
         let imageSpeakerData = imageSpeaker?.jpegData(compressionQuality: 1.0)
@@ -917,7 +902,7 @@ class CoreDataHandler: NSObject {
     }
     
     // just for testing and debugging, will not be used in final app
-    class func showSampleData()
+    func showSampleData()
     {
         //os_log("CoreDataHandler showSampleData", log: Log.coredata, type: .info)
         

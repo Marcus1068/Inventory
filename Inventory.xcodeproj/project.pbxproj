@@ -88,6 +88,10 @@
 		2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9482086A41700FD5136 /* Owner+CoreDataProperties.swift */; };
 		2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */; };
 		2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */; };
+		2CDB2B112296BA630060F7F8 /* CoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */; };
+		2CDB2B122296BD8C0060F7F8 /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
+		2CDB2B142296CE020060F7F8 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
+		2CDB2B152296CFBD0060F7F8 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +226,8 @@
 		2CC85CFE225F32BB006973A0 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
 		2CC85D00225F32BB006973A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Watch Extension.entitlements"; sourceTree = "<group>"; };
+		2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		2CDB2B162296D4DF0060F7F8 /* Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Watch.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +330,7 @@
 				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
 				2C6B4AD3208E5551003CD033 /* CoreDataHandler.swift */,
 				2C15B22F225CFFF800EB09DD /* UserInfo.swift */,
+				2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -385,6 +392,7 @@
 		2CC648AF22968F6F00A6DA65 /* Watch */ = {
 			isa = PBXGroup;
 			children = (
+				2CDB2B162296D4DF0060F7F8 /* Watch.entitlements */,
 				2CC648B022968F6F00A6DA65 /* Interface.storyboard */,
 				2CC648B322968F7000A6DA65 /* Assets.xcassets */,
 				2CC648B522968F7000A6DA65 /* Info.plist */,
@@ -502,7 +510,7 @@
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -511,12 +519,17 @@
 					};
 					2CC648AD22968F6F00A6DA65 = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					2CC648B922968F7100A6DA65 = {
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -634,6 +647,7 @@
 				2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */,
 				2C870A1C22957D6800F36F99 /* Statistics.swift in Sources */,
 				2C56E96020879B3400FD5136 /* CollectionViewCell.swift in Sources */,
+				2CDB2B142296CE020060F7F8 /* CoreDataStorage.swift in Sources */,
 				2C4926D92090F85000508874 /* InventoryCollectionViewController.swift in Sources */,
 				2C56E95620872E1F00FD5136 /* AboutViewController.swift in Sources */,
 				2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */,
@@ -663,10 +677,13 @@
 				2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */,
 				2CDB2B08229692AB0060F7F8 /* Brand+CoreDataProperties.swift in Sources */,
 				2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */,
+				2CDB2B112296BA630060F7F8 /* CoreDataHandler.swift in Sources */,
+				2CDB2B152296CFBD0060F7F8 /* CoreDataStorage.swift in Sources */,
 				2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */,
 				2CC648C022968F7100A6DA65 /* InterfaceController.swift in Sources */,
 				2CDB2B0A229692B10060F7F8 /* Category+CoreDataProperties.swift in Sources */,
 				2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */,
+				2CDB2B122296BD8C0060F7F8 /* Inventory.xcdatamodeld in Sources */,
 				2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */,
 				2CDB2B0B229692B50060F7F8 /* Owner+CoreDataClass.swift in Sources */,
 			);
@@ -952,7 +969,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
@@ -977,7 +993,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";

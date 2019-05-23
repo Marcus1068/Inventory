@@ -653,8 +653,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 30
         
+        let stat = Statistics.shared
+        let sum = stat.itemPricesSum()
         let tmp4 = NSLocalizedString("Amount of money spent on items", comment: "Amount of money spent on items")
-        let priceSumText = tmp4 + ": " + String(Statistics.shared.itemPricesSum()) + Global.currencySymbol!
+        let priceSumText = tmp4 + ": " + String(sum) + Global.currencySymbol!
         priceSumText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         y = y + 30

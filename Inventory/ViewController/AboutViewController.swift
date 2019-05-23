@@ -90,36 +90,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
         
-        // initialize arrays
-        //Statistics.shared.start()
-        
-        
-        for (str, index) in Statistics.shared.countItemsByRoomDict(){
-            print("Room: \(str) count: \(index)" )
-        }
-        
-        
-        for (str, index) in Statistics.shared.countItemsByOwnerDict(){
-            print("Owner: \(str) count: \(index)" )
-        }
-        
-        for (str, index) in Statistics.shared.countItemsByCategoryDict(){
-            print("Category: \(str) count: \(index)" )
-        }
-        
-        for (str, index) in Statistics.shared.countItemsByBrandDict(){
-            print("Brand: \(str) count: \(index)" )
-        }
-        
-        let invNames = Statistics.shared.allInventory(elementsCount: 5)
-        for inv in invNames{
-            print(inv.inventoryName!)
-        }
-        
-        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
-        for inv in topPrices{
-            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
-        }
     }
     
     // when using iCloud key/value store to sync settings
@@ -184,6 +154,38 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         popPC.permittedArrowDirections = .up
         popPC.delegate = self
         present(myVC, animated:true, completion: nil)
+        
+        // initialize arrays
+        //Statistics.shared.start()
+        //FIXME just for debugging
+        
+        for (str, index) in Statistics.shared.countItemsByRoomDict(){
+            print("Room: \(str) count: \(index)" )
+        }
+        
+        
+        for (str, index) in Statistics.shared.countItemsByOwnerDict(){
+            print("Owner: \(str) count: \(index)" )
+        }
+        
+        for (str, index) in Statistics.shared.countItemsByCategoryDict(){
+            print("Category: \(str) count: \(index)" )
+        }
+        
+        for (str, index) in Statistics.shared.countItemsByBrandDict(){
+            print("Brand: \(str) count: \(index)" )
+        }
+        
+        let invNames = Statistics.shared.allInventory(elementsCount: 5)
+        for inv in invNames{
+            print(inv.inventoryName!)
+        }
+        
+        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
+        for inv in topPrices{
+            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+        }
+        
     }
     
     // needed for iPhone compatibilty when using popup controller

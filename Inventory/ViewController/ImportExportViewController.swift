@@ -123,7 +123,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         navigationItem.leftBarButtonItem = barButtonItem
         activityIndicator.startAnimating()
        
-        let container = CoreDataHandler.persistentContainer()
+        let container = CoreDataHandler.persistentContainer
         
         container.performBackgroundTask { (context) in
             var exportedRows : Int = 0

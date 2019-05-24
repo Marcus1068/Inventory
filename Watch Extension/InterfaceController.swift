@@ -76,6 +76,23 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 print(iPhoneContext["Name"] as Any)
                 // displayLabel.setText("Switch On")
             }
+            
+            if iPhoneContext["switchStatus"] == "Papa" {
+                print("Papa")
+                // displayLabel.setText("Switch On")
+            }
+            
+            
+        }
+        
+        if let num = session?.receivedApplicationContext as? [String: Int]{
+            if num["number"] == 12 {
+                print("12")
+                print(num["number"]?.description as Any)
+                let a = num["number"]
+                print(a!)
+                // displayLabel.setText("Switch On")
+            }
         }
     }
     

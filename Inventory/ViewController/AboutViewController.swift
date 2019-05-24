@@ -206,7 +206,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         } */
         
         // app context
-        if let validSession = WatchSessionManager.sharedManager.validSession {
+        let watchSessionManager = WatchSessionManager.sharedManager
+        if let validSession = watchSessionManager.validSession {
             let iPhoneAppContext = ["switchStatus": "Vincent"]
             
             do {
@@ -230,6 +231,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             } catch {
                 print("Something went wrong")
             }
+            try? watchSessionManager.updateApplicationContext(applicationContext: ["switchStatus": "Papa"])
+            try? watchSessionManager.updateApplicationContext(applicationContext: ["number": 12])
         }
         
     }

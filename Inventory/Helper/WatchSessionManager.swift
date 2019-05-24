@@ -99,3 +99,29 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     }
     
 }
+
+extension WatchSessionManager{
+    
+    // send messages to watch
+    func updateApplicationContext(applicationContext: [String : String]) throws {
+        if let session = validSession{
+            do{
+                try session.updateApplicationContext(applicationContext)
+            } catch let error{
+                throw error
+            }
+        }
+    }
+    
+    // send messages to watch
+    func updateApplicationContext(applicationContext: [String : Int]) throws {
+        if let session = validSession{
+            do{
+                try session.updateApplicationContext(applicationContext)
+            } catch let error{
+                throw error
+            }
+        }
+    }
+    
+}

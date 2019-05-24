@@ -87,13 +87,22 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         if let num = session?.receivedApplicationContext as? [String: Int]{
             if num["number"] == 12 {
-                print("12")
-                print(num["number"]?.description as Any)
-                let a = num["number"]
-                print(a!)
+                //print(num["number"]?.description as Any)
+                //print(num["number"]?.description as Any)
+                //let a = num["number"]
+                //print(a!)
                 // displayLabel.setText("Switch On")
             }
         }
+        
+        if let numarr = session?.receivedApplicationContext as? [String: Int]{
+            print(numarr["key1"]?.description as Any)
+            print(numarr["key2"]?.description as Any)
+            print(numarr["key3"]?.description as Any)
+            
+            print(numarr["number"]?.description as Any)
+        }
+        
     }
     
     // MARK: - WCSessionDelegate

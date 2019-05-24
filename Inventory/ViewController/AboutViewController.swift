@@ -231,8 +231,17 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             } catch {
                 print("Something went wrong")
             }
-            try? watchSessionManager.updateApplicationContext(applicationContext: ["switchStatus": "Papa"])
-            try? watchSessionManager.updateApplicationContext(applicationContext: ["number": 12])
+            //try? watchSessionManager.updateApplicationContext(applicationContext: ["switchStatus": "Papa"])
+            //try? watchSessionManager.updateApplicationContext(applicationContext: ["number": 12])
+            
+            let returnMessage: [String : Int] = [
+                "key1" : 1,
+                "key2" : 2,
+                "key3" : 3,
+                "number" : 12
+            ]
+            
+            try? watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
         }
         
     }

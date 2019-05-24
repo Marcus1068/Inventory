@@ -96,7 +96,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         
         if let numarr = session?.receivedApplicationContext as? [String: Int]{
-            print(numarr["key1"]?.description as Any)
+            print(numarr["Amount"]?.description as Any)
+            
+            let a = String(numarr["Amount"]!)
+            
+            //let msg = message["msg"]!
+            self.messages.append("Kosten: \(a)")
+            
             print(numarr["key2"]?.description as Any)
             print(numarr["key3"]?.description as Any)
             

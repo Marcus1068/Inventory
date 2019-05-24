@@ -234,8 +234,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             //try? watchSessionManager.updateApplicationContext(applicationContext: ["switchStatus": "Papa"])
             //try? watchSessionManager.updateApplicationContext(applicationContext: ["number": 12])
             
+            
             let returnMessage: [String : Int] = [
-                "key1" : 1,
+                "Amount" : Statistics.shared.itemPricesSum(),
                 "key2" : 2,
                 "key3" : 3,
                 "number" : 12

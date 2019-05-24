@@ -54,7 +54,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     override init() {
         super.init()
         
-        startSession()
+        //startSession()
         
         os_log("%@ WatchSessionManager: Paired Watch:", log: Log.viewcontroller, type: .info, session!.isPaired)
         os_log("%@ WatchSessionManager: Installed:", log: Log.viewcontroller, type: .info, session!.isWatchAppInstalled)

@@ -51,13 +51,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
     let kvStore = NSUbiquitousKeyValueStore()
     
-    var sessionHandler : WatchSessionManager?
+    //var sessionHandler : WatchSessionManager?
     var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.sessionHandler = (UIApplication.shared.delegate as? AppDelegate)?.sessionHandler
+        //self.sessionHandler = (UIApplication.shared.delegate as? AppDelegate)?.sessionHandler
         
         //os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
@@ -206,7 +206,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         } */
         
         // app context
-        if let validSession = sessionHandler?.validSession {
+        if let validSession = WatchSessionManager.sharedManager.validSession {
             let iPhoneAppContext = ["switchStatus": "Vincent"]
             
             do {

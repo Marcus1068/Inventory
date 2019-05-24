@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // for handling watch app connectivity
-    var sessionHandler : WatchSessionManager?
+    //var sessionHandler : WatchSessionManager?
     
     // iCloud key value store
     let kvStore = NSUbiquitousKeyValueStore()
@@ -111,11 +111,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = Statistics.shared
         
         // check for watch session
-        if WCSession.isSupported() {
+     /*   if WCSession.isSupported() {
             self.sessionHandler = WatchSessionManager()
         } else {
             os_log("WCSession not supported (f.e. on iPad).")
-        }
+        } */
+        WatchSessionManager.sharedManager.startSession()
         
         return true
     }

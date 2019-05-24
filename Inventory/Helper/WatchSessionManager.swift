@@ -45,36 +45,50 @@ import os
 /// return true
 /// }
 
-class ConnectivityHandler : NSObject, WCSessionDelegate {
+class WatchSessionManager : NSObject, WCSessionDelegate {
     
-    var session = WCSession.default
+    static let sharedManager = WatchSessionManager()
+    
+    private let session : WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     override init() {
         super.init()
         
-        session.delegate = self
-        session.activate()
+        startSession()
         
-        os_log("%@ ConnectivityHandler: Paired Watch:", log: Log.viewcontroller, type: .info, session.isPaired)
-        os_log("%@ ConnectivityHandler: Installed:", log: Log.viewcontroller, type: .info, session.isWatchAppInstalled)
+        os_log("%@ WatchSessionManager: Paired Watch:", log: Log.viewcontroller, type: .info, session!.isPaired)
+        os_log("%@ WatchSessionManager: Installed:", log: Log.viewcontroller, type: .info, session!.isWatchAppInstalled)
+    }
+    
+    // check for valid session
+    var validSession: WCSession?{
+        if let session = session, session.isPaired && session.isWatchAppInstalled{
+            return session
+        }
+        return nil
+    }
+    
+    func startSession(){
+        session?.delegate = self
+        session?.activate()
     }
     
     // MARK: - WCSessionDelegate
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        os_log("%@", "ConnectivityHandler: activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
+        os_log("%@", "WatchSessionManager: activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        os_log("%@ ConnectivityHandler: sessionDidBecomeInactive:", log: Log.viewcontroller, type: .info, session)
+        os_log("%@ WatchSessionManager: sessionDidBecomeInactive:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        os_log("%@ ConnectivityHandler: sessionDidDeactivate:", log: Log.viewcontroller, type: .info, session)
+        os_log("%@ WatchSessionManager: sessionDidDeactivate:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionWatchStateDidChange(_ session: WCSession) {
-        os_log("%@ ConnectivityHandler: sessionWatchStateDidChange:", log: Log.viewcontroller, type: .info, session)
+        os_log("%@ WatchSessionManager: sessionWatchStateDidChange:", log: Log.viewcontroller, type: .info, session)
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {

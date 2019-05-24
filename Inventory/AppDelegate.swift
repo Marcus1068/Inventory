@@ -43,8 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // for handling watch app connectivity
-    var connectivityHandler : ConnectivityHandler?
+    var sessionHandler : WatchSessionManager?
     
+    // iCloud key value store
     let kvStore = NSUbiquitousKeyValueStore()
 
     // used for app icon shortcut info.plist entries
@@ -111,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // check for watch session
         if WCSession.isSupported() {
-            self.connectivityHandler = ConnectivityHandler()
+            self.sessionHandler = WatchSessionManager()
         } else {
             os_log("WCSession not supported (f.e. on iPad).")
         }

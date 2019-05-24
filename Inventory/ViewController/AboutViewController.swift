@@ -27,6 +27,8 @@
 import UIKit
 import MessageUI
 import os
+import AudioToolbox
+import WatchConnectivity
 
 class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate  {
     @IBOutlet weak var appVersionNumberLabel: UILabel!
@@ -49,13 +51,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
     let kvStore = NSUbiquitousKeyValueStore()
     
-    var connectivityHandler : ConnectivityHandler!
+    var sessionHandler : WatchSessionManager?
     var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.connectivityHandler = (UIApplication.shared.delegate as? AppDelegate)?.connectivityHandler
+        self.sessionHandler = (UIApplication.shared.delegate as? AppDelegate)?.sessionHandler
         
         //os_log("AboutViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
@@ -194,11 +196,40 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // watch send message
         
-        
+       /*
         counter += 1
-        connectivityHandler.session.sendMessage(["msg" : "Message \(counter)"], replyHandler: nil) { (error) in
+        connectivityHandler!.session.sendMessage(["msg" : "Message \(counter)"], replyHandler: nil) { (error) in
             //os_log("AboutViewController viewWillAppear: error %@", log: Log.viewcontroller, type: .info, error)
-            NSLog("%@", "Error sending message: \(error)")
+            //NSLog("%@", "Error sending message: \(error)")
+            // vibrate iPhone
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+        } */
+        
+        // app context
+        if let validSession = sessionHandler?.validSession {
+            let iPhoneAppContext = ["switchStatus": "Vincent"]
+            
+            do {
+                try validSession.updateApplicationContext(iPhoneAppContext)
+            } catch {
+                print("Something went wrong")
+            }
+            
+            let iPhoneApp = ["switchStatus": "Emily"]
+            
+            do {
+                try validSession.updateApplicationContext(iPhoneApp)
+            } catch {
+                print("Something went wrong")
+            }
+            
+            let iPhoneAppHans = ["Name": "Hans"]
+            
+            do {
+                try validSession.updateApplicationContext(iPhoneAppHans)
+            } catch {
+                print("Something went wrong")
+            }
         }
         
     }

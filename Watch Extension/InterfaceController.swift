@@ -57,17 +57,62 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    func processApplicationContext() {
+        if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
+            
+            
+            if iPhoneContext["switchStatus"] == "Vincent" {
+                print("Vincent")
+                // displayLabel.setText("Switch On")
+            }
+            
+            if iPhoneContext["switchStatus"] == "Emily" {
+                print("Emily")
+                // displayLabel.setText("Switch On")
+            }
+            
+            if iPhoneContext["Name"] == "Hans" {
+                print("Hans")
+                print(iPhoneContext["Name"] as Any)
+                // displayLabel.setText("Switch On")
+            }
+        }
+    }
+    
     // MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
         print("in watch app: \(activationState)")
     }
     
+    // gets called when new iPhone message arrives
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         os_log("InterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
         let msg = message["msg"]!
         self.messages.append("Message \(msg)")
+        // vibrate when message received
+        WKInterfaceDevice.current().play(.notification)
+    }
+    
+    // app context
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        os_log("InterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
+        
+        //let msg = applicationContext["msg"]!
+        //self.messages.append("AppContext \(msg)")
+        
+        DispatchQueue.main.async() {
+            self.processApplicationContext()
+        }
+    }
+    
+    // userInfo
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        os_log("InterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
+        
+        let msg = userInfo["msg"]!
+        self.messages.append("UserInfo \(msg)")
     }
     
     func updateMessagesTable() {
@@ -104,7 +149,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         session?.delegate = self
         session?.activate()
         
-        refreshPickerItems()
+        //refreshPickerItems()
     }
     
     override func didDeactivate() {

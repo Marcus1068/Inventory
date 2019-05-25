@@ -60,6 +60,8 @@
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E992286E1DE0063EF25 /* InventorySplash.jpg */; };
 		2C847E9C2286EADD0063EF25 /* image_file1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E9B2286EADD0063EF25 /* image_file1024.jpg */; };
+		2C8589E722996A5700517E79 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8589E622996A5700517E79 /* WatchConstants.swift */; };
+		2C8589E822996A9200517E79 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8589E622996A5700517E79 /* WatchConstants.swift */; };
 		2C870A17229293E200F36F99 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C870A16229293E100F36F99 /* Default-568h@2x.png */; };
 		2C870A1A2293557100F36F99 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A192293557100F36F99 /* TabBarViewController.swift */; };
 		2C870A1C22957D6800F36F99 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
@@ -203,6 +205,7 @@
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C847E992286E1DE0063EF25 /* InventorySplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InventorySplash.jpg; sourceTree = "<group>"; };
 		2C847E9B2286EADD0063EF25 /* image_file1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_file1024.jpg; sourceTree = "<group>"; };
+		2C8589E622996A5700517E79 /* WatchConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		2C870A16229293E100F36F99 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C870A182292E75E00F36F99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C870A192293557100F36F99 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 				2C6A69F5228038D600140B39 /* DropFile.swift */,
 				2C870A1B22957D6800F36F99 /* Statistics.swift */,
 				2CD2FBE22297062000A7ED47 /* WatchSessionManager.swift */,
+				2C8589E622996A5700517E79 /* WatchConstants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -633,6 +637,7 @@
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */,
 				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
+				2C8589E722996A5700517E79 /* WatchConstants.swift in Sources */,
 				2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */,
 				2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */,
 				2C661DEF2261CDF60070B8F3 /* ImageViewController.swift in Sources */,
@@ -684,6 +689,7 @@
 				2CDB2B0A229692B10060F7F8 /* Category+CoreDataProperties.swift in Sources */,
 				2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */,
 				2CDB2B122296BD8C0060F7F8 /* Inventory.xcdatamodeld in Sources */,
+				2C8589E822996A9200517E79 /* WatchConstants.swift in Sources */,
 				2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */,
 				2CDB2B0B229692B50060F7F8 /* Owner+CoreDataClass.swift in Sources */,
 			);

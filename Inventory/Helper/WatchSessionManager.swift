@@ -102,7 +102,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
 
 extension WatchSessionManager{
     
-    // send messages to watch
+    // send messages to watch with key (String) and value (String)
     func updateApplicationContext(applicationContext: [String : String]) throws {
         if let session = validSession{
             do{
@@ -113,7 +113,7 @@ extension WatchSessionManager{
         }
     }
     
-    // send messages to watch
+    // send messages to watch with key (String) and value (Int)
     func updateApplicationContext(applicationContext: [String : Int]) throws {
         if let session = validSession{
             do{
@@ -124,4 +124,25 @@ extension WatchSessionManager{
         }
     }
     
+    // send messages to watch with key (String) and value (Data)
+    func updateApplicationContext(applicationContext: [String : Data]) throws {
+        if let session = validSession{
+            do{
+                try session.updateApplicationContext(applicationContext)
+            } catch let error{
+                throw error
+            }
+        }
+    }
+    
+    // send messages to watch with key (String) and value (Any)
+    func updateApplicationContext(applicationContext: [String : Any]) throws {
+        if let session = validSession{
+            do{
+                try session.updateApplicationContext(applicationContext)
+            } catch let error{
+                throw error
+            }
+        }
+    }
 }

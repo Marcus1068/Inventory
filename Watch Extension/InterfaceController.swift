@@ -41,12 +41,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     var session : WCSession?
     
-    let titles = [
-        "Most expensive","Most by room",
-        "Most by category","success",
-        "failure","retry"
-    ]
-    
     // MARK: - Messages Table
     
     var messages = [String]() {
@@ -60,55 +54,78 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func processApplicationContext() {
         if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
             
-            
             if iPhoneContext["switchStatus"] == "Vincent" {
-                print("Vincent")
+                self.messages.append("Vincent")
                 // displayLabel.setText("Switch On")
             }
             
             if iPhoneContext["switchStatus"] == "Emily" {
-                print("Emily")
+                self.messages.append("Emily")
                 // displayLabel.setText("Switch On")
             }
             
             if iPhoneContext["Name"] == "Hans" {
-                print("Hans")
-                print(iPhoneContext["Name"] as Any)
+                self.messages.append("Hans")
                 // displayLabel.setText("Switch On")
             }
             
             if iPhoneContext["switchStatus"] == "Papa" {
-                print("Papa")
+                self.messages.append("Papa")
                 // displayLabel.setText("Switch On")
             }
             
             
         }
         
-        if let num = session?.receivedApplicationContext as? [String: Int]{
-            if num["number"] == 12 {
-                //print(num["number"]?.description as Any)
-                //print(num["number"]?.description as Any)
-                //let a = num["number"]
-                //print(a!)
-                // displayLabel.setText("Switch On")
-            }
-        }
+        //if let temperature = session?.receivedApplicationContext[DataKey.TopRooms] as? String {
+        //}
         
         if let numarr = session?.receivedApplicationContext as? [String: Int]{
-            print(numarr["Amount"]?.description as Any)
+            //print(numarr[DataKey.AmountMoney]?.description as Any)
             
-            let a = String(numarr["Amount"]!)
+            for (key, value) in numarr{
+                switch key{
+                case DataKey.TopPrice:
+                    self.messages.append("Teuerstes Prod: \(value) Euro")
+                    break
+                case DataKey.AmountMoney:
+                    self.messages.append("Kosten: \(String(value))")
+                    break
+                default:
+                    self.messages.append("unbekannt")
+                }
+            }
             
             //let msg = message["msg"]!
-            self.messages.append("Kosten: \(a)")
+            //self.messages.append("Kosten: \(String(numarr[Statistics.AmountMoney]!))")
             
             print(numarr["key2"]?.description as Any)
             print(numarr["key3"]?.description as Any)
             
             print(numarr["number"]?.description as Any)
+            
         }
         
+        if let data = session?.receivedApplicationContext{
+            for (key, value) in data{
+                switch key{
+                case DataKey.ImageData:
+                    self.messages.append("Image korrekt")
+                    //image. = value
+                    print(value)
+                    break
+                
+                case DataKey.TopRooms:
+                    self.messages.append("Image data")
+                    //image. = value
+                    print(value)
+                    break
+                    
+                default:
+                    self.messages.append("Bild unbekannt")
+                }
+            }
+        }
     }
     
     // MARK: - WCSessionDelegate
@@ -210,17 +227,4 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         )
     }
     
-    // MARK: - helper methods
-    
-    func refreshPickerItems(){
-        var pickerItems:[WKPickerItem] = []
-        
-        for item in titles{
-            let pickerItem = WKPickerItem()
-            pickerItem.title = item
-            pickerItems += [pickerItem]
-        }
-        
-        //pickerOutlet.setItems(pickerItems)
-    }
 }

@@ -46,6 +46,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // attributes
     
+
     // for using userDefaults local store
     // let userDefaults = UserDefaults.standard
     // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
@@ -236,13 +237,26 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             
             
             let returnMessage: [String : Int] = [
-                "Amount" : Statistics.shared.itemPricesSum(),
-                "key2" : 2,
+                DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+                DataKey.TopPrice : 5000,
                 "key3" : 3,
                 "number" : 12
             ]
             
+            
             try? watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
+            
+            
+            let arr : [UInt32] = [32,4,123,4,5,2]
+            let myinvoice = Data(bytes: arr, count: arr.count * 32)
+            let imageSpeaker = UIImage(named: "Speaker")
+            let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
+            let dataMessage: [String : Any] = [
+                DataKey.ImageData : imageData!,
+                DataKey.TopRooms : myinvoice
+            ]
+            
+            try? watchSessionManager.updateApplicationContext(applicationContext: dataMessage)
         }
         
     }
@@ -360,3 +374,4 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
 
 }
+

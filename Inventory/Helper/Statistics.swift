@@ -9,6 +9,7 @@
 import Foundation
 import os
 
+
 // uses singleton pattern
 // Usage: let stats = Statistics.shared, print(stats.images)
 /// returns a lot of internal statistics useful for evaluating how many objects

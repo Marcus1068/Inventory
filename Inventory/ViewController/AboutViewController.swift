@@ -206,7 +206,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
         } */
         
-        // app context
+        // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager
         if let validSession = watchSessionManager.validSession {
             let iPhoneAppContext = ["switchStatus": "Vincent"]

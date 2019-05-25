@@ -32,7 +32,6 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
     
     
@@ -49,5 +48,5 @@ class TabBarViewController: UITabBarController {
   /*  override func becomeFirstResponder() -> Bool {
         return true
     } */
-
+    
 }

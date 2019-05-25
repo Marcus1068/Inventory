@@ -217,6 +217,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserInfo.addressName = address
         }
     }
+    
 }
 
 

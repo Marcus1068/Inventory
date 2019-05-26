@@ -208,56 +208,28 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager
-        if let validSession = watchSessionManager.validSession {
-            let iPhoneAppContext = ["switchStatus": "Vincent"]
-            
-            do {
-                try validSession.updateApplicationContext(iPhoneAppContext)
-            } catch {
-                print("Something went wrong")
-            }
-            
-            let iPhoneApp = ["switchStatus": "Emily"]
-            
-            do {
-                try validSession.updateApplicationContext(iPhoneApp)
-            } catch {
-                print("Something went wrong")
-            }
-            
-            let iPhoneAppHans = ["Name": "Hans"]
-            
-            do {
-                try validSession.updateApplicationContext(iPhoneAppHans)
-            } catch {
-                print("Something went wrong")
-            }
-            //try? watchSessionManager.updateApplicationContext(applicationContext: ["switchStatus": "Papa"])
-            //try? watchSessionManager.updateApplicationContext(applicationContext: ["number": 12])
-            
-            
-            let returnMessage: [String : Int] = [
-                DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
-                DataKey.TopPrice : 5000,
-                "key3" : 3,
-                "number" : 12
-            ]
-            
-            
-            try? watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
-            
-            
-            let arr : [UInt32] = [32,4,123,4,5,2]
-            let myinvoice = Data(bytes: arr, count: arr.count * 32)
-            let imageSpeaker = UIImage(named: "Speaker")
-            let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
-            let dataMessage: [String : Any] = [
-                DataKey.ImageData : imageData!,
-                DataKey.TopRooms : myinvoice
-            ]
-            
-            try? watchSessionManager.updateApplicationContext(applicationContext: dataMessage)
+        
+        //let imageSpeaker = UIImage(named: "Speaker")
+        //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
+        
+        let returnMessage: [String : Any] = [
+            DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+            DataKey.TopPrice : 5000,
+            DataKey.Topcategories : 33
+            //DataKey.ImageData : imageData!
+        ]
+        
+        //try? watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
+        
+   /*     do {
+            try watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
+            displayAlert(title: "Watch ist da", message: "Watch ist da", buttonText: Global.ok)
+        } catch let error{
+            displayAlert(title: "Watch nicht da", message: "Watch nicht da", buttonText: Global.ok)
+            print(error)
         }
+     */
+        watchSessionManager.sendMessage(message: returnMessage)
         
     }
     

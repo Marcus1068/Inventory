@@ -38,21 +38,27 @@ class MessageRow: NSObject{
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
   
     @IBOutlet weak var messagesTable: WKInterfaceTable!
+    @IBOutlet weak var topPrice: WKInterfaceLabel!
+    @IBOutlet weak var amountMoney: WKInterfaceLabel!
+    @IBOutlet weak var topCategories: WKInterfaceLabel!
     
     var session : WCSession?
+    
     
     // MARK: - Messages Table
     
     var messages = [String]() {
         didSet {
             OperationQueue.main.addOperation {
-                self.updateMessagesTable()
+                //self.updateMessagesTable()
+                self.tableRefresh()
+                
             }
         }
     }
     
     func processApplicationContext() {
-        if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
+    /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
             
             if iPhoneContext["switchStatus"] == "Vincent" {
                 self.messages.append("Vincent")
@@ -75,57 +81,43 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             }
             
             
-        }
+        } */
         
         //if let temperature = session?.receivedApplicationContext[DataKey.TopRooms] as? String {
         //}
         
-        if let numarr = session?.receivedApplicationContext as? [String: Int]{
+  /*      if let dict = session?.receivedApplicationContext{
             //print(numarr[DataKey.AmountMoney]?.description as Any)
             
-            for (key, value) in numarr{
+            for (key, value) in dict{
                 switch key{
                 case DataKey.TopPrice:
                     self.messages.append("Teuerstes Prod: \(value) Euro")
                     break
+                    
                 case DataKey.AmountMoney:
-                    self.messages.append("Kosten: \(String(value))")
+                    self.messages.append("Kosten: \(value)")
                     break
-                default:
-                    self.messages.append("unbekannt")
-                }
-            }
-            
-            //let msg = message["msg"]!
-            //self.messages.append("Kosten: \(String(numarr[Statistics.AmountMoney]!))")
-            
-            print(numarr["key2"]?.description as Any)
-            print(numarr["key3"]?.description as Any)
-            
-            print(numarr["number"]?.description as Any)
-            
-        }
-        
-        if let data = session?.receivedApplicationContext{
-            for (key, value) in data{
-                switch key{
+                    
                 case DataKey.ImageData:
                     self.messages.append("Image korrekt")
-                    //image. = value
                     print(value)
                     break
-                
+                    
                 case DataKey.TopRooms:
-                    self.messages.append("Image data")
+                    self.messages.append("Top Rooms")
                     //image. = value
                     print(value)
                     break
                     
                 default:
-                    self.messages.append("Bild unbekannt")
+                    self.messages.append("unbekannt")
+                    print("unbekannt")
                 }
             }
-        }
+            
+        } */
+        
     }
     
     // MARK: - WCSessionDelegate
@@ -138,12 +130,52 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         os_log("InterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
-        let msg = message["msg"]!
-        self.messages.append("Message \(msg)")
+        // check for message that come immediately
+        // let msg = message["msg"]!
+        
+        for (key, value) in message{
+            if key == DataKey.AmountMoney{
+                let val = value as! Int
+                amountMoney.setText(key + ": " + String(val))
+            }
+            
+            if key == DataKey.TopPrice{
+                let val = value as! Int
+                topPrice.setText(key + ": " + String(val))
+            }
+            
+            if key == DataKey.Topcategories{
+                let val = value as! Int
+                topCategories.setText(key + ": " + String(val))
+            }
+            
+            self.messages.append("Key: \(key) Value: \(value)")
+        }
+        
+ /*       for i in message.enumerated(){
+            print(i.element.key)
+            let val = i.element.value as! Int
+            
+            if i.element.key == DataKey.AmountMoney{
+                //print("Amount")
+                
+                let str = i.element.key + ": " + String(val)
+                amountMoney.setText(str)
+            }
+            if i.element.key == DataKey.TopPrice{
+                //print("Topprice")
+                topPrice.setText(i.element.key + ": " + String(val))
+            }
+            
+            
+            self.messages.append("Key: \(i.element.key) Value: \(i.element.value)")
+        } */
+        //self.messages.append("Message \(msg)")
         // vibrate when message received
         WKInterfaceDevice.current().play(.notification)
     }
     
+
     // app context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         os_log("InterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
@@ -164,15 +196,14 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         self.messages.append("UserInfo \(msg)")
     }
     
-    func updateMessagesTable() {
+    func tableRefresh(){
         messagesTable.setNumberOfRows(messages.count, withRowType: "MessageRow")
-        for (i, msg) in messages.enumerated() {
-            let row = messagesTable.rowController(at: i) as! MessageRow
-            row.label.setText(msg)
+        for index in 0 ..< messagesTable.numberOfRows {
+            let row = messagesTable.rowController(at: index) as! MessageRow
+            row.label.setText(messages[index])
         }
         
     }
-    
 
     
     //let stat = Statistics.shared
@@ -198,6 +229,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         session?.delegate = self
         session?.activate()
         
+        tableRefresh()
         //refreshPickerItems()
     }
     

@@ -35,3 +35,4 @@ public struct DataKey {
     static let Topcategories = "TopCategories"
     static let ImageData = "ImageData"
 }
+

@@ -35,9 +35,15 @@
                                 <action selector="requestInfo" destination="AgC-eL-Hgc" id="3xp-kz-TSh"/>
                             </connections>
                         </button>
+                        <label alignment="left" text="Label" id="zgp-XK-6xd"/>
+                        <label alignment="left" text="Label" id="7rW-jb-QNu"/>
+                        <label alignment="left" text="Label" id="dqb-cQ-woe"/>
                     </items>
                     <connections>
+                        <outlet property="amountMoney" destination="7rW-jb-QNu" id="LFH-Oh-r1d"/>
                         <outlet property="messagesTable" destination="kaL-XS-KsM" id="47t-SW-5LC"/>
+                        <outlet property="topCategories" destination="dqb-cQ-woe" id="KW0-Kg-4sX"/>
+                        <outlet property="topPrice" destination="zgp-XK-6xd" id="4y6-yI-tns"/>
                     </connections>
                 </controller>
             </objects>

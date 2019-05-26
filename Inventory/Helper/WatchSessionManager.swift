@@ -51,6 +51,15 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     
     private let session : WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
+    private var items = [String]() {
+        didSet {
+            //DispatchQueue.main.async {
+                //self.updateTable()
+            print(1)
+            }
+        }
+    
+    
     override init() {
         super.init()
         
@@ -71,6 +80,14 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     func startSession(){
         session?.delegate = self
         session?.activate()
+    }
+    
+    private func isSuported() -> Bool {
+        return WCSession.isSupported()
+    }
+    
+    private func isReachable() -> Bool {
+        return session!.isReachable
     }
     
     // MARK: - WCSessionDelegate
@@ -98,42 +115,25 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         }
     }
     
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        // do something
+    }
+    
+    func sendMessage(message: [String : Any]) {
+        os_log("WatchSessionManager: sendMessage()", log: Log.viewcontroller, type: .info)
+        
+        if isReachable() {
+            session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                print("Error sending message: %@", error)
+            })
+        } else {
+            print("iPhone is not reachable!!")
+        }
+    }
+    
 }
 
 extension WatchSessionManager{
-    
-    // send messages to watch with key (String) and value (String)
-    func updateApplicationContext(applicationContext: [String : String]) throws {
-        if let session = validSession{
-            do{
-                try session.updateApplicationContext(applicationContext)
-            } catch let error{
-                throw error
-            }
-        }
-    }
-    
-    // send messages to watch with key (String) and value (Int)
-    func updateApplicationContext(applicationContext: [String : Int]) throws {
-        if let session = validSession{
-            do{
-                try session.updateApplicationContext(applicationContext)
-            } catch let error{
-                throw error
-            }
-        }
-    }
-    
-    // send messages to watch with key (String) and value (Data)
-    func updateApplicationContext(applicationContext: [String : Data]) throws {
-        if let session = validSession{
-            do{
-                try session.updateApplicationContext(applicationContext)
-            } catch let error{
-                throw error
-            }
-        }
-    }
     
     // send messages to watch with key (String) and value (Any)
     func updateApplicationContext(applicationContext: [String : Any]) throws {

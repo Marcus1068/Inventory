@@ -57,6 +57,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
+    // contains list of most expensive items
+    var topPrices : [String : Int] = [ : ]
+    
     func processApplicationContext() {
     /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
             
@@ -123,7 +126,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
-        print("in watch app: \(activationState)")
+        //print("in watch app: \(activationState)")
     }
     
     // gets called when new iPhone message arrives
@@ -131,7 +134,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         os_log("InterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
         // check for message that come immediately
-        // let msg = message["msg"]!
         
         for (key, value) in message{
             if key == DataKey.AmountMoney{
@@ -149,35 +151,26 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 topCategories.setText(key + ": " + String(val))
             }
             
-            if key == DataKey.MostExpensiveList{
+            // deal with a list of strings sent at once
+            // will have prefix which must be removed for further work
+            if key.contains(DataKey.MostExpensiveList) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.MostExpensiveList, with: "")
+                let myValue = value as! String
+                topPrices[parsed] = Int(myValue)
+                
                 let val = value as! String
-                self.messages.append(val)
+                self.messages.append(parsed + ": " + val)
             }
-            
-            
-            
         }
         
- /*       for i in message.enumerated(){
-            print(i.element.key)
-            let val = i.element.value as! Int
-            
-            if i.element.key == DataKey.AmountMoney{
-                //print("Amount")
-                
-                let str = i.element.key + ": " + String(val)
-                amountMoney.setText(str)
-            }
-            if i.element.key == DataKey.TopPrice{
-                //print("Topprice")
-                topPrice.setText(i.element.key + ": " + String(val))
-            }
-            
-            
-            self.messages.append("Key: \(i.element.key) Value: \(i.element.value)")
-        } */
-        //self.messages.append("Message \(msg)")
-        // vibrate when message received
+        // sorted dict of most expensive items
+        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
+            print(idx, val)
+        }
+        
+        // vibrate when messages were received
         WKInterfaceDevice.current().play(.notification)
     }
     

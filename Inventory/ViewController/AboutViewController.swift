@@ -211,11 +211,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
         for inv in topPrices{
-            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
-            returnMessage[DataKey.MostExpensiveList] = inv.inventoryName! + ": " + String(inv.price) as Any
-            watchSessionManager.sendMessage(message: returnMessage)
-            returnMessage.removeAll()
+            //print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+            returnMessage[DataKey.MostExpensiveList + inv.inventoryName!] = String(inv.price) as Any
         }
+        
+        watchSessionManager.sendMessage(message: returnMessage)
+        returnMessage.removeAll()
         
         //watchSessionManager.sendMessage(message: returnMessage)
         //returnMessage.removeAll()

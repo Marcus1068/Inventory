@@ -58,6 +58,8 @@
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
+		2C82495C229AC7E4008748DE /* TopPricesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */; };
+		2C82495E229AC854008748DE /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82495D229AC854008748DE /* MainInterfaceController.swift */; };
 		2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E992286E1DE0063EF25 /* InventorySplash.jpg */; };
 		2C847E9C2286EADD0063EF25 /* image_file1024.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2C847E9B2286EADD0063EF25 /* image_file1024.jpg */; };
 		2C8589E722996A5700517E79 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8589E622996A5700517E79 /* WatchConstants.swift */; };
@@ -73,7 +75,6 @@
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
 		2CC648BB22968F7100A6DA65 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC648BA22968F7100A6DA65 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2CC648C022968F7100A6DA65 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC648BF22968F7100A6DA65 /* InterfaceController.swift */; };
 		2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */; };
 		2CC648C422968F7100A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648C322968F7100A6DA65 /* Assets.xcassets */; };
 		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; };
@@ -203,6 +204,8 @@
 		2C6C0DDE2201EBD900367879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
+		2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPricesInterfaceController.swift; sourceTree = "<group>"; };
+		2C82495D229AC854008748DE /* MainInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInterfaceController.swift; sourceTree = "<group>"; };
 		2C847E992286E1DE0063EF25 /* InventorySplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InventorySplash.jpg; sourceTree = "<group>"; };
 		2C847E9B2286EADD0063EF25 /* image_file1024.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_file1024.jpg; sourceTree = "<group>"; };
 		2C8589E622996A5700517E79 /* WatchConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
@@ -220,7 +223,6 @@
 		2CC648B322968F7000A6DA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC648B522968F7000A6DA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CC648BA22968F7100A6DA65 /* Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CC648BF22968F7100A6DA65 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		2CC648C322968F7100A6DA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC648C522968F7100A6DA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -408,7 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */,
-				2CC648BF22968F7100A6DA65 /* InterfaceController.swift */,
+				2C82495D229AC854008748DE /* MainInterfaceController.swift */,
+				2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */,
 				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
 				2CC648C522968F7100A6DA65 /* Info.plist */,
@@ -675,7 +678,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C82495E229AC854008748DE /* MainInterfaceController.swift in Sources */,
 				2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */,
+				2C82495C229AC7E4008748DE /* TopPricesInterfaceController.swift in Sources */,
 				2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */,
 				2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */,
 				2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */,
@@ -685,7 +690,6 @@
 				2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */,
 				2CDB2B152296CFBD0060F7F8 /* CoreDataStorage.swift in Sources */,
 				2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */,
-				2CC648C022968F7100A6DA65 /* InterfaceController.swift in Sources */,
 				2CDB2B0A229692B10060F7F8 /* Category+CoreDataProperties.swift in Sources */,
 				2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */,
 				2CDB2B122296BD8C0060F7F8 /* Inventory.xcdatamodeld in Sources */,

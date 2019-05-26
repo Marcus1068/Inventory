@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch38" orientation="portrait">
+    <device id="watch44" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,7 +12,7 @@
         <!--Inventory-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Watch" customModuleProvider="target">
+                <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
@@ -48,6 +48,13 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="137" y="22"/>
+        </scene>
+        <!--TopPrices-->
+        <scene sceneID="C7o-St-KbY">
+            <objects>
+                <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="-19"/>
         </scene>
     </scenes>
 </document>

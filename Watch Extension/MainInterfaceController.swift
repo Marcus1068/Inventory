@@ -35,7 +35,7 @@ class MessageRow: NSObject{
     
 }
 
-class InterfaceController: WKInterfaceController, WCSessionDelegate {
+class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
   
     @IBOutlet weak var messagesTable: WKInterfaceTable!
     @IBOutlet weak var topPrice: WKInterfaceLabel!
@@ -68,16 +68,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 // displayLabel.setText("Switch On")
             }
             
-            if iPhoneContext["switchStatus"] == "Emily" {
-                self.messages.append("Emily")
-                // displayLabel.setText("Switch On")
-            }
-            
-            if iPhoneContext["Name"] == "Hans" {
-                self.messages.append("Hans")
-                // displayLabel.setText("Switch On")
-            }
-            
             if iPhoneContext["switchStatus"] == "Papa" {
                 self.messages.append("Papa")
                 // displayLabel.setText("Switch On")
@@ -85,53 +75,35 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             
         } */
-        
-        //if let temperature = session?.receivedApplicationContext[DataKey.TopRooms] as? String {
-        //}
-        
-  /*      if let dict = session?.receivedApplicationContext{
-            //print(numarr[DataKey.AmountMoney]?.description as Any)
-            
-            for (key, value) in dict{
-                switch key{
-                case DataKey.TopPrice:
-                    self.messages.append("Teuerstes Prod: \(value) Euro")
-                    break
-                    
-                case DataKey.AmountMoney:
-                    self.messages.append("Kosten: \(value)")
-                    break
-                    
-                case DataKey.ImageData:
-                    self.messages.append("Image korrekt")
-                    print(value)
-                    break
-                    
-                case DataKey.TopRooms:
-                    self.messages.append("Top Rooms")
-                    //image. = value
-                    print(value)
-                    break
-                    
-                default:
-                    self.messages.append("unbekannt")
-                    print("unbekannt")
-                }
-            }
-            
-        } */
+    }
+    
+    func tableRefresh(){
+        messagesTable.setNumberOfRows(messages.count, withRowType: "MessageRow")
+        for index in 0 ..< messagesTable.numberOfRows {
+            let row = messagesTable.rowController(at: index) as! MessageRow
+            row.label.setText(messages[index])
+        }
         
     }
     
+    // MARK: - table functions
+    //table selection method
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        print(rowIndex)
+        //let flight = flights[rowIndex]
+        presentController(withName: "TopPrices", context: topPrices)
+    }
+    
+    
     // MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        os_log("InterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
         //print("in watch app: \(activationState)")
     }
     
     // gets called when new iPhone message arrives
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        os_log("InterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
         // check for message that come immediately
         
@@ -177,7 +149,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
     // app context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        os_log("InterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
         
         //let msg = applicationContext["msg"]!
         //self.messages.append("AppContext \(msg)")
@@ -189,20 +161,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // userInfo
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        os_log("InterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
         
         let msg = userInfo["msg"]!
         self.messages.append("UserInfo \(msg)")
     }
     
-    func tableRefresh(){
-        messagesTable.setNumberOfRows(messages.count, withRowType: "MessageRow")
-        for index in 0 ..< messagesTable.numberOfRows {
-            let row = messagesTable.rowController(at: index) as! MessageRow
-            row.label.setText(messages[index])
-        }
-        
-    }
+    
 
     
     //let stat = Statistics.shared
@@ -219,7 +184,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     // FIXME: updateapplicationContext to share data
     
     override func willActivate() {
-        os_log("InterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
@@ -233,7 +198,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     override func didDeactivate() {
-        os_log("InterfaceController: didDeactivate()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: didDeactivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
@@ -247,7 +212,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     } */
 
     @IBAction func requestInfo() {
-        os_log("InterfaceController: requestInfo()", log: Log.viewcontroller, type: .info)
+        os_log("MainInterfaceController: requestInfo()", log: Log.viewcontroller, type: .info)
         session?.sendMessage(["request" : "date"],
                              replyHandler: { (response) in
                                 self.messages.append("Reply: \(response)")
@@ -257,5 +222,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         )
     }
+    
     
 }

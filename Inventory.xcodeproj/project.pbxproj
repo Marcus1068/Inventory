@@ -21,6 +21,7 @@
 		2C4D3F062265D98C00169656 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D3F052265D98C00169656 /* PrivacyViewController.swift */; };
 		2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B722098D03100D99949 /* CategoryTableViewController.swift */; };
 		2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B742098E80500D99949 /* CategoryEditViewController.swift */; };
+		2C560F03229AF7C400488FAD /* PricesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C560F02229AF7C400488FAD /* PricesRowController.swift */; };
 		2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8AD2086350A00FD5136 /* AppDelegate.swift */; };
 		2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B32086350A00FD5136 /* Main.storyboard */; };
 		2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
@@ -162,6 +163,7 @@
 		2C4D3F052265D98C00169656 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		2C501B722098D03100D99949 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		2C501B742098E80500D99949 /* CategoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
+		2C560F02229AF7C400488FAD /* PricesRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesRowController.swift; sourceTree = "<group>"; };
 		2C56E8AA2086350A00FD5136 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8AD2086350A00FD5136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C56E8B42086350A00FD5136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				2C82495D229AC854008748DE /* MainInterfaceController.swift */,
 				2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */,
 				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
+				2C560F02229AF7C400488FAD /* PricesRowController.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
 				2CC648C522968F7100A6DA65 /* Info.plist */,
 			);
@@ -680,6 +683,7 @@
 			files = (
 				2C82495E229AC854008748DE /* MainInterfaceController.swift in Sources */,
 				2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */,
+				2C560F03229AF7C400488FAD /* PricesRowController.swift in Sources */,
 				2C82495C229AC7E4008748DE /* TopPricesInterfaceController.swift in Sources */,
 				2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */,
 				2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */,

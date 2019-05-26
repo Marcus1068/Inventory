@@ -52,9 +52,35 @@
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
             <objects>
-                <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9" customClass="TopPricesInterfaceController" customModule="Watch_Extension"/>
+                <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9" customClass="TopPricesInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <table alignment="left" id="KY4-TY-zvh">
+                            <items>
+                                <tableRow identifier="PricesRowController" id="GN7-vI-Tco" customClass="PricesRowController" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="Pq9-yf-khV">
+                                        <items>
+                                            <label width="100" alignment="left" text="Label" textAlignment="left" id="yrw-za-eA3">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            </label>
+                                            <separator alignment="left" id="did-xI-azZ"/>
+                                            <label alignment="left" text="Label" textAlignment="right" id="fpX-4n-3q8"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="itemOutlet" destination="yrw-za-eA3" id="Y1O-8O-LxQ"/>
+                                        <outlet property="priceOutlet" destination="fpX-4n-3q8" id="gt8-if-TSN"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableForPrices" destination="KY4-TY-zvh" id="obF-za-9nC"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="396" y="-19"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -159,10 +159,10 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         }
         
         // sorted dict of most expensive items
-        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
+      /*  for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
             print(idx, val)
         }
-        
+        */
         // vibrate when messages were received
         WKInterfaceDevice.current().play(.notification)
     }

@@ -199,7 +199,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //let imageSpeaker = UIImage(named: "Speaker")
         //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
         
-        var returnMessage: [String : Any] = [
+        let returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
             DataKey.TopPrice : 5000,
             DataKey.Topcategories : 33
@@ -207,19 +207,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         ]
         
         watchSessionManager.sendMessage(message: returnMessage)
-        returnMessage.removeAll()
         
-        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
-        for inv in topPrices{
-            //print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
-            returnMessage[DataKey.MostExpensiveList + inv.inventoryName!] = String(inv.price) as Any
-        }
-        
-        watchSessionManager.sendMessage(message: returnMessage)
-        returnMessage.removeAll()
-        
-        //watchSessionManager.sendMessage(message: returnMessage)
-        //returnMessage.removeAll()
+        watchSessionManager.sendTopPricesListToWatch(count: 5)
     }
     
     // needed for iPhone compatibilty when using popup controller
@@ -295,7 +284,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         var fileName : String
         
-        switch Global.currentLocaleForDate(){
+        switch Local.currentLocaleForDate(){
         case "de_DE", "de_AT", "de_CH", "de":
             fileName = "Aboutview Help German"
             break

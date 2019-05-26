@@ -484,7 +484,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 // here goes the popup text
                 var fileName : String
                 
-                switch Global.currentLocaleForDate(){
+                switch Local.currentLocaleForDate(){
                 case "de_DE", "de_AT", "de_CH", "de":
                     fileName = "Reportview Help German"
                     break
@@ -658,7 +658,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let stat = Statistics.shared
         let sum = stat.itemPricesSum()
         let tmp4 = NSLocalizedString("Amount of money spent on items", comment: "Amount of money spent on items")
-        let priceSumText = tmp4 + ": " + String(sum) + Global.currencySymbol!
+        let priceSumText = tmp4 + ": " + String(sum) + Local.currencySymbol!
         priceSumText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         y = y + 30
@@ -1015,7 +1015,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: paperWidth, height: paperHeight), format: format)
         
         let dateformatter = DateFormatter()
-        dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+        dateformatter.locale = Locale(identifier: Local.currentLocaleForDate())
         dateformatter.dateStyle = DateFormatter.Style.short
         
         dateformatter.timeStyle = DateFormatter.Style.short
@@ -1104,7 +1104,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // price
                     stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-                    text = String(inv.price) + Global.currencySymbol!
+                    text = String(inv.price) + Local.currencySymbol!
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthPrice
 
@@ -1147,7 +1147,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // price
                     stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-                    text = String(inv.price) + Global.currencySymbol!
+                    text = String(inv.price) + Local.currencySymbol!
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthPrice
                     
@@ -1190,7 +1190,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // price
                     stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-                    text = String(inv.price) + Global.currencySymbol!
+                    text = String(inv.price) + Local.currencySymbol!
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthPrice
                     
@@ -1233,7 +1233,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     
                     // price
                     stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-                    text = String(inv.price) + Global.currencySymbol!
+                    text = String(inv.price) + Local.currencySymbol!
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthPrice
                     

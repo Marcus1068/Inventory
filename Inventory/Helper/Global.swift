@@ -54,7 +54,7 @@ class Global: UIViewController {
     static let keyUserName = "UserName"
     static let keyHouseName = "UserHouse"
     
-    // localization string
+    // localization strings
     static let item = NSLocalizedString("Item", comment: "Item")
     static let category = NSLocalizedString("Category", comment: "Category")
     static let owner = NSLocalizedString("Owner", comment: "Owner")
@@ -62,7 +62,6 @@ class Global: UIViewController {
     static let brand = NSLocalizedString("Brand", comment: "Brand")
     static let price = NSLocalizedString("Price", comment: "Price")
     static let all = NSLocalizedString("All", comment: "All")
-    
     
     static let ok = NSLocalizedString("OK", comment: "OK")
     static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
@@ -88,25 +87,6 @@ class Global: UIViewController {
     static let cameraRoll = NSLocalizedString("Camera Roll", comment: "Camera Roll")
     static let photoLibrary = NSLocalizedString("Photo Library", comment: "Photo Library")
     
-    // general functions
-    
-    //User region setting return
-    static let locale = Locale.current
-    
-    //Returns true if the locale uses the metric system (Note: Only three countries do not use the metric system: the US, Liberia and Myanmar.)
-    static let isMetric = locale.usesMetricSystem
-    
-    //Returns the currency code of the locale. For example, for “zh-Hant-HK”, returns “HKD”.
-    static let currencyCode  = locale.currencyCode
-    
-    //Returns the currency symbol of the locale. For example, for “zh-Hant-HK”, returns “HK$”.
-    static let currencySymbol = locale.currencySymbol
-    
-    static let languageCode = locale.languageCode
-    
-    class func currentLocaleForDate() -> String{
-        return languageCode!
-    }
     
     // define column names for import and export functions for csv file
     static let inventoryName_csv = "inventoryName"

@@ -47,7 +47,7 @@ class PrivacyViewController: UIViewController {
         
         var fileName : String
         
-        switch Global.currentLocaleForDate(){
+        switch Local.currentLocaleForDate(){
         case "de_DE", "de_AT", "de_CH", "de":
             fileName = "Privacy german"
             break

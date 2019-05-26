@@ -417,7 +417,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.brandNameLabel.text = inv.inventoryBrand?.brandName?.truncate(length: 11)
         cell.categoryLabel.text = inv.inventoryCategory?.categoryName?.truncate(length: 11)
         
-        cell.priceLabel.text = String(inv.price) + Global.currencySymbol!
+        cell.priceLabel.text = String(inv.price) + Local.currencySymbol!
         
         var image: UIImage
         

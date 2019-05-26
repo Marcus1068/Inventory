@@ -137,7 +137,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         // register tap gesture for showing image in fullscreen
         imageViewGestureWhenTapped()
         
-        currencyLabel.text = Global.currencySymbol!
+        currencyLabel.text = Local.currencySymbol!
         
         // focus on first text field
         //textfieldInventoryName.becomeFirstResponder()
@@ -231,7 +231,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             let msg = NSLocalizedString("Created at: ", comment: "Created at: ")
             
             let dateformatter = DateFormatter()
-            dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+            dateformatter.locale = Locale(identifier: Local.currentLocaleForDate())
             dateformatter.dateStyle = DateFormatter.Style.short
             dateformatter.timeStyle = DateFormatter.Style.short
             let myDate = dateformatter.string(from: currentInventory!.timeStamp! as Date)
@@ -263,7 +263,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             let msg = NSLocalizedString("Creating: ", comment: "Creating: ")
             
             let dateformatter = DateFormatter()
-            dateformatter.locale = Locale(identifier: Global.currentLocaleForDate())
+            dateformatter.locale = Locale(identifier: Local.currentLocaleForDate())
             dateformatter.dateStyle = DateFormatter.Style.short
             dateformatter.timeStyle = DateFormatter.Style.short
             let myDate = dateformatter.string(from: Date())

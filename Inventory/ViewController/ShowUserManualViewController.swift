@@ -58,7 +58,7 @@ class ShowUserManualViewController: UIViewController {
         
         var fileURL : URL?
         
-        switch Global.currentLocaleForDate(){
+        switch Local.currentLocaleForDate(){
         case "de_DE", "de_AT", "de_CH", "de":
             fileURL = Bundle.main.url(forResource: "Inventory App Handbuch", withExtension: "pdf")
             break

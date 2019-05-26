@@ -32,7 +32,8 @@ class TopPricesInterfaceController: WKInterfaceController {
             let row = tableForPrices.rowController(at: index) as! PricesRowController
             //let str = topPrices.item[index] + String(topPrices.value[index])
             row.itemOutlet.setText(topPrices.item[index])
-            row.priceOutlet.setText(topPrices.value[index])
+            row.priceOutlet.setText(topPrices.value[index] + Local.currencySymbol!)
+            // FIXME: mjust be sorted
         }
         
     }

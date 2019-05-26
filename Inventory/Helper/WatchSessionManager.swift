@@ -131,6 +131,26 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         }
     }
     
+    // send a list of top priced items to watch
+    func sendTopPricesListToWatch(count: Int){
+        // watch send message
+        // watch app context
+        let watchSessionManager = WatchSessionManager.sharedManager
+        
+        //let imageSpeaker = UIImage(named: "Speaker")
+        //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
+        
+        var returnMessage: [String : Any] = [ : ]
+        
+        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: count)
+        for inv in topPrices{
+            //print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+            returnMessage[DataKey.MostExpensiveList + inv.inventoryName!] = String(inv.price) as Any
+        }
+        
+        watchSessionManager.sendMessage(message: returnMessage)
+    }
+    
 }
 
 extension WatchSessionManager{

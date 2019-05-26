@@ -149,7 +149,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 topCategories.setText(key + ": " + String(val))
             }
             
-            self.messages.append("Key: \(key) Value: \(value)")
+            if key == DataKey.MostExpensiveList{
+                let val = value as! String
+                self.messages.append(val)
+            }
+            
+            
+            
         }
         
  /*       for i in message.enumerated(){

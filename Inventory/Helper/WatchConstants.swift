@@ -34,5 +34,6 @@ public struct DataKey {
     static let TopOwners = "TopOwners"
     static let Topcategories = "TopCategories"
     static let ImageData = "ImageData"
+    static let MostExpensiveList = "MostExpensiveList"
 }
 

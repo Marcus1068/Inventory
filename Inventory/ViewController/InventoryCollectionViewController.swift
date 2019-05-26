@@ -1317,15 +1317,21 @@ extension InventoryCollectionViewController{
     
     // update the watch data
     func updateWatchData(){
-        // watch app context
-        //displayAlert(title: "Watch", message: "Watch", buttonText: Global.ok)
         
+        // watch send message
+        // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager
-        if let validSession = watchSessionManager.validSession {
-            //validSession.sendMessage(<#T##message: [String : Any]##[String : Any]#>, replyHandler: nil, errorHandler: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-        }
-        else{
-            //displayAlert(title: "Watch", message: "Watch", buttonText: Global.ok)
-        }
+        
+        //let imageSpeaker = UIImage(named: "Speaker")
+        //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
+        
+        let returnMessage: [String : Any] = [
+            DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+            DataKey.TopPrice : 5000,
+            DataKey.Topcategories : 33
+            //DataKey.ImageData : imageData!
+        ]
+        
+        watchSessionManager.sendMessage(message: returnMessage)
     }
 }

@@ -189,48 +189,36 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             print(inv.inventoryName!)
         }
         
-        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
-        for inv in topPrices{
-            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
-        }
+        
         
         
         // watch send message
-        
-       /*
-        counter += 1
-        connectivityHandler!.session.sendMessage(["msg" : "Message \(counter)"], replyHandler: nil) { (error) in
-            //os_log("AboutViewController viewWillAppear: error %@", log: Log.viewcontroller, type: .info, error)
-            //NSLog("%@", "Error sending message: \(error)")
-            // vibrate iPhone
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-        } */
-        
         // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager
         
         //let imageSpeaker = UIImage(named: "Speaker")
         //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
         
-        let returnMessage: [String : Any] = [
+        var returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
             DataKey.TopPrice : 5000,
             DataKey.Topcategories : 33
             //DataKey.ImageData : imageData!
         ]
         
-        //try? watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
-        
-   /*     do {
-            try watchSessionManager.updateApplicationContext(applicationContext: returnMessage)
-            displayAlert(title: "Watch ist da", message: "Watch ist da", buttonText: Global.ok)
-        } catch let error{
-            displayAlert(title: "Watch nicht da", message: "Watch nicht da", buttonText: Global.ok)
-            print(error)
-        }
-     */
         watchSessionManager.sendMessage(message: returnMessage)
+        returnMessage.removeAll()
         
+        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: 5)
+        for inv in topPrices{
+            print("Name: \(inv.inventoryName!), price: \(String(inv.price))")
+            returnMessage[DataKey.MostExpensiveList] = inv.inventoryName! + ": " + String(inv.price) as Any
+            watchSessionManager.sendMessage(message: returnMessage)
+            returnMessage.removeAll()
+        }
+        
+        //watchSessionManager.sendMessage(message: returnMessage)
+        //returnMessage.removeAll()
     }
     
     // needed for iPhone compatibilty when using popup controller

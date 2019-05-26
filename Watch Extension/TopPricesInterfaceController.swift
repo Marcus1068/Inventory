@@ -65,7 +65,7 @@ class TopPricesInterfaceController: WKInterfaceController {
         
         //print(topPrices.prices.count)
         
-        //self.setTitle("Testtest") // FIXME
+        self.setTitle(NSLocalizedString("Top Prices", comment: "Top Prices"))
     }
 
     override func willActivate() {

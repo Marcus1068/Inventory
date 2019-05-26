@@ -1333,5 +1333,7 @@ extension InventoryCollectionViewController{
         ]
         
         watchSessionManager.sendMessage(message: returnMessage)
+        
+        watchSessionManager.sendTopPricesListToWatch(count: 5)
     }
 }

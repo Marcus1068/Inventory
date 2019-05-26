@@ -13,20 +13,23 @@ import Foundation
 class TopPricesInterfaceController: WKInterfaceController {
 
     // contains list of most expensive items
-    var topPrices : [String : Int] = [ : ]
+    var topPrices = TopPrice()
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        print("in TopPricesInterfaceController")
         
         // Configure interface objects here.
-        if let topPrices = context as? [String : Int] {
-            self.topPrices = topPrices
+        if let topPriceList = context as? TopPrice {
+            self.topPrices = topPriceList
         }
         
         // sorted dict of most expensive items
-        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
+        for (idx, val) in topPrices.topPrices.sorted(by: {$0.value > $1.value}){
             print(idx, val)
         }
+        
+        print(topPrices.topPrices.count)
     }
 
     override func willActivate() {

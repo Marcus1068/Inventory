@@ -52,7 +52,7 @@
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
             <objects>
-                <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9"/>
+                <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9" customClass="TopPricesInterfaceController" customModule="Watch_Extension"/>
             </objects>
             <point key="canvasLocation" x="396" y="-19"/>
         </scene>

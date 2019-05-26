@@ -29,6 +29,17 @@ import Foundation
 import WatchConnectivity
 import os
 
+class TopPrice :NSObject{
+    var topPrices : [String : Int] = [ : ]
+    
+    override init(){
+        super.init()
+        
+        topPrices = [ : ]
+    }
+    
+}
+
 class MessageRow: NSObject{
     
     @IBOutlet weak var label: WKInterfaceLabel!
@@ -56,6 +67,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             }
         }
     }
+    
+    var top = TopPrice()
     
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
@@ -91,7 +104,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         print(rowIndex)
         //let flight = flights[rowIndex]
-        presentController(withName: "TopPrices", context: topPrices)
+        top.topPrices = topPrices
+        presentController(withName: "TopPrices", context: top)
     }
     
     

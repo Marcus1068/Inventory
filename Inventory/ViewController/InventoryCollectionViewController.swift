@@ -1328,12 +1328,14 @@ extension InventoryCollectionViewController{
         let returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
             DataKey.TopPrice : 5000,
-            DataKey.Topcategories : 33
+            DataKey.TopCategories : 33
             //DataKey.ImageData : imageData!
         ]
         
         watchSessionManager.sendMessage(message: returnMessage)
         
         watchSessionManager.sendTopPricesListToWatch(count: 5)
+        
+        watchSessionManager.sendItemsByRoomListToWatch()
     }
 }

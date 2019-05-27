@@ -190,8 +190,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         
         
-        
-        
         // watch send message
         // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager
@@ -202,7 +200,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
             DataKey.TopPrice : 6000,
-            DataKey.Topcategories : 66
+            DataKey.TopCategories : 66
             //DataKey.ImageData : imageData!
         ]
         
@@ -211,6 +209,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //watchSessionManager.sendTopPricesListToWatch(count: 5)
         
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+        
+        watchSessionManager.sendItemsByRoomListToWatch()
+        
     }
     
     // needed for iPhone compatibilty when using popup controller

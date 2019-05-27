@@ -59,7 +59,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
-    
+    var roomList : [String : Int] = [ : ]
     
     func processApplicationContext() {
     /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
@@ -107,43 +107,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         os_log("MainInterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
-        // check for messages that come immediately
+        parseMessage(message: message)
         
-        for (key, value) in message{
-            if key == DataKey.AmountMoney{
-                let val = value as! Int
-                amountMoney.setText(key + ": " + String(val))
-            }
-            
-            if key == DataKey.TopPrice{
-                let val = value as! Int
-                topPrice.setText(key + ": " + String(val))
-            }
-            
-            if key == DataKey.Topcategories{
-                let val = value as! Int
-                topCategories.setText(key + ": " + String(val))
-            }
-            
-            // deal with a list of strings sent at once
-            // will have prefix which must be removed for further work
-            if key.contains(DataKey.MostExpensiveList) {
-                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
-                // "InventoryName" : number as a dict
-                let parsed = key.replacingOccurrences(of: DataKey.MostExpensiveList, with: "")
-                let myValue = value as! String
-                topPrices[parsed] = Int(myValue)
-                
-                let val = value as! String
-                self.messages.append(parsed + ": " + val)
-            }
-        }
-        
-        // sorted dict of most expensive items
-      /*  for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
-            print(idx, val)
-        }
-        */
         // vibrate when messages were received
         WKInterfaceDevice.current().play(.notification)
     }
@@ -162,12 +127,20 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     // userInfo
-    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any]) {
         os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
         
+        parseMessage(message: userInfo)
+        
+        // vibrate when messages were received
+        WKInterfaceDevice.current().play(.notification)
+    }
+    
+    // parse incoming messages
+    func parseMessage(message: [String : Any]){
         // check for messages that come immediately
         
-        for (key, value) in userInfo{
+        for (key, value) in message{
             if key == DataKey.AmountMoney{
                 let val = value as! Int
                 amountMoney.setText(key + ": " + String(val))
@@ -178,7 +151,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 topPrice.setText(key + ": " + String(val))
             }
             
-            if key == DataKey.Topcategories{
+            if key == DataKey.TopCategories{
                 let val = value as! Int
                 topCategories.setText(key + ": " + String(val))
             }
@@ -195,13 +168,19 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let val = value as! String
                 self.messages.append(parsed + ": " + val)
             }
+            
+            if key.contains(DataKey.TopRooms) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.TopRooms, with: "")
+                let myValue = value as! Int
+                roomList[parsed] = myValue
+                
+                //let val = value as! Int
+                self.messages.append(parsed + ": " + String(myValue))
+            }
         }
-        //let msg = userInfo["msg"]!
-        //self.messages.append("UserInfo \(msg)")
     }
-    
-    
-
     
     //let stat = Statistics.shared
     
@@ -244,6 +223,10 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         myLabel.setText(titles[value])
     } */
 
+    @IBAction func roomListAction() {
+        //presentController(withName: "RoomList", context: roomList)
+    }
+    
     @IBAction func topPricesAction() {
         presentController(withName: "TopPrices", context: topPrices)
     }

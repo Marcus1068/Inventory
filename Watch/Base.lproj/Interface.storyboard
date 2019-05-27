@@ -21,6 +21,13 @@
                                 <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Room List" id="LuH-OG-P0M">
+                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <connections>
+                                <action selector="roomListAction" destination="AgC-eL-Hgc" id="Eli-UB-o2X"/>
+                            </connections>
+                        </button>
                         <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>

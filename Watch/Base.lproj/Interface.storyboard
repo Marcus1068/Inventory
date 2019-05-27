@@ -14,6 +14,14 @@
             <objects>
                 <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
+                        <button width="1" alignment="left" title="Top Prices" id="hab-hi-wQh">
+                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <connections>
+                                <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
                                 <tableRow identifier="MessageRow" id="cMg-YR-Ow9" customClass="MessageRow" customModule="Watch_Extension">
@@ -29,7 +37,7 @@
                             </items>
                         </table>
                         <button width="1" alignment="left" title="Button" id="DCZ-oo-4EU">
-                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>
                             <connections>
                                 <action selector="requestInfo" destination="AgC-eL-Hgc" id="3xp-kz-TSh"/>

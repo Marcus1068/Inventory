@@ -78,6 +78,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         } */
     }
     
+    // MARK: - table functions
+    
     func tableRefresh(){
         messagesTable.setNumberOfRows(messages.count, withRowType: "MessageRow")
         for index in 0 ..< messagesTable.numberOfRows {
@@ -87,12 +89,11 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }
     
-    // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        print(rowIndex)
+        //print(rowIndex)
         
-        presentController(withName: "TopPrices", context: topPrices)
+        //presentController(withName: "TopPrices", context: topPrices)
     }
     
     
@@ -106,7 +107,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         os_log("MainInterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
-        // check for message that come immediately
+        // check for messages that come immediately
         
         for (key, value) in message{
             if key == DataKey.AmountMoney{
@@ -164,8 +165,39 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
         os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
         
-        let msg = userInfo["msg"]!
-        self.messages.append("UserInfo \(msg)")
+        // check for messages that come immediately
+        
+        for (key, value) in userInfo{
+            if key == DataKey.AmountMoney{
+                let val = value as! Int
+                amountMoney.setText(key + ": " + String(val))
+            }
+            
+            if key == DataKey.TopPrice{
+                let val = value as! Int
+                topPrice.setText(key + ": " + String(val))
+            }
+            
+            if key == DataKey.Topcategories{
+                let val = value as! Int
+                topCategories.setText(key + ": " + String(val))
+            }
+            
+            // deal with a list of strings sent at once
+            // will have prefix which must be removed for further work
+            if key.contains(DataKey.MostExpensiveList) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.MostExpensiveList, with: "")
+                let myValue = value as! String
+                topPrices[parsed] = Int(myValue)
+                
+                let val = value as! String
+                self.messages.append(parsed + ": " + val)
+            }
+        }
+        //let msg = userInfo["msg"]!
+        //self.messages.append("UserInfo \(msg)")
     }
     
     
@@ -212,6 +244,10 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         myLabel.setText(titles[value])
     } */
 
+    @IBAction func topPricesAction() {
+        presentController(withName: "TopPrices", context: topPrices)
+    }
+    
     @IBAction func requestInfo() {
         os_log("MainInterfaceController: requestInfo()", log: Log.viewcontroller, type: .info)
         session?.sendMessage(["request" : "date"],

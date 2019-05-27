@@ -201,14 +201,16 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         let returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
-            DataKey.TopPrice : 5000,
-            DataKey.Topcategories : 33
+            DataKey.TopPrice : 6000,
+            DataKey.Topcategories : 66
             //DataKey.ImageData : imageData!
         ]
         
-        watchSessionManager.sendMessage(message: returnMessage)
+        //watchSessionManager.sendMessage(message: returnMessage)
         
-        watchSessionManager.sendTopPricesListToWatch(count: 5)
+        //watchSessionManager.sendTopPricesListToWatch(count: 5)
+        
+        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
     }
     
     // needed for iPhone compatibilty when using popup controller

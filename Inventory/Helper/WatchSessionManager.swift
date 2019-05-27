@@ -165,4 +165,9 @@ extension WatchSessionManager{
             }
         }
     }
+    
+    // background Sender
+    func transferUserInfo(userInfo: [String : Any]) -> WCSessionUserInfoTransfer? {
+        return validSession?.transferUserInfo(userInfo)
+    }
 }

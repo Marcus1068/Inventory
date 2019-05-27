@@ -64,6 +64,36 @@
             </objects>
             <point key="canvasLocation" x="137" y="22"/>
         </scene>
+        <!--Room item numbers-->
+        <scene sceneID="giC-Fv-AzA">
+            <objects>
+                <controller identifier="RoomList" title="Room item numbers" id="Oy4-QW-RRu" customClass="RoomListInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <table alignment="left" id="Wox-qr-d1T">
+                            <items>
+                                <tableRow identifier="RoomsRowController" id="8TJ-bi-ejA" customClass="RoomsRowController" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="wmS-0N-ZOA">
+                                        <items>
+                                            <label width="123" alignment="left" text="Label" textAlignment="left" id="BMx-5e-WJm"/>
+                                            <separator alignment="left" id="gHA-Ui-TTR"/>
+                                            <label alignment="left" text="Label" textAlignment="left" id="Lam-lI-6dp"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countLabel" destination="Lam-lI-6dp" id="j5j-mC-Rh2"/>
+                                        <outlet property="roomNameLabel" destination="BMx-5e-WJm" id="7Jg-rc-FKR"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableForRooms" destination="Wox-qr-d1T" id="qPK-Yp-Q4N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="338.52173913043475" y="-279.28571428571428"/>
+        </scene>
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
             <objects>
@@ -78,7 +108,7 @@
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                                             </label>
                                             <separator alignment="left" id="did-xI-azZ"/>
-                                            <label alignment="left" text="Label" textAlignment="right" id="fpX-4n-3q8"/>
+                                            <label alignment="left" text="Label" textAlignment="left" id="fpX-4n-3q8"/>
                                         </items>
                                     </group>
                                     <connections>

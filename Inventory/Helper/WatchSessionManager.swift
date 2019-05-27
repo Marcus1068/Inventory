@@ -117,6 +117,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     
     func sessionReachabilityDidChange(_ session: WCSession) {
         // do something
+        os_log("WatchSessionManager: sessionReachabilityDidChange()", log: Log.viewcontroller, type: .info)
     }
     
     func sendMessage(message: [String : Any]) {
@@ -146,7 +147,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
     }
     
-    // send a list of rooms with number of items in it
+    // send a list of rooms with number of items per room in it
     func sendItemsByRoomListToWatch(){
         // watch app context
         let watchSessionManager = WatchSessionManager.sharedManager

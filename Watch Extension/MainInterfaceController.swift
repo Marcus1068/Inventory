@@ -59,6 +59,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
+    
+    // contains sorted list of rooms with item occurance per room
     var roomList : [String : Int] = [ : ]
     
     func processApplicationContext() {
@@ -224,7 +226,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     } */
 
     @IBAction func roomListAction() {
-        //presentController(withName: "RoomList", context: roomList)
+        presentController(withName: "RoomList", context: roomList)
     }
     
     @IBAction func topPricesAction() {

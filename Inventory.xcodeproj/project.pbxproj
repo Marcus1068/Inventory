@@ -22,6 +22,8 @@
 		2C501B732098D03100D99949 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B722098D03100D99949 /* CategoryTableViewController.swift */; };
 		2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C501B742098E80500D99949 /* CategoryEditViewController.swift */; };
 		2C560F03229AF7C400488FAD /* PricesRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C560F02229AF7C400488FAD /* PricesRowController.swift */; };
+		2C560F05229BFAF900488FAD /* RoomListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C560F04229BFAF900488FAD /* RoomListInterfaceController.swift */; };
+		2C560F07229BFB9A00488FAD /* RoomsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C560F06229BFB9A00488FAD /* RoomsRowController.swift */; };
 		2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8AD2086350A00FD5136 /* AppDelegate.swift */; };
 		2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B32086350A00FD5136 /* Main.storyboard */; };
 		2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
@@ -164,6 +166,8 @@
 		2C501B722098D03100D99949 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		2C501B742098E80500D99949 /* CategoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditViewController.swift; sourceTree = "<group>"; };
 		2C560F02229AF7C400488FAD /* PricesRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesRowController.swift; sourceTree = "<group>"; };
+		2C560F04229BFAF900488FAD /* RoomListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListInterfaceController.swift; sourceTree = "<group>"; };
+		2C560F06229BFB9A00488FAD /* RoomsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsRowController.swift; sourceTree = "<group>"; };
 		2C56E8AA2086350A00FD5136 /* Inventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Inventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56E8AD2086350A00FD5136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C56E8B42086350A00FD5136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -414,8 +418,10 @@
 				2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */,
 				2C82495D229AC854008748DE /* MainInterfaceController.swift */,
 				2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */,
-				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
+				2C560F04229BFAF900488FAD /* RoomListInterfaceController.swift */,
 				2C560F02229AF7C400488FAD /* PricesRowController.swift */,
+				2C560F06229BFB9A00488FAD /* RoomsRowController.swift */,
+				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
 				2CC648C522968F7100A6DA65 /* Info.plist */,
 			);
@@ -689,8 +695,10 @@
 				2CDB2B06229692930060F7F8 /* Inventory+CoreDataClass.swift in Sources */,
 				2CDB2B0D229692BC0060F7F8 /* Room+CoreDataClass.swift in Sources */,
 				2CDB2B0C229692B80060F7F8 /* Owner+CoreDataProperties.swift in Sources */,
+				2C560F07229BFB9A00488FAD /* RoomsRowController.swift in Sources */,
 				2CDB2B08229692AB0060F7F8 /* Brand+CoreDataProperties.swift in Sources */,
 				2CD2FBE422971FA700A7ED47 /* Log.swift in Sources */,
+				2C560F05229BFAF900488FAD /* RoomListInterfaceController.swift in Sources */,
 				2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */,
 				2CDB2B152296CFBD0060F7F8 /* CoreDataStorage.swift in Sources */,
 				2CDB2B07229692A80060F7F8 /* Brand+CoreDataClass.swift in Sources */,

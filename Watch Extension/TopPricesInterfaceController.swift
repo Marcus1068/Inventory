@@ -12,38 +12,30 @@ import Foundation
 
 class TopPricesInterfaceController: WKInterfaceController {
 
-
     @IBOutlet weak var tableForPrices: WKInterfaceTable!
     
-    
     // contains list of most expensive items
-    var topPrices = TopPrice()
+    var topPrices : [String : Int] = [ : ]
+    
     
     // MARK: - table functions
     
     func tableRefresh(){
-        /*var strArray : [String] = []
-        for (idx, value) in topPrices.prices{
-            strArray.append(idx + String(value))
-        }*/
-        
-        tableForPrices.setNumberOfRows(topPrices.prices.count, withRowType: "PricesRowController")
-        for index in 0 ..< tableForPrices.numberOfRows {
+        tableForPrices.setNumberOfRows(topPrices.count, withRowType: "PricesRowController")
+        var index : Int = 0
+        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
             let row = tableForPrices.rowController(at: index) as! PricesRowController
-            //let str = topPrices.item[index] + String(topPrices.value[index])
-            row.itemOutlet.setText(topPrices.item[index])
-            row.priceOutlet.setText(topPrices.value[index] + Local.currencySymbol!)
-            // FIXME: mjust be sorted
+            index += 1
+            row.itemOutlet.setText(idx)
+            row.priceOutlet.setText(String(val) + Local.currencySymbol!)
         }
-        
     }
     
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        print(rowIndex)
-        //let flight = flights[rowIndex]
-        //top.topPrices = topPrices
+        //print(rowIndex)
+        
         //presentController(withName: "TopPrices", context: top)
     }
     
@@ -54,16 +46,14 @@ class TopPricesInterfaceController: WKInterfaceController {
         print("in TopPricesInterfaceController")
         
         // Configure interface objects here.
-        if let topPriceList = context as? TopPrice {
+        if let topPriceList = context as? [String : Int] {
             self.topPrices = topPriceList
         }
         
-        // sorted dict of most expensive items
-   /*     for (idx, val) in topPrices.prices.sorted(by: {$0.value > $1.value}){
+ /*       // sorted dict of most expensive items
+        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
             print(idx, val)
         } */
-        
-        //print(topPrices.prices.count)
         
         self.setTitle(NSLocalizedString("Top Prices", comment: "Top Prices"))
     }

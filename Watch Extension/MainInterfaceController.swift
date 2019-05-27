@@ -29,20 +29,6 @@ import Foundation
 import WatchConnectivity
 import os
 
-class TopPrice :NSObject{
-    var prices : [String : Int] = [ : ]
-    var item : [String] = []
-    var value : [String] = []
-    
-    override init(){
-        super.init()
-        
-        prices = [ : ]
-        item = []
-        value = []
-    }
-    
-}
 
 class MessageRow: NSObject{
     
@@ -58,8 +44,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var topCategories: WKInterfaceLabel!
     
     var session : WCSession?
-
-    var top = TopPrice()
     
     // MARK: - Messages Table
     
@@ -73,9 +57,9 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         }
     }
     
-    
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
+    
     
     func processApplicationContext() {
     /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
@@ -107,9 +91,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         print(rowIndex)
-        //let flight = flights[rowIndex]
-        top.prices = topPrices
-        presentController(withName: "TopPrices", context: top)
+        
+        presentController(withName: "TopPrices", context: topPrices)
     }
     
     
@@ -149,9 +132,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let parsed = key.replacingOccurrences(of: DataKey.MostExpensiveList, with: "")
                 let myValue = value as! String
                 topPrices[parsed] = Int(myValue)
-
-                top.item.append(parsed)
-                top.value.append(String(myValue))
                 
                 let val = value as! String
                 self.messages.append(parsed + ": " + val)

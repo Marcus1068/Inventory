@@ -93,7 +93,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
-        if textfieldOwner.text?.count == 0{
+        let text = textfieldOwner.text?.trimmingCharacters(in: .whitespaces)
+        if text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -137,7 +138,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
                 let owner = Owner(context: store.getContext())
                 
                 // set object with UI values
-                owner.ownerName = textfieldOwner.text!.capitalized
+                owner.ownerName = (textfieldOwner.text!.capitalized).trimmingCharacters(in: .whitespaces)
                 
                 currentOwner = owner
                 

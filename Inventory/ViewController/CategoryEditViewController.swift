@@ -98,8 +98,8 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
     
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
-        
-        if textfieldCategory.text?.count == 0{
+        let text = textfieldCategory.text?.trimmingCharacters(in: .whitespaces)
+        if text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -145,7 +145,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
                 let category = Category(context: store.getContext())
                 
                 // set object with UI values
-                category.categoryName = textfieldCategory.text!.capitalized
+                category.categoryName = (textfieldCategory.text!.capitalized).trimmingCharacters(in: .whitespaces)
                 
                 currentCategory = category
                 

@@ -142,8 +142,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
-        
-        if textfieldRoomName.text?.count == 0{
+        let text = textfieldRoomName.text?.trimmingCharacters(in: .whitespaces)
+        if text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -178,7 +178,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 let room = Room(context: store.getContext())
                 
                 // set object with UI values
-                room.roomName = textfieldRoomName.text!.capitalized
+                room.roomName = (textfieldRoomName.text!.capitalized).trimmingCharacters(in: .whitespaces)
                 // image binary data
                 let imageData = chosenImage.image!.jpegData(compressionQuality: 1.0)
                 room.roomImage = imageData! as NSData

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch44" orientation="portrait">
+    <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,20 +14,32 @@
             <objects>
                 <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
-                        <button width="1" alignment="left" title="Top Prices" id="hab-hi-wQh">
-                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                            <connections>
-                                <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
-                            </connections>
-                        </button>
-                        <button width="1" alignment="left" title="Room List" id="LuH-OG-P0M">
-                            <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
-                            <connections>
-                                <action selector="roomListAction" destination="AgC-eL-Hgc" id="Eli-UB-o2X"/>
-                            </connections>
-                        </button>
+                        <group width="1" alignment="left" spacing="10" id="sbt-yB-lIx">
+                            <items>
+                                <separator alignment="left" id="Sgx-9r-Ghm"/>
+                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="InventoryWatch" contentMode="scaleAspectFit" id="aiv-e2-TEq"/>
+                                <button alignment="right" title="Top Prices" id="hab-hi-wQh">
+                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="ye2-YJ-cOJ">
+                            <items>
+                                <separator alignment="left" id="NV5-JR-rzA"/>
+                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="InventoryWatch" contentMode="scaleAspectFit" id="uHn-IG-MfD"/>
+                                <button alignment="right" title="Room Items" id="LuH-OG-P0M">
+                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <connections>
+                                        <action selector="roomListAction" destination="AgC-eL-Hgc" id="Eli-UB-o2X"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                         <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
@@ -62,21 +74,23 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="137" y="22"/>
+            <point key="canvasLocation" x="137" y="-20.5"/>
         </scene>
-        <!--Room item numbers-->
+        <!--Room items-->
         <scene sceneID="giC-Fv-AzA">
             <objects>
-                <controller identifier="RoomList" title="Room item numbers" id="Oy4-QW-RRu" customClass="RoomListInterfaceController" customModule="Watch_Extension">
+                <controller identifier="RoomList" title="Room items" id="Oy4-QW-RRu" customClass="RoomListInterfaceController" customModule="Watch_Extension">
                     <items>
                         <table alignment="left" id="Wox-qr-d1T">
                             <items>
                                 <tableRow identifier="RoomsRowController" id="8TJ-bi-ejA" customClass="RoomsRowController" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="wmS-0N-ZOA">
                                         <items>
-                                            <label width="123" alignment="left" text="Label" textAlignment="left" id="BMx-5e-WJm"/>
+                                            <label alignment="left" text="Label" textAlignment="left" id="BMx-5e-WJm"/>
                                             <separator alignment="left" id="gHA-Ui-TTR"/>
-                                            <label alignment="left" text="Label" textAlignment="left" id="Lam-lI-6dp"/>
+                                            <label alignment="left" text="Label" textAlignment="left" id="Lam-lI-6dp">
+                                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
                                         </items>
                                     </group>
                                     <connections>
@@ -92,7 +106,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="338.52173913043475" y="-279.28571428571428"/>
+            <point key="canvasLocation" x="338.25641025641028" y="-279.41025641025641"/>
         </scene>
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
@@ -104,11 +118,13 @@
                                 <tableRow identifier="PricesRowController" id="GN7-vI-Tco" customClass="PricesRowController" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="Pq9-yf-khV">
                                         <items>
-                                            <label width="100" alignment="left" text="Label" textAlignment="left" id="yrw-za-eA3">
+                                            <label alignment="left" text="Label" textAlignment="left" id="yrw-za-eA3">
                                                 <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
                                             </label>
                                             <separator alignment="left" id="did-xI-azZ"/>
-                                            <label alignment="left" text="Label" textAlignment="left" id="fpX-4n-3q8"/>
+                                            <label alignment="left" text="Label" textAlignment="left" id="fpX-4n-3q8">
+                                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
                                         </items>
                                     </group>
                                     <connections>
@@ -124,7 +140,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="396" y="-19"/>
+            <point key="canvasLocation" x="484" y="40"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

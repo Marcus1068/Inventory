@@ -376,7 +376,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // Reason: avoid multiple fetch requests when getting statistics data
     @objc func contextObjectsDidChange(_ notification: Notification) {
         let stats = Statistics.shared
+        
+        // refresh stats
         stats.refresh()
+        
+        // also update watch data now
+        updateWatchData()
     }
     
     // number of sections, section devider is room name

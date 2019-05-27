@@ -94,7 +94,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
     
     // called for every typed keyboard stroke
     @objc func textIsChanging(_ textField:UITextField) {
-        if textfieldBrand.text?.count == 0{
+        let text = textfieldBrand.text?.trimmingCharacters(in: .whitespaces)
+        if text?.count == 0{
             saveButtonOutlet.isEnabled = false
         }
         else{
@@ -140,7 +141,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
                 let brand = Brand(context: store.getContext())
                 
                 // set object with UI values
-                brand.brandName = textfieldBrand.text!.capitalized
+                brand.brandName = (textfieldBrand.text!.capitalized).trimmingCharacters(in: .whitespaces)
                 
                 currentBrand = brand
                 

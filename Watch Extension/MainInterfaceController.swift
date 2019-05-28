@@ -117,7 +117,14 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         // vibrate when messages were received
         //WKInterfaceDevice.current().play(.notification)
     }
-    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        print("Data transfer of image")
+        print(messageData)
+    }
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        print("Data transfer of image")
+        print(messageData)
+    }
 
     // app context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {

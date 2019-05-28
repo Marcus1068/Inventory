@@ -120,6 +120,13 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         os_log("WatchSessionManager: sessionReachabilityDidChange()", log: Log.viewcontroller, type: .info)
     }
     
+    // send data (for images etc)
+    func sendMessageData(data: Data, replyHandler: ((Data) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
+        os_log("WatchSessionManager: sendMessageData()", log: Log.viewcontroller, type: .info)
+        session?.sendMessageData(data, replyHandler: replyHandler, errorHandler: errorHandler)
+    }
+    
+    // send dict message
     func sendMessage(message: [String : Any]) {
         os_log("WatchSessionManager: sendMessage()", log: Log.viewcontroller, type: .info)
         

@@ -213,6 +213,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         watchSessionManager.sendItemsByRoomListToWatch()
         watchSessionManager.sendItemsByCategoryListToWatch()
         
+        let image = UIImage(named: "Speaker")
+        let data = image?.jpegData(compressionQuality: 0.9)
+        print("send data image")
+        watchSessionManager.sendMessageData(data: data!)
+        
     }
     
     // needed for iPhone compatibilty when using popup controller

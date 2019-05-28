@@ -33,7 +33,13 @@ class TopPricesInterfaceController: WKInterfaceController {
     @IBOutlet weak var tableForPrices: WKInterfaceTable!
     
     // contains list of most expensive items
-    var topPrices : [String : Int] = [ : ]
+    var topPrices : [String : Int] = [ : ]{
+        didSet{
+            OperationQueue.main.addOperation {
+                self.tableRefresh()
+            }
+        }
+    }
     
     
     // MARK: - table functions

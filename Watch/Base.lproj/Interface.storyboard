@@ -58,6 +58,20 @@
                                 </button>
                             </items>
                         </group>
+                        <group width="1" alignment="left" id="63q-lq-oVs">
+                            <items>
+                                <imageView width="38" height="38" alignment="left" image="Category" id="Q51-2K-3Vt"/>
+                                <button width="102" alignment="right" title="Category Items" id="SNu-zE-lXG">
+                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                    <variation key="device=watch38mm" width="90"/>
+                                    <variation key="device=watch44mm" width="114"/>
+                                    <connections>
+                                        <action selector="categoryAction" destination="AgC-eL-Hgc" id="drf-Tz-5LC"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                         <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
@@ -128,11 +142,48 @@
             </objects>
             <point key="canvasLocation" x="337.04347826086956" y="-280.04464285714283"/>
         </scene>
+        <!--Category items-->
+        <scene sceneID="4wZ-0E-lzE">
+            <objects>
+                <controller identifier="CategoryList" title="Category items" id="3kb-SI-vgs" customClass="CategoryInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <imageView width="50" height="50" alignment="left" image="Category" id="3vo-FX-zN3"/>
+                        <table alignment="left" id="KTB-TJ-yPC">
+                            <items>
+                                <tableRow identifier="CategoriesRowController" id="Qeq-JH-ufu" customClass="CategoriesRowController" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="fD0-Bh-aDz">
+                                        <items>
+                                            <label width="92" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="bAR-rM-yqx">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                            <separator alignment="left" id="tQb-b0-Pip"/>
+                                            <label alignment="left" text="Label" textAlignment="right" numberOfLines="0" id="Y2h-HO-aBS">
+                                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="categoryLabel" destination="bAR-rM-yqx" id="cnb-cS-n09"/>
+                                        <outlet property="countLabel" destination="Y2h-HO-aBS" id="0lm-sw-hWo"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="KTB-TJ-yPC" id="XQc-wf-s9H"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="563.95652173913038" y="-265.625"/>
+        </scene>
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
             <objects>
                 <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9" customClass="TopPricesInterfaceController" customModule="Watch_Extension">
                     <items>
+                        <imageView width="50" height="50" alignment="left" image="Money" id="8bX-ho-BHx"/>
                         <table alignment="left" id="KY4-TY-zvh">
                             <items>
                                 <tableRow identifier="PricesRowController" id="GN7-vI-Tco" customClass="PricesRowController" customModule="Watch_Extension">
@@ -161,7 +212,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="483.84615384615387" y="39.666666666666671"/>
+            <point key="canvasLocation" x="345" y="6"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

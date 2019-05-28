@@ -60,8 +60,11 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
     
-    // contains sorted list of rooms with item occurance per room
+    // contains list of rooms with item occurance per room
     var roomList : [String : Int] = [ : ]
+    
+    // contains list of categories with item occurance per category
+    var categoryList : [String : Int] = [ : ]
     
     func processApplicationContext() {
     /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
@@ -145,7 +148,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         for (key, value) in message{
             if key == DataKey.AmountMoney{
                 let val = value as! Int
-                let text = NSLocalizedString("Cost of items", comment: "Cost of items")
+                let text = NSLocalizedString("Cost of inventory", comment: "Cost of inventory")
                 amountMoney.setText(text + ": " + String(val) + Local.currencySymbol!)
             }
             
@@ -174,6 +177,17 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let parsed = key.replacingOccurrences(of: DataKey.TopRooms, with: "")
                 let myValue = value as! Int
                 roomList[parsed] = myValue
+                
+                //let val = value as! Int
+                self.messages.append(parsed + ": " + String(myValue))
+            }
+            
+            if key.contains(DataKey.TopCategories) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.TopCategories, with: "")
+                let myValue = value as! Int
+                categoryList[parsed] = myValue
                 
                 //let val = value as! Int
                 self.messages.append(parsed + ": " + String(myValue))
@@ -222,6 +236,10 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         myLabel.setText(titles[value])
     } */
 
+    @IBAction func categoryAction() {
+        presentController(withName: "CategoryList", context: categoryList)
+    }
+    
     @IBAction func roomListAction() {
         presentController(withName: "RoomList", context: roomList)
     }

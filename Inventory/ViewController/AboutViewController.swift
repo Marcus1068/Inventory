@@ -211,6 +211,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
         
         watchSessionManager.sendItemsByRoomListToWatch()
+        watchSessionManager.sendItemsByCategoryListToWatch()
         
     }
     

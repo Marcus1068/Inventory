@@ -162,6 +162,21 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
     }
     
+    // send a list of categories with number of items per category in it
+    func sendItemsByCategoryListToWatch(){
+        // watch app context
+        let watchSessionManager = WatchSessionManager.sharedManager
+        
+        var returnMessage: [String : Any] = [ : ]
+        
+        let roomList = Statistics.shared.countItemsByCategoryDict()
+        for (key, val) in roomList{
+            returnMessage[DataKey.TopCategories + key] = Int(val) as Any
+        }
+        
+        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+    }
+    
 }
 
 extension WatchSessionManager{

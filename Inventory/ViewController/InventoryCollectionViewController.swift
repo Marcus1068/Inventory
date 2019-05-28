@@ -1337,10 +1337,12 @@ extension InventoryCollectionViewController{
             //DataKey.ImageData : imageData!
         ]
         
-        watchSessionManager.sendMessage(message: returnMessage)
+        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
         
         watchSessionManager.sendTopPricesListToWatch(count: 5)
         
         watchSessionManager.sendItemsByRoomListToWatch()
+        
+        watchSessionManager.sendItemsByCategoryListToWatch()
     }
 }

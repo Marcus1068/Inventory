@@ -1,8 +1,8 @@
 //
-//  RoomListInterfaceController.swift
+//  TopCategoriesInterfaceController.swift
 //  Watch Extension
 //
-//  Created by Marcus Deuß on 27.05.19.
+//  Created by Marcus Deuß on 28.05.19.
 //  Copyright © 2019 Marcus Deuß. All rights reserved.
 //
 
@@ -10,22 +10,22 @@ import WatchKit
 import Foundation
 
 
-class RoomListInterfaceController: WKInterfaceController {
+class CategoryInterfaceController: WKInterfaceController {
 
-    // contains list of rooms with item occurance per room
-    var roomList : [String : Int] = [ : ]
+    // contains list of categories with item occurance per category
+    var categoryList : [String : Int] = [ : ]
     
-    @IBOutlet weak var tableForRooms: WKInterfaceTable!
+    @IBOutlet weak var table: WKInterfaceTable!
     
     // MARK: - table functions
     
     func tableRefresh(){
-        tableForRooms.setNumberOfRows(roomList.count, withRowType: "RoomsRowController")
+        table.setNumberOfRows(categoryList.count, withRowType: "CategoriesRowController")
         var index : Int = 0
-        for (idx, val) in roomList.sorted(by: {$0.value > $1.value}){
-            let row = tableForRooms.rowController(at: index) as! RoomsRowController
+        for (idx, val) in categoryList.sorted(by: {$0.value > $1.value}){
+            let row = table.rowController(at: index) as! CategoriesRowController
             index += 1
-            row.roomNameLabel.setText(String(index) + ": " + idx)
+            row.categoryLabel.setText(String(index) + ": " + idx)
             row.countLabel.setText(String(val))
         }
     }
@@ -42,11 +42,13 @@ class RoomListInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        if let myRoomList = context as? [String : Int] {
-            self.roomList = myRoomList
+        
+        // Configure interface objects here.
+        if let myCategoryList = context as? [String : Int] {
+            self.categoryList = myCategoryList
         }
         
-        self.setTitle(NSLocalizedString("Room items", comment: "Room items"))
+        self.setTitle(NSLocalizedString("Category items", comment: "Category items"))
     }
 
     override func willActivate() {

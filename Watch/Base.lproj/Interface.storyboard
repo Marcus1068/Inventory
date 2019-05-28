@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch42" orientation="portrait">
+    <device id="watch44" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,18 +9,35 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Inventory-->
+        <!--Inventory App-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
+                <controller identifier="Interface Controller" title="Inventory App" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
+                        <separator alignment="left" id="nwY-XO-4dS"/>
+                        <group width="1" alignment="left" id="yGa-6y-Vie">
+                            <items>
+                                <label alignment="left" text="Most expensive:" numberOfLines="0" id="k8i-7D-T7O">
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                </label>
+                                <label alignment="left" text="Top Price" numberOfLines="0" id="zgp-XK-6xd">
+                                    <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                </label>
+                            </items>
+                        </group>
+                        <label alignment="left" text="Cost" numberOfLines="0" id="7rW-jb-QNu">
+                            <fontDescription key="font" type="system" pointSize="14"/>
+                        </label>
+                        <separator alignment="left" id="vcw-BM-wz9"/>
                         <group width="1" alignment="left" spacing="10" id="sbt-yB-lIx">
                             <items>
-                                <separator alignment="left" id="Sgx-9r-Ghm"/>
-                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="InventoryWatch" contentMode="scaleAspectFit" id="aiv-e2-TEq"/>
-                                <button alignment="right" title="Top Prices" id="hab-hi-wQh">
+                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="Money" contentMode="scaleAspectFit" id="aiv-e2-TEq"/>
+                                <button width="104" alignment="right" title="Top Prices" id="hab-hi-wQh">
                                     <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                    <variation key="device=watch38mm" width="90"/>
+                                    <variation key="device=watch44mm" width="114"/>
                                     <connections>
                                         <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
                                     </connections>
@@ -29,11 +46,12 @@
                         </group>
                         <group width="1" alignment="left" id="ye2-YJ-cOJ">
                             <items>
-                                <separator alignment="left" id="NV5-JR-rzA"/>
-                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="InventoryWatch" contentMode="scaleAspectFit" id="uHn-IG-MfD"/>
-                                <button alignment="right" title="Room Items" id="LuH-OG-P0M">
+                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="House" contentMode="scaleAspectFit" id="uHn-IG-MfD"/>
+                                <button width="102" alignment="right" title="Room Items" id="LuH-OG-P0M">
                                     <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                    <variation key="device=watch38mm" width="90"/>
+                                    <variation key="device=watch44mm" width="114"/>
                                     <connections>
                                         <action selector="roomListAction" destination="AgC-eL-Hgc" id="Eli-UB-o2X"/>
                                     </connections>
@@ -46,7 +64,9 @@
                                 <tableRow identifier="MessageRow" id="cMg-YR-Ow9" customClass="MessageRow" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="vqX-We-TSJ">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="SQN-hv-chk"/>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="SQN-hv-chk">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
                                         </items>
                                     </group>
                                     <connections>
@@ -55,41 +75,41 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Button" id="DCZ-oo-4EU">
+                        <button width="1" alignment="left" title="Test" id="DCZ-oo-4EU">
                             <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <fontDescription key="font" type="system" pointSize="14"/>
                             <connections>
                                 <action selector="requestInfo" destination="AgC-eL-Hgc" id="3xp-kz-TSh"/>
                             </connections>
                         </button>
-                        <label alignment="left" text="Label" id="zgp-XK-6xd"/>
-                        <label alignment="left" text="Label" id="7rW-jb-QNu"/>
-                        <label alignment="left" text="Label" id="dqb-cQ-woe"/>
                     </items>
                     <connections>
                         <outlet property="amountMoney" destination="7rW-jb-QNu" id="LFH-Oh-r1d"/>
                         <outlet property="messagesTable" destination="kaL-XS-KsM" id="47t-SW-5LC"/>
-                        <outlet property="topCategories" destination="dqb-cQ-woe" id="KW0-Kg-4sX"/>
                         <outlet property="topPrice" destination="zgp-XK-6xd" id="4y6-yI-tns"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="137" y="-20.5"/>
+            <point key="canvasLocation" x="136.87179487179489" y="-21.358974358974361"/>
         </scene>
         <!--Room items-->
         <scene sceneID="giC-Fv-AzA">
             <objects>
                 <controller identifier="RoomList" title="Room items" id="Oy4-QW-RRu" customClass="RoomListInterfaceController" customModule="Watch_Extension">
                     <items>
+                        <imageView width="50" height="50" alignment="left" image="House" contentMode="scaleAspectFill" id="fQY-dc-lOL"/>
                         <table alignment="left" id="Wox-qr-d1T">
                             <items>
                                 <tableRow identifier="RoomsRowController" id="8TJ-bi-ejA" customClass="RoomsRowController" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="wmS-0N-ZOA">
                                         <items>
-                                            <label alignment="left" text="Label" textAlignment="left" id="BMx-5e-WJm"/>
+                                            <label width="92" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="BMx-5e-WJm">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
                                             <separator alignment="left" id="gHA-Ui-TTR"/>
-                                            <label alignment="left" text="Label" textAlignment="left" id="Lam-lI-6dp">
+                                            <label alignment="left" text="Label" textAlignment="right" numberOfLines="0" id="Lam-lI-6dp">
                                                 <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="14"/>
                                             </label>
                                         </items>
                                     </group>
@@ -106,7 +126,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="338.25641025641028" y="-279.41025641025641"/>
+            <point key="canvasLocation" x="337.04347826086956" y="-280.04464285714283"/>
         </scene>
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
@@ -118,12 +138,13 @@
                                 <tableRow identifier="PricesRowController" id="GN7-vI-Tco" customClass="PricesRowController" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="Pq9-yf-khV">
                                         <items>
-                                            <label alignment="left" text="Label" textAlignment="left" id="yrw-za-eA3">
-                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            <label width="92" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="yrw-za-eA3">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
                                             </label>
                                             <separator alignment="left" id="did-xI-azZ"/>
-                                            <label alignment="left" text="Label" textAlignment="left" id="fpX-4n-3q8">
+                                            <label alignment="left" text="Label" textAlignment="right" numberOfLines="0" id="fpX-4n-3q8">
                                                 <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="14"/>
                                             </label>
                                         </items>
                                     </group>
@@ -140,7 +161,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="484" y="40"/>
+            <point key="canvasLocation" x="483.84615384615387" y="39.666666666666671"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -41,7 +41,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var messagesTable: WKInterfaceTable!
     @IBOutlet weak var topPrice: WKInterfaceLabel!
     @IBOutlet weak var amountMoney: WKInterfaceLabel!
-    @IBOutlet weak var topCategories: WKInterfaceLabel!
+
     
     var session : WCSession?
     
@@ -112,7 +112,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         parseMessage(message: message)
         
         // vibrate when messages were received
-        WKInterfaceDevice.current().play(.notification)
+        //WKInterfaceDevice.current().play(.notification)
     }
     
 
@@ -135,7 +135,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         parseMessage(message: userInfo)
         
         // vibrate when messages were received
-        WKInterfaceDevice.current().play(.notification)
+        //WKInterfaceDevice.current().play(.notification)
     }
     
     // parse incoming messages
@@ -145,7 +145,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         for (key, value) in message{
             if key == DataKey.AmountMoney{
                 let val = value as! Int
-                amountMoney.setText(key + ": " + String(val))
+                let text = NSLocalizedString("Cost of items", comment: "Cost of items")
+                amountMoney.setText(text + ": " + String(val) + Local.currencySymbol!)
             }
             
             if key == DataKey.TopPrice{
@@ -153,10 +154,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 topPrice.setText(key + ": " + String(val))
             }
             
-            if key == DataKey.TopCategories{
-                let val = value as! Int
-                topCategories.setText(key + ": " + String(val))
-            }
             
             // deal with a list of strings sent at once
             // will have prefix which must be removed for further work

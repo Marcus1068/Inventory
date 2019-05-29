@@ -208,14 +208,15 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         //watchSessionManager.sendTopPricesListToWatch(count: 5)
         
-        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+        //let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
         
-        watchSessionManager.sendItemsByRoomListToWatch()
-        watchSessionManager.sendItemsByCategoryListToWatch()
+        //watchSessionManager.sendItemsByRoomListToWatch()
+        //watchSessionManager.sendItemsByCategoryListToWatch()
         
-        let image = UIImage(named: "Speaker")
-        let data = image?.jpegData(compressionQuality: 0.9)
+        let image = #imageLiteral(resourceName: "Owner Icon")
+        let data = image.jpegData(compressionQuality: 0.9)
         print("send data image")
+        
         watchSessionManager.sendMessageData(data: data!)
         
     }

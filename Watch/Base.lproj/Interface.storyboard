@@ -15,6 +15,7 @@
                 <controller identifier="Interface Controller" title="Inventory App" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
                         <separator alignment="left" id="nwY-XO-4dS"/>
+                        <imageView alignment="left" id="GJv-kv-ohu"/>
                         <group width="1" alignment="left" id="yGa-6y-Vie">
                             <items>
                                 <label alignment="left" text="Most expensive:" numberOfLines="0" id="k8i-7D-T7O">
@@ -99,6 +100,7 @@
                     </items>
                     <connections>
                         <outlet property="amountMoney" destination="7rW-jb-QNu" id="LFH-Oh-r1d"/>
+                        <outlet property="image" destination="GJv-kv-ohu" id="JR0-OZ-wyu"/>
                         <outlet property="messagesTable" destination="kaL-XS-KsM" id="47t-SW-5LC"/>
                         <outlet property="topPrice" destination="zgp-XK-6xd" id="4y6-yI-tns"/>
                     </connections>

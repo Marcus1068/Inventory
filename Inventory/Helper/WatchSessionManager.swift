@@ -123,6 +123,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     // send data (for images etc)
     func sendMessageData(data: Data, replyHandler: ((Data) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
         os_log("WatchSessionManager: sendMessageData()", log: Log.viewcontroller, type: .info)
+        session?.activate()
         session?.sendMessageData(data, replyHandler: replyHandler, errorHandler: errorHandler)
     }
     

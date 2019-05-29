@@ -41,7 +41,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var messagesTable: WKInterfaceTable!
     @IBOutlet weak var topPrice: WKInterfaceLabel!
     @IBOutlet weak var amountMoney: WKInterfaceLabel!
-
+    @IBOutlet weak var image: WKInterfaceImage!
+    
     
     var session : WCSession?
     
@@ -103,6 +104,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     
     // MARK: - WCSessionDelegate
+    
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         os_log("MainInterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
         //print("in watch app: \(activationState)")
@@ -117,15 +119,26 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         // vibrate when messages were received
         //WKInterfaceDevice.current().play(.notification)
     }
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
-        print("Data transfer of image")
-        print(messageData)
-    }
-    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        print("Data transfer of image")
-        print(messageData)
-    }
+    
+/*    func session(_ session: WCSession, didReceiveMessageData messageData: Data, replyHandler: @escaping (Data) -> Void) {
+        
+        guard let image = UIImage(data: messageData) else {
+            return
+        }
+        
+        print(image)
+        self.image.setImage(image)
+    } */
 
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        guard let image = UIImage(data: messageData) else {
+            return
+        }
+        
+        print(image)
+        self.image.setImage(image)
+    }
+    
     // app context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         os_log("MainInterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
@@ -137,7 +150,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             self.processApplicationContext()
         }
     }
-    
+
     // userInfo
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any]) {
         os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)

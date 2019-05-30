@@ -165,6 +165,19 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     func parseMessage(message: [String : Any]){
         // check for messages that come immediately
         
+        for (key, _) in message{
+            if key == DataKey.MostExpensiveList{
+                topPrices.removeAll()
+            }
+            if key == DataKey.TopRooms{
+                roomList.removeAll()
+            }
+            if key == DataKey.TopCategories{
+                categoryList.removeAll()
+            }
+        }
+        
+        
         for (key, value) in message{
             if key == DataKey.AmountMoney{
                 let val = value as! Int

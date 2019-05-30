@@ -668,6 +668,23 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         storageText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
         y = y + 30
+        
+        // take first room only
+        let (key, value) = Statistics.shared.countItemsByRoomDict().first ?? ("", 0)
+        let roomString = key + ", " + String(value) + " " + NSLocalizedString("Items", comment: "Items")
+        let tmp6 = NSLocalizedString("Room with most items in", comment: "Room with most items in")
+        let roomItemsText = tmp6 + ": " + roomString
+        roomItemsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        y = y + 30
+        let mostExpensiveItem = Statistics.shared.mostExpensiveItems(elementsCount: 1)
+        if mostExpensiveItem.count > 0{
+            let tmp7 = NSLocalizedString("Most expensive item", comment: "Most expensive item")
+            let mostExp = tmp7 + ": " + mostExpensiveItem[0].inventoryName! + ", " + String(mostExpensiveItem[0].price) + Local.currencySymbol!
+            mostExp.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        }
+        
+        y = y + 30
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }

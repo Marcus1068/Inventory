@@ -267,15 +267,13 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
      
+        // build a static table as main user interface
         messages.append(NSLocalizedString("Top Prices", comment: "Top Prices"))
         messages.append(NSLocalizedString("Room items", comment: "Room items"))
         messages.append(NSLocalizedString("Category items", comment: "Category items"))
     }
     
-    // FIXME: updateapplicationContext to share data
-    
     override func willActivate() {
-        //os_log("MainInterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
@@ -285,7 +283,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         session?.activate()
         
         tableRefresh()
-        //refreshPickerItems()
     }
     
     override func didDeactivate() {

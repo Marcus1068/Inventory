@@ -106,13 +106,13 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     // MARK: - WCSessionDelegate
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        os_log("MainInterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: activationDidCompleteWith()", log: Log.viewcontroller, type: .info)
         //print("in watch app: \(activationState)")
     }
     
     // gets called when new iPhone message arrives
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        os_log("MainInterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: didReceiveMessage()", log: Log.viewcontroller, type: .info)
         
         parseMessage(message: message)
         
@@ -135,13 +135,13 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             return
         }
         
-        print(image)
+        //print(image)
         self.image.setImage(image)
     }
     
     // app context
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        os_log("MainInterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: didReceiveApplicationContext()", log: Log.viewcontroller, type: .info)
         
         //let msg = applicationContext["msg"]!
         //self.messages.append("AppContext \(msg)")
@@ -153,7 +153,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
 
     // userInfo
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any]) {
-        os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: didReceiveUserInfo()", log: Log.viewcontroller, type: .info)
         
         parseMessage(message: userInfo)
         
@@ -174,7 +174,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             
             if key == DataKey.TopPrice{
                 let val = value as! Int
-                topPrice.setText(key + ": " + String(val))
+                topPrice.setText(String(val) + Local.currencySymbol!)
             }
             
             
@@ -229,7 +229,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     // FIXME: updateapplicationContext to share data
     
     override func willActivate() {
-        os_log("MainInterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: willActivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
@@ -243,7 +243,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     override func didDeactivate() {
-        os_log("MainInterfaceController: didDeactivate()", log: Log.viewcontroller, type: .info)
+        //os_log("MainInterfaceController: didDeactivate()", log: Log.viewcontroller, type: .info)
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }

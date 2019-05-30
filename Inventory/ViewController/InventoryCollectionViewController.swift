@@ -1331,8 +1331,8 @@ extension InventoryCollectionViewController{
         //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
         
         let returnMessage: [String : Any] = [
-            DataKey.AmountMoney : Statistics.shared.itemPricesSum()//,
-            //DataKey.TopPrice : 5000,
+            DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+            DataKey.TopPrice : 5000
             //DataKey.TopCategories : 33
             //DataKey.ImageData : imageData!
         ]

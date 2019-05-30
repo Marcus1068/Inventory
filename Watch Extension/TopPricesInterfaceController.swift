@@ -50,7 +50,7 @@ class TopPricesInterfaceController: WKInterfaceController {
         for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
             let row = tableForPrices.rowController(at: index) as! PricesRowController
             index += 1
-            row.itemOutlet.setText(idx)
+            row.itemOutlet.setText(String(index) + ": " + idx)
             row.priceOutlet.setText(String(val) + Local.currencySymbol!)
         }
     }

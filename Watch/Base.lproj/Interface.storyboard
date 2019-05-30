@@ -30,61 +30,20 @@
                         <label alignment="left" text="Cost" numberOfLines="0" id="7rW-jb-QNu">
                             <fontDescription key="font" type="system" pointSize="14"/>
                         </label>
-                        <separator alignment="left" id="vcw-BM-wz9"/>
-                        <group width="1" alignment="left" spacing="10" id="sbt-yB-lIx">
-                            <items>
-                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="Money" contentMode="scaleAspectFit" id="aiv-e2-TEq"/>
-                                <button width="104" alignment="right" title="Top Prices" id="hab-hi-wQh">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="14"/>
-                                    <variation key="device=watch38mm" width="90"/>
-                                    <variation key="device=watch44mm" width="114"/>
-                                    <connections>
-                                        <action selector="topPricesAction" destination="AgC-eL-Hgc" id="gf9-bB-uj8"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="ye2-YJ-cOJ">
-                            <items>
-                                <imageView width="38" height="38" alignment="left" verticalAlignment="center" image="House" contentMode="scaleAspectFit" id="uHn-IG-MfD"/>
-                                <button width="102" alignment="right" title="Room Items" id="LuH-OG-P0M">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="14"/>
-                                    <variation key="device=watch38mm" width="90"/>
-                                    <variation key="device=watch44mm" width="114"/>
-                                    <connections>
-                                        <action selector="roomListAction" destination="AgC-eL-Hgc" id="Eli-UB-o2X"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <group width="1" alignment="left" id="63q-lq-oVs">
-                            <items>
-                                <imageView width="38" height="38" alignment="left" image="Category" id="Q51-2K-3Vt"/>
-                                <button width="102" alignment="right" title="Category Items" id="SNu-zE-lXG">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="font" type="system" pointSize="14"/>
-                                    <variation key="device=watch38mm" width="90"/>
-                                    <variation key="device=watch44mm" width="114"/>
-                                    <connections>
-                                        <action selector="categoryAction" destination="AgC-eL-Hgc" id="drf-Tz-5LC"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
                         <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
                                 <tableRow identifier="MessageRow" id="cMg-YR-Ow9" customClass="MessageRow" customModule="Watch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="vqX-We-TSJ">
                                         <items>
+                                            <imageView width="40" height="40" alignment="left" id="qqf-Fc-bhW"/>
                                             <label alignment="left" text="Label" numberOfLines="0" id="SQN-hv-chk">
                                                 <fontDescription key="font" type="system" pointSize="14"/>
                                             </label>
                                         </items>
                                     </group>
                                     <connections>
+                                        <outlet property="image" destination="qqf-Fc-bhW" id="OmI-Ih-1bt"/>
                                         <outlet property="label" destination="SQN-hv-chk" id="sb4-ln-TpW"/>
                                     </connections>
                                 </tableRow>

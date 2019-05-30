@@ -33,6 +33,7 @@ import os
 class MessageRow: NSObject{
     
     @IBOutlet weak var label: WKInterfaceLabel!
+    @IBOutlet weak var image: WKInterfaceImage!
     
 }
 
@@ -91,13 +92,43 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         for index in 0 ..< messagesTable.numberOfRows {
             let row = messagesTable.rowController(at: index) as! MessageRow
             row.label.setText(messages[index])
+            switch index{
+            case 0:
+                row.image.setImageNamed("Money")
+                break
+            case 1:
+                row.image.setImageNamed("House")
+                break
+            case 2:
+                row.image.setImageNamed("Category")
+                break
+            default:
+                break
+            }
+            
         }
         
     }
     
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
+        switch rowIndex {
+        case 0:
+            presentController(withName: "TopPrices", context: topPrices)
+            break
+            
+        case 1:
+            presentController(withName: "RoomList", context: roomList)
+            break
+            
+        case 2:
+            presentController(withName: "CategoryList", context: categoryList)
+            break
+            
+        default:
+            presentController(withName: "TopPrices", context: topPrices)
+            break
+        }
         
         //presentController(withName: "TopPrices", context: topPrices)
     }
@@ -200,8 +231,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let myValue = value as! String
                 topPrices[parsed] = Int(myValue)
                 
-                let val = value as! String
-                self.messages.append(parsed + ": " + val)
+                //let val = value as! String
+                //self.messages.append(parsed + ": " + val)
             }
             
             if key.contains(DataKey.TopRooms) {
@@ -212,7 +243,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 roomList[parsed] = myValue
                 
                 //let val = value as! Int
-                self.messages.append(parsed + ": " + String(myValue))
+                //self.messages.append(parsed + ": " + String(myValue))
             }
             
             if key.contains(DataKey.TopCategories) {
@@ -223,7 +254,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 categoryList[parsed] = myValue
                 
                 //let val = value as! Int
-                self.messages.append(parsed + ": " + String(myValue))
+                //self.messages.append(parsed + ": " + String(myValue))
             }
         }
     }
@@ -236,7 +267,9 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
      
-        messages.append("ready")
+        messages.append(NSLocalizedString("Top Prices", comment: "Top Prices"))
+        messages.append(NSLocalizedString("Room items", comment: "Room items"))
+        messages.append(NSLocalizedString("Category items", comment: "Category items"))
     }
     
     // FIXME: updateapplicationContext to share data
@@ -268,18 +301,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         //let text = titles.index(value, offsetBy: 0)
         myLabel.setText(titles[value])
     } */
-
-    @IBAction func categoryAction() {
-        presentController(withName: "CategoryList", context: categoryList)
-    }
-    
-    @IBAction func roomListAction() {
-        presentController(withName: "RoomList", context: roomList)
-    }
-    
-    @IBAction func topPricesAction() {
-        presentController(withName: "TopPrices", context: topPrices)
-    }
     
     @IBAction func requestInfo() {
         os_log("MainInterfaceController: requestInfo()", log: Log.viewcontroller, type: .info)

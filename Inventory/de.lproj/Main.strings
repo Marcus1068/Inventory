@@ -7,6 +7,9 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "1x4-xS-Tgd"; */
 "1x4-xS-Tgd.title" = "Objekt";
 
+/* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "2ao-2G-yAL"; */
+"2ao-2G-yAL.text" = "Hinweis: nach links Wischen zum Löschen";
+
 /* Class = "UINavigationItem"; title = "Owner"; ObjectID = "2Dn-lA-ivG"; */
 "2Dn-lA-ivG.title" = "Eigentümer";
 
@@ -214,6 +217,9 @@
 /* Class = "UIButton"; normalTitle = "Owner..."; ObjectID = "keT-dq-ecZ"; */
 "keT-dq-ecZ.normalTitle" = "Eigentümer...";
 
+/* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "kid-Xk-5Tz"; */
+"kid-Xk-5Tz.text" = "Hinweis: nach links Wischen zum Löschen";
+
 /* Class = "UILabel"; text = "This app is free of charge. The source code is available on the Information link where you can get further infos. Some icons used in this app are from https://icons8.de"; ObjectID = "kmW-Er-gZy"; */
 "kmW-Er-gZy.text" = "Diese App ist kostenlos. Der Quellcode ist ebenfalls frei verfügbar. Einige verwendete Icons sind von https://icons8.de";
 
@@ -322,6 +328,9 @@
 /* Class = "UITableViewSection"; headerTitle = "Picture and Invoice"; ObjectID = "rFd-0w-oMC"; */
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
+/* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "ruh-Nn-ocq"; */
+"ruh-Nn-ocq.text" = "Hinweis: nach links Wischen zum Löschen";
+
 /* Class = "UIButton"; normalTitle = "Invoice"; ObjectID = "seV-zU-Yva"; */
 "seV-zU-Yva.normalTitle" = "Rechnung";
 
@@ -351,6 +360,9 @@
 
 /* Class = "UILabel"; text = "Room:"; ObjectID = "u8R-Gv-g47"; */
 "u8R-Gv-g47.text" = "Raum:";
+
+/* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "uBS-hp-Qqh"; */
+"uBS-hp-Qqh.text" = "Hinweis: nach links Wischen zum Löschen";
 
 /* Class = "UITableViewSection"; headerTitle = "Inventory"; ObjectID = "v9W-KQ-FRH"; */
 "v9W-KQ-FRH.headerTitle" = "Inventar";

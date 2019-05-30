@@ -1,0 +1,15 @@
+/* Class = "WKInterfaceController"; title = "Category items"; ObjectID = "3kb-SI-vgs"; */
+"3kb-SI-vgs.title" = "Kategorie Objekte";
+
+/* Class = "WKInterfaceLabel"; text = "Cost"; ObjectID = "7rW-jb-QNu"; */
+"7rW-jb-QNu.text" = "Kosten";
+
+/* Class = "WKInterfaceController"; title = "Inventory App"; ObjectID = "AgC-eL-Hgc"; */
+"AgC-eL-Hgc.title" = "Inventory App";
+
+/* Class = "WKInterfaceLabel"; text = "Inventory items:"; ObjectID = "k8i-7D-T7O"; */
+"k8i-7D-T7O.text" = "Inventar Objekte:";
+
+/* Class = "WKInterfaceController"; title = "Room items"; ObjectID = "Oy4-QW-RRu"; */
+"Oy4-QW-RRu.title" = "";
+

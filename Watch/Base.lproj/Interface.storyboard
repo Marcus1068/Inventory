@@ -9,13 +9,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Inventory App-->
+        <!--Inventory-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="Interface Controller" title="Inventory App" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
+                <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
                         <separator alignment="left" id="nwY-XO-4dS"/>
-                        <imageView alignment="left" id="GJv-kv-ohu"/>
+                        <imageView width="40" height="40" alignment="center" id="GJv-kv-ohu"/>
                         <group width="1" alignment="left" id="yGa-6y-Vie">
                             <items>
                                 <label alignment="left" text="Inventory items:" numberOfLines="0" id="k8i-7D-T7O">
@@ -37,6 +37,9 @@
                                     <group key="rootItem" width="1" alignment="left" id="vqX-We-TSJ">
                                         <items>
                                             <imageView width="40" height="40" alignment="left" id="qqf-Fc-bhW"/>
+                                            <separator alignment="left" id="FGk-PW-Jaz">
+                                                <color key="color" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </separator>
                                             <label alignment="left" text="Label" numberOfLines="0" id="SQN-hv-chk">
                                                 <fontDescription key="font" type="system" pointSize="14"/>
                                             </label>
@@ -72,7 +75,7 @@
             <objects>
                 <controller identifier="RoomList" title="Room items" id="Oy4-QW-RRu" customClass="RoomListInterfaceController" customModule="Watch_Extension">
                     <items>
-                        <imageView width="50" height="50" alignment="left" image="House" contentMode="scaleAspectFill" id="fQY-dc-lOL"/>
+                        <imageView width="40" height="40" alignment="left" image="House" contentMode="scaleAspectFill" id="fQY-dc-lOL"/>
                         <table alignment="left" id="Wox-qr-d1T">
                             <items>
                                 <tableRow identifier="RoomsRowController" id="8TJ-bi-ejA" customClass="RoomsRowController" customModule="Watch_Extension">
@@ -108,7 +111,7 @@
             <objects>
                 <controller identifier="CategoryList" title="Category items" id="3kb-SI-vgs" customClass="CategoryInterfaceController" customModule="Watch_Extension">
                     <items>
-                        <imageView width="50" height="50" alignment="left" image="Category" id="3vo-FX-zN3"/>
+                        <imageView width="40" height="40" alignment="left" image="Category" id="3vo-FX-zN3"/>
                         <table alignment="left" id="KTB-TJ-yPC">
                             <items>
                                 <tableRow identifier="CategoriesRowController" id="Qeq-JH-ufu" customClass="CategoriesRowController" customModule="Watch_Extension">
@@ -144,7 +147,7 @@
             <objects>
                 <controller identifier="TopPrices" title="TopPrices" id="iLT-x9-bb9" customClass="TopPricesInterfaceController" customModule="Watch_Extension">
                     <items>
-                        <imageView width="50" height="50" alignment="left" image="Money" id="8bX-ho-BHx"/>
+                        <imageView width="40" height="40" alignment="left" image="Money" id="8bX-ho-BHx"/>
                         <table alignment="left" id="KY4-TY-zvh">
                             <items>
                                 <tableRow identifier="PricesRowController" id="GN7-vI-Tco" customClass="PricesRowController" customModule="Watch_Extension">

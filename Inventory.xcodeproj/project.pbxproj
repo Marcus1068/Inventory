@@ -12,6 +12,7 @@
 		2C1C7F6F20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */; };
 		2C2B805522577F76007C842E /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B805422577F76007C842E /* ReportViewController.swift */; };
 		2C2B8057225CDE70007C842E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
+		2C36498522A04B4F004A88A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C36498322A04B4F004A88A1 /* Localizable.strings */; };
 		2C36FA49228C9139004C1560 /* Aboutview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */; };
 		2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */; };
 		2C36FA4D228C9CB2004C1560 /* Reportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */; };
@@ -157,6 +158,8 @@
 		2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C2B805422577F76007C842E /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		2C2B8056225CDE70007C842E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		2C36498422A04B4F004A88A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C36498622A04B4F004A88A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
 		2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Aboutview Help German.rtf"; sourceTree = "<group>"; };
 		2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Aboutview Help English.rtf"; sourceTree = "<group>"; };
 		2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Reportview Help German.rtf"; sourceTree = "<group>"; };
@@ -430,6 +433,7 @@
 				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
 				2CC648C522968F7100A6DA65 /* Info.plist */,
+				2C36498322A04B4F004A88A1 /* Localizable.strings */,
 			);
 			path = "Watch Extension";
 			sourceTree = "<group>";
@@ -622,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC648C422968F7100A6DA65 /* Assets.xcassets in Resources */,
+				2C36498522A04B4F004A88A1 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,6 +753,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2C36498322A04B4F004A88A1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C36498422A04B4F004A88A1 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		2C56E8B32086350A00FD5136 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -789,6 +802,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2CC648B122968F6F00A6DA65 /* Base */,
+				2C36498622A04B4F004A88A1 /* de */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";

@@ -109,6 +109,9 @@
 /* CSV file format different than expected */
 "CSV file format different than expected" = "CSV Datei Format anders als erwartet";
 
+/* Database size */
+"Database size used for images, pdf files etc." = "Datenbank Größe benutzt für PDF, Bilder etc.";
+
 /* Delete */
 "Delete" = "Löschen";
 
@@ -232,6 +235,9 @@
 /* items */
 "items" = "Objekte";
 
+/* Items */
+"Items" = "Objekte";
+
 /* Juwelry */
 "Juwelry" = "Schmuck";
 
@@ -249,6 +255,9 @@
 
 /* Manage items table view title */
 "Manage items" = "Objekte verwalten";
+
+/* Most expensive item */
+"Most expensive item" = "Teuerstes Objekt";
 
 /* My Brands */
 "My Brands" = "Meine Marken";
@@ -348,6 +357,9 @@
 
 /* Room filter applied */
 "Room filter applied" = "Raum Filter angewendet";
+
+/* Room with most items in */
+"Room with most items in" = "Raum mit den meisten Objekten";
 
 /* Running on iOS */
 "Running on iOS " = "Läuft auf iOS ";

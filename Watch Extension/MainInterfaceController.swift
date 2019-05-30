@@ -39,7 +39,7 @@ class MessageRow: NSObject{
 class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
   
     @IBOutlet weak var messagesTable: WKInterfaceTable!
-    @IBOutlet weak var topPrice: WKInterfaceLabel!
+    @IBOutlet weak var itemCount: WKInterfaceLabel!
     @IBOutlet weak var amountMoney: WKInterfaceLabel!
     @IBOutlet weak var image: WKInterfaceImage!
     
@@ -172,9 +172,9 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 amountMoney.setText(text + ": " + String(val) + Local.currencySymbol!)
             }
             
-            if key == DataKey.TopPrice{
+            if key == DataKey.ItemCount{
                 let val = value as! Int
-                topPrice.setText(String(val) + Local.currencySymbol!)
+                itemCount.setText(String(val))
             }
             
             

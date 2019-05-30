@@ -35,6 +35,7 @@ public struct DataKey {
     static let TopCategories = "TopCategories"
     static let ImageData = "ImageData"
     static let MostExpensiveList = "MostExpensiveList"
+    static let ItemCount = "ItemCount"
 }
 
 // used for general localization

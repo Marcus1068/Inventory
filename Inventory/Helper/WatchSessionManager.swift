@@ -59,14 +59,13 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
             }
         }
     
-    
     override init() {
         super.init()
         
         //startSession()
         
-        os_log("%@ WatchSessionManager: Paired Watch:", log: Log.viewcontroller, type: .info, session!.isPaired)
-        os_log("%@ WatchSessionManager: Installed:", log: Log.viewcontroller, type: .info, session!.isWatchAppInstalled)
+        //os_log("%@ WatchSessionManager: Paired Watch:", log: Log.viewcontroller, type: .info, session!.isPaired)
+        //os_log("%@ WatchSessionManager: Installed:", log: Log.viewcontroller, type: .info, session!.isWatchAppInstalled)
     }
     
     // check for valid session
@@ -93,23 +92,23 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     // MARK: - WCSessionDelegate
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        os_log("%@", "WatchSessionManager: activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
+        //os_log("%@", "WatchSessionManager: activationDidCompleteWith activationState:\(activationState) error:\(String(describing: error))")
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        os_log("%@ WatchSessionManager: sessionDidBecomeInactive:", log: Log.viewcontroller, type: .info, session)
+        //os_log("%@ WatchSessionManager: sessionDidBecomeInactive:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        os_log("%@ WatchSessionManager: sessionDidDeactivate:", log: Log.viewcontroller, type: .info, session)
+        //os_log("%@ WatchSessionManager: sessionDidDeactivate:", log: Log.viewcontroller, type: .info, session)
     }
     
     func sessionWatchStateDidChange(_ session: WCSession) {
-        os_log("%@ WatchSessionManager: sessionWatchStateDidChange:", log: Log.viewcontroller, type: .info, session)
+        //os_log("%@ WatchSessionManager: sessionWatchStateDidChange:", log: Log.viewcontroller, type: .info, session)
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        os_log("didReceiveMessage: %@", log: Log.viewcontroller, type: .info, message)
+        //os_log("didReceiveMessage: %@", log: Log.viewcontroller, type: .info, message)
         if message["request"] as? String == "date" {
             replyHandler(["date" : "\(Date())"])
         }
@@ -117,19 +116,19 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
     
     func sessionReachabilityDidChange(_ session: WCSession) {
         // do something
-        os_log("WatchSessionManager: sessionReachabilityDidChange()", log: Log.viewcontroller, type: .info)
+        //os_log("WatchSessionManager: sessionReachabilityDidChange()", log: Log.viewcontroller, type: .info)
     }
     
     // send data (for images etc)
     func sendMessageData(data: Data, replyHandler: ((Data) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
-        os_log("WatchSessionManager: sendMessageData()", log: Log.viewcontroller, type: .info)
+        //os_log("WatchSessionManager: sendMessageData()", log: Log.viewcontroller, type: .info)
         session?.activate()
         session?.sendMessageData(data, replyHandler: replyHandler, errorHandler: errorHandler)
     }
     
     // send dict message
     func sendMessage(message: [String : Any]) {
-        os_log("WatchSessionManager: sendMessage()", log: Log.viewcontroller, type: .info)
+        //os_log("WatchSessionManager: sendMessage()", log: Log.viewcontroller, type: .info)
         
         if isReachable() {
             session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in

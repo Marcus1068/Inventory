@@ -195,9 +195,13 @@ class Statistics: NSObject{
     /// - Parameter elementsCount: number of array elements to be returned
     /// - Returns: inventory array sorted by price with most expensive item first
     func mostExpensiveItems(elementsCount: Int) -> [Inventory]{
-        let sortedByPrice = inventory.sorted(by: {$0.price > $1.price})
         
-        return sortedByPrice.first(elementCount: elementsCount)
+        if inventory.count > 0{
+            let sortedByPrice = inventory.sorted(by: {$0.price > $1.price})
+        
+            return sortedByPrice.first(elementCount: elementsCount)
+        }
+        return []
     }
 }
 

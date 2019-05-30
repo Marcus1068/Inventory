@@ -1332,7 +1332,7 @@ extension InventoryCollectionViewController{
         
         let returnMessage: [String : Any] = [
             DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
-            DataKey.TopPrice : 5000
+            DataKey.ItemCount : Statistics.shared.getInventoryItemCount()
             //DataKey.TopCategories : 33
             //DataKey.ImageData : imageData!
         ]

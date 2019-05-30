@@ -198,8 +198,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
         
         let returnMessage: [String : Any] = [
-            DataKey.AmountMoney : Statistics.shared.itemPricesSum()//,
-            //DataKey.TopPrice : 6000,
+            DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+            DataKey.ItemCount : Statistics.shared.getInventoryItemCount()
             //DataKey.TopCategories : 66
             //DataKey.ImageData : imageData!
         ]

@@ -18,10 +18,10 @@
                         <imageView alignment="left" id="GJv-kv-ohu"/>
                         <group width="1" alignment="left" id="yGa-6y-Vie">
                             <items>
-                                <label alignment="left" text="Most expensive:" numberOfLines="0" id="k8i-7D-T7O">
+                                <label alignment="left" text="Inventory items:" numberOfLines="0" id="k8i-7D-T7O">
                                     <fontDescription key="font" type="system" pointSize="14"/>
                                 </label>
-                                <label alignment="left" text="Top Price" numberOfLines="0" id="zgp-XK-6xd">
+                                <label alignment="left" text="items" numberOfLines="0" id="zgp-XK-6xd">
                                     <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" pointSize="14"/>
                                 </label>
@@ -101,8 +101,8 @@
                     <connections>
                         <outlet property="amountMoney" destination="7rW-jb-QNu" id="LFH-Oh-r1d"/>
                         <outlet property="image" destination="GJv-kv-ohu" id="JR0-OZ-wyu"/>
+                        <outlet property="itemCount" destination="zgp-XK-6xd" id="4y6-yI-tns"/>
                         <outlet property="messagesTable" destination="kaL-XS-KsM" id="47t-SW-5LC"/>
-                        <outlet property="topPrice" destination="zgp-XK-6xd" id="4y6-yI-tns"/>
                     </connections>
                 </controller>
             </objects>

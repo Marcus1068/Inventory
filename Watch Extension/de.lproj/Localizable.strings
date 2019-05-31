@@ -19,9 +19,6 @@
 /* Bedroom */
 "Bedroom" = "Schlafzimmer";
 
-/* Category items */
-"Category items" = "Kategorie Objekte";
-
 /* Computer */
 "Computer" = "Computer";
 
@@ -46,6 +43,21 @@
 /* Living room */
 "Living room" = "Wohnzimmer";
 
+/* Most expensive items */
+"Most expensive items" = "Teuerste Objekte";
+
+/* Most used brands */
+"Most used brands" = "Meistverwendete Marken";
+
+/* Most used categories */
+"Most used categories" = "Meistverwendete Kategorien";
+
+/* Most used owners */
+"Most used owners" = "Meistverwendete Eigentümer";
+
+/* Most used rooms */
+"Most used rooms" = "Meistverwendete Räume";
+
 /* Nursery 1 */
 "Nursery 1" = "Kinderzimmer 1";
 
@@ -57,9 +69,6 @@
 
 /* Remark */
 "Remark" = "Bemerkung";
-
-/* Room items */
-"Room items" = "Raum Objekte";
 
 /* Serial no. */
 "Serial no." = "Seriennr.";
@@ -78,9 +87,6 @@
 
 /* Toaster */
 "Toaster" = "Toaster";
-
-/* Top Prices */
-"Top Prices" = "Teuerste Objekte";
 
 /* Toy */
 "Toy" = "Spielzeug";

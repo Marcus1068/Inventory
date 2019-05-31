@@ -280,11 +280,11 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.awake(withContext: context)
      
         // build a static table as main user interface
-        messages.append(NSLocalizedString("Most expensive items", comment: "Most expensive items"))
-        messages.append(NSLocalizedString("Most used rooms", comment: "Most used rooms"))
-        messages.append(NSLocalizedString("Most used categories", comment: "Most used categories"))
-        messages.append(NSLocalizedString("Most used brands", comment: "Most used brands"))
-        messages.append(NSLocalizedString("Most used owners", comment: "Most used owners"))
+        messages.append(Local.mostExpensiveItems)
+        messages.append(Local.mostUsedRooms)
+        messages.append(Local.mostUsedCategories)
+        messages.append(Local.mostUsedBrands)
+        messages.append(Local.mostUsedOwners)
     }
     
     override func willActivate() {

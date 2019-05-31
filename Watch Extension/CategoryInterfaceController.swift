@@ -57,7 +57,6 @@ class CategoryInterfaceController: WKInterfaceController {
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
         
         //presentController(withName: "TopPrices", context: top)
     }
@@ -70,7 +69,7 @@ class CategoryInterfaceController: WKInterfaceController {
             self.categoryList = myCategoryList
         }
         
-        self.setTitle(NSLocalizedString("Most used categories", comment: "Most used categories"))
+        self.setTitle(Local.mostUsedCategories)
     }
 
     override func willActivate() {

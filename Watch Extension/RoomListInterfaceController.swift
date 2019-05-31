@@ -57,7 +57,6 @@ class RoomListInterfaceController: WKInterfaceController {
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
         
         //presentController(withName: "TopPrices", context: top)
     }
@@ -70,7 +69,7 @@ class RoomListInterfaceController: WKInterfaceController {
             self.roomList = myRoomList
         }
         
-        self.setTitle(NSLocalizedString("Most used rooms", comment: "Most used rooms"))
+        self.setTitle(Local.mostUsedRooms)
     }
 
     override func willActivate() {

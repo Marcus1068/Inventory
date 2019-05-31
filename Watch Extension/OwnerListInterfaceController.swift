@@ -57,7 +57,6 @@ class OwnerListInterfaceController: WKInterfaceController {
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
         
         //presentController(withName: "TopPrices", context: top)
     }
@@ -70,7 +69,7 @@ class OwnerListInterfaceController: WKInterfaceController {
             self.ownerList = myOwnerList
         }
         
-        self.setTitle(NSLocalizedString("Most used owners", comment: "Most used owners"))
+        self.setTitle(Local.mostUsedOwners)
     }
 
     override func willActivate() {

@@ -284,13 +284,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
-                                    <rect key="frame" x="12" y="0.0" width="44" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="TdM-fb-a5x"/>
-                                        <constraint firstAttribute="width" constant="44" id="yBP-8J-iz1"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Swipe left to delete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBS-hp-Qqh">
                                     <rect key="frame" x="189" y="12" width="178" height="20"/>
                                     <constraints>
@@ -301,14 +294,21 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
+                                    <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="36" id="TdM-fb-a5x"/>
+                                        <constraint firstAttribute="width" constant="36" id="yBP-8J-iz1"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="fdO-gf-h77" firstAttribute="leading" secondItem="TDg-hI-3iO" secondAttribute="leading" constant="12" id="6Dy-I8-Qof"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="leading" secondItem="TDg-hI-3iO" secondAttribute="leading" constant="8" id="6Dy-I8-Qof"/>
                                 <constraint firstItem="uBS-hp-Qqh" firstAttribute="top" secondItem="TDg-hI-3iO" secondAttribute="top" constant="12" id="6Ne-wU-apM"/>
                                 <constraint firstAttribute="trailing" secondItem="uBS-hp-Qqh" secondAttribute="trailing" constant="8" id="9d8-Vn-kWU"/>
                                 <constraint firstItem="uBS-hp-Qqh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fdO-gf-h77" secondAttribute="trailing" constant="8" symbolic="YES" id="fV8-gg-QzF"/>
-                                <constraint firstItem="fdO-gf-h77" firstAttribute="top" secondItem="TDg-hI-3iO" secondAttribute="top" id="m6n-qn-spu"/>
+                                <constraint firstItem="fdO-gf-h77" firstAttribute="top" secondItem="TDg-hI-3iO" secondAttribute="top" constant="4" id="m6n-qn-spu"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -365,13 +365,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="12" y="0.0" width="44" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="82t-qv-ykd"/>
-                                        <constraint firstAttribute="height" constant="44" id="Jr3-Mb-Qqx"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Swipe left to delete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kid-Xk-5Tz">
                                     <rect key="frame" x="189" y="12" width="178" height="20"/>
                                     <constraints>
@@ -382,13 +375,20 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
+                                    <rect key="frame" x="12" y="4" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="36" id="82t-qv-ykd"/>
+                                        <constraint firstAttribute="height" constant="36" id="Jr3-Mb-Qqx"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="kid-Xk-5Tz" secondAttribute="trailing" constant="8" id="6Jx-tU-rPX"/>
                                 <constraint firstItem="eGR-vJ-kYR" firstAttribute="leading" secondItem="p3A-UU-TKg" secondAttribute="leading" constant="12" id="FLs-fZ-0CL"/>
                                 <constraint firstItem="kid-Xk-5Tz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eGR-vJ-kYR" secondAttribute="trailing" constant="8" symbolic="YES" id="Kvc-ZA-qsS"/>
-                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" id="kHv-f9-f4T"/>
+                                <constraint firstItem="eGR-vJ-kYR" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" constant="4" id="kHv-f9-f4T"/>
                                 <constraint firstItem="kid-Xk-5Tz" firstAttribute="top" secondItem="p3A-UU-TKg" secondAttribute="top" constant="12" id="nIX-iK-ryJ"/>
                             </constraints>
                         </view>
@@ -2610,7 +2610,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WsE-KL-yNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2449.275362318841" y="1333.9285714285713"/>
+            <point key="canvasLocation" x="2618" y="1407"/>
         </scene>
         <!--My Inventory-->
         <scene sceneID="my9-ac-fzL">
@@ -2643,13 +2643,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
-                                    <rect key="frame" x="12" y="0.0" width="44" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="1Um-Ta-zSy"/>
-                                        <constraint firstAttribute="height" constant="44" id="m3x-1E-gMq"/>
-                                    </constraints>
-                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint: Swipe left to delete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruh-Nn-ocq">
                                     <rect key="frame" x="189" y="12" width="178" height="20"/>
                                     <constraints>
@@ -2660,13 +2653,20 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
+                                    <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="36" id="1Um-Ta-zSy"/>
+                                        <constraint firstAttribute="height" constant="36" id="m3x-1E-gMq"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="ruh-Nn-ocq" firstAttribute="top" secondItem="pmu-bl-MiB" secondAttribute="top" constant="12" id="210-aY-Vj0"/>
                                 <constraint firstItem="ruh-Nn-ocq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w23-Wc-G3Z" secondAttribute="trailing" constant="8" symbolic="YES" id="6vo-fO-Ful"/>
-                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="leading" secondItem="pmu-bl-MiB" secondAttribute="leading" constant="12" id="TtW-48-6r4"/>
-                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="top" secondItem="pmu-bl-MiB" secondAttribute="top" id="XP0-wk-yrE"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="leading" secondItem="pmu-bl-MiB" secondAttribute="leading" constant="8" id="TtW-48-6r4"/>
+                                <constraint firstItem="w23-Wc-G3Z" firstAttribute="top" secondItem="pmu-bl-MiB" secondAttribute="top" constant="4" id="XP0-wk-yrE"/>
                                 <constraint firstAttribute="trailing" secondItem="ruh-Nn-ocq" secondAttribute="trailing" constant="8" id="bPt-GQ-XjU"/>
                                 <constraint firstAttribute="trailing" secondItem="ruh-Nn-ocq" secondAttribute="trailing" constant="8" id="pvG-PL-ghl"/>
                             </constraints>
@@ -2829,16 +2829,16 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
-                                    <rect key="frame" x="12" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="12" y="8" width="36" height="36"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="atI-YE-Oo5"/>
-                                        <constraint firstAttribute="width" constant="44" id="fgb-au-Dqa"/>
+                                        <constraint firstAttribute="height" constant="36" id="atI-YE-Oo5"/>
+                                        <constraint firstAttribute="width" constant="36" id="fgb-au-Dqa"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="top" secondItem="GlM-9z-INp" secondAttribute="top" id="GVC-8p-D7B"/>
+                                <constraint firstItem="7Yh-3G-0L4" firstAttribute="top" secondItem="GlM-9z-INp" secondAttribute="top" constant="8" id="GVC-8p-D7B"/>
                                 <constraint firstAttribute="trailing" secondItem="2ao-2G-yAL" secondAttribute="trailing" constant="8" id="OVY-fY-Dw2"/>
                                 <constraint firstItem="7Yh-3G-0L4" firstAttribute="leading" secondItem="GlM-9z-INp" secondAttribute="leading" constant="12" id="OfV-TK-psO"/>
                                 <constraint firstItem="2ao-2G-yAL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Yh-3G-0L4" secondAttribute="trailing" constant="8" symbolic="YES" id="gTm-OM-Ayz"/>

@@ -55,8 +55,15 @@ public struct Local{
     
     static let languageCode = locale.languageCode
     
+    static let mostExpensiveItems = NSLocalizedString("Most expensive items", comment: "Most expensive items")
+    static let mostUsedRooms = NSLocalizedString("Most used rooms", comment: "Most used rooms")
+    static let mostUsedCategories = NSLocalizedString("Most used categories", comment: "Most used categories")
+    static let mostUsedBrands = NSLocalizedString("Most used brands", comment: "Most used brands")
+    static let mostUsedOwners = NSLocalizedString("Most used owners", comment: "Most used owners")
+    
     static func currentLocaleForDate() -> String{
         return Local.languageCode!
+        
     }
     
 }

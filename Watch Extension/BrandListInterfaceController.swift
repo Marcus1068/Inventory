@@ -57,7 +57,6 @@ class BrandListInterfaceController: WKInterfaceController {
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
         
         //presentController(withName: "TopPrices", context: top)
     }
@@ -70,7 +69,7 @@ class BrandListInterfaceController: WKInterfaceController {
             self.brandList = myBrandList
         }
         
-        self.setTitle(NSLocalizedString("Most used brands", comment: "Most used brands"))
+        self.setTitle(Local.mostUsedBrands)
     }
 
     override func willActivate() {

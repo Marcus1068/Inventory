@@ -58,7 +58,6 @@ class TopPricesInterfaceController: WKInterfaceController {
     // MARK: - table functions
     //table selection method
     override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-        //print(rowIndex)
         
         //presentController(withName: "TopPrices", context: top)
     }
@@ -67,14 +66,13 @@ class TopPricesInterfaceController: WKInterfaceController {
     // MARK: - callbacks
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        print("in TopPricesInterfaceController")
         
         // Configure interface objects here.
         if let topPriceList = context as? [String : Int] {
             self.topPrices = topPriceList
         }
         
-        self.setTitle(NSLocalizedString("Most expensive items", comment: "Most expensive items"))
+        self.setTitle(Local.mostExpensiveItems)
     }
 
     override func willActivate() {

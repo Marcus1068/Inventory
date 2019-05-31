@@ -66,8 +66,6 @@ class CategoryInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        
-        // Configure interface objects here.
         if let myCategoryList = context as? [String : Int] {
             self.categoryList = myCategoryList
         }

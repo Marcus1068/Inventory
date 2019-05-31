@@ -178,6 +178,42 @@
             </objects>
             <point key="canvasLocation" x="345" y="6"/>
         </scene>
+        <!--Brand items-->
+        <scene sceneID="gvg-4e-IIh">
+            <objects>
+                <controller identifier="BrandList" title="Brand items" id="3h3-5R-4M8" customClass="BrandListInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <imageView width="40" height="40" alignment="left" image="Brand" id="tMj-tN-llJ"/>
+                        <table alignment="left" id="eKi-qX-u1L">
+                            <items>
+                                <tableRow identifier="BrandsRowController" id="Gn3-2K-JDC" customClass="BrandsRowController" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="K5J-tl-ksY">
+                                        <items>
+                                            <label width="92" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="49f-Jk-kz6">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                            <separator alignment="left" id="cea-gy-Fgn"/>
+                                            <label alignment="left" text="Label" textAlignment="right" numberOfLines="0" id="bgX-Wp-mL5">
+                                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="brandLabel" destination="49f-Jk-kz6" id="WXw-bZ-IsC"/>
+                                        <outlet property="countLabel" destination="bgX-Wp-mL5" id="YHz-uK-kYa"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="eKi-qX-u1L" id="Se0-Hl-mjZ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="563.95652173913038" y="4.5535714285714288"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

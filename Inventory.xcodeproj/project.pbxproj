@@ -13,6 +13,10 @@
 		2C2B805522577F76007C842E /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B805422577F76007C842E /* ReportViewController.swift */; };
 		2C2B8057225CDE70007C842E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2C36498522A04B4F004A88A1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C36498322A04B4F004A88A1 /* Localizable.strings */; };
+		2C36498822A14014004A88A1 /* BrandListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498722A14014004A88A1 /* BrandListInterfaceController.swift */; };
+		2C36498A22A14028004A88A1 /* OwnerListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498922A14028004A88A1 /* OwnerListInterfaceController.swift */; };
+		2C36498C22A14063004A88A1 /* BrandsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498B22A14063004A88A1 /* BrandsRowController.swift */; };
+		2C36498E22A14079004A88A1 /* OwnersRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498D22A14079004A88A1 /* OwnersRowController.swift */; };
 		2C36FA49228C9139004C1560 /* Aboutview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */; };
 		2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */; };
 		2C36FA4D228C9CB2004C1560 /* Reportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */; };
@@ -160,6 +164,10 @@
 		2C2B8056225CDE70007C842E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		2C36498422A04B4F004A88A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C36498622A04B4F004A88A1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Interface.strings; sourceTree = "<group>"; };
+		2C36498722A14014004A88A1 /* BrandListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandListInterfaceController.swift; sourceTree = "<group>"; };
+		2C36498922A14028004A88A1 /* OwnerListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerListInterfaceController.swift; sourceTree = "<group>"; };
+		2C36498B22A14063004A88A1 /* BrandsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsRowController.swift; sourceTree = "<group>"; };
+		2C36498D22A14079004A88A1 /* OwnersRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersRowController.swift; sourceTree = "<group>"; };
 		2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Aboutview Help German.rtf"; sourceTree = "<group>"; };
 		2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Aboutview Help English.rtf"; sourceTree = "<group>"; };
 		2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Reportview Help German.rtf"; sourceTree = "<group>"; };
@@ -427,9 +435,13 @@
 				2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */,
 				2C560F04229BFAF900488FAD /* RoomListInterfaceController.swift */,
 				2C560F0B229D51FC00488FAD /* CategoryInterfaceController.swift */,
+				2C36498722A14014004A88A1 /* BrandListInterfaceController.swift */,
+				2C36498922A14028004A88A1 /* OwnerListInterfaceController.swift */,
 				2C560F02229AF7C400488FAD /* PricesRowController.swift */,
 				2C560F06229BFB9A00488FAD /* RoomsRowController.swift */,
 				2C560F09229D51C300488FAD /* CategoriesRowController.swift */,
+				2C36498B22A14063004A88A1 /* BrandsRowController.swift */,
+				2C36498D22A14079004A88A1 /* OwnersRowController.swift */,
 				2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */,
 				2CC648C322968F7100A6DA65 /* Assets.xcassets */,
 				2CC648C522968F7100A6DA65 /* Info.plist */,
@@ -698,7 +710,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C36498A22A14028004A88A1 /* OwnerListInterfaceController.swift in Sources */,
 				2C82495E229AC854008748DE /* MainInterfaceController.swift in Sources */,
+				2C36498822A14014004A88A1 /* BrandListInterfaceController.swift in Sources */,
 				2CDB2B0E229692BF0060F7F8 /* Room+CoreDataProperties.swift in Sources */,
 				2C560F03229AF7C400488FAD /* PricesRowController.swift in Sources */,
 				2C82495C229AC7E4008748DE /* TopPricesInterfaceController.swift in Sources */,
@@ -719,7 +733,9 @@
 				2CDB2B09229692AE0060F7F8 /* Category+CoreDataClass.swift in Sources */,
 				2CDB2B122296BD8C0060F7F8 /* Inventory.xcdatamodeld in Sources */,
 				2C8589E822996A9200517E79 /* WatchConstants.swift in Sources */,
+				2C36498E22A14079004A88A1 /* OwnersRowController.swift in Sources */,
 				2CDB2B05229692850060F7F8 /* Inventory+CoreDataProperties.swift in Sources */,
+				2C36498C22A14063004A88A1 /* BrandsRowController.swift in Sources */,
 				2CDB2B0B229692B50060F7F8 /* Owner+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

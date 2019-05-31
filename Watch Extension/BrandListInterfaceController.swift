@@ -17,10 +17,10 @@
  */
 
 //
-//  TopPricesControllerInterfaceController.swift
+//  BrandListInterfaceController.swift
 //  Watch Extension
 //
-//  Created by Marcus Deuß on 26.05.19.
+//  Created by Marcus Deuß on 31.05.19.
 //  Copyright © 2019 Marcus Deuß. All rights reserved.
 //
 
@@ -28,12 +28,10 @@ import WatchKit
 import Foundation
 
 
-class TopPricesInterfaceController: WKInterfaceController {
+class BrandListInterfaceController: WKInterfaceController {
 
-    @IBOutlet weak var tableForPrices: WKInterfaceTable!
-    
-    // contains list of most expensive items
-    var topPrices : [String : Int] = [ : ]{
+    // contains list of categories with item occurance per category
+    var brandList : [String : Int] = [ : ]{
         didSet{
             OperationQueue.main.addOperation {
                 self.tableRefresh()
@@ -41,17 +39,18 @@ class TopPricesInterfaceController: WKInterfaceController {
         }
     }
     
+    @IBOutlet weak var table: WKInterfaceTable!
     
     // MARK: - table functions
     
     func tableRefresh(){
-        tableForPrices.setNumberOfRows(topPrices.count, withRowType: "PricesRowController")
+       table.setNumberOfRows(brandList.count, withRowType: "BrandsRowController")
         var index : Int = 0
-        for (idx, val) in topPrices.sorted(by: {$0.value > $1.value}){
-            let row = tableForPrices.rowController(at: index) as! PricesRowController
+        for (idx, val) in brandList.sorted(by: {$0.value > $1.value}){
+            let row = table.rowController(at: index) as! BrandsRowController
             index += 1
-            row.itemOutlet.setText(String(index) + ": " + idx)
-            row.priceOutlet.setText(String(val) + Local.currencySymbol!)
+            row.brandLabel.setText(String(index) + ": " + idx)
+            row.countLabel.setText(String(val))
         }
     }
     
@@ -63,18 +62,15 @@ class TopPricesInterfaceController: WKInterfaceController {
         //presentController(withName: "TopPrices", context: top)
     }
     
-    
-    // MARK: - callbacks
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        print("in TopPricesInterfaceController")
         
         // Configure interface objects here.
-        if let topPriceList = context as? [String : Int] {
-            self.topPrices = topPriceList
+        if let myBrandList = context as? [String : Int] {
+            self.brandList = myBrandList
         }
         
-        self.setTitle(NSLocalizedString("Most expensive items", comment: "Most expensive items"))
+        self.setTitle(NSLocalizedString("Most used brands", comment: "Most used brands"))
     }
 
     override func willActivate() {

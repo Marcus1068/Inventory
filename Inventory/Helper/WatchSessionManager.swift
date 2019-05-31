@@ -146,8 +146,8 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         
         var returnMessage: [String : Any] = [ : ]
         
-        let topPrices = Statistics.shared.mostExpensiveItems(elementsCount: count)
-        for inv in topPrices{
+        let list = Statistics.shared.mostExpensiveItems(elementsCount: count)
+        for inv in list{
             returnMessage[DataKey.MostExpensiveList + inv.inventoryName!] = String(inv.price) as Any
         }
         
@@ -161,8 +161,8 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         
         var returnMessage: [String : Any] = [ : ]
         
-        let roomList = Statistics.shared.countItemsByRoomDict()
-        for (key, val) in roomList{
+        let list = Statistics.shared.countItemsByRoomDict()
+        for (key, val) in list{
             returnMessage[DataKey.TopRooms + key] = Int(val) as Any
         }
         
@@ -176,9 +176,39 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         
         var returnMessage: [String : Any] = [ : ]
         
-        let roomList = Statistics.shared.countItemsByCategoryDict()
-        for (key, val) in roomList{
+        let list = Statistics.shared.countItemsByCategoryDict()
+        for (key, val) in list{
             returnMessage[DataKey.TopCategories + key] = Int(val) as Any
+        }
+        
+        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+    }
+    
+    // send a list of brands with number of items per brand in it
+    func sendItemsByBrandListToWatch(){
+        // watch app context
+        let watchSessionManager = WatchSessionManager.sharedManager
+        
+        var returnMessage: [String : Any] = [ : ]
+        
+        let list = Statistics.shared.countItemsByBrandDict()
+        for (key, val) in list{
+            returnMessage[DataKey.TopBrands + key] = Int(val) as Any
+        }
+        
+        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+    }
+    
+    // send a list of owners with number of items per owner in it
+    func sendItemsByOwnerListToWatch(){
+        // watch app context
+        let watchSessionManager = WatchSessionManager.sharedManager
+        
+        var returnMessage: [String : Any] = [ : ]
+        
+        let list = Statistics.shared.countItemsByBrandDict()
+        for (key, val) in list{
+            returnMessage[DataKey.TopOwners + key] = Int(val) as Any
         }
         
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)

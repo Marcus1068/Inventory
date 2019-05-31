@@ -79,7 +79,7 @@ class TopPricesInterfaceController: WKInterfaceController {
             print(idx, val)
         } */
         
-        self.setTitle(NSLocalizedString("Top Prices", comment: "Top Prices"))
+        self.setTitle(NSLocalizedString("Most expensive items", comment: "Most expensive items"))
     }
 
     override func willActivate() {

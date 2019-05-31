@@ -163,31 +163,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         popPC.delegate = self
         present(myVC, animated:true, completion: nil)
         
-        // initialize arrays
-        //Statistics.shared.start()
-        //FIXME just for debugging
         
-        for (str, index) in Statistics.shared.countItemsByRoomDict(){
-            print("Room: \(str) count: \(index)" )
-        }
-        
-        
-        for (str, index) in Statistics.shared.countItemsByOwnerDict(){
-            print("Owner: \(str) count: \(index)" )
-        }
-        
-        for (str, index) in Statistics.shared.countItemsByCategoryDict(){
-            print("Category: \(str) count: \(index)" )
-        }
-        
-        for (str, index) in Statistics.shared.countItemsByBrandDict(){
-            print("Brand: \(str) count: \(index)" )
-        }
-        
-        let invNames = Statistics.shared.allInventory(elementsCount: 5)
-        for inv in invNames{
-            print(inv.inventoryName!)
-        }
+        let _ = Statistics.shared.allInventory(elementsCount: 10)
         
         
         // watch send message
@@ -206,12 +183,14 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         
         watchSessionManager.sendMessage(message: returnMessage)
         
-        watchSessionManager.sendTopPricesListToWatch(count: 5)
+        watchSessionManager.sendTopPricesListToWatch(count: 10)
         
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
         
         watchSessionManager.sendItemsByRoomListToWatch()
         watchSessionManager.sendItemsByCategoryListToWatch()
+        watchSessionManager.sendItemsByBrandListToWatch()
+        watchSessionManager.sendItemsByOwnerListToWatch()
         
         let image = #imageLiteral(resourceName: "Owner Icon")
         let data = image.jpegData(compressionQuality: 0.9)

@@ -1339,10 +1339,10 @@ extension InventoryCollectionViewController{
         
         let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
         
-        watchSessionManager.sendTopPricesListToWatch(count: 5)
-        
+        watchSessionManager.sendTopPricesListToWatch(count: 10)
         watchSessionManager.sendItemsByRoomListToWatch()
-        
         watchSessionManager.sendItemsByCategoryListToWatch()
+        watchSessionManager.sendItemsByBrandListToWatch()
+        watchSessionManager.sendItemsByOwnerListToWatch()
     }
 }

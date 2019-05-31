@@ -72,7 +72,7 @@ class CategoryInterfaceController: WKInterfaceController {
             self.categoryList = myCategoryList
         }
         
-        self.setTitle(NSLocalizedString("Category items", comment: "Category items"))
+        self.setTitle(NSLocalizedString("Most used categories", comment: "Most used categories"))
     }
 
     override func willActivate() {

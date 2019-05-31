@@ -61,12 +61,15 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     // contains list of most expensive items
     var topPrices : [String : Int] = [ : ]
-    
     // contains list of rooms with item occurance per room
     var roomList : [String : Int] = [ : ]
-    
     // contains list of categories with item occurance per category
     var categoryList : [String : Int] = [ : ]
+    // contains list of brands with item occurance per brand
+    var brandList : [String : Int] = [ : ]
+    // contains list of owners with item occurance per owner
+    var ownerList : [String : Int] = [ : ]
+    
     
     func processApplicationContext() {
     /*    if let iPhoneContext = session!.receivedApplicationContext as? [String : String] {
@@ -95,15 +98,16 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             switch index{
             case 0:
                 row.image.setImageNamed("Money")
-                break
             case 1:
                 row.image.setImageNamed("House")
-                break
             case 2:
                 row.image.setImageNamed("Category")
-                break
+            case 3:
+                row.image.setImageNamed("Brand")
+            case 4:
+                row.image.setImageNamed("Person")
             default:
-                break
+                row.image.setImageNamed("Money")
             }
             
         }
@@ -115,22 +119,13 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         switch rowIndex {
         case 0:
             presentController(withName: "TopPrices", context: topPrices)
-            break
-            
         case 1:
             presentController(withName: "RoomList", context: roomList)
-            break
-            
         case 2:
             presentController(withName: "CategoryList", context: categoryList)
-            break
-            
         default:
             presentController(withName: "TopPrices", context: topPrices)
-            break
         }
-        
-        //presentController(withName: "TopPrices", context: topPrices)
     }
     
     
@@ -206,6 +201,12 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             if key == DataKey.TopCategories{
                 categoryList.removeAll()
             }
+            if key == DataKey.TopBrands{
+                brandList.removeAll()
+            }
+            if key == DataKey.TopOwners{
+                ownerList.removeAll()
+            }
         }
         
         
@@ -230,9 +231,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let parsed = key.replacingOccurrences(of: DataKey.MostExpensiveList, with: "")
                 let myValue = value as! String
                 topPrices[parsed] = Int(myValue)
-                
-                //let val = value as! String
-                //self.messages.append(parsed + ": " + val)
             }
             
             if key.contains(DataKey.TopRooms) {
@@ -241,9 +239,6 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let parsed = key.replacingOccurrences(of: DataKey.TopRooms, with: "")
                 let myValue = value as! Int
                 roomList[parsed] = myValue
-                
-                //let val = value as! Int
-                //self.messages.append(parsed + ": " + String(myValue))
             }
             
             if key.contains(DataKey.TopCategories) {
@@ -252,9 +247,22 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
                 let parsed = key.replacingOccurrences(of: DataKey.TopCategories, with: "")
                 let myValue = value as! Int
                 categoryList[parsed] = myValue
-                
-                //let val = value as! Int
-                //self.messages.append(parsed + ": " + String(myValue))
+            }
+            
+            if key.contains(DataKey.TopBrands) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.TopBrands, with: "")
+                let myValue = value as! Int
+                brandList[parsed] = myValue
+            }
+            
+            if key.contains(DataKey.TopOwners) {
+                // split this: "DataKey.MostExpensiveListInventoryName" : "price" into this:
+                // "InventoryName" : number as a dict
+                let parsed = key.replacingOccurrences(of: DataKey.TopOwners, with: "")
+                let myValue = value as! Int
+                ownerList[parsed] = myValue
             }
         }
     }
@@ -268,9 +276,11 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.awake(withContext: context)
      
         // build a static table as main user interface
-        messages.append(NSLocalizedString("Top Prices", comment: "Top Prices"))
-        messages.append(NSLocalizedString("Room items", comment: "Room items"))
-        messages.append(NSLocalizedString("Category items", comment: "Category items"))
+        messages.append(NSLocalizedString("Most expensive items", comment: "Most expensive items"))
+        messages.append(NSLocalizedString("Most used rooms", comment: "Most used rooms"))
+        messages.append(NSLocalizedString("Most used categories", comment: "Most used categories"))
+        messages.append(NSLocalizedString("Most used brands", comment: "Most used brands"))
+        messages.append(NSLocalizedString("Most used owners", comment: "Most used owners"))
     }
     
     override func willActivate() {

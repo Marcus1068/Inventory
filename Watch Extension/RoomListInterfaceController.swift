@@ -70,7 +70,7 @@ class RoomListInterfaceController: WKInterfaceController {
             self.roomList = myRoomList
         }
         
-        self.setTitle(NSLocalizedString("Room items", comment: "Room items"))
+        self.setTitle(NSLocalizedString("Most used rooms", comment: "Most used rooms"))
     }
 
     override func willActivate() {

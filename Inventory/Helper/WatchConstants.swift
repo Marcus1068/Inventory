@@ -33,6 +33,7 @@ public struct DataKey {
     static let AmountMoney = "AmountMoney"
     static let TopOwners = "TopOwners"
     static let TopCategories = "TopCategories"
+    static let TopBrands = "TopBrands"
     static let ImageData = "ImageData"
     static let MostExpensiveList = "MostExpensiveList"
     static let ItemCount = "ItemCount"

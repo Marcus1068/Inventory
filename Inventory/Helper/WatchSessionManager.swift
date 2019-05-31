@@ -206,7 +206,7 @@ class WatchSessionManager : NSObject, WCSessionDelegate {
         
         var returnMessage: [String : Any] = [ : ]
         
-        let list = Statistics.shared.countItemsByBrandDict()
+        let list = Statistics.shared.countItemsByOwnerDict()
         for (key, val) in list{
             returnMessage[DataKey.TopOwners + key] = Int(val) as Any
         }

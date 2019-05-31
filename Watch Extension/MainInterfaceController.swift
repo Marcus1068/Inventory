@@ -125,6 +125,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             presentController(withName: "CategoryList", context: categoryList)
         case 3:
             presentController(withName: "BrandList", context: brandList)
+        case 4:
+            presentController(withName: "OwnerList", context: ownerList)
         default:
             presentController(withName: "TopPrices", context: topPrices)
         }

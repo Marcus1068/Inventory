@@ -28,5 +28,7 @@ import WatchKit
 
 class OwnersRowController: NSObject{
     
+    @IBOutlet weak var ownerLabel: WKInterfaceLabel!
     
+    @IBOutlet weak var countLabel: WKInterfaceLabel!
 }

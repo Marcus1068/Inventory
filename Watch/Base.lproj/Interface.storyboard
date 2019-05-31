@@ -142,6 +142,42 @@
             </objects>
             <point key="canvasLocation" x="563.95652173913038" y="-265.625"/>
         </scene>
+        <!--Owner items-->
+        <scene sceneID="xQv-gJ-pDX">
+            <objects>
+                <controller identifier="OwnerList" title="Owner items" id="NKv-ew-HvI" customClass="OwnerListInterfaceController" customModule="Watch_Extension">
+                    <items>
+                        <imageView width="40" height="40" alignment="left" image="Person" id="xjO-Od-fLv"/>
+                        <table alignment="left" id="IOb-Ix-Efu">
+                            <items>
+                                <tableRow identifier="OwnersRowController" id="KWM-4c-LJH" customClass="OwnersRowController" customModule="Watch_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="10u-sy-7Sl">
+                                        <items>
+                                            <label width="92" alignment="left" text="Label" textAlignment="left" numberOfLines="0" id="tJA-zH-WT6">
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                            <separator alignment="left" id="Qt5-DW-x8o"/>
+                                            <label alignment="left" text="Label" textAlignment="right" numberOfLines="0" id="NiU-K6-zLZ">
+                                                <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="countLabel" destination="NiU-K6-zLZ" id="fnw-dM-Eoy"/>
+                                        <outlet property="ownerLabel" destination="tJA-zH-WT6" id="GtG-K8-hZa"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="IOb-Ix-Efu" id="7Hd-Ok-LqI"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="773.86956521739125" y="-227.67857142857144"/>
+        </scene>
         <!--TopPrices-->
         <scene sceneID="C7o-St-KbY">
             <objects>

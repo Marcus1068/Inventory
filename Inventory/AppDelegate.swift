@@ -92,6 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Do any additional setup after loading the view.
         let store = CoreDataStorage.shared
+        
+        // starts database migration to new app group location if app starts first time with app group capabilty
+        let _ = store.getContext()
+        
+        //store.showSampleData()
+        
         let myInventory = store.fetchInventory()
         
         // generate initial data if none available

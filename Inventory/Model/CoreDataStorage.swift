@@ -40,6 +40,101 @@ public class CoreDataStorage {
         //let a = persistentContainer
     }
     
+    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+        
+        let mom = NSManagedObjectModel(contentsOf: Bundle.main.url(forResource: "Inventory", withExtension: "momd")!)
+        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: mom!)
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: true,
+            NSInferMappingModelAutomaticallyOption: true
+        ]
+        
+        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+        let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
+        let newStoreUrl = directory.appendingPathComponent("Inventory.sqlite")!
+        
+        var targetUrl : URL? = nil
+        var needMigrate = false
+        //var needDeleteOld = false
+        
+        
+        if FileManager.default.fileExists(atPath: oldStoreUrl.path){
+            needMigrate = true
+            targetUrl = oldStoreUrl
+        }
+        if FileManager.default.fileExists(atPath: newStoreUrl.path){
+            needMigrate = false
+            targetUrl = newStoreUrl
+            
+          /*  if FileManager.default.fileExists(atPath: oldStoreUrl.path){
+                needDeleteOld = true
+            } */
+        }
+        if targetUrl == nil {
+            targetUrl = newStoreUrl
+        }
+        
+        if needMigrate {
+            do {
+                try coordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: targetUrl!, options: options)
+                if let store = coordinator?.persistentStore(for: targetUrl!)
+                {
+                    do {
+                        try coordinator?.migratePersistentStore(store, to: newStoreUrl, options: options, withType: NSSQLiteStoreType)
+                        
+                        // also delete old database
+                        self.deleteDocumentAtUrl(url: oldStoreUrl)
+                        self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm"))
+                        self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal"))
+                        
+                    } catch let error {
+                        print("migrate failed with error : \(error)")
+                    }
+                }
+            } catch let error {
+                print(error)
+            }
+        }
+        
+   /*     if needDeleteOld {
+            self.deleteDocumentAtUrl(url: oldStoreUrl)
+            self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm"))
+            self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal"))
+        }
+     */
+        do {
+            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: targetUrl, options: options)
+        } catch var error as NSError {
+            coordinator = nil
+            NSLog("Unresolved error \(error), \(error.userInfo)")
+            abort()
+        } catch {
+            fatalError()
+        }
+        
+        return coordinator
+        
+    }()
+    
+    func deleteDocumentAtUrl(url: URL){
+        let fileCoordinator = NSFileCoordinator(filePresenter: nil)
+        fileCoordinator.coordinate(writingItemAt: url, options: .forDeleting, error: nil, byAccessor: {
+            (urlForModifying) -> Void in
+            do {
+                try FileManager.default.removeItem(at: urlForModifying)
+            }catch let error {
+                print("Failed to remove item with error: \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    lazy var applicationSupportDirectory: URL = {
+        // The directory the application uses to store the Core Data store file. This code uses a directory named 'Bundle identifier' in the application's Application Support directory.
+        let urls = Foundation.FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        return urls[urls.count-1]
+    }()
+    
+    
     // access persistent container
     lazy var persistentContainer: NSPersistentContainer =
     {
@@ -61,6 +156,7 @@ public class CoreDataStorage {
         return container
     }()
     
+    
     // convenience method for accessing persistent store container
     // access the container like this:
     // let coreDataContainer = AppDelegate.persistentContainer
@@ -68,9 +164,13 @@ public class CoreDataStorage {
     // MARK: db context
     // internal: get database context
     func getContext() -> NSManagedObjectContext{
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        return persistentContainer.viewContext
+        let managed = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managed.persistentStoreCoordinator = persistentStoreCoordinator
+        
+        //return persistentContainer.viewContext
+
+        return managed
     }
     
     // save everything
@@ -916,7 +1016,7 @@ public class CoreDataStorage {
         
         
         // FIXME: must be removed for release
-        //CoreDataHandler.showSampleData()
+        //CoreDataStorage.showSampleData()
     }
     
     // just for testing and debugging, will not be used in final app
@@ -955,8 +1055,10 @@ public class CoreDataStorage {
             print("Owner = \(m.ownerName!)")
         }
         
-        let invWohn = fetchInventoryByRoom(roomName: "Living room")
-        print ("count items in living room: \(invWohn.count)")
+        let livingroom = NSLocalizedString("Living room", comment: "Living room")
+        
+        let invWohn = fetchInventoryByRoom(roomName: livingroom)
+        print ("count: items in living room: \(invWohn.count)")
     }
     
 }

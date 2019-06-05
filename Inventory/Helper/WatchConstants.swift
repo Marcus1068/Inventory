@@ -66,5 +66,8 @@ public struct Local{
         
     }
     
+    // app group name
+    static let appGroup = "group.de.marcus-deuss"
+    
 }
 

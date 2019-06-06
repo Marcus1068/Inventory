@@ -53,7 +53,7 @@ class ShowUserManualViewController: UIViewController {
             self.navigationItem.largeTitleDisplayMode = .never
             self.navigationItem.largeTitleDisplayMode = .always
         }
-        
+
         navigationController?.navigationBar.prefersLargeTitles = true
         
         var fileURL : URL?

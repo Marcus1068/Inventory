@@ -37,84 +37,8 @@ public class CoreDataStorage {
     static let shared = CoreDataStorage()
     
     init(){
-        //let a = persistentContainer
+        // init
     }
-    
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        
-        let mom = NSManagedObjectModel(contentsOf: Bundle.main.url(forResource: "Inventory", withExtension: "momd")!)
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: mom!)
-        let options = [
-            NSMigratePersistentStoresAutomaticallyOption: true,
-            NSInferMappingModelAutomaticallyOption: true
-        ]
-        
-        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
-        let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
-        let newStoreUrl = directory.appendingPathComponent("Inventory.sqlite")!
-        
-        var targetUrl : URL? = nil
-        var needMigrate = false
-        //var needDeleteOld = false
-        
-        
-        if FileManager.default.fileExists(atPath: oldStoreUrl.path){
-            needMigrate = true
-            targetUrl = oldStoreUrl
-        }
-        if FileManager.default.fileExists(atPath: newStoreUrl.path){
-            needMigrate = false
-            targetUrl = newStoreUrl
-            
-          /*  if FileManager.default.fileExists(atPath: oldStoreUrl.path){
-                needDeleteOld = true
-            } */
-        }
-        if targetUrl == nil {
-            targetUrl = newStoreUrl
-        }
-        
-        if needMigrate {
-            do {
-                try coordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: targetUrl!, options: options)
-                if let store = coordinator?.persistentStore(for: targetUrl!)
-                {
-                    do {
-                        try coordinator?.migratePersistentStore(store, to: newStoreUrl, options: options, withType: NSSQLiteStoreType)
-                        
-                        // also delete old database
-                        self.deleteDocumentAtUrl(url: oldStoreUrl)
-                        self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm"))
-                        self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal"))
-                        
-                    } catch let error {
-                        print("migrate failed with error : \(error)")
-                    }
-                }
-            } catch let error {
-                print(error)
-            }
-        }
-        
-   /*     if needDeleteOld {
-            self.deleteDocumentAtUrl(url: oldStoreUrl)
-            self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm"))
-            self.deleteDocumentAtUrl(url: self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal"))
-        }
-     */
-        do {
-            try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: targetUrl, options: options)
-        } catch var error as NSError {
-            coordinator = nil
-            NSLog("Unresolved error \(error), \(error.userInfo)")
-            abort()
-        } catch {
-            fatalError()
-        }
-        
-        return coordinator
-        
-    }()
     
     func deleteDocumentAtUrl(url: URL){
         let fileCoordinator = NSFileCoordinator(filePresenter: nil)
@@ -138,7 +62,59 @@ public class CoreDataStorage {
     // access persistent container
     lazy var persistentContainer: NSPersistentContainer =
     {
-        let container = NSPersistentContainer(name: "Inventory")
+        var container = NSPersistentContainer(name: "Inventory")
+        
+/*        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+        let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
+        let newStoreUrl = directory.appendingPathComponent("Inventory.sqlite")!
+        
+        let psc = container.persistentStoreCoordinator
+        
+        //let migrationManager = NSMigrationManager(sourceModel: NSManagedObjectModel.version1, destinationModel: <#T##NSManagedObjectModel#>
+        
+        // need migration
+        if !FileManager.default.fileExists(atPath: newStoreUrl.path){
+            do{
+                try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: oldStoreUrl, options: nil)
+                if let store = psc.persistentStore(for: oldStoreUrl){
+                    do{
+                        //try psc.migratePersistentStore(store, to: newStoreUrl, options: nil, withType: NSSQLiteStoreType)
+                        try psc.replacePersistentStore(at: newStoreUrl, destinationOptions: nil, withPersistentStoreFrom: oldStoreUrl, sourceOptions: nil, ofType: NSSQLiteStoreType)
+                        
+                        try psc.destroyPersistentStore(at: oldStoreUrl, ofType: NSSQLiteStoreType, options: nil)
+                        //try psc.destroyPersistentStore(at: newStoreUrl, ofType: NSSQLiteStoreType, options: nil)
+                        
+                        
+                        let backupUrl1 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+                        let backupUrl2 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal")
+                        let backupUrl3 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm")
+                        let sourceSqliteURLs = [backupUrl1, backupUrl2, backupUrl3]
+                        
+                        for index in 0..<sourceSqliteURLs.count {
+                            do{
+                                try FileManager.default.removeItem(at: sourceSqliteURLs[index])
+                            }catch let error {
+                                print("Failed to delete file with error: \(error.localizedDescription)")
+                            }
+                        }
+                        
+                    }catch let error {
+                        print("Failed to migrate store with error: \(error.localizedDescription)")
+                    }
+                    
+                    //container = NSPersistentContainer(name: "Inventory")
+ 
+                }
+                
+            }
+            catch let error {
+                print("Failed to add store with error: \(error.localizedDescription)")
+            }
+        }
+        
+        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)!
+        container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: url)]
+      */
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 
@@ -164,13 +140,7 @@ public class CoreDataStorage {
     // MARK: db context
     // internal: get database context
     func getContext() -> NSManagedObjectContext{
-        
-        let managed = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managed.persistentStoreCoordinator = persistentStoreCoordinator
-        
-        //return persistentContainer.viewContext
-
-        return managed
+        return persistentContainer.viewContext
     }
     
     // save everything

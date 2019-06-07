@@ -29,6 +29,15 @@ import UIKit
 import Foundation
 import CoreData
 
+// needed for accessing core data when using app group container
+class NSCustomPersistentContainer: NSPersistentContainer {
+    
+    override open class func defaultDirectoryURL() -> URL {
+        let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)
+        return storeURL!
+    }
+    
+}
 
 public class CoreDataStorage {
     // MARK: - Core Data stack
@@ -37,13 +46,79 @@ public class CoreDataStorage {
     static let shared = CoreDataStorage()
     
     init(){
-        //let a = persistentContainer
+        // init
     }
+    
+    func deleteDocumentAtUrl(url: URL){
+        let fileCoordinator = NSFileCoordinator(filePresenter: nil)
+        fileCoordinator.coordinate(writingItemAt: url, options: .forDeleting, error: nil, byAccessor: {
+            (urlForModifying) -> Void in
+            do {
+                try FileManager.default.removeItem(at: urlForModifying)
+            }catch let error {
+                print("Failed to remove item with error: \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    lazy var applicationSupportDirectory: URL = {
+        // The directory the application uses to store the Core Data store file. This code uses a directory named 'Bundle identifier' in the application's Application Support directory.
+        let urls = Foundation.FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        return urls[urls.count-1]
+    }()
+    
     
     // access persistent container
     lazy var persistentContainer: NSPersistentContainer =
     {
-        let container = NSPersistentContainer(name: "Inventory")
+ 
+        // Change from NSPersistentContainer to custom class because of app groups
+        let container = NSCustomPersistentContainer(name: "Inventory")
+        
+        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+        let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
+        let newStoreUrl = directory.appendingPathComponent("Inventory.sqlite")!
+        
+        let psc = container.persistentStoreCoordinator
+        
+        // need core data migration
+        if !FileManager.default.fileExists(atPath: newStoreUrl.path){
+            do{
+                try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: oldStoreUrl, options: nil)
+                if let store = psc.persistentStore(for: oldStoreUrl){
+                    do{
+                        //try psc.migratePersistentStore(store, to: newStoreUrl, options: nil, withType: NSSQLiteStoreType)
+                        try psc.replacePersistentStore(at: newStoreUrl, destinationOptions: nil, withPersistentStoreFrom: oldStoreUrl, sourceOptions: nil, ofType: NSSQLiteStoreType)
+                        
+                        try psc.destroyPersistentStore(at: oldStoreUrl, ofType: NSSQLiteStoreType, options: nil)
+                        
+                        let backupUrl1 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+                        let backupUrl2 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal")
+                        let backupUrl3 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-shm")
+                        let sourceSqliteURLs = [backupUrl1, backupUrl2, backupUrl3]
+                        
+                        for index in 0..<sourceSqliteURLs.count {
+                            do{
+                                try FileManager.default.removeItem(at: sourceSqliteURLs[index])
+                            }catch let error {
+                                print("Failed to delete file with error: \(error.localizedDescription)")
+                            }
+                        }
+                        
+                    }catch let error {
+                        print("Failed to migrate store with error: \(error.localizedDescription)")
+                    }
+                    
+                    //container = NSPersistentContainer(name: "Inventory")
+ 
+                }
+                
+            }
+            catch let error {
+                print("Failed to add store with error: \(error.localizedDescription)")
+            }
+        }
+      
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 
@@ -61,6 +136,7 @@ public class CoreDataStorage {
         return container
     }()
     
+    
     // convenience method for accessing persistent store container
     // access the container like this:
     // let coreDataContainer = AppDelegate.persistentContainer
@@ -68,8 +144,6 @@ public class CoreDataStorage {
     // MARK: db context
     // internal: get database context
     func getContext() -> NSManagedObjectContext{
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         return persistentContainer.viewContext
     }
     
@@ -695,6 +769,32 @@ public class CoreDataStorage {
         return []
     }
     
+    // fetch array, if no array, return nil
+    func fetchInventoryWithoutBinaryData() -> [Inventory]
+    {
+        //os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
+        
+        let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        
+        // sort criteria
+        request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        request.fetchBatchSize = 20
+        request.propertiesToFetch = ["inventoryName", "price"]
+        
+        let context = getContext()
+        
+        do {
+            let inventory = try context.fetch(request)
+            
+            return inventory
+            
+        } catch {
+            print("Error with fetch request in fetchInventory \(error)")
+        }
+        
+        return []
+    }
+    
     
     // fetch all inventory from a certain room array, otherwise return [] empty array
     func fetchInventoryByRoom(roomName: String) -> [Inventory]
@@ -916,7 +1016,7 @@ public class CoreDataStorage {
         
         
         // FIXME: must be removed for release
-        //CoreDataHandler.showSampleData()
+        //CoreDataStorage.showSampleData()
     }
     
     // just for testing and debugging, will not be used in final app
@@ -955,8 +1055,10 @@ public class CoreDataStorage {
             print("Owner = \(m.ownerName!)")
         }
         
-        let invWohn = fetchInventoryByRoom(roomName: "Living room")
-        print ("count items in living room: \(invWohn.count)")
+        let livingroom = NSLocalizedString("Living room", comment: "Living room")
+        
+        let invWohn = fetchInventoryByRoom(roomName: livingroom)
+        print ("count: items in living room: \(invWohn.count)")
     }
     
 }

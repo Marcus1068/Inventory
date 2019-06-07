@@ -66,5 +66,11 @@ public struct Local{
         
     }
     
+    // app group name
+    static let appGroup = "group.de.marcus-deuss"
+    
+    // user default keys, also used for key/value iCloud store
+    static let keyUserName = "UserName"
+    static let keyHouseName = "UserHouse"
 }
 

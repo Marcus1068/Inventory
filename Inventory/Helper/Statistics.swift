@@ -13,7 +13,7 @@ import os
 // uses singleton pattern
 // Usage: let stats = Statistics.shared, print(stats.images)
 /// returns a lot of internal statistics useful for evaluating how many objects
-class Statistics: NSObject{
+class Statistics{
     
     // MARK: - Properties
     
@@ -46,7 +46,7 @@ class Statistics: NSObject{
     
     // MARK: - Initialization
     
-    override init() {
+    init() {
         //super.init()
         
         // setup all properties
@@ -70,6 +70,7 @@ class Statistics: NSObject{
     }
     
     func getInventoryItemCount() -> Int{
+        refresh()
         return inventory.count
     }
     
@@ -79,6 +80,7 @@ class Statistics: NSObject{
     /// - Returns: Double containing size in MB
     public func getInventorySizeinMegaBytes() -> Double{
         var storageSize = 0.0
+        refresh()
         
         for inv in inventory{
             if let imgSize = inv.image?.length{
@@ -105,6 +107,8 @@ class Statistics: NSObject{
     public func itemPricesSum() -> Int{
         var sum = 0
         
+        refresh()
+        
         for inv in inventory{
             sum += Int(inv.price)
         }
@@ -125,6 +129,8 @@ class Statistics: NSObject{
     func countItemsByRoomDict() -> [(key: String, value: Int)]{
         var arr : [String] = []
 
+        refresh()
+        
         for inv in inventory{
             arr.append(inv.inventoryRoom?.roomName ?? "")
         }
@@ -140,6 +146,8 @@ class Statistics: NSObject{
     /// - Example: ["BAR": 1, "FOOBAR": 1, "FOO": 2]
     func countItemsByOwnerDict() -> [(key: String, value: Int)]{
         var arr : [String] = []
+        
+        refresh()
         
         for inv in inventory{
             arr.append(inv.inventoryOwner?.ownerName ?? "")
@@ -157,6 +165,8 @@ class Statistics: NSObject{
     func countItemsByCategoryDict() -> [(key: String, value: Int)]{
         var arr : [String] = []
         
+        refresh()
+        
         for inv in inventory{
             arr.append(inv.inventoryCategory?.categoryName ?? "")
         }
@@ -173,6 +183,8 @@ class Statistics: NSObject{
     func countItemsByBrandDict() -> [(key: String, value: Int)]{
         var arr : [String] = []
         
+        refresh()
+        
         for inv in inventory{
             arr.append(inv.inventoryBrand?.brandName ?? "")
         }
@@ -187,6 +199,8 @@ class Statistics: NSObject{
     /// - Parameter elementsCount: number of array elements to be returned
     /// - Returns: inventory array
     func allInventory(elementsCount: Int) -> [Inventory]{
+        refresh()
+        
         return inventory.first(elementCount: elementsCount)
     }
     
@@ -195,6 +209,7 @@ class Statistics: NSObject{
     /// - Parameter elementsCount: number of array elements to be returned
     /// - Returns: inventory array sorted by price with most expensive item first
     func mostExpensiveItems(elementsCount: Int) -> [Inventory]{
+        refresh()
         
         if inventory.count > 0{
             let sortedByPrice = inventory.sorted(by: {$0.price > $1.price})

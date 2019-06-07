@@ -683,7 +683,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             let mostExp = tmp7 + ": " + mostExpensiveItem[0].inventoryName! + ", " + String(mostExpensiveItem[0].price) + Local.currencySymbol!
             mostExp.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
-        
+  
         y = y + 30
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])

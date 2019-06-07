@@ -64,6 +64,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // will be called when Today extension is beeing used to open the app
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        //print("opened by extension")
+        
+        return true
+    }
+    
     // app starts here
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -92,6 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Do any additional setup after loading the view.
         let store = CoreDataStorage.shared
+        
+        // starts database migration to new app group location if app starts first time with app group capabilty
+        let _ = store.getContext()
+        
+        //store.showSampleData()
+        
         let myInventory = store.fetchInventory()
         
         // generate initial data if none available
@@ -211,8 +225,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getiCloudStorageInfo(){
         //os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
         
-        if let user = kvStore.string(forKey: Global.keyUserName),
-            let address = kvStore.string(forKey: Global.keyHouseName){
+        if let user = kvStore.string(forKey: Local.keyUserName),
+            let address = kvStore.string(forKey: Local.keyHouseName){
             UserInfo.userName = user
             UserInfo.addressName = address
         }

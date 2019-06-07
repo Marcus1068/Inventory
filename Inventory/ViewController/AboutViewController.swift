@@ -112,9 +112,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // handle notification when iCloud changes occur
     @objc func kvHasChanged(notification: NSNotification){
         // update both text fields (complexer apps need to check for changes in all records
-        userNameTextField.text = kvStore.string(forKey: Global.keyUserName)
+        userNameTextField.text = kvStore.string(forKey: Local.keyUserName)
         UserInfo.userName = userNameTextField.text!
-        addressTextField.text = kvStore.string(forKey: Global.keyHouseName)
+        addressTextField.text = kvStore.string(forKey: Local.keyHouseName)
         UserInfo.addressName = addressTextField.text!
     }
     
@@ -211,7 +211,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         if (userNameTextField.text!.count > 0){
             //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
-            kvStore.set(userNameTextField.text!, forKey: Global.keyUserName)
+            kvStore.set(userNameTextField.text!, forKey: Local.keyUserName)
             kvStore.synchronize()
             UserInfo.userName = userNameTextField.text!
         }
@@ -220,7 +220,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBAction func addressEditingChanged(_ sender: UITextField) {
         if (addressTextField.text!.count > 0){
             //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
-            kvStore.set(addressTextField.text!, forKey: Global.keyHouseName)
+            kvStore.set(addressTextField.text!, forKey: Local.keyHouseName)
             kvStore.synchronize()
             UserInfo.addressName = addressTextField.text!
         }

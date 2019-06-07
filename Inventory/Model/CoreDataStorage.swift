@@ -29,6 +29,15 @@ import UIKit
 import Foundation
 import CoreData
 
+// needed for accessing core data when using app group container
+class NSCustomPersistentContainer: NSPersistentContainer {
+    
+    override open class func defaultDirectoryURL() -> URL {
+        let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)
+        return storeURL!
+    }
+    
+}
 
 public class CoreDataStorage {
     // MARK: - Core Data stack
@@ -62,17 +71,17 @@ public class CoreDataStorage {
     // access persistent container
     lazy var persistentContainer: NSPersistentContainer =
     {
-        var container = NSPersistentContainer(name: "Inventory")
+ 
+        // Change from NSPersistentContainer to custom class because of app groups
+        let container = NSCustomPersistentContainer(name: "Inventory")
         
-/*        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
+        let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
         let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
         let newStoreUrl = directory.appendingPathComponent("Inventory.sqlite")!
         
         let psc = container.persistentStoreCoordinator
         
-        //let migrationManager = NSMigrationManager(sourceModel: NSManagedObjectModel.version1, destinationModel: <#T##NSManagedObjectModel#>
-        
-        // need migration
+        // need core data migration
         if !FileManager.default.fileExists(atPath: newStoreUrl.path){
             do{
                 try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: oldStoreUrl, options: nil)
@@ -82,8 +91,6 @@ public class CoreDataStorage {
                         try psc.replacePersistentStore(at: newStoreUrl, destinationOptions: nil, withPersistentStoreFrom: oldStoreUrl, sourceOptions: nil, ofType: NSSQLiteStoreType)
                         
                         try psc.destroyPersistentStore(at: oldStoreUrl, ofType: NSSQLiteStoreType, options: nil)
-                        //try psc.destroyPersistentStore(at: newStoreUrl, ofType: NSSQLiteStoreType, options: nil)
-                        
                         
                         let backupUrl1 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
                         let backupUrl2 = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite-wal")
@@ -111,10 +118,7 @@ public class CoreDataStorage {
                 print("Failed to add store with error: \(error.localizedDescription)")
             }
         }
-        
-        let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)!
-        container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: url)]
-      */
+      
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 

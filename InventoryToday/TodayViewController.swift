@@ -17,9 +17,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var topPricesValue: UILabel!
     @IBOutlet weak var openAction: UIButton!
     
-    //let store = CoreDataStorage.shared
+    let store = CoreDataStorage.shared
     let stats = Statistics.shared
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +29,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         // Do any additional setup after loading the view.
         
-        
-        //let _ = store.getContext()
+        //let store = store.getContext()
         
         // enable statistics collection
         //let stats = Statistics.shared
         
         topPricesLabel.text = "Summe aller Inventarobjekte"
         topPricesValue.text = String(stats.getInventoryItemCount())
-        //store.showSampleData()
+        store.showSampleData()
         print(stats.getInventoryItemCount())
         
     }
@@ -60,20 +59,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         // enable statistics collection
         //let _ = store.getContext()
+
         DispatchQueue.main.async
         {
-            self.topPricesLabel.text = String(self.stats.getInventoryItemCount())
+            self.topPricesValue.text = String(self.stats.getInventoryItemCount())
         }
-        
-        
         
         completionHandler(NCUpdateResult.newData)
     }
     
     @IBAction func openAction(_ sender: UIButton) {
         self.extensionContext?.open(URL(string: "open:")!, completionHandler: nil)
-
     }
-    
     
 }

@@ -50,9 +50,7 @@ class Global: UIViewController {
     static let csvFile = "inventoryAppExport.csv"
     static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf") // FIXME: why translate?
     
-    // user default keys, also used for key/value iCloud store
-    static let keyUserName = "UserName"
-    static let keyHouseName = "UserHouse"
+    
     
     // localization strings
     static let item = NSLocalizedString("Item", comment: "Item")
@@ -382,6 +380,7 @@ class Global: UIViewController {
         
         return attributedText
     }
+    
 }
 
 // extensions

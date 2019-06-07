@@ -225,8 +225,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getiCloudStorageInfo(){
         //os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
         
-        if let user = kvStore.string(forKey: Global.keyUserName),
-            let address = kvStore.string(forKey: Global.keyHouseName){
+        if let user = kvStore.string(forKey: Local.keyUserName),
+            let address = kvStore.string(forKey: Local.keyHouseName){
             UserInfo.userName = user
             UserInfo.addressName = address
         }

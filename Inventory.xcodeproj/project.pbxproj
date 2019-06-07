@@ -81,6 +81,7 @@
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
 		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
+		2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -639,7 +640,7 @@
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
@@ -666,6 +667,9 @@
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 0;
 							};
 						};
@@ -856,6 +860,7 @@
 				2CC7EC1D22A7B4F800F485AA /* Brand+CoreDataClass.swift in Sources */,
 				2CC7EC1F22A7B50000F485AA /* Inventory+CoreDataClass.swift in Sources */,
 				2CC7EC2222A7B52E00F485AA /* WatchConstants.swift in Sources */,
+				2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */,
 				2CC7EC1E22A7B4FC00F485AA /* Category+CoreDataClass.swift in Sources */,
 				2CC7EC1A22A7B4E000F485AA /* Inventory+CoreDataProperties.swift in Sources */,
 				2CC7EC1C22A7B4E600F485AA /* Brand+CoreDataProperties.swift in Sources */,
@@ -1220,6 +1225,7 @@
 		2CC7EC0F22A7B2D700F485AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;
@@ -1242,6 +1248,7 @@
 		2CC7EC1022A7B2D700F485AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;

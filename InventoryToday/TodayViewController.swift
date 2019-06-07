@@ -33,9 +33,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var topPricesLabel: UILabel!
     @IBOutlet weak var topPricesValue: UILabel!
     @IBOutlet weak var openAction: UIButton!
+    @IBOutlet weak var textView: UITextView!
+    
+    var inventory: [Inventory] = []
+    var sortedByPrice: [Inventory] = []
     
     let store = CoreDataStorage.shared
     //let stats = Statistics.shared
+    
+    public func itemPricesSum() -> Int{
+        var sum = 0
+        
+        for inv in inventory{
+            sum += Int(inv.price)
+        }
+        
+        return sum
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,17 +60,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view.
         
         //store = store.getContext()
-        let inventory: [Inventory]
         
-        inventory = store.fetchInventoryWithoutBinaryData()
+        
+        //inventory = store.fetchInventoryWithoutBinaryData()
         
         // enable statistics collection
         //let stats = Statistics.shared
         
-        //topPricesLabel.text = "Summe aller Inventarobjekte"
-        topPricesValue.text = String(inventory.count)
-        //store.showSampleData()
-        //print(stats.getInventoryItemCount())
+        //topPricesLabel.text = String(itemPricesSum())
+        //topPricesValue.text = String(inventory.count)
+        
+        inventory = store.fetchInventoryWithoutBinaryData()
+        
+        DispatchQueue.main.async
+        {
+            self.topPricesLabel.text = String(self.itemPricesSum())
+            self.topPricesValue.text = String(self.inventory.count)
+        }
         
     }
     
@@ -79,10 +99,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // enable statistics collection
         //let _ = store.getContext()
 
+        inventory = store.fetchInventoryWithoutBinaryData()
+        
+        if inventory.count > 0{
+            sortedByPrice = inventory.sorted(by: {$0.price > $1.price})
+            var text : String = ""
+            for i in sortedByPrice.first(elementCount: 5){
+                text = text + i.inventoryName! + " " + String(i.price) + "\n"
+            }
+            textView.text = text
+        }
+        
         DispatchQueue.main.async
         {
-            //self.topPricesValue.text = String(self.stats.getInventoryItemCount())
-            //self.topPricesLabel.text = String(self.stats.itemPricesSum())
+            self.topPricesLabel.text = String(self.itemPricesSum())
+            self.topPricesValue.text = String(self.inventory.count)
         }
         
         completionHandler(NCUpdateResult.newData)

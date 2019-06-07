@@ -769,6 +769,32 @@ public class CoreDataStorage {
         return []
     }
     
+    // fetch array, if no array, return nil
+    func fetchInventoryWithoutBinaryData() -> [Inventory]
+    {
+        //os_log("CoreDataHandler fetchInventory", log: Log.coredata, type: .info)
+        
+        let request : NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        
+        // sort criteria
+        request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+        request.fetchBatchSize = 20
+        request.propertiesToFetch = ["inventoryName", "price"]
+        
+        let context = getContext()
+        
+        do {
+            let inventory = try context.fetch(request)
+            
+            return inventory
+            
+        } catch {
+            print("Error with fetch request in fetchInventory \(error)")
+        }
+        
+        return []
+    }
+    
     
     // fetch all inventory from a certain room array, otherwise return [] empty array
     func fetchInventoryByRoom(roomName: String) -> [Inventory]

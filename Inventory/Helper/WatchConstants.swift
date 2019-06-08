@@ -72,5 +72,12 @@ public struct Local{
     // user default keys, also used for key/value iCloud store
     static let keyUserName = "UserName"
     static let keyHouseName = "UserHouse"
+    
+    static let category = NSLocalizedString("Category", comment: "Category")
+    static let owner = NSLocalizedString("Owner", comment: "Owner")
+    static let room = NSLocalizedString("Room", comment: "Room")
+    static let brand = NSLocalizedString("Brand", comment: "Brand")
+    
+    static let price = NSLocalizedString("Price", comment: "Price")
 }
 

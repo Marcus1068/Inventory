@@ -120,7 +120,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldRoomName.placeholder = Global.room
+        textfieldRoomName.placeholder = Local.room
     }
     
     // when user presses return on keyboard

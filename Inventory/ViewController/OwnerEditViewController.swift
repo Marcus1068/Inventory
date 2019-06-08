@@ -71,7 +71,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
         textfieldOwner.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldOwner.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldOwner.placeholder = Global.owner
+        textfieldOwner.placeholder = Local.owner
     }
     
     // when user presses return on keyboard

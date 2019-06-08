@@ -71,7 +71,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
         textfieldBrand.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldBrand.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldBrand.placeholder = Global.brand
+        textfieldBrand.placeholder = Local.brand
     }
     
     

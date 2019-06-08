@@ -180,7 +180,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         replaceSegmentContents(segments: [segmentDinA4, segmentUsLetter], control: paperFormatSegment)
         paperFormatSegment.selectedSegmentIndex = 0 // default din A4
         
-        replaceSegmentContents(segments: [Global.item, Global.category, Global.owner, Global.room], control: sortOrderSegment)
+        replaceSegmentContents(segments: [Global.item, Local.category, Local.owner, Local.room], control: sortOrderSegment)
         sortOrderSegment.selectedSegmentIndex = 0 // default sort by item
         
         // initialize paper size and stuff
@@ -835,31 +835,31 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
           */
             // owner
             stringRect = CGRect(x: x, y: y, width: columnWidthOwner, height: columnHeight)
-            text = Global.owner
+            text = Local.owner
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthOwner
             
             // room
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.room
+            text = Local.room
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthRoom
             
             // category
             stringRect = CGRect(x: x, y: y, width: columnWidthCategory, height: columnHeight)
-            text = Global.category
+            text = Local.category
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthCategory
             
             // brand
             stringRect = CGRect(x: x, y: y, width: columnWidthBrand, height: columnHeight)
-            text = Global.brand
+            text = Local.brand
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthBrand
             
             // price
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.price
+            text = Local.price
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthPrice
             break
@@ -867,7 +867,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case .owner:
             // owner
             stringRect = CGRect(x: x, y: y, width: columnWidthOwner, height: columnHeight)
-            text = Global.owner
+            text = Local.owner
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthOwner
             
@@ -879,25 +879,25 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // room
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.room
+            text = Local.room
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthRoom
             
             // category
             stringRect = CGRect(x: x, y: y, width: columnWidthCategory, height: columnHeight)
-            text = Global.category
+            text = Local.category
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthCategory
             
             // brand
             stringRect = CGRect(x: x, y: y, width: columnWidthBrand, height: columnHeight)
-            text = Global.brand
+            text = Local.brand
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthBrand
             
             // price
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.price
+            text = Local.price
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthPrice
             break
@@ -905,7 +905,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case .category:
             // category
             stringRect = CGRect(x: x, y: y, width: columnWidthCategory, height: columnHeight)
-            text = Global.category
+            text = Local.category
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthCategory
             
@@ -917,25 +917,25 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // owner
             stringRect = CGRect(x: x, y: y, width: columnWidthOwner, height: columnHeight)
-            text = Global.owner
+            text = Local.owner
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthOwner
             
             // room
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.room
+            text = Local.room
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthRoom
             
             // brand
             stringRect = CGRect(x: x, y: y, width: columnWidthBrand, height: columnHeight)
-            text = Global.brand
+            text = Local.brand
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthBrand
             
             // price
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.price
+            text = Local.price
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthPrice
             break
@@ -943,7 +943,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case .room:
             // room
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.room
+            text = Local.room
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthRoom
             
@@ -955,25 +955,25 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // owner
             stringRect = CGRect(x: x, y: y, width: columnWidthOwner, height: columnHeight)
-            text = Global.owner
+            text = Local.owner
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthOwner
             
             // category
             stringRect = CGRect(x: x, y: y, width: columnWidthCategory, height: columnHeight)
-            text = Global.category
+            text = Local.category
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthCategory
             
             // brand
             stringRect = CGRect(x: x, y: y, width: columnWidthBrand, height: columnHeight)
-            text = Global.brand
+            text = Local.brand
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthBrand
             
             // price
             stringRect = CGRect(x: x, y: y, width: columnWidthRoom, height: columnHeight)
-            text = Global.price
+            text = Local.price
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthPrice
             break

@@ -54,11 +54,6 @@ class Global: UIViewController {
     
     // localization strings
     static let item = NSLocalizedString("Item", comment: "Item")
-    static let category = NSLocalizedString("Category", comment: "Category")
-    static let owner = NSLocalizedString("Owner", comment: "Owner")
-    static let room = NSLocalizedString("Room", comment: "Room")
-    static let brand = NSLocalizedString("Brand", comment: "Brand")
-    static let price = NSLocalizedString("Price", comment: "Price")
     static let all = NSLocalizedString("All", comment: "All")
     
     static let ok = NSLocalizedString("OK", comment: "OK")

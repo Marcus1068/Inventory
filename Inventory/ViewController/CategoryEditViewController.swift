@@ -71,7 +71,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         
-        textfieldCategory.placeholder = Global.category
+        textfieldCategory.placeholder = Local.category
     }
 
     override func didReceiveMemoryWarning() {

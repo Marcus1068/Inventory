@@ -181,7 +181,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             for i in self.sortedByPrice.first(elementCount: 5){
                 textLabel = textLabel + i.inventoryName! + "\n"
-                textValue = textValue + String(i.price) + "\n"
+                textValue = textValue + String(i.price) + Local.currencySymbol! + "\n"
             }
             
             self.textView.text = textLabel

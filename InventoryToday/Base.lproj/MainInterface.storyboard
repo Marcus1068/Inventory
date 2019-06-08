@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="520" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0Pr-0V-RJe">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Pr-0V-RJe">
                                 <rect key="frame" x="16" y="5" width="220" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K11-KM-xUr">
-                                        <rect key="frame" x="0.0" y="0.0" width="112" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="98.5" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-M1-hE5">
-                                        <rect key="frame" x="112" y="0.0" width="108" height="20"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <rect key="frame" x="108.5" y="0.0" width="111.5" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -39,40 +39,40 @@
                                     <constraint firstAttribute="height" constant="20" id="5fr-rp-MHx"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="pfA-HN-30p">
-                                <rect key="frame" x="16" y="33" width="220" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pfA-HN-30p">
+                                <rect key="frame" x="16" y="29" width="97" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEB-cB-poB">
-                                        <rect key="frame" x="0.0" y="0.0" width="112" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvy-GX-nJf">
-                                        <rect key="frame" x="112" y="0.0" width="108" height="20.5"/>
+                                        <rect key="frame" x="53.5" y="0.0" width="43.5" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="oG1-Pw-k5R"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="ApN-vd-c6A"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="v1s-RB-DUW"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LtM-jd-8fx">
-                                <rect key="frame" x="16" y="56.5" width="42" height="20"/>
+                                <rect key="frame" x="16" y="53.5" width="42" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="DyR-1W-gaU"/>
+                                    <constraint firstAttribute="height" constant="20" id="Vzu-nh-VuK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hpp-8H-HvN">
-                                <rect key="frame" x="16" y="84" width="283" height="29"/>
+                                <rect key="frame" x="16" y="77.5" width="283" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="CIH-pK-K21"/>
                                 </constraints>
@@ -87,7 +87,7 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kG8-13-fYs">
-                                <rect key="frame" x="16" y="120" width="488" height="140"/>
+                                <rect key="frame" x="16" y="113.5" width="488" height="140"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbU-1Z-8DX">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="140"/>
@@ -110,17 +110,17 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="pfA-HN-30p" firstAttribute="top" secondItem="0Pr-0V-RJe" secondAttribute="bottom" constant="8" id="61a-Mc-tCw"/>
-                            <constraint firstItem="pfA-HN-30p" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="6cs-AY-wMa"/>
-                            <constraint firstItem="LtM-jd-8fx" firstAttribute="top" secondItem="pfA-HN-30p" secondAttribute="bottom" constant="3" id="HOD-ta-ICB"/>
-                            <constraint firstItem="hpp-8H-HvN" firstAttribute="top" secondItem="pfA-HN-30p" secondAttribute="bottom" constant="30.5" id="KfH-gJ-zzk"/>
-                            <constraint firstItem="LtM-jd-8fx" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="Kfv-qa-KNO"/>
+                            <constraint firstItem="pfA-HN-30p" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="1Xe-sI-uSg"/>
+                            <constraint firstItem="hpp-8H-HvN" firstAttribute="top" secondItem="LtM-jd-8fx" secondAttribute="bottom" constant="4" id="9l7-Kn-o9J"/>
+                            <constraint firstItem="LtM-jd-8fx" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="CxY-Ib-jg9"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hpp-8H-HvN" secondAttribute="trailing" symbolic="YES" id="L2s-9k-qgq"/>
                             <constraint firstItem="0Pr-0V-RJe" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="16" id="OFK-F5-nvB"/>
                             <constraint firstItem="kG8-13-fYs" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="OWh-nw-egM"/>
                             <constraint firstItem="hpp-8H-HvN" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" constant="16" id="Q5f-qk-Zrc"/>
+                            <constraint firstItem="LtM-jd-8fx" firstAttribute="top" secondItem="pfA-HN-30p" secondAttribute="bottom" constant="4" id="Qew-lu-GWC"/>
                             <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="kG8-13-fYs" secondAttribute="trailing" constant="16" id="RDD-qq-Y5I"/>
-                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LtM-jd-8fx" secondAttribute="trailing" symbolic="YES" id="ltf-w1-jxh"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LtM-jd-8fx" secondAttribute="trailing" symbolic="YES" id="eip-nP-fwj"/>
+                            <constraint firstItem="pfA-HN-30p" firstAttribute="top" secondItem="0Pr-0V-RJe" secondAttribute="bottom" constant="4" id="pkq-A1-ehq"/>
                             <constraint firstItem="kG8-13-fYs" firstAttribute="top" secondItem="hpp-8H-HvN" secondAttribute="bottom" constant="8" id="t5Y-Fy-PVr"/>
                             <constraint firstItem="0Pr-0V-RJe" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" constant="5" id="yVf-uX-xXg"/>
                         </constraints>

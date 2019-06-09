@@ -69,8 +69,6 @@ class ShowUserManualViewController: UIViewController {
         }
         
         
-        
-        
         // scroll PDF to top
         DispatchQueue.main.async{
                 self.pdfView.autoScales = true
@@ -84,13 +82,9 @@ class ShowUserManualViewController: UIViewController {
         
     }
     
-
-
     // MARK: - UI actions
 
     @IBAction func doneAction(_ sender: UIButton) {
-        os_log("ShowUserManualViewController doneAction", log: Log.viewcontroller, type: .info)
-        
         dismiss(animated: true, completion: nil)
     }
 }

@@ -180,7 +180,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         replaceSegmentContents(segments: [segmentDinA4, segmentUsLetter], control: paperFormatSegment)
         paperFormatSegment.selectedSegmentIndex = 0 // default din A4
         
-        replaceSegmentContents(segments: [Global.item, Local.category, Local.owner, Local.room], control: sortOrderSegment)
+        replaceSegmentContents(segments: [Local.item, Local.category, Local.owner, Local.room], control: sortOrderSegment)
         sortOrderSegment.selectedSegmentIndex = 0 // default sort by item
         
         // initialize paper size and stuff
@@ -827,7 +827,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         switch (currentSortOrder){
         case .item:
             // item
-            x = itemColumn(xPos: x, yPos: y, text: Global.item)
+            x = itemColumn(xPos: x, yPos: y, text: Local.item)
         /*    stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
             text = Global.item
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -873,7 +873,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // item
             stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-            text = Global.item
+            text = Local.item
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthItem
             
@@ -911,7 +911,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // item
             stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-            text = Global.item
+            text = Local.item
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthItem
             
@@ -949,7 +949,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // item
             stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-            text = Global.item
+            text = Local.item
             text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
             x = x + columnWidthItem
             

@@ -110,6 +110,7 @@
 		2CC7EC2122A7B50A00F485AA /* Room+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */; };
 		2CC7EC2222A7B52E00F485AA /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8589E622996A5700517E79 /* WatchConstants.swift */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
+		2CC9D2EA22ACF1000019C71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
 		2CD2FBE32297062000A7ED47 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD2FBE22297062000A7ED47 /* WatchSessionManager.swift */; };
 		2CD2FBE422971FA700A7ED47 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
@@ -750,6 +751,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC9D2EA22ACF1000019C71F /* Assets.xcassets in Resources */,
 				2CC7EC0922A7B2D700F485AA /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

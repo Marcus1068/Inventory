@@ -157,7 +157,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             var count : Int = 0
             for (key, value) in dict{
                 textLabel = textLabel + key + "\n"
-                textValue = textValue + String(value) + "\n"
+                textValue = textValue + String(value) + " " + Local.items + "\n"
                 count += 1
                 
                 if count == 5{
@@ -231,7 +231,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func update(status: String){
         inventory = store.fetchInventoryWithoutBinaryData()
         
-        overviewLabel.text = NSLocalizedString("Top 5:", comment: "Top 5")
+        overviewLabel.text = NSLocalizedString("Top 5 Usage:", comment: "Top 5 Usage")
         DispatchQueue.main.async
             {
                 switch status{
@@ -249,10 +249,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     self.priceSegmentChosen()
                 }
                 
-                self.topPricesLabel.text = NSLocalizedString("Cost of inventory", comment: "Cost of inventory")
+                self.topPricesLabel.text = NSLocalizedString("Cost of inventory:", comment: "Cost of inventory")
                 self.topPricesValue.text = String(self.itemPricesSum()) + Local.currencySymbol!
                 
-                self.countLabel.text = NSLocalizedString("Number of objects", comment: "Number of objects")
+                self.countLabel.text = NSLocalizedString("Number of objects:", comment: "Number of objects")
                 self.countValueLabel.text = String(self.inventory.count)
                 
         }

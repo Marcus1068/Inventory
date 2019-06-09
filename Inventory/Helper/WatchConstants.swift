@@ -79,5 +79,7 @@ public struct Local{
     static let brand = NSLocalizedString("Brand", comment: "Brand")
     
     static let price = NSLocalizedString("Price", comment: "Price")
+    static let item = NSLocalizedString("Item", comment: "Item")
+    static let items = NSLocalizedString("Items", comment: "Items")
 }
 

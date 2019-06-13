@@ -32,10 +32,10 @@ import WatchConnectivity
 
 
 // define global variables that are available throughout the app
-let themeColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
-let themeColorUIControls = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0) // kind of dark green
+let themeColor = UIColor(named: "colorGreen") // kind of dark green
+let themeColorUIControls = UIColor(named: "colorGreen") // from Asset catalog
 let themeColorText = UIColor.blue
-
+let cellBorderColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
 
 // here starts everything
 @UIApplicationMain

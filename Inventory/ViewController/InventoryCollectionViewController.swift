@@ -491,7 +491,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     private func selectCell(indexPath: IndexPath){
         let cell = collection.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 4.0
-        cell?.layer.borderColor = themeColor.cgColor
+        cell?.layer.borderColor = cellBorderColor.cgColor
         
     }
     

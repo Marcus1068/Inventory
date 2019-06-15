@@ -1,5 +1,8 @@
+/* Class = "WKInterfaceController"; title = "Brand items"; ObjectID = "3h3-5R-4M8"; */
+"3h3-5R-4M8.title" = "Markenobjekte";
+
 /* Class = "WKInterfaceController"; title = "Category items"; ObjectID = "3kb-SI-vgs"; */
-"3kb-SI-vgs.title" = "Kategorie Objekte";
+"3kb-SI-vgs.title" = "Kategorieobjekte";
 
 /* Class = "WKInterfaceLabel"; text = "Cost"; ObjectID = "7rW-jb-QNu"; */
 "7rW-jb-QNu.text" = "Kosten";
@@ -7,9 +10,18 @@
 /* Class = "WKInterfaceController"; title = "Inventory"; ObjectID = "AgC-eL-Hgc"; */
 "AgC-eL-Hgc.title" = "Inventory App";
 
+/* Class = "WKInterfaceController"; title = "TopPrices"; ObjectID = "iLT-x9-bb9"; */
+"iLT-x9-bb9.title" = "Teuerste Objekte";
+
 /* Class = "WKInterfaceLabel"; text = "Inventory items:"; ObjectID = "k8i-7D-T7O"; */
 "k8i-7D-T7O.text" = "Inventar Objekte:";
 
+/* Class = "WKInterfaceController"; title = "Owner items"; ObjectID = "NKv-ew-HvI"; */
+"NKv-ew-HvI.title" = "Eigentümerobjekte";
+
 /* Class = "WKInterfaceController"; title = "Room items"; ObjectID = "Oy4-QW-RRu"; */
-"Oy4-QW-RRu.title" = "";
+"Oy4-QW-RRu.title" = "Raumobjekte";
+
+/* Class = "WKInterfaceLabel"; text = "items"; ObjectID = "zgp-XK-6xd"; */
+"zgp-XK-6xd.text" = "Objekte";
 

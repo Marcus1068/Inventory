@@ -111,6 +111,7 @@
 		2CC7EC2222A7B52E00F485AA /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8589E622996A5700517E79 /* WatchConstants.swift */; };
 		2CC85CFF225F32BB006973A0 /* InventoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC85CFE225F32BB006973A0 /* InventoryTests.swift */; };
 		2CC9D2EA22ACF1000019C71F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C56E8B62086350B00FD5136 /* Assets.xcassets */; };
+		2CC9D2ED22B502260019C71F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CC9D2EB22B502260019C71F /* Localizable.strings */; };
 		2CD2FBE32297062000A7ED47 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD2FBE22297062000A7ED47 /* WatchSessionManager.swift */; };
 		2CD2FBE422971FA700A7ED47 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B8056225CDE70007C842E /* Log.swift */; };
 		2CDB2B03229692280060F7F8 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C870A1B22957D6800F36F99 /* Statistics.swift */; };
@@ -294,6 +295,7 @@
 		2CC85CFC225F32BB006973A0 /* InventoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC85CFE225F32BB006973A0 /* InventoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryTests.swift; sourceTree = "<group>"; };
 		2CC85D00225F32BB006973A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CC9D2EC22B502260019C71F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CD2FBE22297062000A7ED47 /* WatchSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
 		2CDB2B102296B3850060F7F8 /* Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Watch Extension.entitlements"; sourceTree = "<group>"; };
 		2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				2CC7EC0522A7B2D700F485AA /* TodayViewController.swift */,
 				2CC7EC0722A7B2D700F485AA /* MainInterface.storyboard */,
 				2CC7EC0A22A7B2D700F485AA /* Info.plist */,
+				2CC9D2EB22B502260019C71F /* Localizable.strings */,
 			);
 			path = InventoryToday;
 			sourceTree = "<group>";
@@ -652,7 +655,7 @@
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -660,7 +663,7 @@
 						CreatedOnToolsVersion = 10.2.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -752,6 +755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC9D2EA22ACF1000019C71F /* Assets.xcassets in Resources */,
+				2CC9D2ED22B502260019C71F /* Localizable.strings in Resources */,
 				2CC7EC0922A7B2D700F485AA /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -973,6 +977,14 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		2CC9D2EB22B502260019C71F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CC9D2EC22B502260019C71F /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1141,6 +1153,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
@@ -1162,6 +1175,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
@@ -1181,6 +1195,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
@@ -1205,6 +1220,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";

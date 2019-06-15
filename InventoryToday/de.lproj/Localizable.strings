@@ -10,6 +10,9 @@
 /* <other> */
 "<other>" = "<andere>";
 
+/* Address */
+"Address" = "Adresse";
+
 /* Basement 1 */
 "Basement 1" = "Kellerraum 1";
 
@@ -29,7 +32,7 @@
 "Computer" = "Computer";
 
 /* Cost of inventory */
-"Cost of inventory" = "Inventarkosten";
+"Cost of inventory:" = "Inventarkosten:";
 
 /* Furniture */
 "Furniture" = "Möbel";
@@ -59,16 +62,19 @@
 "Most expensive items" = "Teuerste Objekte";
 
 /* Most used brands */
-"Most used brands" = "Meistverwendete Marken";
+"Most used brands" = "Meistgenutzte Marken";
 
 /* Most used categories */
-"Most used categories" = "Meistverwendete Kategorien";
+"Most used categories" = "Meistgenutzte  Kategorien";
 
 /* Most used owners */
-"Most used owners" = "Meistverwendete Eigentümer";
+"Most used owners" = "Meistgenutzte Eigentümer";
 
 /* Most used rooms */
-"Most used rooms" = "Meistverwendete Räume";
+"Most used rooms" = "Meistgenutzte Räume";
+
+/* Number of objects */
+"Number of objects:" = "Anzahl Objekte:";
 
 /* Nursery 1 */
 "Nursery 1" = "Kinderzimmer 1";
@@ -92,7 +98,7 @@
 "Room" = "Raum";
 
 /* Serial no. */
-"Serial no." = "Seriennr.";
+"Serial no." = "Seriennummer";
 
 /* Smartphone */
 "Smartphone" = "Handy";
@@ -109,11 +115,17 @@
 /* Toaster */
 "Toaster" = "Toaster";
 
+/* Top 5 Usage */
+"Top 5 Usage:" = "Top 5 Nutzung:";
+
 /* Toy */
 "Toy" = "Spielzeug";
 
 /* TV */
 "TV" = "TV";
+
+/* User Name */
+"User Name" = "Benutzername";
 
 /* Video Game */
 "Video Game" = "Videospiel";

@@ -163,7 +163,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         popPC.delegate = self
         present(myVC, animated:true, completion: nil)
         
-        
+  /*
         let _ = Statistics.shared.allInventory(elementsCount: 10)
         
         
@@ -196,7 +196,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let data = image.jpegData(compressionQuality: 0.9)
         //print("send data image")
         
-        watchSessionManager.sendMessageData(data: data!)
+        watchSessionManager.sendMessageData(data: data!) */
         
     }
     

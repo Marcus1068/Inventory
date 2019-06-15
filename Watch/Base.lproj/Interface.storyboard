@@ -15,7 +15,7 @@
                 <controller identifier="Interface Controller" title="Inventory" id="AgC-eL-Hgc" customClass="MainInterfaceController" customModule="Watch" customModuleProvider="target">
                     <items>
                         <separator alignment="left" id="nwY-XO-4dS"/>
-                        <imageView width="40" height="40" alignment="center" id="GJv-kv-ohu"/>
+                        <imageView width="40" height="40" alignment="center" image="InventoryWatch" id="GJv-kv-ohu"/>
                         <group width="1" alignment="left" id="yGa-6y-Vie">
                             <items>
                                 <label alignment="left" text="Inventory items:" numberOfLines="0" id="k8i-7D-T7O">
@@ -52,7 +52,7 @@
                                 </tableRow>
                             </items>
                         </table>
-                        <button width="1" alignment="left" title="Test" id="DCZ-oo-4EU">
+                        <button width="1" alignment="left" hidden="YES" title="Test" id="DCZ-oo-4EU">
                             <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="font" type="system" pointSize="14"/>
                             <connections>

@@ -157,7 +157,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             var count : Int = 0
             for (key, value) in dict{
                 textLabel = textLabel + key + "\n"
-                textValue = textValue + String(value) + " " + Local.items + "\n"
+                textValue = textValue + String(value) + " " +  (value == 1 ? Local.item : Local.items) + "\n"
                 count += 1
                 
                 if count == 5{

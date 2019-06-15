@@ -1344,5 +1344,13 @@ extension InventoryCollectionViewController{
         watchSessionManager.sendItemsByCategoryListToWatch()
         watchSessionManager.sendItemsByBrandListToWatch()
         watchSessionManager.sendItemsByOwnerListToWatch()
+        
+        
+        // test with user defauls in app group
+  /*      if let userDefaults = UserDefaults(suiteName: Local.appGroup) {
+            userDefaults.set("1" as AnyObject, forKey: "key1")
+            userDefaults.set("2" as AnyObject, forKey: "key2")
+            userDefaults.synchronize()
+        } */
     }
 }

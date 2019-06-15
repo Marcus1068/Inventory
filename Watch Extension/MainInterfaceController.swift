@@ -161,12 +161,12 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     } */
 
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
-        guard let image = UIImage(data: messageData) else {
+     /*   guard let image = UIImage(data: messageData) else {
             return
         }
         
         //print(image)
-        self.image.setImage(image)
+        self.image.setImage(image) */
     }
     
     // app context
@@ -297,6 +297,11 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
         session?.activate()
         
         tableRefresh()
+        
+  /*      if let userDefaults = UserDefaults(suiteName: Local.appGroup) {
+            itemCount.setText(userDefaults.string(forKey: "key1"))
+            amountMoney.setText(userDefaults.string(forKey: "key2"))
+        } */
     }
     
     override func didDeactivate() {

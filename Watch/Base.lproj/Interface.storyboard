@@ -27,9 +27,17 @@
                                 </label>
                             </items>
                         </group>
-                        <label alignment="left" text="Cost" numberOfLines="0" id="7rW-jb-QNu">
-                            <fontDescription key="font" type="system" pointSize="14"/>
-                        </label>
+                        <group width="1" alignment="left" id="Zwz-uc-BN9">
+                            <items>
+                                <label alignment="left" text="Inventory Cost:" id="8lp-yj-Xsr">
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                </label>
+                                <label alignment="left" text="Cost" numberOfLines="0" id="7rW-jb-QNu">
+                                    <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="14"/>
+                                </label>
+                            </items>
+                        </group>
                         <separator alignment="left" id="n7C-JU-1Hs"/>
                         <table alignment="left" id="kaL-XS-KsM">
                             <items>
@@ -61,6 +69,7 @@
                         </button>
                     </items>
                     <connections>
+                        <outlet property="amountLabel" destination="8lp-yj-Xsr" id="hyP-5V-BAe"/>
                         <outlet property="amountMoney" destination="7rW-jb-QNu" id="LFH-Oh-r1d"/>
                         <outlet property="image" destination="GJv-kv-ohu" id="JR0-OZ-wyu"/>
                         <outlet property="itemCount" destination="zgp-XK-6xd" id="4y6-yI-tns"/>

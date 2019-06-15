@@ -43,6 +43,7 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var itemCount: WKInterfaceLabel!
     @IBOutlet weak var amountMoney: WKInterfaceLabel!
     @IBOutlet weak var image: WKInterfaceImage!
+    @IBOutlet weak var amountLabel: WKInterfaceLabel!
     
     
     var session : WCSession?
@@ -218,7 +219,8 @@ class MainInterfaceController: WKInterfaceController, WCSessionDelegate {
             if key == DataKey.AmountMoney{
                 let val = value as! Int
                 let text = NSLocalizedString("Cost of inventory", comment: "Cost of inventory")
-                amountMoney.setText(text + ": " + String(val) + Local.currencySymbol!)
+                amountLabel.setText(text + ":")
+                amountMoney.setText(String(val) + Local.currencySymbol!)
             }
             
             if key == DataKey.ItemCount{

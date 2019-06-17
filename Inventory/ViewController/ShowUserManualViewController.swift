@@ -34,7 +34,6 @@ class ShowUserManualViewController: UIViewController {
     @IBOutlet weak var doneAction: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

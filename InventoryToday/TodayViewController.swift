@@ -148,7 +148,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.textView.text = ""
         self.valueTextView.text = ""
         
-        // get 5 most used rooms
+        // get 5 most used rooms etc.
         if self.inventory.count > 0{
             let dict = myCountFunc()
             var textLabel : String = ""
@@ -180,7 +180,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             var textValue : String = ""
             
             for i in self.sortedByPrice.first(elementCount: 5){
-                textLabel = textLabel + i.inventoryName! + "\n"
+                textLabel = textLabel + i.inventoryName!.truncate(length: 20) + "\n"
                 textValue = textValue + String(i.price) + Local.currencySymbol! + "\n"
             }
             
@@ -278,5 +278,24 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             update(status: Local.price)
         }
     }
+}
+
+extension String {
+    /*
+     Truncates the string to the specified length number of characters and appends an optional trailing string if longer.
+     - Parameter length: Desired maximum lengths of a string
+     - Parameter trailing: A 'String' that will be appended after the truncation.
+     
+     - Returns: 'String' object.
+     Swift 4.0 Example
+     let str = "I might be just a little bit too long".truncate(10) // "I might be…"
+     */
+    func truncate(length: Int, trailing: String = "…") -> String {
+        return (self.count > length) ? self.prefix(length) + trailing : self
+    }
     
+    // return an array of lines of strings
+    var lines: [String] {
+        return self.components(separatedBy: "\n")
+    }
 }

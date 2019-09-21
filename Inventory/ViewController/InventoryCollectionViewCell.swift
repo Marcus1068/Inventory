@@ -85,9 +85,9 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     func toggleSelected()
     {
         if (isSelected){
-            backgroundColor = UIColor.green
+            backgroundColor = UIColor.systemGreen
         }else {
-            backgroundColor = UIColor.gray
+            backgroundColor = UIColor.systemGray
         }
     }
 }

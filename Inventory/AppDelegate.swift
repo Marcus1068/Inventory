@@ -32,9 +32,9 @@ import WatchConnectivity
 
 
 // define global variables that are available throughout the app
-let themeColor = UIColor(named: "colorGreen") // kind of dark green
-let themeColorUIControls = UIColor(named: "colorGreen") // from Asset catalog
-let themeColorText = UIColor.blue
+let themeColor = UIColor.systemGreen // kind of dark green
+let themeColorUIControls = UIColor.systemGreen // from Asset catalog
+let themeColorText = UIColor.systemBlue
 let cellBorderColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
 
 // here starts everything
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // manage large title appearance for all view controllers centrally
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.blue,
+            [NSAttributedString.Key.foregroundColor: UIColor.systemBlue,
              NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 30) ??    // Arial
                 UIFont.systemFont(ofSize: 30)]
         

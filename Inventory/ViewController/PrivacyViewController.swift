@@ -58,6 +58,7 @@ class PrivacyViewController: UIViewController {
         }
         
         privacyText.attributedText = Global.getRTFFileFromBundle(fileName: fileName)
+        privacyText.textColor = UIColor.systemGray
         
         navigationBar.topItem?.title = NSLocalizedString("Privacy Information", comment: "Privacy Information")
         

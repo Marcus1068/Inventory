@@ -49,6 +49,7 @@ class PopupViewController: UIViewController {
 
         if myText != nil{
             infotxt.attributedText = myText
+            infotxt.textColor = UIColor.systemGreen
         }
     }
     

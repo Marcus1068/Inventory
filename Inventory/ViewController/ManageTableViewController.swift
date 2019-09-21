@@ -81,8 +81,8 @@ class ManageTableViewController: UITableViewController {
     {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: "HelveticaNeue", size: 20)!
-        header.textLabel?.textColor = UIColor.lightGray
-        header.backgroundView?.backgroundColor = themeColorUIControls
+       // header.textLabel?.textColor = UIColor.lightGray
+        // header.backgroundView?.backgroundColor = themeColorUIControls
     }
     
 }

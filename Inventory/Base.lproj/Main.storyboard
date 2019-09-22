@@ -45,6 +45,7 @@
                                                 <constraint firstItem="O1b-ZL-NnA" firstAttribute="top" secondItem="Jtb-C9-z3Z" secondAttribute="top" constant="8" id="jxQ-Pb-12I"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="9hb-hU-Cxa" kind="show" id="I7b-Rp-fDa"/>
                                         </connections>
@@ -74,6 +75,7 @@
                                                 <constraint firstItem="Gji-Ng-xNH" firstAttribute="top" secondItem="RE7-Ht-FqX" secondAttribute="top" constant="12" id="spo-Bp-IZi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="7vS-va-EUq" kind="show" id="i5d-kh-DgH"/>
                                         </connections>
@@ -103,6 +105,7 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qrm-X6-8aa" secondAttribute="trailing" constant="20" symbolic="YES" id="tPm-b0-nhq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="iCz-KG-ewV" kind="show" id="aUd-Fn-dpo"/>
                                         </connections>
@@ -132,6 +135,7 @@
                                                 <constraint firstItem="4CK-9n-Mwm" firstAttribute="leading" secondItem="Q4v-35-1B2" secondAttribute="leading" constant="16" id="icy-4k-Tz2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="gJg-Vs-sIe" kind="show" id="mNe-wM-gEY"/>
                                         </connections>
@@ -165,6 +169,7 @@
                                                 <constraint firstItem="8f4-H8-n7a" firstAttribute="leading" secondItem="fjo-mj-qaI" secondAttribute="leading" constant="16" id="x88-fT-YdH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="AAM-yv-3qO" kind="show" id="5se-75-Ta6"/>
                                         </connections>
@@ -194,6 +199,7 @@
                                                 <constraint firstItem="YTr-px-FHx" firstAttribute="top" secondItem="NlK-4M-EmZ" secondAttribute="top" constant="8" id="zpo-70-Dx5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="BNp-7u-MBg" kind="show" id="Jmz-UD-5Ui"/>
                                         </connections>
@@ -223,6 +229,7 @@
                                                 <constraint firstItem="5qk-T5-xmx" firstAttribute="top" secondItem="qhS-J4-txo" secondAttribute="top" constant="8" id="kDw-gh-YQf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="Nkn-yK-LRB" kind="show" id="vym-Dh-yV8"/>
                                         </connections>
@@ -252,6 +259,7 @@
                                                 <constraint firstItem="qCh-w3-5pb" firstAttribute="leading" secondItem="BYX-Jr-2LC" secondAttribute="leading" constant="16" id="ccc-g1-6ZQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="m27-nM-3XX" kind="show" id="jjA-ik-3Zw"/>
                                         </connections>
@@ -399,7 +407,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="AAM-yv-3qO" kind="show" identifier="editSegueRoom" id="wRn-lR-pVR"/>
                                 </connections>
@@ -446,7 +454,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="zaR-8A-JRQ" firstAttribute="centerY" secondItem="QUQ-Gt-7Jv" secondAttribute="centerY" id="8bY-kL-L3S"/>
                                     <constraint firstItem="zaR-8A-JRQ" firstAttribute="top" secondItem="QUQ-Gt-7Jv" secondAttribute="top" constant="5" id="WXb-rk-ixa"/>
@@ -474,6 +482,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Category name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="7Zb-vc-qqF">
                                 <rect key="frame" x="16" y="135" width="186" height="30"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7E1-ak-Iwh"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="186" id="ny7-SL-hLQ"/>
@@ -849,7 +858,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="zTi-4a-HQI" firstAttribute="centerX" secondItem="YKC-2j-9Q5" secondAttribute="centerX" id="e9H-uh-cbp"/>
                                                     <constraint firstAttribute="height" constant="42" id="j3R-kE-jHH"/>
@@ -867,6 +876,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KWu-LK-Nv9">
                                                 <rect key="frame" x="8" y="78" width="156" height="30"/>
+                                                <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="Bbq-mT-1Re"/>
                                                     <constraint firstAttribute="height" constant="30" id="pDn-9j-DZn"/>
@@ -1219,6 +1229,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Inventory" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OjR-LV-GJP">
                                                     <rect key="frame" x="16" y="7" width="211" height="30"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="F8G-DK-NeV"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="211" id="Yv1-NJ-632"/>
@@ -1228,6 +1239,7 @@
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5B9-Pv-yUz">
                                                     <rect key="frame" x="235" y="7" width="67" height="30"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="48O-W8-x8Z"/>
                                                     </constraints>
@@ -1265,6 +1277,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Serial No." textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wtl-dz-1Ld">
                                                     <rect key="frame" x="16" y="6.5" width="167" height="32"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="167" id="4Yd-kC-dh0"/>
                                                     </constraints>
@@ -1273,6 +1286,7 @@
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Remark" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IN8-2w-dXd">
                                                     <rect key="frame" x="208" y="6.5" width="151" height="32"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -1727,11 +1741,11 @@
             <objects>
                 <viewController title="PDF Document" id="qre-Fw-Phh" customClass="PDFViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H4u-nJ-iBi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar alpha="0.0" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hP-bH-xN4">
-                                <rect key="frame" x="0.0" y="78" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="34" width="375" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="uBw-9g-DkL"/>
@@ -1747,7 +1761,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22o-iB-LVa" customClass="PDFView">
-                                <rect key="frame" x="16" y="44" width="343" height="574"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -2015,6 +2029,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="L29-LM-HTq">
                                                 <rect key="frame" x="147" y="307" width="200" height="30"/>
+                                                <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="ZP2-lW-ZxN"/>
                                                     <constraint firstAttribute="height" constant="30" id="kQf-Ye-q7H"/>
@@ -2721,7 +2736,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="1QK-ig-L8e" firstAttribute="top" secondItem="f25-yk-tN8" secondAttribute="top" constant="5" id="EoM-jo-rag"/>
                                     <constraint firstItem="1QK-ig-L8e" firstAttribute="centerX" secondItem="f25-yk-tN8" secondAttribute="centerX" id="Ta4-ES-9Wg"/>
@@ -2749,6 +2764,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xWO-xs-zbZ">
                                 <rect key="frame" x="16" y="136" width="191" height="30"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="VLO-65-PpA"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="191" id="ZjZ-Gz-XPk"/>
@@ -2894,7 +2910,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="4PE-aJ-hDb"/>
                                     <constraint firstItem="ePj-83-Gh9" firstAttribute="top" secondItem="Imj-n1-qeK" secondAttribute="top" constant="5" id="HSo-Qx-bX5"/>
@@ -2904,6 +2920,7 @@
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Owner name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xgQ-W4-Tf4">
                                 <rect key="frame" x="16" y="136" width="180" height="30"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="cKg-nM-o9g"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="u4H-kG-5pg"/>
@@ -3068,12 +3085,12 @@
         <image name="list" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bwM-Ip-VbG"/>
+        <segue reference="2I6-Yp-giQ"/>
         <segue reference="jjA-ik-3Zw"/>
         <segue reference="mNe-wM-gEY"/>
         <segue reference="vym-Dh-yV8"/>
         <segue reference="aUd-Fn-dpo"/>
-        <segue reference="bcU-E7-2cp"/>
+        <segue reference="sZP-kj-dZy"/>
         <segue reference="7xG-kE-rfw"/>
         <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>

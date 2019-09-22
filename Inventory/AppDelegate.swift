@@ -35,7 +35,8 @@ import WatchConnectivity
 let themeColor = UIColor.systemGreen // kind of dark green
 let themeColorUIControls = UIColor.systemGreen // from Asset catalog
 let themeColorText = UIColor.systemBlue
-let cellBorderColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+//let cellBorderColor = UIColor(red: 0.01, green: 0.41, blue: 0.22, alpha: 1.0)
+let cellBorderColor = UIColor.systemGreen
 
 // here starts everything
 @UIApplicationMain

@@ -779,7 +779,7 @@ public class CoreDataStorage {
         // sort criteria
         request.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
         request.fetchBatchSize = 20
-        request.propertiesToFetch = ["inventoryName", "price"]
+        request.propertiesToFetch = ["inventoryName", "price", "inventoryRoom", "inventoryOwner", "inventoryCategory", "inventoryBrand"]
         
         let context = getContext()
         

@@ -233,6 +233,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // macCatalyst: Create menu
+    #if targetEnvironment(macCatalyst)
+    
+    /* Create UIMenu objects and use them to construct the menus and submenus your app displays. You provide menus for your app when it runs on macOS, and key command elements in those menus also appear in the discoverability HUD on iPad when the user presses the command key. You also use menus to display contextual actions in response to specific interactions with one of your views. Every menu has a title, an optional image, and an optional set of child elements. When the user selects an element from the menu, the system executes the code that you provide.
+     */
+    override func buildMenu(with builder: UIMenuBuilder) {
+        
+        // Ensure that the builder is modifying the menu bar system
+        guard builder.system == .main else { return }
+        
+        // The format menu doesn't make sense
+        builder.remove(menu: .format)
+        
+        let newInv = NSLocalizedString("New Inventory", comment: "New Inventory")
+        let newInventory = UIKeyCommand(title: newInv,
+                                        action: #selector(newInventory(_:)),
+                                       input: "n",
+                                       modifierFlags: .command)
+
+        let openDocument = UIKeyCommand(title: "Open...",
+                                        action: #selector(openDocument(_:)),
+                                        input: "o",
+                                        modifierFlags: .command)
+        
+        // Use the .displayInline option to avoid displaying the menu as a submenu,
+        // and to separate it from the other menu elements using a line separator.
+        let newMenu = UIMenu(title: "", options: .displayInline, children: [newInventory, openDocument])
+
+        // Insert menu item at the top of the File menu.
+        builder.insertChild(newMenu, atStartOfMenu: .file)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(InventoryEditViewController.newInv), name: NSNotification.Name("hello"), object: nil)
+    }
+    
+    // call new inventory
+    @objc func newInventory(_ notification: Notification) {
+        NotificationCenter.default.post(name: NSNotification.Name("hello"), object: nil)
+    }
+    
+    @objc func openDocument(_ notification: Notification) {
+        
+    }
+    #endif
 }
 
 

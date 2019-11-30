@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -88,11 +88,11 @@
 		2CC648BB22968F7100A6DA65 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC648BA22968F7100A6DA65 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */; };
 		2CC648C422968F7100A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648C322968F7100A6DA65 /* Assets.xcassets */; };
-		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; };
+		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; platformFilter = ios; };
 		2CC7EC0322A7B2D700F485AA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC7EC0222A7B2D700F485AA /* NotificationCenter.framework */; };
 		2CC7EC0622A7B2D700F485AA /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7EC0522A7B2D700F485AA /* TodayViewController.swift */; };
 		2CC7EC0922A7B2D700F485AA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC7EC0722A7B2D700F485AA /* MainInterface.storyboard */; };
-		2CC7EC0D22A7B2D700F485AA /* InventoryToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC7EC0022A7B2D700F485AA /* InventoryToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2CC7EC0D22A7B2D700F485AA /* InventoryToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC7EC0022A7B2D700F485AA /* InventoryToday.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2CC7EC1322A7B43200F485AA /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
 		2CC7EC1422A7B44A00F485AA /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
 		2CC7EC1522A7B45D00F485AA /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
@@ -899,11 +899,13 @@
 		};
 		2CC648C722968F7100A6DA65 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 2CC648AD22968F6F00A6DA65 /* Watch */;
 			targetProxy = 2CC648C622968F7100A6DA65 /* PBXContainerItemProxy */;
 		};
 		2CC7EC0C22A7B2D700F485AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 2CC7EBFF22A7B2D700F485AA /* InventoryToday */;
 			targetProxy = 2CC7EC0B22A7B2D700F485AA /* PBXContainerItemProxy */;
 		};
@@ -1114,6 +1116,7 @@
 				CODE_SIGN_ENTITLEMENTS = Inventory/Inventory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 165;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -1124,6 +1127,7 @@
 				MARKETING_VERSION = 1.41;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1137,6 +1141,7 @@
 				CODE_SIGN_ENTITLEMENTS = Inventory/Inventory.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 165;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -1147,6 +1152,7 @@
 				MARKETING_VERSION = 1.41;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1272,6 +1278,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1296,6 +1303,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

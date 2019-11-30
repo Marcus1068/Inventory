@@ -40,8 +40,6 @@ private let store = CoreDataStorage.shared
 
 class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate {
     
-    
-    
     // define fetch results controller based on core data entity (Room)
     // define sort descriptors
     // define cache
@@ -262,7 +260,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         searchController.delegate = self
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
+        //searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.titleView = searchController.searchBar
         searchController.searchBar.placeholder = NSLocalizedString("Search for Inventory", comment: "Search for Inventory")
         searchController.searchBar.delegate = self
@@ -279,6 +277,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         leftNavBarButton = self.navigationItem.leftBarButtonItems?.first
         rightNavBarButton = self.navigationItem.rightBarButtonItems?.first
+        
         
         // check for camera permission
         let _ = Global.checkCameraPermission()
@@ -1069,7 +1068,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
 extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate {
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let indexPath = collection.indexPathForItem(at: location),
-            let cell = collection.cellForItem(at: indexPath) else { return nil }
+            let _ = collection.cellForItem(at: indexPath) else { return nil }
         
         guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? InventoryEditViewController else { return nil }
         
@@ -1078,7 +1077,7 @@ extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate 
         detailVC.delegate = self
         detailVC.currentInventory = inv
         detailVC.preferredContentSize = CGSize(width: 0.0, height: 400)
-        previewingContext.sourceRect = cell.frame
+        //previewingContext.UIContextMenuInteraction = cell.frame
         
         return detailVC
     }
@@ -1204,8 +1203,8 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
 // if not available offer menu and long press gesture recognizer
 extension InventoryCollectionViewController {
     func registerForPeekAndPopWithCollectionView(collectionView: UICollectionView) {
-        if traitCollection.forceTouchCapability == .available {
-            registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
+        /*if traitCollection.forceTouchCapability == .available {
+            UIContextMenuInteraction(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
         }
         else{
             // long press gesture recignizer
@@ -1214,7 +1213,7 @@ extension InventoryCollectionViewController {
             gestureRecognizer.minimumPressDuration = 0.3
             collection.addGestureRecognizer(gestureRecognizer)
             //print("gesture rec. registered")
-        }
+        } */
     }
 }
 
@@ -1243,6 +1242,9 @@ extension InventoryCollectionViewController{
         // Make collection the window's first responder
         self.becomeFirstResponder()
         
+        // Set the location of the menu in the view.
+        let location = gestureRecognizer.location(in: collection)
+        
         //print("after become")
         //print(collection.isFirstResponder)
         
@@ -1254,7 +1256,14 @@ extension InventoryCollectionViewController{
         let cancelMenuItem = UIMenuItem(title: Global.cancel, action: #selector(cancelTapped))
         
         // Animate the menu onto view
-        menuController.setMenuVisible(true, animated: true)
+        let rect = CGRect(x: location.x, y: location.y, width: 0, height: 0)
+        
+        if #available(iOS 13.0, *) {
+            menuController.showMenu(from: collection, rect: rect)
+        } else {
+            // Fallback on earlier versions
+        }
+        //menuController.showMenu(from: <#T##UIView#>, rect: <#T##CGRect#>))
         menuController.arrowDirection = UIMenuController.ArrowDirection.default
         menuController.menuItems = [duplicateMenuItem, deleteMenuItem, cancelMenuItem]
         
@@ -1263,11 +1272,15 @@ extension InventoryCollectionViewController{
         //menuController.setTargetRect(CGRect.zero, in: gestureRecognizer.view!)
         
         // Set the location of the menu in the view.
-        let location = gestureRecognizer.location(in: collection)
+        //let location = gestureRecognizer.location(in: collection)
         //print(location)
         let menuLocation = CGRect(x: location.x, y: location.y, width: 0, height: 0)   // FIXME 40 hard coded!!!
-        menuController.setTargetRect(menuLocation, in: collection)
-        
+        //menuController.setTargetRect(menuLocation, in: collection)
+        if #available(iOS 13.0, *) {
+            menuController.showMenu(from: collection, rect: menuLocation)
+        } else {
+            // Fallback on earlier versions
+        }
         let point = location
         let indexPath = collection.indexPathForItem(at: point)
         

@@ -121,7 +121,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let imagesFolderPath = URL.createFolder(folderName: "Images")
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        var activityIndicator : UIActivityIndicatorView
+        
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        } else {
+            // Fallback on earlier versions
+            activityIndicator = UIActivityIndicatorView(style: .gray)
+        }
+        
         let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         navigationItem.leftBarButtonItem = barButtonItem
         activityIndicator.startAnimating()

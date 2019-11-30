@@ -97,11 +97,17 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     var editmode : EditMode = EditMode.edit
     
+    // test for notifications
+    @objc func newInv(){
+        var i = 0
+        i = 1
+    }
+    
     
     // MARK: view initializers
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // initialize image picker class

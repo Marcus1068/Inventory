@@ -40,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         //guard let _ = (scene as? UIWindowScene) else { return }
         
         #if targetEnvironment(macCatalyst)
-        // 1
+
         if let scene = scene as? UIWindowScene,
             let titlebar = scene.titlebar {
           
@@ -49,6 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
             titlebar.toolbar = toolbar
             toolbar.delegate = self
         
+            toolbar.allowsUserCustomization = true
+            toolbar.autosavesConfiguration = true
+
         }
         #endif
 
@@ -94,12 +97,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
 
 #if targetEnvironment(macCatalyst)
 extension NSToolbarItem.Identifier {
-  static let addEntry =
-    NSToolbarItem.Identifier(rawValue: "AddEntry")
-  static let deleteEntry =
-    NSToolbarItem.Identifier(rawValue: "DeleteEntry")
-  static let shareEntry =
-    NSToolbarItem.Identifier(rawValue: "ShareEntry")
+    static let addEntry = NSToolbarItem.Identifier(rawValue: "AddEntry")
+    static let deleteEntry = NSToolbarItem.Identifier(rawValue: "DeleteEntry")
+    static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
 }
 
 // for toolbar
@@ -115,27 +115,52 @@ extension SceneDelegate: NSToolbarDelegate {
     }
 
     
-    @objc private func addEntry() {
-        NotificationCenter.default.post(name: NSNotification.Name("hello"), object: nil)
+    @objc func addEntry() {
+        //NotificationCenter.default.post(name: NSNotification.Name("hello"), object: nil)
+        
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 0
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
+        editView.currentInventory = nil
+        
+        nav.pushViewController(editView, animated: true)
+        
     }
       
     @objc private func deleteEntry() {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 3
     }
 
     @objc private func shareEntry(_ sender: UIBarButtonItem) {
+        // TODO:
     }
 
     private func toolbarItem(itemIdentifier: NSToolbarItem.Identifier, barButtonItem: UIBarButtonItem,
       toolTip: String? = nil, label: String?) -> NSToolbarItem {
-        // 1.
+        
+        // hide tab bar
+        let tabBarController = self.window?.rootViewController as? UITabBarController
+        tabBarController?.tabBar.isHidden = true
+        
+        
         let item = NSToolbarItem(itemIdentifier: itemIdentifier,
           barButtonItem: barButtonItem)
-        // 2.
+
         item.isBordered = true
-        // 3.
         item.toolTip = toolTip
+        
         if let label = label {
-          // 4.
           item.label = label
         }
         
@@ -151,12 +176,10 @@ extension SceneDelegate: NSToolbarDelegate {
         let barButtonItem =
           UIBarButtonItem(barButtonSystemItem: .add,
                           target: self, action: #selector(addEntry))
-        item = toolbarItem(itemIdentifier: .addEntry,
-                           barButtonItem: barButtonItem,
-                           toolTip: "Add Entry",
-                           label: "Add Inventory")
+        item = toolbarItem(itemIdentifier: .addEntry, barButtonItem: barButtonItem, toolTip: "Add Entry", label: "Add Inventory")
         item?.target = self
         item?.action = #selector(addEntry)
+        
       } else if itemIdentifier == .deleteEntry {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteEntry))
         
@@ -171,7 +194,7 @@ extension SceneDelegate: NSToolbarDelegate {
         item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: "Share Entry", label: "Share Inventory")
       }
         
-      return item
+        return item
     }
 
 }

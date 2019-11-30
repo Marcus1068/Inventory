@@ -67,6 +67,7 @@
 		2C6A69F6228038D600140B39 /* DropFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A69F5228038D600140B39 /* DropFile.swift */; };
 		2C6C0DDB2201EBC300367879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6C0DDD2201EBC300367879 /* Localizable.strings */; };
 		2C6C715020D569E9003FC26A /* ImportExportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */; };
+		2C7671292392B4A2007C9A82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7671282392B4A2007C9A82 /* SceneDelegate.swift */; };
 		2C770C6820887FA8004F2C12 /* InventoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */; };
 		2C82495C229AC7E4008748DE /* TopPricesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */; };
 		2C82495E229AC854008748DE /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C82495D229AC854008748DE /* MainInterfaceController.swift */; };
@@ -263,6 +264,7 @@
 		2C6C0DDC2201EBC300367879 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C0DDE2201EBD900367879 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6C714F20D569E8003FC26A /* ImportExportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportExportViewController.swift; sourceTree = "<group>"; };
+		2C7671282392B4A2007C9A82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C770C6720887FA8004F2C12 /* InventoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryEditViewController.swift; sourceTree = "<group>"; };
 		2C82495B229AC7E4008748DE /* TopPricesInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPricesInterfaceController.swift; sourceTree = "<group>"; };
 		2C82495D229AC854008748DE /* MainInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInterfaceController.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				2C56E90A208683A800FD5136 /* Helper */,
 				2C56E9082086834300FD5136 /* Model */,
 				2C56E8AD2086350A00FD5136 /* AppDelegate.swift */,
+				2C7671282392B4A2007C9A82 /* SceneDelegate.swift */,
 				2C56E8B32086350A00FD5136 /* Main.storyboard */,
 				2C56E8B62086350B00FD5136 /* Assets.xcassets */,
 				2C5DE31C2275CDCE00C60EEF /* Apache License.rtf */,
@@ -797,6 +800,7 @@
 				2C56E8AE2086350A00FD5136 /* AppDelegate.swift in Sources */,
 				2C56E95C20874B5A00FD5136 /* RoomTableViewController.swift in Sources */,
 				2C56E94C2086A41700FD5136 /* Brand+CoreDataProperties.swift in Sources */,
+				2C7671292392B4A2007C9A82 /* SceneDelegate.swift in Sources */,
 				2C56E90E2086844A00FD5136 /* DeviceInfo.swift in Sources */,
 				2C870A1A2293557100F36F99 /* TabBarViewController.swift in Sources */,
 				2C56E94B2086A41700FD5136 /* Brand+CoreDataClass.swift in Sources */,

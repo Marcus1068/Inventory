@@ -57,6 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
 
         }
         
+        // store this for AppDelegate use to get menus up and running
         globalWindow = self.window
         
         #endif
@@ -104,7 +105,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
 
 #if targetEnvironment(macCatalyst)
 extension NSToolbarItem.Identifier {
-    static let addEntry = NSToolbarItem.Identifier(rawValue: "AddEntry")
+    static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
+    static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
+    static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
     static let deleteEntry = NSToolbarItem.Identifier(rawValue: "DeleteEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
 }
@@ -113,22 +116,20 @@ extension NSToolbarItem.Identifier {
 extension SceneDelegate: NSToolbarDelegate {
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.addEntry, .deleteEntry, .shareEntry, .flexibleSpace]
+        return [.addInvEntry, .manageItemsEntry, .reportEntry, .deleteEntry, .shareEntry, .flexibleSpace]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.addEntry, .flexibleSpace, .shareEntry]
+        return [.addInvEntry, .manageItemsEntry, .reportEntry, .flexibleSpace, .shareEntry]
     }
 
     
-    @objc func addEntry() {
-        //NotificationCenter.default.post(name: NSNotification.Name("hello"), object: nil)
-        
+    // Add inventory call
+    @objc func addInvEntry() {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
-        
         
         tabBarController.selectedIndex = 0
         
@@ -139,7 +140,23 @@ extension SceneDelegate: NSToolbarDelegate {
         editView.currentInventory = nil
         
         nav.pushViewController(editView, animated: true)
+    }
+    
+    // manage all items like rooms, categories etc call
+    @objc func manageItemsEntry() {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
         
+        tabBarController.selectedIndex = 1
+    }
+    
+    @objc func reportEntry() {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 3
     }
       
     @objc private func deleteEntry() {
@@ -152,14 +169,19 @@ extension SceneDelegate: NSToolbarDelegate {
 
     @objc private func shareEntry(_ sender: UIBarButtonItem) {
         // TODO:
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 4
     }
 
     private func toolbarItem(itemIdentifier: NSToolbarItem.Identifier, barButtonItem: UIBarButtonItem,
       toolTip: String? = nil, label: String?) -> NSToolbarItem {
         
-        // hide tab bar
+        // hide tab bar if Catalyst app
         let tabBarController = self.window?.rootViewController as? UITabBarController
-        tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
         
         
         let item = NSToolbarItem(itemIdentifier: itemIdentifier,
@@ -175,32 +197,56 @@ extension SceneDelegate: NSToolbarDelegate {
         return item
     }
 
-    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-      willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
       
-      var item: NSToolbarItem? = nil
+        var item: NSToolbarItem? = nil
+
+        switch(itemIdentifier){
+        case .addInvEntry:
+            let barButtonItem =
+              UIBarButtonItem(barButtonSystemItem: .add,
+                              target: self, action: #selector(addInvEntry))
+            item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: "Add Inv Entry", label: "Add Inventory")
+            item?.target = self
+            item?.action = #selector(addInvEntry)
+            break
+            
+        case .manageItemsEntry:
+            let barButtonItem =
+              UIBarButtonItem(barButtonSystemItem: .add,
+                              target: self, action: #selector(manageItemsEntry))
+            item = toolbarItem(itemIdentifier: .manageItemsEntry, barButtonItem: barButtonItem, toolTip: "Manage Items", label: "Manage Items")
+            item?.target = self
+            item?.action = #selector(manageItemsEntry)
+            break
         
-      if itemIdentifier == .addEntry {
-        let barButtonItem =
-          UIBarButtonItem(barButtonSystemItem: .add,
-                          target: self, action: #selector(addEntry))
-        item = toolbarItem(itemIdentifier: .addEntry, barButtonItem: barButtonItem, toolTip: "Add Entry", label: "Add Inventory")
-        item?.target = self
-        item?.action = #selector(addEntry)
-        
-      } else if itemIdentifier == .deleteEntry {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteEntry))
-        
-        item = toolbarItem(itemIdentifier: .deleteEntry, barButtonItem: barButtonItem, toolTip: "Delete Entry", label: "Delete")
-        
-        item?.target = self
-        item?.action = #selector(deleteEntry)
-        
-      } else if itemIdentifier == .shareEntry {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareEntry(_:)))
-        
-        item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: "Share Entry", label: "Share Inventory")
-      }
+            case .reportEntry:
+            let barButtonItem =
+                UIBarButtonItem(barButtonSystemItem: .organize,
+                              target: self, action: #selector(reportEntry))
+            item = toolbarItem(itemIdentifier: .reportEntry, barButtonItem: barButtonItem, toolTip: "Show Report", label: "Show Report")
+            item?.target = self
+            item?.action = #selector(reportEntry)
+            break
+            
+        case .deleteEntry:
+            let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteEntry))
+            
+            item = toolbarItem(itemIdentifier: .deleteEntry, barButtonItem: barButtonItem, toolTip: "Delete Entry", label: "Delete")
+            
+            item?.target = self
+            item?.action = #selector(deleteEntry)
+            break
+            
+        case .shareEntry:
+            let barButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareEntry(_:)))
+            
+            item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: "Share Entry", label: "Share Inventory")
+            break
+            
+        default:
+            break
+        }
         
         return item
     }

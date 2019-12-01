@@ -110,18 +110,19 @@ extension NSToolbarItem.Identifier {
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
     static let deleteEntry = NSToolbarItem.Identifier(rawValue: "DeleteEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
+    static let aboutEntry = NSToolbarItem.Identifier(rawValue: "AboutEntry")
 }
 
 // for toolbar
 extension SceneDelegate: NSToolbarDelegate {
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.addInvEntry, .manageItemsEntry, .reportEntry, .deleteEntry, .shareEntry, .flexibleSpace]
+        return [.addInvEntry, .manageItemsEntry, .reportEntry, .deleteEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.addInvEntry, .manageItemsEntry, .reportEntry, .flexibleSpace, .shareEntry]
+        return [.addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
 
     
@@ -175,6 +176,15 @@ extension SceneDelegate: NSToolbarDelegate {
         
         tabBarController.selectedIndex = 4
     }
+    
+    @objc private func aboutEntry(_ sender: UIBarButtonItem) {
+        // TODO:
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 4
+    }
 
     private func toolbarItem(itemIdentifier: NSToolbarItem.Identifier, barButtonItem: UIBarButtonItem,
       toolTip: String? = nil, label: String?) -> NSToolbarItem {
@@ -204,7 +214,7 @@ extension SceneDelegate: NSToolbarDelegate {
         switch(itemIdentifier){
         case .addInvEntry:
             let barButtonItem =
-              UIBarButtonItem(barButtonSystemItem: .add,
+                UIBarButtonItem(barButtonSystemItem: .compose,
                               target: self, action: #selector(addInvEntry))
             item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: "Add Inv Entry", label: "Add Inventory")
             item?.target = self
@@ -213,7 +223,7 @@ extension SceneDelegate: NSToolbarDelegate {
             
         case .manageItemsEntry:
             let barButtonItem =
-              UIBarButtonItem(barButtonSystemItem: .add,
+                UIBarButtonItem(image: UIImage(named: "list"), style: .plain,
                               target: self, action: #selector(manageItemsEntry))
             item = toolbarItem(itemIdentifier: .manageItemsEntry, barButtonItem: barButtonItem, toolTip: "Manage Items", label: "Manage Items")
             item?.target = self
@@ -222,7 +232,7 @@ extension SceneDelegate: NSToolbarDelegate {
         
             case .reportEntry:
             let barButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .organize,
+                UIBarButtonItem(image: UIImage(named: "Report"), style: .plain,
                               target: self, action: #selector(reportEntry))
             item = toolbarItem(itemIdentifier: .reportEntry, barButtonItem: barButtonItem, toolTip: "Show Report", label: "Show Report")
             item?.target = self
@@ -238,7 +248,16 @@ extension SceneDelegate: NSToolbarDelegate {
             item?.action = #selector(deleteEntry)
             break
             
-        case .shareEntry:
+        case .aboutEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(aboutEntry(_:)))
+            
+            item = toolbarItem(itemIdentifier: .aboutEntry, barButtonItem: barButtonItem, toolTip: "About Inventory", label: "About Inventory")
+            
+            item?.target = self
+            item?.action = #selector(aboutEntry)
+            break
+        
+            case .shareEntry:
             let barButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareEntry(_:)))
             
             item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: "Share Entry", label: "Share Inventory")

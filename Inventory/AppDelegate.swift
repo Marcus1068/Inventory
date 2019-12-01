@@ -263,6 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // The format menu doesn't make sense
         builder.remove(menu: .format)
         builder.remove(menu: .edit)
+        builder.remove(menu: .services)
         
         let newInv = NSLocalizedString("New Inventory", comment: "New Inventory")
         let newInventory = UIKeyCommand(title: newInv, action: #selector(newInventoryMenu), input: "n", modifierFlags: .command)
@@ -280,6 +281,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // call new inventory
     @objc func newInventoryMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 3
         
     }
     

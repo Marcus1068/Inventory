@@ -26,6 +26,9 @@ limitations under the License.
 
 import UIKit
 
+// need to store window variable as global to use it in AppDelegate for menu handling
+var globalWindow: UIWindow?
+
 @available(iOS 13.0, macOS 15.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate{
     
@@ -43,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
 
         if let scene = scene as? UIWindowScene,
             let titlebar = scene.titlebar {
-          
+            
             let toolbar = NSToolbar(identifier: "Toolbar")
           
             titlebar.toolbar = toolbar
@@ -53,6 +56,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
             toolbar.autosavesConfiguration = true
 
         }
+        
+        globalWindow = self.window
+        
         #endif
 
     }
@@ -93,6 +99,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         let store = CoreDataStorage.shared
         store.saveContext()
     }
+    
 }
 
 #if targetEnvironment(macCatalyst)
@@ -121,6 +128,7 @@ extension SceneDelegate: NSToolbarDelegate {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
+        
         
         tabBarController.selectedIndex = 0
         

@@ -1090,8 +1090,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 switch (currentSortOrder){
                 case .item:
                     // item
+                    let splitString = makeTwoLines(text: inv.inventoryName!, length: 14)
                     stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-                    text = inv.inventoryName!.truncate(length: 14)
+                    text = splitString.0
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    text = splitString.1
+                    stringRect = CGRect(x: x, y: y + 12, width: columnWidthItem, height: columnHeight)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthItem
                     
@@ -1139,8 +1143,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthOwner
                     
                     // item
+                    let splitString = makeTwoLines(text: inv.inventoryName!, length: 14)
                     stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-                    text = inv.inventoryName!.truncate(length: 14)
+                    text = splitString.0
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    text = splitString.1
+                    stringRect = CGRect(x: x, y: y + 12, width: columnWidthItem, height: columnHeight)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthItem
                     
@@ -1182,8 +1190,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthCategory
                     
                     // item
+                    let splitString = makeTwoLines(text: inv.inventoryName!, length: 14)
                     stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-                    text = inv.inventoryName!.truncate(length: 14)
+                    text = splitString.0
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    text = splitString.1
+                    stringRect = CGRect(x: x, y: y + 12, width: columnWidthItem, height: columnHeight)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthItem
                     
@@ -1225,8 +1237,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthRoom
                     
                     // item
+                    let splitString = makeTwoLines(text: inv.inventoryName!, length: 14)
                     stringRect = CGRect(x: x, y: y, width: columnWidthItem, height: columnHeight)
-                    text = inv.inventoryName!.truncate(length: 14)
+                    text = splitString.0
+                    text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                    text = splitString.1
+                    stringRect = CGRect(x: x, y: y + 12, width: columnWidthItem, height: columnHeight)
                     text.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                     x = x + columnWidthItem
                     
@@ -1391,4 +1407,42 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         controller.dismiss(animated: true, completion: nil)
     }
 
+    // split a string longer than one line length into two strings
+    func makeTwoLines(text: String, length: Int) -> (String, String){
+        var firstLine: String = ""
+        var secondLine: String = ""
+        
+        // truncate anyway if text is longer than two lines (we dont have more space on report)
+        let shortText = text.truncate(length: length * 2)
+        // in case of too long text use second string
+        if shortText.count > length{
+            let splitString = text.split(separator: " ")
+            
+            if splitString.count == 1{
+                return (shortText, "")
+            }
+            
+            var count: Int = 0
+            
+            for str in splitString{
+                if firstLine.count + str.count >= length{
+                    break
+                }
+                
+                firstLine = firstLine + str + " "
+                count += 1
+
+            }
+            
+            for j in count...splitString.count - 1{
+                secondLine = secondLine + splitString[j] + " "
+            }
+            
+            return (firstLine, secondLine.truncate(length: length))
+
+        }
+        else{
+            return (shortText, "")
+        }
+    }
 }

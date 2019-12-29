@@ -708,7 +708,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let text1 = userText + ": " + userName + ", " + addressText + ": " + address
         let text = text1 as NSString
         
-        text.draw(in: CGRect(x: paperWidth - 250 - leftMargin, y: title_pos_y + 15, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
+        text.draw(in: CGRect(x: paperWidth - 250 - leftMargin, y: title_pos_y + 5, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
     
     // generate title for pdf page (on top of each page)

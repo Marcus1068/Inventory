@@ -197,6 +197,12 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             case 36:
                 warrantySegmentControl.selectedSegmentIndex = 4
                 break
+            case 48:
+                warrantySegmentControl.selectedSegmentIndex = 5
+                break
+            case 60:
+                warrantySegmentControl.selectedSegmentIndex = 6
+                break
             default:
                 warrantySegmentControl.selectedSegmentIndex = 0
             }
@@ -764,6 +770,10 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             currentInventory?.warranty = Int32(24)
         case 4: // 36 months
             currentInventory?.warranty = Int32(36)
+        case 5: // 48 months
+            currentInventory?.warranty = Int32(48)
+        case 6: // 60 months
+            currentInventory?.warranty = Int32(60)
         default:
             break
         }

@@ -117,7 +117,7 @@ extension NSToolbarItem.Identifier {
 extension SceneDelegate: NSToolbarDelegate {
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.addInvEntry, .manageItemsEntry, .reportEntry, .deleteEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
@@ -191,7 +191,7 @@ extension SceneDelegate: NSToolbarDelegate {
         
         // hide tab bar if Catalyst app
         let tabBarController = self.window?.rootViewController as? UITabBarController
-        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
         
         
         let item = NSToolbarItem(itemIdentifier: itemIdentifier,

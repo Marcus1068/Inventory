@@ -178,7 +178,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 let room = Room(context: store.getContext())
                 
                 // set object with UI values
-                room.roomName = (textfieldRoomName.text!.capitalized).trimmingCharacters(in: .whitespaces)
+                room.roomName = (textfieldRoomName.text!).trimmingCharacters(in: .whitespaces)
                 // image binary data
                 let imageData = chosenImage.image!.jpegData(compressionQuality: 1.0)
                 room.roomImage = imageData! as NSData

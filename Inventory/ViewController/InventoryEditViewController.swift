@@ -30,6 +30,8 @@ import os.log
 import MobileCoreServices
 import AVKit
 
+
+
 protocol InventoryEditViewControllerDelegate {
     //func addGeotificationViewController(_ controller: InventoryEditViewController, didAdd geotification: Geotification)
     //func addGeotificationViewController(_ controller: AddGeotificationViewController, didChange oldGeotifcation: Geotification, to newGeotification: Geotification)
@@ -742,7 +744,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         currentInventory?.id = UUID()
-        currentInventory?.inventoryName = (textfieldInventoryName.text?.capitalized)!.trimmingCharacters(in: .whitespaces)   // can only save when inventory name is entered
+        currentInventory?.inventoryName = (textfieldInventoryName.text)!.trimmingCharacters(in: .whitespaces)   // can only save when inventory name is entered
         currentInventory?.dateOfPurchase = datePicker.date as NSDate?
         currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
         currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""

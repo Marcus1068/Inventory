@@ -138,7 +138,7 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
                 let owner = Owner(context: store.getContext())
                 
                 // set object with UI values
-                owner.ownerName = (textfieldOwner.text!.capitalized).trimmingCharacters(in: .whitespaces)
+                owner.ownerName = (textfieldOwner.text!).trimmingCharacters(in: .whitespaces)
                 
                 currentOwner = owner
                 

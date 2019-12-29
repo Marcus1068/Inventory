@@ -145,7 +145,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
                 let category = Category(context: store.getContext())
                 
                 // set object with UI values
-                category.categoryName = (textfieldCategory.text!.capitalized).trimmingCharacters(in: .whitespaces)
+                category.categoryName = (textfieldCategory.text!).trimmingCharacters(in: .whitespaces)
                 
                 currentCategory = category
                 

@@ -141,7 +141,7 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
                 let brand = Brand(context: store.getContext())
                 
                 // set object with UI values
-                brand.brandName = (textfieldBrand.text!.capitalized).trimmingCharacters(in: .whitespaces)
+                brand.brandName = (textfieldBrand.text!).trimmingCharacters(in: .whitespaces)
                 
                 currentBrand = brand
                 

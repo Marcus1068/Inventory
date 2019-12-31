@@ -577,6 +577,35 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // otherwise do nothing since to image available
     }
     
+    // add a page with warranty information
+    // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
+    // and second section with of of warranty products
+    func pdfWarrantyPage(context: UIGraphicsRendererContext){
+        var y : Double
+        
+        let summary = NSLocalizedString("Warranty Information", comment: "Warranty Information")
+        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        
+        // user Info
+        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        
+        y = contentsBegin
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue", size: 15.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        y = y + 15
+        
+        
+    }
+    
     // add a summary page at the end of the PDF report
     func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
         //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
@@ -1307,12 +1336,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages)
             
+            // add a warranty page at the end of the report
+            context.beginPage()
+            pdfImageLogo()
+            pdfWarrantyPage(context: context)
+            pdfPageFooter(footerText: footerText, context: context)
+            pdfPageNumber(pageNumber: numberOfPages + 1)
+            
             // add a summary page at the end of the report
             context.beginPage()
             pdfImageLogo()
             pdfSummaryPage(numberOfRows: results.count, context: context)
             pdfPageFooter(footerText: footerText, context: context)
-            pdfPageNumber(pageNumber: numberOfPages + 1)
+            pdfPageNumber(pageNumber: numberOfPages + 2)
             
         }
         

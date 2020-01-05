@@ -603,6 +603,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 15
         
+        let numberOfDevicesInWarranty = Statistics.shared.warrantyValidDevices()
+        if numberOfDevicesInWarranty.count > 0{
+            for i in numberOfDevicesInWarranty{
+                print(i.key)
+                print(i.value)
+            }
+        }
         
     }
     

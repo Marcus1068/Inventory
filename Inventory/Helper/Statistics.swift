@@ -218,6 +218,47 @@ class Statistics{
         }
         return []
     }
+    
+    /// list devices with valid warranty
+    ///
+    /// - Returns: a dict comtaining key as item and value as valid warranty months
+    /// - Example: ["BAR": 1, "FOOBAR": 1, "FOO": 2]
+    func warrantyValidDevices() -> [(key: String, value: Int)]{
+        var invNames : [String] = []
+        var remainingWarrantyMonths : [Int] = []
+        let today = Date()
+        
+        refresh()
+        
+        for inv in inventory{
+            let purchaseDate = inv.dateOfPurchase
+            
+            let warrantyDate = Calendar.current.date(byAdding: .month, value: Int(inv.warranty), to: purchaseDate! as Date)
+
+            if warrantyDate! >= today{
+                invNames.append(inv.inventoryName ?? "")
+                
+                remainingWarrantyMonths.append(calculateDaysBetweenTwoDates(start: purchaseDate! as Date, end: warrantyDate!))
+            }
+            
+        }
+        
+        let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
+        
+        return dict.sorted { $0.value > $1.value }
+    }
+    
+    private func calculateDaysBetweenTwoDates(start: Date, end: Date) -> Int {
+
+        let currentCalendar = Calendar.current
+        guard let start = currentCalendar.ordinality(of: .day, in: .era, for: start) else {
+            return 0
+        }
+        guard let end = currentCalendar.ordinality(of: .day, in: .era, for: end) else {
+            return 0
+        }
+        return end - start
+    }
 }
 
 // reduce the number of array elements to elementCount

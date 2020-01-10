@@ -581,7 +581,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
     // and second section with of of warranty products
     func pdfWarrantyPage(context: UIGraphicsRendererContext){
-        var y : Double
+        var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
+        var y = 0.0 // Points from above
+        var x = 0.0 // Points form left
         
         let summary = NSLocalizedString("Warranty Information", comment: "Warranty Information")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
@@ -589,25 +591,59 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // user Info
         pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
         
+        x = leftMargin
         y = contentsBegin
+        y = y + 15
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
-        let font = UIFont(name: "HelveticaNeue", size: 15.0)
+        let font = UIFont(name: "HelveticaNeue", size: 10.0)
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: font,
             NSAttributedString.Key.foregroundColor: UIColor.black
         ]
         
-        y = y + 15
+        // heading
+        stringRect = CGRect(x: x, y: y, width: columnWidthItem + 40, height: columnHeight)
+        let heading1: NSString = NSLocalizedString("Item", comment: "Item") as NSString
+        heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        stringRect = CGRect(x: x + columnWidthItem + 40, y: y, width: columnWidthItem + 40, height: columnHeight)
+        let heading2: NSString = NSLocalizedString("Warranty days remaining", comment: "Warranty days remaining") as NSString
+        heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // draw a line
+        context.cgContext.setStrokeColor(UIColor.black.cgColor)
+        context.cgContext.setLineWidth(1)
+        context.cgContext.move(to: CGPoint(x: leftMargin, y: 52 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: (5.0 * columnWidth), y: 52 + title_height))
+        context.cgContext.drawPath(using: .fillStroke)
+        
+        y = y + 25
         
         let numberOfDevicesInWarranty = Statistics.shared.warrantyValidDevices()
         if numberOfDevicesInWarranty.count > 0{
             for i in numberOfDevicesInWarranty{
-                print(i.key)
-                print(i.value)
+                let item: NSString = i.key as NSString
+                
+                stringRect = CGRect(x: x, y: y, width: columnWidthItem + 40, height: columnHeight)
+                item.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                //x = x + columnWidthItem
+               
+                
+                let warranty: NSString = String(i.value) as NSString
+                
+                stringRect = CGRect(x: x + columnWidthItem + 40, y: y, width: columnWidthItem, height: columnHeight)
+                warranty.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                
+                 y = y + 15
+                //x = x + columnWidthItem
+                //print(i.key)
+                //print(i.value)
+                
+                
             }
         }
         

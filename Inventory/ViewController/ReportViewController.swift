@@ -577,15 +577,16 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // otherwise do nothing since to image available
     }
     
-    // add a page with warranty information
+    // add a page with valid warranty information
     // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
     // and second section with of of warranty products
-    func pdfWarrantyPage(context: UIGraphicsRendererContext){
+    func pdfWarrantyValidPage(context: UIGraphicsRendererContext){
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
+        let offset = 60.0
         
-        let summary = NSLocalizedString("Warranty Information", comment: "Warranty Information")
+        let summary = NSLocalizedString("Valid Warranty", comment: "Valid Warranty")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
@@ -606,11 +607,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         ]
         
         // heading
-        stringRect = CGRect(x: x, y: y, width: columnWidthItem + 40, height: columnHeight)
+        stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
         let heading1: NSString = NSLocalizedString("Item", comment: "Item") as NSString
         heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        stringRect = CGRect(x: x + columnWidthItem + 40, y: y, width: columnWidthItem + 40, height: columnHeight)
+        stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem + offset, height: columnHeight)
         let heading2: NSString = NSLocalizedString("Warranty days remaining", comment: "Warranty days remaining") as NSString
         heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
@@ -628,25 +629,86 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             for i in numberOfDevicesInWarranty{
                 let item: NSString = i.key as NSString
                 
-                stringRect = CGRect(x: x, y: y, width: columnWidthItem + 40, height: columnHeight)
+                stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
                 item.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                 //x = x + columnWidthItem
                
                 
                 let warranty: NSString = String(i.value) as NSString
                 
-                stringRect = CGRect(x: x + columnWidthItem + 40, y: y, width: columnWidthItem, height: columnHeight)
+                stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem, height: columnHeight)
                 warranty.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
                 
                  y = y + 15
-                //x = x + columnWidthItem
-                //print(i.key)
-                //print(i.value)
-                
-                
             }
         }
+    }
+    
+    // add a page with valid warranty information
+    // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
+    // and second section with of of warranty products
+    func pdfWarrantyInvalidPage(context: UIGraphicsRendererContext){
+        var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
+        var y = 0.0 // Points from above
+        var x = 0.0 // Points form left
+        let offset = 60.0
         
+        let summary = NSLocalizedString("Invalid Warranty", comment: "Invalid Warranty")
+        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        
+        // user Info
+        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        
+        x = leftMargin
+        y = contentsBegin
+        y = y + 15
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        
+        let font = UIFont(name: "HelveticaNeue", size: 10.0)
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: paragraphStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: UIColor.black
+        ]
+        
+        // heading
+        stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
+        let heading1: NSString = NSLocalizedString("Item", comment: "Item") as NSString
+        heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem + offset, height: columnHeight)
+        let heading2: NSString = NSLocalizedString("Warranty days over", comment: "Warranty days over") as NSString
+        heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+        
+        // draw a line
+        context.cgContext.setStrokeColor(UIColor.black.cgColor)
+        context.cgContext.setLineWidth(1)
+        context.cgContext.move(to: CGPoint(x: leftMargin, y: 52 + title_height))
+        context.cgContext.addLine(to: CGPoint(x: (5.0 * columnWidth), y: 52 + title_height))
+        context.cgContext.drawPath(using: .fillStroke)
+        
+        y = y + 25
+        
+        let numberOfDevicesWithoutWarranty = Statistics.shared.warrantyInvalidDevices()
+        if numberOfDevicesWithoutWarranty.count > 0{
+            for i in numberOfDevicesWithoutWarranty{
+                let item: NSString = i.key as NSString
+                
+                stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
+                item.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                //x = x + columnWidthItem
+               
+                
+                let warranty: NSString = String(i.value) as NSString
+                
+                stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem, height: columnHeight)
+                warranty.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
+                
+                 y = y + 15
+            }
+        }
     }
     
     // add a summary page at the end of the PDF report
@@ -1379,10 +1441,17 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages)
             
-            // add a warranty page at the end of the report
+            // add a valid warranty page at the end of the report
             context.beginPage()
             pdfImageLogo()
-            pdfWarrantyPage(context: context)
+            pdfWarrantyValidPage(context: context)
+            pdfPageFooter(footerText: footerText, context: context)
+            pdfPageNumber(pageNumber: numberOfPages + 1)
+            
+            // add an invalid warranty page at the end of the report
+            context.beginPage()
+            pdfImageLogo()
+            pdfWarrantyInvalidPage(context: context)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 1)
             

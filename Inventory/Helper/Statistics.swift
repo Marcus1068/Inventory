@@ -243,7 +243,13 @@ class Statistics{
             
         }
         
-        let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
+        // create dict from two array with zip function
+        var dict = [String: Int]()
+        for (inv, months) in zip(invNames, remainingWarrantyMonths) {
+          dict[inv] = months
+        }
+        
+        //let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
         
         return dict.sorted { $0.value > $1.value }
     }
@@ -272,7 +278,14 @@ class Statistics{
             
         }
         
-        let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
+        // create dict from two array with zip function
+        var dict = [String: Int]()
+        for (inv, months) in zip(invNames, remainingWarrantyMonths) {
+          dict[inv] = months
+        }
+        
+        //let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
+        
         
         return dict.sorted { $0.key < $1.key }
     }

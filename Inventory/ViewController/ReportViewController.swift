@@ -577,10 +577,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // otherwise do nothing since to image available
     }
     
+    
     // add a page with valid warranty information
     // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
     // and second section with of of warranty products
-    func pdfWarrantyValidPage(context: UIGraphicsRendererContext){
+    func pdfWarrantyValidPage( context: UIGraphicsRendererContext){
+        
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
@@ -612,7 +614,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem + offset, height: columnHeight)
-        let heading2: NSString = NSLocalizedString("Warranty days remaining", comment: "Warranty days remaining") as NSString
+        let heading2: NSString = NSLocalizedString("Days remaining", comment: "Days remaining") as NSString
         heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // draw a line
@@ -626,14 +628,20 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let numberOfDevicesInWarranty = Statistics.shared.warrantyValidDevices()
         if numberOfDevicesInWarranty.count > 0{
+            var counter = 1
             for i in numberOfDevicesInWarranty{
+                
+                // show only as many entries, otherwise we need more than one page
+                if counter > 50 {
+                    break
+                }
+                counter += 1
+                
                 let item: NSString = i.key as NSString
                 
                 stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
                 item.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-                //x = x + columnWidthItem
-               
-                
+
                 let warranty: NSString = String(i.value) as NSString
                 
                 stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem, height: columnHeight)
@@ -679,7 +687,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem + offset, height: columnHeight)
-        let heading2: NSString = NSLocalizedString("Warranty days over", comment: "Warranty days over") as NSString
+        let heading2: NSString = NSLocalizedString("Days over", comment: "Days over") as NSString
         heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // draw a line
@@ -693,13 +701,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let numberOfDevicesWithoutWarranty = Statistics.shared.warrantyInvalidDevices()
         if numberOfDevicesWithoutWarranty.count > 0{
+            var counter = 1
             for i in numberOfDevicesWithoutWarranty{
+                
+                // show only as many entries, otherwise we need more than one page
+                if counter > 50 {
+                    break
+                }
+                counter += 1
+                
                 let item: NSString = i.key as NSString
                 
                 stringRect = CGRect(x: x, y: y, width: columnWidthItem + offset, height: columnHeight)
                 item.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
-                //x = x + columnWidthItem
-               
                 
                 let warranty: NSString = String(i.value) as NSString
                 
@@ -817,8 +831,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             let mostExp = tmp7 + ": " + mostExpensiveItem[0].inventoryName! + ", " + String(mostExpensiveItem[0].price) + Local.currencySymbol!
             mostExp.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
+        
+        y = y + 30
+        let warrantyCount = Statistics.shared.warrantyValidDevices().count
+        let warr = NSLocalizedString("Devices with valid warranty", comment: "Devices with valid warranty")
+        let warrStr = warr + ": " + String(warrantyCount)
+        warrStr.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
   
         y = y + 30
+        
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
     }
@@ -1436,8 +1457,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 }
             }
             
-            //print("Inventory size in MB = \(storageSize)")
-            
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages)
             
@@ -1453,14 +1472,14 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfImageLogo()
             pdfWarrantyInvalidPage(context: context)
             pdfPageFooter(footerText: footerText, context: context)
-            pdfPageNumber(pageNumber: numberOfPages + 1)
+            pdfPageNumber(pageNumber: numberOfPages + 2)
             
             // add a summary page at the end of the report
             context.beginPage()
             pdfImageLogo()
             pdfSummaryPage(numberOfRows: results.count, context: context)
             pdfPageFooter(footerText: footerText, context: context)
-            pdfPageNumber(pageNumber: numberOfPages + 2)
+            pdfPageNumber(pageNumber: numberOfPages + 3)
             
         }
         

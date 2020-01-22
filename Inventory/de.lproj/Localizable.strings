@@ -112,6 +112,12 @@
 /* Database size */
 "Database size used for images, pdf files etc." = "Datenbank Größe benutzt für PDF, Bilder etc.";
 
+/* Days exceeded */
+"Days exceeded" = "Tage abgelaufen";
+
+/* Days remaining */
+"Days remaining" = "Tage verbleibend";
+
 /* Delete */
 "Delete" = "Löschen";
 
@@ -126,6 +132,12 @@
 
 /* Delete room */
 "Delete room" = "Raum löschen";
+
+/* Devices with exceeded warranty */
+"Devices with exceeded warranty" = "Geräte mit abgelaufener Garantie";
+
+/* Devices with valid warranty */
+"Devices with valid warranty" = "Geräte mit gültiger Garantie";
 
 /* DIN A4 */
 "DIN A4" = "DIN A4";
@@ -165,6 +177,9 @@
 
 /* Error */
 "Error" = "Fehler";
+
+/* Exceeded warranty */
+"Exceeded warranty" = "Abgelaufene Garantie";
 
 /* Export Finished */
 "Export Finished" = "Exportieren beendet";
@@ -295,6 +310,9 @@
 /* My Rooms */
 "My Rooms" = "Meine Räume";
 
+/* New Inventory */
+"New Inventory" = "Neues Inventar";
+
 /* No CSV file to import found */
 "No CSV file to import found" = "Keine CSV Datei zum Importieren gefunden";
 
@@ -408,6 +426,9 @@
 
 /* Speaker */
 "Speaker" = "Lautsprecher";
+
+/* Still valid warranty */
+"Still valid warranty" = "Noch gültige Garantie";
 
 /* Summary */
 "Summary" = "Zusammenfassung";

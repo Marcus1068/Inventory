@@ -588,7 +588,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var x = 0.0 // Points form left
         let offset = 60.0
         
-        let summary = NSLocalizedString("Valid Warranty", comment: "Valid Warranty")
+        let summary = NSLocalizedString("Still valid warranty", comment: "Still valid warranty")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
@@ -652,16 +652,16 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
-    // add a page with valid warranty information
+    // add a page with exceeded warranty information
     // e.g. Thermomix (bougth 10/11/2019 - warranty until 10/11/2021
     // and second section with of of warranty products
-    func pdfWarrantyInvalidPage(context: UIGraphicsRendererContext){
+    func pdfWarrantyExceededPage(context: UIGraphicsRendererContext){
         var stringRect = CGRect(x: 0, y: 0, width: 0, height: 0) // make rect for text
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
         let offset = 60.0
         
-        let summary = NSLocalizedString("Invalid Warranty", comment: "Invalid Warranty")
+        let summary = NSLocalizedString("Exceeded warranty", comment: "Exceeded warranty")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
@@ -687,7 +687,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         heading1.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         stringRect = CGRect(x: x + columnWidthItem + offset, y: y, width: columnWidthItem + offset, height: columnHeight)
-        let heading2: NSString = NSLocalizedString("Days over", comment: "Days over") as NSString
+        let heading2: NSString = NSLocalizedString("Days exceeded", comment: "Days exceeded") as NSString
         heading2.draw(in: stringRect, withAttributes: attributes as [NSAttributedString.Key : Any])
         
         // draw a line
@@ -699,7 +699,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         y = y + 25
         
-        let numberOfDevicesWithoutWarranty = Statistics.shared.warrantyInvalidDevices()
+        let numberOfDevicesWithoutWarranty = Statistics.shared.warrantyExceededDevices()
         if numberOfDevicesWithoutWarranty.count > 0{
             var counter = 1
             for i in numberOfDevicesWithoutWarranty{
@@ -838,6 +838,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let warrStr = warr + ": " + String(warrantyCount)
         warrStr.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
   
+        y = y + 30
+        let warrantyCountExceeded = Statistics.shared.warrantyExceededDevices().count
+        let warrE = NSLocalizedString("Devices with exceeded warranty", comment: "Devices with exceeded warranty")
+        let warrEStr = warrE + ": " + String(warrantyCountExceeded)
+        warrEStr.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
+        
         y = y + 30
         
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
@@ -1470,7 +1476,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             // add an invalid warranty page at the end of the report
             context.beginPage()
             pdfImageLogo()
-            pdfWarrantyInvalidPage(context: context)
+            pdfWarrantyExceededPage(context: context)
             pdfPageFooter(footerText: footerText, context: context)
             pdfPageNumber(pageNumber: numberOfPages + 2)
             

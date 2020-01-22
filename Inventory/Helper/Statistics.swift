@@ -258,7 +258,7 @@ class Statistics{
     ///
     /// - Returns: a dict comtaining key as item and value as valid warranty months
     /// - Example: ["BAR": 365, "FOOBAR": 20, "FOO": 180]
-    func warrantyInvalidDevices() -> [(key: String, value: Int)]{
+    func warrantyExceededDevices() -> [(key: String, value: Int)]{
         var invNames : [String] = []
         var remainingWarrantyMonths : [Int] = []
         let today = Date()

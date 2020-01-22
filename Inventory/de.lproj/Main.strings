@@ -400,6 +400,12 @@
 /* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[4] = "36"; ObjectID = "XWi-74-Mt1"; */
 "XWi-74-Mt1.segmentTitles[4]" = "36";
 
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[5] = "48"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[5]" = "48";
+
+/* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[6] = "60"; ObjectID = "XWi-74-Mt1"; */
+"XWi-74-Mt1.segmentTitles[6]" = "60";
+
 /* Class = "UITextField"; placeholder = "Brand name"; ObjectID = "xWO-xs-zbZ"; */
 "xWO-xs-zbZ.placeholder" = "Markenname";
 

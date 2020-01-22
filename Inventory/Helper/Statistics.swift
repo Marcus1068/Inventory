@@ -249,8 +249,6 @@ class Statistics{
           dict[inv] = months
         }
         
-        //let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
-        
         return dict.sorted { $0.value > $1.value }
     }
     
@@ -272,8 +270,10 @@ class Statistics{
 
             if warrantyDate! < today{
                 invNames.append(inv.inventoryName ?? "")
-                
-                remainingWarrantyMonths.append(calculateDaysBetweenTwoDates(start: purchaseDate! as Date, end: warrantyDate!))
+                // purchaseDate + warrantyDate - today = number of days
+                let date1 = calculateDaysBetweenTwoDates(start: today, end: purchaseDate! as Date)
+                let date2 = calculateDaysBetweenTwoDates(start: today, end: warrantyDate!)
+                remainingWarrantyMonths.append(date2 - date1)
             }
             
         }
@@ -283,9 +283,6 @@ class Statistics{
         for (inv, months) in zip(invNames, remainingWarrantyMonths) {
           dict[inv] = months
         }
-        
-        //let dict = Dictionary(uniqueKeysWithValues: zip(invNames, remainingWarrantyMonths))
-        
         
         return dict.sorted { $0.key < $1.key }
     }

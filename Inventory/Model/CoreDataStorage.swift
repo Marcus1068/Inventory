@@ -29,8 +29,11 @@ import UIKit
 import Foundation
 import CoreData
 
+
 // needed for accessing core data when using app group container
-class NSCustomPersistentContainer: NSPersistentContainer {
+@available(watchOSApplicationExtension 6.0, *)
+@available(iOSApplicationExtension 13.0, *)
+class NSCustomPersistentContainer: NSPersistentCloudKitContainer {
     
     override open class func defaultDirectoryURL() -> URL {
         let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)
@@ -39,6 +42,8 @@ class NSCustomPersistentContainer: NSPersistentContainer {
     
 }
 
+@available(watchOSApplicationExtension 6.0, *)
+@available(iOSApplicationExtension 13.0, *)
 public class CoreDataStorage {
     // MARK: - Core Data stack
     
@@ -69,11 +74,20 @@ public class CoreDataStorage {
     
     
     // access persistent container
-    lazy var persistentContainer: NSPersistentContainer =
+    lazy var persistentContainer: NSPersistentCloudKitContainer =
     {
  
         // Change from NSPersistentContainer to custom class because of app groups
         let container = NSCustomPersistentContainer(name: "Inventory")
+        
+        // turn on cloudkit remote change notifications
+        // https://schwiftyui.com/swiftui/using-cloudkit-in-swiftui/
+        let remoteChangeKey = "NSPersistentStoreRemoteChangeNotification"
+        let description = container.persistentStoreDescriptions.first
+        description?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        // This tells our persistent container to notify us when there are changes in the cloud that we don’t have.
+        description?.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+        
         
         let oldStoreUrl = self.applicationSupportDirectory.appendingPathComponent("Inventory.sqlite")
         let directory: NSURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)! as NSURL
@@ -118,6 +132,10 @@ public class CoreDataStorage {
                 print("Failed to add store with error: \(error.localizedDescription)")
             }
         }
+        
+        // merge policy for cloudkit sync
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
       
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -828,7 +846,8 @@ public class CoreDataStorage {
     // MARK: generate sample data
     
     // generate sample data for initial work
-    // FIXME: must be depening upon system language with switch/case of supported languages, default english
+    // must be depending upon system language with switch/case of supported languages, default english
+    // FIXME: no sample data if we already have any room, category etc. in place - otherwise duplicates in synced icloud
     func generateInitialAppData()
     {
         //os_log("CoreDataHandler generateInitialAppData", log: Log.coredata, type: .info)

@@ -41,7 +41,7 @@ protocol InventoryEditViewControllerDelegate {
 private let store = CoreDataStorage.shared
 
 class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate,
-                                    UIDropInteractionDelegate{
+                                    UIDropInteractionDelegate, UITextFieldDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -108,6 +108,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
         // initialize image picker class
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        textfieldPrice.delegate = self
         
         // support iPad Drop of PDF invoice files into edit inventory collection
         let dropInteraction = UIDropInteraction(delegate: self)
@@ -507,6 +509,28 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         
     }
     
+    // check in price textfield for comma or dot characters - somehow people change keyboard input type from decimal to text
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == textfieldPrice{
+            if let char = string.cString(using: String.Encoding.utf8) {
+                let isDot = strcmp(char, ".")
+                
+                if isDot == 0{
+                    return false
+                }
+                
+                let isComma = strcmp(char, ",")
+                
+                if isComma == 0{
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    
     // takes care of scrolling content top for the size of the current displayed keyboard
     // uses scrollView
     // will be called from viewDidLoad()
@@ -752,7 +776,20 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         currentInventory?.id = UUID()
         currentInventory?.inventoryName = (textfieldInventoryName.text)!.trimmingCharacters(in: .whitespaces)   // can only save when inventory name is entered
         currentInventory?.dateOfPurchase = datePicker.date as NSDate?
-        currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
+        
+        // check for valid number in price textfield
+        if textfieldPrice.text == nil{
+            currentInventory?.price = 0
+        }
+        else{
+            if Int32(textfieldPrice.text!) == nil{
+                currentInventory?.price = 0
+            }
+            else{
+                currentInventory?.price = Int32(textfieldPrice.text!)!
+            }
+        }
+        //currentInventory?.price = textfieldPrice.text!.count > 0 ? Int32(textfieldPrice.text!)! : Int32(0)
         currentInventory?.remark = textfieldRemark.text!.count > 0 ? textfieldRemark.text : ""
         currentInventory?.serialNumber = textfieldSerialNumber.text!.count > 0 ? textfieldSerialNumber.text : ""
         

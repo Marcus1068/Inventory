@@ -81,6 +81,7 @@
 		2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B967227997D600DB74D3 /* Privacy german.rtf */; };
 		2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C89B9692279995500DB74D3 /* Privacy english.rtf */; };
 		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
+		2C96898523DA24740001F8BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C96898423DA24740001F8BB /* CloudKit.framework */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 		2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
@@ -278,6 +279,7 @@
 		2C89B967227997D600DB74D3 /* Privacy german.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy german.rtf"; sourceTree = "<group>"; };
 		2C89B9692279995500DB74D3 /* Privacy english.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Privacy english.rtf"; sourceTree = "<group>"; };
 		2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		2C96898423DA24740001F8BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C96898523DA24740001F8BB /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +516,7 @@
 		2CC7EC0122A7B2D700F485AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2C96898423DA24740001F8BB /* CloudKit.framework */,
 				2CC7EC0222A7B2D700F485AA /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -1123,7 +1127,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1148,7 +1152,7 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

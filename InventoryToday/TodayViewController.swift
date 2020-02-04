@@ -28,6 +28,7 @@ import UIKit
 import NotificationCenter
 
 
+@available(iOSApplicationExtension 13.0, *)
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var topPricesLabel: UILabel!

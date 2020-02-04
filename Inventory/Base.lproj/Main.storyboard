@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -816,12 +815,19 @@
                                 <action selector="organizeBarButton:" destination="cvw-X7-YXT" id="EwK-Sd-o7V"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="52M-PK-QvR">
-                            <connections>
-                                <action selector="addBarButton:" destination="cvw-X7-YXT" id="79V-NA-SFr"/>
-                                <segue destination="1MD-YV-91u" kind="show" identifier="addSegue" id="7xG-kE-rfw"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="52M-PK-QvR">
+                                <connections>
+                                    <action selector="addBarButton:" destination="cvw-X7-YXT" id="79V-NA-SFr"/>
+                                    <segue destination="1MD-YV-91u" kind="show" identifier="addSegue" id="7xG-kE-rfw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="KGl-3S-anq">
+                                <connections>
+                                    <action selector="refreshButton:" destination="cvw-X7-YXT" id="whO-rT-CSF"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -833,6 +839,7 @@
                         <outlet property="numberOfItems" destination="61K-AB-efW" id="9TP-RP-W06"/>
                         <outlet property="ownerLabel" destination="ENj-YF-hOE" id="WiW-my-stD"/>
                         <outlet property="ownersSegment" destination="NeC-TT-vjk" id="lm7-QN-uxe"/>
+                        <outlet property="refresh" destination="KGl-3S-anq" id="EhR-Ld-WhA"/>
                         <outlet property="roomLabel" destination="bh5-cm-nAO" id="noH-77-CaK"/>
                         <outlet property="roomsSegment" destination="QaD-2h-ipL" id="mGG-nu-4Pi"/>
                     </connections>

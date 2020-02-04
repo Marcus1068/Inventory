@@ -13,6 +13,9 @@ import os
 // uses singleton pattern
 // Usage: let stats = Statistics.shared, print(stats.images)
 /// returns a lot of internal statistics useful for evaluating how many objects
+@available(iOSApplicationExtension 13.0, *)
+@available(watchOSApplicationExtension 6.0, *)
+@available(watchOSApplicationExtension 6.0, *)
 class Statistics{
     
     // MARK: - Properties

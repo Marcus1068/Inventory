@@ -72,6 +72,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var numberOfItems: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
+    @IBOutlet weak var refresh: UIBarButtonItem!
     
     // gesture recignizer for long press
     var gestureRecognizer = UILongPressGestureRecognizer()
@@ -217,14 +218,54 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
+    // refresh UI if cloudkit receives any changes made on other devices
+    @objc func fetchChanges(){
+        // fetch
+        var i = 0
+        
+        //store.persistentContainer.viewContext.refreshAllObjects()
+        
+        //let store = CoreDataStorage.shared
+        //store.saveContext()
+        /*
+        let viewContext = store.persistentContainer.viewContext
+        viewContext.automaticallyMergesChangesFromParent = true
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+            os_log("InventoryCollectionViewController ownersSelectionSegment", log: Log.coredata, type: .error)
+        }
+        
+        //self.collection.reloadData()
+        
+        DispatchQueue.main.async {
+            // update collection view
+            self.collection.reloadData()
+            let now = Date()
+            //self.refresh.title = String(now.description)
+            // update watch data as well
+            self.updateWatchData()
+            
+            let stats = Statistics.shared
+            
+            // refresh stats
+            stats.refresh()
+        } */
+        
+        
+    }
+    
     // first actions taken here
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //os_log("InventoryCollectionViewController viewDidLoad", log: Log.viewcontroller, type: .info)
-        
-        
+        // Observe Core Data remote change notifications.
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(self.fetchChanges),
+            name: .NSPersistentStoreRemoteChange, object: nil)
         
     /*    if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
@@ -300,6 +341,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
  
+        // setup notification for remote changes from cloudkit/other devices
+        // let container = store.persistentContainer
+        
         //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         
         // reset: no inv item selected
@@ -934,6 +978,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
+    }
+    
+    @IBAction func refreshButton(_ sender: Any) {
+        //self.fetchChanges()
+        store.saveContext()
+        collection.reloadData()
     }
     
     // no inv items deleted, deselect all and enable edit mode again

@@ -147,7 +147,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         //textfieldInventoryName.becomeFirstResponder()
         
         // needed for reaction on text fields, e.g. return key
-        textfieldInventoryName.delegate = self as? UITextFieldDelegate
+        textfieldInventoryName.delegate = self
         
         textfieldInventoryName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
         

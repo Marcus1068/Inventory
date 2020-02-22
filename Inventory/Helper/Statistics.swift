@@ -224,11 +224,11 @@ class Statistics{
     
     /// list devices with valid warranty
     ///
-    /// - Returns: a dict comtaining key as item and value as valid warranty months
+    /// - Returns: a dict comtaining key as item and value as valid warranty days
     /// - Example: ["BAR": 365, "FOOBAR": 20, "FOO": 180]
     func warrantyValidDevices() -> [(key: String, value: Int)]{
         var invNames : [String] = []
-        var remainingWarrantyMonths : [Int] = []
+        var remainingWarrantyDays : [Int] = []
         let today = Date()
         
         refresh()
@@ -236,20 +236,22 @@ class Statistics{
         for inv in inventory{
             let purchaseDate = inv.dateOfPurchase
             
+            // e.g. purchase date: 12/05/2018 + 24 months = 12/05/2020, today = 12/04/2020 -> 30 days remaining
             let warrantyDate = Calendar.current.date(byAdding: .month, value: Int(inv.warranty), to: purchaseDate! as Date)
 
+            // still warranty valid
             if warrantyDate! >= today{
                 invNames.append(inv.inventoryName ?? "")
                 
-                remainingWarrantyMonths.append(calculateDaysBetweenTwoDates(start: purchaseDate! as Date, end: warrantyDate!))
+                remainingWarrantyDays.append(calculateDaysBetweenTwoDates(start: today as Date, end: warrantyDate!))
             }
             
         }
         
         // create dict from two array with zip function
         var dict = [String: Int]()
-        for (inv, months) in zip(invNames, remainingWarrantyMonths) {
-          dict[inv] = months
+        for (inv, days) in zip(invNames, remainingWarrantyDays) {
+          dict[inv] = days
         }
         
         return dict.sorted { $0.value > $1.value }
@@ -257,11 +259,11 @@ class Statistics{
     
     /// list devices with invalid warranty
     ///
-    /// - Returns: a dict comtaining key as item and value as valid warranty months
+    /// - Returns: a dict comtaining key as item and value as days warranty exceeded
     /// - Example: ["BAR": 365, "FOOBAR": 20, "FOO": 180]
     func warrantyExceededDevices() -> [(key: String, value: Int)]{
         var invNames : [String] = []
-        var remainingWarrantyMonths : [Int] = []
+        var remainingWarrantyDays : [Int] = []
         let today = Date()
         
         refresh()
@@ -269,22 +271,22 @@ class Statistics{
         for inv in inventory{
             let purchaseDate = inv.dateOfPurchase
             
+            // e.g. purchase date: 12/05/2018 + 12 months = 12/05/2019
             let warrantyDate = Calendar.current.date(byAdding: .month, value: Int(inv.warranty), to: purchaseDate! as Date)
 
             if warrantyDate! < today{
                 invNames.append(inv.inventoryName ?? "")
                 // purchaseDate + warrantyDate - today = number of days
-                let date1 = calculateDaysBetweenTwoDates(start: today, end: purchaseDate! as Date)
-                let date2 = calculateDaysBetweenTwoDates(start: today, end: warrantyDate!)
-                remainingWarrantyMonths.append(date2 - date1)
+                let diff = calculateDaysBetweenTwoDates(start: warrantyDate!, end: today)
+                remainingWarrantyDays.append(diff)
             }
             
         }
         
         // create dict from two array with zip function
         var dict = [String: Int]()
-        for (inv, months) in zip(invNames, remainingWarrantyMonths) {
-          dict[inv] = months
+        for (inv, days) in zip(invNames, remainingWarrantyDays) {
+          dict[inv] = days
         }
         
         return dict.sorted { $0.key < $1.key }

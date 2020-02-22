@@ -221,8 +221,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // refresh UI if cloudkit receives any changes made on other devices
     @objc func fetchChanges(){
         // fetch
-        var i = 0
-        
+        //var i = 0
+    
         //store.persistentContainer.viewContext.refreshAllObjects()
         
         //let store = CoreDataStorage.shared

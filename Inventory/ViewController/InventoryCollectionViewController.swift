@@ -72,7 +72,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var numberOfItems: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
-    @IBOutlet weak var refresh: UIBarButtonItem!
+   
     
     // gesture recignizer for long press
     var gestureRecognizer = UILongPressGestureRecognizer()
@@ -980,11 +980,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
     }
     
-    @IBAction func refreshButton(_ sender: Any) {
-        //self.fetchChanges()
-        store.saveContext()
-        collection.reloadData()
-    }
     
     // no inv items deleted, deselect all and enable edit mode again
     @objc func cancelDelete(){

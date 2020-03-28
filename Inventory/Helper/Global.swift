@@ -523,6 +523,30 @@ extension UIViewController {
         // Add it to viewController
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    // show iOS standard share sheet for exporting data from this app to other apps
+    func shareAction(currentPath: URL) {
+        
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: currentPath.path) {
+            
+            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [currentPath], applicationActivities: nil)
+            
+            let rect = self.view.bounds
+            let rect2 = CGRect(x: rect.minX, y: rect.minY, width: rect.width/2.0, height: rect.height/2.0)
+            
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = rect2
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
+            let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(defaultAction)
+            navigationController!.present(alertController, animated: true, completion: nil)
+        }
+    }
 }
 
 // for action sheets on ipad and iPhone, works on both devices, otherwise app crashes

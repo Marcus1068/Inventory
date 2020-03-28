@@ -96,27 +96,8 @@ class PDFViewController: UIViewController {
     // Mark: - UI actions
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        //os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .info)
         
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: currentPath!.path) {
-            let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [currentPath!], applicationActivities: nil)
-            
-            let rect = self.view.bounds
-            let rect2 = CGRect(x: rect.minX, y: rect.minY, width: rect.width/2.0, height: rect.height/2.0)
-            
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.popoverPresentationController?.sourceRect = rect2
-            self.present(activityViewController, animated: true, completion: nil)
-        } else {
-            //os_log("PDFViewController shareButtonAction", log: Log.viewcontroller, type: .error)
-            
-            let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
-            let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
-            alertController.addAction(defaultAction)
-            navigationController!.present(alertController, animated: true, completion: nil)
-        }
+        shareAction(currentPath: currentPath!)
     }
     
 }

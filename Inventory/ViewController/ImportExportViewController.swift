@@ -592,7 +592,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // share system button to share csv file
-    @IBAction func shareButtonAction(_ sender: Any) {
+    @IBAction func shareButtonAction(_ sender: UIBarButtonItem) {
         //os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
         // FIXME: progress bar at 100% when cvs share action cancelled
         importedRowsLabel.isHidden = true
@@ -609,7 +609,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         if fileManager.fileExists(atPath: self.url!.path) {
             let text = NSLocalizedString("Shared by Inventory App", comment: "Shared by Inventory App")
             let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [text, self.url!], applicationActivities: nil)
+            
+            let rect = self.view.bounds
+            let rect2 = CGRect(x: rect.minX, y: rect.minY, width: rect.width/2.0, height: rect.height/2.0)
+            
             activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = rect2
+            
             self.present(activityViewController, animated: true, completion: nil)
         } else {
             //os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .error)

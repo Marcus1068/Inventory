@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -845,11 +845,11 @@
             <objects>
                 <viewController title="Edit Room" id="AAM-yv-3qO" customClass="RoomEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ce2-tj-tH9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt1-0r-dSz">
-                                <rect key="frame" x="0.0" y="44" width="375" height="754"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="754"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-oo-Anm">
                                         <rect key="frame" x="0.0" y="-4" width="375" height="785"/>
@@ -1776,13 +1776,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="kj2-JZ-s03" firstAttribute="bottom" secondItem="22o-iB-LVa" secondAttribute="bottom" id="2Nf-as-I2t"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="trailing" secondItem="H4u-nJ-iBi" secondAttribute="trailingMargin" id="97T-st-gMs"/>
-                            <constraint firstItem="0hP-bH-xN4" firstAttribute="leading" secondItem="kj2-JZ-s03" secondAttribute="leading" id="cXk-tT-5mv"/>
-                            <constraint firstItem="0hP-bH-xN4" firstAttribute="centerX" secondItem="22o-iB-LVa" secondAttribute="centerX" id="gfb-wJ-dHq"/>
-                            <constraint firstItem="0hP-bH-xN4" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" constant="34" id="gtL-Tt-Yja"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" id="kIv-rk-jGK"/>
-                            <constraint firstItem="22o-iB-LVa" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leadingMargin" id="oJl-PG-twU"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="centerX" secondItem="22o-iB-LVa" secondAttribute="centerX" id="4Oe-ur-cck"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="centerX" secondItem="H4u-nJ-iBi" secondAttribute="centerX" id="9FJ-5Y-Ebh"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="leading" secondItem="kj2-JZ-s03" secondAttribute="leading" id="CgS-0H-GIt"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="leading" secondItem="H4u-nJ-iBi" secondAttribute="leadingMargin" id="WRo-n1-JO1"/>
+                            <constraint firstItem="0hP-bH-xN4" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" constant="34" id="ejb-ec-NWC"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="top" secondItem="kj2-JZ-s03" secondAttribute="top" id="gBw-lq-q1W"/>
+                            <constraint firstItem="22o-iB-LVa" firstAttribute="bottom" secondItem="kj2-JZ-s03" secondAttribute="bottom" id="plk-VW-MKm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kj2-JZ-s03"/>
                     </view>
@@ -3052,6 +3052,20 @@
             <point key="canvasLocation" x="789.85507246376812" y="1604.4642857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2I6-Yp-giQ"/>
+        <segue reference="jjA-ik-3Zw"/>
+        <segue reference="gCg-sP-rqZ"/>
+        <segue reference="vym-Dh-yV8"/>
+        <segue reference="zuV-QX-I4e"/>
+        <segue reference="sZP-kj-dZy"/>
+        <segue reference="7xG-kE-rfw"/>
+        <segue reference="hE0-Ui-Mnp"/>
+        <segue reference="Jmz-UD-5Ui"/>
+        <segue reference="CJG-Xc-sZ3"/>
+        <segue reference="zj2-bl-WMz"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="Brand Icon" width="30" height="30"/>
         <image name="Camera Icon" width="30" height="30"/>
@@ -3093,18 +3107,4 @@
         <image name="image_file1024.jpg" width="1024" height="1024"/>
         <image name="list" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2I6-Yp-giQ"/>
-        <segue reference="jjA-ik-3Zw"/>
-        <segue reference="gCg-sP-rqZ"/>
-        <segue reference="vym-Dh-yV8"/>
-        <segue reference="zuV-QX-I4e"/>
-        <segue reference="sZP-kj-dZy"/>
-        <segue reference="7xG-kE-rfw"/>
-        <segue reference="5se-75-Ta6"/>
-        <segue reference="Jmz-UD-5Ui"/>
-        <segue reference="CJG-Xc-sZ3"/>
-        <segue reference="zj2-bl-WMz"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

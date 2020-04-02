@@ -181,8 +181,7 @@ public class CoreDataStorage {
     
     // MARK: room stuff
     // Save a room
-    func saveRoom(room: Room) -> Room
-    {
+    func saveRoom(room: Room) -> Room{
         let context = getContext()
         
         do {

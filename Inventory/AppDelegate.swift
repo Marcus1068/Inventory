@@ -109,8 +109,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let myInventory = store.fetchInventory()
         
+        // clean rooms etc., icloud workaround
+        /*store.deleteAllRooms()
+        store.deleteAllBrands()
+        store.deleteAllOwners()
+        store.deleteAllCategories()*/
+        
+        
         // generate initial data if none available
         if (myInventory.count == 0){
+            
             let rooms = store.fetchAllRooms()
             let categories = store.fetchAllCategories()
             let owners = store.fetchAllOwners()

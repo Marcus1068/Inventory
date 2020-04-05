@@ -38,7 +38,7 @@ private var selectedInventoryItem = Inventory()
 
 private let store = CoreDataStorage.shared
 
-class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate {
+class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate, UIPointerInteractionDelegate {
     
     // define fetch results controller based on core data entity (Room)
     // define sort descriptors
@@ -255,6 +255,26 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         } */
         
         
+    }
+    
+    
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
+        }
+        return pointerStyle
     }
     
     // first actions taken here
@@ -482,6 +502,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.myImage.image = image
         cell.layer.borderWidth = 0.0
         cell.layer.borderColor = UIColor.clear.cgColor
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: cell, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
         
         return cell
     }

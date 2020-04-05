@@ -30,7 +30,8 @@ import os
 
 private let store = CoreDataStorage.shared
 
-class RoomTableViewController: UITableViewController {
+class RoomTableViewController: UITableViewController, UIPointerInteractionDelegate {
+
     
     // cell identifier
     fileprivate let cellIdentifier = "roomCell"
@@ -56,6 +57,25 @@ class RoomTableViewController: UITableViewController {
         
         return fetchedResultsController
     }()
+    
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true)) 
+        }
+        return pointerStyle
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,6 +228,13 @@ extension RoomTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
         configure(cell: cell, for: indexPath)
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: cell, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
         
         return cell
     }

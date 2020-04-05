@@ -107,17 +107,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //store.showSampleData()
         
-        let myInventory = store.fetchInventory()
+        // let myInventory = store.fetchInventory()
+        //let _ = store.fetchInventory()
         
         // clean rooms etc., icloud workaround
         /*store.deleteAllRooms()
         store.deleteAllBrands()
         store.deleteAllOwners()
-        store.deleteAllCategories()*/
+        store.deleteAllCategories() */
         
         
         // generate initial data if none available
-        if (myInventory.count == 0){
+ /*       if (myInventory.count == 0){
             
             let rooms = store.fetchAllRooms()
             let categories = store.fetchAllCategories()
@@ -128,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
                 store.generateInitialAppData()
             }
-        }
+        } */
         // Do any additional setup after loading the view.
         
         // enable statistics collection

@@ -137,26 +137,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // store complete inventory as array
     var results: [Inventory] = []
-    
-    
-    // MARK: - UIPointerInteractionDelegate
-    @available(iOS 13.4, *)
-    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
-        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
-        view.addInteraction(pointerInteraction)
-    }
 
-     
-    @available(iOS 13.4, *)
-    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
-        var pointerStyle: UIPointerStyle? = nil
-
-        if let interactionView = interaction.view {
-            let targetedPreview = UITargetedPreview(view: interactionView)
-            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
-        }
-        return pointerStyle
-    }
     
     // MARK: view load
     
@@ -209,6 +190,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         // pointer interaction
         if #available(iOS 13.4, *) {
             customPointerInteraction(on: imageSwitch, pointerInteractionDelegate: self)
+            customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }

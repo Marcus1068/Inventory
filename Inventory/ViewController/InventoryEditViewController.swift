@@ -41,7 +41,7 @@ protocol InventoryEditViewControllerDelegate {
 private let store = CoreDataStorage.shared
 
 class InventoryEditViewController: UITableViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate,
-                                    UIDropInteractionDelegate, UITextFieldDelegate{
+                                    UIDropInteractionDelegate, UITextFieldDelegate, UIPointerInteractionDelegate{
 
     @IBOutlet weak var textfieldInventoryName: UITextField!
     @IBOutlet weak var textfieldPrice: UITextField!
@@ -99,6 +99,24 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     var editmode : EditMode = EditMode.edit
     
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
+        }
+        return pointerStyle
+    }
     
     // MARK: view initializers
     override func viewDidLoad() {
@@ -279,6 +297,22 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             let myDate = dateformatter.string(from: Date())
             
             timeStampLabel.text = msg + " " + myDate
+        }
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: choosePDFButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: cameraButtonOutlet, pointerInteractionDelegate: self)
+            customPointerInteraction(on: roomButtonLabel, pointerInteractionDelegate: self)
+            customPointerInteraction(on: categoryButtonLabel, pointerInteractionDelegate: self)
+            customPointerInteraction(on: brandButtonLabel, pointerInteractionDelegate: self)
+            customPointerInteraction(on: ownerButtonLabel, pointerInteractionDelegate: self)
+            
+            customPointerInteraction(on: datePicker, pointerInteractionDelegate: self)
+            customPointerInteraction(on: imageView, pointerInteractionDelegate: self)
+            customPointerInteraction(on: pdfView, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
         }
     }
 

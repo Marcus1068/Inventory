@@ -348,6 +348,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         // watch update
         updateWatchData()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: filterSwitch, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     fileprivate func updateNumberOfItemsLabel() {

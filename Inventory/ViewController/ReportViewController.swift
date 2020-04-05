@@ -33,7 +33,7 @@ import os
 
 private let store = CoreDataStorage.shared
 
-class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate {
+class ReportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate, UIPointerInteractionDelegate {
 
     @IBOutlet weak var paperFormatSegment: UISegmentedControl!
     @IBOutlet weak var sortOrderSegment: UISegmentedControl!
@@ -138,6 +138,26 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // store complete inventory as array
     var results: [Inventory] = []
     
+    
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
+        }
+        return pointerStyle
+    }
+    
     // MARK: view load
     
     override func viewDidLoad() {
@@ -185,6 +205,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         // initialize paper size and stuff
         pdfInit()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: imageSwitch, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // refresh user info every time we come back here

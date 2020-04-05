@@ -34,7 +34,7 @@ import MobileCoreServices
 
 private let store = CoreDataStorage.shared
 
-class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate {
+class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate, UIPointerInteractionDelegate {
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -44,6 +44,27 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var importCVSButton: UIButton!
     
     var url : URL?
+    
+    
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
+        }
+        return pointerStyle
+    }
+    
     
     // MARK: view controller stuff
     override func viewDidLoad() {
@@ -73,6 +94,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         // if no export happended disable share button because otherwise app crashes
         //shareBarButton.isEnabled = false
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: exportCVSButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: importCVSButton, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

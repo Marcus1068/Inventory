@@ -30,7 +30,7 @@ import os
 import AudioToolbox
 import WatchConnectivity
 
-class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate  {
+class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPopoverPresentationControllerDelegate, UIPointerInteractionDelegate  {
     @IBOutlet weak var appVersionNumberLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     @IBOutlet weak var iosversionLabel: UILabel!
@@ -54,6 +54,26 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     //var sessionHandler : WatchSessionManager?
     var counter = 0
+    
+    
+    // MARK: - UIPointerInteractionDelegate
+    @available(iOS 13.4, *)
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate: UIPointerInteractionDelegate) {
+        let pointerInteraction = UIPointerInteraction(delegate: pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+
+     
+    @available(iOS 13.4, *)
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle? = nil
+
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect: UIPointerEffect.hover(targetedPreview, preferredTintMode: .overlay, prefersShadow: true, prefersScaledContent: true))
+        }
+        return pointerStyle
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +103,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         // Do any additional setup after loading the view.
         
         //useiCloudSettingsStorage()
+        
+        // pointer interaction
+        if #available(iOS 13.4, *) {
+            customPointerInteraction(on: appInformationButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: feedbackButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: privacyButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: userManualButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: appSettingsButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // setup all things that need to be refreshed when view comes to screen

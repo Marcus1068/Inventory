@@ -280,6 +280,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="Ojg-iG-dPo"/>
+                    <connections>
+                        <outlet property="staticCellBrandAdd" destination="BAy-vi-COq" id="9RV-ct-ihK"/>
+                        <outlet property="staticCellBrandEdit" destination="jtX-DR-kzd" id="gxS-oN-3wk"/>
+                        <outlet property="staticCellCategoriesEdit" destination="GiY-Ms-pcb" id="v3Y-IK-r3X"/>
+                        <outlet property="staticCellCategoryAdd" destination="Gvd-9w-gAV" id="0Ym-VN-A2g"/>
+                        <outlet property="staticCellOwnerAdd" destination="rix-C6-t4k" id="rV7-JF-26q"/>
+                        <outlet property="staticCellOwnerEdit" destination="2qI-tE-jgq" id="bOH-An-BK5"/>
+                        <outlet property="staticCellRoomAdd" destination="Iwm-eo-ghf" id="fPb-Vi-CIU"/>
+                        <outlet property="staticCellRoomEdit" destination="XnI-7m-ipP" id="EBI-j8-YaE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYe-ZD-Pde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

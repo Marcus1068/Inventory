@@ -74,6 +74,7 @@ class Global: UIViewController {
     static let addInv = NSLocalizedString("Add inventory", comment: "Add inventory")
     static let share = NSLocalizedString("Share", comment: "Share")
     static let inventory = NSLocalizedString("Inventory", comment: "Inventory")
+    static let importExport = NSLocalizedString("Import/Export", comment: "Import/Export")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

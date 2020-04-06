@@ -109,6 +109,7 @@ extension NSToolbarItem.Identifier {
     static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
     static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
+    static let importEntry = NSToolbarItem.Identifier(rawValue: "ImportEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
     static let aboutEntry = NSToolbarItem.Identifier(rawValue: "AboutEntry")
 }
@@ -117,12 +118,12 @@ extension NSToolbarItem.Identifier {
 extension SceneDelegate: NSToolbarDelegate {
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
 
     // inventory overview
@@ -159,6 +160,14 @@ extension SceneDelegate: NSToolbarDelegate {
         }
         
         tabBarController.selectedIndex = 1
+    }
+    
+    @objc func importEntry() {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 2
     }
     
     @objc func reportEntry() {
@@ -245,6 +254,14 @@ extension SceneDelegate: NSToolbarDelegate {
             item?.action = #selector(manageItemsEntry)
             break
         
+            case .importEntry:
+            let barButtonItem =
+                UIBarButtonItem(image: UIImage(named: "Export"), style: .plain, target: self, action: #selector(importEntry))
+            item = toolbarItem(itemIdentifier: .importEntry, barButtonItem: barButtonItem, toolTip: Global.importExport, label: Global.importExport)
+            item?.target = self
+            item?.action = #selector(importEntry)
+            break
+            
         case .reportEntry:
             let barButtonItem =
                 UIBarButtonItem(image: UIImage(named: "Report"), style: .plain, target: self, action: #selector(reportEntry))

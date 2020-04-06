@@ -683,7 +683,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBAction func roomButton(_ sender: Any) {
         let message = NSLocalizedString("Choose your room", comment: "Choose your room")
         
-        let myActionSheet = UIAlertController(title: Local.room, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: message, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for room in rooms{
             let action = UIAlertAction(title: room.roomName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -705,7 +705,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBAction func categoryButton(_ sender: Any) {
         let message = NSLocalizedString("Choose your category", comment: "Choose your category")
         
-        let myActionSheet = UIAlertController(title: Local.category, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: message, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for category in categories{
             let action = UIAlertAction(title: category.categoryName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -727,7 +727,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBAction func brandButton(_ sender: Any) {
         let message = NSLocalizedString("Choose your brand", comment: "Choose your brand")
         
-        let myActionSheet = UIAlertController(title: Local.brand, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: message, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for brand in brands{
             let action = UIAlertAction(title: brand.brandName, style: UIAlertAction.Style.default) { (ACTION) in
@@ -749,7 +749,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     @IBAction func ownerButton(_ sender: Any) {
         let message = NSLocalizedString("Choose your owner", comment: "Choose your owner")
         
-        let myActionSheet = UIAlertController(title: Local.owner, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+        let myActionSheet = UIAlertController(title: message, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
         for owner in owners{
             let action = UIAlertAction(title: owner.ownerName, style: UIAlertAction.Style.default) { (ACTION) in

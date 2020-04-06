@@ -929,19 +929,24 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchOK, .fixedSpaceSmall, .touchPicture, .touchPDF, .flexibleSpace, .touchCancel]
+        touchBar.defaultItemIdentifiers = [.touchCancel, .flexibleSpace, .touchPicture, .touchPDF, .fixedSpaceSmall, .touchRoom, .touchCategory, .touchBrand, .touchOwner, .fixedSpaceSmall, .touchOK]
         
         let ok = NSButtonTouchBarItem(identifier: .touchOK, title: Global.save, target: self, action: #selector(saveButton(_:)))
-        ok.bezelColor = UIColor(red:0.35, green:0.61, blue:0.35, alpha:1.00)    // green background for button
+        ok.bezelColor = Global.colorGreen
         let cancel = NSButtonTouchBarItem(identifier: .touchCancel, title: Global.cancel, target: self, action: #selector(cancelButton(_:)))
+        cancel.bezelColor = Global.colorRed
         let picture = NSButtonTouchBarItem(identifier: .touchPicture, image: UIImage(systemName: "camera")!, target: self, action: #selector(cameraNavBarAction(_:)))
         let pdf = NSButtonTouchBarItem(identifier: .touchPDF, image: UIImage(systemName: "doc.richtext")!, target: self, action: #selector(choosePDFButton(_:)))
+        let room = NSButtonTouchBarItem(identifier: .touchRoom, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomButton(_:)))
+        let category = NSButtonTouchBarItem(identifier: .touchCategory, image: UIImage(systemName: "book")!, target: self, action: #selector(categoryButton(_:)))
+        let brand = NSButtonTouchBarItem(identifier: .touchBrand, image: UIImage(systemName: "cube.box")!, target: self, action: #selector(brandButton(_:)))
+        let owner = NSButtonTouchBarItem(identifier: .touchOwner, image: UIImage(systemName: "person.2.fill")!, target: self, action: #selector(ownerButton(_:)))
         
-        touchBar.templateItems = [ok, cancel, picture, pdf]
+        touchBar.templateItems = [ok, cancel, picture, pdf, room, category, brand, owner]
         
         return touchBar
     }
-    
+
     #endif
 }
 

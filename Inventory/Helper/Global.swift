@@ -50,7 +50,9 @@ class Global: UIViewController {
     static let csvFile = "inventoryAppExport.csv"
     static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf") // FIXME: why translate?
     
-    
+    // colors used system wide
+    static let colorGreen = UIColor(red:0.35, green:0.61, blue:0.35, alpha:1.00)  // green background for button bezel
+    static let colorRed = UIColor(red:0.65, green:0.11, blue:0.25, alpha:1.00)    // red background for button bezel
     
     // localization strings
     static let all = NSLocalizedString("All", comment: "All")

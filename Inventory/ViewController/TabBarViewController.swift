@@ -41,6 +41,10 @@ extension NSTouchBarItem.Identifier{
     static let touchCancel = NSTouchBarItem.Identifier("de.marcus-deuss.cancel")
     static let touchPDF = NSTouchBarItem.Identifier("de.marcus-deuss.pdf")
     static let touchPicture = NSTouchBarItem.Identifier("de.marcus-deuss.picture")
+    static let touchRoom = NSTouchBarItem.Identifier("de.marcus-deuss.room")
+    static let touchCategory = NSTouchBarItem.Identifier("de.marcus-deuss.category")
+    static let touchBrand = NSTouchBarItem.Identifier("de.marcus-deuss.brand")
+    static let touchOwner = NSTouchBarItem.Identifier("de.marcus-deuss.owner")
 }
 #endif
 

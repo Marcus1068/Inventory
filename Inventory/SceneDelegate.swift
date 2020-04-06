@@ -128,7 +128,7 @@ extension SceneDelegate: NSToolbarDelegate {
 
     // inventory overview
     // manage all items like rooms, categories etc call
-    @objc func inventoryEntry() {
+    @objc func inventoryEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -137,7 +137,7 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     // Add inventory call
-    @objc func addInvEntry() {
+    @objc func addInvEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -154,7 +154,7 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     // manage all items like rooms, categories etc call
-    @objc func manageItemsEntry() {
+    @objc func manageItemsEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -162,7 +162,7 @@ extension SceneDelegate: NSToolbarDelegate {
         tabBarController.selectedIndex = 1
     }
     
-    @objc func importEntry() {
+    @objc func importEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -170,7 +170,7 @@ extension SceneDelegate: NSToolbarDelegate {
         tabBarController.selectedIndex = 2
     }
     
-    @objc func reportEntry() {
+    @objc func reportEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -230,55 +230,49 @@ extension SceneDelegate: NSToolbarDelegate {
 
         switch(itemIdentifier){
         case .inventoryOverviewEntry:
-            let barButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .compose,
-                              target: self, action: #selector(inventoryEntry))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(inventoryEntry(_:)))
             item = toolbarItem(itemIdentifier: .inventoryOverviewEntry, barButtonItem: barButtonItem, toolTip: Global.inventory, label: Global.inventory)
             item?.target = self
             item?.action = #selector(inventoryEntry)
             break
             
         case .addInvEntry:
-            let barButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addInvEntry))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addInvEntry(_:)))
             item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: Global.addInv, label: Global.addInv)
             item?.target = self
             item?.action = #selector(addInvEntry)
             break
             
         case .manageItemsEntry:
-            let barButtonItem =
-                UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(manageItemsEntry))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.number"), style: .plain, target: self, action: #selector(manageItemsEntry(_:)))
             item = toolbarItem(itemIdentifier: .manageItemsEntry, barButtonItem: barButtonItem, toolTip: Global.manageItems, label: Global.manageItems)
             item?.target = self
             item?.action = #selector(manageItemsEntry)
             break
         
             case .importEntry:
-            let barButtonItem =
-                UIBarButtonItem(image: UIImage(named: "Export"), style: .plain, target: self, action: #selector(importEntry))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down.on.square"), style: .plain, target: self, action: #selector(importEntry(_:)))
             item = toolbarItem(itemIdentifier: .importEntry, barButtonItem: barButtonItem, toolTip: Global.importExport, label: Global.importExport)
             item?.target = self
             item?.action = #selector(importEntry)
             break
             
         case .reportEntry:
-            let barButtonItem =
-                UIBarButtonItem(image: UIImage(named: "Report"), style: .plain, target: self, action: #selector(reportEntry))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "doc.text"), style: .plain, target: self, action: #selector(reportEntry(_:)))
             item = toolbarItem(itemIdentifier: .reportEntry, barButtonItem: barButtonItem, toolTip: Global.report, label: Global.report)
             item?.target = self
             item?.action = #selector(reportEntry)
             break
             
         case .aboutEntry:
-            let barButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(aboutEntry(_:)))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(aboutEntry(_:)))
             item = toolbarItem(itemIdentifier: .aboutEntry, barButtonItem: barButtonItem, toolTip: Global.about, label: Global.about)
             item?.target = self
             item?.action = #selector(aboutEntry)
             break
         
         case .shareEntry:
-            let barButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareEntry(_:)))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareEntry(_:)))
             item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: Global.share, label: Global.share)
             break
             

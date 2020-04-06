@@ -91,13 +91,12 @@ class TabBarViewController: UITabBarController {
         
         touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .touchReport, .touchShare, .touchAbout]
         let manage = NSButtonTouchBarItem(identifier: .touchManage, title: Global.manageItems, target: self, action: #selector(manageItemsEntry))
-        let report = NSButtonTouchBarItem(identifier: .touchReport, title: Global.report, target: self, action: #selector(reportEntry))
+        let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(systemName: "doc.text")!, target: self, action: #selector(reportEntry))
         let inventory = NSButtonTouchBarItem(identifier: .touchInventory, title: Global.inventory, target: self, action: #selector(inventoryEntry))
-        let share = NSButtonTouchBarItem(identifier: .touchShare, title: Global.share, target: self, action: #selector(shareEntry))
+        let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))
         let about = NSButtonTouchBarItem(identifier: .touchAbout, title: Global.about, target: self, action: #selector(aboutEntry))
         let add = NSButtonTouchBarItem(identifier: .touchAdd, title: Global.addInv, target: self, action: #selector(addInvEntry))
         
-        //let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(named: "Report")!, target: self, action: #selector(reportEntry))
         touchBar.templateItems = [manage, add, report, inventory, share, about]
         
         return touchBar

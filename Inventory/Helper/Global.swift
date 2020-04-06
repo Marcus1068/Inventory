@@ -68,6 +68,13 @@ class Global: UIViewController {
     static let copy = NSLocalizedString("Copy", comment: "Copy")
     static let printInvoice = NSLocalizedString("Print Invoice", comment: "Print Invoice")
     
+    static let about = NSLocalizedString("About", comment: "About")
+    static let report = NSLocalizedString("Report", comment: "Report")
+    static let manageItems = NSLocalizedString("Manage items", comment: "manage items")
+    static let addInv = NSLocalizedString("Add inventory", comment: "Add inventory")
+    static let share = NSLocalizedString("Share", comment: "Share")
+    static let inventory = NSLocalizedString("Inventory", comment: "Inventory")
+    
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")
     static let emailNotSent = NSLocalizedString("Email could not be sent", comment: "Email could not be sent")

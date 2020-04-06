@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // will be called when Today extension is beeing used to open the app
+    // will be called when Today extension is being used to open the app
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         //print("opened by extension")

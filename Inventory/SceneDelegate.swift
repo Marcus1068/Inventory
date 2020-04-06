@@ -109,7 +109,6 @@ extension NSToolbarItem.Identifier {
     static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
     static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
-    static let deleteEntry = NSToolbarItem.Identifier(rawValue: "DeleteEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
     static let aboutEntry = NSToolbarItem.Identifier(rawValue: "AboutEntry")
 }
@@ -169,22 +168,21 @@ extension SceneDelegate: NSToolbarDelegate {
         
         tabBarController.selectedIndex = 3
     }
-      
-    @objc private func deleteEntry() {
+
+    @objc private func shareEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
         
         tabBarController.selectedIndex = 3
-    }
-
-    @objc private func shareEntry(_ sender: UIBarButtonItem) {
-        // TODO:
-        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
-            return
-        }
         
-        tabBarController.selectedIndex = 4
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        let pdfView = storyboard.instantiateViewController(withIdentifier: "PDFViewerID") as! PDFViewController
+        var docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
+        
+        docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
+        pdfView.shareAction(currentPath: docURL! as URL)
+        
     }
     
     @objc private func aboutEntry(_ sender: UIBarButtonItem) {
@@ -226,60 +224,45 @@ extension SceneDelegate: NSToolbarDelegate {
             let barButtonItem =
                 UIBarButtonItem(barButtonSystemItem: .compose,
                               target: self, action: #selector(inventoryEntry))
-            item = toolbarItem(itemIdentifier: .inventoryOverviewEntry, barButtonItem: barButtonItem, toolTip: "Inventory", label: "Inventory")
+            item = toolbarItem(itemIdentifier: .inventoryOverviewEntry, barButtonItem: barButtonItem, toolTip: Global.inventory, label: Global.inventory)
             item?.target = self
             item?.action = #selector(inventoryEntry)
             break
             
         case .addInvEntry:
             let barButtonItem =
-                UIBarButtonItem(barButtonSystemItem: .add,
-                              target: self, action: #selector(addInvEntry))
-            item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: "Add Inv Entry", label: "Add Inventory")
+                UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addInvEntry))
+            item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: Global.addInv, label: Global.addInv)
             item?.target = self
             item?.action = #selector(addInvEntry)
             break
             
         case .manageItemsEntry:
             let barButtonItem =
-                UIBarButtonItem(image: UIImage(named: "list"), style: .plain,
-                              target: self, action: #selector(manageItemsEntry))
-            item = toolbarItem(itemIdentifier: .manageItemsEntry, barButtonItem: barButtonItem, toolTip: "Manage Items", label: "Manage Items")
+                UIBarButtonItem(image: UIImage(named: "list"), style: .plain, target: self, action: #selector(manageItemsEntry))
+            item = toolbarItem(itemIdentifier: .manageItemsEntry, barButtonItem: barButtonItem, toolTip: Global.manageItems, label: Global.manageItems)
             item?.target = self
             item?.action = #selector(manageItemsEntry)
             break
         
-            case .reportEntry:
+        case .reportEntry:
             let barButtonItem =
-                UIBarButtonItem(image: UIImage(named: "Report"), style: .plain,
-                              target: self, action: #selector(reportEntry))
-            item = toolbarItem(itemIdentifier: .reportEntry, barButtonItem: barButtonItem, toolTip: "Show Report", label: "Show Report")
+                UIBarButtonItem(image: UIImage(named: "Report"), style: .plain, target: self, action: #selector(reportEntry))
+            item = toolbarItem(itemIdentifier: .reportEntry, barButtonItem: barButtonItem, toolTip: Global.report, label: Global.report)
             item?.target = self
             item?.action = #selector(reportEntry)
             break
             
-        case .deleteEntry:
-            let barButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteEntry))
-            
-            item = toolbarItem(itemIdentifier: .deleteEntry, barButtonItem: barButtonItem, toolTip: "Delete Entry", label: "Delete")
-            
-            item?.target = self
-            item?.action = #selector(deleteEntry)
-            break
-            
         case .aboutEntry:
             let barButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(aboutEntry(_:)))
-            
-            item = toolbarItem(itemIdentifier: .aboutEntry, barButtonItem: barButtonItem, toolTip: "About Inventory", label: "About Inventory")
-            
+            item = toolbarItem(itemIdentifier: .aboutEntry, barButtonItem: barButtonItem, toolTip: Global.about, label: Global.about)
             item?.target = self
             item?.action = #selector(aboutEntry)
             break
         
-            case .shareEntry:
+        case .shareEntry:
             let barButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareEntry(_:)))
-            
-            item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: "Share Entry", label: "Share Inventory")
+            item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: Global.share, label: Global.share)
             break
             
         default:

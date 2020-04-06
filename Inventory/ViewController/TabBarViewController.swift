@@ -72,7 +72,14 @@ class TabBarViewController: UITabBarController {
     }
 
     @objc private func shareEntry(_ sender: UIBarButtonItem) {
-        //self.selectedIndex = 4
+        self.selectedIndex = 3
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        let pdfView = storyboard.instantiateViewController(withIdentifier: "PDFViewerID") as! PDFViewController
+        var docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
+        
+        docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
+        pdfView.shareAction(currentPath: docURL! as URL)
     }
     
     @objc private func aboutEntry(_ sender: UIBarButtonItem) {
@@ -81,13 +88,14 @@ class TabBarViewController: UITabBarController {
 
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
+        
         touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .touchReport, .touchShare, .touchAbout]
-        let manage = NSButtonTouchBarItem(identifier: .touchManage, title: "Manage Items", target: self, action: #selector(manageItemsEntry))
-        let report = NSButtonTouchBarItem(identifier: .touchReport, title: "Report", target: self, action: #selector(reportEntry))
-        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, title: "Inventory", target: self, action: #selector(inventoryEntry))
-        let share = NSButtonTouchBarItem(identifier: .touchShare, title: "Share", target: self, action: #selector(ReportViewController.sharePdf(path:)))
-        let about = NSButtonTouchBarItem(identifier: .touchAbout, title: "About", target: self, action: #selector(aboutEntry))
-        let add = NSButtonTouchBarItem(identifier: .touchAdd, title: "Add Inventory", target: self, action: #selector(addInvEntry))
+        let manage = NSButtonTouchBarItem(identifier: .touchManage, title: Global.manageItems, target: self, action: #selector(manageItemsEntry))
+        let report = NSButtonTouchBarItem(identifier: .touchReport, title: Global.report, target: self, action: #selector(reportEntry))
+        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, title: Global.inventory, target: self, action: #selector(inventoryEntry))
+        let share = NSButtonTouchBarItem(identifier: .touchShare, title: Global.share, target: self, action: #selector(shareEntry))
+        let about = NSButtonTouchBarItem(identifier: .touchAbout, title: Global.about, target: self, action: #selector(aboutEntry))
+        let add = NSButtonTouchBarItem(identifier: .touchAdd, title: Global.addInv, target: self, action: #selector(addInvEntry))
         
         //let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(named: "Report")!, target: self, action: #selector(reportEntry))
         touchBar.templateItems = [manage, add, report, inventory, share, about]

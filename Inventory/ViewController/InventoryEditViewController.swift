@@ -923,6 +923,25 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 height: page2ImageView.frame.size.height), for: .artBox)
         } */
     } */
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchOK, .fixedSpaceSmall, .touchPicture, .touchPDF, .flexibleSpace, .touchCancel]
+        
+        let ok = NSButtonTouchBarItem(identifier: .touchOK, title: Global.save, target: self, action: #selector(saveButton(_:)))
+        let cancel = NSButtonTouchBarItem(identifier: .touchCancel, title: Global.cancel, target: self, action: #selector(cancelButton(_:)))
+        let picture = NSButtonTouchBarItem(identifier: .touchPicture, image: UIImage(systemName: "camera")!, target: self, action: #selector(cameraNavBarAction(_:)))
+        let pdf = NSButtonTouchBarItem(identifier: .touchPDF, image: UIImage(systemName: "doc.richtext")!, target: self, action: #selector(choosePDFButton(_:)))
+        
+        touchBar.templateItems = [ok, cancel, picture, pdf]
+        
+        return touchBar
+    }
+    
+    #endif
 }
 
 

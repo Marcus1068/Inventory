@@ -30,7 +30,7 @@ import UIKit
 var globalWindow: UIWindow?
 
 @available(iOS 13.0, macOS 15.0, *)
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, NSTouchBarDelegate{
+class SceneDelegate: UIResponder, UIWindowSceneDelegate{
     
     var window: UIWindow?
     

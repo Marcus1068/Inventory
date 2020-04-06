@@ -32,8 +32,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bed.double" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-ZL-NnA">
+                                                    <rect key="frame" x="315.5" y="11" width="24.5" height="15.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -63,8 +63,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Z6f-U8-Udu">
+                                                    <rect key="frame" x="318.5" y="9.5" width="21.5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -94,8 +94,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="E0t-qX-yF0">
+                                                    <rect key="frame" x="319" y="8" width="21" height="20.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -125,8 +125,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DzZ-C1-Jc0">
+                                                    <rect key="frame" x="313" y="9.5" width="27" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -160,8 +160,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bed.double" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
+                                                    <rect key="frame" x="315.5" y="11" width="24.5" height="15.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -191,8 +191,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
+                                                    <rect key="frame" x="318.5" y="9.5" width="21.5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -222,8 +222,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5qk-T5-xmx">
+                                                    <rect key="frame" x="319" y="8" width="21" height="20.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -253,8 +253,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
-                                                    <rect key="frame" x="310" y="8" width="30" height="30"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JkD-E5-yqi">
+                                                    <rect key="frame" x="313" y="9.5" width="27" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -300,7 +300,7 @@
             <objects>
                 <tableViewController id="7vS-va-EUq" customClass="CategoryTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="dXP-Gt-g5K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="TDg-hI-3iO">
@@ -317,8 +317,8 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
-                                    <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-gf-h77">
+                                    <rect key="frame" x="8" y="5.5" width="36" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="TdM-fb-a5x"/>
                                         <constraint firstAttribute="width" constant="36" id="yBP-8J-iz1"/>
@@ -381,7 +381,7 @@
             <objects>
                 <tableViewController id="9hb-hU-Cxa" customClass="RoomTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="STY-Pa-Nxh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="p3A-UU-TKg">
@@ -398,8 +398,8 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
-                                    <rect key="frame" x="12" y="4" width="36" height="36"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bed.double" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-vJ-kYR">
+                                    <rect key="frame" x="12" y="7" width="36" height="31.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="82t-qv-ykd"/>
                                         <constraint firstAttribute="height" constant="36" id="Jr3-Mb-Qqx"/>
@@ -464,8 +464,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUQ-Gt-7Jv">
                                 <rect key="frame" x="0.0" y="44" width="375" height="46"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-8A-JRQ">
-                                        <rect key="frame" x="169.5" y="5" width="36" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zaR-8A-JRQ">
+                                        <rect key="frame" x="169.5" y="6.5" width="36" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="MJx-GM-1e7"/>
                                         </constraints>
@@ -855,11 +855,11 @@
             <objects>
                 <viewController title="Edit Room" id="AAM-yv-3qO" customClass="RoomEditViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ce2-tj-tH9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qt1-0r-dSz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="754"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="754"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-oo-Anm">
                                         <rect key="frame" x="0.0" y="-4" width="375" height="785"/>
@@ -867,8 +867,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKC-2j-9Q5">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="42"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Room Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zTi-4a-HQI">
-                                                        <rect key="frame" x="165" y="-1.5" width="45" height="45"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bed.double" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zTi-4a-HQI">
+                                                        <rect key="frame" x="165" y="1.5" width="45" height="40.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="45" id="bss-XP-Et1"/>
                                                             <constraint firstAttribute="height" constant="45" id="oQM-Iv-unm"/>
@@ -2136,7 +2136,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9xz-vC-b5a"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About Inventory" image="about" id="2Ep-nZ-I2N"/>
+                    <tabBarItem key="tabBarItem" title="About Inventory" image="info.circle" catalog="system" id="2Ep-nZ-I2N"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addressTextField" destination="L29-LM-HTq" id="6De-XN-Ge7"/>
@@ -2621,7 +2621,7 @@
         <scene sceneID="pfg-Ho-yVm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IbM-Ka-Gqt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Manage Items" image="list" id="8ee-co-69w"/>
+                    <tabBarItem key="tabBarItem" title="Manage Items" image="list.number" catalog="system" id="8ee-co-69w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cId-pg-KzG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2640,7 +2640,7 @@
         <scene sceneID="my9-ac-fzL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jxM-ak-Z6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Inventory" image="createNew" id="bMy-mx-l0r"/>
+                    <tabBarItem key="tabBarItem" title="My Inventory" image="square.and.pencil" catalog="system" id="bMy-mx-l0r"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XZ5-lm-emo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2660,7 +2660,7 @@
             <objects>
                 <tableViewController id="iCz-KG-ewV" customClass="BrandTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="dVn-3i-FaS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="pmu-bl-MiB">
@@ -2677,8 +2677,8 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
-                                    <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="w23-Wc-G3Z">
+                                    <rect key="frame" x="8" y="4" width="36" height="36.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="1Um-Ta-zSy"/>
                                         <constraint firstAttribute="height" constant="36" id="m3x-1E-gMq"/>
@@ -2748,8 +2748,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f25-yk-tN8">
                                 <rect key="frame" x="0.0" y="44" width="375" height="46"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brand Icon" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-ig-L8e">
-                                        <rect key="frame" x="169.5" y="5" width="36" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-ig-L8e">
+                                        <rect key="frame" x="169.5" y="5" width="36" height="36.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="b9i-YI-5AV"/>
                                         </constraints>
@@ -2836,7 +2836,7 @@
             <objects>
                 <tableViewController id="gJg-Vs-sIe" customClass="OwnerTableViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="xyl-0w-6X7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="GlM-9z-INp">
@@ -2852,8 +2852,8 @@
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
-                                    <rect key="frame" x="12" y="8" width="36" height="36"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Yh-3G-0L4">
+                                    <rect key="frame" x="12" y="9.5" width="36" height="33"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="atI-YE-Oo5"/>
                                         <constraint firstAttribute="width" constant="36" id="fgb-au-Dqa"/>
@@ -2922,8 +2922,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imj-n1-qeK">
                                 <rect key="frame" x="0.0" y="44" width="375" height="46"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Owner Icon" translatesAutoresizingMaskIntoConstraints="NO" id="ePj-83-Gh9">
-                                        <rect key="frame" x="169.5" y="5" width="36" height="36"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ePj-83-Gh9">
+                                        <rect key="frame" x="169.5" y="6.5" width="36" height="33"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="6nF-uD-8zg"/>
                                         </constraints>
@@ -3009,7 +3009,7 @@
         <scene sceneID="6tq-4F-V0J">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iCP-vz-194" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reports" image="Report" id="PmY-Hp-6ai"/>
+                    <tabBarItem key="tabBarItem" title="Reports" image="doc.text" catalog="system" id="PmY-Hp-6ai"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="65v-9Q-kR6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -3046,7 +3046,7 @@
         <scene sceneID="sne-G9-aG5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="edJ-JG-MDw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Import/Export" image="Export" id="CGe-VZ-Z2L"/>
+                    <tabBarItem key="tabBarItem" title="Import/Export" image="square.and.arrow.down.on.square" catalog="system" id="CGe-VZ-Z2L"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y75-1X-dbn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -3064,30 +3064,26 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="2I6-Yp-giQ"/>
-        <segue reference="jjA-ik-3Zw"/>
-        <segue reference="gCg-sP-rqZ"/>
+        <segue reference="bFR-vc-3Sf"/>
+        <segue reference="mNe-wM-gEY"/>
         <segue reference="vym-Dh-yV8"/>
-        <segue reference="zuV-QX-I4e"/>
+        <segue reference="aUd-Fn-dpo"/>
         <segue reference="sZP-kj-dZy"/>
         <segue reference="7xG-kE-rfw"/>
-        <segue reference="hE0-Ui-Mnp"/>
+        <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>
-        <segue reference="CJG-Xc-sZ3"/>
-        <segue reference="zj2-bl-WMz"/>
+        <segue reference="I7b-Rp-fDa"/>
+        <segue reference="i5d-kh-DgH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
-        <image name="Brand Icon" width="30" height="30"/>
         <image name="Camera Icon" width="30" height="30"/>
-        <image name="Category Icon" width="30" height="30"/>
-        <image name="Export" width="30" height="30"/>
         <image name="Inventory" width="512" height="512"/>
-        <image name="Owner Icon" width="30" height="30"/>
         <image name="PDF Icon" width="30" height="30"/>
-        <image name="Report" width="30" height="30"/>
-        <image name="Room Icon" width="30" height="30"/>
-        <image name="about" width="30" height="30"/>
-        <image name="createNew" width="30" height="30"/>
+        <image name="bed.double" catalog="system" width="128" height="80"/>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="cube.box" catalog="system" width="128" height="124"/>
+        <image name="doc.text" catalog="system" width="115" height="128"/>
         <image name="icons8-arbeitsplatz-50" width="96" height="96"/>
         <image name="icons8-bett-50" width="96" height="96"/>
         <image name="icons8-buchhaltung-96" width="96" height="96"/>
@@ -3115,6 +3111,10 @@
         <image name="icons8-wohnzimmer-50" width="96" height="96"/>
         <image name="icons8-zimmer-96" width="96" height="96"/>
         <image name="image_file1024.jpg" width="1024" height="1024"/>
-        <image name="list" width="30" height="30"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="list.number" catalog="system" width="128" height="97"/>
+        <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="square.and.arrow.down.on.square" catalog="system" width="122" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>

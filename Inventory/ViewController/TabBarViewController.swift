@@ -89,13 +89,13 @@ class TabBarViewController: UITabBarController {
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .touchReport, .touchShare, .touchAbout]
-        let manage = NSButtonTouchBarItem(identifier: .touchManage, title: Global.manageItems, target: self, action: #selector(manageItemsEntry))
+        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchReport, .fixedSpaceSmall, .touchShare, .fixedSpaceSmall, .touchAbout]
+        let manage = NSButtonTouchBarItem(identifier: .touchManage, image: UIImage(systemName: "list.number")!, target: self, action: #selector(manageItemsEntry))
         let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(systemName: "doc.text")!, target: self, action: #selector(reportEntry))
-        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, title: Global.inventory, target: self, action: #selector(inventoryEntry))
+        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, image: UIImage(systemName: "square.and.pencil")!, target: self, action: #selector(inventoryEntry))
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))
-        let about = NSButtonTouchBarItem(identifier: .touchAbout, title: Global.about, target: self, action: #selector(aboutEntry))
-        let add = NSButtonTouchBarItem(identifier: .touchAdd, title: Global.addInv, target: self, action: #selector(addInvEntry))
+        let about = NSButtonTouchBarItem(identifier: .touchAbout, image: UIImage(systemName: "info.circle")!, target: self, action: #selector(aboutEntry))
+        let add = NSButtonTouchBarItem(identifier: .touchAdd, image: UIImage(systemName: "plus")!, target: self, action: #selector(addInvEntry))
         
         touchBar.templateItems = [manage, add, report, inventory, share, about]
         

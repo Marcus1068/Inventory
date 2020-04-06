@@ -356,7 +356,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // share a PDF file to iOS: print, save to file
-    func sharePdf(path: URL) {
+    @objc func sharePdf(path: URL) {
         
         shareAction(currentPath: path)
     }

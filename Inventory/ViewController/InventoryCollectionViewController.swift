@@ -254,9 +254,26 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             stats.refresh()
         } */
         
-        
     }
     
+   /* @objc private func aboutEntry(_ sender: UIBarButtonItem) {
+        /*// TODO:
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 4 */
+    }
+
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.defaultItemIdentifiers = [.newTouchEntry]
+        let button = NSButtonTouchBarItem(identifier: .newEntry, title: "New Entry", target: self, action: #selector(aboutEntry))
+        touchBar.templateItems = [button]
+        
+        return touchBar
+    } */
+
     
     // first actions taken here
     

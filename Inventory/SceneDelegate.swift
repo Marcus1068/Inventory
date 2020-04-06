@@ -30,7 +30,7 @@ import UIKit
 var globalWindow: UIWindow?
 
 @available(iOS 13.0, macOS 15.0, *)
-class SceneDelegate: UIResponder, UIWindowSceneDelegate{
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, NSTouchBarDelegate{
     
     var window: UIWindow?
     
@@ -105,6 +105,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
 
 #if targetEnvironment(macCatalyst)
 extension NSToolbarItem.Identifier {
+    static let inventoryOverviewEntry = NSToolbarItem.Identifier(rawValue: "inventoryOverviewEntry")
     static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
     static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
@@ -117,14 +118,23 @@ extension NSToolbarItem.Identifier {
 extension SceneDelegate: NSToolbarDelegate {
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
 
+    // inventory overview
+    // manage all items like rooms, categories etc call
+    @objc func inventoryEntry() {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 0
+    }
     
     // Add inventory call
     @objc func addInvEntry() {
@@ -212,9 +222,18 @@ extension SceneDelegate: NSToolbarDelegate {
         var item: NSToolbarItem? = nil
 
         switch(itemIdentifier){
-        case .addInvEntry:
+        case .inventoryOverviewEntry:
             let barButtonItem =
                 UIBarButtonItem(barButtonSystemItem: .compose,
+                              target: self, action: #selector(inventoryEntry))
+            item = toolbarItem(itemIdentifier: .inventoryOverviewEntry, barButtonItem: barButtonItem, toolTip: "Inventory", label: "Inventory")
+            item?.target = self
+            item?.action = #selector(inventoryEntry)
+            break
+            
+        case .addInvEntry:
+            let barButtonItem =
+                UIBarButtonItem(barButtonSystemItem: .add,
                               target: self, action: #selector(addInvEntry))
             item = toolbarItem(itemIdentifier: .addInvEntry, barButtonItem: barButtonItem, toolTip: "Add Inv Entry", label: "Add Inventory")
             item?.target = self

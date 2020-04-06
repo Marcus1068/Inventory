@@ -932,6 +932,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         touchBar.defaultItemIdentifiers = [.touchOK, .fixedSpaceSmall, .touchPicture, .touchPDF, .flexibleSpace, .touchCancel]
         
         let ok = NSButtonTouchBarItem(identifier: .touchOK, title: Global.save, target: self, action: #selector(saveButton(_:)))
+        ok.bezelColor = UIColor(red:0.35, green:0.61, blue:0.35, alpha:1.00)    // green background for button
         let cancel = NSButtonTouchBarItem(identifier: .touchCancel, title: Global.cancel, target: self, action: #selector(cancelButton(_:)))
         let picture = NSButtonTouchBarItem(identifier: .touchPicture, image: UIImage(systemName: "camera")!, target: self, action: #selector(cameraNavBarAction(_:)))
         let pdf = NSButtonTouchBarItem(identifier: .touchPDF, image: UIImage(systemName: "doc.richtext")!, target: self, action: #selector(choosePDFButton(_:)))

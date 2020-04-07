@@ -115,7 +115,7 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
         }
 
         // focus on first text field
-        textfieldRoomName.becomeFirstResponder()
+        //textfieldRoomName.becomeFirstResponder()
         textfieldRoomName.delegate = self
         textfieldRoomName.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldRoomName.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
@@ -162,6 +162,11 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     @IBAction func saveButton(_ sender: Any) {
         // close keyboard
         self.view.endEditing(true)
+        
+        if textfieldRoomName.text?.count == 0{
+            displayAlert(title: Global.invalidRoomName, message: "", buttonText: Global.ok)
+            return
+        }
         
         // new room
         if (currentRoom == nil)
@@ -304,5 +309,25 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
             break
         }
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchCancel, .fixedSpaceSmall, .touchSave]
+        
+        let save = NSButtonTouchBarItem(identifier: .touchSave, title: Global.save, target: self, action: #selector(saveButton(_:)))
+        save.bezelColor = Global.colorGreen
+        
+        let cancel = NSButtonTouchBarItem(identifier: .touchCancel, title: Global.cancel, target: self, action: #selector(cancelButton(_:)))
+        cancel.bezelColor = Global.colorRed
+        
+        touchBar.templateItems = [save, cancel]
+        
+        return touchBar
+    }
+
+    #endif
 }
 

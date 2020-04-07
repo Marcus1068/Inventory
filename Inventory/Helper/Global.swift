@@ -90,6 +90,10 @@ class Global: UIViewController {
     static let cameraRoll = NSLocalizedString("Camera Roll", comment: "Camera Roll")
     static let photoLibrary = NSLocalizedString("Photo Library", comment: "Photo Library")
     
+    static let invalidRoomName = NSLocalizedString("Please enter valid room", comment: "valid room")
+    static let invalidCategoryName = NSLocalizedString("Please enter valid category", comment: "valid category")
+    static let invalidBrandName = NSLocalizedString("Please enter valid brand", comment: "valid brand")
+    static let invalidOwnerName = NSLocalizedString("Please enter valid owner", comment: "valid owner")
     
     // define column names for import and export functions for csv file
     static let inventoryName_csv = "inventoryName"

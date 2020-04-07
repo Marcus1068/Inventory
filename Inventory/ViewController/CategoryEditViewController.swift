@@ -53,6 +53,9 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
         
+        // dismiss keyboard
+        hideKeyboardWhenTappedAround()
+        
         // edit or add room
         if currentCategory != nil{
             //
@@ -66,7 +69,7 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         }
         
         // focus on first text field
-        textfieldCategory.becomeFirstResponder()
+        //textfieldCategory.becomeFirstResponder()
         textfieldCategory.delegate = self
         textfieldCategory.addTarget(self, action: #selector(textDidChange(_:)), for: UIControl.Event.editingDidEnd)
         textfieldCategory.addTarget(self, action: #selector(textIsChanging(_:)), for: UIControl.Event.editingChanged)
@@ -125,10 +128,14 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
     
     // save or update
     @IBAction func saveButton(_ sender: Any) {
-        //os_log("CategoryEditViewController saveButton", log: Log.viewcontroller, type: .info)
         
         // close keyboard
         self.view.endEditing(true)
+        
+        if textfieldCategory.text?.count == 0{
+            displayAlert(title: Global.invalidCategoryName, message: "", buttonText: Global.ok)
+            return
+        }
         
         // new category
         if (currentCategory == nil)
@@ -180,4 +187,24 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
         displayAlert(title: title, message: Global.chooseDifferentName, buttonText: Global.ok)
         
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchCancel, .fixedSpaceSmall, .touchSave]
+        
+        let save = NSButtonTouchBarItem(identifier: .touchSave, title: Global.save, target: self, action: #selector(saveButton(_:)))
+        save.bezelColor = Global.colorGreen
+        
+        let cancel = NSButtonTouchBarItem(identifier: .touchCancel, title: Global.cancel, target: self, action: #selector(cancelButton(_:)))
+        cancel.bezelColor = Global.colorRed
+        
+        touchBar.templateItems = [save, cancel]
+        
+        return touchBar
+    }
+
+    #endif
 }

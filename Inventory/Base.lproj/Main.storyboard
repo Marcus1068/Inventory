@@ -776,7 +776,7 @@
                         <viewLayoutGuide key="safeArea" id="Lf7-aM-lhL"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="x4S-E8-XUR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Wzx-6Z-Phb">
+                        <barButtonItem key="leftBarButtonItem" image="trash" catalog="system" id="Wzx-6Z-Phb">
                             <connections>
                                 <action selector="organizeBarButton:" destination="cvw-X7-YXT" id="EwK-Sd-o7V"/>
                             </connections>
@@ -1755,7 +1755,7 @@
                         <viewLayoutGuide key="safeArea" id="kj2-JZ-s03"/>
                     </view>
                     <navigationItem key="navigationItem" id="fry-r7-fXO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2Jr-Mm-NlG">
+                        <barButtonItem key="rightBarButtonItem" image="square.and.arrow.up" catalog="system" id="2Jr-Mm-NlG">
                             <connections>
                                 <action selector="shareButtonAction:" destination="qre-Fw-Phh" id="00F-Cw-YwZ"/>
                             </connections>
@@ -2250,7 +2250,7 @@
                         <viewLayoutGuide key="safeArea" id="8NP-bd-ZaX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Import/Export" id="b9Z-Dy-nn6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="1XM-1s-jLR">
+                        <barButtonItem key="rightBarButtonItem" image="square.and.arrow.up" catalog="system" id="1XM-1s-jLR">
                             <connections>
                                 <action selector="shareButtonAction:" destination="MUX-Pv-eqU" id="uqG-lK-ZWm"/>
                             </connections>
@@ -2542,12 +2542,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="rOF-ng-341">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="action" id="JVQ-k1-jrN">
+                            <barButtonItem image="square.and.arrow.up" catalog="system" id="JVQ-k1-jrN">
                                 <connections>
                                     <action selector="shareActionBarButton:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="compose" id="am9-QQ-t0y">
+                            <barButtonItem image="envelope" catalog="system" id="am9-QQ-t0y">
                                 <connections>
                                     <action selector="emailActionButton:" destination="v2l-5p-iCX" id="dz5-Ko-eSY"/>
                                 </connections>
@@ -3043,6 +3043,7 @@
         <image name="cube.box" catalog="system" width="128" height="124"/>
         <image name="doc.richtext" catalog="system" width="115" height="128"/>
         <image name="doc.text" catalog="system" width="115" height="128"/>
+        <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="icons8-arbeitsplatz-50" width="96" height="96"/>
         <image name="icons8-bett-50" width="96" height="96"/>
         <image name="icons8-buchhaltung-96" width="96" height="96"/>
@@ -3074,6 +3075,8 @@
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="square.and.arrow.down.on.square" catalog="system" width="122" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

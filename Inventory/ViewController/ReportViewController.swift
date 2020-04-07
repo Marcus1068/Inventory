@@ -355,6 +355,66 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
+    // will be called several times
+    private func refreshReport(){
+        // refresh data from core data
+        fetchData()
+        
+        // create the pdf report based on selected sort order and filter choice
+        pdfCreateInventoryReport()
+    }
+    
+    @objc func toggleImageSwitch(){
+        imageSwitch.isOn = !imageSwitch.isOn
+        
+        refreshReport()
+    }
+    
+    @objc func togglePaperFormatSegment(){
+        if paperFormatSegment.selectedSegmentIndex == 0{
+            paperFormatSegment.selectedSegmentIndex = 1
+        }
+        else{
+            paperFormatSegment.selectedSegmentIndex = 0
+        }
+        
+        switch paperFormatSegment.selectedSegmentIndex
+        {
+        case 0:
+            currentPaperSize = .dinA4
+            
+            refreshReport()
+        case 1:
+            currentPaperSize = .usLetter
+            
+            refreshReport()
+        default:
+            break
+        }
+    }
+    
+    @objc func toggleSortOrder(){
+        
+        switch(sortOrderSegment.selectedSegmentIndex){
+        case 0:
+            sortOrderSegment.selectedSegmentIndex = 1
+            currentSortOrder = .category
+        case 1:
+            sortOrderSegment.selectedSegmentIndex = 2
+            currentSortOrder = .owner
+        case 2:
+            sortOrderSegment.selectedSegmentIndex = 3
+            currentSortOrder = .room
+        case 3:
+            sortOrderSegment.selectedSegmentIndex = 0
+            currentSortOrder = .item
+        default:
+            break
+        }
+        
+        refreshReport()
+    }
+    
     // share a PDF file to iOS: print, save to file
     @objc func sharePdf(path: URL) {
         
@@ -364,11 +424,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // MARK: - Actions
     
     @IBAction func imageSwitch(_ sender: UISwitch) {
-        // refresh data from core data
-        fetchData()
-        
-        // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        refreshReport()
     }
     
     @IBAction func emailActionButton(_ sender: UIBarButtonItem) {
@@ -387,11 +443,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         roomFilterLabel.text = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
         
-        // refresh data from core data
-        fetchData()
-        
-        // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        refreshReport()
     }
     
     @IBAction func ownersSegmentAction(_ sender: UISegmentedControl) {
@@ -399,11 +451,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         ownerFilterLabel.text = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
         
-        // refresh data from core data
-        fetchData()
-        
-        // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        refreshReport()
     }
     
     @IBAction func paperFormatSegmentAction(_ sender: UISegmentedControl) {
@@ -413,18 +461,12 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         {
         case 0:
             currentPaperSize = .dinA4
-            // refresh data from core data
-            fetchData()
             
-            // create the pdf report based on selected sort order and filter choice
-            pdfCreateInventoryReport()
+            refreshReport()
         case 1:
             currentPaperSize = .usLetter
-            // refresh data from core data
-            fetchData()
             
-            // create the pdf report based on selected sort order and filter choice
-            pdfCreateInventoryReport()
+            refreshReport()
         default:
             break
         }
@@ -447,11 +489,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             break
         }
         
-        // refresh data from core data
-        fetchData()
-        
-        // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        refreshReport()
     }
     
     // prepare to transfer data to PDF view controller
@@ -1613,4 +1651,33 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             return (shortText, "")
         }
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchPaper, .touchImage, .touchSort, .flexibleSpace, .touchEmail, .touchShare]
+        
+        let paper = NSButtonTouchBarItem(identifier: .touchPaper, title: Global.paper, target: self, action: #selector(togglePaperFormatSegment))
+        paper.bezelColor = Global.colorGreen
+        
+        let image = NSButtonTouchBarItem(identifier: .touchImage, title: "Image", target: self, action: #selector(toggleImageSwitch))
+        image.bezelColor = Global.colorGreen
+        
+        let sort = NSButtonTouchBarItem(identifier: .touchSort, title: Global.sort, target: self, action: #selector(toggleSortOrder))
+        sort.bezelColor = Global.colorGreen
+        
+        let email = NSButtonTouchBarItem(identifier: .touchEmail, image: UIImage(systemName: "envelope")!, target: self, action: #selector(emailActionButton(_:)))
+        email.bezelColor = Global.colorGreen
+        
+        let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareActionBarButton(_:)))
+        share.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [paper, image, sort, email, share]
+        
+        return touchBar
+    }
+
+    #endif
 }

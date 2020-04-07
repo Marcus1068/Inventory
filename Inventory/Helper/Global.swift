@@ -71,6 +71,8 @@ class Global: UIViewController {
     static let copy = NSLocalizedString("Copy", comment: "Copy")
     static let save = NSLocalizedString("Save", comment: "Save")
     static let back = NSLocalizedString("Back", comment: "Back")
+    static let paper = NSLocalizedString("Paper", comment: "Paper")
+    static let sort = NSLocalizedString("Sort", comment: "Sort")
     static let printInvoice = NSLocalizedString("Print Invoice", comment: "Print Invoice")
     
     static let about = NSLocalizedString("About", comment: "About")

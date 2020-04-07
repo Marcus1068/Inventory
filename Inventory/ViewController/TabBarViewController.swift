@@ -42,6 +42,7 @@ extension NSTouchBarItem.Identifier{
     static let touchPaper = NSTouchBarItem.Identifier("de.marcus-deuss.paper")
     static let touchImage = NSTouchBarItem.Identifier("de.marcus-deuss.image")
     static let touchSort = NSTouchBarItem.Identifier("de.marcus-deuss.sort")
+    static let touchOwnerFilter = NSTouchBarItem.Identifier("de.marcus-deuss.ownerfilter")
     
     static let touchImport = NSTouchBarItem.Identifier("de.marcus-deuss.import")
     static let touchExport = NSTouchBarItem.Identifier("de.marcus-deuss.export")

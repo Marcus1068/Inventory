@@ -73,6 +73,7 @@ class Global: UIViewController {
     static let back = NSLocalizedString("Back", comment: "Back")
     static let paper = NSLocalizedString("Paper", comment: "Paper")
     static let sort = NSLocalizedString("Sort", comment: "Sort")
+    static let images = NSLocalizedString("Images", comment: "Images")
     static let printInvoice = NSLocalizedString("Print Invoice", comment: "Print Invoice")
     
     static let about = NSLocalizedString("About", comment: "About")

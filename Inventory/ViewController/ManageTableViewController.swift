@@ -109,4 +109,52 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
         // header.backgroundView?.backgroundColor = themeColorUIControls
     }
     
+    // manual segue control for touch bar needed
+    @objc func roomEditAction(){
+        performSegue(withIdentifier: "manageSegueRoomEdit", sender: nil)
+    }
+    
+    @objc func categoryEditAction(){
+        performSegue(withIdentifier: "manageSegueCategoryEdit", sender: nil)
+    }
+    
+    @objc func brandEditAction(){
+        performSegue(withIdentifier: "manageSegueBrandEdit", sender: nil)
+    }
+    
+    @objc func ownerEditAction(){
+        performSegue(withIdentifier: "manageSegueOwnerEdit", sender: nil)
+    }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchRoomEdit, .touchCategoryEdit, .touchBrandEdit, .touchOwnerEdit, .flexibleSpace, .touchRoom]
+        
+        // edit buttons
+        let roomEdit = NSButtonTouchBarItem(identifier: .touchRoomEdit, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomEditAction))
+        roomEdit.bezelColor = Global.colorGreen
+        
+        let categoryEdit = NSButtonTouchBarItem(identifier: .touchCategoryEdit, image: UIImage(systemName: "book")!, target: self, action: #selector(categoryEditAction))
+        categoryEdit.bezelColor = Global.colorGreen
+        
+        let brandEdit = NSButtonTouchBarItem(identifier: .touchBrandEdit, image: UIImage(systemName: "cube.box")!, target: self, action: #selector(brandEditAction))
+        brandEdit.bezelColor = Global.colorGreen
+        
+        let ownerEdit = NSButtonTouchBarItem(identifier: .touchOwnerEdit, image: UIImage(systemName: "person.2.fill")!, target: self, action: #selector(ownerEditAction))
+        ownerEdit.bezelColor = Global.colorGreen
+        
+        // add buttons
+        let roomAdd = NSButtonTouchBarItem(identifier: .touchRoom, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomEditAction))
+        roomAdd.bezelColor = Global.colorBlue
+        
+        touchBar.templateItems = [roomEdit, categoryEdit, brandEdit, ownerEdit, roomAdd]
+        
+        return touchBar
+    }
+
+    #endif
+    
 }

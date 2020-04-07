@@ -41,7 +41,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="9hb-hU-Cxa" kind="show" id="I7b-Rp-fDa"/>
+                                            <segue destination="9hb-hU-Cxa" kind="show" identifier="manageSegueRoomEdit" id="I7b-Rp-fDa"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationLevel="2" indentationWidth="10" reuseIdentifier="cellManage" textLabel="fRa-q7-4ZB" imageView="Ib1-O8-clo" style="IBUITableViewCellStyleDefault" id="GiY-Ms-pcb">
@@ -66,7 +66,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="7vS-va-EUq" kind="show" id="i5d-kh-DgH"/>
+                                            <segue destination="7vS-va-EUq" kind="show" identifier="manageSegueCategoryEdit" id="i5d-kh-DgH"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellManage" id="jtX-DR-kzd">
@@ -97,7 +97,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="iCz-KG-ewV" kind="show" id="aUd-Fn-dpo"/>
+                                            <segue destination="iCz-KG-ewV" kind="show" identifier="manageSegueBrandEdit" id="aUd-Fn-dpo"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellManage" id="2qI-tE-jgq">
@@ -128,7 +128,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="gJg-Vs-sIe" kind="show" id="mNe-wM-gEY"/>
+                                            <segue destination="gJg-Vs-sIe" kind="show" identifier="manageSegueOwnerEdit" id="mNe-wM-gEY"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -149,7 +149,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bed.double" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xdw-eQ-fJ5">
-                                                    <rect key="frame" x="315" y="14" width="24.5" height="15.5"/>
+                                                    <rect key="frame" x="315.5" y="14" width="24.5" height="15.5"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -180,7 +180,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YTr-px-FHx">
-                                                    <rect key="frame" x="318" y="14.5" width="21.5" height="17"/>
+                                                    <rect key="frame" x="318.5" y="14.5" width="21.5" height="17"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </imageView>
                                             </subviews>
@@ -281,7 +281,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aYe-ZD-Pde" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3575.1999999999998" y="1333.5832083958021"/>
+            <point key="canvasLocation" x="3394" y="1299"/>
         </scene>
         <!--My Categories-->
         <scene sceneID="zcT-nP-Nf0">
@@ -3060,7 +3060,7 @@
         <segue reference="aUd-Fn-dpo"/>
         <segue reference="bcU-E7-2cp"/>
         <segue reference="7xG-kE-rfw"/>
-        <segue reference="hE0-Ui-Mnp"/>
+        <segue reference="5se-75-Ta6"/>
         <segue reference="Jmz-UD-5Ui"/>
         <segue reference="I7b-Rp-fDa"/>
         <segue reference="i5d-kh-DgH"/>

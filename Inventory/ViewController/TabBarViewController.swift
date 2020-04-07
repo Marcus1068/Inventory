@@ -50,9 +50,13 @@ extension NSTouchBarItem.Identifier{
     static let touchPDF = NSTouchBarItem.Identifier("de.marcus-deuss.pdf")
     static let touchPicture = NSTouchBarItem.Identifier("de.marcus-deuss.picture")
     static let touchRoom = NSTouchBarItem.Identifier("de.marcus-deuss.room")
+    static let touchRoomEdit = NSTouchBarItem.Identifier("de.marcus-deuss.roomedit")
     static let touchCategory = NSTouchBarItem.Identifier("de.marcus-deuss.category")
+    static let touchCategoryEdit = NSTouchBarItem.Identifier("de.marcus-deuss.categoryedit")
     static let touchBrand = NSTouchBarItem.Identifier("de.marcus-deuss.brand")
+    static let touchBrandEdit = NSTouchBarItem.Identifier("de.marcus-deuss.brandedit")
     static let touchOwner = NSTouchBarItem.Identifier("de.marcus-deuss.owner")
+    static let touchOwnerEdit = NSTouchBarItem.Identifier("de.marcus-deuss.owneredit")
     
     static let touchAppSettings = NSTouchBarItem.Identifier("de.marcus-deuss.appsettings")
     static let touchAppInformation = NSTouchBarItem.Identifier("de.marcus-deuss.information")
@@ -119,13 +123,27 @@ class TabBarViewController: UITabBarController {
         let touchBar = NSTouchBar()
         
         touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, .touchShare, .fixedSpaceSmall, .touchAbout]
+        
         let manage = NSButtonTouchBarItem(identifier: .touchManage, image: UIImage(systemName: "list.number")!, target: self, action: #selector(manageItemsEntry))
+        manage.bezelColor = Global.colorGreen
+        
         let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(systemName: "doc.text")!, target: self, action: #selector(reportEntry))
+        report.bezelColor = Global.colorGreen
+        
         let inventory = NSButtonTouchBarItem(identifier: .touchInventory, image: UIImage(systemName: "square.and.pencil")!, target: self, action: #selector(inventoryEntry))
+        inventory.bezelColor = Global.colorBlue
+        
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))
+        share.bezelColor = Global.colorGreen
+        
         let about = NSButtonTouchBarItem(identifier: .touchAbout, image: UIImage(systemName: "info.circle")!, target: self, action: #selector(aboutEntry))
+        about.bezelColor = Global.colorGreen
+        
         let add = NSButtonTouchBarItem(identifier: .touchAdd, image: UIImage(systemName: "plus")!, target: self, action: #selector(addInvEntry))
+        add.bezelColor = Global.colorGreen
+        
         let impExp = NSButtonTouchBarItem(identifier: .touchImportExport, image: UIImage(systemName: "square.and.arrow.down.on.square")!, target: self, action: #selector(importExportEntry))
+        impExp.bezelColor = Global.colorGreen
         
         touchBar.templateItems = [manage, add, impExp, report, inventory, share, about]
         

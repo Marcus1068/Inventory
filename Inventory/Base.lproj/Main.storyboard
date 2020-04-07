@@ -2021,7 +2021,7 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="User Manual"/>
                                                         <connections>
-                                                            <segue destination="gEE-bF-DQe" kind="show" id="1bz-J3-9PU"/>
+                                                            <segue destination="gEE-bF-DQe" kind="show" identifier="segueManualShow" id="1bz-J3-9PU"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

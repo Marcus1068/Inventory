@@ -723,6 +723,27 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         importedRowsLabel.text = NSLocalizedString("No file selected for importing", comment: "No file selected for importing")
     }
     
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchExport, .touchImport, .fixedSpaceSmall, .touchShare]
+        
+        let importButton = NSButtonTouchBarItem(identifier: .touchImport, title: Global.importButton, target: self, action: #selector(importFromCVSFileButton(_:)))
+        importButton.bezelColor = Global.colorGreen
+        
+        let exportButton = NSButtonTouchBarItem(identifier: .touchExport, title: Global.exportButton, target: self, action: #selector(exportCVSButtonAction(_:)))
+        exportButton.bezelColor = Global.colorGreen
+        
+        let shareButton = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
+        
+        touchBar.templateItems = [importButton, exportButton, shareButton]
+        
+        return touchBar
+    }
+
+    #endif
 }
 
 

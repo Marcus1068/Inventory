@@ -86,4 +86,21 @@ class ShowUserManualViewController: UIViewController {
     @IBAction func doneAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchDone]
+        
+        let done = NSButtonTouchBarItem(identifier: .touchDone, title: Global.done, target: self, action: #selector(doneAction(_:)))
+        done.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [done]
+        
+        return touchBar
+    }
+
+    #endif
 }

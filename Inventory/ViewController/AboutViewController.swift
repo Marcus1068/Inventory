@@ -298,6 +298,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         popOver(text: Global.getRTFFileFromBundle(fileName: fileName), sender: sender)
     }
     
+    @objc func userManualAction(){
+        performSegue(withIdentifier: "segueManualShow", sender: nil)
+    }
+    
     /*
     // MARK: - Email delegate
     */
@@ -324,5 +328,30 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         controller.dismiss(animated: true, completion: nil)
     }
 
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchAppSettings, .touchAppInformation, .touchAppFeedback, .touchAppManual]
+        
+        let appSettings = NSButtonTouchBarItem(identifier: .touchAppSettings, title: Global.appSettings, target: self, action: #selector(appSettingsAction(_:)))
+        appSettings.bezelColor = Global.colorGreen
+        
+        let appInformation = NSButtonTouchBarItem(identifier: .touchAppInformation, title: Global.appInformation, target: self, action: #selector(informationButton(_:)))
+        appInformation.bezelColor = Global.colorGreen
+        
+        let appFeedback = NSButtonTouchBarItem(identifier: .touchAppFeedback, title: Global.appFeedback, target: self, action: #selector(feedbackButton(_:)))
+        appFeedback.bezelColor = Global.colorGreen
+        
+        let appManual = NSButtonTouchBarItem(identifier: .touchAppManual, title: Global.appManual, target: self, action: #selector(userManualAction))
+        appManual.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [appSettings, appInformation, appFeedback, appManual]
+        
+        return touchBar
+    }
+
+    #endif
 }
 

@@ -78,6 +78,13 @@ class Global: UIViewController {
     static let share = NSLocalizedString("Share", comment: "Share")
     static let inventory = NSLocalizedString("Inventory", comment: "Inventory")
     static let importExport = NSLocalizedString("Import/Export", comment: "Import/Export")
+    static let importButton = NSLocalizedString("Import", comment: "Import")
+    static let exportButton = NSLocalizedString("Export", comment: "Export")
+    
+    static let appSettings = NSLocalizedString("App Settings", comment: "App Settings")
+    static let appInformation = NSLocalizedString("Information", comment: "Information")
+    static let appFeedback = NSLocalizedString("Feedback", comment: "Feedback")
+    static let appManual = NSLocalizedString("Manual", comment: "Manual")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

@@ -36,6 +36,10 @@ extension NSTouchBarItem.Identifier{
     static let touchInventory = NSTouchBarItem.Identifier("de.marcus-deuss.inventory")
     static let touchShare = NSTouchBarItem.Identifier("de.marcus-deuss.share")
     static let touchAbout = NSTouchBarItem.Identifier("de.marcus-deuss.about")
+    static let touchImportExport = NSTouchBarItem.Identifier("de.marcus-deuss.importexport")
+    
+    static let touchImport = NSTouchBarItem.Identifier("de.marcus-deuss.import")
+    static let touchExport = NSTouchBarItem.Identifier("de.marcus-deuss.export")
     
     static let touchOK = NSTouchBarItem.Identifier("de.marcus-deuss.ok")
     static let touchCancel = NSTouchBarItem.Identifier("de.marcus-deuss.cancel")
@@ -48,6 +52,11 @@ extension NSTouchBarItem.Identifier{
     static let touchCategory = NSTouchBarItem.Identifier("de.marcus-deuss.category")
     static let touchBrand = NSTouchBarItem.Identifier("de.marcus-deuss.brand")
     static let touchOwner = NSTouchBarItem.Identifier("de.marcus-deuss.owner")
+    
+    static let touchAppSettings = NSTouchBarItem.Identifier("de.marcus-deuss.appsettings")
+    static let touchAppInformation = NSTouchBarItem.Identifier("de.marcus-deuss.information")
+    static let touchAppFeedback = NSTouchBarItem.Identifier("de.marcus-deuss.feedback")
+    static let touchAppManual = NSTouchBarItem.Identifier("de.marcus-deuss.manual")
 }
 #endif
 
@@ -69,6 +78,10 @@ class TabBarViewController: UITabBarController {
     
     @objc func reportEntry() {
         self.selectedIndex = 3
+    }
+    
+    @objc func importExportEntry() {
+        self.selectedIndex = 2
     }
       
     @objc private func addInvEntry() {
@@ -101,15 +114,16 @@ class TabBarViewController: UITabBarController {
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchReport, .fixedSpaceSmall, .touchShare, .fixedSpaceSmall, .touchAbout]
+        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, .touchShare, .fixedSpaceSmall, .touchAbout]
         let manage = NSButtonTouchBarItem(identifier: .touchManage, image: UIImage(systemName: "list.number")!, target: self, action: #selector(manageItemsEntry))
         let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(systemName: "doc.text")!, target: self, action: #selector(reportEntry))
         let inventory = NSButtonTouchBarItem(identifier: .touchInventory, image: UIImage(systemName: "square.and.pencil")!, target: self, action: #selector(inventoryEntry))
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))
         let about = NSButtonTouchBarItem(identifier: .touchAbout, image: UIImage(systemName: "info.circle")!, target: self, action: #selector(aboutEntry))
         let add = NSButtonTouchBarItem(identifier: .touchAdd, image: UIImage(systemName: "plus")!, target: self, action: #selector(addInvEntry))
+        let impExp = NSButtonTouchBarItem(identifier: .touchImportExport, image: UIImage(systemName: "square.and.arrow.down.on.square")!, target: self, action: #selector(importExportEntry))
         
-        touchBar.templateItems = [manage, add, report, inventory, share, about]
+        touchBar.templateItems = [manage, add, impExp, report, inventory, share, about]
         
         return touchBar
     }

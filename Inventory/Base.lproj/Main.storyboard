@@ -40,6 +40,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="9hb-hU-Cxa" kind="show" identifier="manageSegueRoomEdit" id="I7b-Rp-fDa"/>
                                         </connections>
@@ -65,6 +66,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="7vS-va-EUq" kind="show" identifier="manageSegueCategoryEdit" id="i5d-kh-DgH"/>
                                         </connections>
@@ -163,7 +165,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="AAM-yv-3qO" kind="show" id="5se-75-Ta6"/>
+                                            <segue destination="AAM-yv-3qO" kind="show" identifier="manageSegueRoomAdd" id="5se-75-Ta6"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Gvd-9w-gAV">
@@ -194,7 +196,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="BNp-7u-MBg" kind="show" id="Jmz-UD-5Ui"/>
+                                            <segue destination="BNp-7u-MBg" kind="show" identifier="manageSegueCategoryAdd" id="Jmz-UD-5Ui"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="BAy-vi-COq">
@@ -225,7 +227,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="Nkn-yK-LRB" kind="show" id="vym-Dh-yV8"/>
+                                            <segue destination="Nkn-yK-LRB" kind="show" identifier="manageSegueBrandAdd" id="vym-Dh-yV8"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="rix-C6-t4k">
@@ -256,7 +258,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <connections>
-                                            <segue destination="m27-nM-3XX" kind="show" id="jjA-ik-3Zw"/>
+                                            <segue destination="m27-nM-3XX" kind="show" identifier="manageSegueOwnerAdd" id="jjA-ik-3Zw"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

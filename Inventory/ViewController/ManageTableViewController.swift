@@ -126,12 +126,28 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
         performSegue(withIdentifier: "manageSegueOwnerEdit", sender: nil)
     }
     
+    @objc func roomAddAction(){
+        performSegue(withIdentifier: "manageSegueRoomAdd", sender: nil)
+    }
+    
+    @objc func categoryAddAction(){
+        performSegue(withIdentifier: "manageSegueCategoryAdd", sender: nil)
+    }
+    
+    @objc func brandAddAction(){
+        performSegue(withIdentifier: "manageSegueBrandAdd", sender: nil)
+    }
+    
+    @objc func ownerAddAction(){
+        performSegue(withIdentifier: "manageSegueOwnerAdd", sender: nil)
+    }
+    
     #if targetEnvironment(macCatalyst)
     
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchRoomEdit, .touchCategoryEdit, .touchBrandEdit, .touchOwnerEdit, .flexibleSpace, .touchRoom]
+        touchBar.defaultItemIdentifiers = [.touchRoomEdit, .touchCategoryEdit, .touchBrandEdit, .touchOwnerEdit, .flexibleSpace, .touchRoom, .touchCategory, .touchBrand, .touchOwner]
         
         // edit buttons
         let roomEdit = NSButtonTouchBarItem(identifier: .touchRoomEdit, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomEditAction))
@@ -147,10 +163,19 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
         ownerEdit.bezelColor = Global.colorGreen
         
         // add buttons
-        let roomAdd = NSButtonTouchBarItem(identifier: .touchRoom, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomEditAction))
+        let roomAdd = NSButtonTouchBarItem(identifier: .touchRoom, image: UIImage(systemName: "bed.double.fill")!, target: self, action: #selector(roomAddAction))
         roomAdd.bezelColor = Global.colorBlue
         
-        touchBar.templateItems = [roomEdit, categoryEdit, brandEdit, ownerEdit, roomAdd]
+        let categoryAdd = NSButtonTouchBarItem(identifier: .touchCategory, image: UIImage(systemName: "book")!, target: self, action: #selector(categoryAddAction))
+        categoryAdd.bezelColor = Global.colorBlue
+        
+        let brandAdd = NSButtonTouchBarItem(identifier: .touchBrand, image: UIImage(systemName: "cube.box")!, target: self, action: #selector(brandAddAction))
+        brandAdd.bezelColor = Global.colorBlue
+        
+        let ownerAdd = NSButtonTouchBarItem(identifier: .touchOwner, image: UIImage(systemName: "person.2.fill")!, target: self, action: #selector(ownerAddAction))
+        ownerAdd.bezelColor = Global.colorBlue
+        
+        touchBar.templateItems = [roomEdit, categoryEdit, brandEdit, ownerEdit, roomAdd, categoryAdd, brandAdd, ownerAdd]
         
         return touchBar
     }

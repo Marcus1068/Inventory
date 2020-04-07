@@ -100,4 +100,26 @@ class PDFViewController: UIViewController {
         shareAction(currentPath: currentPath!)
     }
     
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchFirstPage, .touchLastPage, .flexibleSpace, .touchShare]
+        
+        let first = NSButtonTouchBarItem(identifier: .touchFirstPage, title: Global.firstPage, target: self, action: #selector(firstPage))
+        first.bezelColor = Global.colorGreen
+        
+        let last = NSButtonTouchBarItem(identifier: .touchLastPage, title: Global.lastPage, target: self, action: #selector(lastPage))
+        last.bezelColor = Global.colorGreen
+        
+        let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
+        
+        touchBar.templateItems = [first, last, share]
+        
+        return touchBar
+    }
+
+    #endif
+    
 }

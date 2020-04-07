@@ -102,6 +102,9 @@ class Global: UIViewController {
     static let invalidBrandName = NSLocalizedString("Please enter valid brand", comment: "valid brand")
     static let invalidOwnerName = NSLocalizedString("Please enter valid owner", comment: "valid owner")
     
+    static let firstPage = NSLocalizedString("First page", comment: "First page")
+    static let lastPage = NSLocalizedString("Last page", comment: "Last page")
+    
     // define column names for import and export functions for csv file
     static let inventoryName_csv = "inventoryName"
     static let dateofPurchase_csv = "dateofPurchase"

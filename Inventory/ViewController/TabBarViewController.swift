@@ -57,6 +57,9 @@ extension NSTouchBarItem.Identifier{
     static let touchAppInformation = NSTouchBarItem.Identifier("de.marcus-deuss.information")
     static let touchAppFeedback = NSTouchBarItem.Identifier("de.marcus-deuss.feedback")
     static let touchAppManual = NSTouchBarItem.Identifier("de.marcus-deuss.manual")
+    
+    static let touchFirstPage = NSTouchBarItem.Identifier("de.marcus-deuss.firstpage")
+    static let touchLastPage = NSTouchBarItem.Identifier("de.marcus-deuss.lastpage")
 }
 #endif
 

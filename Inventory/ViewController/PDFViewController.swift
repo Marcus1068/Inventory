@@ -100,12 +100,19 @@ class PDFViewController: UIViewController {
         shareAction(currentPath: currentPath!)
     }
     
+    @objc func backButton(){
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     #if targetEnvironment(macCatalyst)
     
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchFirstPage, .touchLastPage, .flexibleSpace, .touchShare]
+        touchBar.defaultItemIdentifiers = [.touchBack, .fixedSpaceSmall, .touchFirstPage, .touchLastPage, .flexibleSpace, .touchShare]
+        
+        let back = NSButtonTouchBarItem(identifier: .touchBack, title: Global.back, target: self, action: #selector(backButton))
+        back.bezelColor = Global.colorGreen
         
         let first = NSButtonTouchBarItem(identifier: .touchFirstPage, title: Global.firstPage, target: self, action: #selector(firstPage))
         first.bezelColor = Global.colorGreen
@@ -115,7 +122,7 @@ class PDFViewController: UIViewController {
         
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
         
-        touchBar.templateItems = [first, last, share]
+        touchBar.templateItems = [back, first, last, share]
         
         return touchBar
     }

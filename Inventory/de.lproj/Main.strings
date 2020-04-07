@@ -125,7 +125,7 @@
 "fJy-2X-JZS.normalTitle" = "Marke...";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "fNd-h9-W0h"; */
-"fNd-h9-W0h.normalTitle" = "Schließen";
+"fNd-h9-W0h.normalTitle" = "Fertig";
 
 /* Class = "UITableViewSection"; headerTitle = "Add Items"; ObjectID = "G2B-Bb-zP5"; */
 "G2B-Bb-zP5.headerTitle" = "Hinzufügen";
@@ -296,7 +296,7 @@
 "PRz-eY-S4p.title" = "Meine Eigentümer";
 
 /* Class = "UIButton"; normalTitle = "Done"; ObjectID = "PYp-I3-tne"; */
-"PYp-I3-tne.normalTitle" = "Erledigt";
+"PYp-I3-tne.normalTitle" = "Fertig";
 
 /* Class = "UISegmentedControl"; QaD-2h-ipL.segmentTitles[0] = "First"; ObjectID = "QaD-2h-ipL"; */
 "QaD-2h-ipL.segmentTitles[0]" = "First";

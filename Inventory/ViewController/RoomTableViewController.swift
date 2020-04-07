@@ -105,7 +105,11 @@ class RoomTableViewController: UITableViewController, UIPointerInteractionDelega
         }
         
     }
-
+    
+    @objc func addButton(){
+        performSegue(withIdentifier: "addSegueRoom", sender: nil)
+    }
+    
     // close view controller
     @IBAction func doneButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -234,6 +238,25 @@ extension RoomTableViewController {
             confirmDelete(room: room)
         }
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchDone, .fixedSpaceSmall, .touchAdd]
+        
+        let done = NSButtonTouchBarItem(identifier: .touchDone, title: Global.done, target: self, action: #selector(doneButton(_:)))
+        done.bezelColor = Global.colorGreen
+        
+        let addNew = NSButtonTouchBarItem(identifier: .touchAdd, image: UIImage(systemName: "plus")!, target: self, action: #selector(addButton))
+        
+        touchBar.templateItems = [done, addNew]
+        
+        return touchBar
+    }
+
+    #endif
 }
 
 

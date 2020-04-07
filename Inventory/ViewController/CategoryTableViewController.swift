@@ -180,6 +180,7 @@ class CategoryTableViewController: UITableViewController, UIPointerInteractionDe
     }
     
     @IBAction func addButton(_ sender: Any) {
+        performSegue(withIdentifier: "addSegueCategory", sender: nil)
     }
 }
 
@@ -246,6 +247,25 @@ extension CategoryTableViewController {
             confirmDelete(category: category)
         }
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchDone, .fixedSpaceSmall, .touchAdd]
+        
+        let done = NSButtonTouchBarItem(identifier: .touchDone, title: Global.done, target: self, action: #selector(doneButton(_:)))
+        done.bezelColor = Global.colorGreen
+        
+        let addNew = NSButtonTouchBarItem(identifier: .touchAdd, image: UIImage(systemName: "plus")!, target: self, action: #selector(addButton))
+        
+        touchBar.templateItems = [done, addNew]
+        
+        return touchBar
+    }
+
+    #endif
 }
 
 // MARK: - NSFetchedResultsControllerDelegate

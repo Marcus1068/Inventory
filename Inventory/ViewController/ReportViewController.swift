@@ -419,7 +419,28 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let count = ownersSegment.numberOfSegments
         
+        if ownersSegment.selectedSegmentIndex < count - 1{
+            ownersSegment.selectedSegmentIndex += 1
+        }
+        else{
+            ownersSegment.selectedSegmentIndex = 0
+        }
         ownerFilterLabel.text = ownersSegment.titleForSegment(at: ownersSegment.selectedSegmentIndex)
+        
+        refreshReport()
+    }
+    
+    @objc func toggleRoomsSegment(){
+        
+        let count = roomsSegment.numberOfSegments
+        
+        if roomsSegment.selectedSegmentIndex < count - 1{
+            roomsSegment.selectedSegmentIndex += 1
+        }
+        else{
+            roomsSegment.selectedSegmentIndex = 0
+        }
+        roomFilterLabel.text = roomsSegment.titleForSegment(at: roomsSegment.selectedSegmentIndex)
         
         refreshReport()
     }
@@ -1667,7 +1688,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchPaper, .touchImage, .touchSort, .touchOwnerFilter, .flexibleSpace, .touchEmail, .touchShare]
+        touchBar.defaultItemIdentifiers = [.touchPaper, .touchImage, .touchSort, .touchOwnerFilter, .touchRoomFilter, .flexibleSpace, .touchEmail, .touchShare]
         
         let paper = NSButtonTouchBarItem(identifier: .touchPaper, title: Global.paper, target: self, action: #selector(togglePaperFormatSegment))
         paper.bezelColor = Global.colorGreen
@@ -1678,8 +1699,11 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let sort = NSButtonTouchBarItem(identifier: .touchSort, title: Global.sort, target: self, action: #selector(toggleSortOrder))
         sort.bezelColor = Global.colorGreen
         
-        let ownerFilter = NSButtonTouchBarItem(identifier: .touchOwnerFilter, title: Local.owner, target: self, action: #selector(toggleSortOrder))
+        let ownerFilter = NSButtonTouchBarItem(identifier: .touchOwnerFilter, title: Local.owner, target: self, action: #selector(toggleOwnerSegment))
         ownerFilter.bezelColor = Global.colorGreen
+        
+        let roomFilter = NSButtonTouchBarItem(identifier: .touchRoomFilter, title: Local.room, target: self, action: #selector(toggleRoomsSegment))
+        roomFilter.bezelColor = Global.colorGreen
         
         let email = NSButtonTouchBarItem(identifier: .touchEmail, image: UIImage(systemName: "envelope")!, target: self, action: #selector(emailActionButton(_:)))
         email.bezelColor = Global.colorGreen
@@ -1687,7 +1711,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareActionBarButton(_:)))
         share.bezelColor = Global.colorGreen
         
-        touchBar.templateItems = [paper, image, sort, ownerFilter, email, share]
+        touchBar.templateItems = [paper, image, sort, ownerFilter, roomFilter, email, share]
         
         return touchBar
     }

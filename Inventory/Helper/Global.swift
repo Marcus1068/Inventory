@@ -90,6 +90,7 @@ class Global: UIViewController {
     static let appInformation = NSLocalizedString("Information", comment: "Information")
     static let appFeedback = NSLocalizedString("Feedback", comment: "Feedback")
     static let appManual = NSLocalizedString("Manual", comment: "Manual")
+    static let appPrivacy = NSLocalizedString("Privacy", comment: "Privacy")
     
     static let documentNotFound = NSLocalizedString("Document not found!", comment: "Document not found")
     static let chooseDifferentName = NSLocalizedString("Please choose a different name", comment: "Please choose a different name")

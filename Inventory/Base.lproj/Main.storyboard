@@ -1981,7 +1981,7 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="Privacy Information"/>
                                                         <connections>
-                                                            <segue destination="bWn-vM-Tj2" kind="show" id="JIx-lk-ePd"/>
+                                                            <segue destination="bWn-vM-Tj2" kind="show" identifier="seguePrivacy" id="JIx-lk-ePd"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-4z-Ecp">

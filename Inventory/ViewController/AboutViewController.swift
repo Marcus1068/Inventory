@@ -302,6 +302,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         performSegue(withIdentifier: "segueManualShow", sender: nil)
     }
     
+    @objc func privacyAction(){
+        performSegue(withIdentifier: "seguePrivacy", sender: nil)
+    }
+    
     /*
     // MARK: - Email delegate
     */
@@ -333,7 +337,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchAppSettings, .touchAppInformation, .touchAppFeedback, .touchAppManual]
+        touchBar.defaultItemIdentifiers = [.touchAppSettings, .touchAppInformation, .touchAppFeedback, .touchPrivacy, .touchAppManual]
         
         let appSettings = NSButtonTouchBarItem(identifier: .touchAppSettings, title: Global.appSettings, target: self, action: #selector(appSettingsAction(_:)))
         appSettings.bezelColor = Global.colorGreen
@@ -344,10 +348,13 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let appFeedback = NSButtonTouchBarItem(identifier: .touchAppFeedback, title: Global.appFeedback, target: self, action: #selector(feedbackButton(_:)))
         appFeedback.bezelColor = Global.colorGreen
         
+        let privacy = NSButtonTouchBarItem(identifier: .touchPrivacy, title: Global.appPrivacy, target: self, action: #selector(privacyAction))
+        privacy.bezelColor = Global.colorGreen
+        
         let appManual = NSButtonTouchBarItem(identifier: .touchAppManual, title: Global.appManual, target: self, action: #selector(userManualAction))
         appManual.bezelColor = Global.colorGreen
         
-        touchBar.templateItems = [appSettings, appInformation, appFeedback, appManual]
+        touchBar.templateItems = [appSettings, appInformation, appFeedback, privacy, appManual]
         
         return touchBar
     }

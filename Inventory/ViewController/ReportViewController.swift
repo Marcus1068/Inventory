@@ -377,6 +377,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         printPDFAction(url: url)
     }
     
+    @objc func touchPrintAction(){
+        printPDFAction(url: url)
+    }
+    
     @objc func toggleImageSwitch(){
         imageSwitch.isOn = !imageSwitch.isOn
         
@@ -1608,7 +1612,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // print PDF file to printer
-    func printPDFAction(url: URL?) {
+    @objc func printPDFAction(url: URL?) {
         
         if let guide_url = url{
             if UIPrintInteractionController.canPrint(guide_url) {
@@ -1755,6 +1759,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let roomFilter = NSButtonTouchBarItem(identifier: .touchRoomFilter, title: Local.room, target: self, action: #selector(toggleRoomsSegment))
         roomFilter.bezelColor = Global.colorGreen
+        
+        /*let print = NSButtonTouchBarItem(identifier: .touchPrint, image: UIImage(systemName: "print")!, target: self, action: #selector(touchPrintAction))
+        print.bezelColor = Global.colorGreen */
         
         let email = NSButtonTouchBarItem(identifier: .touchEmail, image: UIImage(systemName: "envelope")!, target: self, action: #selector(emailActionButton(_:)))
         email.bezelColor = Global.colorGreen

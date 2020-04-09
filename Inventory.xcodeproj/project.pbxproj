@@ -17,6 +17,7 @@
 		2C36498A22A14028004A88A1 /* OwnerListInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498922A14028004A88A1 /* OwnerListInterfaceController.swift */; };
 		2C36498C22A14063004A88A1 /* BrandsRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498B22A14063004A88A1 /* BrandsRowController.swift */; };
 		2C36498E22A14079004A88A1 /* OwnersRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36498D22A14079004A88A1 /* OwnersRowController.swift */; };
+		2C36E91B243F12880060B615 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C36E91A243F12880060B615 /* MenuController.swift */; };
 		2C36FA49228C9139004C1560 /* Aboutview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */; };
 		2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */; };
 		2C36FA4D228C9CB2004C1560 /* Reportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */; };
@@ -209,6 +210,7 @@
 		2C36498922A14028004A88A1 /* OwnerListInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerListInterfaceController.swift; sourceTree = "<group>"; };
 		2C36498B22A14063004A88A1 /* BrandsRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsRowController.swift; sourceTree = "<group>"; };
 		2C36498D22A14079004A88A1 /* OwnersRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnersRowController.swift; sourceTree = "<group>"; };
+		2C36E91A243F12880060B615 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		2C36FA48228C9139004C1560 /* Aboutview Help German.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Aboutview Help German.rtf"; sourceTree = "<group>"; };
 		2C36FA4A228C9681004C1560 /* Aboutview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Aboutview Help English.rtf"; sourceTree = "<group>"; };
 		2C36FA4C228C9CB2004C1560 /* Reportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Reportview Help German.rtf"; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */,
 				2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */,
 				2C870A192293557100F36F99 /* TabBarViewController.swift */,
+				2C36E91A243F12880060B615 /* MenuController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C501B752098E80500D99949 /* CategoryEditViewController.swift in Sources */,
+				2C36E91B243F12880060B615 /* MenuController.swift in Sources */,
 				2C5DDF3C20F9F4C700D71782 /* BrandTableViewController.swift in Sources */,
 				2C4D3F062265D98C00169656 /* PrivacyViewController.swift in Sources */,
 				2C2B8057225CDE70007C842E /* Log.swift in Sources */,

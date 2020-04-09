@@ -20,16 +20,23 @@ class MenuController{
         // First remove the menus in the menu bar you don't want, in our case the Format menu.
         // The format menu doesn't make sense
         builder.remove(menu: .format)
-        //builder.remove(menu: .edit)
+        builder.remove(menu: .edit)
         //builder.remove(menu: .about)
+        
+        
+        
+        // Create and add "Import" menu command at the beginning of the File menu.
+        builder.insertChild(MenuController.importExportMenu(), atStartOfMenu: .file)
         
         // Create and add "New" menu command at the beginning of the File menu.
         builder.insertChild(MenuController.newMenu(), atStartOfMenu: .file)
         
         // print report menu at bottom of file menu
         builder.insertChild(MenuController.printMenu(), atEndOfMenu: .file)
-        
     
+        // Create and add "New" menu command at the beginning of the File menu.
+        builder.insertSibling(MenuController.itemManageMenu(), beforeMenu: .window)
+        
         // Create and add "New" menu command at the beginning of the File menu.
         builder.insertSibling(MenuController.reportMenu(), beforeMenu: .window)
         
@@ -62,35 +69,35 @@ class MenuController{
                                     action: #selector(AppDelegate.inventoryMenu),
                                     input: "0",
                                     modifierFlags: .command,
-                                    propertyList: ["e1"])
+                                    propertyList: "0")
         
         let room = UIKeyCommand(title: NSLocalizedString("Room", comment: "Room"),
                                      image: UIImage(systemName: "bed.double.fill")!,
                                      action: #selector(AppDelegate.newInventoryMenu),
                                      input: "1",
                                      modifierFlags: .command,
-                                     propertyList: ["e2"])
+                                     propertyList: "1")
 
         let category = UIKeyCommand(title: NSLocalizedString("Category", comment: "Category"),
                                      image: UIImage(systemName: "book")!,
                                      action: #selector(AppDelegate.openDocumentMenu),
                                      input: "2",
                                      modifierFlags: .command,
-                                     propertyList: ["e3"])
+                                     propertyList: "2")
 
         let brand = UIKeyCommand(title: NSLocalizedString("Brand", comment: "Brand"),
                                  image: UIImage(systemName: "cube.box")!,
                                  action: #selector(AppDelegate.openDocumentMenu),
                                  input: "3",
                                  modifierFlags: .command,
-                                 propertyList: nil)
+                                 propertyList: "3")
 
         let owner = UIKeyCommand(title: NSLocalizedString("Owner", comment: "Owner"),
                                 image: UIImage(systemName: "person.2.fill")!,
                                 action: #selector(AppDelegate.openDocumentMenu),
                                 input: "4",
                                 modifierFlags: .command,
-                                propertyList: ["e5"])
+                                propertyList: "4")
         
         return UIMenu(title: NSLocalizedString("New", comment: "New"),
                       image: nil,
@@ -99,18 +106,80 @@ class MenuController{
                       children: [inventory, room, category, brand, owner])
     }
     
+    class func importExportMenu() -> UIMenu {
+        // Create the file new menu entries
+        
+        let imp = UIKeyCommand(title: NSLocalizedString("Import", comment: "Import"),
+                                    image: UIImage(systemName: "square.and.arrow.down")!,
+                                    action: #selector(AppDelegate.inventoryMenu),
+                                    input: "5",
+                                    modifierFlags: .command,
+                                    propertyList: "5")
+        
+        let exp = UIKeyCommand(title: NSLocalizedString("Export", comment: "Export"),
+                                     image: UIImage(systemName: "square.and.arrow.up")!,
+                                     action: #selector(AppDelegate.newInventoryMenu),
+                                     input: "6",
+                                     modifierFlags: .command,
+                                     propertyList: "6")
+
+        
+        
+        return UIMenu(title: NSLocalizedString("Import/Export", comment: "Import/Export"),
+                      image: nil,
+                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.import"),
+                      options: [],
+                      children: [imp, exp])
+    }
+    
+    class func itemManageMenu() -> UIMenu {
+        let room = UIKeyCommand(title: "Edit Rooms...",
+                                     image: UIImage(systemName: "bed.double.fill")!,
+                                     action: #selector(AppDelegate.inventoryMenu),
+                                     input: "0",
+                                     modifierFlags: .control,
+                                     propertyList: ["v1"])
+        
+        let category = UIKeyCommand(title: "Edit Categorories...",
+                                        image: UIImage(systemName: "book")!,
+                                        action: #selector(AppDelegate.inventoryMenu),
+                                        input: "1",
+                                        modifierFlags: .control,
+                                        propertyList: ["v2"])
+        
+        let brand = UIKeyCommand(title: "Edit Brands...",
+                                      image: UIImage(systemName: "cube.box")!,
+                                      action: #selector(AppDelegate.inventoryMenu),
+                                      input: "2",
+                                      modifierFlags: .control,
+                                      propertyList: ["v3"])
+        
+        let owner = UIKeyCommand(title: "Edit Owners...",
+                                      image: UIImage(systemName: "person.2.fill")!,
+                                      action: #selector(AppDelegate.inventoryMenu),
+                                      input: "3",
+                                      modifierFlags: .control,
+                                      propertyList: ["v4"])
+
+        return UIMenu(title: "Items",
+                      image: nil,
+                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.manageitems"),
+                      options: [],
+                      children: [room, category, brand, owner])
+    }
+    
     class func reportMenu() -> UIMenu {
-        let lassoCommand = UICommand(title: "rep1",
+        let lassoCommand = UICommand(title: "Show Report",
                                      image: UIImage(systemName: "square.and.pencil")!,
                                      action: #selector(AppDelegate.inventoryMenu),
                                      propertyList: ["e"])
         
-        let scissorsCommand = UICommand(title: "rep2",
+        let scissorsCommand = UICommand(title: "Sort by room",
                                         image: nil,
                                         action: #selector(AppDelegate.inventoryMenu),
                                         propertyList: ["f"])
         
-        let rotateCommand = UICommand(title: "rep3",
+        let rotateCommand = UICommand(title: "Sort by ",
                                       image: nil,
                                       action: #selector(AppDelegate.inventoryMenu),
                                       propertyList: ["g"])

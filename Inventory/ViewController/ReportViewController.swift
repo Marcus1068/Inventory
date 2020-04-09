@@ -47,6 +47,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var imageSwitch: UISwitch!
+    @IBOutlet weak var printBarButton: UIBarButtonItem!
     
     // get all detail infos
     var rooms : [Room] = []
@@ -163,6 +164,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         emailActionButton.tintColor = themeColorUIControls
         imageSwitch.tintColor = themeColorUIControls
         imageSwitch.onTintColor = themeColorUIControls
+        printBarButton.tintColor = themeColorUIControls
         
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
@@ -247,7 +249,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         fetchData()
         
         // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        let pdf = pdfCreateInventoryReport()
+        
+        url = pdfSave(pdf)
+        pdfDisplay(file: url!)
     }
     
     // fill a segment controll with values
@@ -361,7 +366,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         fetchData()
         
         // create the pdf report based on selected sort order and filter choice
-        pdfCreateInventoryReport()
+        
+        let pdf = pdfCreateInventoryReport()
+        
+        url = pdfSave(pdf)
+        pdfDisplay(file: url!)
+    }
+    
+    @IBAction func printBarButtonAction(_ sender: Any) {
+        printPDFAction(url: url)
     }
     
     @objc func toggleImageSwitch(){
@@ -838,7 +851,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         y = y + 30
         
         let tmp = NSLocalizedString("Room filter applied", comment: "Room filter applied")
-        if roomFilterLabel.text == Global.all{
+        var compareRoom: String = ""
+        if roomFilterLabel == nil{
+            compareRoom = Global.all
+        }
+        else
+        {
+            compareRoom = roomFilterLabel.text!
+        }
+        if compareRoom /*roomFilterLabel.text*/ == Global.all{
             let printRoomFilter = tmp + ": " + Global.none as NSString
             printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
@@ -850,7 +871,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         y = y + 30
         
         let tmp2 = NSLocalizedString("Owner filter applied", comment: "Owner filter applied")
-        if ownerFilterLabel.text == Global.all{
+        var compareOwner: String = ""
+        if ownerFilterLabel == nil{
+            compareOwner = Global.all
+        }
+        else
+        {
+            compareOwner = ownerFilterLabel.text!
+        }
+        if compareOwner /*ownerFilterLabel.text*/ == Global.all{
             let printOwnerFilter = tmp2 + ": " + Global.none as NSString
             printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
@@ -1233,7 +1262,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // generate the PDF document containing all pages, header, footer, page number, logo, images etc.
-    func pdfCreateInventoryReport(){
+    func pdfCreateInventoryReport() -> Data{
         //os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
         
         var y = 0.0 // Points from above
@@ -1554,8 +1583,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
         
         // save report to temp dir
-        url = pdfSave(pdf)
-        pdfDisplay(file: url!)
+        //url = pdfSave(pdf)
+        //pdfDisplay(file: url!)
+        
+        return pdf
     }
     
     // display pdf file from chosen URL
@@ -1573,6 +1604,26 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             }
             
             pdfView.document = pdfDocument
+        }
+    }
+    
+    // print PDF file to printer
+    func printPDFAction(url: URL?) {
+        
+        if let guide_url = url{
+            if UIPrintInteractionController.canPrint(guide_url) {
+                let printInfo = UIPrintInfo(dictionary: nil)
+                printInfo.jobName = guide_url.lastPathComponent
+                printInfo.outputType = .general
+
+                let printController = UIPrintInteractionController.shared
+                printController.printInfo = printInfo
+                printController.showsNumberOfCopies = false
+
+                printController.printingItem = guide_url
+
+                printController.present(animated: true, completionHandler: nil)
+            }
         }
     }
     

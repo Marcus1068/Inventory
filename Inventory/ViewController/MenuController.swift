@@ -49,7 +49,7 @@ class MenuController{
         
         let printCommand = UIKeyCommand(title: "Print report",
                                         image: nil,
-                                        action: #selector(AppDelegate.inventoryMenu),
+                                        action: #selector(AppDelegate.printMenu),
                                         input: "P",
                                         modifierFlags: .command,
                                         propertyList: nil)
@@ -111,14 +111,14 @@ class MenuController{
         
         let imp = UIKeyCommand(title: NSLocalizedString("Import", comment: "Import"),
                                     image: UIImage(systemName: "square.and.arrow.down")!,
-                                    action: #selector(AppDelegate.inventoryMenu),
+                                    action: #selector(AppDelegate.importMenu),
                                     input: "5",
                                     modifierFlags: .command,
                                     propertyList: "5")
         
         let exp = UIKeyCommand(title: NSLocalizedString("Export", comment: "Export"),
                                      image: UIImage(systemName: "square.and.arrow.up")!,
-                                     action: #selector(AppDelegate.addInventoryMenu),
+                                     action: #selector(AppDelegate.exportMenu),
                                      input: "6",
                                      modifierFlags: .command,
                                      propertyList: "6")

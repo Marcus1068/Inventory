@@ -2174,7 +2174,7 @@
         <!--Import/Export-->
         <scene sceneID="mgI-Qm-glO">
             <objects>
-                <viewController id="MUX-Pv-eqU" customClass="ImportExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportExportViewController" id="MUX-Pv-eqU" customClass="ImportExportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VFe-N0-mPM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2292,7 +2292,7 @@
         <!--Report View Controller-->
         <scene sceneID="bNy-0e-SAZ">
             <objects>
-                <viewController id="v2l-5p-iCX" customClass="ReportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportViewController" id="v2l-5p-iCX" customClass="ReportViewController" customModule="Inventory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3ZQ-h9-yR7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2552,6 +2552,11 @@
                                     <action selector="emailActionButton:" destination="v2l-5p-iCX" id="dz5-Ko-eSY"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem image="printer" catalog="system" id="hC9-lE-Jfv">
+                                <connections>
+                                    <action selector="printBarButtonAction:" destination="v2l-5p-iCX" id="YsY-4T-jjG"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -2562,6 +2567,7 @@
                         <outlet property="ownersSegment" destination="jvJ-91-pTc" id="zti-Sn-8Ux"/>
                         <outlet property="paperFormatSegment" destination="R5q-YK-cXD" id="SJj-xA-gmn"/>
                         <outlet property="pdfView" destination="dcX-Ar-v2A" id="o4a-Z5-nh2"/>
+                        <outlet property="printBarButton" destination="hC9-lE-Jfv" id="7Qm-kK-lwP"/>
                         <outlet property="roomFilterLabel" destination="K90-Fm-Q4b" id="iBt-OH-CHh"/>
                         <outlet property="roomsSegment" destination="JuC-eq-fIK" id="6DW-Cf-Nw4"/>
                         <outlet property="scrollView" destination="WLo-v3-hNf" id="1pN-uq-66x"/>
@@ -3074,6 +3080,7 @@
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
+        <image name="printer" catalog="system" width="128" height="111"/>
         <image name="square.and.arrow.down.on.square" catalog="system" width="122" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>

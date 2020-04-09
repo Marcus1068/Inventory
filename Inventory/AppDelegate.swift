@@ -416,6 +416,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.pushViewController(editView, animated: true)
     }
     
+    @objc func importMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
+        
+        nav.pushViewController(editView, animated: true)
+        
+        editView.openFilesApp()
+    }
+    
+    @objc func exportMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
+        
+        nav.pushViewController(editView, animated: true)
+        
+        editView.export()
+    }
+    
+    @objc func printMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 3
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
+        
+        nav.pushViewController(editView, animated: true)
+        //editView.pdfInit()
+        let pdf = editView.pdfCreateInventoryReport()
+        let url = editView.pdfSave(pdf)
+        
+        editView.printPDFAction(url: url)
+    }
+    
     #endif
     
     

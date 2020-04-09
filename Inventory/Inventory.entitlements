@@ -37,5 +37,7 @@
 	<true/>
 	<key>com.apple.security.personal-information.photos-library</key>
 	<true/>
+	<key>com.apple.security.print</key>
+	<true/>
 </dict>
 </plist>

@@ -585,8 +585,12 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // MARK: - button actions
     
+    // called from main menu in case of catalyst
+    @objc func export(){
+        exportCSVFile()
+    }
+    
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
-        //os_log("ImportExportViewController exportCVSButtonAction", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -596,8 +600,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressLabel.text = "0 %"
         
         exportCSVFile()
-        
-        //shareBarButton.isEnabled = true
     }
     
     // share system button to share csv file

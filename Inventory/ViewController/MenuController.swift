@@ -66,35 +66,35 @@ class MenuController{
         
         let inventory = UIKeyCommand(title: NSLocalizedString("Inventory", comment: "Inventory menu entry"),
                                     image: UIImage(systemName: "square.and.pencil")!,
-                                    action: #selector(AppDelegate.inventoryMenu),
+                                    action: #selector(AppDelegate.addInventoryMenu),
                                     input: "0",
                                     modifierFlags: .command,
                                     propertyList: "0")
         
         let room = UIKeyCommand(title: NSLocalizedString("Room", comment: "Room"),
                                      image: UIImage(systemName: "bed.double.fill")!,
-                                     action: #selector(AppDelegate.newInventoryMenu),
+                                     action: #selector(AppDelegate.addRoomMenu),
                                      input: "1",
                                      modifierFlags: .command,
                                      propertyList: "1")
 
         let category = UIKeyCommand(title: NSLocalizedString("Category", comment: "Category"),
                                      image: UIImage(systemName: "book")!,
-                                     action: #selector(AppDelegate.openDocumentMenu),
+                                     action: #selector(AppDelegate.addCategoryMenu),
                                      input: "2",
                                      modifierFlags: .command,
                                      propertyList: "2")
 
         let brand = UIKeyCommand(title: NSLocalizedString("Brand", comment: "Brand"),
                                  image: UIImage(systemName: "cube.box")!,
-                                 action: #selector(AppDelegate.openDocumentMenu),
+                                 action: #selector(AppDelegate.addBrandMenu),
                                  input: "3",
                                  modifierFlags: .command,
                                  propertyList: "3")
 
         let owner = UIKeyCommand(title: NSLocalizedString("Owner", comment: "Owner"),
                                 image: UIImage(systemName: "person.2.fill")!,
-                                action: #selector(AppDelegate.openDocumentMenu),
+                                action: #selector(AppDelegate.addOwnerMenu),
                                 input: "4",
                                 modifierFlags: .command,
                                 propertyList: "4")
@@ -118,7 +118,7 @@ class MenuController{
         
         let exp = UIKeyCommand(title: NSLocalizedString("Export", comment: "Export"),
                                      image: UIImage(systemName: "square.and.arrow.up")!,
-                                     action: #selector(AppDelegate.newInventoryMenu),
+                                     action: #selector(AppDelegate.addInventoryMenu),
                                      input: "6",
                                      modifierFlags: .command,
                                      propertyList: "6")
@@ -135,28 +135,28 @@ class MenuController{
     class func itemManageMenu() -> UIMenu {
         let room = UIKeyCommand(title: "Edit Rooms...",
                                      image: UIImage(systemName: "bed.double.fill")!,
-                                     action: #selector(AppDelegate.inventoryMenu),
+                                     action: #selector(AppDelegate.editRoomMenu),
                                      input: "0",
                                      modifierFlags: .control,
                                      propertyList: ["v1"])
         
         let category = UIKeyCommand(title: "Edit Categorories...",
                                         image: UIImage(systemName: "book")!,
-                                        action: #selector(AppDelegate.inventoryMenu),
+                                        action: #selector(AppDelegate.editCategoryMenu),
                                         input: "1",
                                         modifierFlags: .control,
                                         propertyList: ["v2"])
         
         let brand = UIKeyCommand(title: "Edit Brands...",
                                       image: UIImage(systemName: "cube.box")!,
-                                      action: #selector(AppDelegate.inventoryMenu),
+                                      action: #selector(AppDelegate.editBrandMenu),
                                       input: "2",
                                       modifierFlags: .control,
                                       propertyList: ["v3"])
         
         let owner = UIKeyCommand(title: "Edit Owners...",
                                       image: UIImage(systemName: "person.2.fill")!,
-                                      action: #selector(AppDelegate.inventoryMenu),
+                                      action: #selector(AppDelegate.editOwnerMenu),
                                       input: "3",
                                       modifierFlags: .control,
                                       propertyList: ["v4"])

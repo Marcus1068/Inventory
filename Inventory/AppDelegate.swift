@@ -261,50 +261,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // macCatalyst: Create menu
     #if targetEnvironment(macCatalyst)
     
-    /* Create UIMenu objects and use them to construct the menus and submenus your app displays. You provide menus for your app when it runs on macOS, and key command elements in those menus also appear in the discoverability HUD on iPad when the user presses the command key. You also use menus to display contextual actions in response to specific interactions with one of your views. Every menu has a title, an optional image, and an optional set of child elements. When the user selects an element from the menu, the system executes the code that you provide.
-     */
-    
-    class func itemsMenu() -> UIMenu {
-        // Create the items menu
-        
-        let inv = UIKeyCommand(title: "Items", action: #selector(inventoryMenu), input: "i", modifierFlags: .command)
-        
-        let newInv = NSLocalizedString("New Room", comment: "New Room")
-        let newInventory = UIKeyCommand(title: newInv, action: #selector(newInventoryMenu), input: "n", modifierFlags: .command)
-
-        let openDocument = UIKeyCommand(title: "OpenX...", action: #selector(openDocumentMenu), input: "o", modifierFlags: .command)
-        
-        // Insert menu item at the top of the File menu.
-        let newMenu = UIMenu(title: "Manage items", options: .displayInline, children: [inv, newInventory, openDocument])
-        //builder.insertChild(newMenu, beforeMenu: .window)
-        
-        return UIMenu(title: NSLocalizedString("Manage Items", comment: ""),
-                      image: nil,
-                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.items"),
-                      options: [],
-                      children: [newMenu])
-    }
-    
-    class func reportMenu() -> UIMenu {
-        // Create the items menu
-        
-        let inv = UIKeyCommand(title: "Reports", action: #selector(inventoryMenu), input: "a", modifierFlags: .command)
-        
-        let newInv = NSLocalizedString("New report", comment: "New Room")
-        let newInventory = UIKeyCommand(title: newInv, action: #selector(newInventoryMenu), input: "g", modifierFlags: .command)
-
-        let openDocument = UIKeyCommand(title: "PDF...", action: #selector(openDocumentMenu), input: "k", modifierFlags: .command)
-        
-        // Insert menu item at the top of the File menu.
-        let newMenu = UIMenu(title: "Reports", options: .displayInline, children: [inv, newInventory, openDocument])
-        //builder.insertChild(newMenu, beforeMenu: .window)
-        
-        return UIMenu(title: NSLocalizedString("Reports", comment: ""),
-                      image: nil,
-                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.report"),
-                      options: [],
-                      children: [newMenu])
-    }
     
     var menuController: MenuController!
     
@@ -313,7 +269,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Main menus appear regardless of who is in the responder chain.
     */
     override func buildMenu(with builder: UIMenuBuilder) {
-        Swift.debugPrint(#function)
+        //Swift.debugPrint(#function)
         // Swift.debugPrint("City command = \(String(describing: value))")
         
         /** First check if the builder object is using the main system menu, which is the main menu bar.
@@ -336,7 +292,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // call new inventory
-    @objc func newInventoryMenu() {
+    @objc func addInventoryMenu() {
         guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
             return
         }
@@ -350,12 +306,116 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         editView.currentInventory = nil
         
         nav.pushViewController(editView, animated: true)
-        
     }
     
-    @objc func openDocumentMenu() {
+    @objc func editRoomMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
         
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "RoomTableViewController") as! RoomTableViewController
+        
+        nav.pushViewController(editView, animated: true)
     }
+    
+    @objc func editCategoryMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "CategoryTableViewController") as! CategoryTableViewController
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func editBrandMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "BrandTableViewController") as! BrandTableViewController
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func editOwnerMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "OwnerTableViewController") as! OwnerTableViewController
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addRoomMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "RoomEditViewController") as! RoomEditViewController
+        editView.currentRoom = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addCategoryMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "CategoryEditViewController") as! CategoryEditViewController
+        editView.currentCategory = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addBrandMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "BrandEditViewController") as! BrandEditViewController
+        editView.currentBrand = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addOwnerMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "OwnerEditViewController") as! OwnerEditViewController
+        editView.currentOwner = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
     #endif
     
     

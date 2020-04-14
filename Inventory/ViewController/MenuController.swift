@@ -1,3 +1,22 @@
+/*
+
+Copyright 2019 Marcus Deuß
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
+
+
 //
 //  MenuController.swift
 //  Inventory
@@ -17,9 +36,9 @@ class MenuController{
      */
     
     struct CommandPListKeys {
-        static let ArrowsKeyIdentifier = "id" // Arrow command-keys
-        static let PaperIdentifierKey = "paper" // Font style commands
-        static let ToolsIdentifierKey = "tool" // Tool commands
+        static let ArrowsKeyIdentifier = "id"   // Arrow command-keys
+        static let PaperIdentifierKey = "paper" // paper style commands
+        static let ToolsIdentifierKey = "tool"  // Tool commands
     }
     
     enum PaperStyle: String, CaseIterable {
@@ -37,7 +56,7 @@ class MenuController{
         builder.remove(menu: .edit)
         //builder.remove(menu: .about)
         
-        
+        builder.insertSibling(MenuController.preferencesMenu(), afterMenu: .about)
         
         // Create and add "Import" menu command at the beginning of the File menu.
         builder.insertChild(MenuController.importExportMenu(), atStartOfMenu: .file)
@@ -57,11 +76,27 @@ class MenuController{
         
     }
 
+    class func preferencesMenu() -> UIMenu {
+        // Create the preferences/about menu entries with command-p
+        
+        let prefCommand = UIKeyCommand(title: NSLocalizedString("Preferences", comment: "Preferences"),
+                                        image: nil,
+                                        action: #selector(AppDelegate.preferencesMenu),
+                                        input: "T",
+                                        modifierFlags: .command,
+                                        propertyList: nil)
+        
+        return UIMenu(title: "",
+                      image: nil,
+                      identifier: UIMenu.Identifier("de.marcus-deuss.menus.preferences"),
+                      options: [.displayInline],
+                      children: [prefCommand])
+    }
     
     class func printMenu() -> UIMenu {
         // Create the print menu entries with command-p
         
-        let printCommand = UIKeyCommand(title: "Print report",
+        let printCommand = UIKeyCommand(title: NSLocalizedString("Print report", comment: "Print report"),
                                         image: nil,
                                         action: #selector(AppDelegate.printMenu),
                                         input: "P",
@@ -147,35 +182,35 @@ class MenuController{
     }
     
     class func itemManageMenu() -> UIMenu {
-        let room = UIKeyCommand(title: "Edit Rooms...",
+        let room = UIKeyCommand(title: NSLocalizedString("Edit Rooms...", comment: "Edit Rooms..."),
                                      image: UIImage(systemName: "bed.double.fill")!,
                                      action: #selector(AppDelegate.editRoomMenu),
                                      input: "0",
                                      modifierFlags: .control,
                                      propertyList: ["v1"])
         
-        let category = UIKeyCommand(title: "Edit Categorories...",
+        let category = UIKeyCommand(title: NSLocalizedString("Edit Categories...", comment: "Edit Categories..."),
                                         image: UIImage(systemName: "book")!,
                                         action: #selector(AppDelegate.editCategoryMenu),
                                         input: "1",
                                         modifierFlags: .control,
                                         propertyList: ["v2"])
         
-        let brand = UIKeyCommand(title: "Edit Brands...",
+        let brand = UIKeyCommand(title: NSLocalizedString("Edit Brands...", comment: "Edit Brands..."),
                                       image: UIImage(systemName: "cube.box")!,
                                       action: #selector(AppDelegate.editBrandMenu),
                                       input: "2",
                                       modifierFlags: .control,
                                       propertyList: ["v3"])
         
-        let owner = UIKeyCommand(title: "Edit Owners...",
+        let owner = UIKeyCommand(title: NSLocalizedString("Edit Owners...", comment: "Edit Owners..."),
                                       image: UIImage(systemName: "person.2.fill")!,
                                       action: #selector(AppDelegate.editOwnerMenu),
                                       input: "3",
                                       modifierFlags: .control,
                                       propertyList: ["v4"])
 
-        return UIMenu(title: "Items",
+        return UIMenu(title: NSLocalizedString("Items", comment: "Items"),
                       image: nil,
                       identifier: UIMenu.Identifier("de.marcus-deuss.menus.manageitems"),
                       options: [],
@@ -194,7 +229,7 @@ class MenuController{
                                     alternates: [])
         }
 
-        return UIMenu(title: "Reports",
+        return UIMenu(title: NSLocalizedString("Reports", comment: "Reports"),
                       image: nil,
                       identifier: UIMenu.Identifier("de.marcus-deuss.menus.reports"),
                       options: [],

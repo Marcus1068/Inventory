@@ -313,6 +313,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.selectedIndex = 0
     }
     
+    // about/preferences menu
+    @objc func preferencesMenu(){
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        tabBarController.selectedIndex = 4
+    }
     
     // call new inventory
     @objc func addInventoryMenu() {

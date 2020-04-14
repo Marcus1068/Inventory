@@ -16,6 +16,20 @@ class MenuController{
     /* Create UIMenu objects and use them to construct the menus and submenus your app displays. You provide menus for your app when it runs on macOS, and key command elements in those menus also appear in the discoverability HUD on iPad when the user presses the command key. You also use menus to display contextual actions in response to specific interactions with one of your views. Every menu has a title, an optional image, and an optional set of child elements. When the user selects an element from the menu, the system executes the code that you provide.
      */
     
+    struct CommandPListKeys {
+        static let ArrowsKeyIdentifier = "id" // Arrow command-keys
+        static let PaperIdentifierKey = "paper" // Font style commands
+        static let ToolsIdentifierKey = "tool" // Tool commands
+    }
+    
+    enum PaperStyle: String, CaseIterable {
+        case dinA4
+        case usletter
+        func localizedString() -> String {
+            return NSLocalizedString("\(self.rawValue)", comment: "")
+        }
+    }
+    
     init(with builder: UIMenuBuilder) {
         // First remove the menus in the menu bar you don't want, in our case the Format menu.
         // The format menu doesn't make sense
@@ -168,32 +182,23 @@ class MenuController{
                       children: [room, category, brand, owner])
     }
     
+    
+    
     class func reportMenu() -> UIMenu {
-        let lassoCommand = UICommand(title: "Show Report",
-                                     image: UIImage(systemName: "square.and.pencil")!,
-                                     action: #selector(AppDelegate.inventoryMenu),
-                                     propertyList: ["e"])
         
-        let scissorsCommand = UICommand(title: "Sort by room",
-                                        image: nil,
-                                        action: #selector(AppDelegate.inventoryMenu),
-                                        propertyList: ["f"])
-        
-        let rotateCommand = UICommand(title: "Sort by ",
-                                      image: nil,
-                                      action: #selector(AppDelegate.inventoryMenu),
-                                      propertyList: ["g"])
-        
-        let pencilCommand = UICommand(title: "rep4",
-                                      image: nil,
-                                      action: #selector(AppDelegate.inventoryMenu),
-                                      propertyList: ["h"])
+        let paperChildrenCommands = PaperStyle.allCases.map { paper in
+                            UICommand(title: paper.localizedString(),
+                                    image: nil,
+                                    action: #selector(AppDelegate.paperStyleAction(_:)),
+                                    propertyList: [CommandPListKeys.PaperIdentifierKey: paper.rawValue],
+                                    alternates: [])
+        }
 
         return UIMenu(title: "Reports",
                       image: nil,
                       identifier: UIMenu.Identifier("de.marcus-deuss.menus.reports"),
                       options: [],
-                      children: [lassoCommand, scissorsCommand, rotateCommand, pencilCommand])
+                      children: paperChildrenCommands)
     }
     
     #endif

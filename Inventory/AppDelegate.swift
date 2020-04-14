@@ -268,9 +268,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         The system only asks UIApplication and UIApplicationDelegate for the main menus.
         Main menus appear regardless of who is in the responder chain.
     */
+    
+    // The font style check states used in the Style menu.
+    var paperMenuStyleStates = Set<String>()
+    
     override func buildMenu(with builder: UIMenuBuilder) {
         //Swift.debugPrint(#function)
         // Swift.debugPrint("City command = \(String(describing: value))")
+        
+        // Start off default paper menu checkmark value with dinA4
+        paperMenuStyleStates.insert(MenuController.PaperStyle.dinA4.rawValue)
         
         /** First check if the builder object is using the main system menu, which is the main menu bar.
             If you want to check if the builder is for a contextual menu, check for: UIMenuSystem.context
@@ -279,6 +286,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             menuController = MenuController(with: builder)
         }
         
+    }
+    
+    override func validate(_ command: UICommand) {
+        // Obtain the plist of the incoming command.
+        if let paperStyleDict = command.propertyList as? [String: String] {
+            // Check if the command comes from the paper menu.
+            if let paperStyle = paperStyleDict[MenuController.CommandPListKeys.PaperIdentifierKey] {
+                // Update the "paper" menu command state (checked or unchecked).
+                command.state = paperMenuStyleStates.contains(paperStyle) ? .on : .off
+            }
+            
+            for i in paperStyleDict{
+                print("Test \(i.key)")
+                print("Test \(i.value)")
+            }
+        }
     }
     
     // inventory overview
@@ -464,6 +487,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = editView.pdfSave(pdf)
         
         editView.printPDFAction(url: url)
+    }
+    
+    @objc
+    // User choses an item from the "paper" menu.
+    func paperStyleAction(_ sender: AnyObject) {
+        if let keyCommand = sender as? UICommand {
+            if let paperStyleDict = keyCommand.propertyList as? [String: String] {
+                if let paperStyle = paperStyleDict[MenuController.CommandPListKeys.PaperIdentifierKey] {
+                    if paperMenuStyleStates.contains(paperStyle) {
+                        paperMenuStyleStates.remove(paperStyle)
+                    } else {
+                        paperMenuStyleStates.insert(paperStyle)
+                    }
+                }
+            }
+        }
     }
     
     #endif

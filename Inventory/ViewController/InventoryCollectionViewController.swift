@@ -275,6 +275,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     } */
 
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            
+        ]
+    }
+    
     // first actions taken here
     
     override func viewDidLoad() {

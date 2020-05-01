@@ -86,12 +86,12 @@ class TabBarViewController: UITabBarController {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(inventoryEntry), discoverabilityTitle: NSLocalizedString("Inventory", comment: "Inventory")),
-            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(manageItemsEntry), discoverabilityTitle: NSLocalizedString("Manage Items", comment: "Manage Items")),
-            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(importExportEntry), discoverabilityTitle: NSLocalizedString("Import/Export", comment: "Import/Export")),
-            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(reportEntry), discoverabilityTitle: NSLocalizedString("Report", comment: "Report")),
-            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(aboutEntry), discoverabilityTitle: NSLocalizedString("About Inventory", comment: "About Inventory")),
-            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(addInvEntry), discoverabilityTitle: NSLocalizedString("Add Inventory", comment: "Add Inventory"))
+            UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(inventoryEntry), discoverabilityTitle: Global.inventory),
+            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(manageItemsEntry), discoverabilityTitle: Global.manageItems),
+            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(importExportEntry), discoverabilityTitle: Global.importExport),
+            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(reportEntry), discoverabilityTitle: Global.report),
+            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(aboutEntry), discoverabilityTitle: Global.about),
+            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(addInvEntry), discoverabilityTitle: Global.addInv)
         ]
     }
     

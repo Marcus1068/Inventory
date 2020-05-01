@@ -93,7 +93,7 @@ class Global: UIViewController {
     static let manageItems = NSLocalizedString("Manage items", comment: "manage items")
     static let addInv = NSLocalizedString("Add inventory", comment: "Add inventory")
     static let share = NSLocalizedString("Share", comment: "Share")
-    static let inventory = NSLocalizedString("Inventory", comment: "Inventory")
+    static let inventory = NSLocalizedString("My Inventory", comment: "My Inventory")
     static let importExport = NSLocalizedString("Import/Export", comment: "Import/Export")
     static let importButton = NSLocalizedString("Import", comment: "Import")
     static let exportButton = NSLocalizedString("Export", comment: "Export")

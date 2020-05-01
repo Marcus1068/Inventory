@@ -43,6 +43,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var openSourceLabel: UILabel!
     @IBOutlet weak var appSettingsButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var whatsNewButton: UIButton!
     
     // attributes
     
@@ -63,7 +64,8 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(informationAction), discoverabilityTitle: Global.appInformation),
             UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(feedbackAction), discoverabilityTitle: Global.appFeedback),
             UIKeyCommand(input: "P", modifierFlags: [.command, .shift], action: #selector(privacyAction), discoverabilityTitle: Global.appPrivacy),
-            UIKeyCommand(input: "M", modifierFlags: [.command, .shift], action: #selector(userManualAction), discoverabilityTitle: Global.appManual)
+            UIKeyCommand(input: "M", modifierFlags: [.command, .shift], action: #selector(userManualAction), discoverabilityTitle: Global.appManual),
+            UIKeyCommand(input: "N", modifierFlags: [.command, .shift], action: #selector(whatsNewAction(_:)), discoverabilityTitle: Global.whatsNew)
         ]
     }
     
@@ -81,11 +83,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         userManualButton.tintColor = themeColorUIControls
         //appVersionNumberLabel.textColor = themeColorUIControls
         appSettingsButton.tintColor = themeColorUIControls
+        whatsNewButton.tintColor = themeColorUIControls
         
         appVersionNumberLabel.text = UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appVersionNumberLabel.textColor = themeColorText
         
-        copyrightLabel.text = NSLocalizedString("(c) 2019 by M. Deuß", comment: "(c) 2019 by M. Deuß")
+        copyrightLabel.text = NSLocalizedString("(c) 2018-2020 M. Deuß", comment: "(c) by M. Deuß")
         iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.getOSVersion()
         
         // hide this label when iPhone screen size too small
@@ -104,6 +107,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             customPointerInteraction(on: userManualButton, pointerInteractionDelegate: self)
             customPointerInteraction(on: appSettingsButton, pointerInteractionDelegate: self)
             customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: whatsNewButton, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }
@@ -251,6 +255,61 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     // MARK: - UI buttons
+    
+    
+    @IBAction func whatsNewAction(_ sender: UIButton) {
+        
+        let newTextGerman = """
+                    Neuerungen der Version 2.0:
+                    - iOS 13 wird vorausgesetzt
+                    - Behoben: Absturz bei fehlerhafter Preis Eingabe (ungültige Zahlen)
+                    - Behoben: Fehlerhafte Berechnung der Garantie Tage und der abgelaufenen Garantie
+                    - Neu: iCloud Unterstützung: Synchronisation auf alle eigene iOS Geräte
+                    - Behoben: Layout Fehler bei Today Widget (iOS)
+                    - Behoben: iPadOS 13.4: iPad share Dialog wurde nicht angezeigt
+                    - Neu: iPadOS 13.4 - Maus Interaktionen unterstützt
+                    - Neu: iPadOS 13.4 - Tastatur Unterstützung (lange cmd Taste drücken auf Hardware Tastatur)
+                    - Geändert: es werden keine Beispiel Datensätze mehr erzeugt
+                    - Neu:  viele neue Standard Icons
+                    - Geändert: Benutzeroberfläche optimiert
+                    - Neu: Mac Version der App - kann noch Fehler enthalten
+                    - Neu: Mac Version: Touch Bar Unterstützung
+                    - Neu: direktes Drucken des Berichts möglich
+                    - New: Übersicht neuer Funktionen wird angezeigt in der App
+                    """
+        
+        let newTextEnglish = """
+                            News of version 2.0:
+                            - iOS 13 necessary (due to new functions used)
+                            - Fixed: Crash bei fehlerhafter Preis Eingabe (ungültige Zahlen), es werden keine , oder . mehr zugelassen, nur ganze Zahlen
+                            - Fixed: Fehlerhafte Berechnung der Garantie Tage und der abgelaufenen Garantie
+                            - New: iCloud Unterstützung: wer mehr als ein iDevice hat bekommt jetzt die Daten auf allen Geräten synchronisiert, ein manueller Export/Import ist dann nicht mehr notwendig
+                            - Fixed: Layout Fehler bei Today Widget (iOS)
+                            - Fixed: iOS 13.4: iPad share Dialog wurde nicht angezeigt
+                            - New: iPadOS 13.4 - Maus Interaktionen unterstützt
+                            - New: iPadOS 13.4 - Tastatur Unterstützung (lange cmd Taste drücken auf Hardware Tastatur)
+                            - Changed: es werden keine Beispiel Datensätze mehr erzeugt, da sonst doppelte Einträge bei Verwendung von iPad und iPhone auftreten können
+                            - New:  viele neue Standard Icons
+                            - Changed: Benutzeroberfläche optimiert
+                            - New: Mac Version der App - kann noch Fehler enthalten
+                            - New: Mac Version: Touch Bar Unterstützung, kann komplett mit Tastatur bedient werden auf neueren Macs
+                            - New: direktes Drucken des Berichts möglich
+                            - New: Übersicht neuer Funktionen wird angezeigt in der App
+                            """
+        
+        let text: String
+        switch Local.currentLocaleForDate(){
+        case "de_DE", "de_AT", "de_CH", "de":
+            text = newTextGerman
+            break
+            
+        default: // all other languages get english privacy statement
+            text = newTextEnglish
+            break
+        }
+        
+        displayAlert(title: Global.whatsNew, message: text, buttonText: Global.ok)
+    }
     
     // show app settings
     @IBAction func appSettingsAction(_ sender: UIButton) {

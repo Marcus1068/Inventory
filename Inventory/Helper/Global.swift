@@ -86,6 +86,8 @@ class Global: UIViewController {
     static let brand = NSLocalizedString("Brand", comment: "Brand")
     static let owner = NSLocalizedString("Owner", comment: "Owner")
     
+    static let whatsNew = NSLocalizedString("What's new", comment: "What's new")
+    
     static let editRoom = NSLocalizedString("Edit Room", comment: "Edit Room")
     static let editCategory = NSLocalizedString("Edit Category", comment: "Edit Category")
     static let editBrand = NSLocalizedString("Edit Brand", comment: "Edit Brand")

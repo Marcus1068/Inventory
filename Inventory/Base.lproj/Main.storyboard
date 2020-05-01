@@ -1958,7 +1958,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="6WH-II-AAJ">
-                                                <rect key="frame" x="16" y="351" width="140" height="128"/>
+                                                <rect key="frame" x="16" y="351" width="140" height="158"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6t7-0P-Kka">
                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="32"/>
@@ -1992,10 +1992,17 @@
                                                             <segue destination="gEE-bF-DQe" kind="show" identifier="segueManualShow" id="1bz-J3-9PU"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrB-7B-0LP">
+                                                        <rect key="frame" x="0.0" y="128" width="83" height="30"/>
+                                                        <state key="normal" title="What's New"/>
+                                                        <connections>
+                                                            <action selector="whatsNewAction:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="OjA-A5-E52"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-Er-gZy">
-                                                <rect key="frame" x="16" y="487" width="336.5" height="60"/>
+                                                <rect key="frame" x="16" y="517" width="336.5" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="3yz-aa-q7Q"/>
                                                 </constraints>
@@ -2109,6 +2116,7 @@
                         <outlet property="privacyButton" destination="C0D-o8-29K" id="zEI-Av-zLe"/>
                         <outlet property="userManualButton" destination="pkT-4z-Ecp" id="DNQ-sh-Kfm"/>
                         <outlet property="userNameTextField" destination="TPe-8f-CMe" id="L7b-5Y-ReR"/>
+                        <outlet property="whatsNewButton" destination="XrB-7B-0LP" id="ThC-gH-xvj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqL-BL-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>

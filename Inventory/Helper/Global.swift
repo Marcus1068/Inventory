@@ -78,6 +78,13 @@ class Global: UIViewController {
     static let filterOwner = NSLocalizedString("Filter by Owner", comment: "Filter by Owner")
     static let filterRoom = NSLocalizedString("Filter by Room", comment: "Filter by Room")
     static let email = NSLocalizedString("EMail", comment: "Email")
+    static let pdf = NSLocalizedString("PDF", comment: "PDF")
+    static let invoice = NSLocalizedString("Invoice", comment: "Invoice")
+    
+    static let room = NSLocalizedString("Room", comment: "Room")
+    static let category = NSLocalizedString("Category", comment: "Category")
+    static let brand = NSLocalizedString("Brand", comment: "Brand")
+    static let owner = NSLocalizedString("Owner", comment: "Owner")
     
     static let editRoom = NSLocalizedString("Edit Room", comment: "Edit Room")
     static let editCategory = NSLocalizedString("Edit Category", comment: "Edit Category")
@@ -644,3 +651,33 @@ extension ImageViewController: UIScrollViewDelegate {
         return imageView
     }
 }
+
+// MARK: extensions
+// to get string from a date
+// usage: yourString = yourDate.toString(withFormat: "yyyy")
+extension Date {
+    func toString(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.dateStyle = DateFormatter.Style.medium
+        formatter.timeStyle = DateFormatter.Style.none
+        let myString = formatter.string(from: self)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = format
+        
+        return formatter.string(from: yourDate!)
+    }
+}
+
+extension NSDate {
+    func toString(withFormat format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        let myString = formatter.string(from: self as Date)
+        let yourDate = formatter.date(from: myString)
+        formatter.dateFormat = format
+        
+        return formatter.string(from: yourDate!)
+    }
+}
+

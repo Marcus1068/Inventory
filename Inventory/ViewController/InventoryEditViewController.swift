@@ -102,14 +102,14 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-       /*     UIKeyCommand(input: "1", modifierFlags: [.command, .shift], action: #selector(roomEditAction), discoverabilityTitle: Global.editRoom),
-            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(categoryEditAction), discoverabilityTitle: Global.editCategory),
-            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(brandEditAction), discoverabilityTitle: Global.editBrand),
-            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(ownerEditAction), discoverabilityTitle: Global.editOwner),
-            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(roomAddAction), discoverabilityTitle: Global.addRoom),
-            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(categoryAddAction), discoverabilityTitle: Global.addcategory),
-            UIKeyCommand(input: "7", modifierFlags: .command, action: #selector(brandAddAction), discoverabilityTitle: Global.addBrand),
-            UIKeyCommand(input: "8", modifierFlags: .command, action: #selector(ownerAddAction), discoverabilityTitle: Global.addOwner) */
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(cancelButton), discoverabilityTitle: Global.cancel),
+            UIKeyCommand(input: "S", modifierFlags: .command, action: #selector(saveButton), discoverabilityTitle: Global.save),
+            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(cameraNavBarAction), discoverabilityTitle: Global.takePhoto),
+            UIKeyCommand(input: "I", modifierFlags: .command, action: #selector(choosePDFButton(_:)), discoverabilityTitle: Global.invoice),
+            UIKeyCommand(input: "1", modifierFlags: [.command, .shift], action: #selector(roomButton(_:)), discoverabilityTitle: Global.room),
+            UIKeyCommand(input: "2", modifierFlags: [.command, .shift], action: #selector(categoryButton(_:)), discoverabilityTitle: Global.category),
+            UIKeyCommand(input: "3", modifierFlags: [.command, .shift], action: #selector(brandButton(_:)), discoverabilityTitle: Global.brand),
+            UIKeyCommand(input: "4", modifierFlags: [.command, .shift], action: #selector(ownerButton(_:)), discoverabilityTitle: Global.owner)
         ]
     }
     
@@ -964,36 +964,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     #endif
 }
 
-
-
-// MARK: extensions
-// to get string from a date
-// usage: yourString = yourDate.toString(withFormat: "yyyy")
-extension Date {
-    func toString(withFormat format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.dateStyle = DateFormatter.Style.medium
-        formatter.timeStyle = DateFormatter.Style.none
-        let myString = formatter.string(from: self)
-        let yourDate = formatter.date(from: myString)
-        formatter.dateFormat = format
-        
-        return formatter.string(from: yourDate!)
-    }
-}
-
-extension NSDate {
-    func toString(withFormat format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        let myString = formatter.string(from: self as Date)
-        let yourDate = formatter.date(from: myString)
-        formatter.dateFormat = format
-        
-        return formatter.string(from: yourDate!)
-    }
-}
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {

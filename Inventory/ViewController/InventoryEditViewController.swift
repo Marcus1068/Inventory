@@ -105,7 +105,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(cancelButton), discoverabilityTitle: Global.cancel),
             UIKeyCommand(input: "S", modifierFlags: .command, action: #selector(saveButton), discoverabilityTitle: Global.save),
             UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(cameraNavBarAction), discoverabilityTitle: Global.takePhoto),
-            UIKeyCommand(input: "I", modifierFlags: .command, action: #selector(choosePDFButton(_:)), discoverabilityTitle: Global.invoice),
+            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(choosePDFButton(_:)), discoverabilityTitle: Global.invoice),
             UIKeyCommand(input: "1", modifierFlags: [.command, .shift], action: #selector(roomButton(_:)), discoverabilityTitle: Global.room),
             UIKeyCommand(input: "2", modifierFlags: [.command, .shift], action: #selector(categoryButton(_:)), discoverabilityTitle: Global.category),
             UIKeyCommand(input: "3", modifierFlags: [.command, .shift], action: #selector(brandButton(_:)), discoverabilityTitle: Global.brand),

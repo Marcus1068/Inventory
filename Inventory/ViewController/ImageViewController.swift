@@ -38,6 +38,14 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneAction), discoverabilityTitle: Global.done),
+            
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +83,10 @@ class ImageViewController: UIViewController {
         
         scrollView.minimumZoomScale = minScale
         scrollView.zoomScale = minScale
+    }
+    
+    @objc func doneAction(){
+        _ = navigationController?.popViewController(animated: true)
     }
 
 }

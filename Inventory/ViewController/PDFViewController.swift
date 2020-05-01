@@ -40,6 +40,16 @@ class PDFViewController: UIViewController {
     
     @IBOutlet weak var pdfView: PDFView!
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(backButton), discoverabilityTitle: Global.back),
+            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(firstPage), discoverabilityTitle: Global.firstPage),
+            UIKeyCommand(input: "L", modifierFlags: [.command, .shift], action: #selector(lastPage), discoverabilityTitle: Global.lastPage),
+            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareButtonAction), discoverabilityTitle: Global.share)
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

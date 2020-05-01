@@ -37,6 +37,14 @@ class PrivacyViewController: UIViewController {
     @IBOutlet weak var doneAction: UIButton!
     
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneButton), discoverabilityTitle: Global.done),
+            
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

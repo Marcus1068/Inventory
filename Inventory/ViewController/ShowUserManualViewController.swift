@@ -34,6 +34,14 @@ class ShowUserManualViewController: UIViewController {
     @IBOutlet weak var doneAction: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneAction(_:)), discoverabilityTitle: Global.done),
+            
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

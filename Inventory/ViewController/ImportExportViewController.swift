@@ -46,6 +46,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     var url : URL?
     
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "I", modifierFlags: .command, action: #selector(importFromCVSFileButton), discoverabilityTitle: Global.importButton),
+            UIKeyCommand(input: "E", modifierFlags: .command, action: #selector(exportCVSButtonAction), discoverabilityTitle: Global.exportButton),
+            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareButtonAction), discoverabilityTitle: Global.share)
+        ]
+    }
+    
     // MARK: view controller stuff
     override func viewDidLoad() {
         super.viewDidLoad()

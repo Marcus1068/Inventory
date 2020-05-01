@@ -83,7 +83,18 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
     }
 
-    #if targetEnvironment(macCatalyst)
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(inventoryEntry), discoverabilityTitle: NSLocalizedString("Inventory", comment: "Inventory")),
+            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(manageItemsEntry), discoverabilityTitle: NSLocalizedString("Manage Items", comment: "Manage Items")),
+            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(importExportEntry), discoverabilityTitle: NSLocalizedString("Import/Export", comment: "Import/Export")),
+            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(reportEntry), discoverabilityTitle: NSLocalizedString("Report", comment: "Report")),
+            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(aboutEntry), discoverabilityTitle: NSLocalizedString("About Inventory", comment: "About Inventory")),
+            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(addInvEntry), discoverabilityTitle: NSLocalizedString("Add Inventory", comment: "Add Inventory"))
+        ]
+    }
+    
     // touch bar functions
     @objc func manageItemsEntry() {
         self.selectedIndex = 1
@@ -128,6 +139,8 @@ class TabBarViewController: UITabBarController {
         self.selectedIndex = 4
     }
 
+    // touch bar only in catalyst app
+    #if targetEnvironment(macCatalyst)
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         

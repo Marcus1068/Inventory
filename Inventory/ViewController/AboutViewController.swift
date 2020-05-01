@@ -55,6 +55,18 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     //var sessionHandler : WatchSessionManager?
     var counter = 0
     
+    
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "E", modifierFlags: [.command, .shift], action: #selector(appSettingsAction), discoverabilityTitle: Global.appSettings),
+            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(informationAction), discoverabilityTitle: Global.appInformation),
+            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(feedbackAction), discoverabilityTitle: Global.appFeedback),
+            UIKeyCommand(input: "P", modifierFlags: [.command, .shift], action: #selector(privacyAction), discoverabilityTitle: Global.appPrivacy),
+            UIKeyCommand(input: "M", modifierFlags: [.command, .shift], action: #selector(userManualAction), discoverabilityTitle: Global.appManual)
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -248,7 +260,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     /// call email window for feedback dialog
     ///
     /// - Parameter sender: which button called
-    @IBAction func feedbackButton(_ sender: Any) {
+    @IBAction func feedbackAction(_ sender: Any) {
         // hide keyboard
         self.view.endEditing(true)
         
@@ -267,7 +279,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     /// show web site opening a safari windows
     ///
     /// - Parameter sender: which button called
-    @IBAction func informationButton(_ sender: Any) {
+    @IBAction func informationAction(_ sender: Any) {
         // hide keyboard
         self.view.endEditing(true)
         
@@ -342,10 +354,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         let appSettings = NSButtonTouchBarItem(identifier: .touchAppSettings, title: Global.appSettings, target: self, action: #selector(appSettingsAction(_:)))
         appSettings.bezelColor = Global.colorGreen
         
-        let appInformation = NSButtonTouchBarItem(identifier: .touchAppInformation, title: Global.appInformation, target: self, action: #selector(informationButton(_:)))
+        let appInformation = NSButtonTouchBarItem(identifier: .touchAppInformation, title: Global.appInformation, target: self, action: #selector(informationAction(_:)))
         appInformation.bezelColor = Global.colorGreen
         
-        let appFeedback = NSButtonTouchBarItem(identifier: .touchAppFeedback, title: Global.appFeedback, target: self, action: #selector(feedbackButton(_:)))
+        let appFeedback = NSButtonTouchBarItem(identifier: .touchAppFeedback, title: Global.appFeedback, target: self, action: #selector(feedbackAction(_:)))
         appFeedback.bezelColor = Global.colorGreen
         
         let privacy = NSButtonTouchBarItem(identifier: .touchPrivacy, title: Global.appPrivacy, target: self, action: #selector(privacyAction))

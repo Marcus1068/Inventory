@@ -109,6 +109,20 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
         // header.backgroundView?.backgroundColor = themeColorUIControls
     }
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(roomEditAction), discoverabilityTitle: Global.editRoom),
+            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(categoryEditAction), discoverabilityTitle: Global.editCategory),
+            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(brandEditAction), discoverabilityTitle: Global.editBrand),
+            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(ownerEditAction), discoverabilityTitle: Global.editOwner),
+            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(roomAddAction), discoverabilityTitle: Global.addRoom),
+            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(categoryAddAction), discoverabilityTitle: Global.addcategory),
+            UIKeyCommand(input: "7", modifierFlags: .command, action: #selector(brandAddAction), discoverabilityTitle: Global.addBrand),
+            UIKeyCommand(input: "8", modifierFlags: .command, action: #selector(ownerAddAction), discoverabilityTitle: Global.addOwner)
+        ]
+    }
+    
     // manual segue control for touch bar needed
     @objc func roomEditAction(){
         performSegue(withIdentifier: "manageSegueRoomEdit", sender: nil)

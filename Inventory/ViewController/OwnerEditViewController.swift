@@ -40,6 +40,15 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     // contains the selected object from viewcontroller before
     weak var currentOwner : Owner?
     
+    
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(cancelButton), discoverabilityTitle: Global.cancel),
+            UIKeyCommand(input: "S", modifierFlags: .command, action: #selector(saveButton), discoverabilityTitle: Global.save)
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

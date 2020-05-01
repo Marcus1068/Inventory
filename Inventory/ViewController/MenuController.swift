@@ -182,28 +182,28 @@ class MenuController{
     }
     
     class func itemManageMenu() -> UIMenu {
-        let room = UIKeyCommand(title: NSLocalizedString("Edit Rooms...", comment: "Edit Rooms..."),
+        let room = UIKeyCommand(title: Global.editRoom,
                                      image: UIImage(systemName: "bed.double.fill")!,
                                      action: #selector(AppDelegate.editRoomMenu),
                                      input: "0",
                                      modifierFlags: .control,
                                      propertyList: ["v1"])
         
-        let category = UIKeyCommand(title: NSLocalizedString("Edit Categories...", comment: "Edit Categories..."),
+        let category = UIKeyCommand(title: Global.editCategory,
                                         image: UIImage(systemName: "book")!,
                                         action: #selector(AppDelegate.editCategoryMenu),
                                         input: "1",
                                         modifierFlags: .control,
                                         propertyList: ["v2"])
         
-        let brand = UIKeyCommand(title: NSLocalizedString("Edit Brands...", comment: "Edit Brands..."),
+        let brand = UIKeyCommand(title: Global.editBrand,
                                       image: UIImage(systemName: "cube.box")!,
                                       action: #selector(AppDelegate.editBrandMenu),
                                       input: "2",
                                       modifierFlags: .control,
                                       propertyList: ["v3"])
         
-        let owner = UIKeyCommand(title: NSLocalizedString("Edit Owners...", comment: "Edit Owners..."),
+        let owner = UIKeyCommand(title: Global.editOwner,
                                       image: UIImage(systemName: "person.2.fill")!,
                                       action: #selector(AppDelegate.editOwnerMenu),
                                       input: "3",

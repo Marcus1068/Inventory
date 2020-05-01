@@ -61,6 +61,14 @@ class OwnerTableViewController: UITableViewController, UIPointerInteractionDeleg
     @IBOutlet weak var addButtonLabel: UIBarButtonItem!
     
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneButton), discoverabilityTitle: Global.done),
+            UIKeyCommand(input: "A", modifierFlags: .command, action: #selector(addButton), discoverabilityTitle: Global.addOwner)
+        ]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

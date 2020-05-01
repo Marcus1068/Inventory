@@ -57,12 +57,18 @@ class RoomTableViewController: UITableViewController, UIPointerInteractionDelega
         
         return fetchedResultsController
     }()
+
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneButton), discoverabilityTitle: Global.done),
+            UIKeyCommand(input: "A", modifierFlags: .command, action: #selector(addButton), discoverabilityTitle: Global.addRoom)
+        ]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //os_log("RoomTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true

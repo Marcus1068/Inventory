@@ -140,6 +140,20 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     var results: [Inventory] = []
 
     
+    // add keyboard shortcuts to iPadOS screen when user long presses CMD key
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "A", modifierFlags: [.command, .shift], action: #selector(togglePaperFormatSegment), discoverabilityTitle: Global.paper),
+            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(toggleImageSwitch), discoverabilityTitle: Global.images),
+            UIKeyCommand(input: "S", modifierFlags: [.command, .shift], action: #selector(toggleSortOrder), discoverabilityTitle: Global.sort),
+            UIKeyCommand(input: "O", modifierFlags: [.command, .shift], action: #selector(toggleOwnerSegment), discoverabilityTitle: Global.filterOwner),
+            UIKeyCommand(input: "R", modifierFlags: [.command, .shift], action: #selector(toggleRoomsSegment), discoverabilityTitle: Global.filterRoom),
+            UIKeyCommand(input: "E", modifierFlags: [.command, .shift], action: #selector(emailActionButton(_:)), discoverabilityTitle: Global.email),
+            UIKeyCommand(input: "P", modifierFlags: [.command, .shift], action: #selector(touchPrintAction), discoverabilityTitle: Global.printInvoice),
+            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareAction(_:)), discoverabilityTitle: Global.share)
+        ]
+    }
+    
     // MARK: view load
     
     override func viewDidLoad() {
@@ -480,7 +494,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // sharing PDF for print or email
-    @IBAction func shareActionBarButton(_ sender: UIBarButtonItem) {
+    @IBAction func shareAction(_ sender: UIBarButtonItem) {
         //os_log("ReportViewController shareActionBarButton", log: Log.viewcontroller, type: .info)
         
         sharePdf(path: url!)
@@ -1766,7 +1780,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let email = NSButtonTouchBarItem(identifier: .touchEmail, image: UIImage(systemName: "envelope")!, target: self, action: #selector(emailActionButton(_:)))
         email.bezelColor = Global.colorGreen
         
-        let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareActionBarButton(_:)))
+        let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareAction(_:)))
         share.bezelColor = Global.colorGreen
         
         touchBar.templateItems = [paper, image, sort, ownerFilter, roomFilter, email, share]

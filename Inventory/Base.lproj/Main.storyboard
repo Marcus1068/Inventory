@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1965,7 +1965,7 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="App Information"/>
                                                         <connections>
-                                                            <action selector="informationButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="NEJ-4G-u61"/>
+                                                            <action selector="informationAction:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="NEJ-4G-u61"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-0j-NDU">
@@ -1973,7 +1973,7 @@
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                         <state key="normal" title="Feedback"/>
                                                         <connections>
-                                                            <action selector="feedbackButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="CHc-o1-kcX"/>
+                                                            <action selector="feedbackAction:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="CHc-o1-kcX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0D-o8-29K">
@@ -2544,7 +2544,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="square.and.arrow.up" catalog="system" id="JVQ-k1-jrN">
                                 <connections>
-                                    <action selector="shareActionBarButton:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
+                                    <action selector="shareAction:" destination="v2l-5p-iCX" id="azA-2w-dlD"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="envelope" catalog="system" id="am9-QQ-t0y">

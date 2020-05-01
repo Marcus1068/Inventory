@@ -13,11 +13,17 @@
 /* <other> */
 "<other>" = "<sonstige>";
 
+/* About */
+"About" = "Über";
+
 /* Add Brand */
 "Add Brand" = "Marke hinzufügen";
 
 /* Add Category */
 "Add Category" = "Kategorie hinzufügen";
+
+/* Add inventory */
+"Add inventory" = "Inventar hinzufügen";
 
 /* Add Inventory */
 "Add Inventory" = "Inventar hinzufügen";
@@ -37,6 +43,9 @@
 /* Amount of money spent on items */
 "Amount of money spent on items" = "Gesamtkosten aller Gegenstände";
 
+/* App Settings */
+"App Settings" = "App Einstellungen";
+
 /* Are you sure you really want to delete */
 "Are you sure you really want to delete? Any related inventory will be deleted as well!" = "Wollen Sie wirklich löschen? Alle hier von abhängenden Objekte werden ebenfalls gelöscht!";
 
@@ -45,6 +54,9 @@
 
 /* Authenticate with Touch ID */
 "Authenticate with Touch ID" = "Authentifizieren mit Touch ID";
+
+/* Back */
+"Back" = "Zurück";
 
 /* Basement 1 */
 "Basement 1" = "Kellerraum 1";
@@ -172,6 +184,9 @@
 /* Edit Room */
 "Edit Room" = "Raum bearbeiten";
 
+/* Email */
+"EMail" = "Email";
+
 /* Email could not be sent */
 "Email could not be sent" = "Email konnte nicht gesendet werden";
 
@@ -181,11 +196,26 @@
 /* Exceeded warranty */
 "Exceeded warranty" = "Abgelaufene Garantie";
 
+/* Export */
+"Export" = "Exportieren";
+
 /* Export Finished */
 "Export Finished" = "Exportieren beendet";
 
 /* Exported rows: */
 "Exported rows:" = "Exportierte Zeilen:";
+
+/* Feedback */
+"Feedback" = "Feedback";
+
+/* Filter by Owner */
+"Filter by Owner" = "Nach Eigentümer filtern";
+
+/* Filter by Room */
+"Filter by Room" = "Nach Raum filtern";
+
+/* First page */
+"First page" = "Erste Seite";
 
 /* First page */
 "First Page" = "Erste Seite";
@@ -205,6 +235,12 @@
 /* I have some suggestions: */
 "I have some suggestions: " = "Ich habe ein paar Vorschläge:";
 
+/* Images */
+"Images" = "Bilder";
+
+/* Import */
+"Import" = "Importieren";
+
 /* Import/Export */
 "Import/Export" = "Import/Export";
 
@@ -216,6 +252,12 @@
 
 /* in inventory */
 "in inventory" = "im Inventar";
+
+/* Information */
+"Information" = "Information";
+
+/* Inventory menu entry */
+"Inventory" = "Inventar";
 
 /* Inventory App Report.pdf */
 "Inventory App Report.pdf" = "Inventory App Report.pdf";
@@ -263,13 +305,20 @@
 "Kitchen Helper" = "Küchenhelfer";
 
 /* Last page */
+"Last page" = "Letzte Seite";
+
+/* Last page */
 "Last Page" = "Letzte Seite";
 
 /* Living room */
 "Living room" = "Wohnzimmer";
 
-/* Manage items table view title */
+/* manage items
+   Manage items table view title */
 "Manage items" = "Objekte verwalten";
+
+/* Manual */
+"Manual" = "Handbuch";
 
 /* Most expensive item */
 "Most expensive item" = "Teuerstes Objekt";
@@ -310,8 +359,8 @@
 /* My Rooms */
 "My Rooms" = "Meine Räume";
 
-/* New Inventory */
-"New Inventory" = "Neues Inventar";
+/* New */
+"New" = "Neu";
 
 /* No CSV file to import found */
 "No CSV file to import found" = "Keine CSV Datei zum Importieren gefunden";
@@ -352,6 +401,12 @@
 /* Page */
 "Page" = "Seite";
 
+/* Paper Format */
+"Paper Format" = "Papierformat";
+
+/* PDF */
+"PDF" = "PDF";
+
 /* Photo Library */
 "Photo Library" = "Fotobibliothek";
 
@@ -364,11 +419,32 @@
 /* Please choose a different name */
 "Please choose a different name" = "Bitte wählen Sie einen anderen Namen";
 
+/* valid brand */
+"Please enter valid brand" = "Bitte gültige Marke eingeben";
+
+/* valid category */
+"Please enter valid category" = "Bitte gültige Kategorie eingeben";
+
+/* valid owner */
+"Please enter valid owner" = "Bitte gültigen Eigentümer eingeben";
+
+/* valid room */
+"Please enter valid room" = "Bitte gültigen Raum eingeben";
+
+/* Preferences */
+"Preferences" = "Einstellungen";
+
 /* Price */
 "Price" = "Preis";
 
 /* Print Invoice */
 "Print Invoice" = "Drucke Rechnung";
+
+/* Print report */
+"Print report" = "Drucke Bericht";
+
+/* Privacy */
+"Privacy" = "Datenschutz";
 
 /* Privacy Information */
 "Privacy Information" = "Datenschutzhinweis";
@@ -378,6 +454,9 @@
 
 /* Remark */
 "Remark" = "Bemerkung";
+
+/* Report */
+"Report" = "Bericht";
 
 /* Reports */
 "Reports" = "Berichte";
@@ -397,20 +476,26 @@
 /* Running on iOS */
 "Running on iOS " = "Läuft auf iOS ";
 
+/* Save */
+"Save" = "Speichern";
+
 /* Search for Inventory */
 "Search for Inventory" = "Suche im Inventar";
 
 /* Serial no. */
 "Serial no." = "Seriennr.";
 
-/* Shared by Inventory App */
-"Shared by Inventory App" = "Geteilt von Inventory App";
+/* Share */
+"Share" = "Teilen";
 
 /* Show Image */
 "Show Image" = "Zeige Bild";
 
 /* Smartphone */
 "Smartphone" = "Handy";
+
+/* Sort */
+"Sort" = "Sortieren";
 
 /* Sorted by category */
 "Sorted by category" = "Sortiert nach Kategorie";

@@ -434,9 +434,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let indexPathForFirstRow = IndexPath(row: 0, section: 0)
             self.collection?.selectItem(at: indexPathForFirstRow, animated: true, scrollPosition: .top)
         }
-        
-        // register peek and pop function
-        registerForPeekAndPopWithCollectionView(collectionView: collection)
     }
     
     // when user chooses a different tab bar item and view disapprears
@@ -584,23 +581,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell?.layer.borderColor = UIColor.clear.cgColor
         
     }
-    /*
-    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        let inv = fetchedResultsController.object(at: indexPath)
-        
-        dest.currentInventory = inv
-        selectedInventoryItem = inv
-        
-        //collectionView.cellForItem(at: indexPath as IndexPath)?.backgroundColor = UIColor.red
-        if deleteMode{
-            selectCell(indexPath: indexPath)
-            selectedForDeleteInventory.append(inv)
-            indexPathsForDeletion.append(indexPath)
-            //print("selected \(indexPathsForDeletion.count)")
-        }
-        
-        return true
-    } */
     
     // The collection view calls this method when the user successfully selects an item in the collection view. It does not call this method when you programmatically set the selection.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -1148,30 +1128,6 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
     
 }
 
-// implement peek and pop on 3D touch enabled devices like iPhone 8 onwards
-extension InventoryCollectionViewController: UIViewControllerPreviewingDelegate {
-    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = collection.indexPathForItem(at: location),
-            let _ = collection.cellForItem(at: indexPath) else { return nil }
-        
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "EditViewController") as? InventoryEditViewController else { return nil }
-        
-        let inv = fetchedResultsController.object(at: indexPath)
-        
-        detailVC.delegate = self
-        detailVC.currentInventory = inv
-        detailVC.preferredContentSize = CGSize(width: 0.0, height: 400)
-        //previewingContext.UIContextMenuInteraction = cell.frame
-        
-        return detailVC
-    }
-    
-    
-    // pop will open new view controller
-    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        show(viewControllerToCommit, sender: nil)
-    }
-}
 
 // MARK: - InventoryEditViewControllerDelegate
 extension InventoryCollectionViewController: InventoryEditViewControllerDelegate {
@@ -1194,8 +1150,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                 print("Fetching error: \(error), \(error.userInfo)")
                 os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
             }
-            collection.reloadData()
-            //navigationController?.show(previewedController, sender: nil)
+            //collection.reloadData()
             break
         
         case Global.duplicate:
@@ -1208,7 +1163,7 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                     print("Fetching error: \(error), \(error.userInfo)")
                     os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
                 }
-                collection.reloadData()
+                //collection.reloadData()
             }
             break
             
@@ -1246,7 +1201,6 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
                     present(myActionSheet, animated: true, completion: nil)
                 }
             }
-            //navigationController?.show(previewedController, sender: nil)
             break
             
         default:
@@ -1280,24 +1234,6 @@ extension InventoryCollectionViewController: InventoryEditViewControllerDelegate
         _ = store.saveInventory(inventory: currentInventory)
         
         return currentInventory
-    }
-}
-
-// implement peek and pop on 3D touch enabled devices like iPhone 8 onwards
-// if not available offer menu and long press gesture recognizer
-extension InventoryCollectionViewController {
-    func registerForPeekAndPopWithCollectionView(collectionView: UICollectionView) {
-        /*if traitCollection.forceTouchCapability == .available {
-            UIContextMenuInteraction(with: self as UIViewControllerPreviewingDelegate, sourceView: collectionView)
-        }
-        else{
-            // long press gesture recignizer
-            gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(InventoryCollectionViewController.longPressGesture))
-            
-            gestureRecognizer.minimumPressDuration = 0.3
-            collection.addGestureRecognizer(gestureRecognizer)
-            //print("gesture rec. registered")
-        } */
     }
 }
 
@@ -1450,4 +1386,89 @@ extension InventoryCollectionViewController{
             userDefaults.synchronize()
         } */
     }
+}
+
+// implement new context menus in iOS13
+extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
+    
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return nil
+    }
+
+     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let inv = fetchedResultsController.object(at: indexPath)
+    
+         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+
+            // Create an action for editing inventory
+            let edit = UIAction(title: Global.edit, image: UIImage(systemName: "square.and.arrow.up")) { action in
+                //navigationController?.show(InventoryEditViewController, sender: nil)
+                self.displayAlert(title: "Edit", message: "Edit", buttonText: "OK")
+             }
+
+             // duplicate inventory item
+            let duplicate = UIAction(title: Global.duplicate, image: UIImage(systemName: "doc.on.doc")) { action in
+                if let _ = self.duplicateIntentoryItem(inv: inv){
+                    do {
+                        try self.fetchedResultsController.performFetch()
+                    } catch _ as NSError {
+                        os_log("InventoryCollectionViewController duplicateTapped", log: Log.viewcontroller, type: .error)
+                    }
+                    self.collection.reloadData()
+                }
+             }
+
+             
+            // print selected inventory invoice in case it is available
+            let printAction = UIAction(title: Global.printInvoice, image: UIImage(systemName: "printer")) { action in
+            
+                if let print = inv.invoice{
+                    //print("drucken")
+                    if UIPrintInteractionController.canPrint(print as Data) {
+                        let printInfo = UIPrintInfo(dictionary: nil)
+                        printInfo.jobName = inv.invoiceFileName!
+                        printInfo.outputType = .general
+                        
+                        let printController = UIPrintInteractionController.shared
+                        printController.printInfo = printInfo
+                        printController.showsNumberOfCopies = false
+                        
+                        printController.printingItem = print
+                        
+                        printController.present(animated: true, completionHandler: nil)
+                    }
+                    else{
+                        let title = NSLocalizedString("No invoice", comment: "No invoice")
+                        let message = NSLocalizedString("Item does not have an invoice to print, please attach an invoice to your item first", comment: "Item does not have an invoice to print")
+                        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
+                        
+                        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+                            // do nothing when cancel
+                        }
+                        
+                        myActionSheet.addAction(action)
+                        self.addActionSheetForiPad(actionSheet: myActionSheet)
+                        self.present(myActionSheet, animated: true, completion: nil)
+                    }
+                }
+            }
+            
+            // delete selected inventory item
+            let delete = UIAction(title: Global.delete, image: UIImage(systemName: "trash"), attributes: .destructive) { action in
+               _ = store.deleteInventory(inventory: inv)
+               do {
+                   try self.fetchedResultsController.performFetch()
+               } catch _ as NSError {
+                   //print("Fetching error: \(error), \(error.userInfo)")
+                   os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
+               }
+               self.collection.reloadData()
+                //self.updateNumberOfItemsLabel()
+            }
+            
+             // Create and return a UIMenu with all of the actions as children
+             return UIMenu(title: "", children: [edit, duplicate, printAction, delete])
+         }
+     }
 }

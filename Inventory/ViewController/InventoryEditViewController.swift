@@ -309,6 +309,8 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         imageView.isUserInteractionEnabled = true
         let interaction = UIContextMenuInteraction(delegate: self)
         imageView.addInteraction(interaction)
+        let pdfInteraction = UIContextMenuInteraction(delegate: self)
+        pdfView.addInteraction(pdfInteraction)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -541,16 +543,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             destination.currentPDF = pdfView
             destination.currentPath = self.url
             if let name = textfieldInventoryName.text{
-                
                 if name.count == 0{
                     destination.currentTitle = NSLocalizedString("Invoice", comment: "Invoice")
                 }
                 else{
                     destination.currentTitle = NSLocalizedString("Invoice for", comment: "Invoice for") + " " + name
                 }
-                
             }
-            
         }
         
         if segue.identifier == "roomSegue" {
@@ -901,13 +900,33 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
 
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
 
+        // switch interactions since we have more than one context menu in same view controller
+        switch interaction.view{
+        case imageView:
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+
+                return self.makeImageContextMenu()
+            })
+            
+        case pdfView:
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+
+                return self.makePDFContextMenu()
+            })
+
+        default:
+            // error should never happen
+            break
+            
+        }
+        
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
 
-            return self.makeContextMenu()
+            return self.makeImageContextMenu()
         })
     }
     
-    func makeContextMenu() -> UIMenu {
+    func makeImageContextMenu() -> UIMenu {
         // Create a UIAction for sharing
         let share = UIAction(title: Global.share, image: UIImage(systemName: "square.and.arrow.up")) { action in
             // Show system share sheet
@@ -919,6 +938,27 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
         }
 
         // Create and return a UIMenu with the share action
-        return UIMenu(title: Global.menu, children: [share])
+        return UIMenu(title: Global.images, children: [share])
+    }
+    
+    func makePDFContextMenu() -> UIMenu {
+        // Create a UIAction for sharing
+        let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
+            // Show system share sheet
+            
+            // PDF data
+            var pdf: NSData
+            if self.pdfView.document != nil{
+                pdf = (self.pdfView.document!.dataRepresentation()! as NSData?)!
+                let activityViewController = UIActivityViewController(activityItems: [pdf], applicationActivities: nil)
+                self.present(activityViewController, animated: true) {
+                   // …
+                }
+            }
+            
+        }
+
+        // Create and return a UIMenu with the share action
+        return UIMenu(title: Global.share, children: [share])
     }
 }

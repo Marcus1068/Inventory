@@ -74,9 +74,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var roomLabel: UILabel!
    
     
-    // gesture recignizer for long press
-    var gestureRecognizer = UILongPressGestureRecognizer()
-    
     // store original nav bar buttons
     var leftNavBarButton : UIBarButtonItem? = nil
     var rightNavBarButton : UIBarButtonItem? = nil
@@ -93,9 +90,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // store selected items when delete mode = true
     var indexPathsForDeletion = [IndexPath]()
-    
-    // needed for long press gesture recognizer
-    var longPressInventoryItem : Inventory?
     
     // enter delete mode
     var deleteMode: Bool = false {
@@ -375,15 +369,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
  
         // setup notification for remote changes from cloudkit/other devices
         // let container = store.persistentContainer
-        
-        //os_log("InventoryCollectionViewController viewWillAppear", log: Log.viewcontroller, type: .info)
-        
-        // reset: no inv item selected
-        longPressInventoryItem = nil
-        
-        // clear selected index paths
-        //indexPathsForDeletion.removeAll()
-        //selectedForDeleteInventory.removeAll()
         
         do {
             try fetchedResultsController.performFetch()
@@ -1128,267 +1113,7 @@ extension InventoryCollectionViewController: NSFetchedResultsControllerDelegate 
     
 }
 
-
-// MARK: - InventoryEditViewControllerDelegate
-extension InventoryCollectionViewController: InventoryEditViewControllerDelegate {
-    func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController, which inventory: Inventory) {
-        
-        switch action.title {
-        case Global.cancel:
-            //print("cancel")
-            //navigationController?.show(previewedController, sender: nil)
-            // do nothing
-            break
-            
-        case Global.delete:
-            // delete current inventory object
-            //print(inventory.inventoryName!)
-            _ = store.deleteInventory(inventory: inventory)
-            do {
-                try fetchedResultsController.performFetch()
-            } catch let error as NSError {
-                print("Fetching error: \(error), \(error.userInfo)")
-                os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
-            }
-            //collection.reloadData()
-            break
-        
-        case Global.duplicate:
-            // duplicate current inventory object
-            //print("duplicate")
-            if let _ = duplicateIntentoryItem(inv: inventory){
-                do {
-                    try fetchedResultsController.performFetch()
-                } catch let error as NSError {
-                    print("Fetching error: \(error), \(error.userInfo)")
-                    os_log("InventoryCollectionViewController didSelect", log: Log.viewcontroller, type: .error)
-                }
-                //collection.reloadData()
-            }
-            break
-            
-        case Global.edit:
-            navigationController?.show(previewedController, sender: nil)
-            break
-            
-        case Global.printInvoice:
-            if let print = inventory.invoice{
-                //print("drucken")
-                if UIPrintInteractionController.canPrint(print as Data) {
-                    let printInfo = UIPrintInfo(dictionary: nil)
-                    printInfo.jobName = inventory.invoiceFileName!
-                    printInfo.outputType = .general
-                    
-                    let printController = UIPrintInteractionController.shared
-                    printController.printInfo = printInfo
-                    printController.showsNumberOfCopies = false
-                    
-                    printController.printingItem = print
-                    
-                    printController.present(animated: true, completionHandler: nil)
-                }
-                else{
-                    let title = NSLocalizedString("No invoice", comment: "No invoice")
-                    let message = NSLocalizedString("Item does not have an invoice to print, please attach an invoice to your item first", comment: "Item does not have an invoice to print")
-                    let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
-                    
-                    let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
-                        // do nothing when cancel
-                    }
-                    
-                    myActionSheet.addAction(action)
-                    addActionSheetForiPad(actionSheet: myActionSheet)
-                    present(myActionSheet, animated: true, completion: nil)
-                }
-            }
-            break
-            
-        default:
-            break
-        }
-    }
-    
-    // duplicate inventory item in memory and in core data
-    func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
-        //let context = CoreDataHandler.getContext()
-        let currentInventory = Inventory(context: store.getContext()) // setup new inventory object
-    
-        // duplicate every attribute but UUID, has to be new, and inventory name gets "inv name (copy)"
-        currentInventory.id = UUID()
-        currentInventory.inventoryName = inv.inventoryName! + " (" + Global.copy + ")"
-        currentInventory.dateOfPurchase = inv.dateOfPurchase
-        currentInventory.price = inv.price
-        currentInventory.remark = inv.remark
-        currentInventory.serialNumber = inv.serialNumber
-        currentInventory.warranty = inv.warranty
-        currentInventory.inventoryOwner = inv.inventoryOwner
-        currentInventory.inventoryRoom = inv.inventoryRoom
-        currentInventory.inventoryBrand = inv.inventoryBrand
-        currentInventory.inventoryCategory = inv.inventoryCategory
-        currentInventory.timeStamp = Date() as NSDate?  // set new date since this is a copy but new
-        currentInventory.image = inv.image
-        currentInventory.imageFileName = inv.imageFileName
-        currentInventory.invoice = inv.invoice
-        currentInventory.invoiceFileName = inv.invoiceFileName
-        
-        _ = store.saveInventory(inventory: currentInventory)
-        
-        return currentInventory
-    }
-}
-
-// for handling long press gesture recognizer
-extension InventoryCollectionViewController{
-    
-    // must return true otherwise no UIMenu appears
-    override var canBecomeFirstResponder: Bool{
-        //print("canbecomefirstresponder")
-        return true
-    }
-    /*
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        return true
-    } */
-    
-    // gets called by long press gesture in case we do not have a 3D touch enabled device
-    @objc func longPressGesture(sender: UILongPressGestureRecognizer){
-        //print(sender.state)
-        guard sender.state == .began
-            //let senderView = sender.view
-            else { return }
-        
-        //print("long press")
-        //print(collection.isFirstResponder)
-        // Make collection the window's first responder
-        self.becomeFirstResponder()
-        
-        // Set the location of the menu in the view.
-        let location = gestureRecognizer.location(in: collection)
-        
-        //print("after become")
-        //print(collection.isFirstResponder)
-        
-        let menuController: UIMenuController = UIMenuController.shared
-        
-        // Set up the shared UIMenuController
-        let duplicateMenuItem = UIMenuItem(title: Global.duplicate, action: #selector(duplicateTapped))
-        let deleteMenuItem = UIMenuItem(title: Global.delete, action: #selector(deleteTapped))
-        let cancelMenuItem = UIMenuItem(title: Global.cancel, action: #selector(cancelTapped))
-        
-        // Animate the menu onto view
-        let rect = CGRect(x: location.x, y: location.y, width: 0, height: 0)
-        
-        if #available(iOS 13.0, *) {
-            menuController.showMenu(from: collection, rect: rect)
-        } else {
-            // Fallback on earlier versions
-        }
-        //menuController.showMenu(from: <#T##UIView#>, rect: <#T##CGRect#>))
-        menuController.arrowDirection = UIMenuController.ArrowDirection.default
-        menuController.menuItems = [duplicateMenuItem, deleteMenuItem, cancelMenuItem]
-        
-        
-        // Tell the menu controller the first responder's frame and its super view
-        //menuController.setTargetRect(CGRect.zero, in: gestureRecognizer.view!)
-        
-        // Set the location of the menu in the view.
-        //let location = gestureRecognizer.location(in: collection)
-        //print(location)
-        let menuLocation = CGRect(x: location.x, y: location.y, width: 0, height: 0)   // FIXME 40 hard coded!!!
-        //menuController.setTargetRect(menuLocation, in: collection)
-        if #available(iOS 13.0, *) {
-            menuController.showMenu(from: collection, rect: menuLocation)
-        } else {
-            // Fallback on earlier versions
-        }
-        let point = location
-        let indexPath = collection.indexPathForItem(at: point)
-        
-        if indexPath != nil {
-            let inv = fetchedResultsController.object(at: indexPath!)
-            longPressInventoryItem = inv
-        }
-        
-    }
-    // duplicate menu item
-    @objc func duplicateTapped() {
-        if let inv = longPressInventoryItem{
-            if let _ = duplicateIntentoryItem(inv: inv){
-                do {
-                    try fetchedResultsController.performFetch()
-                } catch let error as NSError {
-                    print("Fetching error: \(error), \(error.userInfo)")
-                    os_log("InventoryCollectionViewController duplicateTapped", log: Log.viewcontroller, type: .error)
-                }
-                collection.reloadData()
-            }
-        }
-        // ...
-        // This would be a good place to optionally resign
-        // responsiveView's first responder status if you need to
-        self.view.resignFirstResponder()
-        longPressInventoryItem = nil
-    }
-    
-    // delete menu item
-    @objc func deleteTapped() {
-        if let inv = longPressInventoryItem{
-            _ = store.deleteInventory(inventory: inv)
-            do {
-                try fetchedResultsController.performFetch()
-            } catch let error as NSError {
-                print("Fetching error: \(error), \(error.userInfo)")
-                os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
-            }
-            collection.reloadData()
-        }
-        // ...
-        self.view.resignFirstResponder()
-        longPressInventoryItem = nil
-    }
-    
-    // cancel tapped
-    @objc func cancelTapped() {
-        self.view.resignFirstResponder()
-        longPressInventoryItem = nil
-    }
-    
-    // update the watch data
-    func updateWatchData(){
-        
-        // watch send message
-        // watch app context
-        let watchSessionManager = WatchSessionManager.sharedManager
-        
-        //let imageSpeaker = UIImage(named: "Speaker")
-        //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
-        
-        let returnMessage: [String : Any] = [
-            DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
-            DataKey.ItemCount : Statistics.shared.getInventoryItemCount()
-            //DataKey.TopCategories : 33
-            //DataKey.ImageData : imageData!
-        ]
-        
-        let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
-        
-        watchSessionManager.sendTopPricesListToWatch(count: 10)
-        watchSessionManager.sendItemsByRoomListToWatch()
-        watchSessionManager.sendItemsByCategoryListToWatch()
-        watchSessionManager.sendItemsByBrandListToWatch()
-        watchSessionManager.sendItemsByOwnerListToWatch()
-        
-        
-        // test with user defauls in app group
-  /*      if let userDefaults = UserDefaults(suiteName: Local.appGroup) {
-            userDefaults.set("1" as AnyObject, forKey: "key1")
-            userDefaults.set("2" as AnyObject, forKey: "key2")
-            userDefaults.synchronize()
-        } */
-    }
-}
-
-// implement new context menus in iOS13
+// implement new context menus in iOS13 for collection view
 extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
@@ -1402,9 +1127,16 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
          return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
 
             // Create an action for editing inventory
-            let edit = UIAction(title: Global.edit, image: UIImage(systemName: "square.and.arrow.up")) { action in
-                //navigationController?.show(InventoryEditViewController, sender: nil)
-                self.displayAlert(title: "Edit", message: "Edit", buttonText: "OK")
+            let addAction = UIAction(title: Global.addInv, image: UIImage(systemName: "plus")) { action in
+                self.dest.currentInventory = nil
+                self.performSegue(withIdentifier: "addSegue", sender: nil)
+             }
+            
+            // Create an action for editing inventory
+            let edit = UIAction(title: Global.edit, image: UIImage(systemName: "pencil")) { action in
+                // select inv for segue
+                selectedInventoryItem = inv
+                self.performSegue(withIdentifier: "editSegue", sender: nil)
              }
 
              // duplicate inventory item
@@ -1415,16 +1147,13 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                     } catch _ as NSError {
                         os_log("InventoryCollectionViewController duplicateTapped", log: Log.viewcontroller, type: .error)
                     }
-                    self.collection.reloadData()
                 }
              }
 
-             
             // print selected inventory invoice in case it is available
             let printAction = UIAction(title: Global.printInvoice, image: UIImage(systemName: "printer")) { action in
             
                 if let print = inv.invoice{
-                    //print("drucken")
                     if UIPrintInteractionController.canPrint(print as Data) {
                         let printInfo = UIPrintInfo(dictionary: nil)
                         printInfo.jobName = inv.invoiceFileName!
@@ -1460,15 +1189,75 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                do {
                    try self.fetchedResultsController.performFetch()
                } catch _ as NSError {
-                   //print("Fetching error: \(error), \(error.userInfo)")
                    os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
                }
-               self.collection.reloadData()
-                //self.updateNumberOfItemsLabel()
+               //self.collection.reloadData()
             }
             
              // Create and return a UIMenu with all of the actions as children
-             return UIMenu(title: "", children: [edit, duplicate, printAction, delete])
+             return UIMenu(title: "", children: [addAction, edit, duplicate, printAction, delete])
          }
      }
+    
+    // duplicate inventory item in memory and in core data
+    func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
+        //let context = CoreDataHandler.getContext()
+        let currentInventory = Inventory(context: store.getContext()) // setup new inventory object
+    
+        // duplicate every attribute but UUID, has to be new, and inventory name gets "inv name (copy)"
+        currentInventory.id = UUID()
+        currentInventory.inventoryName = inv.inventoryName! + " (" + Global.copy + ")"
+        currentInventory.dateOfPurchase = inv.dateOfPurchase
+        currentInventory.price = inv.price
+        currentInventory.remark = inv.remark
+        currentInventory.serialNumber = inv.serialNumber
+        currentInventory.warranty = inv.warranty
+        currentInventory.inventoryOwner = inv.inventoryOwner
+        currentInventory.inventoryRoom = inv.inventoryRoom
+        currentInventory.inventoryBrand = inv.inventoryBrand
+        currentInventory.inventoryCategory = inv.inventoryCategory
+        currentInventory.timeStamp = Date() as NSDate?  // set new date since this is a copy but new
+        currentInventory.image = inv.image
+        currentInventory.imageFileName = inv.imageFileName
+        currentInventory.invoice = inv.invoice
+        currentInventory.invoiceFileName = inv.invoiceFileName
+        
+        _ = store.saveInventory(inventory: currentInventory)
+        
+        return currentInventory
+    }
+    
+    // update the watch data
+      func updateWatchData(){
+          
+          // watch send message
+          // watch app context
+          let watchSessionManager = WatchSessionManager.sharedManager
+          
+          //let imageSpeaker = UIImage(named: "Speaker")
+          //let imageData = imageSpeaker?.jpegData(compressionQuality: 1.0)!
+          
+          let returnMessage: [String : Any] = [
+              DataKey.AmountMoney : Statistics.shared.itemPricesSum(),
+              DataKey.ItemCount : Statistics.shared.getInventoryItemCount()
+              //DataKey.TopCategories : 33
+              //DataKey.ImageData : imageData!
+          ]
+          
+          let _ = watchSessionManager.transferUserInfo(userInfo: returnMessage)
+          
+          watchSessionManager.sendTopPricesListToWatch(count: 10)
+          watchSessionManager.sendItemsByRoomListToWatch()
+          watchSessionManager.sendItemsByCategoryListToWatch()
+          watchSessionManager.sendItemsByBrandListToWatch()
+          watchSessionManager.sendItemsByOwnerListToWatch()
+          
+          
+          // test with user defauls in app group
+    /*      if let userDefaults = UserDefaults(suiteName: Local.appGroup) {
+              userDefaults.set("1" as AnyObject, forKey: "key1")
+              userDefaults.set("2" as AnyObject, forKey: "key2")
+              userDefaults.synchronize()
+          } */
+      }
 }

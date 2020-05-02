@@ -30,8 +30,6 @@ import os.log
 import MobileCoreServices
 import AVKit
 
-
-
 protocol InventoryEditViewControllerDelegate {
     //func addGeotificationViewController(_ controller: InventoryEditViewController, didAdd geotification: Geotification)
     //func addGeotificationViewController(_ controller: AddGeotificationViewController, didChange oldGeotifcation: Geotification, to newGeotification: Geotification)
@@ -147,12 +145,9 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
-
-        // register tap gesture for showing pdf in fullscreen
-        //pdfViewGestureWhenTapped()
         
         // register tap gesture for showing image in fullscreen
-        imageViewGestureWhenTapped()
+        //imageViewGestureWhenTapped()
         
         currencyLabel.text = Local.currencySymbol!
         
@@ -237,7 +232,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                 }
                 
                 // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
-                pdfViewGestureWhenTapped()
+                //pdfViewGestureWhenTapped()
             }
             
             // inventory image
@@ -309,6 +304,11 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         } else {
             // Fallback on earlier versions
         }
+        
+        // enable long press context menu with image view
+        imageView.isUserInteractionEnabled = true
+        let interaction = UIContextMenuInteraction(delegate: self)
+        imageView.addInteraction(interaction)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -337,62 +337,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
         ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
         */
-    }
-    
-    // for 3D Touch peek and pop needed in detail view controller for defining actions
-/*    override var previewActionItems : [UIPreviewActionItem] {
-        
-        let deleteTitle = Global.delete
-        let action1 = UIPreviewAction(title: deleteTitle, style: .default) { (action, controller) in
-            //
-        }
-        
-        let duplicateTitle = "Duplicate"
-        let action2 = UIPreviewAction(title: duplicateTitle, style: .default) { (action, controller) in
-            //print("Cancel Action Selected")
-        }
-        
-        let cancelTitle = Global.cancel
-        let action3 = UIPreviewAction(title: cancelTitle, style: .destructive) { (action, controller) in
-            //print("Cancel Action Selected")
-        }
-        
-        //let actionGroup = UIPreviewActionGroup(title: "More Actions", style: .default, actions: [action1, action2])
-        
-        //let finalArray = NSArray.init(object: actionGroup)
-        return [action1, action2, action3] //finalArray as! [UIPreviewActionItem]
-        
-    } */
-    
-    // for 3D Touch peek and pop needed in detail view controller for defining actions
-    override var previewActionItems: [UIPreviewActionItem] {
-        
-        let duplicateAction = UIPreviewAction(title: Global.duplicate, style: .default) {
-            [weak self] (action, controller) in
-            self?.handle(action: action, and: controller)
-        }
-        
-        let deleteAction = UIPreviewAction(title: Global.delete, style: .destructive) {
-            [weak self] (action, controller) in
-            self?.handle(action: action, and: controller)
-        }
-        
-        let cancelAction = UIPreviewAction(title: Global.cancel, style: .default) {
-            [weak self] (action, controller) in
-            self?.handle(action: action, and: controller)
-        }
-        
-        let editAction = UIPreviewAction(title: Global.edit, style: .default) {
-            [weak self] (action, controller) in
-            self?.handle(action: action, and: controller)
-        }
-        
-        let printAction = UIPreviewAction(title: Global.printInvoice, style: .default) {
-            [weak self] (action, controller) in
-            self?.handle(action: action, and: controller)
-        }
-        
-        return [duplicateAction, printAction, editAction, deleteAction, cancelAction]
     }
     
     // call delegate
@@ -497,7 +441,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         pdfDisplay(file: myURL)
         
         // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
-        pdfViewGestureWhenTapped()
+        //pdfViewGestureWhenTapped()
     }
 
     
@@ -632,39 +576,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
     }
     
-    // use this method in viewDidLoad to enable tap gesture for pdf view
-    func pdfViewGestureWhenTapped() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.pdfViewGestureAction))
-        tap.cancelsTouchesInView = false
-        // register tap with pdfview only
-        pdfView.addGestureRecognizer(tap)
-    }
-    
-    // show fullscreen pdf view
-    @objc func pdfViewGestureAction() {
-        //os_log("InventoryEditViewController pdfViewGestureAction", log: Log.viewcontroller, type: .info)
-        
-        // show pdf view fullscreen
-        performSegue(withIdentifier: "pdfSegue", sender: nil)
-    }
-    
-    // use this method in viewDidLoad to enable tap gesture for image view
-    func imageViewGestureWhenTapped() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.imageViewGestureAction))
-        tap.cancelsTouchesInView = false
-        // register tap with pdfview only
-        imageView.addGestureRecognizer(tap)
-    }
-    
-    // show fullscreen image view
-    @objc func imageViewGestureAction() {
-        //os_log("InventoryEditViewController imageViewGestureAction", log: Log.viewcontroller, type: .info)
-        
-        // show image view fullscreen
-        performSegue(withIdentifier: "imageSegue", sender: nil)
-    }
-    
-    // MARK: - UI Acions
+    // MARK: - UI Actions
     
     // take a new picture
     @IBAction func cameraNavBarAction(_ sender: UIBarButtonItem) {
@@ -983,3 +895,30 @@ extension InventoryEditViewController: ImagePickerDelegate {
 }
 
 
+// context menu extension
+// long press on image gets IOS system share sheet for sending the photo somewhere
+extension InventoryEditViewController: UIContextMenuInteractionDelegate {
+
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+
+            return self.makeContextMenu()
+        })
+    }
+    
+    func makeContextMenu() -> UIMenu {
+        // Create a UIAction for sharing
+        let share = UIAction(title: Global.share, image: UIImage(systemName: "square.and.arrow.up")) { action in
+            // Show system share sheet
+            let image = self.imageView.image
+            let activityViewController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+            self.present(activityViewController, animated: true) {
+               // …
+            }
+        }
+
+        // Create and return a UIMenu with the share action
+        return UIMenu(title: Global.menu, children: [share])
+    }
+}

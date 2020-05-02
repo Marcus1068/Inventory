@@ -87,6 +87,7 @@ class Global: UIViewController {
     static let owner = NSLocalizedString("Owner", comment: "Owner")
     
     static let whatsNew = NSLocalizedString("What's new", comment: "What's new")
+    static let menu = NSLocalizedString("Menu", comment: "Menu")
     
     static let editRoom = NSLocalizedString("Edit Room", comment: "Edit Room")
     static let editCategory = NSLocalizedString("Edit Category", comment: "Edit Category")
@@ -579,11 +580,9 @@ extension UIViewController {
     
     // show iOS standard share sheet for exporting data from this app to other apps
     func shareAction(currentPath: URL) {
-        
         let fileManager = FileManager.default
         
         if fileManager.fileExists(atPath: currentPath.path) {
-            
             let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [currentPath], applicationActivities: nil)
             
             let rect = self.view.bounds
@@ -592,7 +591,8 @@ extension UIViewController {
             activityViewController.popoverPresentationController?.sourceView = self.view
             activityViewController.popoverPresentationController?.sourceRect = rect2
             self.present(activityViewController, animated: true, completion: nil)
-        } else {
+        }
+        else {
             let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
             let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(defaultAction)

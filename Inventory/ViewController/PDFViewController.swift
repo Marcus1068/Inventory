@@ -93,6 +93,10 @@ class PDFViewController: UIViewController {
         // setup colors for UI controls
         lastPageBtn.tintColor = themeColorUIControls
         firstPageBtn.tintColor = themeColorUIControls
+        
+        // context menu interaction
+        let pdfInteraction = UIContextMenuInteraction(delegate: self)
+        pdfView.addInteraction(pdfInteraction)
     }
     
     @objc func firstPage() {
@@ -139,4 +143,43 @@ class PDFViewController: UIViewController {
 
     #endif
     
+}
+
+// context menu extension
+// long press on image gets IOS system share sheet for sending the photo somewhere
+extension PDFViewController: UIContextMenuInteractionDelegate {
+
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+
+        // switch interactions since we have more than one context menu in same view controller
+        switch interaction.view{
+            
+        case pdfView:
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+
+                return self.makePDFContextMenu()
+            })
+
+        default:
+            // error should never happen
+            break
+            
+        }
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+
+            return self.makePDFContextMenu()
+        })
+    }
+    
+    func makePDFContextMenu() -> UIMenu {
+        // Create a UIAction for sharing
+        let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
+            // Show system share sheet
+            self.shareAction(currentPath: self.currentPath!)
+        }
+
+        // Create and return a UIMenu with the share action
+        return UIMenu(title: Global.share, children: [share])
+    }
 }

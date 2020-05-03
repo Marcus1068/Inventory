@@ -75,6 +75,7 @@ class Global: UIViewController {
     static let sort = NSLocalizedString("Sort", comment: "Sort")
     static let images = NSLocalizedString("Images", comment: "Images")
     static let printInvoice = NSLocalizedString("Print Invoice", comment: "Print Invoice")
+    static let printReport = NSLocalizedString("Print report", comment: "Print report")
     static let filterOwner = NSLocalizedString("Filter by Owner", comment: "Filter by Owner")
     static let filterRoom = NSLocalizedString("Filter by Room", comment: "Filter by Room")
     static let email = NSLocalizedString("EMail", comment: "Email")

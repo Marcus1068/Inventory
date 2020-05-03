@@ -1836,7 +1836,7 @@ extension ReportViewController: UIContextMenuInteractionDelegate {
             self.sendPDFEmail()
         }
         
-        let print = UIAction(title: Global.printReport, image: UIImage(systemName: "printermor")) { action in
+        let print = UIAction(title: Global.printReport, image: UIImage(systemName: "printer")) { action in
             // Show system share sheet
             //self.shareAction(currentPath: self.currentPath!)
             self.printPDFAction(url: self.url!)

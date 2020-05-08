@@ -31,9 +31,7 @@ import os
 class PrivacyViewController: UIViewController {
 
     @IBOutlet weak var privacyText: UITextView!
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
-    
     @IBOutlet weak var doneAction: UIButton!
     
     

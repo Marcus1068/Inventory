@@ -61,6 +61,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         globalWindow = self.window
         
         #endif
+        
+        // show onbaording window with latest app update information
+        // use user defaults to store state so that we show only once after app update
+        // increase build number and/or version number will show up onboarding screen again
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var vc: UIViewController
+        
+        if (UserDefaults.standard.value(forKey: Global.appVersion) as? String) == nil{
+            // show onbording screen
+            // identifier must be set in onboarding view controller
+            vc = storyboard.instantiateViewController(identifier: "startupID")
+            
+        }
+        else{
+            // show main screen
+            vc = storyboard.instantiateInitialViewController()!
+        }
+        self.window?.rootViewController = vc
+        self.window?.makeKeyAndVisible()
 
     }
     

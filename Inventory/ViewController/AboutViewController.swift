@@ -85,11 +85,11 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         appSettingsButton.tintColor = themeColorUIControls
         whatsNewButton.tintColor = themeColorUIControls
         
-        appVersionNumberLabel.text = UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
+        appVersionNumberLabel.text = UIApplication.appName! + " " + Global.appVersion
         appVersionNumberLabel.textColor = themeColorText
         
         copyrightLabel.text = NSLocalizedString("(c) 2018-2020 M. Deuß", comment: "(c) by M. Deuß")
-        iosversionLabel.text = NSLocalizedString("Running on iOS ", comment: "Running on iOS") + DeviceInfo.getOSVersion()
+        iosversionLabel.text = NSLocalizedString("Running on", comment: "Running on") + " " + DeviceInfo.getOSName() + " " + DeviceInfo.getOSVersion()
         
         // hide this label when iPhone screen size too small
     /*    if UIDevice.current.iPhone5{

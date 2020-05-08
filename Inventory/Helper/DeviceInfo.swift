@@ -40,6 +40,10 @@ class DeviceInfo: NSObject {
         return UIDevice.current.systemVersion
     }
     
+    static func getOSName() -> String{
+        return UIDevice.current.systemName
+    }
+    
     // iOS battery level
     /// get the current iOS battery level
     ///

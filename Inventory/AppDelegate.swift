@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // app starts here
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+       
         // manage large title appearance for all view controllers centrally
         UINavigationBar.appearance().prefersLargeTitles = true
         UINavigationBar.appearance().largeTitleTextAttributes =

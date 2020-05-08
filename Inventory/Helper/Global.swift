@@ -41,6 +41,9 @@ class Global: UIViewController {
     // system sound for drop operation
     static let systemSound = 1322
     
+    // app version string
+    static let appVersion = UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
+    
     // App store link
     static let AppLink = "https://itunes.apple.com/de/app/inventory-app/id1386694734?l=de&ls=1&mt=8"
     

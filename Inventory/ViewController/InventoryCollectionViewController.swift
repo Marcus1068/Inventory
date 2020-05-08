@@ -517,10 +517,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             headerView.roomLabel.text = sectionInfo?.name
             let room = store.fetchRoomIcon(roomName: (sectionInfo?.name)!)
-            let imageData = room!.roomImage! as Data
-            let image = UIImage(data: imageData, scale:1.0)
-            headerView.roomIcon.image = image
-            
+            if room != nil{
+                let imageData = room!.roomImage! as Data
+                let image = UIImage(data: imageData, scale:1.0)
+                headerView.roomIcon.image = image
+            }
             return headerView
             
         case UICollectionView.elementKindSectionFooter:

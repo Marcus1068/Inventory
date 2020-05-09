@@ -83,9 +83,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
             // show main screen
             vc = storyboard.instantiateInitialViewController()!
         }
+        
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
+        
         #endif
+        
+        
+        
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

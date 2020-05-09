@@ -62,6 +62,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         
         #endif
         
+        // show whats new only on iOS, catalyst shows wrong window
+        #if targetEnvironment(macCatalyst)
+        // do nothing
+        #else
         // show onbaording window with latest app update information
         // use user defaults to store state so that we show only once after app update
         // increase build number and/or version number will show up onboarding screen again
@@ -81,7 +85,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         }
         self.window?.rootViewController = vc
         self.window?.makeKeyAndVisible()
-
+        #endif
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

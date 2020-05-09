@@ -73,6 +73,7 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
     
     @IBAction func doneAction(_ sender: UIButton) {
         performSegue(withIdentifier: "onboardingSegue", sender: self)
+        //dismiss(animated: true, completion: nil)
     }
  
     #if targetEnvironment(macCatalyst)

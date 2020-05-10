@@ -29,6 +29,10 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
         
         // Do any additional setup after loading the view.
         
+        // first thing: clean up sample data for icloud sync
+        let store = CoreDataStorage.shared
+        store.deleteSampleData()
+        
         let fileName: String
         switch Local.currentLocaleForDate(){
         case "de_DE", "de_AT", "de_CH", "de":

@@ -1031,10 +1031,24 @@ public class CoreDataStorage {
         
         _ = saveInventory(inventoryName: NSLocalizedString("Speaker", comment: "Speaker"), dateOfPurchase: date, price: Int32(199), remark: remark, serialNumber: serial, warranty: 24, image: imageSpeakerData! as NSData, invoice: myinvoice, imageFileName: "", invoiceFileName: "", brand: brands[8], category: categories[8], owner: owners[3], room: rooms[2])
         
-        
-        
-        // FIXME: must be removed for release
         //CoreDataStorage.showSampleData()
+    }
+    
+    func deleteSampleData(){
+        // step 1:
+        // check if data on device contains only sample data
+        // step 2:
+        // remove sample data
+        
+        let inv = fetchInventory()
+        
+        if inv.count == 5{
+            let _ = deleteAllRooms()
+            let _ = deleteAllBrands()
+            let _ = deleteAllOwners()
+            let _ = deleteAllCategories()
+        }
+        saveContext()
     }
     
     // just for testing and debugging, will not be used in final app

@@ -331,6 +331,9 @@
 /* Class = "UISegmentedControl"; R5q-YK-cXD.segmentTitles[1] = "US Letter"; ObjectID = "R5q-YK-cXD"; */
 "R5q-YK-cXD.segmentTitles[1]" = "US Letter";
 
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "RCs-X2-kjZ"; */
+"RCs-X2-kjZ.normalTitle" = "Schließen";
+
 /* Class = "UITableViewSection"; headerTitle = "Picture and Invoice"; ObjectID = "rFd-0w-oMC"; */
 "rFd-0w-oMC.headerTitle" = "Foto und Rechnung";
 
@@ -387,6 +390,12 @@
 
 /* Class = "UITextField"; placeholder = "Owner name"; ObjectID = "xgQ-W4-Tf4"; */
 "xgQ-W4-Tf4.placeholder" = "Eigentümer";
+
+/* Class = "UILabel"; text = "Whats new in Inventory"; ObjectID = "Xo7-eS-5LF"; */
+"Xo7-eS-5LF.text" = "Was ist neu bei Inventory";
+
+/* Class = "UIButton"; normalTitle = "What's New"; ObjectID = "XrB-7B-0LP"; */
+"XrB-7B-0LP.normalTitle" = "Was ist neu";
 
 /* Class = "UISegmentedControl"; XWi-74-Mt1.segmentTitles[0] = "0"; ObjectID = "XWi-74-Mt1"; */
 "XWi-74-Mt1.segmentTitles[0]" = "0";

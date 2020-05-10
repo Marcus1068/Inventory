@@ -1,6 +1,3 @@
-/* (c) 2019 by M. Deuß */
-"(c) 2019 by M. Deuß" = "(c) 2019 M. Deuß";
-
 /* <no category> */
 "<no category>" = "<keine Kategorie>";
 
@@ -220,6 +217,9 @@
 /* First page */
 "First Page" = "Erste Seite";
 
+/* for */
+"for" = "für";
+
 /* Furniture */
 "Furniture" = "Möbel";
 
@@ -259,9 +259,6 @@
 /* Inventory menu entry */
 "Inventory" = "Inventar";
 
-/* Inventory App Report.pdf */
-"Inventory App Report.pdf" = "Inventory App Report.pdf";
-
 /* Inventory item */
 "Inventory item" = "Inventarobjekt";
 
@@ -279,9 +276,6 @@
 
 /* Invoice */
 "Invoice" = "Rechnung";
-
-/* Invoice for */
-"Invoice for" = "Rechnung für";
 
 /* Item */
 "Item" = "Objekt";
@@ -319,6 +313,9 @@
 
 /* Manual */
 "Manual" = "Handbuch";
+
+/* Menu */
+"Menu" = "Menü";
 
 /* Most expensive item */
 "Most expensive item" = "Teuerstes Objekt";
@@ -473,8 +470,8 @@
 /* Room with most items in */
 "Room with most items in" = "Raum mit den meisten Objekten";
 
-/* Running on iOS */
-"Running on iOS " = "Läuft auf iOS ";
+/* Running on */
+"Running on" = "Läuft auf";
 
 /* Save */
 "Save" = "Speichern";
@@ -557,6 +554,9 @@
   Created by Marcus Deuß on 30.01.19.
   Copyright © 2019 Marcus Deuß. All rights reserved. */
 "Welcome" = "Willkommen";
+
+/* What's new */
+"What's new" = "Was ist neu";
 
 /* Wizzard */
 "Wizzard" = "Zauberer";

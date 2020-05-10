@@ -51,7 +51,7 @@ class Global: UIViewController {
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryAppExport.csv"
-    static let pdfFile = NSLocalizedString("Inventory App Report.pdf", comment: "Inventory App Report.pdf") // FIXME: why translate?
+    static let pdfFile = "Inventory App Report.pdf"
     
     // colors used system wide
     static let colorGreen : UIColor = .systemGreen // green background for button bezel
@@ -354,22 +354,6 @@ class Global: UIViewController {
         return allowed
     }
     
-    /// generates a string like invname_20191022060310
-    ///
-    /// - Parameter invname: inventory name
-    /// - Returns: inventory name with date components added
-    static func generateFilename(invname: String) -> String{
-        //os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
-        
-        let cal = Calendar.current
-        let now = Date()
-        let comps = cal.dateComponents([.day, .month, .year, .hour, .minute, .second], from: now)
-        
-        let imageName = invname + "_" + String(comps.year!) + "_" + String(comps.day!) + "_" + String(comps.month!) + "_" + String(comps.hour!) + "_" + String(comps.minute!) + "_" + String(comps.second!)
-        
-        return imageName
-    }
-    
     /// creates a temporary file after drop operation
     ///
     /// - Parameter fileItems: the file that gets dropped over the app
@@ -602,6 +586,22 @@ extension UIViewController {
             alertController.addAction(defaultAction)
             navigationController!.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    /// generates a string like invname_20191022060310
+    ///
+    /// - Parameter invname: inventory name
+    /// - Returns: inventory name with date components added
+    func generateFilename(invname: String) -> String{
+        //os_log("Global generateFilename", log: Log.viewcontroller, type: .info)
+        
+        let cal = Calendar.current
+        let now = Date()
+        let comps = cal.dateComponents([.day, .month, .year, .hour, .minute, .second], from: now)
+        
+        let imageName = invname + "_" + String(comps.year!) + "_" + String(comps.day!) + "_" + String(comps.month!) + "_" + String(comps.hour!) + "_" + String(comps.minute!) + "_" + String(comps.second!)
+        
+        return imageName
     }
 }
 

@@ -110,8 +110,13 @@ class PDFViewController: UIViewController {
     // Mark: - UI actions
     
     @IBAction func shareButtonAction(_ sender: Any) {
-        
-        shareAction(currentPath: currentPath!)
+        if (currentPath != nil){
+            shareAction(currentPath: currentPath!)
+        }
+        else{
+            // FIXME test ändern
+            displayAlert(title: "kein PDF file", message: "kein PDF file", buttonText: Global.done)
+        }
     }
     
     @objc func backButton(){

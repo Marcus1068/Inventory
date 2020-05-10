@@ -146,8 +146,11 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
             navigationItem.largeTitleDisplayMode = .always
         }
         
+        // register tap gesture for showing pdf in fullscreen
+        pdfViewGestureWhenTapped()
+        
         // register tap gesture for showing image in fullscreen
-        //imageViewGestureWhenTapped()
+        imageViewGestureWhenTapped()
         
         currencyLabel.text = Local.currencySymbol!
         
@@ -231,8 +234,26 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                         self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
                 }
                 
+                // FIXME
+                let pdfFolderPath = URL.createFolder(folderName: "Share")
+                let pathURLpdf = pdfFolderPath!.appendingPathComponent(currentInventory!.invoiceFileName!)
+                
+                let invoiceData = currentInventory!.invoice! as Data
+                do {
+                    // writes the PDF data to disk
+                    try invoiceData.write(to: pathURLpdf, options: .atomic)
+                    //print("pdf file saved")
+                } catch {
+                    print("error saving pdf file:", error)
+                    os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .error)
+                }
+                
+                self.url = pathURLpdf
                 // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
                 //pdfViewGestureWhenTapped()
+            }
+            else{
+                self.url = nil
             }
             
             // inventory image
@@ -536,18 +557,16 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        //os_log("InventoryEditViewController prepare", log: Log.viewcontroller, type: .info)
-        
         if segue.identifier == "pdfSegue" {
             let destination =  segue.destination as! PDFViewController
             destination.currentPDF = pdfView
             destination.currentPath = self.url
             if let name = textfieldInventoryName.text{
                 if name.count == 0{
-                    destination.currentTitle = NSLocalizedString("Invoice", comment: "Invoice")
+                    destination.currentTitle = Global.invoice
                 }
                 else{
-                    destination.currentTitle = NSLocalizedString("Invoice for", comment: "Invoice for") + " " + name
+                    destination.currentTitle = Global.invoice + " " + NSLocalizedString("for", comment: "for") + " " + name
                 }
             }
         }
@@ -576,6 +595,34 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     }
     
     // MARK: - UI Actions
+    
+    // use this method in viewDidLoad to enable tap gesture for pdf view
+    func pdfViewGestureWhenTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.pdfViewGestureAction))
+        tap.cancelsTouchesInView = false
+        // register tap with pdfview only
+        pdfView.addGestureRecognizer(tap)
+    }
+    
+    // use this method in viewDidLoad to enable tap gesture for image view
+    func imageViewGestureWhenTapped() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(InventoryEditViewController.imageViewGestureAction))
+        tap.cancelsTouchesInView = false
+        // register tap with pdfview only
+        imageView.addGestureRecognizer(tap)
+    }
+    
+    // show fullscreen image view
+    @objc func imageViewGestureAction() {
+        // show image view fullscreen
+        performSegue(withIdentifier: "imageSegue", sender: nil)
+    }
+    
+    // show fullscreen pdf view
+    @objc func pdfViewGestureAction() {
+        // show pdf view fullscreen
+        performSegue(withIdentifier: "pdfSegue", sender: nil)
+    }
     
     // take a new picture
     @IBAction func cameraNavBarAction(_ sender: UIBarButtonItem) {
@@ -784,13 +831,13 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         // image binary data
         let imageData = imageView.image!.jpegData(compressionQuality: Global.imageQuality)
         currentInventory?.image = imageData! as NSData
-        currentInventory?.imageFileName = Global.generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
+        currentInventory?.imageFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".jpg"
         
         
         // PDF data
         if pdfView.document != nil{
             currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
-            currentInventory?.invoiceFileName = Global.generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
+            currentInventory?.invoiceFileName = generateFilename(invname: currentInventory!.inventoryName!) + ".pdf"
         }
         
     /*    currentInventory?.invoice = pdfView.document!.dataRepresentation()! as NSData?
@@ -930,11 +977,28 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
         // Create a UIAction for sharing
         let share = UIAction(title: Global.share, image: UIImage(systemName: "square.and.arrow.up")) { action in
             // Show system share sheet
-            let image = self.imageView.image
-            let activityViewController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
-            self.present(activityViewController, animated: true) {
-               // …
+            
+            // first save file to temp dir
+            let pathURL = URL.createFolder(folderName: "Share")
+            if self.currentInventory?.imageFileName == "" {
+                self.currentInventory?.imageFileName = self.generateFilename(invname: self.currentInventory!.inventoryName!) + ".jpg"
             }
+            let pathURLjpeg = pathURL!.appendingPathComponent(self.currentInventory!.imageFileName!)
+
+            
+            let image = self.imageView.image
+            if let data = image!.jpegData(compressionQuality: 0.0),
+                !FileManager.default.fileExists(atPath: pathURLjpeg.path) {
+                do {
+                    // writes the image data to disk
+                    try data.write(to: pathURLjpeg, options: .atomic)
+                    
+                } catch {
+                    print("error saving jpg file:", error)
+                }
+            }
+            
+            self.shareAction(currentPath: pathURLjpeg)
         }
 
         // Create and return a UIMenu with the share action
@@ -945,7 +1009,7 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
         // Create a UIAction for sharing
         let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
             // Show system share sheet
-            
+            /*
             // PDF data
             var pdf: NSData
             if self.pdfView.document != nil{
@@ -954,8 +1018,11 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
                 self.present(activityViewController, animated: true) {
                    // …
                 }
-            }
+            }*/
             
+            if self.url != nil{
+                self.shareAction(currentPath: self.url!)
+            }
         }
 
         // Create and return a UIMenu with the share action

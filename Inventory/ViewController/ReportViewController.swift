@@ -1658,9 +1658,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @objc func gestureAction() {
-        //os_log("ReportViewController action", log: Log.viewcontroller, type: .info)
-        
-        // show image view fullscreen
+        // show pdf view fullscreen
         performSegue(withIdentifier: "fullscreenPDF", sender: nil)
     }
     

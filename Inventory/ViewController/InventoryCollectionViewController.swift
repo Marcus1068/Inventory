@@ -153,7 +153,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             // image binary data
                             let imageData = image.jpegData(compressionQuality: Global.imageQuality)
                             inv.image = imageData! as NSData
-                            inv.imageFileName = Global.generateFilename(invname: inv.inventoryName!) + ".jpg"
+                            inv.imageFileName = self.generateFilename(invname: inv.inventoryName!) + ".jpg"
                             
                             _ = store.saveInventory(inventory: inv)
                             
@@ -184,7 +184,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             let url = Global.createTempDropObject(fileItems: [fileItem])
                             let pdf = PDFDocument(url: url!) // FIXME change to document instead of pdf document
                             inv.invoice = pdf?.dataRepresentation() as NSData?
-                            inv.invoiceFileName = Global.generateFilename(invname: inv.inventoryName!) + ".pdf"
+                            inv.invoiceFileName = self.generateFilename(invname: inv.inventoryName!) + ".pdf"
                             _ = store.saveInventory(inventory: inv)
                             
                             self.collection.reloadData()

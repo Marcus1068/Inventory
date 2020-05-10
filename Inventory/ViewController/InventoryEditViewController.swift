@@ -456,21 +456,18 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // MARK: - document picker methods
     
     // called by system with resulting document URL
-    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        let myURL = url as URL
+    func documentPicker(_ controller: UIDocumentPickerViewController,
+                        didPickDocumentsAt urls: [URL]){
         
-        self.url = myURL
+        print(urls.count)
+        self.url = urls[0]
         
-        pdfDisplay(file: myURL)
-        
-        // register tap gesture for showing pdf in fullscreen, enable only when a pdf has been loaded
-        //pdfViewGestureWhenTapped()
+        pdfDisplay(file: self.url!)
     }
-
     
     // in case somebody clicks cancel and does not choose a document then simply dismiss
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("view was cancelled")
+        //print("view was cancelled")
         dismiss(animated: true, completion: nil)
     }
 

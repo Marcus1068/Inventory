@@ -1006,23 +1006,15 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
     }
     
     func makePDFContextMenu() -> UIMenu {
+        // if no pdf file no context menu
+        guard ((self.currentInventory?.invoice) != nil) else {
+            return UIMenu(title: "nix")
+        }
         // Create a UIAction for sharing
         let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
             // Show system share sheet
-            /*
-            // PDF data
-            var pdf: NSData
-            if self.pdfView.document != nil{
-                pdf = (self.pdfView.document!.dataRepresentation()! as NSData?)!
-                let activityViewController = UIActivityViewController(activityItems: [pdf], applicationActivities: nil)
-                self.present(activityViewController, animated: true) {
-                   // …
-                }
-            }*/
             
-            if self.url != nil{
-                self.shareAction(currentPath: self.url!)
-            }
+            self.shareAction(currentPath: self.url!)
         }
 
         // Create and return a UIMenu with the share action

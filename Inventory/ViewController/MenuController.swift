@@ -56,7 +56,7 @@ class MenuController{
         builder.remove(menu: .edit)
         //builder.remove(menu: .about)
         
-        builder.insertSibling(MenuController.preferencesMenu(), afterMenu: .about)
+        //builder.insertSibling(MenuController.preferencesMenu(), afterMenu: .about)
         
         // Create and add "Import" menu command at the beginning of the File menu.
         builder.insertChild(MenuController.importExportMenu(), atStartOfMenu: .file)
@@ -75,7 +75,7 @@ class MenuController{
         
         
     }
-
+/*
     class func preferencesMenu() -> UIMenu {
         // Create the preferences/about menu entries with command-p
         
@@ -92,7 +92,7 @@ class MenuController{
                       options: [.displayInline],
                       children: [prefCommand])
     }
-    
+  */
     class func printMenu() -> UIMenu {
         // Create the print menu entries with command-p
         

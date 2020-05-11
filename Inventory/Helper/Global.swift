@@ -687,3 +687,13 @@ extension NSDate {
     }
 }
 
+// MARK: - User Defaults
+
+// Extend UserDefaults for quick access to nameColorKey.
+extension UserDefaults {
+    
+    @objc dynamic var nameColorKey: Int {
+        return integer(forKey: InventoryCollectionViewController.nameColorKey)
+    }
+    
+}

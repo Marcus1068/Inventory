@@ -358,6 +358,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         } else {
             // Fallback on earlier versions
         }
+        
+        // Listen for preference changes for the view's background color.
+        backgroundColorObserver = UserDefaults.standard.observe(\.nameColorKey,
+                                                                options: [.initial, .new],
+                                                                changeHandler: { (defaults, change) in
+            self.updateView()
+        })
     }
 
     fileprivate func updateNumberOfItemsLabel() {
@@ -432,6 +439,31 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         collection.resignFirstResponder() */
     }
     
+    // MARK: - Preferred Background Color
+        
+    static let nameColorKey = "nameColorKey" // Key for obtainins the preference view color.
+
+    // KVO for preference changes.
+    var backgroundColorObserver: NSKeyValueObservation?
+    
+    func updateView() {
+        let viewColor = UserDefaults.standard.integer(forKey: InventoryCollectionViewController.nameColorKey)
+        
+        let colorValue = AppDelegate.BackgroundColors(rawValue: viewColor)
+        switch colorValue {
+        case .yellow:
+            self.collection.backgroundColor = UIColor.systemYellow
+        case .gray:
+            self.collection.backgroundColor = UIColor.systemGray4
+        case .green:
+            self.collection.backgroundColor = UIColor.systemGreen
+        case .standard:
+            self.collection.backgroundColor = UIColor.systemBackground
+        default:
+            Swift.debugPrint("invalid color")
+        }
+    }
+
     // core data change notification
     // makea a new fetch request for inventory objects in case something in core data has changed.
     // Reason: avoid multiple fetch requests when getting statistics data

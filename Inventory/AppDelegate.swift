@@ -544,9 +544,10 @@ extension AppDelegate {
     // MARK: - Preferences
     
     enum BackgroundColors: Int {
-        case blue = 1
-        case teal = 2
-        case indigo = 3
+        case yellow = 1
+        case gray = 2
+        case green = 3
+        case standard = 4
     }
     
     // Locates the file representing the root page of the settings for this app and registers the loaded values as the app's defaults.

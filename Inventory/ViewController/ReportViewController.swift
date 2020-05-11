@@ -180,6 +180,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         imageSwitch.onTintColor = themeColorUIControls
         printBarButton.tintColor = themeColorUIControls
         
+        // segments font size
+        let font = UIFont.systemFont(ofSize: 10)
+        roomsSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        ownersSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        paperFormatSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        sortOrderSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
         // Do any additional setup after loading the view.
         // new in ios11: large navbar titles
         // new in ios11: large navbar titles

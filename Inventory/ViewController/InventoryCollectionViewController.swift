@@ -307,6 +307,10 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
         
+        // segments font size
+        let font = UIFont.systemFont(ofSize: 10)
+        roomsSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        ownersSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
         // set collection view delegates
         collection.delegate = self

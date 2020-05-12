@@ -758,3 +758,125 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 }
 
 
+extension UIViewController{
+    
+    private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
+        //os_log("ImportExportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
+        
+        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
+        fetchRequest.fetchBatchSize = 20
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
+
+        return fetchRequest
+    }
+
+    // export to cvs via backgroud task
+    // fetch async array, if no array, return nil
+    // create jpeg and pdf files if included in data
+    // link between cvs and external jpeg, pdf files by file name
+    func backupInventoryData()
+    {
+        //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
+        
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        var url = docPath.appendingPathComponent(Global.csvFile)
+        
+        let imagesFolderPath = URL.createFolder(folderName: "Images")
+        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        
+        var activityIndicator : UIActivityIndicatorView
+        
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        } else {
+            // Fallback on earlier versions
+            activityIndicator = UIActivityIndicatorView(style: .gray)
+        }
+        
+        //let barButtonItem = UIBarButtonItem(customView: activityIndicator)
+        //navigationItem.leftBarButtonItem = barButtonItem
+        activityIndicator.startAnimating()
+       
+        let container = store.persistentContainer
+        
+        container.performBackgroundTask { (context) in
+            var exportedRows : Int = 0
+            
+            var results: [Inventory] = []
+            
+            do {
+                results = try context.fetch(self.inventoryFetchRequest())
+            } catch let error as NSError {
+                print("ERROR: \(error.localizedDescription)")
+                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+            }
+            
+            //let cvsFileName = Global.csvFile
+            let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
+            url = pathURLcvs
+            
+            //let exportDocPath = pathURLcvs.absoluteString
+            var csvText = Global.csvMetadata
+            
+            var progress : Int = 0
+            
+            for inv in results{
+                csvText.append(contentsOf: inv.csv())
+                
+                progress += 1
+                
+                exportedRows += 1
+            }
+            
+            do {
+                try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
+                //print("Export Path: \(exportDocPath)")
+            } catch {
+                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+                print("Failed to create inventory csv file")
+                print("\(error)")
+            }
+            
+            // loop through all jpeg files and save them
+            for inv in results{
+                
+                // export JPEG files
+                if inv.imageFileName != "" {
+                    let pathURLjpg = imagesFolderPath!.appendingPathComponent(inv.imageFileName!)
+                    // get your UIImage jpeg data representation and check if the destination file url already exists
+                    let imageData = inv.image! as Data
+                    let image = UIImage(data: imageData, scale: 1.0)
+                    if let data = image!.jpegData(compressionQuality: 0.0),
+                        !FileManager.default.fileExists(atPath: pathURLjpg.path) {
+                        do {
+                            // writes the image data to disk
+                            try data.write(to: pathURLjpg, options: .atomic)
+                            
+                        } catch {
+                            print("error saving jpg file:", error)
+                            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+                        }
+                    }
+                }
+                
+                // export PDF files
+                if inv.invoiceFileName != nil && inv.invoiceFileName != "" {
+                    let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
+                    
+                    let invoiceData = inv.invoice! as Data
+                    do {
+                        // writes the PDF data to disk
+                        try invoiceData.write(to: pathURLpdf, options: .atomic)
+                        //print("pdf file saved")
+                    } catch {
+                        print("error saving pdf file:", error)
+                        os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+                    }
+                }
+            }
+            
+        }
+        activityIndicator.stopAnimating()
+    }
+}

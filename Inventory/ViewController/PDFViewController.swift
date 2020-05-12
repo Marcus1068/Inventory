@@ -43,10 +43,10 @@ class PDFViewController: UIViewController {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(backButton), discoverabilityTitle: Global.back),
-            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(firstPage), discoverabilityTitle: Global.firstPage),
-            UIKeyCommand(input: "L", modifierFlags: [.command, .shift], action: #selector(lastPage), discoverabilityTitle: Global.lastPage),
-            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareButtonAction), discoverabilityTitle: Global.share)
+            UIKeyCommand(title: "", image: nil, action: #selector(backButton), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.back, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(firstPage), input: "F", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.firstPage, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(lastPage), input: "L", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.lastPage, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(shareButtonAction), input: "9", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
         ]
     }
     

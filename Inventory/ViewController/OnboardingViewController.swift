@@ -36,8 +36,7 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneAction), discoverabilityTitle: Global.done),
-            
+            UIKeyCommand(title: "", image: nil, action: #selector(doneAction), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.done, state: .on)
         ]
     }
     
@@ -46,6 +45,9 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
 
         
         // Do any additional setup after loading the view.
+        
+        // make a backup of inventory data
+        backupInventoryData()
         
         // first thing: clean up sample data for icloud sync
         let store = CoreDataStorage.shared

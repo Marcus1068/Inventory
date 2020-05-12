@@ -776,8 +776,6 @@ extension UIViewController{
     // link between cvs and external jpeg, pdf files by file name
     func backupInventoryData()
     {
-        //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
-        
         _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //var url = docPath.appendingPathComponent(Global.csvFile)
         
@@ -793,54 +791,38 @@ extension UIViewController{
             activityIndicator = UIActivityIndicatorView(style: .gray)
         }
         
-        //let barButtonItem = UIBarButtonItem(customView: activityIndicator)
-        //navigationItem.leftBarButtonItem = barButtonItem
         activityIndicator.startAnimating()
        
         let container = store.persistentContainer
         
         container.performBackgroundTask { (context) in
-            var exportedRows : Int = 0
-            
             var results: [Inventory] = []
             
             do {
                 results = try context.fetch(self.inventoryFetchRequest())
             } catch let error as NSError {
                 print("ERROR: \(error.localizedDescription)")
-                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
-            //let cvsFileName = Global.csvFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
-            //url = pathURLcvs
             
-            //let exportDocPath = pathURLcvs.absoluteString
             var csvText = Global.csvMetadata
-            
-            var progress : Int = 0
             
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
-                
-                progress += 1
-                
-                exportedRows += 1
             }
             
             do {
                 try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
                 //print("Export Path: \(exportDocPath)")
             } catch {
-                os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                 print("Failed to create inventory csv file")
                 print("\(error)")
             }
             
             // loop through all jpeg files and save them
             for inv in results{
-                
                 // export JPEG files
                 if inv.imageFileName != "" {
                     let pathURLjpg = imagesFolderPath!.appendingPathComponent(inv.imageFileName!)
@@ -871,7 +853,6 @@ extension UIViewController{
                         //print("pdf file saved")
                     } catch {
                         print("error saving pdf file:", error)
-                        os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                     }
                 }
             }

@@ -38,8 +38,7 @@ class PrivacyViewController: UIViewController {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(doneButton), discoverabilityTitle: Global.done),
-            
+            UIKeyCommand(title: "", image: nil, action: #selector(doneButton), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.done, state: .on)
         ]
     }
     

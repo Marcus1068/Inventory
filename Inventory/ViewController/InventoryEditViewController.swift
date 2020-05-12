@@ -100,14 +100,14 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(cancelButton), discoverabilityTitle: Global.cancel),
-            UIKeyCommand(input: "S", modifierFlags: .command, action: #selector(saveButton), discoverabilityTitle: Global.save),
-            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(cameraNavBarAction), discoverabilityTitle: Global.takePhoto),
-            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(choosePDFButton(_:)), discoverabilityTitle: Global.invoice),
-            UIKeyCommand(input: "1", modifierFlags: [.command, .shift], action: #selector(roomButton(_:)), discoverabilityTitle: Global.room),
-            UIKeyCommand(input: "2", modifierFlags: [.command, .shift], action: #selector(categoryButton(_:)), discoverabilityTitle: Global.category),
-            UIKeyCommand(input: "3", modifierFlags: [.command, .shift], action: #selector(brandButton(_:)), discoverabilityTitle: Global.brand),
-            UIKeyCommand(input: "4", modifierFlags: [.command, .shift], action: #selector(ownerButton(_:)), discoverabilityTitle: Global.owner)
+            UIKeyCommand(title: "", image: nil, action: #selector(cancelButton), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.cancel, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(saveButton), input: "S", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.save, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(cameraNavBarAction), input: "F", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.takePhoto, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(choosePDFButton(_:)), input: "I", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.invoice, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(roomButton(_:)), input: "1", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.room, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(categoryButton(_:)), input: "2", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.category, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(brandButton(_:)), input: "3", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.brand, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(ownerButton(_:)), input: "4", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.owner, state: .on)
         ]
     }
     

@@ -87,12 +87,12 @@ class TabBarViewController: UITabBarController {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "1", modifierFlags: .command, action: #selector(inventoryEntry), discoverabilityTitle: Global.inventory),
-            UIKeyCommand(input: "2", modifierFlags: .command, action: #selector(manageItemsEntry), discoverabilityTitle: Global.manageItems),
-            UIKeyCommand(input: "3", modifierFlags: .command, action: #selector(importExportEntry), discoverabilityTitle: Global.importExport),
-            UIKeyCommand(input: "4", modifierFlags: .command, action: #selector(reportEntry), discoverabilityTitle: Global.report),
-            UIKeyCommand(input: "5", modifierFlags: .command, action: #selector(aboutEntry), discoverabilityTitle: Global.about),
-            UIKeyCommand(input: "6", modifierFlags: .command, action: #selector(addInvEntry), discoverabilityTitle: Global.addInv)
+            UIKeyCommand(title: "", image: nil, action: #selector(inventoryEntry), input: "1", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.inventory, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(manageItemsEntry), input: "2", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.manageItems, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(importExportEntry), input: "3", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.importExport, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(reportEntry), input: "4", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.report, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(aboutEntry), input: "5", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.about, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(addInvEntry), input: "6", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.addInv, state: .on)
         ]
     }
     

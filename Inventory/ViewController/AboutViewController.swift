@@ -60,12 +60,12 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "E", modifierFlags: [.command, .shift], action: #selector(appSettingsAction), discoverabilityTitle: Global.appSettings),
-            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(informationAction), discoverabilityTitle: Global.appInformation),
-            UIKeyCommand(input: "F", modifierFlags: [.command, .shift], action: #selector(feedbackAction), discoverabilityTitle: Global.appFeedback),
-            UIKeyCommand(input: "P", modifierFlags: [.command, .shift], action: #selector(privacyAction), discoverabilityTitle: Global.appPrivacy),
-            UIKeyCommand(input: "M", modifierFlags: [.command, .shift], action: #selector(userManualAction), discoverabilityTitle: Global.appManual),
-            UIKeyCommand(input: "N", modifierFlags: [.command, .shift], action: #selector(whatsNewAction(_:)), discoverabilityTitle: Global.whatsNew)
+            UIKeyCommand(title: "", image: nil, action: #selector(appSettingsAction), input: "E", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.appSettings, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(informationAction), input: "I", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.appInformation, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(feedbackAction), input: "F", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.appFeedback, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(privacyAction), input: "P", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.appPrivacy, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(userManualAction), input: "M", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.appManual, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(whatsNewAction(_:)), input: "N", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.whatsNew, state: .on)
         ]
     }
     

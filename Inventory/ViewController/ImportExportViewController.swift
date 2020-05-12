@@ -49,9 +49,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "I", modifierFlags: .command, action: #selector(importFromCVSFileButton), discoverabilityTitle: Global.importButton),
-            UIKeyCommand(input: "E", modifierFlags: .command, action: #selector(exportCVSButtonAction), discoverabilityTitle: Global.exportButton),
-            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareButtonAction), discoverabilityTitle: Global.share)
+            UIKeyCommand(title: "", image: nil, action: #selector(importFromCVSFileButton), input: "I", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.importButton, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(exportCVSButtonAction), input: "E", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.exportButton, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(shareButtonAction), input: "9", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
         ]
     }
     
@@ -778,8 +778,8 @@ extension UIViewController{
     {
         //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
         
-        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        var url = docPath.appendingPathComponent(Global.csvFile)
+        _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        //var url = docPath.appendingPathComponent(Global.csvFile)
         
         let imagesFolderPath = URL.createFolder(folderName: "Images")
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
@@ -814,7 +814,7 @@ extension UIViewController{
             //let cvsFileName = Global.csvFile
             let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
-            url = pathURLcvs
+            //url = pathURLcvs
             
             //let exportDocPath = pathURLcvs.absoluteString
             var csvText = Global.csvMetadata

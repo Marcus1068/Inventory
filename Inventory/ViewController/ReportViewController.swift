@@ -143,14 +143,14 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "A", modifierFlags: [.command, .shift], action: #selector(togglePaperFormatSegment), discoverabilityTitle: Global.paper),
-            UIKeyCommand(input: "I", modifierFlags: [.command, .shift], action: #selector(toggleImageSwitch), discoverabilityTitle: Global.images),
-            UIKeyCommand(input: "S", modifierFlags: [.command, .shift], action: #selector(toggleSortOrder), discoverabilityTitle: Global.sort),
-            UIKeyCommand(input: "O", modifierFlags: [.command, .shift], action: #selector(toggleOwnerSegment), discoverabilityTitle: Global.filterOwner),
-            UIKeyCommand(input: "R", modifierFlags: [.command, .shift], action: #selector(toggleRoomsSegment), discoverabilityTitle: Global.filterRoom),
-            UIKeyCommand(input: "E", modifierFlags: [.command, .shift], action: #selector(emailActionButton(_:)), discoverabilityTitle: Global.email),
-            UIKeyCommand(input: "P", modifierFlags: [.command, .shift], action: #selector(touchPrintAction), discoverabilityTitle: Global.printInvoice),
-            UIKeyCommand(input: "9", modifierFlags: .command, action: #selector(shareAction(_:)), discoverabilityTitle: Global.share)
+            UIKeyCommand(title: "", image: nil, action: #selector(togglePaperFormatSegment), input: "A", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.paper, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(toggleImageSwitch), input: "I", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.images, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(toggleSortOrder), input: "S", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.sort, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(toggleOwnerSegment), input: "O", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.filterOwner, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(toggleRoomsSegment), input: "R", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.filterRoom, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(emailActionButton(_:)), input: "E", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.email, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(touchPrintAction), input: "P", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.printInvoice, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(shareAction(_:)), input: "9", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
         ]
     }
     

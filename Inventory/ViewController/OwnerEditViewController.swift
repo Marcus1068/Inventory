@@ -44,8 +44,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "D", modifierFlags: .command, action: #selector(cancelButton), discoverabilityTitle: Global.cancel),
-            UIKeyCommand(input: "S", modifierFlags: .command, action: #selector(saveButton), discoverabilityTitle: Global.save)
+            UIKeyCommand(title: "", image: nil, action: #selector(cancelButton), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.cancel, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(saveButton), input: "S", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.save, state: .on)
         ]
     }
     

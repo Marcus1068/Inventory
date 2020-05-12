@@ -112,14 +112,14 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(input: "1", modifierFlags: [.command, .shift], action: #selector(roomEditAction), discoverabilityTitle: Global.editRoom),
-            UIKeyCommand(input: "2", modifierFlags: [.command, .shift], action: #selector(categoryEditAction), discoverabilityTitle: Global.editCategory),
-            UIKeyCommand(input: "3", modifierFlags: [.command, .shift], action: #selector(brandEditAction), discoverabilityTitle: Global.editBrand),
-            UIKeyCommand(input: "4", modifierFlags: [.command, .shift], action: #selector(ownerEditAction), discoverabilityTitle: Global.editOwner),
-            UIKeyCommand(input: "5", modifierFlags: [.command, .shift], action: #selector(roomAddAction), discoverabilityTitle: Global.addRoom),
-            UIKeyCommand(input: "6", modifierFlags: [.command, .shift], action: #selector(categoryAddAction), discoverabilityTitle: Global.addcategory),
-            UIKeyCommand(input: "7", modifierFlags: [.command, .shift], action: #selector(brandAddAction), discoverabilityTitle: Global.addBrand),
-            UIKeyCommand(input: "8", modifierFlags: [.command, .shift], action: #selector(ownerAddAction), discoverabilityTitle: Global.addOwner)
+            UIKeyCommand(title: "", image: nil, action: #selector(roomEditAction), input: "1", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.editRoom, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(categoryEditAction), input: "2", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.editCategory, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(brandEditAction), input: "3", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.editBrand, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(ownerEditAction), input: "4", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.editOwner, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(roomAddAction), input: "5", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.addRoom, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(categoryAddAction), input: "6", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.addcategory, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(brandAddAction), input: "7", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.addBrand, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(ownerAddAction), input: "8", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.addOwner, state: .on)
         ]
     }
     

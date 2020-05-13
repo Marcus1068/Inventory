@@ -44,6 +44,9 @@
 "App Settings" = "App Einstellungen";
 
 /* Are you sure you really want to delete */
+"Are you sure you really want to delete your inventory? Please make backup before with export function!" = "Wollen Sie wirklich alle Inventardaten löschen? Bitte vorher mit der Export Funktion ein Backup erstellen";
+
+/* Are you sure you really want to delete */
 "Are you sure you really want to delete? Any related inventory will be deleted as well!" = "Wollen Sie wirklich löschen? Alle hier von abhängenden Objekte werden ebenfalls gelöscht!";
 
 /* Are you sure you want to delete? All inventory objects depending will be deleted as well... */
@@ -129,6 +132,9 @@
 
 /* Delete */
 "Delete" = "Löschen";
+
+/* Delete all inventory */
+"Delete all inventory" = "Alle Inventardaten löschen";
 
 /* Delete brand */
 "Delete brand" = "Marke löschen";
@@ -280,9 +286,6 @@
 /* Item */
 "Item" = "Objekt";
 
-/* Item does not have an invoice to print */
-"Item does not have an invoice to print, please attach an invoice to your item first" = "Objekt hat keine Rechnung zugewiesen, bitte zuerst eine Rechnung auswählen";
-
 /* items */
 "items" = "Objekte";
 
@@ -365,8 +368,14 @@
 /* No file selected for importing */
 "No file selected for importing" = "Keine Datei zum Importieren ausgewählt";
 
+/* No image to share */
+"No image to share" = "Kein Bild vorhanden";
+
 /* No invoice */
 "No invoice" = "Keine Rechnung";
+
+/* No PDF attached */
+"No PDF attached to inventory" = "Kein PDF Dokument vorhanden";
 
 /* None */
 "None" = "Keine";
@@ -484,6 +493,12 @@
 
 /* Share */
 "Share" = "Teilen";
+
+/* ShareImage */
+"Share Image" = "Teile Bild";
+
+/* SharePDF */
+"Share PDF" = "Teile PDF";
 
 /* Show Image */
 "Show Image" = "Zeige Bild";

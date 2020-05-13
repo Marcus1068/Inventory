@@ -1008,7 +1008,7 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
             return UIMenu(title: "nix")
         }
         // Create a UIAction for sharing
-        let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
+        let share = UIAction(title: Global.pdf, image: UIImage(systemName: "doc.richtext")) { action in
             // Show system share sheet
             
             self.shareAction(currentPath: self.url!)

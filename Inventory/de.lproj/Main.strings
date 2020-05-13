@@ -256,6 +256,9 @@
 /* Class = "UILabel"; text = "Address:"; ObjectID = "lXu-4a-v6P"; */
 "lXu-4a-v6P.text" = "Haushalt:";
 
+/* Class = "UIButton"; normalTitle = "Reset data"; ObjectID = "M32-Jw-89h"; */
+"M32-Jw-89h.normalTitle" = "Alle Daten löschen";
+
 /* Class = "UILabel"; text = "Images:"; ObjectID = "MPQ-6q-xB3"; */
 "MPQ-6q-xB3.text" = "Bilder:";
 

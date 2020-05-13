@@ -1206,7 +1206,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                     }
                     else{
                         let title = NSLocalizedString("No invoice", comment: "No invoice")
-                        let message = NSLocalizedString("Item does not have an invoice to print, please attach an invoice to your item first", comment: "Item does not have an invoice to print")
+                        let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")
                         let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
                         
                         let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
@@ -1231,8 +1231,65 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                //self.collection.reloadData()
             }
             
+            // share selected inventory image
+            let shareImage = UIAction(title: Global.shareImage, image: UIImage(systemName: "square.and.arrow.up")) { action in
+                if inv.image != nil{
+                
+                    // first save file to temp dir
+                   let pathURL = URL.createFolder(folderName: "Share")
+                   if inv.imageFileName == "" {
+                    inv.imageFileName = self.generateFilename(invname: inv.inventoryName!) + ".jpg"
+                   }
+                   let pathURLjpeg = pathURL!.appendingPathComponent(inv.imageFileName!)
+                   
+                    let imageData = inv.image! as Data
+                    let image = UIImage(data: imageData, scale: 1.0)
+                    
+                   if let data = image!.jpegData(compressionQuality: 0.0),
+                       !FileManager.default.fileExists(atPath: pathURLjpeg.path) {
+                       do {
+                           // writes the image data to disk
+                           try data.write(to: pathURLjpeg, options: .atomic)
+                           
+                       } catch {
+                           print("error saving jpg file:", error)
+                       }
+                   }
+                   
+                   self.shareAction(currentPath: pathURLjpeg)
+                }
+                else{
+                    let message = NSLocalizedString("No image to share", comment: "No image to share")
+                    self.displayAlert(title: message, message: message, buttonText: Global.done)
+                }
+            }
+            
+            // share selected inventory image
+            let sharePDF = UIAction(title: Global.sharePDF, image: UIImage(systemName: "doc.richtext")) { action in
+                if inv.invoice != nil{
+                   
+                   // Show system share sheet
+                    let pdfFolderPath = URL.createFolder(folderName: "Share")
+                    let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
+                    
+                    let invoiceData = inv.invoice! as Data
+                    do {
+                        // writes the PDF data to disk
+                        try invoiceData.write(to: pathURLpdf, options: .atomic)
+                        //print("pdf file saved")
+                    } catch {
+                        print("error saving pdf file:", error)
+                    }
+                   
+                   self.shareAction(currentPath: pathURLpdf)
+                }
+                else{
+                    let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")
+                    self.displayAlert(title: message, message: message, buttonText: Global.done)
+                }
+            }
              // Create and return a UIMenu with all of the actions as children
-             return UIMenu(title: "", children: [addAction, edit, duplicate, printAction, delete])
+             return UIMenu(title: "", children: [addAction, edit, duplicate, shareImage, sharePDF, printAction, delete])
          }
      }
     

@@ -7,6 +7,9 @@
 /* Class = "WKInterfaceLabel"; text = "Cost"; ObjectID = "7rW-jb-QNu"; */
 "7rW-jb-QNu.text" = "Kosten";
 
+/* Class = "WKInterfaceLabel"; text = "Inventory Cost:"; ObjectID = "8lp-yj-Xsr"; */
+"8lp-yj-Xsr.text" = "Inventarkosten:";
+
 /* Class = "WKInterfaceController"; title = "Inventory"; ObjectID = "AgC-eL-Hgc"; */
 "AgC-eL-Hgc.title" = "Inventory App";
 

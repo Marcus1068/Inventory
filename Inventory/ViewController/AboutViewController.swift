@@ -44,6 +44,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var appSettingsButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var whatsNewButton: UIButton!
+    @IBOutlet weak var resetDataButton: UIButton!
     
     // attributes
     
@@ -84,6 +85,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //appVersionNumberLabel.textColor = themeColorUIControls
         appSettingsButton.tintColor = themeColorUIControls
         whatsNewButton.tintColor = themeColorUIControls
+        resetDataButton.tintColor = themeColorUIControls
         
         appVersionNumberLabel.text = UIApplication.appName! + " " + Global.appVersion
         appVersionNumberLabel.textColor = themeColorText
@@ -108,6 +110,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             customPointerInteraction(on: appSettingsButton, pointerInteractionDelegate: self)
             customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
             customPointerInteraction(on: whatsNewButton, pointerInteractionDelegate: self)
+            customPointerInteraction(on: resetDataButton, pointerInteractionDelegate: self)
         } else {
             // Fallback on earlier versions
         }
@@ -256,6 +259,9 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // MARK: - UI buttons
     
+    @IBAction func resetDataAction(_ sender: UIButton) {
+        confirmDelete()
+    }
     
     @IBAction func whatsNewAction(_ sender: UIButton) {
         let fileName: String
@@ -270,6 +276,7 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
         
         popOver(text: Global.getRTFFileFromBundle(fileName: fileName), sender: sender)
+        
     }
     
     // show app settings
@@ -362,6 +369,30 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
     {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    // UIAlert for asking user if delete is really ok
+    // UIAlert view is not modal so we need to do it this way
+    func confirmDelete() {
+        let title = NSLocalizedString("Delete all inventory", comment: "Delete all inventory")
+        let message = NSLocalizedString("Are you sure you really want to delete your inventory? Please make backup before with export function!", comment: "Are you sure you really want to delete")
+        
+        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        // use closure to delete database entries
+        let DeleteAction = UIAlertAction(title: Global.delete, style: UIAlertAction.Style.destructive){ (ACTION) in
+            let store = CoreDataStorage.shared
+            store.deleteAllData()
+        }
+        myActionSheet.addAction(DeleteAction)
+        
+        let CancelAction = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
+            // do nothing when cancel
+        }
+        myActionSheet.addAction(CancelAction)
+        
+        addActionSheetForiPad(actionSheet: myActionSheet)
+        present(myActionSheet, animated: true, completion: nil)
     }
 
     #if targetEnvironment(macCatalyst)

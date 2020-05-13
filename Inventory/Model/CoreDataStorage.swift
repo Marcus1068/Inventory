@@ -134,8 +134,8 @@ public class CoreDataStorage {
         }
         
         // merge policy for cloudkit sync
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        container.viewContext.automaticallyMergesChangesFromParent = true
+        //container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        //container.viewContext.automaticallyMergesChangesFromParent = true
       
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -162,6 +162,10 @@ public class CoreDataStorage {
     // MARK: db context
     // internal: get database context
     func getContext() -> NSManagedObjectContext{
+        // merge policy for cloudkit sync
+        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        
         return persistentContainer.viewContext
     }
     
@@ -1048,6 +1052,22 @@ public class CoreDataStorage {
             let _ = deleteAllOwners()
             let _ = deleteAllCategories()
         }
+        saveContext()
+    }
+    
+    func deleteAllData(){
+        // step 1:
+        // check if data on device contains only sample data
+        // step 2:
+        // remove sample data
+        
+        //let inv = fetchInventory()
+        
+        let _ = deleteAllRooms()
+        let _ = deleteAllBrands()
+        let _ = deleteAllOwners()
+        let _ = deleteAllCategories()
+    
         saveContext()
     }
     

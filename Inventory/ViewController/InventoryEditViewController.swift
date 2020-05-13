@@ -31,8 +31,7 @@ import MobileCoreServices
 import AVKit
 
 protocol InventoryEditViewControllerDelegate {
-    //func addGeotificationViewController(_ controller: InventoryEditViewController, didAdd geotification: Geotification)
-    //func addGeotificationViewController(_ controller: AddGeotificationViewController, didChange oldGeotifcation: Geotification, to newGeotification: Geotification)
+    
     func inventoryEditViewController(_ controller: InventoryEditViewController, didSelect action: UIPreviewAction, for previewedController: UIViewController, which inventory: Inventory)
 }
 
@@ -114,8 +113,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // MARK: view initializers
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //os_log("InventoryEditViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // initialize image picker class
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -311,20 +308,18 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: choosePDFButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: cameraButtonOutlet, pointerInteractionDelegate: self)
-            customPointerInteraction(on: roomButtonLabel, pointerInteractionDelegate: self)
-            customPointerInteraction(on: categoryButtonLabel, pointerInteractionDelegate: self)
-            customPointerInteraction(on: brandButtonLabel, pointerInteractionDelegate: self)
-            customPointerInteraction(on: ownerButtonLabel, pointerInteractionDelegate: self)
-            
-            customPointerInteraction(on: datePicker, pointerInteractionDelegate: self)
-            customPointerInteraction(on: imageView, pointerInteractionDelegate: self)
-            customPointerInteraction(on: pdfView, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
+        
+        customPointerInteraction(on: choosePDFButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: cameraButtonOutlet, pointerInteractionDelegate: self)
+        customPointerInteraction(on: roomButtonLabel, pointerInteractionDelegate: self)
+        customPointerInteraction(on: categoryButtonLabel, pointerInteractionDelegate: self)
+        customPointerInteraction(on: brandButtonLabel, pointerInteractionDelegate: self)
+        customPointerInteraction(on: ownerButtonLabel, pointerInteractionDelegate: self)
+        
+        customPointerInteraction(on: datePicker, pointerInteractionDelegate: self)
+        customPointerInteraction(on: imageView, pointerInteractionDelegate: self)
+        customPointerInteraction(on: pdfView, pointerInteractionDelegate: self)
+    
         
         // enable long press context menu with image view
         imageView.isUserInteractionEnabled = true
@@ -353,13 +348,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         brands = store.fetchAllBrands()
         owners = store.fetchAllOwners()
         categories = store.fetchAllCategories()
-        /*
-        // set item button texts
-        roomButtonLabel.setTitle(currentInventory?.inventoryRoom?.roomName!, for: UIControl.State.normal)
-        categoryButtonLabel.setTitle(currentInventory?.inventoryCategory?.categoryName!, for: UIControl.State.normal)
-        brandButtonLabel.setTitle(currentInventory?.inventoryBrand?.brandName!, for: UIControl.State.normal)
-        ownerButtonLabel.setTitle(currentInventory?.inventoryOwner?.ownerName!, for: UIControl.State.normal)
-        */
     }
     
     // call delegate
@@ -456,10 +444,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // MARK: - document picker methods
     
     // called by system with resulting document URL
-    func documentPicker(_ controller: UIDocumentPickerViewController,
-                        didPickDocumentsAt urls: [URL]){
-        
-        print(urls.count)
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]){
         self.url = urls[0]
         
         pdfDisplay(file: self.url!)
@@ -476,10 +461,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     // little blue info button as "detail" view (must be set in xcode at cell level
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath)
     {
-        //os_log("InventoryEditViewController accessoryButtonTappedForRowWith", log: Log.viewcontroller, type: .info)
-        //print(indexPath.row)
-        //let idx = IndexPath(row: indexPath.row, section: 0)
-        //tableView.selectRow(at: idx, animated: true, scrollPosition: .middle)
         
     }
     
@@ -523,33 +504,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         return true
     }
     
-    
-    // takes care of scrolling content top for the size of the current displayed keyboard
-    // uses scrollView
-    // will be called from viewDidLoad()
-/*    func registerForKeyboardNotifications(){
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWasShown(_:)), name: .UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)), name: .UIKeyboardWillHide, object: nil)
-    } */
-/*
-    @objc func keyboardWasShown(_ notification: NSNotification){
-        guard let info = notification.userInfo,
-            let keyBoardFrameValue = info[UIKeyboardFrameBeginUserInfoKey] as? NSValue else {return}
-        
-        let keyboardFrame = keyBoardFrameValue.cgRectValue
-        let keyboardSize = keyboardFrame.size
-        
-        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    @objc func keyboardWillBeHidden(_ notification: NSNotification){
-        let contentInsets = UIEdgeInsets.zero
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
-  */
 
     // prepare to transfer data to PDF view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -877,21 +831,6 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
     }
     
-/*
-    // generate PDF thumbnail as imageView image
-    func captureThumbnails(pdfDocument:PDFDocument) {
-        if let page1 = pdfDocument.page(at: 1) {
-            pdfImageView.image = page1.thumbnail(of: CGSize(
-                width: pdfImageView.frame.size.width,
-                height: pdfImageView.frame.size.height), for: .artBox)
-        }
-        /*
-        if let page2 = pdfDocument.page(at: 2) {
-            page2ImageView.image = page2.thumbnail(of: CGSize(
-                width: page2ImageView.frame.size.width,
-                height: page2ImageView.frame.size.height), for: .artBox)
-        } */
-    } */
     
     #if targetEnvironment(macCatalyst)
     

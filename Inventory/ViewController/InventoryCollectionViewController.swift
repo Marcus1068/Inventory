@@ -214,59 +214,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // refresh UI if cloudkit receives any changes made on other devices
     @objc func fetchChanges(){
-        // fetch
-        //var i = 0
-    
-        //store.persistentContainer.viewContext.refreshAllObjects()
-        
-        //let store = CoreDataStorage.shared
-        //store.saveContext()
-        /*
-        let viewContext = store.persistentContainer.viewContext
-        viewContext.automaticallyMergesChangesFromParent = true
-        
-        do {
-            try self.fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-            os_log("InventoryCollectionViewController ownersSelectionSegment", log: Log.coredata, type: .error)
-        }
-        
-        //self.collection.reloadData()
-        
-        DispatchQueue.main.async {
-            // update collection view
-            self.collection.reloadData()
-            let now = Date()
-            //self.refresh.title = String(now.description)
-            // update watch data as well
-            self.updateWatchData()
-            
-            let stats = Statistics.shared
-            
-            // refresh stats
-            stats.refresh()
-        } */
         
     }
-    
-   /* @objc private func aboutEntry(_ sender: UIBarButtonItem) {
-        /*// TODO:
-        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
-            return
-        }
-        
-        tabBarController.selectedIndex = 4 */
-    }
-
-    override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = NSTouchBar()
-        touchBar.defaultItemIdentifiers = [.newTouchEntry]
-        let button = NSButtonTouchBarItem(identifier: .newEntry, title: "New Entry", target: self, action: #selector(aboutEntry))
-        touchBar.templateItems = [button]
-        
-        return touchBar
-    } */
 
     
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
@@ -286,11 +235,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             self, selector: #selector(self.fetchChanges),
             name: .NSPersistentStoreRemoteChange, object: nil)
         
-    /*    if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .always
-        }
-       */
-        //self.navigationItem.titleView = UIView()
          self.title = nil
         
         // to enable drag/drop support
@@ -388,8 +332,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             os_log("InventoryCollectionViewController viewWillAppear", log: Log.coredata, type: .error)
         }
         
-        //self.title = NSLocalizedString("My Inventory", comment: "My Inventory")
-        
         updateNumberOfItemsLabel()
         
         collection.reloadData()
@@ -434,9 +376,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // when user chooses a different tab bar item and view disapprears
     override func viewWillDisappear(_ animated: Bool) {
-        /* print("disappear")
-        collection.removeGestureRecognizer(gestureRecognizer)
-        collection.resignFirstResponder() */
+        
     }
     
     // MARK: - Preferred Background Color
@@ -566,8 +506,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                                                                          for: indexPath) as! InventoryFooterCollectionReusableView
             
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
-            //footerView.searchResultLabel.textColor = themeColor
-            //footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " Inventory item"
             
             if(sectionInfo!.numberOfObjects > 1){
                 footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items")
@@ -593,7 +531,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         let cell = collection.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 4.0
         cell?.layer.borderColor = cellBorderColor.cgColor
-        
     }
     
     // deselects a cell to remove thick border and theme color
@@ -606,9 +543,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // The collection view calls this method when the user successfully selects an item in the collection view. It does not call this method when you programmatically set the selection.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //let cell = collectionView.cellForItem(at: indexPath) as! InventoryCollectionViewCell
-        
-        //cell.toggleSelected()
        
         let inv = fetchedResultsController.object(at: indexPath)
         
@@ -639,16 +573,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // The collection view calls this method when the user successfully deselects an item in the collection view. It does not call this method when you programmatically deselect items.
     // when deselecting collection items remove them from list of objects to delete
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        //let cell = collectionView.cellForItem(at: indexPath) as! InventoryCollectionViewCell
-        
-        //cell.toggleSelected()
         
         if deleteMode{
             if indexPathsForDeletion.count > 0{
                 selectedForDeleteInventory.removeLast()
                 deSelectCell(indexPath: indexPath)
                 indexPathsForDeletion.removeLast()
-                //print("selected \(indexPathsForDeletion.count)")
             }
         }
     }
@@ -706,10 +636,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // needed for iPad
     func configureCancelBarButton() {
-        //let cancelButton = UIBarButtonItem()
-        //cancelButton.image = UIImage(named: "cancelButton")
-        //cancelButton.action = #selector(InventoryCollectionViewController.iPadCancelButton)
-        //cancelButton.target = self
         self.navigationItem.setLeftBarButton(UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(InventoryCollectionViewController.iPadCancelButton)), animated: true)
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         //self.navigationItem.setLeftBarButton(cancelButton, animated: true)
@@ -748,7 +674,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         case .unspecified:
             // Uh, oh! What could it be?
             break
-            
+
         default:
             break
         }
@@ -804,16 +730,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // self implemented method
     func filterContentForSearchText(_ searchText: String) {
         
-        /*       filteredInventory = inventory.filter({( inv : Inventory) -> Bool in
-         let doesOwnerMatch = (scope == "All") || (inv.inventoryOwner?.ownerName == scope)
-         
-         if searchBarIsEmpty() {
-         return doesOwnerMatch
-         } else {
-         return doesOwnerMatch && inv.inventoryName!.lowercased().contains(searchText.lowercased())
-         }
-         })
-         */
         fetchedResultsController.fetchRequest.predicate = searchText.count > 0 ?
             NSPredicate(format: "inventoryName contains[c] %@", searchText.lowercased()) : nil
         
@@ -965,9 +881,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             roomsSegment.selectedSegmentIndex = 0
             ownersSegment.selectedSegmentIndex = 0
             
-            //let position = collection!.contentInset.top
-            
-            //collection.contentOffset.y -= 100
         }
             // disable filter segments
         else{
@@ -993,10 +906,6 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                 print("Fetching error: \(error), \(error.userInfo)")
                 os_log("InventoryCollectionViewController filterSwitchAction", log: Log.coredata, type: .error)
             }
-            
-            //let position = collection!.contentInset.top
-            
-            //collection.contentOffset.y += 100
             
             collection.reloadData()
         }
@@ -1346,12 +1255,5 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
           watchSessionManager.sendItemsByBrandListToWatch()
           watchSessionManager.sendItemsByOwnerListToWatch()
           
-          
-          // test with user defauls in app group
-    /*      if let userDefaults = UserDefaults(suiteName: Local.appGroup) {
-              userDefaults.set("1" as AnyObject, forKey: "key1")
-              userDefaults.set("2" as AnyObject, forKey: "key2")
-              userDefaults.synchronize()
-          } */
       }
 }

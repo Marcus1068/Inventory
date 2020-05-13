@@ -149,7 +149,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                     if let image = newImage as? UIImage {
                         DispatchQueue.main.async {
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
-                            //print(inv.inventoryName!)
+                            
                             // image binary data
                             let imageData = image.jpegData(compressionQuality: Global.imageQuality)
                             inv.image = imageData! as NSData
@@ -165,21 +165,14 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                             // to play sound
                             AudioServicesPlaySystemSound (systemSoundID)
                         }
-                        //self.images.insert(image, at: destinationIndexPath.item)
-                        
-                        /*DispatchQueue.main.async {
-                            collectionView.insertItems(
-                                at: [destinationIndexPath])
-                        } */
                     }
                 })
                 
                 item.dragItem.itemProvider.loadObject(ofClass: DropFile.self) { (provider, error) in
-                    //print("loaded urls")
+                    
                     DispatchQueue.main.async {
                         if let fileItem = provider as? DropFile {
                             let inv = self.fetchedResultsController.object(at: destinationIndexPath)
-                            //print(inv.inventoryName!)
                             
                             let url = Global.createTempDropObject(fileItems: [fileItem])
                             let pdf = PDFDocument(url: url!) // FIXME change to document instead of pdf document
@@ -297,13 +290,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         updateWatchData()
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: filterSwitch, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
+         customPointerInteraction(on: filterSwitch, pointerInteractionDelegate: self)
         
-        // Listen for preference changes for the view's background color.
+        // Listen for preference changes for the view's background color and refresh view color
         backgroundColorObserver = UserDefaults.standard.observe(\.nameColorKey,
                                                                 options: [.initial, .new],
                                                                 changeHandler: { (defaults, change) in
@@ -741,6 +730,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         collection.reloadData()
+        updateNumberOfItemsLabel()
     }
     
     // Returns true if the search text is empty or nil

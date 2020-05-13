@@ -43,14 +43,6 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //os_log("ManageTableViewController viewDidLoad", log: Log.viewcontroller, type: .info)
-        // Do any additional setup after loading the view.
-        
-        //self.tableView.layer.cornerRadius = 8.0
-        //self.tableView.layer.masksToBounds = true
-        
-        //self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
         
         // this will avoid displaying empty rows in the table
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -64,22 +56,17 @@ class ManageTableViewController: UITableViewController, UIPointerInteractionDele
         
         self.tableView.scrollToNearestSelectedRow(at: UITableView.ScrollPosition.bottom, animated: true)
         
-        //tableView.isScrollEnabled = false
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: staticCellRoomEdit, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellCategoriesEdit, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellBrandEdit, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellOwnerEdit, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellRoomAdd, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellCategoryAdd, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellBrandAdd, pointerInteractionDelegate: self)
-            customPointerInteraction(on: staticCellOwnerAdd, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
-        
+        customPointerInteraction(on: staticCellRoomEdit, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellCategoriesEdit, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellBrandEdit, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellOwnerEdit, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellRoomAdd, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellCategoryAdd, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellBrandAdd, pointerInteractionDelegate: self)
+        customPointerInteraction(on: staticCellOwnerAdd, pointerInteractionDelegate: self)
+    
     }
 
     

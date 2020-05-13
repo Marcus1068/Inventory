@@ -17,7 +17,7 @@
  */
 
 //
-//  ReportsFooterCollectionReusableView.swift
+//  InventoryFooterCollectionReusableView.swift
 //  Inventory
 //
 //  Created by Marcus Deuß on 22.05.18.

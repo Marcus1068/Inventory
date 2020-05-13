@@ -17,7 +17,7 @@
  */
 
 //
-//  ReportsHeaderCollectionReusableView.swift
+//  InventoryHeaderCollectionReusableView.swift
 //  Inventory
 //
 //  Created by Marcus Deuß on 22.05.18.

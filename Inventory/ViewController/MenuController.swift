@@ -71,8 +71,8 @@ class MenuController{
         builder.insertSibling(MenuController.itemManageMenu(), beforeMenu: .window)
         
         // Create and add "New" menu command at the beginning of the File menu.
-        builder.insertSibling(MenuController.reportMenu(), beforeMenu: .window)
-        
+        //builder.insertSibling(MenuController.reportMenu(), beforeMenu: .window)
+        // FIXME has to be finalized
         
     }
 /*

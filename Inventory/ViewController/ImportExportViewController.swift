@@ -138,12 +138,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         var activityIndicator : UIActivityIndicatorView
         
-        if #available(iOS 13.0, *) {
-            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        } else {
-            // Fallback on earlier versions
-            activityIndicator = UIActivityIndicatorView(style: .gray)
-        }
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         
         let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         navigationItem.leftBarButtonItem = barButtonItem
@@ -756,7 +753,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchExport, .touchBackup, .touchImport, .fixedSpaceSmall, .touchShare]
+        touchBar.defaultItemIdentifiers = [.touchExport, .touchImport, .fixedSpaceSmall, .touchBackup, .touchRestore, .fixedSpaceSmall, .touchShare]
         
         let importButton = NSButtonTouchBarItem(identifier: .touchImport, title: Global.importButton, target: self, action: #selector(importFromCVSFileButton(_:)))
         importButton.bezelColor = Global.colorGreen
@@ -766,15 +763,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let shareButton = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
         
-        let backupBtn = NSButtonTouchBarItem(identifier: .touchBackup, image: UIImage(systemName: "doc.on.doc.fill")!, target: self, action: #selector(backupAction))
+        let backupBtn = NSButtonTouchBarItem(identifier: .touchBackup, image: UIImage(systemName: "icloud.and.arrow.up.fill")!, target: self, action: #selector(backupAction))
+        backupBtn.bezelColor = Global.colorGreen
         
-        touchBar.templateItems = [importButton, exportButton, backupBtn, shareButton]
+        let restoreBtn = NSButtonTouchBarItem(identifier: .touchRestore, image: UIImage(systemName: "icloud.and.arrow.down.fill")!, target: self, action: #selector(restoreAction))
+        restoreBtn.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [importButton, exportButton, backupBtn, restoreBtn, shareButton]
         
         return touchBar
     }
 
     #endif
     
+    // check if iCloud account available
     func isICloudContainerAvailable() -> Bool {
         if let _ = FileManager.default.ubiquityIdentityToken {
             return true
@@ -802,6 +804,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         return nil
     }
     
+    // copy/replace images folder and pdf folder and csv file
     func copyDocumentsToiCloudDirectory() {
         guard let localDocumentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last else { return }
         
@@ -889,6 +892,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
+        activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         
         let _ = createiCloudDirectory(folder: Global.backupFolder)
@@ -906,12 +911,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // restore from iCloud backup
     func restoreFromiCloud(){
-        if isICloudContainerAvailable(){
-            //print("icloud vorhanden")
-        }
-        else{
+        guard isICloudContainerAvailable() else {
             displayAlert(title: "iCloud nicht konfiguriert", message: "iCloud nicht konfiguriert", buttonText: Global.done)
-            
             return
         }
         
@@ -919,7 +920,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             else {
             displayAlert(title: "Es wurde noch kein Backup erstellt", message: "Backup erstellen", buttonText: Global.done)
             return
-            
         }
         
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)

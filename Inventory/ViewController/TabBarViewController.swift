@@ -49,6 +49,7 @@ extension NSTouchBarItem.Identifier{
     static let touchImport = NSTouchBarItem.Identifier("de.marcus-deuss.import")
     static let touchExport = NSTouchBarItem.Identifier("de.marcus-deuss.export")
     static let touchBackup = NSTouchBarItem.Identifier("de.marcus-deuss.backup")
+    static let touchRestore = NSTouchBarItem.Identifier("de.marcus-deuss.restore")
     
     static let touchOK = NSTouchBarItem.Identifier("de.marcus-deuss.ok")
     static let touchCancel = NSTouchBarItem.Identifier("de.marcus-deuss.cancel")

@@ -85,6 +85,8 @@ class Global: UIViewController {
     static let pdf = NSLocalizedString("PDF", comment: "PDF")
     static let invoice = NSLocalizedString("Invoice", comment: "Invoice")
     
+    static let backup = NSLocalizedString("Backup to iCloud", comment: "Backup")
+    
     static let room = NSLocalizedString("Room", comment: "Room")
     static let category = NSLocalizedString("Category", comment: "Category")
     static let brand = NSLocalizedString("Brand", comment: "Brand")

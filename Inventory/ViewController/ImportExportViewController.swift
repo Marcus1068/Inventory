@@ -42,15 +42,16 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var shareBarButton: UIBarButtonItem!
     @IBOutlet weak var importedRowsLabel: UILabel!
     @IBOutlet weak var importCVSButton: UIButton!
+    @IBOutlet weak var backupButton: UIButton!
     
     var url : URL?
-    
     
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
             UIKeyCommand(title: "", image: nil, action: #selector(importFromCVSFileButton), input: "I", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.importButton, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(exportCVSButtonAction), input: "E", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.exportButton, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(backupAction), input: "B", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.backup, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(shareButtonAction), input: "9", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
         ]
     }
@@ -65,12 +66,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         exportCVSButton.tintColor = themeColorUIControls
         importCVSButton.tintColor = themeColorUIControls
         shareBarButton.tintColor = themeColorUIControls
+        backupButton.tintColor = themeColorUIControls
         
-        
-        // Do any additional setup after loading the view.
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         self.importedRowsLabel.isHidden = true
 
@@ -85,23 +83,17 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //shareBarButton.isEnabled = false
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: exportCVSButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: importCVSButton, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
+        customPointerInteraction(on: exportCVSButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: importCVSButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: backupButton, pointerInteractionDelegate: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //os_log("ImportExportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
-        
         self.importedRowsLabel.isHidden = true
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = true
-        
     }
     
     /*
@@ -596,6 +588,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // MARK: - button actions
     
+    // make an icloud backup
+    @IBAction func backupAction(_ sender: UIButton) {
+        backupDataToiCloud()
+    }
+    
     // called from main menu in case of catalyst
     @objc func export(){
         exportCSVFile()
@@ -740,7 +737,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchExport, .touchImport, .fixedSpaceSmall, .touchShare]
+        touchBar.defaultItemIdentifiers = [.touchExport, .touchBackup, .touchImport, .fixedSpaceSmall, .touchShare]
         
         let importButton = NSButtonTouchBarItem(identifier: .touchImport, title: Global.importButton, target: self, action: #selector(importFromCVSFileButton(_:)))
         importButton.bezelColor = Global.colorGreen
@@ -750,40 +747,90 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let shareButton = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
         
-        touchBar.templateItems = [importButton, exportButton, shareButton]
+        let backupBtn = NSButtonTouchBarItem(identifier: .touchBackup, image: UIImage(systemName: "doc.on.doc.fill")!, target: self, action: #selector(backupAction))
+        
+        touchBar.templateItems = [importButton, exportButton, backupBtn, shareButton]
         
         return touchBar
     }
 
     #endif
-}
-
-
-extension UIViewController{
     
-    private func inventoryFetchRequest() -> NSFetchRequest<Inventory> {
-        //os_log("ImportExportViewController inventoryFetchRequest", log: Log.viewcontroller, type: .info)
-        
-        let fetchRequest:NSFetchRequest<Inventory> = Inventory.fetchRequest()
-        fetchRequest.fetchBatchSize = 20
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "inventoryName", ascending: true)]
-
-        return fetchRequest
+    func isICloudContainerAvailable() -> Bool {
+        if let _ = FileManager.default.ubiquityIdentityToken {
+            return true
+        }
+        else {
+            return false
+        }
     }
-
+    
+    func createiCloudDirectory() -> Bool{
+        if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Inventory save") {
+            if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL.path, isDirectory: nil)) {
+                do {
+                    try FileManager.default.createDirectory(at: iCloudDocumentsURL, withIntermediateDirectories: true, attributes: nil)
+                    
+                    return true
+                }
+                catch {
+                    print("Error in creating icloud folder")
+                }
+            }
+            
+        }
+        return false
+    }
+    
+    func copyDocumentsToiCloudDirectory() {
+        guard let localDocumentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last else { return }
+        
+        guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Inventory Backup").appendingPathComponent("Tag 1") else { return }
+        
+        do {
+            try FileManager.default.copyItem(at: localDocumentsURL, to: iCloudDocumentsURL)
+        }
+        catch {
+            //Error handling
+            print("Error in copy item")
+        }
+    }
+    
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
     func backupDataToiCloud(){
-        // step 1: check if icloud available, else return
+        var activityIndicator : UIActivityIndicatorView
+        
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        
+        if isICloudContainerAvailable(){
+            //print("icloud vorhanden")
+        }
+        else{
+            displayAlert(title: "Backup nicht möglich", message: "iCloud nicht konfigiriert", buttonText: Global.done)
+            
+            return
+        }
+        
+        let success = createiCloudDirectory()
+        
+        activityIndicator.startAnimating()
+        
+        
+        // step 1.1: check local url
         
         // step 2: export data
         
         // step 3: create backup folder in icloud
         
         // step 4: copy images folder to backup folder
+        // file manager
+        //FileManager.default.copyItem(at: local, to: url)
         
         // step 5: copy pdf folder to backup folder
         
         // step 6: copy inventoryExport.csv to backup folder
+        
+        activityIndicator.stopAnimating()
     }
     
     // export to cvs via backgroud task
@@ -800,12 +847,7 @@ extension UIViewController{
         
         var activityIndicator : UIActivityIndicatorView
         
-        if #available(iOS 13.0, *) {
-            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        } else {
-            // Fallback on earlier versions
-            activityIndicator = UIActivityIndicatorView(style: .gray)
-        }
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         
         activityIndicator.startAnimating()
        
@@ -876,5 +918,6 @@ extension UIViewController{
         }
         activityIndicator.stopAnimating()
     }
-    
+        
 }
+

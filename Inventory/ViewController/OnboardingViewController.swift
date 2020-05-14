@@ -47,7 +47,7 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
         // Do any additional setup after loading the view.
         
         // make a backup of inventory data
-        backupInventoryData()
+        //ImportExportViewController.backupInventoryData()
         
         // first thing: clean up sample data for icloud sync
         //let store = CoreDataStorage.shared

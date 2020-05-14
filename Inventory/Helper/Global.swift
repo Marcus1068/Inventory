@@ -53,6 +53,10 @@ class Global: UIViewController {
     static let csvFile = "inventoryAppExport.csv"
     static let pdfFile = "Inventory App Report.pdf"
     
+    static let imagesFolder = "Images"
+    static let pdfFolder = "PDF"
+    static let backupFolder = "Backup"
+    
     // colors used system wide
     static let colorGreen : UIColor = .systemGreen // green background for button bezel
     static let colorRed : UIColor = .systemRed    // red background for button bezel

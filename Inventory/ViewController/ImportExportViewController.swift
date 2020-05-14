@@ -128,9 +128,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
         
-        let imagesFolderPath = URL.createFolder(folderName: "Images")
+        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
         
-        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
         
         var activityIndicator : UIActivityIndicatorView
         
@@ -274,8 +274,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         var importedRows : Int = 0
         
-        let imagesFolderPath = URL.createFolder(folderName: "Images")
-        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
+        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
         
         guard let data = readDataFromCSV(fileURL: fileURL) else{
             // no file to import
@@ -765,13 +765,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
     }
     
-    func createiCloudDirectory() -> Bool{
-        if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Inventory save") {
+    // create a folder in iCloud container
+    func createiCloudDirectory(folder: String) -> URL?{
+        if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(folder) {
             if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL.path, isDirectory: nil)) {
                 do {
                     try FileManager.default.createDirectory(at: iCloudDocumentsURL, withIntermediateDirectories: true, attributes: nil)
                     
-                    return true
+                    return iCloudDocumentsURL
                 }
                 catch {
                     print("Error in creating icloud folder")
@@ -779,21 +780,73 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             }
             
         }
-        return false
+        return nil
     }
     
     func copyDocumentsToiCloudDirectory() {
         guard let localDocumentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last else { return }
         
-        guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Inventory Backup").appendingPathComponent("Tag 1") else { return }
+        guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder) else { return }
         
+        let localImages = localDocumentsURL.appendingPathComponent(Global.imagesFolder)
+        let localPDF = localDocumentsURL.appendingPathComponent(Global.pdfFolder)
+        
+        let iCloudImages = iCloudDocumentsURL.appendingPathComponent(Global.imagesFolder)
+        let iCloudPDF = iCloudDocumentsURL.appendingPathComponent(Global.pdfFolder)
+        
+        let localCSVFile = localDocumentsURL.appendingPathComponent(Global.csvFile)
+        let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
+        
+        // first remove old csv file
+        do{
+            try FileManager.default.removeItem(at: iCloudCSVFile)
+        }
+        catch{
+            print("no old csv file")
+        }
+        
+        // now copy new csv file to backup destination
         do {
-            try FileManager.default.copyItem(at: localDocumentsURL, to: iCloudDocumentsURL)
+            try FileManager.default.copyItem(at: localCSVFile, to: iCloudCSVFile)
         }
         catch {
             //Error handling
-            print("Error in copy item")
+            print("Error in copy csv file")
         }
+        
+       // remove image files
+       do{
+            try FileManager.default.removeItem(at: iCloudImages)
+        }
+        catch{
+            print("no old image files")
+        }
+        
+        // now copy new image files to backup destination
+        do {
+            try FileManager.default.copyItem(at: localImages, to: iCloudImages)
+        }
+        catch {
+            //Error handling
+            print("Error in copy images")
+        }
+        
+        // remove pdf files
+        do{
+             try FileManager.default.removeItem(at: iCloudPDF)
+         }
+         catch{
+             print("no old pdf files")
+         }
+         
+         // now copy new pdf files to backup destination
+         do {
+             try FileManager.default.copyItem(at: localPDF, to: iCloudPDF)
+         }
+         catch {
+             //Error handling
+             print("Error in copy pdfs")
+         }
     }
     
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
@@ -811,7 +864,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
-        let success = createiCloudDirectory()
+        let backupURL = createiCloudDirectory(folder: Global.backupFolder)
+        let imagesURL = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
+        let pdfURL = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
+        
+        copyDocumentsToiCloudDirectory()
         
         activityIndicator.startAnimating()
         

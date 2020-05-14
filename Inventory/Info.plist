@@ -27,7 +27,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>de.marcus-deuss.Inventory</string>
+				<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			</array>
 		</dict>
 	</array>
@@ -72,12 +72,12 @@
 	<string>Camera needed for taking inventory photos</string>
 	<key>NSUbiquitousContainers</key>
 	<dict>
-		<key>iCloud.$(CFBundleIdentifier)</key>
+		<key>iCloud.$(PRODUCT_BUNDLE_IDENTIFIER)</key>
 		<dict>
 			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
 			<true/>
 			<key>NSUbiquitousContainerName</key>
-			<string>InventoryApp</string>
+			<string>TestApp</string>
 			<key>NSUbiquitousContainerSupportedFolderLevels</key>
 			<string>Any</string>
 		</dict>

@@ -137,6 +137,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         self.url = docPath.appendingPathComponent(Global.csvFile)
         
         let imagesFolderPath = URL.createFolder(folderName: "Images")
+        
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
         var activityIndicator : UIActivityIndicatorView
@@ -709,8 +710,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         )
     }
     
-    // single document selection
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]){
+        let url = urls[0]
         // do something with the selected document
         //os_log("ImportExportViewController single documentPicker", log: Log.viewcontroller, type: .info)
         
@@ -723,7 +724,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         importCVSFile(file: url.lastPathComponent)
         //print("BLA" + " " + url.lastPathComponent)
         //print(url.debugDescription)
+        
     }
+
     
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
@@ -860,4 +863,5 @@ extension UIViewController{
         }
         activityIndicator.stopAnimating()
     }
+    
 }

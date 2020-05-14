@@ -2201,24 +2201,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="MCJ-b6-EcT">
-                                <rect key="frame" x="16" y="52" width="343" height="558"/>
+                                <rect key="frame" x="16" y="52" width="335" height="554"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="64.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Backup your data to iCloud - it will be synced to all other devices and can be restored" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="64.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
-                                        <rect key="frame" x="0.0" y="80.5" width="343" height="46"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                        <state key="normal" title="Export csv file..."/>
-                                        <connections>
-                                            <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWr-zo-VXm">
-                                        <rect key="frame" x="0.0" y="142.5" width="343" height="46"/>
+                                        <rect key="frame" x="0.0" y="80" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Backup to iCloud"/>
                                         <connections>
@@ -2226,27 +2218,35 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sma-p5-g2v">
-                                        <rect key="frame" x="0.0" y="205" width="343" height="46"/>
+                                        <rect key="frame" x="0.0" y="142" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Restore from iCloud"/>
                                         <connections>
                                             <action selector="restoreAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="LTs-hb-GNg"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" text="Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtK-j7-m75">
-                                        <rect key="frame" x="0.0" y="267" width="343" height="64.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export your data as comma seperated values file to local app directory. Open those files via Files App" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-fd-nKg">
+                                        <rect key="frame" x="0.0" y="203.5" width="335" height="64.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Import your CSV data from the file system" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XG-Gh-KH6">
-                                        <rect key="frame" x="0.0" y="347.5" width="343" height="20.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
+                                        <rect key="frame" x="0.0" y="284" width="335" height="46"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <state key="normal" title="Export csv file..."/>
+                                        <connections>
+                                            <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Import your CSV data from the file system" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XG-Gh-KH6">
+                                        <rect key="frame" x="0.0" y="345.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
-                                        <rect key="frame" x="0.0" y="384" width="343" height="46"/>
+                                        <rect key="frame" x="0.0" y="381.5" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Import csv file..."/>
                                         <connections>
@@ -2254,22 +2254,22 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status information:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHW-c0-TOy">
-                                        <rect key="frame" x="0.0" y="446" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="443.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="imported xx rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-rl-izX">
-                                        <rect key="frame" x="0.0" y="483" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="479.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lo5-nO-MVc">
-                                        <rect key="frame" x="0.0" y="519.5" width="343" height="2"/>
+                                        <rect key="frame" x="0.0" y="516" width="335" height="2"/>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-Yp-eGe">
-                                        <rect key="frame" x="0.0" y="537.5" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="533.5" width="335" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2279,10 +2279,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="top" secondItem="8NP-bd-ZaX" secondAttribute="top" constant="8" id="R1j-Cv-Aha"/>
-                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="width" secondItem="8NP-bd-ZaX" secondAttribute="width" constant="-32" id="b5d-a8-zII"/>
-                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="height" secondItem="8NP-bd-ZaX" secondAttribute="height" constant="-16" id="c7a-LV-ziS"/>
-                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="leading" secondItem="8NP-bd-ZaX" secondAttribute="leading" constant="16" id="mmK-9A-aJk"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="leading" secondItem="VFe-N0-mPM" secondAttribute="leadingMargin" id="Fjm-uT-Ybz"/>
+                            <constraint firstItem="MCJ-b6-EcT" firstAttribute="top" secondItem="8NP-bd-ZaX" secondAttribute="top" constant="8" id="gp4-FO-H2K"/>
+                            <constraint firstItem="8NP-bd-ZaX" firstAttribute="trailing" secondItem="MCJ-b6-EcT" secondAttribute="trailing" constant="24" id="gt8-fq-x4U"/>
+                            <constraint firstItem="8NP-bd-ZaX" firstAttribute="bottom" secondItem="MCJ-b6-EcT" secondAttribute="bottom" constant="12" id="zwq-Ur-wgo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8NP-bd-ZaX"/>
                     </view>

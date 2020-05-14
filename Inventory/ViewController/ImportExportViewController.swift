@@ -61,8 +61,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK: view controller stuff
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //os_log("ImportExportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
 
         // setup colors for UI controls
         exportCVSButton.tintColor = themeColorUIControls

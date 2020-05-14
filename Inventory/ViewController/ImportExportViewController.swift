@@ -545,28 +545,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         return "ok"
     }
     
-    // read file as string
+    // read file as string from any given URL
     func readDataFromCSV(fileURL: URL) -> String?{
-        //os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
-        
-        // open file from any directory
-        let needTo = fileURL.startAccessingSecurityScopedResource()
-        
-        /*
-         let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
-         let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
-         */
-        
-        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let pathURLcvs = docPath.appendingPathComponent("inventoryAppExport.csv")
+        // open file from any directory including iCloud folder
         
         do {
-            var contents = try String(contentsOfFile: fileURL.absoluteString, encoding: .utf8)
+            var contents = try String(contentsOf: fileURL, encoding: .utf8)
             contents = cleanRows(file: contents)
             
-            if needTo {
-              fileURL.stopAccessingSecurityScopedResource()
-            }
+            fileURL.stopAccessingSecurityScopedResource()
             
             return contents
             
@@ -574,9 +561,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             print("File import Read Error for cvs file \(fileURL.absoluteString)", error)
             os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .error)
             
-            if needTo {
-              fileURL.stopAccessingSecurityScopedResource()
-            }
+            fileURL.stopAccessingSecurityScopedResource()
             
             return nil
         }
@@ -584,7 +569,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 
     // remove special characters from csv file
     func cleanRows(file: String) -> String{
-        //os_log("ImportExportViewController cleanRows", log: Log.viewcontroller, type: .info)
         
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
@@ -711,26 +695,28 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     func openFilesApp(){
         //os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
         
-        let controller = UIDocumentPickerViewController(
-            documentTypes: [String(kUTTypeCommaSeparatedText)], // choose your desired documents the user is allowed to select
-            in: .import // choose your desired UIDocumentPickerMode
-        )
-        controller.delegate = self
-        if #available(iOS 11.0, *) {
-            controller.allowsMultipleSelection = false
-        }
+        let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeCommaSeparatedText)], in: .open)
+        
+        picker.delegate = self
+        picker.allowsMultipleSelection = false
+        picker.modalPresentationStyle = .fullScreen
+        
         // e.g. present UIDocumentPickerViewController via your current UIViewController
-        present(
-            controller,
-            animated: true,
-            completion: nil
-        )
+        self.present(picker, animated: true, completion: nil)
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]){
-        let url = urls[0]
+        guard
+            controller.documentPickerMode == .open,
+            let url = urls.first,
+            url.startAccessingSecurityScopedResource()
+        else {
+            return
+        }
+        defer {
+            url.stopAccessingSecurityScopedResource()
+        }
         // do something with the selected document
-        //os_log("ImportExportViewController single documentPicker", log: Log.viewcontroller, type: .info)
         
         importedRowsLabel.isHidden = true
         importedRowsLabel.text = ""
@@ -738,18 +724,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
+        
         importCVSFile(fileURL: url)
-        //print("BLA" + " " + url.lastPathComponent)
-        //print(url.debugDescription)
         
     }
 
-    
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        //os_log("ImportExportViewController documentPickerWasCancelled", log: Log.viewcontroller, type: .info)
-        
-        //progressLabel.isHidden = false
         importedRowsLabel.isHidden = false
         importedRowsLabel.text = NSLocalizedString("No file selected for importing", comment: "No file selected for importing")
     }
@@ -790,6 +771,21 @@ extension UIViewController{
         return fetchRequest
     }
 
+    // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
+    func backupDataToiCloud(){
+        // step 1: check if icloud available, else return
+        
+        // step 2: export data
+        
+        // step 3: create backup folder in icloud
+        
+        // step 4: copy images folder to backup folder
+        
+        // step 5: copy pdf folder to backup folder
+        
+        // step 6: copy inventoryExport.csv to backup folder
+    }
+    
     // export to cvs via backgroud task
     // fetch async array, if no array, return nil
     // create jpeg and pdf files if included in data

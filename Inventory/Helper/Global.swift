@@ -90,6 +90,7 @@ class Global: UIViewController {
     static let invoice = NSLocalizedString("Invoice", comment: "Invoice")
     
     static let backup = NSLocalizedString("Backup to iCloud", comment: "Backup")
+    static let restore = NSLocalizedString("Restore from iCloud", comment: "Restore")
     
     static let room = NSLocalizedString("Room", comment: "Room")
     static let category = NSLocalizedString("Category", comment: "Category")

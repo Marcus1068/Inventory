@@ -43,6 +43,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var importedRowsLabel: UILabel!
     @IBOutlet weak var importCVSButton: UIButton!
     @IBOutlet weak var backupButton: UIButton!
+    @IBOutlet weak var restoreButton: UIButton!
     
     var url : URL?
     
@@ -52,6 +53,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             UIKeyCommand(title: "", image: nil, action: #selector(importFromCVSFileButton), input: "I", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.importButton, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(exportCVSButtonAction), input: "E", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.exportButton, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(backupAction), input: "B", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.backup, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(restoreAction), input: "R", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.restore, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(shareButtonAction), input: "9", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
         ]
     }
@@ -67,6 +69,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         importCVSButton.tintColor = themeColorUIControls
         shareBarButton.tintColor = themeColorUIControls
         backupButton.tintColor = themeColorUIControls
+        restoreButton.tintColor = themeColorUIControls
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -86,6 +89,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         customPointerInteraction(on: exportCVSButton, pointerInteractionDelegate: self)
         customPointerInteraction(on: importCVSButton, pointerInteractionDelegate: self)
         customPointerInteraction(on: backupButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: restoreButton, pointerInteractionDelegate: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -266,16 +270,27 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         present(alertController, animated: true)
     }
     
+    
     // MARK - import stuff
     
     // makin import loop
-    func importCVSFile(fileURL: URL){
+    func importCVSFile(fileURL: URL, localDir: Bool){
         //os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
         
-        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        var imagesFolderPath: URL?
+        var pdfFolderPath: URL?
+        
+        if localDir{
+            imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
+            pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        }
+        else{
+            let url = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder)
+            imagesFolderPath = url!.appendingPathComponent(Global.imagesFolder)
+            pdfFolderPath = url!.appendingPathComponent(Global.pdfFolder)
+        }
         
         guard let data = readDataFromCSV(fileURL: fileURL) else{
             // no file to import
@@ -588,6 +603,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // MARK: - button actions
     
+    @IBAction func restoreAction(_ sender: UIButton) {
+        restoreFromiCloud()
+    }
+    
     // make an icloud backup
     @IBAction func backupAction(_ sender: UIButton) {
         backupDataToiCloud()
@@ -722,7 +741,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
-        importCVSFile(fileURL: url)
+        importCVSFile(fileURL: url, localDir: true)
         
     }
 
@@ -797,6 +816,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let localCSVFile = localDocumentsURL.appendingPathComponent(Global.csvFile)
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
+        
         // first remove old csv file
         do{
             try FileManager.default.removeItem(at: iCloudCSVFile)
@@ -847,6 +867,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
              //Error handling
              print("Error in copy pdfs")
          }
+        
+        DispatchQueue.main.async {
+            self.progressLabel.text = "iCloud backup complete"
+        }
     }
     
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
@@ -854,6 +878,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         var activityIndicator : UIActivityIndicatorView
         
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        progressLabel.isHidden = false
         
         if isICloudContainerAvailable(){
             //print("icloud vorhanden")
@@ -864,30 +889,44 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
-        let backupURL = createiCloudDirectory(folder: Global.backupFolder)
-        let imagesURL = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
-        let pdfURL = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
-        
-        copyDocumentsToiCloudDirectory()
-        
         activityIndicator.startAnimating()
         
+        let _ = createiCloudDirectory(folder: Global.backupFolder)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
         
-        // step 1.1: check local url
-        
-        // step 2: export data
-        
-        // step 3: create backup folder in icloud
-        
-        // step 4: copy images folder to backup folder
-        // file manager
-        //FileManager.default.copyItem(at: local, to: url)
-        
-        // step 5: copy pdf folder to backup folder
-        
-        // step 6: copy inventoryExport.csv to backup folder
+        // copy all data from documents dir to iCloud
+        copyDocumentsToiCloudDirectory()
         
         activityIndicator.stopAnimating()
+        
+        // show alert box with path name
+        displayAlert(title: "Backup finished", message: "Backup will by stored in iCloud", buttonText: Global.done)
+    }
+    
+    // restore from iCloud backup
+    func restoreFromiCloud(){
+        if isICloudContainerAvailable(){
+            //print("icloud vorhanden")
+        }
+        else{
+            displayAlert(title: "iCloud nicht konfiguriert", message: "iCloud nicht konfiguriert", buttonText: Global.done)
+            
+            return
+        }
+        
+        guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder)
+            else {
+            displayAlert(title: "Es wurde noch kein Backup erstellt", message: "Backup erstellen", buttonText: Global.done)
+            return
+            
+        }
+        
+        let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
+        
+        importCVSFile(fileURL: iCloudCSVFile, localDir: false)
+        
+        displayAlert(title: "Restore fertig", message: "Restore fertig", buttonText: Global.done)
     }
     
     // export to cvs via backgroud task
@@ -899,8 +938,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //var url = docPath.appendingPathComponent(Global.csvFile)
         
-        let imagesFolderPath = URL.createFolder(folderName: "Images")
-        let pdfFolderPath = URL.createFolder(folderName: "PDF")
+        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
+        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
         
         var activityIndicator : UIActivityIndicatorView
         

@@ -50,8 +50,8 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
         backupInventoryData()
         
         // first thing: clean up sample data for icloud sync
-        let store = CoreDataStorage.shared
-        store.deleteSampleData()
+        //let store = CoreDataStorage.shared
+        //store.deleteSampleData()
         
         let fileName: String
         switch Local.currentLocaleForDate(){

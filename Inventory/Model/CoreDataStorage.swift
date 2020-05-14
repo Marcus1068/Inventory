@@ -33,7 +33,7 @@ import CoreData
 // needed for accessing core data when using app group container
 @available(watchOSApplicationExtension 6.0, *)
 @available(iOSApplicationExtension 13.0, *)
-class NSCustomPersistentContainer: NSPersistentCloudKitContainer {
+class NSCustomPersistentContainer: NSPersistentContainer {  // cloudkit: NSPersistentCloudKitContainer
     
     override open class func defaultDirectoryURL() -> URL {
         let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: Local.appGroup)
@@ -74,13 +74,14 @@ public class CoreDataStorage {
     
     
     // access persistent container
-    lazy var persistentContainer: NSPersistentCloudKitContainer =
+    lazy var persistentContainer: NSPersistentContainer =   // NSPersistentCloudKitContainer
     {
  
         // Change from NSPersistentContainer to custom class because of app groups
         let container = NSCustomPersistentContainer(name: "Inventory")
         
         // turn on cloudkit remote change notifications
+        // must be enabled even after removing cloudkit sync, otherwise sqlite will be opened in read only mode
         // https://schwiftyui.com/swiftui/using-cloudkit-in-swiftui/
         let remoteChangeKey = "NSPersistentStoreRemoteChangeNotification"
         let description = container.persistentStoreDescriptions.first
@@ -163,8 +164,8 @@ public class CoreDataStorage {
     // internal: get database context
     func getContext() -> NSManagedObjectContext{
         // merge policy for cloudkit sync
-        persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        //persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        //persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
         
         return persistentContainer.viewContext
     }

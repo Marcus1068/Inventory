@@ -223,10 +223,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Observe Core Data remote change notifications.
-        NotificationCenter.default.addObserver(
-            self, selector: #selector(self.fetchChanges),
-            name: .NSPersistentStoreRemoteChange, object: nil)
+        // Observe Core Data cloudkit remote change notifications.
+   //     NotificationCenter.default.addObserver(self, selector: #selector(self.fetchChanges), name: .NSPersistentStoreRemoteChange, object: nil)
         
          self.title = nil
         
@@ -382,12 +380,17 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         switch colorValue {
         case .yellow:
             self.collection.backgroundColor = UIColor.systemYellow
+            //self.view.backgroundColor = UIColor.systemOrange
+            
         case .gray:
             self.collection.backgroundColor = UIColor.systemGray4
+            
         case .green:
             self.collection.backgroundColor = UIColor.systemGreen
+            
         case .standard:
             self.collection.backgroundColor = UIColor.systemBackground
+            
         default:
             Swift.debugPrint("invalid color")
         }
@@ -457,7 +460,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let defaultImage = #imageLiteral(resourceName: "Room Icon")
             image = defaultImage
         }
-        
+        //cell.backgroundColor = .brown
         cell.myImage.image = image
         cell.layer.borderWidth = 0.0
         cell.layer.borderColor = UIColor.clear.cgColor
@@ -487,6 +490,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                 let image = UIImage(data: imageData, scale:1.0)
                 headerView.roomIcon.image = image
             }
+            
             return headerView
             
         case UICollectionView.elementKindSectionFooter:

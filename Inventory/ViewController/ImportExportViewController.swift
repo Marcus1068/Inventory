@@ -190,7 +190,10 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 DispatchQueue.main.async {
                     
                     // show alert box with path name
-                    self.showExportFinishedAlertView()
+                    let message = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
+                    
+                    let title = NSLocalizedString("Export Finished", comment: "Export Finished")
+                    self.displayAlert(title: title, message: message, buttonText: Global.dismiss)
                 }
             } catch {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
@@ -251,20 +254,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             }
         }
         
-    }
-    
-    // show message where file can be located in file system
-    func showExportFinishedAlertView() {
-        //os_log("ImportExportViewController showExportFinishedAlertView", log: Log.viewcontroller, type: .info)
-        
-        let message = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
-        
-        let title = NSLocalizedString("Export Finished", comment: "Export Finished")
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: Global.dismiss, style: .default)
-        alertController.addAction(dismissAction)
-        
-        present(alertController, animated: true)
     }
     
     

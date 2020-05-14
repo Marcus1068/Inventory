@@ -277,7 +277,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK - import stuff
     
     // makin import loop
-    func importCVSFile(file: String){
+    func importCVSFile(fileURL: URL){
         //os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
@@ -285,7 +285,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let imagesFolderPath = URL.createFolder(folderName: "Images")
         let pdfFolderPath = URL.createFolder(folderName: "PDF")
         
-        guard let data = readDataFromCSV(fileName: file) else{
+        guard let data = readDataFromCSV(fileURL: fileURL) else{
             // no file to import
             let message = NSLocalizedString("Importing CSV file", comment: "Importing CSV file")
             let title = NSLocalizedString("No CSV file to import found", comment: "No CSV file to import found")
@@ -546,20 +546,37 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // read file as string
-    func readDataFromCSV(fileName: String) -> String?{
+    func readDataFromCSV(fileURL: URL) -> String?{
         //os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .info)
         
+        // open file from any directory
+        let needTo = fileURL.startAccessingSecurityScopedResource()
+        
+        /*
+         let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
+         let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
+         */
+        
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let pathURLcvs = docPath.appendingPathComponent(fileName)
+        let pathURLcvs = docPath.appendingPathComponent("inventoryAppExport.csv")
         
         do {
-            var contents = try String(contentsOfFile: pathURLcvs.path, encoding: .utf8)
+            var contents = try String(contentsOfFile: fileURL.absoluteString, encoding: .utf8)
             contents = cleanRows(file: contents)
+            
+            if needTo {
+              fileURL.stopAccessingSecurityScopedResource()
+            }
+            
             return contents
             
         } catch {
-            print("File import Read Error for cvs file \(pathURLcvs.absoluteString)", error)
+            print("File import Read Error for cvs file \(fileURL.absoluteString)", error)
             os_log("ImportExportViewController readDataFromCSV", log: Log.viewcontroller, type: .error)
+            
+            if needTo {
+              fileURL.stopAccessingSecurityScopedResource()
+            }
             
             return nil
         }
@@ -721,7 +738,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressView.setProgress(0, animated: true)
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
-        importCVSFile(file: url.lastPathComponent)
+        importCVSFile(fileURL: url)
         //print("BLA" + " " + url.lastPathComponent)
         //print(url.debugDescription)
         

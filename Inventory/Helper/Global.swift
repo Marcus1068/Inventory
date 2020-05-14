@@ -557,7 +557,7 @@ extension UIViewController {
     }
     
     // general alert extension with just one button to be pressed
-    func displayAlert(title: String, message: String, buttonText: String) {
+    func displayAlert2(title: String, message: String, buttonText: String) {
         
         // Create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -572,6 +572,15 @@ extension UIViewController {
         
         // Add it to viewController
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // general alert extension with just one button to be pressed
+    func displayAlert(title: String, message: String, buttonText: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: buttonText, style: .default)
+        alertController.addAction(dismissAction)
+        
+        present(alertController, animated: true)
     }
     
     

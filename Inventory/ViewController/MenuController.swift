@@ -172,13 +172,25 @@ class MenuController{
                                      modifierFlags: .command,
                                      propertyList: "6")
 
+        let bkp = UIKeyCommand(title: Global.backup,
+                               image: UIImage(systemName: "icloud.and.arrow.up.fill")!,
+                               action: #selector(AppDelegate.backupMenu),
+                               input: "7",
+                               modifierFlags: .command,
+                               propertyList: "7")
         
+        let res = UIKeyCommand(title: Global.restore,
+                               image: UIImage(systemName: "icloud.and.arrow.down.fill")!,
+                               action: #selector(AppDelegate.restoreMenu),
+                               input: "8",
+                               modifierFlags: .command,
+                               propertyList: "8")
         
         return UIMenu(title: NSLocalizedString("Import/Export", comment: "Import/Export"),
                       image: nil,
                       identifier: UIMenu.Identifier("de.marcus-deuss.menus.import"),
                       options: [],
-                      children: [imp, exp])
+                      children: [imp, exp, bkp, res])
     }
     
     class func itemManageMenu() -> UIMenu {

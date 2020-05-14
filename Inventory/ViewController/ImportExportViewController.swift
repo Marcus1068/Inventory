@@ -881,7 +881,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         var activityIndicator : UIActivityIndicatorView
         
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        progressLabel.isHidden = false
+        //self.progressLabel.isHidden = false
         
         if isICloudContainerAvailable(){
             //print("icloud vorhanden")

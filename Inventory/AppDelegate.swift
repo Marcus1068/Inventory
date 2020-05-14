@@ -484,6 +484,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         editView.export()
     }
     
+    @objc func backupMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        //tabBarController.selectedIndex = 2
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
+        
+        nav.pushViewController(editView, animated: true)
+        
+        editView.backupDataToiCloud()
+    }
+    
+    @objc func restoreMenu() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
+        
+        nav.pushViewController(editView, animated: true)
+        
+        editView.restoreFromiCloud()
+    }
+    
     @objc func printMenu() {
         guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
             return

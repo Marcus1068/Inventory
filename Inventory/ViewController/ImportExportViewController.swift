@@ -36,11 +36,9 @@ private let store = CoreDataStorage.shared
 
 class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate, UIPointerInteractionDelegate {
 
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    
     @IBOutlet weak var exportCVSButton: UIButton!
     @IBOutlet weak var shareBarButton: UIBarButtonItem!
-    @IBOutlet weak var importedRowsLabel: UILabel!
     @IBOutlet weak var importCVSButton: UIButton!
     @IBOutlet weak var backupButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
@@ -71,11 +69,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.importedRowsLabel.isHidden = true
-
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = true
-        
         self.title = NSLocalizedString("Import/Export", comment: "Import/Export")
         
         //self.navigationItem.title = "Export to CVS/PDF"
@@ -92,10 +85,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.importedRowsLabel.isHidden = true
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = true
     }
     
     /*
@@ -123,9 +112,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // fetch async array, if no array, return nil
     // create jpeg and pdf files if included in data
     // link between cvs and external jpeg, pdf files by file name
-    func exportCSVFile()
+    // returns number of exported rows
+    func exportCSVFile() -> Int
     {
         //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
+        var exportedRows : Int = 0
         
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
@@ -147,7 +138,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let container = store.persistentContainer
         
         container.performBackgroundTask { (context) in
-            var exportedRows : Int = 0
+            
             
             var results: [Inventory] = []
             
@@ -172,12 +163,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 csvText.append(contentsOf: inv.csv())
                 
                 progress += 1
-                DispatchQueue.main.async {
-                    // update progress bar UI
-                    let progress = Float(progress) / Float(results.count)
-                    self.progressView.setProgress(progress, animated: true)
-                    self.progressLabel.text = String(progress * 100) + " %"
-                }
                 
                 exportedRows += 1
             }
@@ -239,25 +224,19 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             
             DispatchQueue.main.async {
                 // at the end of export report the number of exported rows to user
-                self.importedRowsLabel.isHidden = false
-                let message = NSLocalizedString("Exported rows:", comment: "Exported rows:")
-                self.importedRowsLabel.text = message + " " + String(exportedRows)
-                
-                // set progress bar to 100% at the end of export
-                self.progressView.setProgress(1.0, animated: true)
-                self.progressLabel.text = "100 %"
                 
                 activityIndicator.stopAnimating()
                 self.navigationItem.leftBarButtonItem = nil
             }
         }
         
+        return exportedRows
     }
     
     
-    // MARK - import stuff
+    // MARK: - import stuff
     
-    // makin import loop
+    // making import loop
     // returns number of imported rows
     func importCVSFile(fileURL: URL, localDir: Bool) -> Int{
         //os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
@@ -312,13 +291,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         // Do NOT change definition in core data since order is hard coded
         if csvRows.count > 1{
             for x in 1 ... csvRows.count - 1 {
-                // update progress bar UI
-                let progress = Float(x) / Float(csvRows.count)
-                progressView.setProgress(progress, animated: true)
-                progressLabel.text = String(progress) + " %"
                 
-                //var context: NSManagedObjectContext
-                //context = CoreDataHandler.getContext()
                 let inventory = Inventory(context: store.getContext())
                 
                 // check if row is complete or if inventory name not set
@@ -467,12 +440,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         
         // at the end of import report number of imported rows to user
-        self.importedRowsLabel.isHidden = false
-        let rows = NSLocalizedString("Imported rows:", comment: "Imported rows:")
-        self.importedRowsLabel.text = rows + " " + String(importedRows)
-        
-        progressView.setProgress(1.0, animated: true)
-        progressLabel.text = "100 %"
         
         return importedRows
     }
@@ -601,33 +568,18 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // called from main menu in case of catalyst
     @objc func export(){
-        exportCSVFile()
+        let _ = exportCSVFile()
     }
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
         
-        importedRowsLabel.isHidden = true
-        importedRowsLabel.text = ""
-        
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = false
-        progressLabel.text = "0 %"
-        
-        exportCSVFile()
+        let _ = exportCSVFile()
     }
     
     // share system button to share csv file
     @IBAction func shareButtonAction(_ sender: Any) {
-        //os_log("ImportExportViewController shareButtonAction", log: Log.viewcontroller, type: .info)
-        // FIXME: progress bar at 100% when cvs share action cancelled
-        importedRowsLabel.isHidden = true
-        importedRowsLabel.text = ""
         
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = false
-        progressLabel.text = "0 %"
-        
-        exportCSVFile()
+        let _ = exportCSVFile()
         
         shareAction(currentPath: self.url!)
     }
@@ -721,21 +673,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         // do something with the selected document
         
-        importedRowsLabel.isHidden = true
-        importedRowsLabel.text = ""
-        
-        progressView.setProgress(0, animated: true)
-        progressLabel.isHidden = false
-        progressLabel.text = "0 %"
-        
         let _ = importCVSFile(fileURL: url, localDir: true)
         
     }
 
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        importedRowsLabel.isHidden = false
-        importedRowsLabel.text = NSLocalizedString("No file selected for importing", comment: "No file selected for importing")
+        // do nothing
     }
     
     #if targetEnvironment(macCatalyst)
@@ -861,9 +805,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
              print("Error in copy pdfs")
          }
         
-        DispatchQueue.main.async {
-            self.progressLabel.text = "iCloud backup complete"
-        }
     }
     
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
@@ -872,7 +813,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         var activityIndicator : UIActivityIndicatorView
         
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        //self.progressLabel.isHidden = false
         
         if isICloudContainerAvailable(){
             //print("icloud vorhanden")
@@ -900,14 +840,12 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         var results: [Inventory] = []
         let store = CoreDataStorage.shared
         
-        // starts database migration to new app group location if app starts first time with app group capabilty
         let context = store.getContext()
         
         do {
             results = try context.fetch(self.inventoryFetchRequest())
         } catch let error as NSError {
             print("ERROR: \(error.localizedDescription)")
-            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
         }
         
         // show alert box with path name
@@ -946,7 +884,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // fetch async array, if no array, return nil
     // create jpeg and pdf files if included in data
     // link between cvs and external jpeg, pdf files by file name
-    func backupInventoryData()
+    func backupInventoryData2()
     {
         _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //var url = docPath.appendingPathComponent(Global.csvFile)

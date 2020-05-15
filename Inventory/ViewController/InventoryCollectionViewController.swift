@@ -501,10 +501,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             
             if(sectionInfo!.numberOfObjects > 1){
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items")
+                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items") + " " + "in" + " "
+                footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             else{
-                footerView.searchResultLabel.text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item")
+                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item") + " " + "in" + " "
+                footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             
             

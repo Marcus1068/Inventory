@@ -607,8 +607,8 @@
                                                 <constraint firstAttribute="width" constant="36" id="dqq-1U-rrG"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWk-As-Mn9">
-                                            <rect key="frame" x="63" y="0.0" width="52.5" height="40"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWk-As-Mn9">
+                                            <rect key="frame" x="147" y="1" width="52.5" height="40"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -616,13 +616,13 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" constant="55" id="azW-HX-EdR"/>
+                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="leading" secondItem="iLi-4f-ZUh" secondAttribute="trailing" constant="103" id="aiB-Ma-eUW"/>
                                         <constraint firstItem="iLi-4f-ZUh" firstAttribute="leading" secondItem="FBv-ci-zKe" secondAttribute="leadingMargin" id="cIj-sH-0ZY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QWk-As-Mn9" secondAttribute="bottom" constant="-8" id="fWP-G4-hjB"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QWk-As-Mn9" secondAttribute="trailing" constant="20" symbolic="YES" id="fou-j2-Eac"/>
-                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" constant="-8" id="jK4-Gq-Pzu"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QWk-As-Mn9" secondAttribute="trailing" constant="20" symbolic="YES" id="jyT-Dg-GYQ"/>
+                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" constant="-7" id="pDY-MV-YIP"/>
                                         <constraint firstItem="iLi-4f-ZUh" firstAttribute="top" secondItem="FBv-ci-zKe" secondAttribute="topMargin" id="r5E-JO-bz6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="iLi-4f-ZUh" secondAttribute="bottom" constant="-2" id="rvx-Wy-z2f"/>
+                                        <constraint firstItem="QWk-As-Mn9" firstAttribute="centerY" secondItem="FBv-ci-zKe" secondAttribute="centerY" constant="1" id="zH6-92-ysV"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="roomIcon" destination="iLi-4f-ZUh" id="Kii-dk-vFX"/>
@@ -633,7 +633,7 @@
                                     <rect key="frame" x="0.0" y="196" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlk-5E-K8Q">
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlk-5E-K8Q">
                                             <rect key="frame" x="8" y="0.0" width="359" height="34"/>
                                             <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>

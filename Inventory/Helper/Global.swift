@@ -55,7 +55,7 @@ class Global: UIViewController {
     
     static let imagesFolder = "Images"
     static let pdfFolder = "PDF"
-    static let backupFolder = "Backup"
+    static let backupFolder = "Documents"   // used for iCloud backup
     
     // colors used system wide
     static let colorGreen : UIColor = .systemGreen // green background for button bezel

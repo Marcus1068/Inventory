@@ -220,6 +220,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // first actions taken here
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -502,11 +507,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             
             if(sectionInfo!.numberOfObjects > 1){
                 let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items") + " " + "in" + " "
-                footerView.searchResultLabel.text = " " + text + sectionInfo!.name
+                footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             else{
                 let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item") + " " + "in" + " "
-                footerView.searchResultLabel.text = " " + text + sectionInfo!.name
+                footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             
             

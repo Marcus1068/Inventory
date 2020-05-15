@@ -258,7 +258,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK - import stuff
     
     // makin import loop
-    func importCVSFile(fileURL: URL, localDir: Bool){
+    // returns number of imported rows
+    func importCVSFile(fileURL: URL, localDir: Bool) -> Int{
         //os_log("ImportExportViewController importCVSFile", log: Log.viewcontroller, type: .info)
         
         var importedRows : Int = 0
@@ -287,7 +288,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             present(alertController, animated: true)
             
             os_log("ImportExportViewController importCVSFile: no file to import available", log: Log.viewcontroller, type: .info)
-            return
+            return 0
         }
         
         let csvRows = csvImportParser(data: data)
@@ -303,7 +304,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             present(alertController, animated: true)
             
             os_log("ImportExportViewController importCVSFile: csv file format different", log: Log.viewcontroller, type: .info)
-            return
+            return 0
         }
         
         
@@ -472,6 +473,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         progressView.setProgress(1.0, animated: true)
         progressLabel.text = "100 %"
+        
+        return importedRows
     }
     
     // check for correct file format
@@ -725,7 +728,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         progressLabel.isHidden = false
         progressLabel.text = "0 %"
         
-        importCVSFile(fileURL: url, localDir: true)
+        let _ = importCVSFile(fileURL: url, localDir: true)
         
     }
 
@@ -865,6 +868,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
     func backupDataToiCloud(){
+        let title = NSLocalizedString("Backup to iCloud", comment: "Backup to iCloud")
         var activityIndicator : UIActivityIndicatorView
         
         activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
@@ -874,7 +878,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             //print("icloud vorhanden")
         }
         else{
-            displayAlert(title: "Backup nicht möglich", message: "iCloud nicht konfigiriert", buttonText: Global.done)
+            let message = NSLocalizedString("iCloud not configured. Backup/Restore only works with using iCloud account", comment: "iCloud not configured. Backup/Restore only works with using iCloud account")
+            displayAlert(title: title, message: message, buttonText: Global.done)
             
             return
         }
@@ -892,28 +897,49 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         activityIndicator.stopAnimating()
         
+        var results: [Inventory] = []
+        let store = CoreDataStorage.shared
+        
+        // starts database migration to new app group location if app starts first time with app group capabilty
+        let context = store.getContext()
+        
+        do {
+            results = try context.fetch(self.inventoryFetchRequest())
+        } catch let error as NSError {
+            print("ERROR: \(error.localizedDescription)")
+            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
+        }
+        
         // show alert box with path name
-        displayAlert(title: "Backup finished", message: "Backup will by stored in iCloud", buttonText: Global.done)
+        var message = NSLocalizedString("Backup finished successfully with", comment: "Backup finished successfully with")
+        message += " \(results.count) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+        displayAlert(title: title, message: message, buttonText: Global.done)
     }
     
     // restore from iCloud backup
     func restoreFromiCloud(){
+        let title = NSLocalizedString("Restore from iCloud", comment: "Restore from iCloud")
+        
         guard isICloudContainerAvailable() else {
-            displayAlert(title: "iCloud nicht konfiguriert", message: "iCloud nicht konfiguriert", buttonText: Global.done)
+            let message = NSLocalizedString("iCloud not configured. Backup/Restore only works with using iCloud account", comment: "iCloud not configured. Backup/Restore only works with using iCloud account")
+            displayAlert(title: title, message: message, buttonText: Global.done)
             return
         }
         
         guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder)
             else {
-            displayAlert(title: "Es wurde noch kein Backup erstellt", message: "Backup erstellen", buttonText: Global.done)
+                let message = NSLocalizedString("Please make a backup to iCloud first", comment: "Please make a backup to iCloud first")
+                displayAlert(title: title, message: message, buttonText: Global.done)
             return
         }
         
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
-        importCVSFile(fileURL: iCloudCSVFile, localDir: false)
+        let importedRows = importCVSFile(fileURL: iCloudCSVFile, localDir: false)
         
-        displayAlert(title: "Restore fertig", message: "Restore fertig", buttonText: Global.done)
+        let message = NSLocalizedString("Restore from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
+                        " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+        displayAlert(title: title, message: message, buttonText: Global.done)
     }
     
     // export to cvs via backgroud task

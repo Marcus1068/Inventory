@@ -115,9 +115,6 @@
 /* Class = "UITabBarItem"; title = "Import/Export"; ObjectID = "CGe-VZ-Z2L"; */
 "CGe-VZ-Z2L.title" = "Import/Export";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "cZ1-Yp-eGe"; */
-"cZ1-Yp-eGe.text" = "Label";
-
 /* Class = "UILabel"; text = "Euro"; ObjectID = "D3M-tw-HxG"; */
 "D3M-tw-HxG.text" = "Euro";
 
@@ -250,9 +247,6 @@
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "L29-LM-HTq"; */
 "L29-LM-HTq.placeholder" = "Haushalt";
 
-/* Class = "UILabel"; text = "Status information:"; ObjectID = "LHW-c0-TOy"; */
-"LHW-c0-TOy.text" = "Status Information:";
-
 /* Class = "UILabel"; text = "Address:"; ObjectID = "lXu-4a-v6P"; */
 "lXu-4a-v6P.text" = "Haushalt:";
 
@@ -282,9 +276,6 @@
 
 /* Class = "UILabel"; text = "inventoryName"; ObjectID = "oBm-B8-oUs"; */
 "oBm-B8-oUs.text" = "Inventarname";
-
-/* Class = "UILabel"; text = "imported xx rows"; ObjectID = "oh4-rl-izX"; */
-"oh4-rl-izX.text" = "imported xx rows";
 
 /* Class = "UITextField"; placeholder = "Inventory"; ObjectID = "OjR-LV-GJP"; */
 "OjR-LV-GJP.placeholder" = "Inventar";
@@ -343,8 +334,17 @@
 /* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "ruh-Nn-ocq"; */
 "ruh-Nn-ocq.text" = "Hinweis: nach links Wischen zum Löschen";
 
+/* Class = "UIButton"; normalTitle = "Backup to iCloud"; ObjectID = "rWr-zo-VXm"; */
+"rWr-zo-VXm.normalTitle" = "Sicherung zu iCloud";
+
+/* Class = "UILabel"; text = "Export your data as comma seperated values file to local app directory. Open those files via Files App"; ObjectID = "S2f-fd-nKg"; */
+"S2f-fd-nKg.text" = "Exportiert Ihre Daten als csv Datei (kann von Excel und Numbers geöffnet werden). Öffnen Sie diese Dateien via Dateien App";
+
 /* Class = "UIButton"; normalTitle = "Invoice"; ObjectID = "seV-zU-Yva"; */
 "seV-zU-Yva.normalTitle" = "Rechnung";
+
+/* Class = "UIButton"; normalTitle = "Restore from iCloud"; ObjectID = "sma-p5-g2v"; */
+"sma-p5-g2v.normalTitle" = "Zurückspielen von iCloud";
 
 /* Class = "UILabel"; text = "Filter by owner:"; ObjectID = "sXd-j7-KIs"; */
 "sXd-j7-KIs.text" = "Filter nach Eigentümer:";
@@ -439,12 +439,9 @@
 /* Class = "UILabel"; text = "Owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";
 
-/* Class = "UILabel"; text = "Export your data to the app document directory as CSV file, can be accessed from iOS Files App and iTunes from PC/Mac."; ObjectID = "z5u-gb-85Y"; */
-"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als CSV Datei";
+/* Class = "UILabel"; text = "Backup your data to iCloud - it will be synced to all other devices and can be restored"; ObjectID = "z5u-gb-85Y"; */
+"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als CSV Datei oder erstellen Sie eine Sicherung auf iCloud";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "z7u-tJ-Sau"; */
 "z7u-tJ-Sau.text" = "Räume";
-
-/* Class = "UILabel"; text = "Open Files app in iOS to gain access to exported csv file and all images and pdf documents for further use"; ObjectID = "ZtK-j7-m75"; */
-"ZtK-j7-m75.text" = "Dateien App in IOS öffnen, um auf die exportierte CSV Datei und alle Bilder und PDF zuzugreifen";
 

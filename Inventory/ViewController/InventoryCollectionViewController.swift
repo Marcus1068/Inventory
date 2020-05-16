@@ -449,7 +449,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         //currentInventory = inv
         
-        cell.inventoryLabel.text = inv.inventoryName
+        cell.inventoryLabel.text = inv.inventoryName?.truncate(length: 16)
         cell.ownerLabel.text = inv.inventoryOwner?.ownerName?.truncate(length: 11)
         cell.brandNameLabel.text = inv.inventoryBrand?.brandName?.truncate(length: 11)
         cell.categoryLabel.text = inv.inventoryCategory?.categoryName?.truncate(length: 11)

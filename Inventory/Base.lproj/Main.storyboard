@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -528,9 +528,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inventoryName" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBm-B8-oUs">
-                                                    <rect key="frame" x="8" y="0.0" width="167" height="35"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="inventoryName" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBm-B8-oUs">
+                                                    <rect key="frame" x="8" y="0.0" width="160" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -567,23 +567,23 @@
                                                     </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fjz-Zl-ju7">
-                                                    <rect key="frame" x="68" y="33" width="101" height="70"/>
+                                                    <rect key="frame" x="67" y="32" width="101" height="83"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="hdM-4X-9CC"/>
+                                                        <constraint firstAttribute="height" constant="83" id="hdM-4X-9CC"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="oBm-B8-oUs" secondAttribute="trailing" id="7Xz-Na-VMc"/>
-                                            <constraint firstItem="fjz-Zl-ju7" firstAttribute="leading" secondItem="aNf-6S-hSX" secondAttribute="leadingMargin" constant="60" id="EeB-aX-owz"/>
+                                            <constraint firstAttribute="trailing" secondItem="oBm-B8-oUs" secondAttribute="trailing" constant="7" id="7Xz-Na-VMc"/>
+                                            <constraint firstItem="fjz-Zl-ju7" firstAttribute="leading" secondItem="aNf-6S-hSX" secondAttribute="leadingMargin" constant="59" id="EeB-aX-owz"/>
                                             <constraint firstItem="gc1-Xm-J6U" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="-3" id="HuM-Tl-W54"/>
                                             <constraint firstItem="oBm-B8-oUs" firstAttribute="top" secondItem="aNf-6S-hSX" secondAttribute="top" id="LX7-dn-vti"/>
-                                            <constraint firstItem="fjz-Zl-ju7" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="-2" id="QOa-Hu-Ggd"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="fjz-Zl-ju7" secondAttribute="bottom" constant="12" id="TeL-JU-gio"/>
+                                            <constraint firstItem="fjz-Zl-ju7" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="-3" id="QOa-Hu-Ggd"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="fjz-Zl-ju7" secondAttribute="bottom" id="TeL-JU-gio"/>
                                             <constraint firstItem="gc1-Xm-J6U" firstAttribute="leading" secondItem="aNf-6S-hSX" secondAttribute="leading" constant="3" id="mbf-jY-Wy8"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="fjz-Zl-ju7" secondAttribute="trailing" constant="-2" id="s8O-yr-vc0"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="fjz-Zl-ju7" secondAttribute="trailing" constant="-1" id="s8O-yr-vc0"/>
                                             <constraint firstItem="oBm-B8-oUs" firstAttribute="leading" secondItem="aNf-6S-hSX" secondAttribute="leadingMargin" id="vuG-Pv-sVg"/>
                                         </constraints>
                                         <connections>
@@ -1441,7 +1441,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8R-Gv-g47">
-                                                    <rect key="frame" x="16" y="16" width="105" height="18"/>
+                                                    <rect key="frame" x="8" y="16" width="105" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="HyX-Sf-5xU"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="WgC-Y5-lUZ"/>
@@ -1451,7 +1451,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpe-WT-hVT">
-                                                    <rect key="frame" x="142" y="7" width="56" height="30.5"/>
+                                                    <rect key="frame" x="134" y="7" width="56" height="30.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <state key="normal" title="Room..."/>
                                                     <connections>
@@ -2541,7 +2541,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-6q-xB3">
-                                                <rect key="frame" x="159" y="302" width="60.5" height="21"/>
+                                                <rect key="frame" x="159" y="302" width="61" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="CGb-js-lBv"/>
                                                 </constraints>
@@ -2550,7 +2550,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFV-54-aco">
-                                                <rect key="frame" x="244.5" y="298" width="51" height="31"/>
+                                                <rect key="frame" x="245" y="298" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="imageSwitch:" destination="v2l-5p-iCX" eventType="valueChanged" id="MOC-19-lya"/>
                                                 </connections>

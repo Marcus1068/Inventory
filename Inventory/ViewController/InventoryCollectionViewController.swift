@@ -407,6 +407,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @objc func contextObjectsDidChange(_ notification: Notification) {
         let stats = Statistics.shared
         
+        updateNumberOfItemsLabel()
+        
         // refresh stats
         stats.refresh()
         

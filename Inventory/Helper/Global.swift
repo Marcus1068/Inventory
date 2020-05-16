@@ -47,6 +47,10 @@ class Global: UIViewController {
     // App store link
     static let AppLink = "https://itunes.apple.com/de/app/inventory-app/id1386694734?l=de&ls=1&mt=8"
     
+    // sf symbol icons names used in app
+    static let importExportSymbol = "tray.2.fill"
+    
+    
     // name of the app in about view
     static let emailAdr = "mdeuss+inventory@gmail.com"
     static let website = "https://marcus-deuss.de/?page_id=13"

@@ -260,11 +260,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         // Do any additional setup after loading the view.
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = true
         searchController.delegate = self
         definesPresentationContext = true
         searchController.hidesNavigationBarDuringPresentation = false
-        //searchController.dimsBackgroundDuringPresentation = false
+        
         self.navigationItem.titleView = searchController.searchBar
         searchController.searchBar.placeholder = NSLocalizedString("Search for Inventory", comment: "Search for Inventory")
         searchController.searchBar.delegate = self
@@ -648,6 +648,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
         navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
         collection.reloadData()
+        
+        searchController.obscuresBackgroundDuringPresentation = false
     }
     
     // called by system when entered search bar
@@ -685,6 +687,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         collection.reloadData()
         updateNumberOfItemsLabel()
+        
+        searchController.obscuresBackgroundDuringPresentation = false
     }
     
     // something entered in search bar
@@ -702,6 +706,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         //print("Taste") */
+        //searchController.obscuresBackgroundDuringPresentation = true
     }
     
     // called by system when entered search bar
@@ -716,6 +721,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
              }
              collection.reloadData() */
             //searchBar.text = "AAAA"
+        }
+        else{
+            searchController.obscuresBackgroundDuringPresentation = false
         }
     }
     

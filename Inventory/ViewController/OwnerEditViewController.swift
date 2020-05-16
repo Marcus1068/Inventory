@@ -126,8 +126,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
      */
     
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     // save or update
@@ -161,8 +161,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
                 
                 _ = store.saveOwner(owner: currentOwner!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
             }
             
         }
@@ -171,8 +171,8 @@ class OwnerEditViewController: UIViewController, UITextFieldDelegate {
             
             _ = store.saveOwner(owner: currentOwner!)
             
-            navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: false)
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     

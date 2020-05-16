@@ -163,8 +163,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
     // MARK: - UI actions
     
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -200,8 +200,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 
                 _ = store.saveRoom(room: currentRoom!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
             }
             
         }
@@ -221,8 +221,8 @@ class RoomEditViewController: UIViewController, UITextFieldDelegate{
                 
                 _ = store.saveRoom(room: currentRoom!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
      //       }
         }
     }

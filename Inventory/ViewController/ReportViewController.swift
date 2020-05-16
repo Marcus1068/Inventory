@@ -1647,7 +1647,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
 
                 let printController = UIPrintInteractionController.shared
                 printController.printInfo = printInfo
-                printController.showsNumberOfCopies = false
+                printController.showsNumberOfCopies = true
 
                 printController.printingItem = guide_url
 

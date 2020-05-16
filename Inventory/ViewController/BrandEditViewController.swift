@@ -127,8 +127,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
      */
     
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     // save or update
@@ -163,8 +163,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
                 
                 _ = store.saveBrand(brand: currentBrand!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
             }
             
         }
@@ -173,8 +173,8 @@ class BrandEditViewController: UIViewController, UITextFieldDelegate {
             
             _ = store.saveBrand(brand: currentBrand!)
             
-            navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: false)
+            //self.dismiss(animated: true, completion: nil)
         }
     }
     

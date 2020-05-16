@@ -378,7 +378,7 @@ extension SceneDelegate: NSToolbarDelegate {
             break
             
         case .importEntry:
-            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down.on.square"), style: .plain, target: self, action: #selector(importEntry(_:)))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: Global.importExportSymbol), style: .plain, target: self, action: #selector(importEntry(_:)))
             item = toolbarItem(itemIdentifier: .importEntry, barButtonItem: barButtonItem, toolTip: Global.importExport, label: Global.importExport)
             item?.target = self
             item?.action = #selector(importEntry)

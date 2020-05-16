@@ -118,8 +118,8 @@ class RoomTableViewController: UITableViewController, UIPointerInteractionDelega
     
     // close view controller
     @IBAction func doneButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     

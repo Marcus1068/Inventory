@@ -131,8 +131,8 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
     */
 
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     // save or update
@@ -167,8 +167,8 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
                 
                 _ = store.saveCategory(category: currentCategory!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
             }
             
         }
@@ -184,8 +184,8 @@ class CategoryEditViewController: UIViewController, UITextFieldDelegate {
                 
                 _ = store.saveCategory(category: currentCategory!)
                 
-                navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
   //          }
         }
     }

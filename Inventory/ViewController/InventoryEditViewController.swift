@@ -697,7 +697,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
     
     // do nothing, close view controller
     @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
         //self.dismiss(animated: true, completion: nil)
         
     }
@@ -806,7 +806,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
         }
         
         // FIXME calling view controller viewdidload() always gets called
-        navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: false)
         //self.dismiss(animated: true, completion: nil)
     }
     

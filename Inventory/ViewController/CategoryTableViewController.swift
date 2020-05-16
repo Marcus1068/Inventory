@@ -183,8 +183,8 @@ class CategoryTableViewController: UITableViewController, UIPointerInteractionDe
     */
     
     @IBAction func doneButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: false)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addButton(_ sender: Any) {

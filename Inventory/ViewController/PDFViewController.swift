@@ -31,6 +31,7 @@ import os
 class PDFViewController: UIViewController {
 
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     
     // get pdf file from calling view controller
@@ -43,7 +44,7 @@ class PDFViewController: UIViewController {
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(title: "", image: nil, action: #selector(backButton), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.back, state: .on),
+            UIKeyCommand(title: "", image: nil, action: #selector(doneAction(_:)), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.back, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(firstPage), input: "F", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.firstPage, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(lastPage), input: "L", modifierFlags: [.command, .shift], propertyList: nil, alternates: [], discoverabilityTitle: Global.lastPage, state: .on),
             UIKeyCommand(title: "", image: nil, action: #selector(shareButtonAction), input: "9", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.share, state: .on)
@@ -61,6 +62,9 @@ class PDFViewController: UIViewController {
         }
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.leftBarButtonItem?.tintColor = themeColorUIControls
+        navigationItem.rightBarButtonItem?.tintColor = themeColorUIControls
         
         // set color theme
         shareButton.tintColor =  themeColorUIControls
@@ -108,30 +112,32 @@ class PDFViewController: UIViewController {
     }
     
     // Mark: - UI actions
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: false)
+    }
     
     @IBAction func shareButtonAction(_ sender: Any) {
         if (currentPath != nil){
             shareAction(currentPath: currentPath!)
         }
         else{
-            // FIXME test ändern
-            displayAlert(title: "kein PDF file", message: "kein PDF file", buttonText: Global.done)
+            displayAlert(title: Global.sharePDF, message: Global.messagePrintingPDFNotPossible, buttonText: Global.done)
         }
     }
     
-    @objc func backButton(){
-        _ = navigationController?.popViewController(animated: true)
-    }
+    /*@objc func backButton(){
+        navigationController?.popViewController(animated: false)
+    } */
     
     #if targetEnvironment(macCatalyst)
     
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchBack, .fixedSpaceSmall, .touchFirstPage, .touchLastPage, .flexibleSpace, .touchShare]
+        touchBar.defaultItemIdentifiers = [.touchDone, .fixedSpaceSmall, .touchFirstPage, .touchLastPage, .flexibleSpace, .touchShare]
         
-        let back = NSButtonTouchBarItem(identifier: .touchBack, title: Global.back, target: self, action: #selector(backButton))
-        back.bezelColor = Global.colorGreen
+        let done = NSButtonTouchBarItem(identifier: .touchDone, title: Global.done, target: self, action: #selector(doneAction(_:)))
+        done.bezelColor = Global.colorGreen
         
         let first = NSButtonTouchBarItem(identifier: .touchFirstPage, title: Global.firstPage, target: self, action: #selector(firstPage))
         first.bezelColor = Global.colorGreen
@@ -141,7 +147,7 @@ class PDFViewController: UIViewController {
         
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
         
-        touchBar.templateItems = [back, first, last, share]
+        touchBar.templateItems = [done, first, last, share]
         
         return touchBar
     }

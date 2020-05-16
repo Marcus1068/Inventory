@@ -68,6 +68,7 @@ class Global: UIViewController {
     static let ok = NSLocalizedString("OK", comment: "OK")
     static let cancel = NSLocalizedString("Cancel", comment: "Cancel")
     static let delete = NSLocalizedString("Delete", comment: "Delete")
+    static let deleteInventory = NSLocalizedString("Delete inventory item", comment: "Delete inventory item")
     static let confirm = NSLocalizedString("Confirm", comment: "Confirm")
     static let dismiss = NSLocalizedString("Dismiss", comment: "Dismiss")
     static let error = NSLocalizedString("Error", comment: "Error")
@@ -145,6 +146,10 @@ class Global: UIViewController {
     
     static let messageNoObjects = NSLocalizedString("Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects", comment: "Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects")
     static let titleNoObjects = NSLocalizedString("Creating inventory items not possible yet", comment: "Creating inventory items not possible yet")
+    
+    static let messagePrintingPDFNotPossible = NSLocalizedString("No PDF file to print available", comment: "No PDF file to print")
+    static let messagePrintingNotPossible = NSLocalizedString("Printing not possible, check your printer", comment: "Printing not possible, check your printer")
+    static let titlePrinting = NSLocalizedString("Printing", comment: "Printing")
     
     static let firstPage = NSLocalizedString("First page", comment: "First page")
     static let lastPage = NSLocalizedString("Last page", comment: "Last page")
@@ -557,24 +562,6 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    // general alert extension with just one button to be pressed
-    func displayAlert2(title: String, message: String, buttonText: String) {
-        
-        // Create the alert
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        
-        // Add an action
-        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { action in
-            
-            // Dismiss when the button is pressed
-            self.dismiss(animated: true, completion: nil)
-            
-        }))
-        
-        // Add it to viewController
-        self.present(alert, animated: true, completion: nil)
     }
     
     // general alert extension with just one button to be pressed

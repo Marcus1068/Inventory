@@ -116,6 +116,9 @@
 /* Created at: */
 "Created at: " = "Erzeugt am:";
 
+/* Creating inventory items not possible yet */
+"Creating inventory items not possible yet" = "Erstellen von Inventar Objekten noch nicht möglich";
+
 /* Creating: */
 "Creating: " = "Erzeugt:";
 
@@ -148,6 +151,9 @@
 
 /* Delete category */
 "Delete category" = "Kategorie löschen";
+
+/* Delete inventory item */
+"Delete inventory item" = "Lösche Inventarobjekt";
 
 /* Delete owner */
 "Delete owner" = "Eigentümer löschen";
@@ -378,11 +384,11 @@
 /* No image to share */
 "No image to share" = "Kein Bild vorhanden";
 
-/* No invoice */
-"No invoice" = "Keine Rechnung";
-
 /* No PDF attached */
 "No PDF attached to inventory" = "Kein PDF Dokument vorhanden";
+
+/* No PDF file to print */
+"No PDF file to print available" = "Keine PDF Datei zum Drucken vorhanden";
 
 /* None */
 "None" = "Keine";
@@ -461,6 +467,12 @@
 
 /* Print report */
 "Print report" = "Drucke Bericht";
+
+/* Printing */
+"Printing" = "Drucken";
+
+/* Printing not possible, check your printer */
+"Printing not possible, check your printer" = "Drucken nicht möglich, prüfen Sie Ihren Drucker";
 
 /* Privacy */
 "Privacy" = "Datenschutz";

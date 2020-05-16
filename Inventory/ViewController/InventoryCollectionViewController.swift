@@ -1094,7 +1094,6 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
 
             // print selected inventory invoice in case it is available
             let printAction = UIAction(title: Global.printInvoice, image: UIImage(systemName: "printer")) { action in
-            
                 if let print = inv.invoice{
                     if UIPrintInteractionController.canPrint(print as Data) {
                         let printInfo = UIPrintInfo(dictionary: nil)
@@ -1104,36 +1103,45 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                         let printController = UIPrintInteractionController.shared
                         printController.printInfo = printInfo
                         printController.showsNumberOfCopies = false
-                        
                         printController.printingItem = print
-                        
                         printController.present(animated: true, completionHandler: nil)
                     }
                     else{
-                        let title = NSLocalizedString("No invoice", comment: "No invoice")
-                        let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")
-                        let myActionSheet = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.actionSheet)
-                        
-                        let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
-                            // do nothing when cancel
-                        }
-                        
-                        myActionSheet.addAction(action)
-                        self.addActionSheetForiPad(actionSheet: myActionSheet)
-                        self.present(myActionSheet, animated: true, completion: nil)
+                        self.displayAlert(title: Global.titlePrinting, message: Global.messagePrintingNotPossible, buttonText: Global.done)
                     }
+                }
+                else{
+                    self.displayAlert(title: Global.titlePrinting, message: Global.messagePrintingPDFNotPossible, buttonText: Global.done)
                 }
             }
             
             // delete selected inventory item
             let delete = UIAction(title: Global.delete, image: UIImage(systemName: "trash"), attributes: .destructive) { action in
-               _ = store.deleteInventory(inventory: inv)
-               do {
-                   try self.fetchedResultsController.performFetch()
-               } catch _ as NSError {
-                   os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
-               }
-               //self.collection.reloadData()
+                
+                let dialogMessage = UIAlertController(title: Global.delete, message: Global.deleteInventory, preferredStyle: .alert)
+                
+                // Create OK button with action handler
+                let delete = UIAlertAction(title: Global.delete, style: .destructive, handler: { (action) -> Void in
+                    _ = store.deleteInventory(inventory: inv)
+                    do {
+                        try self.fetchedResultsController.performFetch()
+                    } catch _ as NSError {
+                        os_log("InventoryCollectionViewController deleteTapped", log: Log.viewcontroller, type: .error)
+                    }
+                })
+                
+                // Create Cancel button with action handlder
+                let cancel = UIAlertAction(title: Global.cancel, style: .cancel) { (action) -> Void in
+                    // do nothing
+                }
+                
+                //Add OK and Cancel button to dialog message
+                dialogMessage.addAction(delete)
+                dialogMessage.addAction(cancel)
+                
+                // Present dialog message to user
+                self.present(dialogMessage, animated: true, completion: nil)
+               
             }
             
             // share selected inventory image
@@ -1165,7 +1173,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                 }
                 else{
                     let message = NSLocalizedString("No image to share", comment: "No image to share")
-                    self.displayAlert(title: message, message: message, buttonText: Global.done)
+                    self.displayAlert(title: Global.shareImage, message: message, buttonText: Global.done)
                 }
             }
             
@@ -1190,7 +1198,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                 }
                 else{
                     let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")
-                    self.displayAlert(title: message, message: message, buttonText: Global.done)
+                    self.displayAlert(title: Global.sharePDF, message: message, buttonText: Global.done)
                 }
             }
              // Create and return a UIMenu with all of the actions as children
@@ -1199,7 +1207,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
      }
     
     // duplicate inventory item in memory and in core data
-    func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
+    private func duplicateIntentoryItem(inv: Inventory) -> Inventory?{
         //let context = CoreDataHandler.getContext()
         let currentInventory = Inventory(context: store.getContext()) // setup new inventory object
     

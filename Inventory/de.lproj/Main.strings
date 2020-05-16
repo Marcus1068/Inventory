@@ -22,9 +22,6 @@
 /* Class = "UIButton"; normalTitle = "Picture"; ObjectID = "2TE-eQ-5Wq"; */
 "2TE-eQ-5Wq.normalTitle" = "Foto";
 
-/* Class = "UILabel"; text = "Import your CSV data from the file system"; ObjectID = "2XG-Gh-KH6"; */
-"2XG-Gh-KH6.text" = "CSV Datei aus Dateisystem importieren";
-
 /* Class = "UINavigationItem"; title = "My Brands"; ObjectID = "4qt-wy-VB5"; */
 "4qt-wy-VB5.title" = "Meine Marken";
 
@@ -338,7 +335,7 @@
 "rWr-zo-VXm.normalTitle" = "Sicherung zu iCloud";
 
 /* Class = "UILabel"; text = "Export your data as comma seperated values file to local app directory. Open those files via Files App"; ObjectID = "S2f-fd-nKg"; */
-"S2f-fd-nKg.text" = "Exportiert Ihre Daten als csv Datei (kann von Excel und Numbers geöffnet werden). Öffnen Sie diese Dateien via Dateien App";
+"S2f-fd-nKg.text" = "Exportiert Ihre Daten als csv Datei (kann beispielsweise von Excel und Numbers bearbeitet werden). Öffnen Sie diese Dateien via Dateien App";
 
 /* Class = "UIButton"; normalTitle = "Invoice"; ObjectID = "seV-zU-Yva"; */
 "seV-zU-Yva.normalTitle" = "Rechnung";
@@ -440,7 +437,7 @@
 "yYm-0Z-sNf.text" = "Eigentümer";
 
 /* Class = "UILabel"; text = "Backup your data to iCloud - it will be synced to all other devices and can be restored"; ObjectID = "z5u-gb-85Y"; */
-"z5u-gb-85Y.text" = "Exportieren Sie Ihre Daten ins Dateisystem als CSV Datei oder erstellen Sie eine Sicherung auf iCloud";
+"z5u-gb-85Y.text" = "Sichern Sie Ihre Daten in iCloud - sie stehen dann auf allen Geräten zur Verfügung";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "z7u-tJ-Sau"; */
 "z7u-tJ-Sau.text" = "Räume";

@@ -85,6 +85,7 @@
 		2C96898523DA24740001F8BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C96898423DA24740001F8BB /* CloudKit.framework */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 		2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
+		2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -287,6 +288,7 @@
 		2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2C96898423DA24740001F8BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 				2C870A192293557100F36F99 /* TabBarViewController.swift */,
 				2C36E91A243F12880060B615 /* MenuController.swift */,
 				2CDA6A612465CBFE00A90ACF /* OnboardingViewController.swift */,
+				2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				2CDA6A622465CBFE00A90ACF /* OnboardingViewController.swift in Sources */,
 				2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */,
 				2C6A69F6228038D600140B39 /* DropFile.swift in Sources */,
+				2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */,
 				2C56E9502086A41700FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
 				2C56E9622087CA2100FD5136 /* RoomEditViewController.swift in Sources */,
 				2C56E95E208756D500FD5136 /* RoomNavigationViewController.swift in Sources */,

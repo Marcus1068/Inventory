@@ -125,20 +125,12 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
         
-        var activityIndicator : UIActivityIndicatorView
-        
-        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
-        
-        let barButtonItem = UIBarButtonItem(customView: activityIndicator)
-        navigationItem.leftBarButtonItem = barButtonItem
-        activityIndicator.startAnimating()
+        //let barButtonItem = UIBarButtonItem(customView: activityIndicator)
+        //navigationItem.leftBarButtonItem = barButtonItem
        
         let container = store.persistentContainer
         
         container.performBackgroundTask { (context) in
-            
             
             var results: [Inventory] = []
             
@@ -225,7 +217,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             DispatchQueue.main.async {
                 // at the end of export report the number of exported rows to user
                 
-                activityIndicator.stopAnimating()
                 self.navigationItem.leftBarButtonItem = nil
             }
         }
@@ -573,22 +564,88 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK: - button actions
     
     @IBAction func restoreAction(_ sender: UIButton) {
-        restoreFromiCloud()
+        
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.async() {
+            // here comes long running function
+            self.restoreFromiCloud()
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
     }
     
     // make an icloud backup
     @IBAction func backupAction(_ sender: UIButton) {
-        backupDataToiCloud()
+        
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.async() {
+            // here comes long running function
+            self.backupDataToiCloud()
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
     }
     
     // called from main menu in case of catalyst
     @objc func export(){
-        let _ = exportCSVFile()
+        
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.async() {
+            // here comes long running function
+            let _ = self.exportCSVFile()
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
     }
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
         
-        let _ = exportCSVFile()
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+        
+        DispatchQueue.main.async() {
+            // here comes long running function
+            let _ = self.exportCSVFile()
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     // share system button to share csv file
@@ -692,17 +749,53 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         dir = url
         dir.deleteLastPathComponent()
         
-        let importedRows = importCVSFile(fileURL: dir, localDir: true)
         
-        let title = NSLocalizedString("Import", comment: "Import")
-        let message = NSLocalizedString("Import from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
-                        " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
-        displayAlert(title: title, message: message, buttonText: Global.done)
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        var importedRows = 0
+        
+        DispatchQueue.main.async() {
+            // here comes long running function
+            importedRows = self.importCVSFile(fileURL: dir, localDir: true)
+            
+            let title = NSLocalizedString("Import", comment: "Import")
+            let message = NSLocalizedString("Import from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
+                            " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+            self.displayAlert(title: title, message: message, buttonText: Global.done)
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
 
     // cancel opening/choosing files
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         // do nothing
+    }
+    
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.async() {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     #if targetEnvironment(macCatalyst)
@@ -833,9 +926,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // make a copy of inventory csv file and images and pdf folder available in icloud drive in case user has icloud
     func backupDataToiCloud(){
         let title = NSLocalizedString("Backup to iCloud", comment: "Backup to iCloud")
-        var activityIndicator : UIActivityIndicatorView
-        
-        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         
         if isICloudContainerAvailable(){
             //print("icloud vorhanden")
@@ -847,18 +937,12 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
-        activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        
         let _ = createiCloudDirectory(folder: Global.backupFolder)
         let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
         let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
         
         // copy all data from documents dir to iCloud
         copyDocumentsToiCloudDirectory()
-        
-        activityIndicator.stopAnimating()
         
         var results: [Inventory] = []
         let store = CoreDataStorage.shared
@@ -914,12 +998,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
         let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
-        
-        var activityIndicator : UIActivityIndicatorView
-        
-        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        
-        activityIndicator.startAnimating()
        
         let container = store.persistentContainer
         
@@ -986,7 +1064,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             }
             
         }
-        activityIndicator.stopAnimating()
+        
     }
         
 }

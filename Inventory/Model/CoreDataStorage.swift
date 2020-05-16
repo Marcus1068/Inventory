@@ -177,7 +177,7 @@ public class CoreDataStorage {
         let brands = fetchAllBrands()
         let owners = fetchAllOwners()
         
-        if rooms.count == 0 && categories.count == 0 && brands.count == 0 && owners.count == 0{
+        if rooms.count == 0 || categories.count == 0 || brands.count == 0 || owners.count == 0{
             return false
         }
         

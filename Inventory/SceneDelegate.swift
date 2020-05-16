@@ -134,6 +134,7 @@ extension NSToolbarItem.Identifier {
     static let inventoryOverviewEntry = NSToolbarItem.Identifier(rawValue: "inventoryOverviewEntry")
     static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
     static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
+    static let addRoomEntry = NSToolbarItem.Identifier(rawValue: "AddRoomEntry")
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
     static let importEntry = NSToolbarItem.Identifier(rawValue: "ImportEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
@@ -153,12 +154,12 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
 
     // inventory overview
@@ -200,6 +201,20 @@ extension SceneDelegate: NSToolbarDelegate {
         }
         
         tabBarController.selectedIndex = 1
+    }
+    
+    @objc func addRoomEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "RoomEditViewController") as! RoomEditViewController
+        editView.currentRoom = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
     }
     
     @objc func importEntry(_ sender: UIBarButtonItem) {
@@ -290,6 +305,13 @@ extension SceneDelegate: NSToolbarDelegate {
             item?.action = #selector(manageItemsEntry)
             break
         
+        case .addRoomEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "bed.double.fill"), style: .plain, target: self, action: #selector(addRoomEntry))
+            item = toolbarItem(itemIdentifier: .addRoomEntry, barButtonItem: barButtonItem, toolTip: Global.addRoom, label: Global.addRoom)
+            item?.target = self
+            item?.action = #selector(addRoomEntry)
+            break
+            
             case .importEntry:
             let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down.on.square"), style: .plain, target: self, action: #selector(importEntry(_:)))
             item = toolbarItem(itemIdentifier: .importEntry, barButtonItem: barButtonItem, toolTip: Global.importExport, label: Global.importExport)

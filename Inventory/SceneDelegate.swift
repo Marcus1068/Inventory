@@ -135,6 +135,9 @@ extension NSToolbarItem.Identifier {
     static let addInvEntry = NSToolbarItem.Identifier(rawValue: "AddInvEntry")
     static let manageItemsEntry = NSToolbarItem.Identifier(rawValue: "ManageItemsEntry")
     static let addRoomEntry = NSToolbarItem.Identifier(rawValue: "AddRoomEntry")
+    static let addCategoryEntry = NSToolbarItem.Identifier(rawValue: "AddCategoryEntry")
+    static let addBrandEntry = NSToolbarItem.Identifier(rawValue: "AddBrandEntry")
+    static let addOwnerEntry = NSToolbarItem.Identifier(rawValue: "AddOwnerEntry")
     static let reportEntry = NSToolbarItem.Identifier(rawValue: "ReportEntry")
     static let importEntry = NSToolbarItem.Identifier(rawValue: "ImportEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
@@ -150,16 +153,16 @@ extension SceneDelegate: NSToolbarDelegate {
         let dismissAction = UIAlertAction(title: buttonText, style: .default)
         alertController.addAction(dismissAction)
         
-        self.window?.rootViewController?.present(alertController, animated: true)
+        globalWindow!.rootViewController?.present(alertController, animated: true)
     }
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
 
     // inventory overview
@@ -217,6 +220,48 @@ extension SceneDelegate: NSToolbarDelegate {
         nav.pushViewController(editView, animated: true)
     }
     
+    @objc func addCategoryEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "CategoryEditViewController") as! CategoryEditViewController
+        editView.currentCategory = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addBrandEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "BrandEditViewController") as! BrandEditViewController
+        editView.currentBrand = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
+    @objc func addOwnerEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        
+        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "OwnerEditViewController") as! OwnerEditViewController
+        editView.currentOwner = nil  // new item
+        
+        nav.pushViewController(editView, animated: true)
+    }
+    
     @objc func importEntry(_ sender: UIBarButtonItem) {
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
@@ -250,7 +295,6 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     @objc private func aboutEntry(_ sender: UIBarButtonItem) {
-        // TODO:
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }
@@ -262,7 +306,7 @@ extension SceneDelegate: NSToolbarDelegate {
       toolTip: String? = nil, label: String?) -> NSToolbarItem {
         
         // hide tab bar if Catalyst app
-        let tabBarController = self.window?.rootViewController as? UITabBarController
+        let tabBarController = globalWindow!.rootViewController as? UITabBarController
         tabBarController?.tabBar.isHidden = true
         
         
@@ -312,7 +356,28 @@ extension SceneDelegate: NSToolbarDelegate {
             item?.action = #selector(addRoomEntry)
             break
             
-            case .importEntry:
+        case .addCategoryEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "book"), style: .plain, target: self, action: #selector(addCategoryEntry))
+            item = toolbarItem(itemIdentifier: .addCategoryEntry, barButtonItem: barButtonItem, toolTip: Global.addcategory, label: Global.addcategory)
+            item?.target = self
+            item?.action = #selector(addCategoryEntry)
+            break
+        
+        case .addBrandEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "cube.box"), style: .plain, target: self, action: #selector(addBrandEntry))
+            item = toolbarItem(itemIdentifier: .addBrandEntry, barButtonItem: barButtonItem, toolTip: Global.addBrand, label: Global.addBrand)
+            item?.target = self
+            item?.action = #selector(addBrandEntry)
+            break
+            
+        case .addOwnerEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "person.2.fill"), style: .plain, target: self, action: #selector(addOwnerEntry))
+            item = toolbarItem(itemIdentifier: .addOwnerEntry, barButtonItem: barButtonItem, toolTip: Global.addOwner, label: Global.addOwner)
+            item?.target = self
+            item?.action = #selector(addOwnerEntry)
+            break
+            
+        case .importEntry:
             let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down.on.square"), style: .plain, target: self, action: #selector(importEntry(_:)))
             item = toolbarItem(itemIdentifier: .importEntry, barButtonItem: barButtonItem, toolTip: Global.importExport, label: Global.importExport)
             item?.target = self

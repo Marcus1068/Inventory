@@ -357,7 +357,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
         editView.currentInventory = nil
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func editRoomMenu() {
@@ -370,7 +370,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "RoomTableViewController") as! RoomTableViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func editCategoryMenu() {
@@ -383,7 +383,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "CategoryTableViewController") as! CategoryTableViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func editBrandMenu() {
@@ -396,7 +396,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "BrandTableViewController") as! BrandTableViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func editOwnerMenu() {
@@ -409,7 +409,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "OwnerTableViewController") as! OwnerTableViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addRoomMenu() {
@@ -423,7 +423,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "RoomEditViewController") as! RoomEditViewController
         editView.currentRoom = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addCategoryMenu() {
@@ -437,7 +437,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "CategoryEditViewController") as! CategoryEditViewController
         editView.currentCategory = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addBrandMenu() {
@@ -451,7 +451,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "BrandEditViewController") as! BrandEditViewController
         editView.currentBrand = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addOwnerMenu() {
@@ -465,7 +465,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "OwnerEditViewController") as! OwnerEditViewController
         editView.currentOwner = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func importMenu() {
@@ -478,7 +478,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
         
         editView.openFilesApp()
     }
@@ -493,7 +493,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
         
         editView.export()
     }
@@ -510,7 +510,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
         
         editView.backupDataToiCloud()
     }
@@ -525,7 +525,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ImportExportViewController") as! ImportExportViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
         
         editView.restoreFromiCloud()
     }
@@ -542,7 +542,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
         //editView.pdfInit()
         let pdf = editView.pdfCreateInventoryReport()
         let url = editView.pdfSave(pdf)

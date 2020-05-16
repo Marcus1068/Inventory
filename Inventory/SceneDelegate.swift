@@ -194,7 +194,7 @@ extension SceneDelegate: NSToolbarDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
         editView.currentInventory = nil
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     // manage all items like rooms, categories etc call
@@ -217,7 +217,7 @@ extension SceneDelegate: NSToolbarDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "RoomEditViewController") as! RoomEditViewController
         editView.currentRoom = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addCategoryEntry() {
@@ -231,7 +231,7 @@ extension SceneDelegate: NSToolbarDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "CategoryEditViewController") as! CategoryEditViewController
         editView.currentCategory = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addBrandEntry() {
@@ -245,7 +245,7 @@ extension SceneDelegate: NSToolbarDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "BrandEditViewController") as! BrandEditViewController
         editView.currentBrand = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func addOwnerEntry() {
@@ -259,7 +259,7 @@ extension SceneDelegate: NSToolbarDelegate {
         let editView = storyboard.instantiateViewController(withIdentifier: "OwnerEditViewController") as! OwnerEditViewController
         editView.currentOwner = nil  // new item
         
-        nav.pushViewController(editView, animated: true)
+        nav.pushViewController(editView, animated: false)
     }
     
     @objc func importEntry(_ sender: UIBarButtonItem) {

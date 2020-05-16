@@ -207,7 +207,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     
     // refresh UI if cloudkit receives any changes made on other devices
     @objc func fetchChanges(){
-        
+        // do nothing
     }
 
     
@@ -508,11 +508,11 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             let sectionInfo = fetchedResultsController.sections?[indexPath.section]
             
             if(sectionInfo!.numberOfObjects > 1){
-                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items") + " " + "in" + " "
+                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory items", comment: "Inventory items") + " " + NSLocalizedString("in", comment: "in") + " " + Global.room + " "
                 footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             else{
-                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item") + " " + "in" + " "
+                let text = String(sectionInfo!.numberOfObjects) + " " + NSLocalizedString("Inventory item", comment: "Inventory item") + " " + NSLocalizedString("in", comment: "in") + " " + Global.room + " "
                 footerView.searchResultLabel.text = text + sectionInfo!.name
             }
             
@@ -641,6 +641,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             os_log("InventoryCollectionViewController iPadCancelButton", log: Log.viewcontroller, type: .error)
         }
         
+        updateNumberOfItemsLabel()
+        
         self.searchController.searchBar.endEditing(true)
         searchController.searchBar.text? = ""
         navigationItem.setLeftBarButtonItems([leftNavBarButton!], animated: true)
@@ -682,6 +684,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
         
         collection.reloadData()
+        updateNumberOfItemsLabel()
     }
     
     // something entered in search bar
@@ -1094,16 +1097,17 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
 
             // print selected inventory invoice in case it is available
             let printAction = UIAction(title: Global.printInvoice, image: UIImage(systemName: "printer")) { action in
-                if let print = inv.invoice{
-                    if UIPrintInteractionController.canPrint(print as Data) {
+                if let printItem = inv.invoice{
+                    if UIPrintInteractionController.canPrint(printItem as Data) {
                         let printInfo = UIPrintInfo(dictionary: nil)
                         printInfo.jobName = inv.invoiceFileName!
                         printInfo.outputType = .general
+                        //printInfo.jobName = Global.printerJobName
                         
                         let printController = UIPrintInteractionController.shared
                         printController.printInfo = printInfo
-                        printController.showsNumberOfCopies = false
-                        printController.printingItem = print
+                        printController.printingItem = printItem
+                        printController.showsNumberOfCopies = true
                         printController.present(animated: true, completionHandler: nil)
                     }
                     else{

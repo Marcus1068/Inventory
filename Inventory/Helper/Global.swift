@@ -52,6 +52,7 @@ class Global: UIViewController {
     static let website = "https://marcus-deuss.de/?page_id=13"
     static let csvFile = "inventoryAppExport.csv"
     static let pdfFile = "Inventory App Report.pdf"
+    static let printerJobName = "Inventory App Print Job"
     
     static let imagesFolder = "Images"
     static let pdfFolder = "PDF"

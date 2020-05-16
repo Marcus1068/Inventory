@@ -54,7 +54,7 @@ class MenuController{
         // The format menu doesn't make sense
         builder.remove(menu: .format)
         builder.remove(menu: .edit)
-        //builder.remove(menu: .about)
+        builder.remove(menu: .help)
         
         //builder.insertSibling(MenuController.preferencesMenu(), afterMenu: .about)
         

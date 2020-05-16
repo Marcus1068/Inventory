@@ -2690,7 +2690,7 @@
         <scene sceneID="my9-ac-fzL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jxM-ak-Z6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Inventory" image="square.and.pencil" catalog="system" id="bMy-mx-l0r"/>
+                    <tabBarItem key="tabBarItem" title="My Inventory" image="square.grid.3x2.fill" catalog="system" id="bMy-mx-l0r"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XZ5-lm-emo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -3170,7 +3170,7 @@
         <image name="printer" catalog="system" width="128" height="111"/>
         <image name="square.and.arrow.down.on.square" catalog="system" width="122" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-        <image name="square.and.pencil" catalog="system" width="128" height="118"/>
+        <image name="square.grid.3x2.fill" catalog="system" width="128" height="80"/>
         <image name="trash" catalog="system" width="121" height="128"/>
     </resources>
 </document>

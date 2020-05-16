@@ -63,7 +63,7 @@
 
 /* Backup
    Backup to iCloud */
-"Backup to iCloud" = "Sicherung zur iCloud";
+"Backup to iCloud" = "Sicherung zu iCloud";
 
 /* Basement 1 */
 "Basement 1" = "Kellerraum 1";
@@ -485,7 +485,7 @@
 "Restore from iCloud" = "Zurückspielen von iCloud";
 
 /* Restore from iCloud succeeded */
-"Restore from iCloud succeeded with" = "Zurückspielen von iCloud erfolreich mit";
+"Restore from iCloud succeeded with" = "Zurückspielen von iCloud erfolgreich mit";
 
 /* Room */
 "Room" = "Raum";

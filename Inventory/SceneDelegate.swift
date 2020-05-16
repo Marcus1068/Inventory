@@ -260,7 +260,7 @@ extension SceneDelegate: NSToolbarDelegate {
 
         switch(itemIdentifier){
         case .inventoryOverviewEntry:
-            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(inventoryEntry(_:)))
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.grid.3x2.fill"), style: .plain, target: self, action: #selector(inventoryEntry(_:)))
             item = toolbarItem(itemIdentifier: .inventoryOverviewEntry, barButtonItem: barButtonItem, toolTip: Global.inventory, label: Global.inventory)
             item?.target = self
             item?.action = #selector(inventoryEntry)

@@ -155,7 +155,7 @@ class TabBarViewController: UITabBarController {
         let report = NSButtonTouchBarItem(identifier: .touchReport, image: UIImage(systemName: "doc.text")!, target: self, action: #selector(reportEntry))
         report.bezelColor = Global.colorGreen
         
-        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, image: UIImage(systemName: "square.and.pencil")!, target: self, action: #selector(inventoryEntry))
+        let inventory = NSButtonTouchBarItem(identifier: .touchInventory, image: UIImage(systemName: "square.grid.3x2.fill")!, target: self, action: #selector(inventoryEntry))
         inventory.bezelColor = Global.colorBlue
         
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))

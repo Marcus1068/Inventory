@@ -247,8 +247,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         var pdfFolderPath: URL?
         
         if localDir{
-            imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-            pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+            imagesFolderPath = fileURL.appendingPathComponent(Global.imagesFolder)//URL.createFolder(folderName: Global.imagesFolder)
+            pdfFolderPath = fileURL.appendingPathComponent(Global.pdfFolder)//URL.createFolder(folderName: Global.pdfFolder)
         }
         else{
             let url = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder)
@@ -256,7 +256,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             pdfFolderPath = url!.appendingPathComponent(Global.pdfFolder)
         }
         
-        guard let data = readDataFromCSV(fileURL: fileURL) else{
+        let csvURL = fileURL.appendingPathComponent(Global.csvFile)
+        guard let data = readDataFromCSV(fileURL: csvURL) else{
             // no file to import
             let message = NSLocalizedString("Importing CSV file", comment: "Importing CSV file")
             let title = NSLocalizedString("No CSV file to import found", comment: "No CSV file to import found")
@@ -387,6 +388,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                     //let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
                     let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
                     let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
+                    
+                    /*
+                     iCloud:
+                     (lldb) po a!
+                     "/private/var/mobile/Library/Mobile Documents/com~apple~CloudDocs/Inventory App Backup/Images/AVM 1750E Repeater_2020_8_2_14_39_9.jpg"
+                     */
+                    
+                    /*
+                     (lldb) po a!
+                     "/private/var/mobile/Containers/Data/Application/7BEB1E01-1E6F-4FCF-A30A-4E7415661C7C/Documents/Images/AVM 1750E Repeater_2020_8_2_14_39_9.jpg"
+
+                     
+                     */
+                    //let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
                     
                     if image != nil{
                         let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
@@ -661,6 +676,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]){
+        var dir: URL
+        
         guard
             controller.documentPickerMode == .open,
             let url = urls.first,
@@ -672,9 +689,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             url.stopAccessingSecurityScopedResource()
         }
         // do something with the selected document
+        dir = url
+        dir.deleteLastPathComponent()
         
-        let _ = importCVSFile(fileURL: url, localDir: true)
+        let importedRows = importCVSFile(fileURL: dir, localDir: true)
         
+        let title = NSLocalizedString("Import", comment: "Import")
+        let message = NSLocalizedString("Import from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
+                        " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+        displayAlert(title: title, message: message, buttonText: Global.done)
     }
 
     // cancel opening/choosing files
@@ -871,9 +894,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
-        let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
+        //let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
-        let importedRows = importCVSFile(fileURL: iCloudCSVFile, localDir: false)
+        let importedRows = importCVSFile(fileURL: iCloudDocumentsURL, localDir: false)
         
         let message = NSLocalizedString("Restore from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
                         " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")

@@ -304,11 +304,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 command.state = paperMenuStyleStates.contains(paperStyle) ? .on : .off
             }
             
-            for i in paperStyleDict{
+            /* for i in paperStyleDict{
                 print("Test \(i.key)")
                 print("Test \(i.value)")
-            }
+            } */
         }
+    }
+    
+    // general alert extension with just one button to be pressed
+    private func displayAlert(title: String, message: String, buttonText: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: buttonText, style: .default)
+        alertController.addAction(dismissAction)
+        
+        globalWindow!.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     
     // inventory overview
@@ -331,6 +340,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // call new inventory
     @objc func addInventoryMenu() {
+        let store = CoreDataStorage.shared
+        guard store.checkForItems() else{
+            displayAlert(title: Global.titleNoObjects, message: Global.messageNoObjects, buttonText: Global.done)
+            return
+        }
         guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
             return
         }

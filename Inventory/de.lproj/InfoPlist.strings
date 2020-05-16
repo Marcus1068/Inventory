@@ -5,10 +5,10 @@
 "CFBundleName" = "Inventory App";
 
 /* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "Kamera Nutzung notwendig, um Fotos zu erstellen";
+"NSCameraUsageDescription" = "Bitte Kamera Nutzung erlauben, um Fotos zum Inventar hinzuzufügen";
 
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Kamera Nutzung notwendig, um Fotos zu erstellen";
+"NSPhotoLibraryUsageDescription" = "Bitte Zugriff auf Foto Bibliothek erlauben, um Fotos zum Inventar hinzuzufügen";
 
 /* (No Comment) */
 "shortcutSubtitleAddItem" = "Dem Inventar hinzufügen";

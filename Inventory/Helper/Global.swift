@@ -143,6 +143,9 @@ class Global: UIViewController {
     static let invalidBrandName = NSLocalizedString("Please enter valid brand", comment: "valid brand")
     static let invalidOwnerName = NSLocalizedString("Please enter valid owner", comment: "valid owner")
     
+    static let messageNoObjects = NSLocalizedString("Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects", comment: "Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects")
+    static let titleNoObjects = NSLocalizedString("Creating inventory items not possible yet", comment: "Creating inventory items not possible yet")
+    
     static let firstPage = NSLocalizedString("First page", comment: "First page")
     static let lastPage = NSLocalizedString("Last page", comment: "Last page")
     

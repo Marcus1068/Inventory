@@ -170,6 +170,20 @@ public class CoreDataStorage {
         return persistentContainer.viewContext
     }
     
+    // return true if there is at least one room, one category, one brand and one owner
+    func checkForItems() -> Bool{
+        let rooms = fetchAllRooms()
+        let categories = fetchAllCategories()
+        let brands = fetchAllBrands()
+        let owners = fetchAllOwners()
+        
+        if rooms.count == 0 && categories.count == 0 && brands.count == 0 && owners.count == 0{
+            return false
+        }
+        
+        return true
+    }
+    
     // save everything
     func saveContext(){
         let context = getContext()

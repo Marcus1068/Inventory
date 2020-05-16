@@ -88,10 +88,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         self.window?.makeKeyAndVisible()
         
         #endif
-        
-        
-        
-        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -147,6 +143,15 @@ extension NSToolbarItem.Identifier {
 // for toolbar
 extension SceneDelegate: NSToolbarDelegate {
     
+    // general alert extension with just one button to be pressed
+    private func displayAlert(title: String, message: String, buttonText: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: buttonText, style: .default)
+        alertController.addAction(dismissAction)
+        
+        self.window?.rootViewController?.present(alertController, animated: true)
+    }
+    
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
         return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
     }
@@ -168,6 +173,11 @@ extension SceneDelegate: NSToolbarDelegate {
     
     // Add inventory call
     @objc func addInvEntry(_ sender: UIBarButtonItem) {
+        let store = CoreDataStorage.shared
+        guard store.checkForItems() else{
+            displayAlert(title: Global.titleNoObjects, message: Global.messageNoObjects, buttonText: Global.done)
+            return
+        }
         guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
             return
         }

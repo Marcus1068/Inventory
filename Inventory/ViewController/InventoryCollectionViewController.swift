@@ -592,26 +592,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             return false
         }
         
-        // check if any rooms, categories, brands and owners are available, otherwise refuse to add an item
-        if room.count > 0 && category.count > 0 && brand.count > 0 && owner.count > 0{
-            return true
-        }
-        else{
-            let message = NSLocalizedString("Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects", comment: "Please add at least one room, category, owner and brand in 'Manage Items' for adding new inventory objects") 
-            let myActionSheet = UIAlertController(title: Global.error, message: message, preferredStyle: UIAlertController.Style.actionSheet)
-            
-            let action = UIAlertAction(title: Global.cancel, style: UIAlertAction.Style.cancel) { (ACTION) in
-                // do nothing when cancel
-            }
-            
-            myActionSheet.addAction(action)
-            addActionSheetForiPad(actionSheet: myActionSheet)
-            present(myActionSheet, animated: true, completion: nil)
-            
+        let store = CoreDataStorage.shared
+        guard store.checkForItems() else{
+            displayAlert(title: Global.titleNoObjects, message: Global.messageNoObjects, buttonText: Global.done)
             return false
         }
         
-        //return true
+        return true
     }
     
     // prepare to transfer data to another view controller
@@ -915,7 +902,13 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     // MARK: - button actions
     
     @IBAction func addBarButton(_ sender: Any) {
-        performSegue(withIdentifier: "addSegue", sender: self)
+        
+        if room.count > 0{
+            performSegue(withIdentifier: "addSegue", sender: self)
+        }
+        else{
+            displayAlert(title: "bla", message: "bla", buttonText: Global.cancel)
+        }
     }
     
     @IBAction func organizeBarButton(_ sender: Any) {

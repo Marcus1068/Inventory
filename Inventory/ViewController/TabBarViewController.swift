@@ -27,6 +27,7 @@
 
 import UIKit
 
+
 // implement touch bar support
 #if targetEnvironment(macCatalyst)
 extension NSTouchBarItem.Identifier{
@@ -81,11 +82,14 @@ extension NSTouchBarItem.Identifier{
 
 class TabBarViewController: UITabBarController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
+    
+    
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [

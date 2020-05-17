@@ -32,6 +32,8 @@ import os
 import LocalAuthentication
 import AVFoundation
 import CoreData
+import StoreKit
+
 
 class Global: UIViewController {
     
@@ -61,6 +63,7 @@ class Global: UIViewController {
     static let imagesFolder = "Images"
     static let pdfFolder = "PDF"
     static let backupFolder = "Documents"   // used for iCloud backup
+    
     
     // colors used system wide
     static let colorGreen : UIColor = .systemGreen // green background for button bezel
@@ -702,13 +705,30 @@ extension NSDate {
     }
 }
 
-// MARK: - User Defaults
+extension UIViewController{
+    // for having app store review message popup
+    func appstoreReview(){
+        // If the count has not yet been stored, this will return 0
+        var count = UserDefaults.standard.integer(forKey: UserDefaultKeys.processCompletedCountKey)
+        count += 1
+        UserDefaults.standard.set(count, forKey: UserDefaultKeys.processCompletedCountKey)
 
-// Extend UserDefaults for quick access to nameColorKey.
-extension UserDefaults {
-    
-    @objc dynamic var nameColorKey: Int {
-        return integer(forKey: InventoryCollectionViewController.nameColorKey)
+        // Get the current bundle version for the app
+        let infoDictionaryKey = kCFBundleVersionKey as String
+        guard let currentVersion = Bundle.main.object(forInfoDictionaryKey: infoDictionaryKey) as? String
+            else { fatalError("Expected to find a bundle version in the info dictionary") }
+
+        let lastVersionPromptedForReview = UserDefaults.standard.string(forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
+
+        // Has the process been completed several times and the user has not already been prompted for this version?
+        if count >= 4 && currentVersion != lastVersionPromptedForReview {
+            let twoSecondsFromNow = DispatchTime.now() + 2.0
+            DispatchQueue.main.asyncAfter(deadline: twoSecondsFromNow) { [navigationController] in
+                if navigationController?.topViewController is InventoryCollectionViewController {
+                    SKStoreReviewController.requestReview()
+                    UserDefaults.standard.set(currentVersion, forKey: UserDefaultKeys.lastVersionPromptedForReviewKey)
+                }
+            }
+        }
     }
-    
 }

@@ -67,7 +67,7 @@ class OnboardingViewController: UIViewController, UIPointerInteractionDelegate {
         textView.attributedText = Global.getRTFFileFromBundle(fileName: fileName)
         
         // now set user defaults to any value
-        UserDefaults.standard.set("firstRun", forKey: Global.appVersion)
+        UserDefaults.standard.set(UserDefaultKeys.firstRun, forKey: Global.appVersion)
         
         // setup colors for UI controls
         doneButton.tintColor = themeColorUIControls

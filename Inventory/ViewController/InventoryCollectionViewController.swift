@@ -302,6 +302,9 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
                                                                 changeHandler: { (defaults, change) in
             self.updateView()
         })
+        
+        // enable store reviews
+        appstoreReview()
     }
 
     fileprivate func updateNumberOfItemsLabel() {
@@ -372,15 +375,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
 
     }
     
-    // MARK: - Preferred Background Color
-        
-    static let nameColorKey = "nameColorKey" // Key for obtainins the preference view color.
 
     // KVO for preference changes.
     var backgroundColorObserver: NSKeyValueObservation?
     
     func updateView() {
-        let viewColor = UserDefaults.standard.integer(forKey: InventoryCollectionViewController.nameColorKey)
+        let viewColor = UserDefaults.standard.integer(forKey: UserDefaultKeys.nameColorKey)
         
         let colorValue = AppDelegate.BackgroundColors(rawValue: viewColor)
         switch colorValue {

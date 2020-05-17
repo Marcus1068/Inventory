@@ -90,6 +90,7 @@
 		2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */; };
 		2CBB7923247134D200E201F4 /* ImportExportview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */; };
 		2CBB7925247134E700E201F4 /* ImportExportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */; };
+		2CBB792724716B7900E201F4 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -297,6 +298,7 @@
 		2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Inventoryview Help German.rtf"; sourceTree = "<group>"; };
 		2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help English.rtf"; sourceTree = "<group>"; };
 		2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help German.rtf"; sourceTree = "<group>"; };
+		2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 				2C36E91A243F12880060B615 /* MenuController.swift */,
 				2CDA6A612465CBFE00A90ACF /* OnboardingViewController.swift */,
 				2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */,
+				2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				2C56E90C208683D100FD5136 /* Global.swift in Sources */,
 				2C56E95820872E6200FD5136 /* ManageTableViewController.swift in Sources */,
 				2C5DDF4220FA193700D71782 /* OwnerTableViewController.swift in Sources */,
+				2CBB792724716B7900E201F4 /* UserDefaultKeys.swift in Sources */,
 				2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */,
 				2C8589E722996A5700517E79 /* WatchConstants.swift in Sources */,
 				2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */,

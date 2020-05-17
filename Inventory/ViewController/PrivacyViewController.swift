@@ -28,7 +28,7 @@ import UIKit
 import os
 
 
-class PrivacyViewController: UIViewController {
+class PrivacyViewController: UIViewController, UIPointerInteractionDelegate {
 
     @IBOutlet weak var privacyText: UITextView!
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -69,6 +69,9 @@ class PrivacyViewController: UIViewController {
         
         doneAction.setTitle(Global.done, for: .normal)
         // Do any additional setup after loading the view.
+        
+        // pointer interaction
+        customPointerInteraction(on: doneAction, pointerInteractionDelegate: self)
     }
     
     // need this to scroll textview to top at start

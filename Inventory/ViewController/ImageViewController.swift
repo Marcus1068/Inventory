@@ -30,18 +30,19 @@ import UIKit
 import os
 
 
-class ImageViewController: UIViewController {
+class ImageViewController: UIViewController, UIPointerInteractionDelegate {
 
     var image : UIImage?
     var titleForImage: String?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     // add keyboard shortcuts to iPadOS screen when user long presses CMD key
     override var keyCommands: [UIKeyCommand]? {
         return [
-            UIKeyCommand(title: "", image: nil, action: #selector(doneAction), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.done, state: .on)
+            UIKeyCommand(title: "", image: nil, action: #selector(doneButton(_:)), input: "D", modifierFlags: .command, propertyList: nil, alternates: [], discoverabilityTitle: Global.done, state: .on)
         
         ]
     }
@@ -58,6 +59,7 @@ class ImageViewController: UIViewController {
         }
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        doneBarButton.tintColor = themeColorUIControls
         
         self.title = titleForImage // NSLocalizedString("Show Image", comment: "Show Image")
         
@@ -66,6 +68,7 @@ class ImageViewController: UIViewController {
         //scrollView.setContentOffset(CGPoint(x:0, y:40), animated: true)
         
         //scrollView.bounces = true
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -85,8 +88,24 @@ class ImageViewController: UIViewController {
         scrollView.zoomScale = minScale
     }
     
-    @objc func doneAction(){
-        _ = navigationController?.popViewController(animated: true)
+    @IBAction func doneButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: false)
+    }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchDone]
+        
+        let done = NSButtonTouchBarItem(identifier: .touchDone, title: Global.done, target: self, action: #selector(doneButton(_:)))
+        done.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [done]
+        
+        return touchBar
     }
 
+    #endif
 }

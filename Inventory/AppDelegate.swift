@@ -150,6 +150,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         registerDefaultsFromSettingsBundle()
         
+        // create directory for export/import stuff
+        let _ = URL.createFolder(folderName: Global.imagesFolder)
+        let _ = URL.createFolder(folderName: Global.pdfFolder)
+        
         return true
     }
 
@@ -314,10 +318,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // general alert extension with just one button to be pressed
     private func displayAlert(title: String, message: String, buttonText: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let dismissAction = UIAlertAction(title: buttonText, style: .default)
+        let dismissAction = UIAlertAction(title: buttonText, style: .default){ _ in
+            // do nothing
+        }
+        let generateAction = UIAlertAction(title: Global.messageGenerateSampleData, style: .default){ _ in
+            let store = CoreDataStorage.shared
+            store.generateInitialAppData()
+        }
         alertController.addAction(dismissAction)
-        
-        globalWindow!.rootViewController?.present(alertController, animated: true, completion: nil)
+        alertController.addAction(generateAction)
+        globalWindow!.rootViewController?.present(alertController, animated: true)
     }
     
     // inventory overview

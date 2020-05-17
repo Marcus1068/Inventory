@@ -597,7 +597,20 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         let store = CoreDataStorage.shared
         guard store.checkForItems() else{
-            displayAlert(title: Global.titleNoObjects, message: Global.messageNoObjects, buttonText: Global.done)
+            let alertController = UIAlertController(title: Global.titleNoObjects, message: Global.messageNoObjects, preferredStyle: .alert)
+            let dismissAction = UIAlertAction(title: Global.done, style: .default){ _ in
+                // do nothing
+                return
+            }
+            let generateAction = UIAlertAction(title: Global.messageGenerateSampleData, style: .default){ _ in
+                let store = CoreDataStorage.shared
+                store.generateInitialAppData()
+                return
+            }
+            alertController.addAction(dismissAction)
+            alertController.addAction(generateAction)
+            globalWindow!.rootViewController?.present(alertController, animated: true)
+            
             return false
         }
         
@@ -963,6 +976,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             performSegue(withIdentifier: "addSegue", sender: self)
         }
         else{
+            // FIXME
             displayAlert(title: "bla", message: "bla", buttonText: Global.cancel)
         }
     }

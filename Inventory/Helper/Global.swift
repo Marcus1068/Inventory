@@ -156,6 +156,8 @@ class Global: UIViewController {
     static let messagePrintingNotPossible = NSLocalizedString("Printing not possible, check your printer", comment: "Printing not possible, check your printer")
     static let titlePrinting = NSLocalizedString("Printing", comment: "Printing")
     
+    static let messageGenerateSampleData = NSLocalizedString("Generate some sample data for a quick start. Data can be changed afterwards", comment: "Generate some sample data")
+    
     static let firstPage = NSLocalizedString("First page", comment: "First page")
     static let lastPage = NSLocalizedString("Last page", comment: "Last page")
     

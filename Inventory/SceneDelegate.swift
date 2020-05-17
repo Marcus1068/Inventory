@@ -34,6 +34,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
     
     var window: UIWindow?
     
+    // used for app icon shortcut info.plist entries
+    enum ShortcutIdentifier: String {
+        case OpenShare
+        case OpenReport
+        case OpenImportExport
+        case OpenAddItem
+        
+        init?(fullIdentifier: String) {
+            guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
+                return nil
+            }
+            self.init(rawValue: shortIdentifier)
+        }
+    }
+    
     // This method is the way that notifies us about the addition of a scene to the app, a scene could be seen as a window.
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -125,6 +140,85 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate{
         
         let store = CoreDataStorage.shared
         store.saveContext()
+    }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+    }
+    
+    private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: shortcutType) else {
+            return false
+        }
+        
+        return selectTabBarItemForIdentifier(shortcutIdentifier)
+    }
+    
+    // share the apps link in 3D touch action
+    func shareAppLink() {
+        let url = URL(string: Global.AppLink)
+        
+        let shareItems:Array = [url]
+        let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: shareItems as [Any], applicationActivities: nil)
+
+        window?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    fileprivate func selectTabBarItemForIdentifier(_ identifier: ShortcutIdentifier) -> Bool {
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
+            return false
+        }
+        
+        switch (identifier) {
+        case .OpenShare:
+            self.shareAppLink()
+            //tabBarController.selectedIndex = 1
+            // https://itunes.apple.com/us/app/inventory-app/id1386694734?l=de&ls=1&mt=8
+            // URL(string: "itms-apps://itunes.apple.com/app/" + "id1386694734")
+            
+            return true
+            
+        case .OpenReport:
+            tabBarController.selectedIndex = 3
+            return true
+            
+        case .OpenImportExport:
+            tabBarController.selectedIndex = 2
+            
+            return true
+            
+        case .OpenAddItem:
+            let store = CoreDataStorage.shared
+            if store.checkForItems(){
+                tabBarController.selectedIndex = 0
+                
+                let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+                
+                let nav = tabBarController.viewControllers![0] as! UINavigationController
+                let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
+                editView.currentInventory = nil
+                
+                nav.pushViewController(editView, animated: true)
+            }
+            else{
+                let alertController = UIAlertController(title: Global.titleNoObjects, message: Global.messageNoObjects, preferredStyle: .alert)
+                let dismissAction = UIAlertAction(title: Global.done, style: .default){ _ in
+                    // do nothing
+                }
+                let generateAction = UIAlertAction(title: Global.messageGenerateSampleData, style: .default){ _ in
+                    let store = CoreDataStorage.shared
+                    store.generateInitialAppData()
+                }
+                alertController.addAction(dismissAction)
+                alertController.addAction(generateAction)
+                self.window!.rootViewController?.present(alertController, animated: true)
+            }
+            
+            return true
+        }
+        
+        //return true
     }
     
 }

@@ -49,21 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // iCloud key value store
     let kvStore = NSUbiquitousKeyValueStore()
-
-    // used for app icon shortcut info.plist entries
-    enum ShortcutIdentifier: String {
-        case OpenShare
-        case OpenReport
-        case OpenImportExport
-        case OpenAddItem
-        
-        init?(fullIdentifier: String) {
-            guard let shortIdentifier = fullIdentifier.components(separatedBy: ".").last else {
-                return nil
-            }
-            self.init(rawValue: shortIdentifier)
-        }
-    }
     
     // will be called when Today extension is being used to open the app
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -90,15 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // get user name and address from iCloud
         getiCloudStorageInfo()
         
-        // handle app icon short cut
-        if let shortcutItem =
-            launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem]
-                as? UIApplicationShortcutItem {
-            
-            let _ = handleShortcut(shortcutItem: shortcutItem)
-            return false
-        }
-        
         // Do any additional setup after loading the view.
         let store = CoreDataStorage.shared
         
@@ -107,29 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //store.showSampleData()
         
-        // let myInventory = store.fetchInventory()
-        //let _ = store.fetchInventory()
-        
-        // clean rooms etc., icloud workaround
-        /*store.deleteAllRooms()
-        store.deleteAllBrands()
-        store.deleteAllOwners()
-        store.deleteAllCategories() */
-        
-        
-        // generate initial data if none available
- /*       if (myInventory.count == 0){
-            
-            let rooms = store.fetchAllRooms()
-            let categories = store.fetchAllCategories()
-            let owners = store.fetchAllOwners()
-            let brands = store.fetchAllBrands()
-            
-            // only generate data if complete data is gone
-            if rooms.count == 0 && categories.count == 0 && owners.count == 0 && brands.count == 0{
-                store.generateInitialAppData()
-            }
-        } */
         // Do any additional setup after loading the view.
         
         // enable statistics collection
@@ -155,60 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = URL.createFolder(folderName: Global.pdfFolder)
         
         return true
-    }
-
-    // perform 3D touch icon short cuts
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        completionHandler(handleShortcut(shortcutItem: shortcutItem))
-    }
-    
-    private func handleShortcut(shortcutItem: UIApplicationShortcutItem) -> Bool {
-        let shortcutType = shortcutItem.type
-        guard let shortcutIdentifier = ShortcutIdentifier(fullIdentifier: shortcutType) else {
-            return false
-        }
-        
-        return selectTabBarItemForIdentifier(shortcutIdentifier)
-    }
-    
-    fileprivate func selectTabBarItemForIdentifier(_ identifier: ShortcutIdentifier) -> Bool {
-        guard let tabBarController = self.window?.rootViewController as? UITabBarController else {
-            return false
-        }
-        
-        switch (identifier) {
-        case .OpenShare:
-            self.shareAppLink()
-            //tabBarController.selectedIndex = 1
-            // https://itunes.apple.com/us/app/inventory-app/id1386694734?l=de&ls=1&mt=8
-            // URL(string: "itms-apps://itunes.apple.com/app/" + "id1386694734")
-            
-            return true
-            
-        case .OpenReport:
-            tabBarController.selectedIndex = 3
-            return true
-            
-        case .OpenImportExport:
-            tabBarController.selectedIndex = 2
-            
-            return true
-            
-        case .OpenAddItem:
-            tabBarController.selectedIndex = 0
-            
-            let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-            
-            let nav = tabBarController.viewControllers![0] as! UINavigationController
-            let editView = storyboard.instantiateViewController(withIdentifier: "EditViewController") as! InventoryEditViewController
-            editView.currentInventory = nil
-            
-            nav.pushViewController(editView, animated: true)
-            
-            return true
-        }
-        
-        //return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -38,7 +38,7 @@ private var selectedInventoryItem = Inventory()
 
 private let store = CoreDataStorage.shared
 
-class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate, UIPointerInteractionDelegate {
+class InventoryCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UICollectionViewDropDelegate, UIPointerInteractionDelegate, UIPopoverPresentationControllerDelegate {
     
     // define fetch results controller based on core data entity (Room)
     // define sort descriptors
@@ -72,7 +72,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
     @IBOutlet weak var numberOfItems: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
-   
+    @IBOutlet weak var helpButton: UIButton!
+    
     
     // store original nav bar buttons
     var leftNavBarButton : UIBarButtonItem? = nil
@@ -619,6 +620,8 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
             destination.currentInventory = selectedInventoryItem
             dest = destination
         }
+        
+        
     }
     
     // MARK - search
@@ -763,7 +766,46 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         }
     }
     
+    // needed for iPhone compatibilty when using popup controller
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
     // MARK  - Actions
+
+    @IBAction func helpAction(_ sender: UIButton) {
+        
+        // create popover via storyboard instead of segue
+        let myVC = storyboard?
+            .instantiateViewController(withIdentifier: "PopupViewController")   // defined in Storyboard identifier
+            as! PopupViewController
+        
+        // here goes the popup text
+        var fileName : String
+        
+        switch Local.currentLocaleForDate(){
+        case "de_DE", "de_AT", "de_CH", "de":
+            fileName = "Inventoryview Help German"
+            break
+            
+        default: // all other languages get english text
+            fileName = "Inventoryview Help English"
+            break
+        }
+        
+        myVC.myText = Global.getRTFFileFromBundle(fileName: fileName)
+        // this needs to define calling view controller type
+        myVC.collectionVC = self
+        
+        // show the popover
+        myVC.modalPresentationStyle = .popover
+        let popPC = myVC.popoverPresentationController!
+        popPC.sourceView = sender
+        popPC.sourceRect = sender.bounds
+        popPC.permittedArrowDirections = .up
+        popPC.delegate = self
+        present(myVC, animated:false, completion: nil)
+    }
     
     // rooms segment selection
     @IBAction func roomsSelectionSegment(_ sender: Any) {
@@ -813,6 +855,7 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         
         collection.reloadData()
     }
+    
     
     // owners segment selection
     @IBAction func ownersSelectionSegment(_ sender: Any) {

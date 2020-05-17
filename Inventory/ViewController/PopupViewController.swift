@@ -32,6 +32,7 @@ class PopupViewController: UIViewController {
     
     var myText : NSAttributedString?
     weak var aboutVC: AboutViewController!  // reference to calling view controller
+    weak var collectionVC: InventoryCollectionViewController!  // reference to calling view controller
     
     // needed to calculate dynamic resizing of content in text view
     override var preferredContentSize: CGSize{

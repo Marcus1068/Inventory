@@ -738,6 +738,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zA-h3-lIi">
+                                <rect key="frame" x="324" y="0.0" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Swb-cY-7pu"/>
+                                    <constraint firstAttribute="width" constant="35" id="nQJ-BW-28f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" image="info.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="helpAction:" destination="cvw-X7-YXT" eventType="touchUpInside" id="Arn-mv-59v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -746,12 +758,14 @@
                             <constraint firstItem="50M-S3-hxH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="61K-AB-efW" secondAttribute="trailing" constant="8" symbolic="YES" id="6IY-ds-U8u"/>
                             <constraint firstItem="61K-AB-efW" firstAttribute="top" secondItem="QaD-2h-ipL" secondAttribute="bottom" constant="8" id="7UU-mI-K3o"/>
                             <constraint firstItem="8qF-vh-hOd" firstAttribute="leading" secondItem="Lf7-aM-lhL" secondAttribute="leading" constant="16" id="AzY-4s-qGU"/>
+                            <constraint firstItem="Lf7-aM-lhL" firstAttribute="trailing" secondItem="8zA-h3-lIi" secondAttribute="trailing" constant="16" id="CgW-t8-Vuh"/>
                             <constraint firstItem="Lf7-aM-lhL" firstAttribute="trailing" secondItem="Gcf-W0-zxT" secondAttribute="trailing" constant="16" id="E8l-OC-Wxw"/>
                             <constraint firstItem="Lf7-aM-lhL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ENj-YF-hOE" secondAttribute="trailing" id="FRx-qE-NYg"/>
                             <constraint firstItem="bh5-cm-nAO" firstAttribute="leading" secondItem="Aen-J4-7Yv" secondAttribute="trailing" constant="35" id="FtJ-iX-5S8"/>
                             <constraint firstItem="Lf7-aM-lhL" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Aen-J4-7Yv" secondAttribute="trailing" symbolic="YES" id="Gbo-Sh-6xZ"/>
                             <constraint firstItem="Lf7-aM-lhL" firstAttribute="trailing" secondItem="61K-AB-efW" secondAttribute="trailing" constant="146" id="Nch-e3-oSP"/>
                             <constraint firstItem="ENj-YF-hOE" firstAttribute="top" secondItem="Lf7-aM-lhL" secondAttribute="top" constant="13" id="OOy-rB-CD5"/>
+                            <constraint firstItem="8zA-h3-lIi" firstAttribute="top" secondItem="Lf7-aM-lhL" secondAttribute="top" id="Rf0-C7-zlg"/>
                             <constraint firstItem="QaD-2h-ipL" firstAttribute="top" secondItem="Aen-J4-7Yv" secondAttribute="bottom" constant="8" id="TmL-iv-8iG"/>
                             <constraint firstItem="ENj-YF-hOE" firstAttribute="leading" secondItem="8qF-vh-hOd" secondAttribute="trailing" constant="25" id="VRA-RO-oMx"/>
                             <constraint firstItem="bh5-cm-nAO" firstAttribute="top" secondItem="NeC-TT-vjk" secondAttribute="bottom" constant="9" id="WAn-4f-S3E"/>
@@ -795,6 +809,7 @@
                         <outlet property="filterByOwnerLabel" destination="8qF-vh-hOd" id="5r3-qu-2yH"/>
                         <outlet property="filterByRoomLabel" destination="Aen-J4-7Yv" id="k9C-PN-g5j"/>
                         <outlet property="filterSwitch" destination="Gcf-W0-zxT" id="EY3-8K-M3L"/>
+                        <outlet property="helpButton" destination="8zA-h3-lIi" id="uSV-eD-fYT"/>
                         <outlet property="numberOfItems" destination="61K-AB-efW" id="9TP-RP-W06"/>
                         <outlet property="ownerLabel" destination="ENj-YF-hOE" id="WiW-my-stD"/>
                         <outlet property="ownersSegment" destination="NeC-TT-vjk" id="lm7-QN-uxe"/>
@@ -1705,6 +1720,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CUW-YH-HeY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="O1b-9t-bTq"/>
                     <connections>
                         <outlet property="infotxt" destination="itN-Qp-hbL" id="79W-3j-RkP"/>
                     </connections>
@@ -2047,6 +2063,7 @@
                                                     <constraint firstAttribute="width" secondItem="B2S-3c-xlr" secondAttribute="height" multiplier="1:1" id="CZA-wa-cLC"/>
                                                     <constraint firstAttribute="height" constant="35" id="Yjw-MP-tb1"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <state key="normal" image="info.circle.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="helpButton:" destination="d6q-eN-5Vr" eventType="touchUpInside" id="f4k-Dn-VY8"/>
@@ -2211,7 +2228,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Backup your data to iCloud - it will be synced to all other devices and can be restored" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5u-gb-85Y">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="82.5"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2234,7 +2251,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export your data as comma seperated values file to local app directory. Open those files via Files App" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-fd-nKg">
                                         <rect key="frame" x="0.0" y="261.5" width="335" height="110.5"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2284,7 +2301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Es-0u-SMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="1604.3478260869567"/>
+            <point key="canvasLocation" x="1567" y="2128"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="Prw-iu-s7T">

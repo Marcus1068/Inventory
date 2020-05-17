@@ -86,6 +86,8 @@
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
 		2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */; };
+		2CBB791F24712A9F00E201F4 /* Inventoryview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */; };
+		2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -289,6 +291,8 @@
 		2C96898423DA24740001F8BB /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Inventoryview Help English.rtf"; sourceTree = "<group>"; };
+		2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Inventoryview Help German.rtf"; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				2C36FA4E228C9CCC004C1560 /* Reportview Help English.rtf */,
 				2CDA6A5D245C9CE300A90ACF /* WhatsNew German.rtf */,
 				2CDA6A5F245C9CF800A90ACF /* WhatsNew English.rtf */,
+				2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */,
+				2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */,
 			);
 			path = HelpTexts;
 			sourceTree = "<group>";
@@ -762,8 +768,10 @@
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,
 				2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */,
+				2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */,
 				2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */,
 				2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */,
+				2CBB791F24712A9F00E201F4 /* Inventoryview Help English.rtf in Resources */,
 				2C36FA4F228C9CCC004C1560 /* Reportview Help English.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

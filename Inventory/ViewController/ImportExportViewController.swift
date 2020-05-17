@@ -34,7 +34,7 @@ import MobileCoreServices
 
 private let store = CoreDataStorage.shared
 
-class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate, UIPointerInteractionDelegate {
+class ImportExportViewController: UIViewController, MFMailComposeViewControllerDelegate, UIDocumentPickerDelegate, UIPointerInteractionDelegate, UIPopoverPresentationControllerDelegate {
 
     
     @IBOutlet weak var exportCVSButton: UIButton!
@@ -42,6 +42,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var importCVSButton: UIButton!
     @IBOutlet weak var backupButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
+    @IBOutlet weak var helpButton: UIButton!
     
     var url : URL?
     
@@ -85,6 +86,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // needed for iPhone compatibilty when using popup controller
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     /*
@@ -562,6 +568,39 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // MARK: - button actions
+    
+    @IBAction func helpAction(_ sender: UIButton) {
+        // create popover via storyboard instead of segue
+           let myVC = storyboard?
+               .instantiateViewController(withIdentifier: "PopupViewController")   // defined in Storyboard identifier
+               as! PopupViewController
+           
+           // here goes the popup text
+           var fileName : String
+           
+           switch Local.currentLocaleForDate(){
+           case "de_DE", "de_AT", "de_CH", "de":
+               fileName = "ImportExportview Help German"
+               break
+               
+           default: // all other languages get english text
+               fileName = "ImportExportview Help English"
+               break
+           }
+           
+           myVC.myText = Global.getRTFFileFromBundle(fileName: fileName)
+           // this needs to define calling view controller type
+           myVC.importexportVC = self
+           
+           // show the popover
+           myVC.modalPresentationStyle = .popover
+           let popPC = myVC.popoverPresentationController!
+           popPC.sourceView = sender
+           popPC.sourceRect = sender.bounds
+           popPC.permittedArrowDirections = .up
+           popPC.delegate = self
+           present(myVC, animated:false, completion: nil)
+    }
     
     @IBAction func restoreAction(_ sender: UIButton) {
         

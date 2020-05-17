@@ -88,6 +88,8 @@
 		2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */; };
 		2CBB791F24712A9F00E201F4 /* Inventoryview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */; };
 		2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */; };
+		2CBB7923247134D200E201F4 /* ImportExportview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */; };
+		2CBB7925247134E700E201F4 /* ImportExportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -293,6 +295,8 @@
 		2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Inventoryview Help English.rtf"; sourceTree = "<group>"; };
 		2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "Inventoryview Help German.rtf"; sourceTree = "<group>"; };
+		2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help English.rtf"; sourceTree = "<group>"; };
+		2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help German.rtf"; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 				2CDA6A5F245C9CF800A90ACF /* WhatsNew English.rtf */,
 				2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */,
 				2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */,
+				2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */,
+				2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */,
 			);
 			path = HelpTexts;
 			sourceTree = "<group>";
@@ -761,6 +767,7 @@
 				2C56E8B72086350B00FD5136 /* Assets.xcassets in Resources */,
 				2C5DE31D2275CDCE00C60EEF /* Apache License.rtf in Resources */,
 				2C870A17229293E200F36F99 /* Default-568h@2x.png in Resources */,
+				2CBB7923247134D200E201F4 /* ImportExportview Help English.rtf in Resources */,
 				2C847E9C2286EADD0063EF25 /* image_file1024.jpg in Resources */,
 				2C89B96A2279995500DB74D3 /* Privacy english.rtf in Resources */,
 				2CFFA63024699C37007DC97C /* Settings.bundle in Resources */,
@@ -768,6 +775,7 @@
 				2C56E8B52086350A00FD5136 /* Main.storyboard in Resources */,
 				2C5DE318227472D000C60EEF /* Inventory App Handbuch.pdf in Resources */,
 				2C847E9A2286E1DE0063EF25 /* InventorySplash.jpg in Resources */,
+				2CBB7925247134E700E201F4 /* ImportExportview Help German.rtf in Resources */,
 				2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */,
 				2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */,
 				2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */,

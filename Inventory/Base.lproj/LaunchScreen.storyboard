@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InventorySplash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-TL-b4z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InventorySplash_v2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5fh-TL-b4z">
                                 <rect key="frame" x="256" y="434.5" width="512" height="497"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -60,6 +60,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="InventorySplash.jpg" width="512" height="512"/>
+        <image name="InventorySplash_v2.jpg" width="1024" height="1024"/>
     </resources>
 </document>

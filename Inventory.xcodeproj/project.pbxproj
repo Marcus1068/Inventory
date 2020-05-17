@@ -91,6 +91,7 @@
 		2CBB7923247134D200E201F4 /* ImportExportview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */; };
 		2CBB7925247134E700E201F4 /* ImportExportview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */; };
 		2CBB792724716B7900E201F4 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */; };
+		2CBB79292471B16400E201F4 /* InventorySplash_v2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB79282471B16400E201F4 /* InventorySplash_v2.jpg */; };
 		2CC4C0C8228AB6B200F45A44 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */; };
 		2CC648B222968F6F00A6DA65 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B022968F6F00A6DA65 /* Interface.storyboard */; };
 		2CC648B422968F7000A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648B322968F7000A6DA65 /* Assets.xcassets */; };
@@ -299,6 +300,7 @@
 		2CBB7922247134D200E201F4 /* ImportExportview Help English.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help English.rtf"; sourceTree = "<group>"; };
 		2CBB7924247134E700E201F4 /* ImportExportview Help German.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "ImportExportview Help German.rtf"; sourceTree = "<group>"; };
 		2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		2CBB79282471B16400E201F4 /* InventorySplash_v2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InventorySplash_v2.jpg; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		2C847E982286E1940063EF25 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2CBB79282471B16400E201F4 /* InventorySplash_v2.jpg */,
 				2C847E992286E1DE0063EF25 /* InventorySplash.jpg */,
 				2C847E9B2286EADD0063EF25 /* image_file1024.jpg */,
 			);
@@ -781,6 +784,7 @@
 				2CBB7925247134E700E201F4 /* ImportExportview Help German.rtf in Resources */,
 				2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */,
 				2C89B968227997D600DB74D3 /* Privacy german.rtf in Resources */,
+				2CBB79292471B16400E201F4 /* InventorySplash_v2.jpg in Resources */,
 				2C36FA4B228C9681004C1560 /* Aboutview Help English.rtf in Resources */,
 				2CBB791F24712A9F00E201F4 /* Inventoryview Help English.rtf in Resources */,
 				2C36FA4F228C9CCC004C1560 /* Reportview Help English.rtf in Resources */,

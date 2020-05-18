@@ -134,7 +134,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         //let barButtonItem = UIBarButtonItem(customView: activityIndicator)
         //navigationItem.leftBarButtonItem = barButtonItem
        
-        let container = store.persistentContainer
+        //let container = store.persistentContainer
         
       //  container.performBackgroundTask { (context) in
             
@@ -1010,13 +1010,29 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
-        //let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        var importedRows = 0
         
-        let importedRows = importCVSFile(fileURL: iCloudDocumentsURL, localDir: false)
-        
-        let message = NSLocalizedString("Restore from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
-                        " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
-        displayAlert(title: title, message: message, buttonText: Global.done)
+        DispatchQueue.main.async() {
+            // here comes long running function
+            importedRows = self.importCVSFile(fileURL: iCloudDocumentsURL, localDir: false)
+            
+            let title = NSLocalizedString("Import", comment: "Import")
+            let message = NSLocalizedString("Import from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
+                            " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+            self.displayAlert(title: title, message: message, buttonText: Global.done)
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
     
     // export to cvs via backgroud task

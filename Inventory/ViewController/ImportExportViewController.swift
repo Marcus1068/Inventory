@@ -369,23 +369,27 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // assign image from directory
                 if inventory.imageFileName! != ""{
-                    //let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
+                    //let _ = imagesFolderPath!.startAccessingSecurityScopedResource()
                     let pathURL = imagesFolderPath!.appendingPathComponent(inventory.imageFileName!)
-                    let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
+                    //let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
                     
+                    
+                    //let imageURL = URL(fileURLWithPath: pathURL.path)
+                    
+                    let image    = UIImage(contentsOfFile: pathURL.path)
+                    //let _ = imagesFolderPath!.stopAccessingSecurityScopedResource()
+                
                     /*
                      iCloud:
-                     (lldb) po a!
-                     "/private/var/mobile/Library/Mobile Documents/com~apple~CloudDocs/Inventory App Backup/Images/AVM 1750E Repeater_2020_8_2_14_39_9.jpg"
+                     (lldb) po pathURL
+                     ▿ file:///Users/marcus/Library/Mobile%20Documents/com~apple~CloudDocs/Inventory%20App%20Backup/Images/AVM%201750E%20Repeater_2020_8_2_14_39_9.jpg
                      */
                     
                     /*
-                     (lldb) po a!
-                     "/private/var/mobile/Containers/Data/Application/7BEB1E01-1E6F-4FCF-A30A-4E7415661C7C/Documents/Images/AVM 1750E Repeater_2020_8_2_14_39_9.jpg"
+                     lldb) po pathURL
+                     ▿ file:///Users/marcus/Downloads/Inventory%20App%20Backup/Images/AVM%201750E%20Repeater_2020_8_2_14_39_9.jpg
 
-                     
                      */
-                    //let image = try? UIImage(contentsOfFile: URL(resolvingAliasFileAt: pathURL).path)
                     
                     if image != nil{
                         let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
@@ -781,9 +785,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         else {
             return
         }
-        defer {
+        /*defer {
             url.stopAccessingSecurityScopedResource()
-        }
+        }*/
         // do something with the selected document
         dir = url
         dir.deleteLastPathComponent()
@@ -800,10 +804,12 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         DispatchQueue.main.async() {
             // here comes long running function
-            importedRows = self.importCVSFile(fileURL: dir, localDir: true)
+            
+            let fileDir = self.copyDocumentsFromDirectory(sourceURL: dir)
+            importedRows = self.importCVSFile(fileURL: fileDir!, localDir: true)
             
             let title = NSLocalizedString("Import", comment: "Import")
-            let message = NSLocalizedString("Import from iCloud succeeded with", comment: "Restore from iCloud succeeded") +
+            let message = NSLocalizedString("Import succeeded with", comment: "Import succeeded with") +
                             " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
             self.displayAlert(title: title, message: message, buttonText: Global.done)
             
@@ -812,6 +818,8 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             child.view.removeFromSuperview()
             child.removeFromParent()
         }
+        
+        url.stopAccessingSecurityScopedResource()
     }
 
     // cancel opening/choosing files
@@ -893,10 +901,30 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         return nil
     }
     
-    // copy/replace images folder and pdf folder and csv file
+    // before running import function copy all necessary files to temp folder
+    // returns destination URL to find all files later on
+    func copyDocumentsFromDirectory(sourceURL: URL) -> URL?{
+        guard let destURL = URL.createFolder(folderName: "temp") else { return nil}
+        
+        let destImages = destURL.appendingPathComponent(Global.imagesFolder)
+        let destPDF = destURL.appendingPathComponent(Global.pdfFolder)
+         
+        let sourceImages = sourceURL.appendingPathComponent(Global.imagesFolder)
+        let sourcePDF = sourceURL.appendingPathComponent(Global.pdfFolder)
+         
+        let destCSVFile = destURL.appendingPathComponent(Global.csvFile)
+        let sourceCSVFile = sourceURL.appendingPathComponent(Global.csvFile)
+        
+        let _ = FileManager.default.secureCopyItem(at: sourceCSVFile, to: destCSVFile)
+        let _ = FileManager.default.secureCopyItem(at: sourceImages, to: destImages)
+        let _ = FileManager.default.secureCopyItem(at: sourcePDF, to: destPDF)
+        
+        return destURL
+    }
+    
+    // copy/replace images folder and pdf folder and csv file to iCloud app container directory
     func copyDocumentsToiCloudDirectory() {
         guard let localDocumentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last else { return }
-        
         guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder) else { return }
         
         let localImages = localDocumentsURL.appendingPathComponent(Global.imagesFolder)
@@ -909,6 +937,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
         let _ = iCloudCSVFile.startAccessingSecurityScopedResource()
+        
         // first remove old csv file
         do{
             try FileManager.default.removeItem(at: iCloudCSVFile)

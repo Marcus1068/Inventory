@@ -231,8 +231,7 @@ class InventoryEditViewController: UITableViewController, UIDocumentPickerDelega
                         self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
                 }
                 
-                // FIXME
-                let pdfFolderPath = URL.createFolder(folderName: "Share")
+                let pdfFolderPath = URL.getTemporaryFolder() //createFolder(folderName: "Share")
                 let pathURLpdf = pdfFolderPath!.appendingPathComponent(currentInventory!.invoiceFileName!)
                 
                 let invoiceData = currentInventory!.invoice! as Data
@@ -915,7 +914,7 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
             // Show system share sheet
             
             // first save file to temp dir
-            let pathURL = URL.createFolder(folderName: "Share")
+            let pathURL = URL.getTemporaryFolder() //createFolder(folderName: "Share")
             if self.currentInventory?.imageFileName == "" {
                 self.currentInventory?.imageFileName = self.generateFilename(invname: self.currentInventory!.inventoryName!) + ".jpg"
             }

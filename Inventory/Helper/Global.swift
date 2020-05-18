@@ -406,6 +406,7 @@ class Global: UIViewController {
         return dropFilePath
     }
     
+    
     /// scales an image to a different size
     ///
     /// - Parameters:
@@ -514,6 +515,22 @@ extension String {
     }
 }
 
+extension FileManager {
+    open func secureCopyItem(at srcURL: URL, to dstURL: URL) -> Bool {
+        do {
+            if FileManager.default.fileExists(atPath: dstURL.path) {
+                try FileManager.default.removeItem(at: dstURL)
+            }
+            try FileManager.default.copyItem(at: srcURL, to: dstURL)
+        } catch (let error) {
+            print("Cannot copy item at \(srcURL) to \(dstURL): \(error)")
+            return false
+        }
+        return true
+    }
+
+}
+
 // used to create folders inside of document folder like this:
 // For example, to create the folder "MyStuff", you would call it like this:
 // let myStuffURL = URL.createFolder(folderName: "MyStuff")
@@ -543,6 +560,54 @@ extension URL {
         }
         // Will only be called if document directory not found
         return nil
+    }
+    
+    // create a sub folder within temp folder
+    static func createTempSubFolder(subFolderName: String) -> URL? {
+        
+        let temp = URL.getTemporaryFolder()?.appendingPathComponent(subFolderName)
+
+        do {
+            let dir = try FileManager.default.url(
+                for: .itemReplacementDirectory,
+                in: .userDomainMask,
+                appropriateFor: temp,
+                create: true
+            )
+            return dir
+            
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    
+    // creates a folder that will be purged by the system sometimes
+    static func createTemporaryFolder() -> URL? {
+        let temp = URL.getTemporaryFolder()
+
+        do {
+            let dir = try FileManager.default.url(
+                for: .itemReplacementDirectory,
+                in: .userDomainMask,
+                appropriateFor: temp,
+                create: true
+            )
+            return dir
+            
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    // get temp folder to store things that live shortly
+    static func getTemporaryFolder() -> URL? {
+        
+        let tmpDirURL = FileManager.default.temporaryDirectory
+        
+        return tmpDirURL
     }
 }
 

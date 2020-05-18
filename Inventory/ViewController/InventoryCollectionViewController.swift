@@ -1218,7 +1218,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                 if inv.image != nil{
                 
                     // first save file to temp dir
-                   let pathURL = URL.createFolder(folderName: "Share")
+                   let pathURL = URL.getTemporaryFolder() //createFolder(folderName: "Share")
                    if inv.imageFileName == "" {
                     inv.imageFileName = self.generateFilename(invname: inv.inventoryName!) + ".jpg"
                    }
@@ -1251,7 +1251,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                 if inv.invoice != nil{
                    
                    // Show system share sheet
-                    let pdfFolderPath = URL.createFolder(folderName: "Share")
+                    let pdfFolderPath = URL.getTemporaryFolder() //createFolder(folderName: "Share")
                     let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
                     
                     let invoiceData = inv.invoice! as Data

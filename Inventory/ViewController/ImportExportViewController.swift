@@ -916,7 +916,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let sourceCSVFile = sourceURL.appendingPathComponent(Global.csvFile)
         
         let _ = FileManager.default.secureCopyItem(at: sourceCSVFile, to: destCSVFile)
-        let _ = FileManager.default.secureCopyItem(at: sourceImages, to: destImages)
+        let _ = FileManager.default.secureCopyItem(at: sourceImages, to: destImages)    // FIXME crashes on MacOS
         let _ = FileManager.default.secureCopyItem(at: sourcePDF, to: destPDF)
         
         return destURL
@@ -937,58 +937,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
         let _ = iCloudCSVFile.startAccessingSecurityScopedResource()
-        
-        // first remove old csv file
-        do{
-            try FileManager.default.removeItem(at: iCloudCSVFile)
-        }
-        catch{
-            print("no old csv file")
-        }
-        
-        // now copy new csv file to backup destination
-        do {
-            try FileManager.default.copyItem(at: localCSVFile, to: iCloudCSVFile)
-        }
-        catch {
-            //Error handling
-            print("Error in copy csv file")
-        }
+        let _ = FileManager.default.secureCopyItem(at: localCSVFile, to: iCloudCSVFile)
         let _ = iCloudCSVFile.stopAccessingSecurityScopedResource()
         
-       // remove image files
-       do{
-            try FileManager.default.removeItem(at: iCloudImages)
-        }
-        catch{
-            print("no old image files")
-        }
-        
-        // now copy new image files to backup destination
-        do {
-            try FileManager.default.copyItem(at: localImages, to: iCloudImages)
-        }
-        catch {
-            //Error handling
-            print("Error in copy images")
-        }
-        
-        // remove pdf files
-        do{
-             try FileManager.default.removeItem(at: iCloudPDF)
-         }
-         catch{
-             print("no old pdf files")
-         }
-         
-         // now copy new pdf files to backup destination
-         do {
-             try FileManager.default.copyItem(at: localPDF, to: iCloudPDF)
-         }
-         catch {
-             //Error handling
-             print("Error in copy pdfs")
-         }
+        let _ = FileManager.default.secureCopyItem(at: localImages, to: iCloudImages)
+        let _ = FileManager.default.secureCopyItem(at: localPDF, to: iCloudPDF)
         
     }
     

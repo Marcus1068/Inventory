@@ -161,6 +161,10 @@ class Global: UIViewController {
     
     static let messageGenerateSampleData = NSLocalizedString("Generate some sample data", comment: "Generate some sample data")
     
+    static let messageExportFinished = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
+    static let titleExportFinished = NSLocalizedString("Export finished", comment: "Export finished")
+    static let numberOfExportedRows = NSLocalizedString("number of rows have been exported", comment: "number of rows have been exported")
+    
     static let firstPage = NSLocalizedString("First page", comment: "First page")
     static let lastPage = NSLocalizedString("Last page", comment: "Last page")
     

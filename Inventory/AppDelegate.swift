@@ -69,6 +69,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 30) ??    // Arial
                 UIFont.systemFont(ofSize: 30)]
         
+        // register for user defaults
+        registerDefaultsFromSettingsBundle()
+        
         // influences text color
         //window?.tintColor = themeColor
         
@@ -101,7 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             the values of preferences the user (via the Settings app) or your app (via set*:forKey:) has not modified.
             Registering a set of default values ensures that your app always has a known good set of values to operate on.
         */
-        registerDefaultsFromSettingsBundle()
+        
         
         // create directory for export/import stuff
         let _ = URL.createFolder(folderName: Global.imagesFolder)
@@ -390,6 +393,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.pushViewController(editView, animated: false)
         
         editView.openFilesApp()
+        
     }
     
     @objc func exportMenu() {

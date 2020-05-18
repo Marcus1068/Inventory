@@ -136,20 +136,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
        
         let container = store.persistentContainer
         
-        container.performBackgroundTask { (context) in
+      //  container.performBackgroundTask { (context) in
             
             var results: [Inventory] = []
             
             do {
-                results = try context.fetch(self.inventoryFetchRequest())
+                results = try store.getContext().fetch(self.inventoryFetchRequest())
             } catch let error as NSError {
                 print("ERROR: \(error.localizedDescription)")
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
             //let cvsFileName = Global.csvFile
-            let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
+            let docPathcsv = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let pathURLcvs = docPathcsv.appendingPathComponent(Global.csvFile)
             self.url = pathURLcvs
             
             //let exportDocPath = pathURLcvs.absoluteString
@@ -167,15 +167,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             
             do {
                 try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
-                //print("Export Path: \(exportDocPath)")
-                DispatchQueue.main.async {
-                    
-                    // show alert box with path name
-                    let message = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
-                    
-                    let title = NSLocalizedString("Export Finished", comment: "Export Finished")
-                    self.displayAlert(title: title, message: message, buttonText: Global.dismiss)
-                }
+                
             } catch {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
                 print("Failed to create inventory csv file")
@@ -220,12 +212,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
             }
             
-            DispatchQueue.main.async {
-                // at the end of export report the number of exported rows to user
-                
-                self.navigationItem.leftBarButtonItem = nil
-            }
-        }
+       // }
         
         return exportedRows
     }
@@ -655,14 +642,20 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         view.addSubview(child.view)
         child.didMove(toParent: self)
         
+        var numberOfRowsExported = 0
+        
         DispatchQueue.main.async() {
             // here comes long running function
-            let _ = self.exportCSVFile()
+            numberOfRowsExported = self.exportCSVFile()
             
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
+            
+            // show alert box with path name
+            let text = Global.messageExportFinished + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
+            self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
         }
         
     }
@@ -676,15 +669,22 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         view.addSubview(child.view)
         child.didMove(toParent: self)
         
+        var numberOfRowsExported = 0
+        
         DispatchQueue.main.async() {
             // here comes long running function
-            let _ = self.exportCSVFile()
+            numberOfRowsExported = self.exportCSVFile()
             
             // then remove the spinner view controller
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
+            
+            // show alert box with path name
+            let text = Global.messageExportFinished + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
+            self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
         }
+    
     }
     
     // share system button to share csv file
@@ -908,7 +908,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let localCSVFile = localDocumentsURL.appendingPathComponent(Global.csvFile)
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
         
-        
+        let _ = iCloudCSVFile.startAccessingSecurityScopedResource()
         // first remove old csv file
         do{
             try FileManager.default.removeItem(at: iCloudCSVFile)
@@ -925,6 +925,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             //Error handling
             print("Error in copy csv file")
         }
+        let _ = iCloudCSVFile.stopAccessingSecurityScopedResource()
         
        // remove image files
        do{
@@ -976,6 +977,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             return
         }
         
+        // first generate files to be copied
+        let numberOfRowsExported = exportCSVFile()
+        
         let _ = createiCloudDirectory(folder: Global.backupFolder)
         let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
         let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
@@ -983,20 +987,9 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         // copy all data from documents dir to iCloud
         copyDocumentsToiCloudDirectory()
         
-        var results: [Inventory] = []
-        let store = CoreDataStorage.shared
-        
-        let context = store.getContext()
-        
-        do {
-            results = try context.fetch(self.inventoryFetchRequest())
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-        }
-        
         // show alert box with path name
         var message = NSLocalizedString("Backup finished successfully with", comment: "Backup finished successfully with")
-        message += " \(results.count) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+        message += " \(numberOfRowsExported) " + NSLocalizedString("inventory objects", comment: "inventory objects")
         displayAlert(title: title, message: message, buttonText: Global.done)
     }
     

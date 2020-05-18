@@ -197,7 +197,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 }
                 
                 // export PDF files
-                if inv.invoiceFileName != nil && inv.invoiceFileName != "" {
+                if inv.invoiceFileName != nil && inv.invoiceFileName != "" && inv.invoice != nil{
                     let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
                     
                     let invoiceData = inv.invoice! as Data
@@ -377,19 +377,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                     //let imageURL = URL(fileURLWithPath: pathURL.path)
                     
                     let image    = UIImage(contentsOfFile: pathURL.path)
-                    //let _ = imagesFolderPath!.stopAccessingSecurityScopedResource()
-                
-                    /*
-                     iCloud:
-                     (lldb) po pathURL
-                     ▿ file:///Users/marcus/Library/Mobile%20Documents/com~apple~CloudDocs/Inventory%20App%20Backup/Images/AVM%201750E%20Repeater_2020_8_2_14_39_9.jpg
-                     */
-                    
-                    /*
-                     lldb) po pathURL
-                     ▿ file:///Users/marcus/Downloads/Inventory%20App%20Backup/Images/AVM%201750E%20Repeater_2020_8_2_14_39_9.jpg
-
-                     */
                     
                     if image != nil{
                         let imageData: NSData = image!.jpegData(compressionQuality: 1.0)! as NSData
@@ -817,6 +804,16 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
             child.removeFromParent()
+            
+            // delete temp dir since we dont need it anymore
+            do {
+                try FileManager.default.removeItem(at: fileDir!)
+                
+            }
+            catch{
+                print("delete temp did not work")
+            }
+            
         }
         
         url.stopAccessingSecurityScopedResource()

@@ -805,6 +805,20 @@ public class CoreDataStorage {
         return []
     }
     
+    // delete all inventory objects
+    func deleteInventory() -> Bool{
+        let context = getContext()
+        
+        let delete = NSBatchDeleteRequest(fetchRequest: Inventory.fetchRequest())
+        
+        do {
+            try context.execute(delete)
+            return true
+        } catch  {
+            return false
+        }
+    }
+    
     // fetch array, if no array, return nil
     func fetchInventoryWithoutBinaryData() -> [Inventory]
     {
@@ -1071,10 +1085,6 @@ public class CoreDataStorage {
     }
     
     func deleteAllData(){
-        // step 1:
-        // check if data on device contains only sample data
-        // step 2:
-        // remove sample data
         
         //let inv = fetchInventory()
         
@@ -1082,6 +1092,7 @@ public class CoreDataStorage {
         let _ = deleteAllBrands()
         let _ = deleteAllOwners()
         let _ = deleteAllCategories()
+        let _ = deleteInventory()
     
         saveContext()
     }

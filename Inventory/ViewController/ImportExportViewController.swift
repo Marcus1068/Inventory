@@ -842,33 +842,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
     }
     
-    #if targetEnvironment(macCatalyst)
-    
-    override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = NSTouchBar()
-        
-        touchBar.defaultItemIdentifiers = [.touchExport, .touchImport, .fixedSpaceSmall, .touchBackup, .touchRestore, .fixedSpaceSmall, .touchShare]
-        
-        let importButton = NSButtonTouchBarItem(identifier: .touchImport, title: Global.importButton, target: self, action: #selector(importFromCVSFileButton(_:)))
-        importButton.bezelColor = Global.colorGreen
-        
-        let exportButton = NSButtonTouchBarItem(identifier: .touchExport, title: Global.exportButton, target: self, action: #selector(exportCVSButtonAction(_:)))
-        exportButton.bezelColor = Global.colorGreen
-        
-        let shareButton = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
-        
-        let backupBtn = NSButtonTouchBarItem(identifier: .touchBackup, image: UIImage(systemName: "icloud.and.arrow.up.fill")!, target: self, action: #selector(backupAction))
-        backupBtn.bezelColor = Global.colorGreen
-        
-        let restoreBtn = NSButtonTouchBarItem(identifier: .touchRestore, image: UIImage(systemName: "icloud.and.arrow.down.fill")!, target: self, action: #selector(restoreAction))
-        restoreBtn.bezelColor = Global.colorGreen
-        
-        touchBar.templateItems = [importButton, exportButton, backupBtn, restoreBtn, shareButton]
-        
-        return touchBar
-    }
-
-    #endif
     
     // check if iCloud account available
     func isICloudContainerAvailable() -> Bool {
@@ -1093,6 +1066,34 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        
+        touchBar.defaultItemIdentifiers = [.touchExport, .touchImport, .fixedSpaceSmall, .touchBackup, .touchRestore, .fixedSpaceSmall, .touchShare]
+        
+        let importButton = NSButtonTouchBarItem(identifier: .touchImport, title: Global.importButton, target: self, action: #selector(importFromCVSFileButton(_:)))
+        importButton.bezelColor = Global.colorGreen
+        
+        let exportButton = NSButtonTouchBarItem(identifier: .touchExport, title: Global.exportButton, target: self, action: #selector(exportCVSButtonAction(_:)))
+        exportButton.bezelColor = Global.colorGreen
+        
+        let shareButton = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareButtonAction(_:)))
+        
+        let backupBtn = NSButtonTouchBarItem(identifier: .touchBackup, image: UIImage(systemName: "icloud.and.arrow.up.fill")!, target: self, action: #selector(backupAction))
+        backupBtn.bezelColor = Global.colorGreen
+        
+        let restoreBtn = NSButtonTouchBarItem(identifier: .touchRestore, image: UIImage(systemName: "icloud.and.arrow.down.fill")!, target: self, action: #selector(restoreAction))
+        restoreBtn.bezelColor = Global.colorGreen
+        
+        touchBar.templateItems = [importButton, exportButton, backupBtn, restoreBtn, shareButton]
+        
+        return touchBar
+    }
+
+    #endif
         
 }
 

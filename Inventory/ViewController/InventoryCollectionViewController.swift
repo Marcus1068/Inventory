@@ -1186,10 +1186,11 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
             
             // delete selected inventory item
             let delete = UIAction(title: Global.delete, image: UIImage(systemName: "trash"), attributes: .destructive) { action in
-                
-                let dialogMessage = UIAlertController(title: Global.delete, message: Global.deleteInventory, preferredStyle: .alert)
+                let deleteMessage = Global.deleteInventory + " " + inv.inventoryName!
+                let dialogMessage = UIAlertController(title: Global.delete, message: deleteMessage, preferredStyle: .alert)
                 
                 // Create OK button with action handler
+                
                 let delete = UIAlertAction(title: Global.delete, style: .destructive, handler: { (action) -> Void in
                     _ = store.deleteInventory(inventory: inv)
                     do {

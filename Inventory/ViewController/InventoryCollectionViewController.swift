@@ -1239,7 +1239,8 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                        }
                    }
                    
-                   self.shareAction(currentPath: pathURLjpeg, sourceView: self.collection)
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! InventoryCollectionViewCell
+                    self.shareAction(currentPath: pathURLjpeg, sourceView: cell)//self.collection)
                 }
                 else{
                     let message = NSLocalizedString("No image to share", comment: "No image to share")
@@ -1264,7 +1265,8 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                         print("error saving pdf file:", error)
                     }
                    
-                   self.shareAction(currentPath: pathURLpdf, sourceView: self.collection)
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! InventoryCollectionViewCell
+                   self.shareAction(currentPath: pathURLpdf, sourceView: cell)
                 }
                 else{
                     let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")

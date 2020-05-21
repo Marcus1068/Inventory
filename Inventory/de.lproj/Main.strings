@@ -37,6 +37,9 @@
 /* Class = "UILabel"; text = "Last report:"; ObjectID = "5ZR-ch-75D"; */
 "5ZR-ch-75D.text" = "Letzter Bericht:";
 
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "06f-fW-Xsh"; */
+"06f-fW-Xsh.title" = "Erledigt";
+
 /* Class = "UIButton"; normalTitle = "App Information"; ObjectID = "6t7-0P-Kka"; */
 "6t7-0P-Kka.normalTitle" = "Information";
 
@@ -282,6 +285,9 @@
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "OXg-EA-537"; */
 "OXg-EA-537.title" = "Titel";
+
+/* Class = "UILabel"; text = "Find your exported data in App directory on iOS and in Downloads folder on Mac"; ObjectID = "p77-yP-sba"; */
+"p77-yP-sba.text" = "Ihre exportierten Daten sind im App Verzeichnis auf iOS und im Downloads Ordner auf dem Mac zu finden";
 
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
 "PHQ-NS-mde.text" = "Hinweis: Ändern des Eigentümernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";

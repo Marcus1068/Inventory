@@ -1190,7 +1190,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = Inventory;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1219,7 +1219,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = Inventory;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1241,7 +1241,7 @@
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
@@ -1265,7 +1265,7 @@
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1291,7 +1291,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp.watchkitextension";
@@ -1318,7 +1318,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1344,7 +1344,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
@@ -1370,7 +1370,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.37;
+				MARKETING_VERSION = 2.38;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
 				PRODUCT_NAME = "Inventory App";

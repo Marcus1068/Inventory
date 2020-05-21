@@ -165,7 +165,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         //os_log("ReportViewController viewDidLoad", log: Log.viewcontroller, type: .info)
         
         // https://medium.com/@luisfmachado/uiscrollview-autolayout-on-a-storyboard-a-step-by-step-guide-15bd67ee79e9
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+500)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 500)
         
         all = Global.all
         
@@ -187,13 +187,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         paperFormatSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         sortOrderSegment.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
-        // Do any additional setup after loading the view.
-        // new in ios11: large navbar titles
-        // new in ios11: large navbar titles
-        if #available(iOS 11.0, *) {
-            self.navigationItem.largeTitleDisplayMode = .never
-            self.navigationItem.largeTitleDisplayMode = .always
-        }
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.largeTitleDisplayMode = .always
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -211,12 +206,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfInit()
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: imageSwitch, pointerInteractionDelegate: self)
-            customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
+        customPointerInteraction(on: imageSwitch, pointerInteractionDelegate: self)
+        customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
         
         // context menu interaction
         let pdfInteraction = UIContextMenuInteraction(delegate: self)
@@ -229,13 +220,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
-        
- /*       // no pdf document still
-        if pdfView.document == nil{
-            shareActionBarButton.isEnabled = false
-            emailActionButton.isEnabled = false
-        } */
         // get the data from Core Data
         rooms = store.fetchAllRooms()
         brands = store.fetchAllBrands()
@@ -348,7 +332,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             if ownerFilter == all && roomFilter != all{
                 // use filter for room only
                 let filterWhere = "inventoryRoom.roomName == %@"
-                let filterCompare = ownerFilter
+                let filterCompare = roomFilter
                 
                 do {
                     results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
@@ -1633,10 +1617,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
-    // print PDF file to printer
+    // print PDF file to printer, called from menu and toolbar
     @objc func printPDFAction(url: URL?) {
         
-        // refresh data from core data
+        // refresh report data, no filter
         fetchData(ownerFilter: "", roomFilter: "")
         
         if let guide_url = url{
@@ -1648,9 +1632,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 let printController = UIPrintInteractionController.shared
                 printController.printInfo = printInfo
                 printController.showsNumberOfCopies = true
-
                 printController.printingItem = guide_url
-
                 printController.present(animated: true, completionHandler: nil)
             }
         }

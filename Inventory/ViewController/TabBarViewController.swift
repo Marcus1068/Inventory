@@ -145,13 +145,29 @@ class TabBarViewController: UITabBarController {
     @objc private func aboutEntry(_ sender: UIBarButtonItem) {
         self.selectedIndex = 4
     }
+    
+    @objc private func printEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+       
+        tabBarController.selectedIndex = 3
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        //let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
+        //nav.pushViewController(editView, animated: false)
+        let pdf = editView.pdfCreateInventoryReport()
+        let url = editView.pdfSave(pdf)
+        
+        editView.printPDFAction(url: url)
+    }
 
     // touch bar only in catalyst app
     #if targetEnvironment(macCatalyst)
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, .touchShare, .fixedSpaceSmall, .touchAbout]
+        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, .touchShare, .touchPrint, .fixedSpaceSmall, .touchAbout]
         
         let manage = NSButtonTouchBarItem(identifier: .touchManage, image: UIImage(systemName: "list.number")!, target: self, action: #selector(manageItemsEntry))
         manage.bezelColor = Global.colorGreen
@@ -165,6 +181,9 @@ class TabBarViewController: UITabBarController {
         let share = NSButtonTouchBarItem(identifier: .touchShare, image: UIImage(systemName: "square.and.arrow.up")!, target: self, action: #selector(shareEntry))
         share.bezelColor = Global.colorGreen
         
+        let print = NSButtonTouchBarItem(identifier: .touchPrint, image: UIImage(systemName: "printer")!, target: self, action: #selector(printEntry))
+        print.bezelColor = Global.colorGreen
+        
         let about = NSButtonTouchBarItem(identifier: .touchAbout, image: UIImage(systemName: "info.circle")!, target: self, action: #selector(aboutEntry))
         about.bezelColor = Global.colorGreen
         
@@ -174,7 +193,7 @@ class TabBarViewController: UITabBarController {
         let impExp = NSButtonTouchBarItem(identifier: .touchImportExport, image: UIImage(systemName: "square.and.arrow.down.on.square")!, target: self, action: #selector(importExportEntry))
         impExp.bezelColor = Global.colorGreen
         
-        touchBar.templateItems = [manage, add, impExp, report, inventory, share, about]
+        touchBar.templateItems = [manage, add, impExp, report, inventory, share, print, about]
         
         return touchBar
     }

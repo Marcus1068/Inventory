@@ -1239,7 +1239,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                        }
                    }
                    
-                   self.shareAction(currentPath: pathURLjpeg)
+                   self.shareAction(currentPath: pathURLjpeg, sourceView: self.collection)
                 }
                 else{
                     let message = NSLocalizedString("No image to share", comment: "No image to share")
@@ -1264,7 +1264,7 @@ extension InventoryCollectionViewController: UIContextMenuInteractionDelegate {
                         print("error saving pdf file:", error)
                     }
                    
-                   self.shareAction(currentPath: pathURLpdf)
+                   self.shareAction(currentPath: pathURLpdf, sourceView: self.collection)
                 }
                 else{
                     let message = NSLocalizedString("No PDF attached to inventory", comment: "No PDF attached")

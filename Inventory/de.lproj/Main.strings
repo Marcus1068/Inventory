@@ -38,7 +38,7 @@
 "5ZR-ch-75D.text" = "Letzter Bericht:";
 
 /* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "06f-fW-Xsh"; */
-"06f-fW-Xsh.title" = "Erledigt";
+"06f-fW-Xsh.title" = "Fertig";
 
 /* Class = "UIButton"; normalTitle = "App Information"; ObjectID = "6t7-0P-Kka"; */
 "6t7-0P-Kka.normalTitle" = "Information";

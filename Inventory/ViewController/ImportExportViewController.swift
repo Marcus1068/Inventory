@@ -632,7 +632,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let _ = exportCSVFile()
         
-        shareAction(currentPath: self.url!)
+        shareAction(currentPath: self.url!, sourceView: self.view)
     }
     
     // import button
@@ -785,6 +785,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     // copy/replace images folder and pdf folder and csv file to iCloud app container directory
     func copyDocumentsToiCloudDirectory() {
+        
+        let _ = createiCloudDirectory(folder: Global.backupFolder)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
+        
         guard let localDocumentsURL = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: .userDomainMask).last else { return }
         guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder) else { return }
         
@@ -796,6 +801,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let localCSVFile = localDocumentsURL.appendingPathComponent(Global.csvFile)
         let iCloudCSVFile = iCloudDocumentsURL.appendingPathComponent(Global.csvFile)
+        
+        // first delete folders
+        let _ = FileManager.default.deleteFolderOrFile(at: iCloudImages)
+        let _ = FileManager.default.deleteFolderOrFile(at: iCloudPDF)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
+        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
+        
         
         let _ = iCloudCSVFile.startAccessingSecurityScopedResource()
         let _ = FileManager.default.secureCopyItem(at: localCSVFile, to: iCloudCSVFile)
@@ -823,9 +835,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         // first generate files to be copied
         let numberOfRowsExported = exportCSVFile()
         
-        let _ = createiCloudDirectory(folder: Global.backupFolder)
-        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.imagesFolder)
-        let _ = createiCloudDirectory(folder: Global.backupFolder + "/" + Global.pdfFolder)
         
         // copy all data from documents dir to iCloud
         copyDocumentsToiCloudDirectory()

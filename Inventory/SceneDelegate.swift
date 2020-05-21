@@ -390,7 +390,7 @@ extension SceneDelegate: NSToolbarDelegate {
         var docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
         
         docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
-        pdfView.shareAction(currentPath: docURL! as URL)
+        pdfView.shareAction(currentPath: docURL! as URL, sourceView: globalWindow!)
         
     }
     

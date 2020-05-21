@@ -933,7 +933,7 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
                 }
             }
             
-            self.shareAction(currentPath: pathURLjpeg)
+            self.shareAction(currentPath: pathURLjpeg, sourceView: self.imageView)
         }
 
         // Create and return a UIMenu with the share action
@@ -949,7 +949,7 @@ extension InventoryEditViewController: UIContextMenuInteractionDelegate {
         let share = UIAction(title: Global.pdf, image: UIImage(systemName: "doc.richtext")) { action in
             // Show system share sheet
             
-            self.shareAction(currentPath: self.url!)
+            self.shareAction(currentPath: self.url!, sourceView: self.pdfView)
         }
 
         // Create and return a UIMenu with the share action

@@ -518,6 +518,8 @@ extension String {
 }
 
 extension FileManager {
+    
+    // overwrite files in iCloud
     open func secureCopyItem(at srcURL: URL, to dstURL: URL) -> Bool {
         do {
             if FileManager.default.fileExists(atPath: dstURL.path) {
@@ -526,6 +528,19 @@ extension FileManager {
             try FileManager.default.copyItem(at: srcURL, to: dstURL)
         } catch (let error) {
             print("Cannot copy item at \(srcURL) to \(dstURL): \(error)")
+            return false
+        }
+        return true
+    }
+    
+    // delete files in iCloud
+    open func deleteFolderOrFile(at dstURL: URL) -> Bool {
+        do {
+            if FileManager.default.fileExists(atPath: dstURL.path) {
+                try FileManager.default.removeItem(at: dstURL)
+            }
+        } catch (let error) {
+            print("Cannot remove item at \(dstURL): \(error)")
             return false
         }
         return true
@@ -673,17 +688,13 @@ extension UIViewController {
     
     
     // show iOS standard share sheet for exporting data from this app to other apps
-    func shareAction(currentPath: URL) {
+    func shareAction(currentPath: URL, sourceView: UIView) {
         let fileManager = FileManager.default
         
         if fileManager.fileExists(atPath: currentPath.path) {
             let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [currentPath], applicationActivities: nil)
-            
-            let rect = self.view.bounds
-            let rect2 = CGRect(x: rect.minX, y: rect.minY, width: rect.width/2.0, height: rect.height/2.0)
-            
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.popoverPresentationController?.sourceRect = rect2
+            activityViewController.popoverPresentationController?.sourceView = sourceView
+            activityViewController.popoverPresentationController?.sourceRect = sourceView.bounds
             self.present(activityViewController, animated: true, completion: nil)
         }
         else {

@@ -118,7 +118,7 @@ class PDFViewController: UIViewController {
     
     @IBAction func shareButtonAction(_ sender: Any) {
         if (currentPath != nil){
-            shareAction(currentPath: currentPath!)
+            shareAction(currentPath: currentPath!, sourceView: self.pdfView)
         }
         else{
             displayAlert(title: Global.sharePDF, message: Global.messagePrintingPDFNotPossible, buttonText: Global.done)
@@ -187,7 +187,7 @@ extension PDFViewController: UIContextMenuInteractionDelegate {
         // Create a UIAction for sharing
         let share = UIAction(title: Global.pdf, image: UIImage(systemName: "square.and.arrow.up")) { action in
             // Show system share sheet
-            self.shareAction(currentPath: self.currentPath!)
+            self.shareAction(currentPath: self.currentPath!, sourceView: self.pdfView)
         }
 
         // Create and return a UIMenu with the share action

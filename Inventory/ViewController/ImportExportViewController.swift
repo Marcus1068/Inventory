@@ -114,26 +114,31 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
 
     
-    // export to cvs via backgroud task
+    // export to csv file
     // fetch async array, if no array, return nil
     // create jpeg and pdf files if included in data
     // link between cvs and external jpeg, pdf files by file name
-    // returns number of exported rows
+    // returns: number of exported rows
     func exportCSVFile() -> Int
     {
         //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
         var exportedRows : Int = 0
         
+        #if targetEnvironment(macCatalyst)
+        // Mac should export files to user selectable folder or downloads folder
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
         
         let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-        
         let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        #else   // iOS uses document folder inside app
+        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        self.url = docPath.appendingPathComponent(Global.csvFile)
         
-        //let barButtonItem = UIBarButtonItem(customView: activityIndicator)
-        //navigationItem.leftBarButtonItem = barButtonItem
-       
+        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
+        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        #endif
+        
         //let container = store.persistentContainer
         
       //  container.performBackgroundTask { (context) in
@@ -623,9 +628,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
     }
     
-    // called from main menu in case of catalyst
-    @objc func export(){
-        
+    private func exporting(){
         // add the spinner view controller
         let child = SpinnerViewController()
         addChild(child)
@@ -648,34 +651,15 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             let text = Global.messageExportFinished + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
             self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
         }
-        
+    }
+    
+    // called from main menu in case of catalyst
+    @objc func export(){
+        exporting()
     }
     
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
-        
-        // add the spinner view controller
-        let child = SpinnerViewController()
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-        
-        var numberOfRowsExported = 0
-        
-        DispatchQueue.main.async() {
-            // here comes long running function
-            numberOfRowsExported = self.exportCSVFile()
-            
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-            
-            // show alert box with path name
-            let text = Global.messageExportFinished + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
-            self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
-        }
-    
+        exporting()
     }
     
     // share system button to share csv file

@@ -447,16 +447,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
             return
         }
-        
+       
         tabBarController.selectedIndex = 3
-        
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        
-        let nav = tabBarController.viewControllers![0] as! UINavigationController
+        //let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
-        
-        nav.pushViewController(editView, animated: false)
-        //editView.pdfInit()
+        //nav.pushViewController(editView, animated: false)
         let pdf = editView.pdfCreateInventoryReport()
         let url = editView.pdfSave(pdf)
         

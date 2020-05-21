@@ -271,7 +271,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfViewGestureWhenTapped()
         
         // refresh data from core data
-        fetchData()
+        fetchData(ownerFilter: ownerFilterLabel.text!, roomFilter: roomFilterLabel.text!)
         
         // create the pdf report based on selected sort order and filter choice
         let pdf = pdfCreateInventoryReport()
@@ -327,19 +327,16 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // get core data bases on selected filter and sort order
-    func fetchData(){
+    func fetchData(ownerFilter: String, roomFilter: String){
         // core data contents
-        
-        //var filterWhere : String = ""
-        //var filterCompare : [String] = []
         
         let context = store.getContext()
         
-        if ownerFilterLabel.text! != all && roomFilterLabel.text! != all{
+        if ownerFilter != all && roomFilter != all{
             // use both room and owner as filter criteria
             let filterWhere = "inventoryOwner.ownerName == %@ && inventoryRoom.roomName == %@"
-            let filterCompare1 = ownerFilterLabel.text!
-            let filterCompare2 = roomFilterLabel.text!
+            let filterCompare1 = ownerFilter
+            let filterCompare2 = roomFilter
             
             do {
                 results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare1: filterCompare1, filterCompare2: filterCompare2))
@@ -348,10 +345,10 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             }
         }
         else{
-            if ownerFilterLabel.text! == all && roomFilterLabel.text! != all{
+            if ownerFilter == all && roomFilter != all{
                 // use filter for room only
                 let filterWhere = "inventoryRoom.roomName == %@"
-                let filterCompare = roomFilterLabel.text!
+                let filterCompare = ownerFilter
                 
                 do {
                     results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
@@ -360,7 +357,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 }
             }
             else{
-                if ownerFilterLabel.text! == all && roomFilterLabel.text! == all{
+                if ownerFilter == all && roomFilter == all{
                     // no filter used
                     let filterWhere = ""
                     let filterCompare = ""
@@ -373,7 +370,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                 else{
                     // use filter for owner only
                     let filterWhere = "inventoryOwner.ownerName == %@"
-                    let filterCompare = String(ownerFilterLabel.text!)
+                    let filterCompare = String(ownerFilter)
                     
                     do {
                         results = try context.fetch(self.inventoryFetchRequest(sortOrder: currentSortOrder.rawValue, filterWhere: filterWhere, filterCompare: filterCompare))
@@ -388,7 +385,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // will be called several times
     private func refreshReport(){
         // refresh data from core data
-        fetchData()
+        fetchData(ownerFilter: ownerFilterLabel.text!, roomFilter: roomFilterLabel.text!)
         
         // create the pdf report based on selected sort order and filter choice
         
@@ -1638,6 +1635,9 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // print PDF file to printer
     @objc func printPDFAction(url: URL?) {
+        
+        // refresh data from core data
+        fetchData(ownerFilter: "", roomFilter: "")
         
         if let guide_url = url{
             if UIPrintInteractionController.canPrint(guide_url) {

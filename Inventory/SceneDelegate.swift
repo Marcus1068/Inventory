@@ -236,6 +236,7 @@ extension NSToolbarItem.Identifier {
     static let importEntry = NSToolbarItem.Identifier(rawValue: "ImportEntry")
     static let shareEntry = NSToolbarItem.Identifier(rawValue: "ShareEntry")
     static let aboutEntry = NSToolbarItem.Identifier(rawValue: "AboutEntry")
+    static let printEntry = NSToolbarItem.Identifier(rawValue: "PrintEntry")
 }
 
 // for toolbar
@@ -257,12 +258,12 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .printEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .printEntry, .flexibleSpace, .aboutEntry]
     }
 
     // inventory overview
@@ -295,6 +296,22 @@ extension SceneDelegate: NSToolbarDelegate {
         editView.currentInventory = nil
         
         nav.pushViewController(editView, animated: false)
+    }
+    
+    @objc func printEntry() {
+        guard let tabBarController = globalWindow!.rootViewController as? UITabBarController else {
+            return
+        }
+       
+        tabBarController.selectedIndex = 3
+        let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        //let nav = tabBarController.viewControllers![0] as! UINavigationController
+        let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
+        //nav.pushViewController(editView, animated: false)
+        let pdf = editView.pdfCreateInventoryReport()
+        let url = editView.pdfSave(pdf)
+        
+        editView.printPDFAction(url: url)
     }
     
     // manage all items like rooms, categories etc call
@@ -501,6 +518,11 @@ extension SceneDelegate: NSToolbarDelegate {
         case .shareEntry:
             let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareEntry(_:)))
             item = toolbarItem(itemIdentifier: .shareEntry, barButtonItem: barButtonItem, toolTip: Global.share, label: Global.share)
+            break
+            
+        case .printEntry:
+            let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "printer"), style: .plain, target: self, action: #selector(printEntry))
+            item = toolbarItem(itemIdentifier: .printEntry, barButtonItem: barButtonItem, toolTip: Global.printReport, label: Global.printReport)
             break
             
         default:

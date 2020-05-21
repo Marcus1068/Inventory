@@ -107,8 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // create directory for export/import stuff
-        let _ = URL.createFolder(folderName: Global.imagesFolder)
-        let _ = URL.createFolder(folderName: Global.pdfFolder)
+        let _ = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)
+        let _ = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)
         
         return true
     }

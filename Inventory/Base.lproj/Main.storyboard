@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -1457,7 +1457,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8R-Gv-g47">
-                                                    <rect key="frame" x="8" y="16" width="105" height="18"/>
+                                                    <rect key="frame" x="16" y="16" width="105" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="HyX-Sf-5xU"/>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="WgC-Y5-lUZ"/>
@@ -1467,7 +1467,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kpe-WT-hVT">
-                                                    <rect key="frame" x="134" y="7" width="56" height="30.5"/>
+                                                    <rect key="frame" x="142" y="7" width="56" height="30.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <state key="normal" title="Room..."/>
                                                     <connections>
@@ -2254,7 +2254,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWr-zo-VXm">
-                                        <rect key="frame" x="0.0" y="118" width="335" height="46"/>
+                                        <rect key="frame" x="0.0" y="98.5" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Backup to iCloud"/>
                                         <connections>
@@ -2262,7 +2262,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sma-p5-g2v">
-                                        <rect key="frame" x="0.0" y="199.5" width="335" height="46"/>
+                                        <rect key="frame" x="0.0" y="160" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Restore from iCloud"/>
                                         <connections>
@@ -2270,20 +2270,27 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Export your data as comma seperated values file to local app directory. Open those files via Files App" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-fd-nKg">
-                                        <rect key="frame" x="0.0" y="280.5" width="335" height="110.5"/>
+                                        <rect key="frame" x="0.0" y="222" width="335" height="110.5"/>
                                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-yS-BT1">
-                                        <rect key="frame" x="0.0" y="426.5" width="335" height="46"/>
+                                        <rect key="frame" x="0.0" y="348" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <state key="normal" title="Export csv file..."/>
                                         <connections>
                                             <action selector="exportCVSButtonAction:" destination="MUX-Pv-eqU" eventType="touchUpInside" id="piB-QT-goZ"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your exported data in App directory on iOS and in Downloads folder on Mac" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p77-yP-sba">
+                                        <rect key="frame" x="0.0" y="410" width="335" height="82.5"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g93-Ej-2SW">
                                         <rect key="frame" x="0.0" y="508" width="335" height="46"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -2314,6 +2321,7 @@
                     <connections>
                         <outlet property="backupButton" destination="rWr-zo-VXm" id="Ph5-ka-U2y"/>
                         <outlet property="exportCVSButton" destination="N3h-yS-BT1" id="qXF-OO-vNP"/>
+                        <outlet property="exportLocationLabel" destination="p77-yP-sba" id="X4V-G7-oAf"/>
                         <outlet property="helpButton" destination="k6n-Vd-g1P" id="0ng-g6-lst"/>
                         <outlet property="importCVSButton" destination="g93-Ej-2SW" id="rZe-la-rW5"/>
                         <outlet property="restoreButton" destination="sma-p5-g2v" id="Y4Q-SP-mKH"/>

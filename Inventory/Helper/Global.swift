@@ -59,6 +59,7 @@ class Global: UIViewController {
     static let csvFile = "inventoryAppExport.csv"
     static let pdfFile = "Inventory App Report.pdf"
     static let printerJobName = "Inventory App Print Job"
+    static let exportFolderNameMac = "Inventory Export"
     
     static let imagesFolder = "Images"
     static let pdfFolder = "PDF"
@@ -161,9 +162,10 @@ class Global: UIViewController {
     
     static let messageGenerateSampleData = NSLocalizedString("Generate some sample data", comment: "Generate some sample data")
     
-    static let messageExportFinished = NSLocalizedString("CSV file can be found in Inventory App documents folder", comment: "The exported CSV file can be found here")
+    static let messageExportFinishediOS = NSLocalizedString("Exported data can be found in Inventory App documents folder", comment: "The exportediOS")
+    static let messageExportFinishedMac = NSLocalizedString("Exported data can be found in Downloads folder", comment: "The exportedMac")
     static let titleExportFinished = NSLocalizedString("Export finished", comment: "Export finished")
-    static let numberOfExportedRows = NSLocalizedString("number of rows have been exported", comment: "number of rows have been exported")
+    static let numberOfExportedRows = NSLocalizedString("number of inventory items have been exported", comment: "number of inventory items have been exported")
     
     static let firstPage = NSLocalizedString("First page", comment: "First page")
     static let lastPage = NSLocalizedString("Last page", comment: "Last page")
@@ -535,7 +537,7 @@ extension FileManager {
 // For example, to create the folder "MyStuff", you would call it like this:
 // let myStuffURL = URL.createFolder(folderName: "MyStuff")
 extension URL {
-    static func createFolder(folderName: String) -> URL? {
+    static func createFolderInDocumentsFolder(folderName: String) -> URL? {
         let fileManager = FileManager.default
         // Get document directory for device, this should succeed
         if let documentDirectory = fileManager.urls(for: .documentDirectory,
@@ -562,17 +564,38 @@ extension URL {
         return nil
     }
     
+    // will be used for catalyst app since we cannot use documents folder (hidden under library)
+    static func createFolderInDownloadsDirectory(folderName: String) -> URL?{
+        let downloadsDirectory = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
+        let downloadsDirectoryWithFolder = downloadsDirectory.appendingPathComponent(folderName)
+
+        do {
+            try FileManager.default.createDirectory(at: downloadsDirectoryWithFolder, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+        // Folder either exists, or was created. Return URL
+        return downloadsDirectoryWithFolder
+    }
+    
+   // used for creating a folder within other folders
+    static func createFolder(folder: URL){
+        do{
+            try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     // create a sub folder within temp folder
     static func createTempSubFolder(subFolderName: String) -> URL? {
         
         let temp = URL.getTemporaryFolder()?.appendingPathComponent(subFolderName)
 
         do {
-            let dir = try FileManager.default.url(
-                for: .itemReplacementDirectory,
-                in: .userDomainMask,
-                appropriateFor: temp,
-                create: true
+            let dir = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: temp, create: true
             )
             return dir
             
@@ -588,11 +611,7 @@ extension URL {
         let temp = URL.getTemporaryFolder()
 
         do {
-            let dir = try FileManager.default.url(
-                for: .itemReplacementDirectory,
-                in: .userDomainMask,
-                appropriateFor: temp,
-                create: true
+            let dir = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: temp, create: true
             )
             return dir
             
@@ -689,6 +708,53 @@ extension UIViewController {
         let imageName = invname + "_" + String(comps.year!) + "_" + String(comps.day!) + "_" + String(comps.month!) + "_" + String(comps.hour!) + "_" + String(comps.minute!) + "_" + String(comps.second!)
         
         return imageName
+    }
+    
+    // check if iCloud account available
+    func isICloudContainerAvailable() -> Bool {
+        if let _ = FileManager.default.ubiquityIdentityToken {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // create a folder in iCloud container
+    func createiCloudDirectory(folder: String) -> URL?{
+        if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(folder) {
+            if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL.path, isDirectory: nil)) {
+                do {
+                    try FileManager.default.createDirectory(at: iCloudDocumentsURL, withIntermediateDirectories: true, attributes: nil)
+                    
+                    return iCloudDocumentsURL
+                }
+                catch {
+                    print("Error in creating icloud folder")
+                }
+            }
+            
+        }
+        return nil
+    }
+    
+    // for having a busy app view
+    func createSpinnerView() {
+        let child = SpinnerViewController()
+
+        // add the spinner view controller
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+
+        // wait two seconds to simulate some work happening
+        DispatchQueue.main.async() {
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
     }
 }
 

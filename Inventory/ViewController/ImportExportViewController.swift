@@ -43,6 +43,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBOutlet weak var backupButton: UIButton!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var exportLocationLabel: UILabel!
     
     var url : URL?
     
@@ -126,17 +127,19 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         #if targetEnvironment(macCatalyst)
         // Mac should export files to user selectable folder or downloads folder
+        let docPath = URL.createFolderInDownloadsDirectory(folderName: Global.exportFolderNameMac)
+        let imagesFolderPath = docPath?.appendingPathComponent(Global.imagesFolder)
+        let pdfFolderPath = docPath?.appendingPathComponent(Global.pdfFolder)
+        URL.createFolder(folder: imagesFolderPath!)
+        URL.createFolder(folder: pdfFolderPath!)
+        self.url = docPath!.appendingPathComponent(Global.csvFile)
+        let pathURLcvs = docPath!.appendingPathComponent(Global.csvFile)
+        #else   // iOS uses documents folder inside app to store app data/files
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
-        
-        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
-        #else   // iOS uses document folder inside app
-        let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        self.url = docPath.appendingPathComponent(Global.csvFile)
-        
-        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        let imagesFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)
+        let pdfFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)
+        let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
         #endif
         
         //let container = store.persistentContainer
@@ -152,21 +155,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
             }
             
-            //let cvsFileName = Global.csvFile
-            let docPathcsv = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pathURLcvs = docPathcsv.appendingPathComponent(Global.csvFile)
+            //let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
             self.url = pathURLcvs
             
-            //let exportDocPath = pathURLcvs.absoluteString
             var csvText = Global.csvMetadata
-            
-            var progress : Int = 0
             
             for inv in results{
                 csvText.append(contentsOf: inv.csv())
-                
-                progress += 1
-                
                 exportedRows += 1
             }
             
@@ -175,7 +170,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
             } catch {
                 os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
-                print("Failed to create inventory csv file")
+                //print("Failed to create inventory csv file")
                 print("\(error)")
             }
             
@@ -628,36 +623,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
     }
     
-    private func exporting(){
-        // add the spinner view controller
-        let child = SpinnerViewController()
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-        
-        var numberOfRowsExported = 0
-        
-        DispatchQueue.main.async() {
-            // here comes long running function
-            numberOfRowsExported = self.exportCSVFile()
-            
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-            
-            // show alert box with path name
-            let text = Global.messageExportFinished + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
-            self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
-        }
-    }
-    
-    // called from main menu in case of catalyst
-    @objc func export(){
-        exporting()
-    }
-    
     @IBAction func exportCVSButtonAction(_ sender: UIButton) {
         exporting()
     }
@@ -678,61 +643,47 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
     }
     
-    // MARK: - email
-    /// Prepares mail sending controller
-    ///
-    /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    // MARK: export functions
     
-    func sendCSVEmail(path: URL?){
-        //os_log("ImportExportViewController sendCSVEmail", log: Log.viewcontroller, type: .info)
+    private func exporting(){
+        // add the spinner view controller
+        let child = SpinnerViewController()
+        addChild(child)
+        child.view.frame = view.frame
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
         
-        // hide keyboard
-        self.view.endEditing(true)
+        var numberOfRowsExported = 0
         
-        let mailComposeViewController = configuredMailComposeViewController(url: path)
-        
-        if MFMailComposeViewController.canSendMail()
-        {
-            self.present(mailComposeViewController, animated: true, completion: nil)
-        }
-        else
-        {
-            displayAlert(title: Global.emailNotSent, message: Global.emailDevice, buttonText: Global.emailConfig)
+        DispatchQueue.main.async() {
+            // here comes long running function
+            numberOfRowsExported = self.exportCSVFile()
+            
+            // then remove the spinner view controller
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+            
+            // show alert box with path name
+            
+            #if targetEnvironment(macCatalyst)
+            let text = Global.messageExportFinishedMac + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
+            #else
+            let text = Global.messageExportFinishediOS + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
+            #endif
+            self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
         }
     }
     
-    func configuredMailComposeViewController(url: URL?) -> MFMailComposeViewController
-    {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        //mailComposerVC.setToRecipients([Global.emailAdr])
-        mailComposerVC.setSubject(NSLocalizedString("My CSV file", comment: "My CSV file"))
-        let msg = NSLocalizedString("My CSV file", comment: "My CSV file")
-        mailComposerVC.setMessageBody(msg, isHTML: false)
-        
-        // attachment
-        if url != nil{
-            do{
-                let attachmentData = try Data(contentsOf: url!)
-                mailComposerVC.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: Global.csvFile)
-            }
-            catch let error {
-                os_log("ImportExportViewController email attachement error: %s", log: Log.viewcontroller, type: .error, error.localizedDescription)
-            }
-        }
-        
-        return mailComposerVC
+    // called from main menu in case of catalyst
+    @objc func export(){
+        exporting()
     }
     
-    // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
-    {
-        controller.dismiss(animated: true, completion: nil)
-    }
-
     
     // MARK: - document picker of files app
     
+    // for opening csv files only
     func openFilesApp(){
         //os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
         
@@ -808,57 +759,13 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         // do nothing
     }
     
-    func createSpinnerView() {
-        let child = SpinnerViewController()
-
-        // add the spinner view controller
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-
-        // wait two seconds to simulate some work happening
-        DispatchQueue.main.async() {
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-        }
-    }
     
-    
-    // check if iCloud account available
-    func isICloudContainerAvailable() -> Bool {
-        if let _ = FileManager.default.ubiquityIdentityToken {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    // create a folder in iCloud container
-    func createiCloudDirectory(folder: String) -> URL?{
-        if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(folder) {
-            if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL.path, isDirectory: nil)) {
-                do {
-                    try FileManager.default.createDirectory(at: iCloudDocumentsURL, withIntermediateDirectories: true, attributes: nil)
-                    
-                    return iCloudDocumentsURL
-                }
-                catch {
-                    print("Error in creating icloud folder")
-                }
-            }
-            
-        }
-        return nil
-    }
+    // MARK: icloud backup and restore stuff
     
     // before running import function copy all necessary files to temp folder
     // returns destination URL to find all files later on
     func copyDocumentsFromDirectory(sourceURL: URL) -> URL?{
-        guard let destURL = URL.createFolder(folderName: "temp") else { return nil}
+        guard let destURL = URL.createFolderInDocumentsFolder(folderName: "temp") else { return nil}
         
         let destImages = destURL.appendingPathComponent(Global.imagesFolder)
         let destPDF = destURL.appendingPathComponent(Global.pdfFolder)
@@ -975,13 +882,14 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // fetch async array, if no array, return nil
     // create jpeg and pdf files if included in data
     // link between cvs and external jpeg, pdf files by file name
+    // FIXME: currently unused function
     func backupInventoryData2()
     {
         _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //var url = docPath.appendingPathComponent(Global.csvFile)
         
-        let imagesFolderPath = URL.createFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolder(folderName: Global.pdfFolder)
+        let imagesFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)
+        let pdfFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)
        
         let container = store.persistentContainer
         
@@ -1078,6 +986,60 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
 
     #endif
+    
+    // MARK: - email
+    /// Prepares mail sending controller
+    ///
+    /// **Extremely** important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    
+    func sendCSVEmail(path: URL?){
+        //os_log("ImportExportViewController sendCSVEmail", log: Log.viewcontroller, type: .info)
+        
+        // hide keyboard
+        self.view.endEditing(true)
+        
+        let mailComposeViewController = configuredMailComposeViewController(url: path)
+        
+        if MFMailComposeViewController.canSendMail()
+        {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        }
+        else
+        {
+            displayAlert(title: Global.emailNotSent, message: Global.emailDevice, buttonText: Global.emailConfig)
+        }
+    }
+    
+    func configuredMailComposeViewController(url: URL?) -> MFMailComposeViewController
+    {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        //mailComposerVC.setToRecipients([Global.emailAdr])
+        mailComposerVC.setSubject(NSLocalizedString("My CSV file", comment: "My CSV file"))
+        let msg = NSLocalizedString("My CSV file", comment: "My CSV file")
+        mailComposerVC.setMessageBody(msg, isHTML: false)
+        
+        // attachment
+        if url != nil{
+            do{
+                let attachmentData = try Data(contentsOf: url!)
+                mailComposerVC.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: Global.csvFile)
+            }
+            catch let error {
+                os_log("ImportExportViewController email attachement error: %s", log: Log.viewcontroller, type: .error, error.localizedDescription)
+            }
+        }
+        
+        return mailComposerVC
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?)
+    {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+    
         
 }
 

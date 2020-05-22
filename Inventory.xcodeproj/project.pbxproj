@@ -98,11 +98,11 @@
 		2CC648BB22968F7100A6DA65 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC648BA22968F7100A6DA65 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2CC648C222968F7100A6DA65 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */; };
 		2CC648C422968F7100A6DA65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC648C322968F7100A6DA65 /* Assets.xcassets */; };
-		2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Watch.app */; platformFilter = ios; };
+		2CC648C822968F7100A6DA65 /* Inventory App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2CC648AE22968F6F00A6DA65 /* Inventory App.app */; platformFilter = ios; };
 		2CC7EC0322A7B2D700F485AA /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC7EC0222A7B2D700F485AA /* NotificationCenter.framework */; };
 		2CC7EC0622A7B2D700F485AA /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC7EC0522A7B2D700F485AA /* TodayViewController.swift */; };
 		2CC7EC0922A7B2D700F485AA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC7EC0722A7B2D700F485AA /* MainInterface.storyboard */; };
-		2CC7EC0D22A7B2D700F485AA /* Inventory.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC7EC0022A7B2D700F485AA /* Inventory.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2CC7EC0D22A7B2D700F485AA /* Inventory App.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2CC7EC0022A7B2D700F485AA /* Inventory App.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2CC7EC1322A7B43200F485AA /* Inventory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */; };
 		2CC7EC1422A7B44A00F485AA /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
 		2CC7EC1522A7B45D00F485AA /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */; };
@@ -191,7 +191,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				2CC648C822968F7100A6DA65 /* Watch.app in Embed Watch Content */,
+				2CC648C822968F7100A6DA65 /* Inventory App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +202,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				2CC7EC0D22A7B2D700F485AA /* Inventory.appex in Embed App Extensions */,
+				2CC7EC0D22A7B2D700F485AA /* Inventory App.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +302,7 @@
 		2CBB792624716B7900E201F4 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		2CBB79282471B16400E201F4 /* InventorySplash_v2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InventorySplash_v2.jpg; sourceTree = "<group>"; };
 		2CC4C0C7228AB6B200F45A44 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
-		2CC648AE22968F6F00A6DA65 /* Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC648AE22968F6F00A6DA65 /* Inventory App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Inventory App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC648B122968F6F00A6DA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		2CC648B322968F7000A6DA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC648B522968F7000A6DA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 		2CC648C122968F7100A6DA65 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		2CC648C322968F7100A6DA65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC648C522968F7100A6DA65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2CC7EC0022A7B2D700F485AA /* Inventory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Inventory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC7EC0022A7B2D700F485AA /* Inventory App.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Inventory App.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC7EC0222A7B2D700F485AA /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		2CC7EC0522A7B2D700F485AA /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		2CC7EC0822A7B2D700F485AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -403,9 +403,9 @@
 			children = (
 				2C56E8AA2086350A00FD5136 /* Inventory.app */,
 				2CC85CFC225F32BB006973A0 /* InventoryTests.xctest */,
-				2CC648AE22968F6F00A6DA65 /* Watch.app */,
+				2CC648AE22968F6F00A6DA65 /* Inventory App.app */,
 				2CC648BA22968F7100A6DA65 /* Watch Extension.appex */,
-				2CC7EC0022A7B2D700F485AA /* Inventory.appex */,
+				2CC7EC0022A7B2D700F485AA /* Inventory App.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -625,7 +625,7 @@
 			);
 			name = Watch;
 			productName = Watch;
-			productReference = 2CC648AE22968F6F00A6DA65 /* Watch.app */;
+			productReference = 2CC648AE22968F6F00A6DA65 /* Inventory App.app */;
 			productType = "com.apple.product-type.application.watchapp2";
 		};
 		2CC648B922968F7100A6DA65 /* Watch Extension */ = {
@@ -659,7 +659,7 @@
 			);
 			name = InventoryToday;
 			productName = InventoryToday;
-			productReference = 2CC7EC0022A7B2D700F485AA /* Inventory.appex */;
+			productReference = 2CC7EC0022A7B2D700F485AA /* Inventory App.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 		2CC85CFB225F32BB006973A0 /* InventoryTests */ = {
@@ -1245,7 +1245,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Inventory App";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1268,7 +1268,7 @@
 				MARKETING_VERSION = 2.39;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Inventory App";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1348,7 +1348,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
-				PRODUCT_NAME = Inventory;
+				PRODUCT_NAME = "Inventory App";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -1373,7 +1373,7 @@
 				MARKETING_VERSION = 2.39;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
-				PRODUCT_NAME = Inventory;
+				PRODUCT_NAME = "Inventory App";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

@@ -473,6 +473,12 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.layer.borderWidth = 0.0
         cell.layer.borderColor = UIColor.clear.cgColor
         
+        if inv.invoice != nil{
+            cell.pdfAttachment.image = UIImage(systemName: "paperclip")
+        }
+        else{
+            cell.pdfAttachment.image = nil
+        }
         // pointer interaction
         if #available(iOS 13.4, *) {
             customPointerInteraction(on: cell, pointerInteractionDelegate: self)

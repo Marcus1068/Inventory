@@ -142,7 +142,7 @@
 /* Class = "UITableViewSection"; headerTitle = "Add Items"; ObjectID = "G2B-Bb-zP5"; */
 "G2B-Bb-zP5.headerTitle" = "Hinzufügen";
 
-/* Class = "UIButton"; normalTitle = "Import csv file..."; ObjectID = "g93-Ej-2SW"; */
+/* Class = "UIButton"; normalTitle = "Import local csv file..."; ObjectID = "g93-Ej-2SW"; */
 "g93-Ej-2SW.normalTitle" = "Importiere csv Datei...";
 
 /* Class = "UIButton"; normalTitle = "App Settings"; ObjectID = "hbs-GL-8lS"; */
@@ -259,7 +259,7 @@
 /* Class = "UINavigationItem"; title = "Category"; ObjectID = "MzL-xY-WrQ"; */
 "MzL-xY-WrQ.title" = "Kategorie";
 
-/* Class = "UIButton"; normalTitle = "Export csv file..."; ObjectID = "N3h-yS-BT1"; */
+/* Class = "UIButton"; normalTitle = "Export local csv file..."; ObjectID = "N3h-yS-BT1"; */
 "N3h-yS-BT1.normalTitle" = "Exportiere csv Datei";
 
 /* Class = "UINavigationItem"; title = "Room"; ObjectID = "NaV-bX-J6V"; */
@@ -286,7 +286,7 @@
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "OXg-EA-537"; */
 "OXg-EA-537.title" = "Titel";
 
-/* Class = "UILabel"; text = "Find your exported data in App directory on iOS and in Downloads folder on Mac"; ObjectID = "p77-yP-sba"; */
+/* Class = "UILabel"; text = "Find your exported data in Inventory App directory on iOS/iPadOS and in Downloads folder on Mac"; ObjectID = "p77-yP-sba"; */
 "p77-yP-sba.text" = "Ihre exportierten Daten sind im App Verzeichnis auf iOS und im Downloads Ordner auf dem Mac zu finden";
 
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
@@ -339,9 +339,6 @@
 
 /* Class = "UIButton"; normalTitle = "Backup to iCloud"; ObjectID = "rWr-zo-VXm"; */
 "rWr-zo-VXm.normalTitle" = "Sicherung zu iCloud";
-
-/* Class = "UILabel"; text = "Export your data as comma seperated values file to local app directory. Open those files via Files App"; ObjectID = "S2f-fd-nKg"; */
-"S2f-fd-nKg.text" = "Exportiert Ihre Daten als csv Datei (kann beispielsweise von Excel und Numbers bearbeitet werden). Öffnen Sie diese Dateien via Dateien App";
 
 /* Class = "UIButton"; normalTitle = "Invoice"; ObjectID = "seV-zU-Yva"; */
 "seV-zU-Yva.normalTitle" = "Rechnung";
@@ -442,8 +439,8 @@
 /* Class = "UILabel"; text = "Owner"; ObjectID = "yYm-0Z-sNf"; */
 "yYm-0Z-sNf.text" = "Eigentümer";
 
-/* Class = "UILabel"; text = "Backup your data to iCloud - it will be synced to all other devices and can be restored"; ObjectID = "z5u-gb-85Y"; */
-"z5u-gb-85Y.text" = "Sichern Sie Ihre Daten in iCloud - sie stehen dann auf allen Geräten zur Verfügung";
+/* Class = "UILabel"; text = "Save your application data : export it to the local file system (Downloads folder on Mac, App folder on iOS/iPadOS. Also you can save your data to iCloud (will be stored in Inventory Folder on your iCloud Drive)"; ObjectID = "z5u-gb-85Y"; */
+"z5u-gb-85Y.text" = "Sichern Sie Ihre Daten: Exportieren Sie die Daten ins Dateisystem (Inventory App Ordner auf iOS/iPadOS) oder Download Ordner auf dem Mac. Beim Sichern in iCloud stehen die Daten dann auf allen Geräten zur Verfügung";
 
 /* Class = "UILabel"; text = "Rooms"; ObjectID = "z7u-tJ-Sau"; */
 "z7u-tJ-Sau.text" = "Räume";

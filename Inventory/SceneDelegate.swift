@@ -258,12 +258,12 @@ extension SceneDelegate: NSToolbarDelegate {
     }
     
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .printEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, /*.shareEntry,*/ .printEntry, .flexibleSpace, .aboutEntry]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar)
       -> [NSToolbarItem.Identifier] {
-        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, .shareEntry, .printEntry, .flexibleSpace, .aboutEntry]
+        return [.inventoryOverviewEntry, .addInvEntry, .manageItemsEntry, .addRoomEntry, .addCategoryEntry, .addBrandEntry, .addOwnerEntry, .importEntry, .reportEntry, /*.shareEntry, */.printEntry, .flexibleSpace, .aboutEntry]
     }
 
     // inventory overview

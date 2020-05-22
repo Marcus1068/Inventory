@@ -632,7 +632,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         let _ = exportCSVFile()
         
-        shareAction(currentPath: self.url!, sourceView: self.view)
+        shareAction(currentPath: self.url!, sourceView: globalWindow!)
     }
     
     // import button

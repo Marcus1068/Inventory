@@ -139,7 +139,7 @@ class TabBarViewController: UITabBarController {
         var docURL = (FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)).last as NSURL?
         
         docURL = docURL?.appendingPathComponent(Global.pdfFile) as NSURL?
-        pdfView.shareAction(currentPath: docURL! as URL, sourceView: self.view)
+        pdfView.shareAction(currentPath: docURL! as URL, sourceView: globalWindow!)
     }
     
     @objc private func aboutEntry(_ sender: UIBarButtonItem) {
@@ -167,7 +167,7 @@ class TabBarViewController: UITabBarController {
     override func makeTouchBar() -> NSTouchBar? {
         let touchBar = NSTouchBar()
         
-        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, .touchShare, .touchPrint, .fixedSpaceSmall, .touchAbout]
+        touchBar.defaultItemIdentifiers = [.touchInventory, .touchAdd, .touchManage, .fixedSpaceSmall, .touchImportExport, .touchReport, .fixedSpaceSmall, /*.touchShare,*/ .touchPrint, .fixedSpaceSmall, .touchAbout]
         
         let manage = NSButtonTouchBarItem(identifier: .touchManage, image: UIImage(systemName: "list.number")!, target: self, action: #selector(manageItemsEntry))
         manage.bezelColor = Global.colorGreen

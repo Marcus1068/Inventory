@@ -701,7 +701,7 @@ extension UIViewController {
             let alertController = UIAlertController(title: Global.error, message: Global.documentNotFound, preferredStyle: .alert)
             let defaultAction = UIAlertAction.init(title: Global.ok, style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(defaultAction)
-            navigationController!.present(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     

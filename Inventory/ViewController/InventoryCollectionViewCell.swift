@@ -42,6 +42,7 @@ class InventoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var pdfAttachment: UIImageView!
+    @IBOutlet weak var dateOfPurchaseLabel: UILabel!
     /*
     // gets called when user selects a cell in collection view
     override var isSelected: Bool {

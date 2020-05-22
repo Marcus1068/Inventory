@@ -473,18 +473,24 @@ class InventoryCollectionViewController: UIViewController, UICollectionViewDataS
         cell.layer.borderWidth = 0.0
         cell.layer.borderColor = UIColor.clear.cgColor
         
+        // if pdf available show paperclip icon
         if inv.invoice != nil{
             cell.pdfAttachment.image = UIImage(systemName: "paperclip")
         }
         else{
             cell.pdfAttachment.image = nil
         }
-        // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: cell, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
+        
+        if inv.dateOfPurchase != nil{
+            let dateformatter = DateFormatter()
+            dateformatter.locale = Locale(identifier: Local.currentLocaleForDate())
+            dateformatter.dateStyle = DateFormatter.Style.medium
+            let myDate = dateformatter.string(from: inv.dateOfPurchase! as Date)
+            cell.dateOfPurchaseLabel.text = myDate
         }
+        
+        // pointer interaction
+        customPointerInteraction(on: cell, pointerInteractionDelegate: self)
         
         return cell
     }

@@ -534,8 +534,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Xm-J6U">
-                                                    <rect key="frame" x="3" y="77" width="48.5" height="78"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="gc1-Xm-J6U">
+                                                    <rect key="frame" x="3" y="52" width="48.5" height="91.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYm-0Z-sNf">
                                                             <rect key="frame" x="0.0" y="0.0" width="48.5" height="13.5"/>
@@ -544,27 +544,30 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8VG-gy-buE">
-                                                            <rect key="frame" x="0.0" y="21.5" width="48.5" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="19.5" width="48.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpk-WK-A4x">
-                                                            <rect key="frame" x="0.0" y="43" width="48.5" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="39" width="48.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4w-Lo-E4E">
-                                                            <rect key="frame" x="0.0" y="64.5" width="48.5" height="13.5"/>
+                                                            <rect key="frame" x="0.0" y="58.5" width="48.5" height="13.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-rc-ctU">
+                                                            <rect key="frame" x="0.0" y="78" width="48.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="78" id="xk8-mc-VUw"/>
-                                                    </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fjz-Zl-ju7">
                                                     <rect key="frame" x="67" y="52" width="100" height="83"/>
@@ -583,7 +586,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="oBm-B8-oUs" secondAttribute="trailing" constant="7" id="7Xz-Na-VMc"/>
                                             <constraint firstItem="fjz-Zl-ju7" firstAttribute="leading" secondItem="aNf-6S-hSX" secondAttribute="leadingMargin" constant="59" id="EeB-aX-owz"/>
-                                            <constraint firstItem="gc1-Xm-J6U" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="30" id="HuM-Tl-W54"/>
+                                            <constraint firstItem="gc1-Xm-J6U" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="5" id="HuM-Tl-W54"/>
                                             <constraint firstItem="oBm-B8-oUs" firstAttribute="top" secondItem="aNf-6S-hSX" secondAttribute="top" id="LX7-dn-vti"/>
                                             <constraint firstItem="fjz-Zl-ju7" firstAttribute="top" secondItem="oBm-B8-oUs" secondAttribute="bottom" constant="5" id="QOa-Hu-Ggd"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="fjz-Zl-ju7" secondAttribute="bottom" constant="25" id="TeL-JU-gio"/>
@@ -595,6 +598,7 @@
                                         <connections>
                                             <outlet property="brandNameLabel" destination="T4w-Lo-E4E" id="TRL-w4-GI3"/>
                                             <outlet property="categoryLabel" destination="8VG-gy-buE" id="Lnl-Hr-li7"/>
+                                            <outlet property="dateOfPurchaseLabel" destination="efP-rc-ctU" id="a7k-UL-uYw"/>
                                             <outlet property="inventoryLabel" destination="oBm-B8-oUs" id="mVI-T6-GDZ"/>
                                             <outlet property="myImage" destination="fjz-Zl-ju7" id="YPh-zm-m7g"/>
                                             <outlet property="ownerLabel" destination="yYm-0Z-sNf" id="XKd-l3-8wR"/>

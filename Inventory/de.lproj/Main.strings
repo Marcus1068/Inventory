@@ -10,6 +10,9 @@
 /* Class = "UILabel"; text = "Hint: Swipe left to delete"; ObjectID = "2ao-2G-yAL"; */
 "2ao-2G-yAL.text" = "Hinweis: nach links Wischen zum Löschen";
 
+/* Class = "UILabel"; text = "Choose folder to export on Mac. On iOS/iPadOS exported data will be stored within App folder"; ObjectID = "2d4-3G-v5g"; */
+"2d4-3G-v5g.text" = "Bitte auf dem Mac den Ordner zum Exportieren wählen. Auf iOS/iPadOS werden die exportierten Daten im Inventory App Ordner gesichert";
+
 /* Class = "UILabel"; text = "Brands"; ObjectID = "2Dk-Ve-6GB"; */
 "2Dk-Ve-6GB.text" = "Marken";
 
@@ -285,9 +288,6 @@
 
 /* Class = "UINavigationItem"; title = "Title"; ObjectID = "OXg-EA-537"; */
 "OXg-EA-537.title" = "Titel";
-
-/* Class = "UILabel"; text = "Find your exported data in Inventory App directory on iOS/iPadOS and in Downloads folder on Mac"; ObjectID = "p77-yP-sba"; */
-"p77-yP-sba.text" = "Ihre exportierten Daten sind im App Verzeichnis auf iOS und im Downloads Ordner auf dem Mac zu finden";
 
 /* Class = "UILabel"; text = "Hint: Changing the owner name will be reflected in all inventory objects"; ObjectID = "PHQ-NS-mde"; */
 "PHQ-NS-mde.text" = "Hinweis: Ändern des Eigentümernamens wird ebenfalls in allen anderen Inventar Objekten durchgeführt";

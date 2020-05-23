@@ -392,7 +392,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         nav.pushViewController(editView, animated: false)
         
-        editView.openFilesApp()
+        editView.importFilesApp()
         
     }
     

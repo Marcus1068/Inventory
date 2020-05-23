@@ -163,7 +163,7 @@ class Global: UIViewController {
     static let messageGenerateSampleData = NSLocalizedString("Generate some sample data", comment: "Generate some sample data")
     
     static let messageExportFinishediOS = NSLocalizedString("Exported data can be found in Inventory App documents folder", comment: "The exportediOS")
-    static let messageExportFinishedMac = NSLocalizedString("Exported data can be found in Downloads folder", comment: "The exportedMac")
+    static let messageExportFinishedMac = NSLocalizedString("Exported data can be found in folder:", comment: "The exportedMac")
     static let titleExportFinished = NSLocalizedString("Export finished", comment: "Export finished")
     static let numberOfExportedRows = NSLocalizedString("number of inventory items have been exported", comment: "number of inventory items have been exported")
     

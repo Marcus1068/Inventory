@@ -120,25 +120,27 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // create jpeg and pdf files if included in data
     // link between cvs and external jpeg, pdf files by file name
     // returns: number of exported rows
-    func exportCSVFile() -> Int
+    func exportCSVFile(folderDir: URL?) -> Int
     {
         //os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .info)
         var exportedRows : Int = 0
         
         #if targetEnvironment(macCatalyst)
-        // Mac should export files to user selectable folder or downloads folder
-        let docPath = URL.createFolderInDownloadsDirectory(folderName: Global.exportFolderNameMac)
-        let imagesFolderPath = docPath?.appendingPathComponent(Global.imagesFolder)
-        let pdfFolderPath = docPath?.appendingPathComponent(Global.pdfFolder)
-        URL.createFolder(folder: imagesFolderPath!)
-        URL.createFolder(folder: pdfFolderPath!)
-        self.url = docPath!.appendingPathComponent(Global.csvFile)
-        let pathURLcvs = docPath!.appendingPathComponent(Global.csvFile)
+        // Mac should export files to user selectable folder folder
+        let docPath = folderDir!.appendingPathComponent(Global.exportFolderNameMac)
+        
+        URL.createFolder(folder: docPath)
+        let imagesFolderPath = docPath.appendingPathComponent(Global.imagesFolder)
+        let pdfFolderPath = docPath.appendingPathComponent(Global.pdfFolder)
+        URL.createFolder(folder: imagesFolderPath)
+        URL.createFolder(folder: pdfFolderPath)
+        self.url = docPath.appendingPathComponent(Global.csvFile)
+        let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
         #else   // iOS uses documents folder inside app to store app data/files
         let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         self.url = docPath.appendingPathComponent(Global.csvFile)
-        let imagesFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)
+        let imagesFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)!
+        let pdfFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)!
         let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
         #endif
         
@@ -179,7 +181,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // export JPEG files
                 if inv.imageFileName != "" {
-                    let pathURLjpg = imagesFolderPath!.appendingPathComponent(inv.imageFileName!)
+                    let pathURLjpg = imagesFolderPath.appendingPathComponent(inv.imageFileName!)
                     // get your UIImage jpeg data representation and check if the destination file url already exists
                     let imageData = inv.image! as Data
                     let image = UIImage(data: imageData, scale: 1.0)
@@ -198,7 +200,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
                 
                 // export PDF files
                 if inv.invoiceFileName != nil && inv.invoiceFileName != "" && inv.invoice != nil{
-                    let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
+                    let pathURLpdf = pdfFolderPath.appendingPathComponent(inv.invoiceFileName!)
                     
                     let invoiceData = inv.invoice! as Data
                     do {
@@ -435,7 +437,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // check for correct file format
-    func csvCheckMetadata(csvRows: [[String]]) -> String?{
+    private func csvCheckMetadata(csvRows: [[String]]) -> String?{
         
         if csvRows[0][0] != Global.inventoryName_csv{
             return nil
@@ -497,7 +499,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // read file as string from any given URL
-    func readDataFromCSV(fileURL: URL) -> String?{
+    private func readDataFromCSV(fileURL: URL) -> String?{
         // open file from any directory including iCloud folder
         
         do {
@@ -519,7 +521,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
 
     // remove special characters from csv file
-    func cleanRows(file: String) -> String{
+    private func cleanRows(file: String) -> String{
         
         var cleanFile = file
         cleanFile = cleanFile.replacingOccurrences(of: "\r", with: "\n")
@@ -530,7 +532,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     }
     
     // import cvs file parser
-    func csvImportParser(data: String) -> [[String]] {
+    private func csvImportParser(data: String) -> [[String]] {
         //os_log("ImportExportViewController csvImportParser", log: Log.viewcontroller, type: .info)
         
         var result: [[String]] = []
@@ -630,7 +632,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // share system button to share csv file
     @IBAction func shareButtonAction(_ sender: Any) {
         
-        let _ = exportCSVFile()
+        let _ = exportCSVFile(folderDir: nil)
         
         shareAction(currentPath: self.url!, sourceView: globalWindow!)
     }
@@ -639,13 +641,26 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     @IBAction func importFromCVSFileButton(_ sender: Any) {
         //os_log("ImportExportViewController importFromCVSFileButton", log: Log.viewcontroller, type: .info)
         
-        openFilesApp()
-        
+        importFilesApp()
     }
     
     // MARK: export functions
     
+    // on ios we use documents directory for export location
+    // on Mac we will open a document picker with selectable folder as export location
     private func exporting(){
+        
+        #if targetEnvironment(macCatalyst)
+        let picker = UIDocumentPickerViewController(documentTypes: [kUTTypeFolder as String], in: .open)
+        
+        picker.delegate = self
+        picker.allowsMultipleSelection = false
+        picker.modalPresentationStyle = .fullScreen
+        
+        // e.g. present UIDocumentPickerViewController via your current UIViewController
+        self.present(picker, animated: true, completion: nil)
+        
+        #else
         // add the spinner view controller
         let child = SpinnerViewController()
         addChild(child)
@@ -657,7 +672,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         
         DispatchQueue.main.async() {
             // here comes long running function
-            numberOfRowsExported = self.exportCSVFile()
+            numberOfRowsExported = self.exportCSVFile(folderDir: nil)
             
             // then remove the spinner view controller
             child.willMove(toParent: nil)
@@ -665,14 +680,11 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             child.removeFromParent()
             
             // show alert box with path name
-            
-            #if targetEnvironment(macCatalyst)
-            let text = Global.messageExportFinishedMac + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
-            #else
             let text = Global.messageExportFinishediOS + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
-            #endif
             self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
         }
+        #endif
+        
     }
     
     // called from main menu in case of catalyst
@@ -684,8 +696,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     // MARK: - document picker of files app
     
     // for opening csv files only
-    func openFilesApp(){
-        //os_log("ImportExportViewController openFilesApp", log: Log.viewcontroller, type: .info)
+    func importFilesApp(){
         
         let picker = UIDocumentPickerViewController(documentTypes: [String(kUTTypeCommaSeparatedText)], in: .open)
         
@@ -699,64 +710,99 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]){
         var dir: URL
-        
-        guard
+    
+       guard
             controller.documentPickerMode == .open,
             let url = urls.first,
             url.startAccessingSecurityScopedResource()
         else {
             return
         }
-        /*defer {
-            url.stopAccessingSecurityScopedResource()
-        }*/
+        
+        
         // do something with the selected document
         dir = url
-        dir.deleteLastPathComponent()
         
-        
-        // add the spinner view controller
-        let child = SpinnerViewController()
-        addChild(child)
-        child.view.frame = view.frame
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
+        // check if folder was selected or csv file was selected
+        let last = dir.lastPathComponent
+        if last == Global.csvFile{
+            // IMPORT
+            // we are importing a csv file
+            dir.deleteLastPathComponent()
+            
+            // add the spinner view controller
+            let child = SpinnerViewController()
+            addChild(child)
+            child.view.frame = view.frame
+            view.addSubview(child.view)
+            child.didMove(toParent: self)
 
-        var importedRows = 0
-        
-        DispatchQueue.main.async() {
-            // here comes long running function
+            var importedRows = 0
             
-            let fileDir = self.copyDocumentsFromDirectory(sourceURL: dir)
-            importedRows = self.importCVSFile(fileURL: fileDir!, localDir: true)
-            
-            let title = NSLocalizedString("Import", comment: "Import")
-            let message = NSLocalizedString("Import succeeded with", comment: "Import succeeded with") +
-                            " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
-            self.displayAlert(title: title, message: message, buttonText: Global.done)
-            
-            // then remove the spinner view controller
-            child.willMove(toParent: nil)
-            child.view.removeFromSuperview()
-            child.removeFromParent()
-            
-            // delete temp dir since we dont need it anymore
-            do {
-                try FileManager.default.removeItem(at: fileDir!)
+            DispatchQueue.main.async() {
+                // here comes long running function
                 
+                let fileDir = self.copyDocumentsFromDirectory(sourceURL: dir)
+                importedRows = self.importCVSFile(fileURL: fileDir!, localDir: true)
+                
+                let title = NSLocalizedString("Import", comment: "Import")
+                let message = NSLocalizedString("Import succeeded with", comment: "Import succeeded with") +
+                                " " + "\(importedRows) " + NSLocalizedString("inventory objects", comment: "inventory objects")
+                self.displayAlert(title: title, message: message, buttonText: Global.done)
+                
+                // then remove the spinner view controller
+                child.willMove(toParent: nil)
+                child.view.removeFromSuperview()
+                child.removeFromParent()
+                
+                // delete temp dir since we dont need it anymore
+                do {
+                    try FileManager.default.removeItem(at: fileDir!)
+                }
+                catch{
+                    print("delete temp did not work")
+                }
             }
-            catch{
-                print("delete temp did not work")
+            url.stopAccessingSecurityScopedResource()
+        }
+        else{  //EXPORT
+            // we are exporting to a selected folder location (only catalyst)
+            // add the spinner view controller
+            let child = SpinnerViewController()
+            addChild(child)
+            child.view.frame = view.frame
+            view.addSubview(child.view)
+            child.didMove(toParent: self)
+            
+            var numberOfRowsExported = 0
+            
+            DispatchQueue.main.async() {
+                // here comes long running function
+                numberOfRowsExported = self.exportCSVFile(folderDir: dir) //FIXME add dir: URL as parameter
+                
+                // then remove the spinner view controller
+                child.willMove(toParent: nil)
+                child.view.removeFromSuperview()
+                child.removeFromParent()
+                
+                let text = Global.messageExportFinishedMac + " " + dir.path + "/" + Global.exportFolderNameMac + ". " + String(numberOfRowsExported) + " " + Global.numberOfExportedRows
+                self.displayAlert(title: Global.titleExportFinished, message: text, buttonText: Global.dismiss)
             }
             
+            //return
         }
         
-        url.stopAccessingSecurityScopedResource()
     }
 
-    // cancel opening/choosing files
+ /*   func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+     */
+    // cancel opening/choosing files/folders
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         // do nothing
+        
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -777,7 +823,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         let sourceCSVFile = sourceURL.appendingPathComponent(Global.csvFile)
         
         let _ = FileManager.default.secureCopyItem(at: sourceCSVFile, to: destCSVFile)
-        let _ = FileManager.default.secureCopyItem(at: sourceImages, to: destImages)    // FIXME crashes on MacOS
+        let _ = FileManager.default.secureCopyItem(at: sourceImages, to: destImages)
         let _ = FileManager.default.secureCopyItem(at: sourcePDF, to: destPDF)
         
         return destURL
@@ -833,7 +879,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
         
         // first generate files to be copied
-        let numberOfRowsExported = exportCSVFile()
+        let numberOfRowsExported = exportCSVFile(folderDir: nil)
         
         
         // copy all data from documents dir to iCloud
@@ -887,87 +933,7 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
         }
     }
     
-    // export to cvs via backgroud task
-    // fetch async array, if no array, return nil
-    // create jpeg and pdf files if included in data
-    // link between cvs and external jpeg, pdf files by file name
-    // FIXME: currently unused function
-    func backupInventoryData2()
-    {
-        _ = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //var url = docPath.appendingPathComponent(Global.csvFile)
-        
-        let imagesFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.imagesFolder)
-        let pdfFolderPath = URL.createFolderInDocumentsFolder(folderName: Global.pdfFolder)
-       
-        let container = store.persistentContainer
-        
-        container.performBackgroundTask { (context) in
-            var results: [Inventory] = []
-            
-            do {
-                results = try context.fetch(self.inventoryFetchRequest())
-            } catch let error as NSError {
-                print("ERROR: \(error.localizedDescription)")
-            }
-            
-            let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let pathURLcvs = docPath.appendingPathComponent(Global.csvFile)
-            
-            var csvText = Global.csvMetadata
-            
-            for inv in results{
-                csvText.append(contentsOf: inv.csv())
-            }
-            
-            do {
-                try csvText.write(to: pathURLcvs, atomically: true, encoding: String.Encoding.utf8)
-                //print("Export Path: \(exportDocPath)")
-            } catch {
-                print("Failed to create inventory csv file")
-                print("\(error)")
-            }
-            
-            // loop through all jpeg files and save them
-            for inv in results{
-                // export JPEG files
-                if inv.imageFileName != "" {
-                    let pathURLjpg = imagesFolderPath!.appendingPathComponent(inv.imageFileName!)
-                    // get your UIImage jpeg data representation and check if the destination file url already exists
-                    let imageData = inv.image! as Data
-                    let image = UIImage(data: imageData, scale: 1.0)
-                    if let data = image!.jpegData(compressionQuality: 0.0),
-                        !FileManager.default.fileExists(atPath: pathURLjpg.path) {
-                        do {
-                            // writes the image data to disk
-                            try data.write(to: pathURLjpg, options: .atomic)
-                            
-                        } catch {
-                            print("error saving jpg file:", error)
-                            os_log("ImportExportViewController exportCSVFile", log: Log.viewcontroller, type: .error)
-                        }
-                    }
-                }
-                
-                // export PDF files
-                if inv.invoiceFileName != nil && inv.invoiceFileName != "" {
-                    let pathURLpdf = pdfFolderPath!.appendingPathComponent(inv.invoiceFileName!)
-                    
-                    let invoiceData = inv.invoice! as Data
-                    do {
-                        // writes the PDF data to disk
-                        try invoiceData.write(to: pathURLpdf, options: .atomic)
-                        //print("pdf file saved")
-                    } catch {
-                        print("error saving pdf file:", error)
-                    }
-                }
-            }
-            
-        }
-        
-    }
-    
+    // MARK: catalyst touch bar stuff
     #if targetEnvironment(macCatalyst)
     
     override func makeTouchBar() -> NSTouchBar? {
@@ -1047,8 +1013,6 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
     {
         controller.dismiss(animated: true, completion: nil)
     }
-
-    
         
 }
 

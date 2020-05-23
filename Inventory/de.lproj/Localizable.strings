@@ -216,7 +216,7 @@
 "Export finished" = "Export fertig";
 
 /* The exportedMac */
-"Exported data can be found in Downloads folder" = "Exportierte Daten können im Downloads Ordner gefunden werden";
+"Exported data can be found in folder:" = "Exportierte Daten können in diesem Ordner gefunden werden:";
 
 /* The exportediOS */
 "Exported data can be found in Inventory App documents folder" = "Exportierte Daten können im Inventory App Ordner gefunden werden";

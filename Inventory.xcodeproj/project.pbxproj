@@ -1181,7 +1181,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
@@ -1210,7 +1210,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
@@ -1237,7 +1237,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
@@ -1261,7 +1261,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
@@ -1283,7 +1283,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1310,7 +1310,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1335,7 +1335,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1361,7 +1361,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 244;
+				CURRENT_PROJECT_VERSION = 245;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;

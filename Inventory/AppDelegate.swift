@@ -47,9 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // for handling watch app connectivity
     //var sessionHandler : WatchSessionManager?
     
-    // iCloud key value store
-    let kvStore = NSUbiquitousKeyValueStore()
-    
     // will be called when Today extension is being used to open the app
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         

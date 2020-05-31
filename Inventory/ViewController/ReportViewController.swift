@@ -77,9 +77,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     var currentSortOrder = SortOrder.item
     
-    // get user name and address from iCloud
-    let kvStore = NSUbiquitousKeyValueStore()
-    
     // general paper size
     var paperWidth = 0.0
     var paperHeight = 0.0
@@ -679,7 +676,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
-        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        pdfPageUserInfo()
         
         x = leftMargin
         y = contentsBegin
@@ -752,7 +749,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
-        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        pdfPageUserInfo()
         
         x = leftMargin
         y = contentsBegin
@@ -814,15 +811,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // add a summary page at the end of the PDF report
     func pdfSummaryPage(numberOfRows: Int, context: UIGraphicsRendererContext){
-        //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
         
         var y : Double
         
         let summary = NSLocalizedString("Summary", comment: "Summary")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
-        // user Info
-        pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+        pdfPageUserInfo()
         
         y = contentsBegin
         
@@ -954,8 +949,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // generate user info for pdf page (on top rigth position of page)
-    func pdfPageUserInfo(userName: String, address: String){
-        //os_log("ReportViewController pdfPageUserInfo", log: Log.viewcontroller, type: .info)
+    func pdfPageUserInfo(){
+        
+        var userName: String? = ""
+        var address: String? = ""
+        
+        userName = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyUserName)
+        if userName == nil{
+            userName = ""
+        }
+        address = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyUserAdress)
+        if address == nil{
+            address = ""
+        }
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
@@ -969,7 +975,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         let userText = NSLocalizedString("User", comment: "User")
         let addressText = NSLocalizedString("Address", comment: "Address")
-        let text1 = userText + ": " + userName + ", " + addressText + ": " + address
+        let text1 = userText + ": " + userName! + ", " + addressText + ": " + address!
         let text = text1 as NSString
         
         text.draw(in: CGRect(x: paperWidth - 250 - leftMargin, y: title_pos_y + 5, width: 250, height: 20), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -1331,8 +1337,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             let title = NSLocalizedString("Inventory Report", comment: "Inventory Report")
             pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
             
-            // user Info
-            pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+            pdfPageUserInfo()
             
             y = contentsBegin
             // contents
@@ -1560,7 +1565,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     // title
                     pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
                     // user Info
-                    pdfPageUserInfo(userName: UserInfo.userName, address: UserInfo.addressName)
+                    pdfPageUserInfo()
                     
                     pdfTableHeader(context: context)
                 }

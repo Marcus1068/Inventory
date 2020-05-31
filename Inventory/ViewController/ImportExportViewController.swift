@@ -240,6 +240,21 @@ class ImportExportViewController: UIViewController, MFMailComposeViewControllerD
             let url = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(Global.backupFolder)
             imagesFolderPath = url!.appendingPathComponent(Global.imagesFolder)
             pdfFolderPath = url!.appendingPathComponent(Global.pdfFolder)
+            
+            
+            // icloud files must be downloaded locally before beeing accessible
+            do {
+                let fileManager = FileManager.default
+                try fileManager.startDownloadingUbiquitousItem(at: url!.appendingPathComponent(Global.csvFile))
+                try fileManager.startDownloadingUbiquitousItem(at: imagesFolderPath!)
+                try fileManager.startDownloadingUbiquitousItem(at: pdfFolderPath!)
+                
+                // wait for 10 seconds so all files have been downloaded from iCloud
+                sleep(10)
+            }
+            catch {
+                print("Unexpected error: \(error).")
+            }
         }
         
         let csvURL = fileURL.appendingPathComponent(Global.csvFile)

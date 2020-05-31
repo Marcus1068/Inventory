@@ -75,9 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // influences text color
         //window?.tintColor = themeColor
         
-        // get user name and address from iCloud
-        getiCloudStorageInfo()
-        
         // Do any additional setup after loading the view.
         let store = CoreDataStorage.shared
         
@@ -160,16 +157,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    // get user name and address from icloud storage
-    func getiCloudStorageInfo(){
-        //os_log("AppDelegate getiCloudStorageInfo", log: Log.appdelegate, type: .info)
-        
-        if let user = kvStore.string(forKey: Local.keyUserName),
-            let address = kvStore.string(forKey: Local.keyHouseName){
-            UserInfo.userName = user
-            UserInfo.addressName = address
-        }
-    }
     
     // macCatalyst: Create menu
     #if targetEnvironment(macCatalyst)

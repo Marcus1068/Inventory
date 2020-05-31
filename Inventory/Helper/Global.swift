@@ -52,6 +52,10 @@ class Global: UIViewController {
     // sf symbol icons names used in app
     static let importExportSymbol = "tray.2.fill"
     
+    // icloud keys
+    static let keyUserName = "userName"
+    static let keyUserAdress = "userAdress"
+    
     
     // name of the app in about view
     static let emailAdr = "mdeuss+inventory@gmail.com"

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6C20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift */; };
 		2C1C7F6F20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */; };
 		2C2B805522577F76007C842E /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B805422577F76007C842E /* ReportViewController.swift */; };
@@ -84,7 +83,6 @@
 		2C89B96C227EF9BD00DB74D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89B96B227EF9BD00DB74D3 /* ImagePicker.swift */; };
 		2C96898523DA24740001F8BB /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C96898423DA24740001F8BB /* CloudKit.framework */; };
 		2CAAF6A120CD5AF6004523AF /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAF6A020CD5AF6004523AF /* PDFViewController.swift */; };
-		2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15B22F225CFFF800EB09DD /* UserInfo.swift */; };
 		2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB7918246FDF0300E201F4 /* SpinnerViewController.swift */; };
 		2CBB791F24712A9F00E201F4 /* Inventoryview Help English.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB791E24712A9F00E201F4 /* Inventoryview Help English.rtf */; };
 		2CBB792124712ABE00E201F4 /* Inventoryview Help German.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBB792024712ABE00E201F4 /* Inventoryview Help German.rtf */; };
@@ -210,7 +208,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C15B22F225CFFF800EB09DD /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		2C1C7F6C20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C1C7F6E20B499A5004D5152 /* InventoryFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		2C2B805422577F76007C842E /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -448,7 +445,6 @@
 				2C56E9492086A41700FD5136 /* Room+CoreDataClass.swift */,
 				2C56E94A2086A41700FD5136 /* Room+CoreDataProperties.swift */,
 				2C56E8DD20866EAF00FD5136 /* Inventory.xcdatamodeld */,
-				2C15B22F225CFFF800EB09DD /* UserInfo.swift */,
 				2CDB2B132296CE020060F7F8 /* CoreDataStorage.swift */,
 			);
 			path = Model;
@@ -872,7 +868,6 @@
 				2C1C7F6D20B496F5004D5152 /* InventoryHeaderCollectionReusableView.swift in Sources */,
 				2CD2FBE32297062000A7ED47 /* WatchSessionManager.swift in Sources */,
 				2CDA6A622465CBFE00A90ACF /* OnboardingViewController.swift in Sources */,
-				2C15B230225CFFF800EB09DD /* UserInfo.swift in Sources */,
 				2C6A69F6228038D600140B39 /* DropFile.swift in Sources */,
 				2CBB7919246FDF0300E201F4 /* SpinnerViewController.swift in Sources */,
 				2C56E9502086A41700FD5136 /* Inventory+CoreDataProperties.swift in Sources */,
@@ -930,7 +925,6 @@
 				2CC7EC1D22A7B4F800F485AA /* Brand+CoreDataClass.swift in Sources */,
 				2CC7EC1F22A7B50000F485AA /* Inventory+CoreDataClass.swift in Sources */,
 				2CC7EC2222A7B52E00F485AA /* WatchConstants.swift in Sources */,
-				2CAF652E22AA4626005EF8A1 /* UserInfo.swift in Sources */,
 				2CC7EC1E22A7B4FC00F485AA /* Category+CoreDataClass.swift in Sources */,
 				2CC7EC1A22A7B4E000F485AA /* Inventory+CoreDataProperties.swift in Sources */,
 				2CC7EC1C22A7B4E600F485AA /* Brand+CoreDataProperties.swift in Sources */,
@@ -1181,7 +1175,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
@@ -1190,7 +1184,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = Inventory;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1210,7 +1204,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = Inventory/Info.plist;
@@ -1219,7 +1213,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory";
 				PRODUCT_NAME = Inventory;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1237,11 +1231,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
@@ -1261,11 +1255,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Watch/Watch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				IBSC_MODULE = Watch_Extension;
 				INFOPLIST_FILE = Watch/Info.plist;
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp";
 				PRODUCT_NAME = "Inventory App";
@@ -1283,7 +1277,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1291,7 +1285,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp.watchkitextension";
@@ -1310,7 +1304,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "Watch Extension/Watch Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = "Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1318,7 +1312,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
@@ -1335,7 +1329,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1344,7 +1338,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
@@ -1361,7 +1355,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = InventoryToday/InventoryToday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 245;
+				CURRENT_PROJECT_VERSION = 247;
 				DEVELOPMENT_TEAM = WS7XMU4939;
 				INFOPLIST_FILE = InventoryToday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
@@ -1370,7 +1364,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.41;
+				MARKETING_VERSION = 2.44;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.marcus-deuss.Inventory.InventoryToday";
 				PRODUCT_NAME = "Inventory App";

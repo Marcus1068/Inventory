@@ -48,12 +48,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     
     // attributes
     
-
-    // for using userDefaults local store
-    // let userDefaults = UserDefaults.standard
-    // for using iCloud key/value store to sync settings between multiple devices (iPhone, iPad e.g)
-    let kvStore = NSUbiquitousKeyValueStore()
-    
     //var sessionHandler : WatchSessionManager?
     var counter = 0
     
@@ -102,77 +96,38 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         //useiCloudSettingsStorage()
         
         // pointer interaction
-        if #available(iOS 13.4, *) {
-            customPointerInteraction(on: appInformationButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: feedbackButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: privacyButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: userManualButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: appSettingsButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: whatsNewButton, pointerInteractionDelegate: self)
-            customPointerInteraction(on: resetDataButton, pointerInteractionDelegate: self)
-        } else {
-            // Fallback on earlier versions
-        }
+        customPointerInteraction(on: appInformationButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: feedbackButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: privacyButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: userManualButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: appSettingsButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: helpButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: whatsNewButton, pointerInteractionDelegate: self)
+        customPointerInteraction(on: resetDataButton, pointerInteractionDelegate: self)
+        
+        // get iCloud data
+        userNameTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyUserName)
+        addressTextField.text = NSUbiquitousKeyValueStore.default.string(forKey: Global.keyUserAdress)
     }
     
     // setup all things that need to be refreshed when view comes to screen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //os_log("AboutViewController viewWillAppear", log: Log.viewcontroller, type: .info)
-        
-        // either use local of iCloud storage
-        //useLocalSettingsStorage()
-        useiCloudSettingsStorage()
         
         // when tapping somewhere on view dismiss keyboard
         self.hideKeyboardWhenTappedAround()
         
     }
     
-    // when using iCloud key/value store to sync settings
-    func useiCloudSettingsStorage(){
-            userNameTextField.text = UserInfo.userName
-            addressTextField.text = UserInfo.addressName
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        // notify view controller when changes on other devices occur
-        NotificationCenter.default.addObserver(self, selector: #selector(AboutViewController.kvHasChanged(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: kvStore)
+        // write to iCloud
+        NSUbiquitousKeyValueStore.default.set(userNameTextField.text!, forKey: Global.keyUserName)
+        NSUbiquitousKeyValueStore.default.set(addressTextField.text!, forKey: Global.keyUserAdress)
     }
     
-    // handle notification when iCloud changes occur
-    @objc func kvHasChanged(notification: NSNotification){
-        // update both text fields (complexer apps need to check for changes in all records
-        userNameTextField.text = kvStore.string(forKey: Local.keyUserName)
-        UserInfo.userName = userNameTextField.text!
-        addressTextField.text = kvStore.string(forKey: Local.keyHouseName)
-        UserInfo.addressName = addressTextField.text!
-    }
-    
-    /*
-    // when using local storage
-    func useLocalSettingsStorage(){
-        // load user defaults
-        // first run test - no defaults
-        if let user = userDefaults.string(forKey: Global.keyUserName),
-            let house = userDefaults.string(forKey: Global.keyHouseName){
-            let userInfo = UserInfo(userName: user, houseName: house)
-            
-            userNameTextField.text = userInfo.userName
-            houseNameTextField.text = userInfo.houseName
-            
-            //print(userInfo.userName, userInfo.houseName)
-        }
-        else{
-            // default house name
-            let userInfo = UserInfo(userName: NSLocalizedString("User Name", comment: "User Name"), houseName: NSLocalizedString("House Name", comment: "House Name"))
-            
-            userNameTextField.text = userInfo.userName
-            houseNameTextField.text = userInfo.houseName
-            
-            //print(userInfo.userName, userInfo.houseName)
-        }
-    } */
     
     // MARK: - popover/popup windows methods
     
@@ -241,19 +196,19 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     // save user name and address as soon as any input entered in user default
     @IBAction func userNameEditingChanged(_ sender: UITextField) {
         if (userNameTextField.text!.count > 0){
-            //userDefaults.set(userNameTextField.text, forKey: Helper.keyUserName)
-            kvStore.set(userNameTextField.text!, forKey: Local.keyUserName)
-            kvStore.synchronize()
-            UserInfo.userName = userNameTextField.text!
+            // write to iCloud
+            NSUbiquitousKeyValueStore.default.set(userNameTextField.text!, forKey: Global.keyUserName)
+            // store data to iCloud
+            NSUbiquitousKeyValueStore().synchronize()
         }
     }
     
     @IBAction func addressEditingChanged(_ sender: UITextField) {
         if (addressTextField.text!.count > 0){
-            //userDefaults.set(houseNameTextField.text, forKey: Helper.keyHouseName)
-            kvStore.set(addressTextField.text!, forKey: Local.keyHouseName)
-            kvStore.synchronize()
-            UserInfo.addressName = addressTextField.text!
+            // write to iCloud
+            NSUbiquitousKeyValueStore.default.set(addressTextField.text!, forKey: Global.keyUserAdress)
+            // store data to iCloud
+            NSUbiquitousKeyValueStore().synchronize()
         }
     }
     

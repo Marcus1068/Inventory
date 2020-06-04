@@ -641,7 +641,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // print the app logo on every page
     func pdfImageLogo(){
-        let image = UIImage(named: "InventorySplash.jpg")
+        let image = UIImage(named: "InventorySplash_v2.jpg")
         image!.draw(in: CGRect(x: logoPosX, y: logoPosY, width: logoSizeHeight, height: logoSizeWidth))
     }
     
@@ -672,7 +672,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var x = 0.0 // Points form left
         let offset = 60.0
         
-        let summary = NSLocalizedString("Still valid warranty", comment: "Still valid warranty")
+        let summary = NSLocalizedString("Inventory - valid warranty", comment: "Inventory valid warranty")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
@@ -716,7 +716,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             for i in numberOfDevicesInWarranty{
                 
                 // show only as many entries, otherwise we need more than one page
-                if counter > 50 {
+                if counter > 45 {
                     break
                 }
                 counter += 1
@@ -745,7 +745,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var x = 0.0 // Points form left
         let offset = 60.0
         
-        let summary = NSLocalizedString("Exceeded warranty", comment: "Exceeded warranty")
+        let summary = NSLocalizedString("Inventory - Exceeded warranty", comment: "Inventory - Exceeded warranty")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         // user Info
@@ -789,7 +789,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             for i in numberOfDevicesWithoutWarranty{
                 
                 // show only as many entries, otherwise we need more than one page
-                if counter > 50 {
+                if counter > 45 {
                     break
                 }
                 counter += 1
@@ -814,7 +814,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         
         var y : Double
         
-        let summary = NSLocalizedString("Summary", comment: "Summary")
+        let summary = NSLocalizedString("Inventory - Summary", comment: "Inventory - Summary")
         pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
         
         pdfPageUserInfo()
@@ -824,7 +824,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
-        let font = UIFont(name: "HelveticaNeue", size: 15.0)
+        let font = UIFont(name: "HelveticaNeue", size: 12.0)
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: font,
@@ -853,7 +853,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let printSortOrder = sortOrderText as NSString
         printSortOrder.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         
         let tmp = NSLocalizedString("Room filter applied", comment: "Room filter applied")
         var compareRoom: String = ""
@@ -873,7 +873,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printRoomFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 30
+        y = y + 20
         
         let tmp2 = NSLocalizedString("Owner filter applied", comment: "Owner filter applied")
         var compareOwner: String = ""
@@ -893,13 +893,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             printOwnerFilter.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 30
+        y = y + 20
         
         let tmp3 = NSLocalizedString("Number of inventory items", comment: "Number of inventory item")
         let numberOfRowsText = tmp3 + ": " + String(numberOfRows)
         numberOfRowsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         
         let stat = Statistics.shared
         let sum = stat.itemPricesSum()
@@ -907,13 +907,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let priceSumText = tmp4 + ": " + String(sum) + Local.currencySymbol!
         priceSumText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         
         let tmp5 = NSLocalizedString("Database size used for images, pdf files etc.", comment: "Database size")
         let storageText = tmp5 + ": " + String(format: "%.2f", Statistics.shared.getInventorySizeinMegaBytes()) + " MB"
         storageText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         
         // take first room only
         let (key, value) = Statistics.shared.countItemsByRoomDict().first ?? ("", 0)
@@ -922,7 +922,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let roomItemsText = tmp6 + ": " + roomString
         roomItemsText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         let mostExpensiveItem = Statistics.shared.mostExpensiveItems(elementsCount: 1)
         if mostExpensiveItem.count > 0{
             let tmp7 = NSLocalizedString("Most expensive item", comment: "Most expensive item")
@@ -930,19 +930,19 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             mostExp.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         }
         
-        y = y + 30
+        y = y + 20
         let warrantyCount = Statistics.shared.warrantyValidDevices().count
         let warr = NSLocalizedString("Devices with valid warranty", comment: "Devices with valid warranty")
         let warrStr = warr + ": " + String(warrantyCount)
         warrStr.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
   
-        y = y + 30
+        y = y + 20
         let warrantyCountExceeded = Statistics.shared.warrantyExceededDevices().count
         let warrE = NSLocalizedString("Devices with exceeded warranty", comment: "Devices with exceeded warranty")
         let warrEStr = warrE + ": " + String(warrantyCountExceeded)
         warrEStr.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
         
-        y = y + 30
+        y = y + 20
         
         let appInfoText = NSLocalizedString("Provided by", comment: "Provided by") + ": " + UIApplication.appName! + " " + UIApplication.appVersion! + " (" + UIApplication.appBuild! + ")"
         appInfoText.draw(in: CGRect(x: title_pos_x, y: y, width: title_width, height: title_height), withAttributes: attributes as [NSAttributedString.Key : Any])
@@ -1308,7 +1308,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         dateformatter.timeStyle = DateFormatter.Style.short
         
         let now = dateformatter.string(from: Date())
-        let tmp = NSLocalizedString("generated by Inventory App (c) 2019 Marcus Deuß", comment: "generated by Inventory App (c) 2019 Marcus Deuß")
+        let tmp = NSLocalizedString("generated by Inventory App (c) 2018-2020 M. Deuß", comment: "generated by Inventory App (c) 2018-2020 M. Deuß")
         let footerText = tmp + ", " + now
         
         var paperPrintableRows : Int
@@ -1334,7 +1334,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             pdfImageLogo()
             
             // Title
-            let title = NSLocalizedString("Inventory Report", comment: "Inventory Report")
+            let title = NSLocalizedString("Inventory - Report", comment: "Inventory - Report")
             pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
             
             pdfPageUserInfo()

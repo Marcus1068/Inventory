@@ -308,10 +308,12 @@ extension SceneDelegate: NSToolbarDelegate {
         //let nav = tabBarController.viewControllers![0] as! UINavigationController
         let editView = storyboard.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
         //nav.pushViewController(editView, animated: false)
-        let pdf = editView.pdfCreateInventoryReport()
+        /*let pdf = editView.pdfCreateInventoryReport()
         let url = editView.pdfSave(pdf)
         
-        editView.printPDFAction(url: url)
+        editView.printPDFAction(url: url) */
+        
+        editView.printReport()
     }
     
     // manage all items like rooms, categories etc call

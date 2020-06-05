@@ -76,11 +76,11 @@ class PDFViewController: UIViewController {
         pdfView.displayMode = .singlePageContinuous
         pdfView.displayDirection = .vertical
         
+        
         // scroll PDF to top
-        DispatchQueue.main.async
-            {
-                guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
-                self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
+        DispatchQueue.main.async{
+            guard let firstPage = self.pdfView.document?.page(at: 0) else { return }
+            self.pdfView.go(to: CGRect(x: 0, y: Int.max, width: 0, height: 0), on: firstPage)
         }
         
         pdfView.document = currentPDF?.document

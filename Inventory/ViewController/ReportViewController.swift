@@ -75,6 +75,8 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case room = "inventoryRoom.roomName"
     }
     
+    var imagesToPrint: Bool = true
+    
     var currentSortOrder = SortOrder.item
     
     // general paper size
@@ -215,6 +217,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // This is called every time the view is about to appear, whether or not the view is already in memory.
     // Put your dynamic code here, such as model logic
     override func viewWillAppear(_ animated: Bool) {
+        os_log("ReportViewController viewWillAppear", log: Log.viewcontroller, type: .info)
         super.viewWillAppear(animated)
         
         // get the data from Core Data
@@ -377,15 +380,23 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     @IBAction func printBarButtonAction(_ sender: Any) {
-        printPDFAction(url: url)
+        //printPDFAction(url: url)
+        printReport()
     }
     
     @objc func touchPrintAction(){
-        printPDFAction(url: url)
+        //printPDFAction(url: url)
+        printReport()
     }
     
     @objc func toggleImageSwitch(){
         imageSwitch.isOn = !imageSwitch.isOn
+        if imageSwitch.isOn == true{
+            imagesToPrint = true
+        }
+        else{
+            imagesToPrint = false
+        }
         
         refreshReport()
     }
@@ -475,6 +486,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     // MARK: - Actions
     
     @IBAction func imageSwitch(_ sender: UISwitch) {
+        
+        if imageSwitch.isOn == true{
+            imagesToPrint = true
+        }
+        else{
+            imagesToPrint = false
+        }
         refreshReport()
     }
     
@@ -513,14 +531,14 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case 0:
             currentPaperSize = .dinA4
             
-            refreshReport()
         case 1:
             currentPaperSize = .usLetter
-            
-            refreshReport()
+
         default:
             break
         }
+        
+        refreshReport()
     }
     
     @IBAction func sortOrderSegmentAction(_ sender: UISegmentedControl) {
@@ -839,12 +857,15 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         case .item:
             sortOrderText = NSLocalizedString("Sorted by item", comment: "Sorted by item")
             break
+            
         case .owner:
             sortOrderText = NSLocalizedString("Sorted by owner", comment: "Sorted by owner")
             break
+            
         case .category:
             sortOrderText = NSLocalizedString("Sorted by category", comment: "Sorted by category")
             break
+            
         case .room:
             sortOrderText = NSLocalizedString("Sorted by room", comment: "Sorted by room")
             break
@@ -1279,7 +1300,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     // generate the PDF document containing all pages, header, footer, page number, logo, images etc.
     func pdfCreateInventoryReport() -> Data{
-        //os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
+        os_log("ReportViewController pdfCreateInventoryReport", log: Log.viewcontroller, type: .info)
         
         var y = 0.0 // Points from above
         var x = 0.0 // Points form left
@@ -1399,7 +1420,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthPrice
 
                     // print image only when image switch is on
-                    if imageSwitch.isOn{
+                    if imagesToPrint{
                         pdfImageForIntenvory(xPos: columnWidthItem - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
@@ -1446,7 +1467,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthPrice
                     
                     // print image only when image switch is on
-                    if imageSwitch.isOn{
+                    if imagesToPrint{
                         pdfImageForIntenvory(xPos: columnWidthOwner + columnWidthItem - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
@@ -1493,7 +1514,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthPrice
                     
                     // print image only when image switch is on
-                    if imageSwitch.isOn{
+                    if imagesToPrint{
                         pdfImageForIntenvory(xPos: columnWidthCategory + columnWidthItem - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
@@ -1540,7 +1561,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     x = x + columnWidthPrice
                     
                     // print image only when image switch is on
-                    if imageSwitch.isOn{
+                    if imagesToPrint{
                         pdfImageForIntenvory(xPos: columnWidthRoom + columnWidthItem - imageSizeWidth + 20, yPos: y, imageData: inv.image)
                     }
                     break
@@ -1597,10 +1618,6 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
         }
         
-        // save report to temp dir
-        //url = pdfSave(pdf)
-        //pdfDisplay(file: url!)
-        
         return pdf
     }
     
@@ -1622,11 +1639,24 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         }
     }
     
-    // print PDF file to printer, called from menu and toolbar
-    @objc func printPDFAction(url: URL?) {
+    /* will be called by other modules (menu touchbar etc) */
+    @objc func printReport(){
+        
+        fetchData(ownerFilter: all, roomFilter: all)
+        
+        // create the pdf report based on selected sort order and filter choice
+        let pdf = pdfCreateInventoryReport()
+        
+        url = pdfSave(pdf)
+        
+        printPDFAction(url: self.url)
+    }
+    
+    // print PDF file to printer
+    func printPDFAction(url: URL?) {
         
         // refresh report data, no filter
-        fetchData(ownerFilter: "", roomFilter: "")
+        //fetchData(ownerFilter: all, roomFilter: all)
         
         if let guide_url = url{
             if UIPrintInteractionController.canPrint(guide_url) {
@@ -1831,7 +1861,7 @@ extension ReportViewController: UIContextMenuInteractionDelegate {
         let print = UIAction(title: Global.printReport, image: UIImage(systemName: "printer")) { action in
             // Show system share sheet
             //self.shareAction(currentPath: self.currentPath!)
-            self.printPDFAction(url: self.url!)
+            self.printReport()
         }
 
         // Create and return a UIMenu with the share action

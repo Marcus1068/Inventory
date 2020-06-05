@@ -381,7 +381,17 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     
     @IBAction func printBarButtonAction(_ sender: Any) {
         //printPDFAction(url: url)
-        printReport()
+        //printReport()
+        
+        fetchData(ownerFilter: ownerFilterLabel.text!, roomFilter: roomFilterLabel.text!)
+        
+        // create the pdf report based on selected sort order and filter choice
+        let pdf = pdfCreateInventoryReport()
+        
+        url = pdfSave(pdf)
+        
+        printPDFAction(url: self.url)
+        
     }
     
     @objc func touchPrintAction(){

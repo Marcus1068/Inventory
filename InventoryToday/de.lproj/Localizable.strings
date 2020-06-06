@@ -10,9 +10,6 @@
 /* <other> */
 "<other>" = "<andere>";
 
-/* Address */
-"Address" = "Adresse";
-
 /* Basement 1 */
 "Basement 1" = "Kellerraum 1";
 
@@ -123,9 +120,6 @@
 
 /* TV */
 "TV" = "TV";
-
-/* User Name */
-"User Name" = "Benutzername";
 
 /* Video Game */
 "Video Game" = "Videospiel";

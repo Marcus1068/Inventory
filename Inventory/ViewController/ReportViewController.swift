@@ -701,7 +701,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let offset = 60.0
         
         let summary = NSLocalizedString("Inventory - valid warranty", comment: "Inventory valid warranty")
-        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        pdfPageTitleHeading(title: summary, context: context)
         
         // user Info
         pdfPageUserInfo()
@@ -774,7 +774,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         let offset = 60.0
         
         let summary = NSLocalizedString("Inventory - Exceeded warranty", comment: "Inventory - Exceeded warranty")
-        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        pdfPageTitleHeading(title: summary, context: context)
         
         // user Info
         pdfPageUserInfo()
@@ -843,7 +843,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
         var y : Double
         
         let summary = NSLocalizedString("Inventory - Summary", comment: "Inventory - Summary")
-        pdfPageTitleHeading(title: summary, fontSize: 25.0, context: context)
+        pdfPageTitleHeading(title: summary, context: context)
         
         pdfPageUserInfo()
         
@@ -1013,13 +1013,13 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
     }
     
     // generate title for pdf page (on top of each page)
-    func pdfPageTitleHeading(title: String, fontSize: CGFloat, context: UIGraphicsRendererContext){
+    func pdfPageTitleHeading(title: String, context: UIGraphicsRendererContext){
         //os_log("ReportViewController pdfPageTitleHeading", log: Log.viewcontroller, type: .info)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         
-        let font = UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+        let font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
         let attributes = [
             NSAttributedString.Key.paragraphStyle: paragraphStyle,
             NSAttributedString.Key.font: font,
@@ -1366,7 +1366,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
             
             // Title
             let title = NSLocalizedString("Inventory - Report", comment: "Inventory - Report")
-            pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
+            pdfPageTitleHeading(title: title, context: context)
             
             pdfPageUserInfo()
             
@@ -1594,7 +1594,7 @@ class ReportViewController: UIViewController, MFMailComposeViewControllerDelegat
                     // logo
                     pdfImageLogo()
                     // title
-                    pdfPageTitleHeading(title: title, fontSize: 25.0, context: context)
+                    pdfPageTitleHeading(title: title, context: context)
                     // user Info
                     pdfPageUserInfo()
                     
